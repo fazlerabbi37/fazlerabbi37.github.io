@@ -7,9 +7,9 @@ Fazle Rabbi's site
    :align: center
 
    =================  ==================  =======================
-      `Projects`_        `Contact Me`_           `Blog`_           
+      `Projects`_         `Mail me`_              `Blog`_           
    =================  ==================  =======================
 
 .. _Projects: http://github.com/fazlerabbi37
-.. _Contact Me: mailto:fazlerabbi37@gmail.com
+.. _Mail Me: mailto:fazlerabbi37@gmail.com
 .. _Blog: blog.html
