@@ -8,4 +8,3 @@ Recent Blogs
 
 All Blogs
 ------------
-
