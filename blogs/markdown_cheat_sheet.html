@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Fazle Rabbi's Blog</title>
+<title>Markdown Cheat Sheet</title>
 <style type="text/css">
 
 /*
@@ -360,33 +360,161 @@ ul.auto-toc {
 </style>
 </head>
 <body>
-<div class="document" id="fazle-rabbi-s-blog">
-<h1 class="title">Fazle Rabbi's Blog</h1>
+<div class="document" id="markdown-cheat-sheet">
+<h1 class="title">Markdown Cheat Sheet</h1>
 
-<p>Welcome to my blog site?!</p>
-<p>This page contains notes/tips/tricks/hacks aka accumulated information about various topics that picked my interest.</p>
-<div class="sidebar">
-<p class="first sidebar-title">Category</p>
-<p class="last"><a class="reference external" href="blogs/category_cheat_sheet.html">cheat sheet</a></p>
+<p>A quick reference of Markdown.</p>
+<div class="section" id="italics">
+<h1>Italics</h1>
+<p>To make a phrase italic in Markdown, we can surround words which may span multiple words with an underscore '_' or '*' without quotes. For example:</p>
+<pre class="literal-block">
+_Writing in Markdown is not that hard!_
+
+*Writing in Markdown is not that hard!*
+</pre>
+<p>Both gives the following output:</p>
+<blockquote>
+<em>Writing in Markdown is not that hard!</em></blockquote>
 </div>
-<div class="section" id="recent-blogs">
-<h1>Recent Blogs</h1>
-<div class="section" id="id1">
-<h2><a class="reference external" href="blogs/markdown_cheat_sheet.html">Markdown Cheat Sheet</a></h2>
-<p>Jul,22 2018</p>
-<div class="section" id="a-quick-reference-of-markdown">
-<h3>A quick reference of Markdown.</h3>
+<div class="section" id="bold">
+<h1>Bold</h1>
+<p>To make phrases bold in Markdown, we can surround words which may span multiple words with two asterisks '__' or '**' without quotes. For example:</p>
+<pre class="literal-block">
+__Writing in Markdown is not that hard!__
+
+**Writing in Markdown is not that hard!**
+</pre>
+<p>Both gives the following output:</p>
+<blockquote>
+<strong>Writing in Markdown is not that hard!</strong></blockquote>
+</div>
+<div class="section" id="strikethrough">
+<h1>Strikethrough</h1>
+<p>To strikethrough a phrases in Markdown, we can surround words which may span multiple words with two asterisks '~~' without quotes. For example:</p>
+<pre class="literal-block">
+~~Writing in Markdown is not that hard!~~
+</pre>
+<p>Gives the following output:</p>
+<div class="strike docutils container">
+Writing in Markdown is not that hard!</div>
+<!-- pulled this trick following this Stack Overflow `answer <https://stackoverflow.com/a/14295112>`_ -->
+</div>
+<div class="section" id="headers">
+<h1>Headers</h1>
+<p>To make headers in Markdown, we preface the phrase with a hash mark '#' without quotes. There are six types of headers, in decreasing sizes. We need to place the same number of hash marks as the size of the header we want:</p>
+<pre class="literal-block">
+# Header one
+## Header two
+### Header three
+#### Header four
+##### Header five
+###### Header six
+</pre>
+<p>Gives the following output:</p>
+</div>
+<div class="section" id="header-one">
+<h1>Header one</h1>
+<div class="section" id="header-two">
+<h2>Header two</h2>
+<div class="section" id="header-three">
+<h3>Header three</h3>
+<div class="section" id="header-four">
+<h4>Header four</h4>
+<div class="section" id="header-five">
+<h5>Header five</h5>
+<div class="section" id="header-six">
+<h6>Header six</h6>
+<p>Alternatively, for Header one and Header two, an underline-ish style can be used:</p>
+<pre class="literal-block">
+Alt-H1
+======
+
+Alt-H2
+------
+</pre>
+<p>Giving the same output of Header one and Header two:</p>
 </div>
 </div>
 </div>
-<div class="section" id="all-blogs">
-<h1>All Blogs</h1>
-<div class="section" id="id3">
-<h2><a class="reference external" href="blogs/markdown_cheat_sheet.html">Markdown Cheat Sheet</a></h2>
-<p>Jul,22 2018</p>
-<div class="section" id="id4">
-<h3>A quick reference of Markdown.</h3>
 </div>
+</div>
+</div>
+<div class="section" id="alt-h1">
+<h1>Alt-H1</h1>
+<div class="section" id="alt-h2">
+<h2>Alt-H2</h2>
+</div>
+</div>
+<div class="section" id="links">
+<h1>Links</h1>
+<p>There are two different link types in Markdown:</p>
+<blockquote>
+<ul class="simple">
+<li>Inline</li>
+<li>Reference</li>
+</ul>
+</blockquote>
+<div class="section" id="inline">
+<h2>Inline</h2>
+<p>To create an inline link, we need to wrap the link text in brackets '[ ]' without quote, and then we wrap the link in parenthesis '( )' For example:</p>
+<pre class="literal-block">
+[Visit GitHub!](www.github.com)
+</pre>
+<p>Gives the following output:</p>
+<blockquote>
+<a class="reference external" href="www.github.com">Visit GitHub!</a></blockquote>
+<p>Above is the simplest way of Markdown inline link. Here are some more examples:</p>
+<pre class="literal-block">
+[I'm an inline-style link with title](https://www.google.com &quot;Google's Homepage&quot;)
+
+[I'm a relative reference to this repository's index file](../index.html)
+</pre>
+</div>
+<div class="section" id="reference">
+<h2>Reference</h2>
+<p>To create a reference link we wrap both the link text and the reference text in brackets '[ ]' without quote and at the bottom we write the reference by wrapping the reference text in '[]' followed by a ':' both without quote and then we put the actual URL. For example:</p>
+<pre class="literal-block">
+Here's [a link to something else][another place].
+
+[another place]: www.github.com
+</pre>
+<p>Gives us the following output:</p>
+<blockquote>
+Here's a <a class="reference external" href="www.github.com">link to something else</a>.</blockquote>
+<p>Above is the simplest way of Markdown reference link. Here are some more examples:</p>
+<pre class="literal-block">
+[You can use numbers for reference-style link definitions][1]
+
+Or leave it empty and use the [link text itself].
+
+URLs and URLs in angle brackets will automatically get turned into links.
+http://www.example.com or &lt;http://www.example.com&gt; and sometimes
+example.com (but not on Github, for example).
+
+[1]: http://slashdot.org
+[link text itself]: http://www.reddit.com
+</pre>
+</div>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="https://www.markdowntutorial.com">Markdown Tutorial</a></li>
+<li><a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown-here Markdown Cheatsheet</a></li>
+</ul>
+</blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">need to put the css for Strikethrough after every new html convertion 😞</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">add the followings in combo section</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">show the combination of Italics, Bold and Strikethrough like same word itelic, bold and strickthrough and some part itelic, some part bold or some part strickthrough in a sentene later. You can't really make a header bold, but you can italicize certain words. need to show it in combo section. You can add emphasis to link texts. you can make links within headings.</p>
 </div>
 </div>
 </div>
