@@ -503,6 +503,203 @@ example.com (but not on Github, for example).
 </pre>
 </div>
 </div>
+<div class="section" id="images">
+<h1>Images</h1>
+<p>If we know how to create links in Markdown, we can create images, too. The syntax is nearly the same.</p>
+<p>To create an inline image link to <a class="reference external" href="https://octodex.github.com/images/bannekat.png">https://octodex.github.com/images/bannekat.png</a>, with an alt text that says, Benjamin Bannekat, we would write this in Markdown:</p>
+<pre class="literal-block">
+![Benjamin Bannekat](https://octodex.github.com/images/bannekat.png).
+</pre>
+<p>Giving us the following output:</p>
+<img alt="Benjamin Bannekat" class="align-center" src="https://octodex.github.com/images/bannekat.png" />
+<p>This is called the inline style of image linking. Here are a few alternative ways to do it:</p>
+<pre class="literal-block">
+![](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 1&quot;)
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 1&quot;)
+</pre>
+<p>They both give us the following output:</p>
+<img alt="Logo Title Text 1" class="align-center" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" />
+<p>We can also link an image with reference linking same as the <a class="reference internal" href="#reference">Reference</a> type of Links with the only difference where we need to put '!' without quote to the reference text. For example:</p>
+<pre class="literal-block">
+![The first father][First Father]
+
+![The second first father][Second Father]
+
+
+[First Father]: http://octodex.github.com/images/founding-father.jpg
+[Second Father]: http://octodex.github.com/images/foundingfather_v2.png
+</pre>
+<p>Gives us the following output:</p>
+<p>The first father <img alt="First Father" class="align-middle" src="http://octodex.github.com/images/founding-father.jpg" /></p>
+<p>The second first father <img alt="Second Father" class="align-middle" src="http://octodex.github.com/images/foundingfather_v2.png" /></p>
+<p>We can also do it like this:</p>
+<pre class="literal-block">
+![alt text][logo]
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png &quot;Logo Title Text 2&quot;
+</pre>
+<p>Giving us the following output:</p>
+<img alt="Logo Title Text 2" class="align-center" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" />
+</div>
+<div class="section" id="blockquotes">
+<h1>Blockquotes</h1>
+<p>If we need to call special attention to a quote from another source, or design a pull quote for a magazine article, then Markdown's blockquote syntax will be useful.</p>
+<p>To create a block quote, all we have to do is preface a line with the &quot;greater than&quot; caret '&gt;' without quote. For example:</p>
+<pre class="literal-block">
+I read this interesting quote the other day:
+
+&gt; &quot;Her eyes had called him and his soul had leaped at the call. To live, to err, to fall, to triumph, to recreate life out of life!&quot;
+</pre>
+<p>Gives us the following output:</p>
+<p>I read this interesting quote the other day:</p>
+<blockquote>
+&quot;Her eyes had called him and his soul had leaped at the call. To live, to err, to fall, to triumph, to recreate life out of life!&quot;</blockquote>
+<p>We can also place a caret character on each line of the quote. This is particularly useful if your quote spans multiple paragraphs. For example:</p>
+<pre class="literal-block">
+&gt; His words seemed to have struck some deep chord in his own nature. Had he spoken
+of himself, of himself as he was or wished to be? Stephen watched his face for some
+moments in silence. A cold sadness was there. He had spoken of himself, of his own
+loneliness which he feared.
+&gt;
+&gt; — Of whom are you speaking? Stephen asked at length.
+&gt;
+&gt; Cranly did not answer.
+</pre>
+<p>Gives us the following output:</p>
+<blockquote>
+<p>His words seemed to have struck some deep chord in his own nature. Had he spoken
+of himself, of himself as he was or wished to be? Stephen watched his face for some
+moments in silence. A cold sadness was there. He had spoken of himself, of his own
+loneliness which he feared.</p>
+<p>- Of whom are you speaking? Stephen asked at length.</p>
+<p>Cranly did not answer.</p>
+</blockquote>
+</div>
+<div class="section" id="lists">
+<h1>Lists</h1>
+<p>There are two types of lists in the known universe: unordered and ordered. That's a fancy way of saying that there are lists with bullet points, and lists with numbers.</p>
+<div class="section" id="unordered">
+<h2>Unordered</h2>
+<p>To create an unordered list, we'll want to preface each item in the list with an asterisk '*' or '-' or '+' without quote, one item par line. For example, a grocery list in Markdown might look like this:</p>
+<pre class="literal-block">
+* Milk
+* Eggs
+* Salmon
+* Butter
+</pre>
+<p>Giving the output:</p>
+<ul class="simple">
+<li>Milk</li>
+<li>Eggs</li>
+<li>Salmon</li>
+<li>Butter</li>
+</ul>
+<p>Occasionally, you might find the need to make a list with more depth, or, to nest one list within another. For example:</p>
+<pre class="literal-block">
+* Tintin
+ * A reporter
+ * Has poofy orange hair
+ * Friends with the world's most awesome dog
+* Haddock
+ * A sea captain
+ * Has a fantastic beard
+ * Loves whiskey
+   * Possibly also scotch?
+</pre>
+<p>Gives us the following output:</p>
+<ul class="simple">
+<li>Tintin</li>
+</ul>
+<blockquote>
+<ul class="simple">
+<li>A reporter</li>
+<li>Has poofy orange hair</li>
+<li>Friends with the world's most awesome dog</li>
+</ul>
+</blockquote>
+<ul class="simple">
+<li>Haddock</li>
+</ul>
+<blockquote>
+<ul>
+<li><p class="first">A sea captain</p>
+</li>
+<li><p class="first">Has a fantastic beard</p>
+</li>
+<li><p class="first">Loves whiskey</p>
+<blockquote>
+<ul class="simple">
+<li>Possibly also scotch?</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="ordered">
+<h2>Ordered</h2>
+<p>An ordered list is prefaced with numbers, instead of asterisks. Take a look at this recipe:</p>
+<ol class="arabic simple">
+<li>Crack three eggs over a bowl</li>
+<li>Pour a gallon of milk into the bowl</li>
+<li>Rub the salmon vigorously with butter</li>
+<li>Drop the salmon into the egg-milk bowl</li>
+</ol>
+<p>To write that in Markdown, you'd do this:</p>
+<pre class="literal-block">
+1. Crack three eggs over a bowl
+2. Pour a gallon of milk into the bowl
+3. Rub the salmon vigorously with butter
+4. Drop the salmon into the egg-milk bowl
+</pre>
+<p>We can also make unordered list under ordered list and vice-versa.</p>
+</div>
+</div>
+<div class="section" id="paragraphs">
+<h1>Paragraphs</h1>
+<p>Markdown has several ways of formatting paragraphs. If we forcefully insert a new line for each line, we would end up having a paragraph for each line. For example:</p>
+<pre class="literal-block">
+Do I contradict myself?
+
+Very well then I contradict myself,
+
+(I am large, I contain multitudes.)
+</pre>
+<p>Would result in:</p>
+<p>Do I contradict myself?</p>
+<p>Very well then I contradict myself,</p>
+<p>(I am large, I contain multitudes.)</p>
+<p>This is called a  hard break; where we can have soft break but giving two space '  ' without quote at the end of each line. For example:</p>
+<pre class="literal-block">
+Do I contradict myself?
+Very well then I contradict myself,
+(I am large, I contain multitudes.)
+</pre>
+<p>Which will be rendered as</p>
+<p>Do I contradict myself?</p>
+<p>Very well then I contradict myself,</p>
+<p>(I am large, I contain multitudes.)</p>
+<p>Without the line break or two spaces, Markdown will consider all three line as one.:</p>
+<pre class="literal-block">
+Do I contradict myself?
+Very well then I contradict myself,
+(I am large, I contain multitudes.)
+</pre>
+<p>Giving:</p>
+<p>Do I contradict myself?
+Very well then I contradict myself,
+(I am large, I contain multitudes.)</p>
+</div>
+<div class="section" id="more-resources">
+<h1>More Resources</h1>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Markdown#Example">Markdown Example Wikipedia</a></li>
+<li><a class="reference external" href="http://spec.commonmark.org/dingus/">http://spec.commonmark.org/dingus/</a></li>
+<li><a class="reference external" href="http://johnmacfarlane.net/babelmark2/faq.html">http://johnmacfarlane.net/babelmark2/faq.html</a></li>
+<li><a class="reference external" href="http://idratherbewriting.com/2013/06/04/exploring-markdown-in-collaborative-authoring-to-publishing-workflows/">http://idratherbewriting.com/2013/06/04/exploring-markdown-in-collaborative-authoring-to-publishing-workflows/</a></li>
+<li><a class="reference external" href="https://www.markdownguide.org">https://www.markdownguide.org</a></li>
+</ul>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <blockquote>
