@@ -317,6 +317,65 @@ To write that in Markdown, you'd do this::
 We can also make unordered list under ordered list and vice-versa.
 
 
+Paragraphs
+----------
+Markdown has several ways of formatting paragraphs. If we forcefully insert a new line for each line, we would end up having a paragraph for each line. For example::
+
+    Do I contradict myself?
+
+    Very well then I contradict myself,
+
+    (I am large, I contain multitudes.)
+
+Would result in:
+
+Do I contradict myself?
+
+Very well then I contradict myself,
+
+(I am large, I contain multitudes.)
+
+This is called a  hard break; where we can have soft break but giving two space '  ' without quote at the end of each line. For example::
+
+    Do I contradict myself?  
+    Very well then I contradict myself,  
+    (I am large, I contain multitudes.)  
+
+Which will be rendered as 
+
+Do I contradict myself?
+
+Very well then I contradict myself,
+
+(I am large, I contain multitudes.)
+
+Without the line break or two spaces, Markdown will consider all three line as one.::
+
+    Do I contradict myself?
+    Very well then I contradict myself,
+    (I am large, I contain multitudes.)
+
+Giving:
+
+Do I contradict myself?
+Very well then I contradict myself,
+(I am large, I contain multitudes.)
+
+
+
+.. note:: markdown-here Markdown Cheatsheet: Code and Syntax Highlighting, Tables, Inline HTML, Horizontal Rule, Line Breaks, YouTube Videos
+
+
+
+
+
+More Resources
+--------------
+- `Markdown Example Wikipedia <http://en.wikipedia.org/wiki/Markdown#Example>`_
+- http://spec.commonmark.org/dingus/
+- http://johnmacfarlane.net/babelmark2/faq.html
+- http://idratherbewriting.com/2013/06/04/exploring-markdown-in-collaborative-authoring-to-publishing-workflows/
+- https://www.markdownguide.org
 
 Source
 ------
