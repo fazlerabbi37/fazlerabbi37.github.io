@@ -39,3 +39,7 @@ To change the “tc” User Password::
     passwrd
 
 Now type a password and hit enter; we will be asked to type the password again so type the password and hit enter again.
+
+Source
+------
+ - `Configure SSH Server on Tiny Core Linux using openSSH <https://iotbytes.wordpress.com/configure-ssh-server-on-microcore-tiny-linux/>`_
