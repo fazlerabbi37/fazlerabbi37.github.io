@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Fazle Rabbi's Blog</title>
+<title>Google calendar to ical conversation</title>
 <style type="text/css">
 
 /*
@@ -367,77 +367,27 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="fazle-rabbi-s-blog">
-<h1 class="title">Fazle Rabbi's Blog</h1>
+<div class="document" id="google-calendar-to-ical-conversation">
+<h1 class="title">Google calendar to ical conversation</h1>
 
-<p>Welcome to my blog site?!</p>
-<p>This page contains notes/tips/tricks/hacks aka accumulated information about various topics that picked my interest.</p>
-<div class="sidebar">
-<p class="first sidebar-title">Category</p>
-<p class="last"><a class="reference external" href="blogs/category_cheat_sheet.html">cheat sheet</a></p>
-</div>
-<div class="section" id="recent-blogs">
-<h1>Recent Blogs</h1>
-<div class="section" id="id1">
-<h2><a class="reference external" href="blogs/google_calendar_to_ical.html">Google calendar to ical conversation</a></h2>
-<p>Aug 16, 2018</p>
-<div class="section" id="converting-google-calendar-to-ical-format">
-<h3>Converting Google calendar to ical format.</h3>
-</div>
-</div>
-<div class="section" id="id2">
-<h2><a class="reference external" href="blogs/desktop_entry_ubuntu.html">Desktop Entry in Ubuntu</a></h2>
-<p>Aug 16, 2018</p>
-<div class="section" id="explaining-desktop-entry-aka-desktop-icon-in-ubuntu">
-<h3>Explaining Desktop Entry aka Desktop icon in Ubuntu.</h3>
-</div>
-</div>
-<div class="section" id="id3">
-<h2><a class="reference external" href="blogs/tiny_core_linux.html">Tiny Core Linux</a></h2>
-<p>Aug 16, 2018</p>
-<div class="section" id="playing-around-with-tiny-core-linux-a-small-11mb-linux-destro">
-<h3>Playing around with Tiny Core Linux, a small (11MB) Linux destro.</h3>
-</div>
-</div>
-<div class="section" id="id4">
-<h2><a class="reference external" href="blogs/markdown_cheat_sheet.html">Markdown Cheat Sheet</a></h2>
-<p>Aug 04, 2018</p>
-<div class="section" id="a-quick-reference-of-markdown">
-<h3>A quick reference of Markdown.</h3>
-</div>
-</div>
-</div>
-<div class="section" id="all-blogs">
-<h1>All Blogs</h1>
-<div class="section" id="id6">
-<h2><a class="reference external" href="blogs/desktop_entry_ubuntu.html">Desktop Entry in Ubuntu</a></h2>
-<p>Aug 16, 2018</p>
-<div class="section" id="id7">
-<h3>Explaining Desktop Entry aka Desktop icon in Ubuntu.</h3>
-</div>
-</div>
-<div class="section" id="id9">
-<h2><a class="reference external" href="blogs/google_calendar_to_ical.html">Google calendar to ical conversation</a></h2>
-<p>Aug 16, 2018</p>
-<div class="section" id="id10">
-<h3>Converting Google calendar to ical format.</h3>
-</div>
-</div>
-<div class="section" id="id12">
-<h2><a class="reference external" href="blogs/markdown_cheat_sheet.html">Markdown Cheat Sheet</a></h2>
-<p>Aug 04, 2018</p>
-<div class="section" id="id13">
-<h3>A quick reference of Markdown.</h3>
-</div>
-</div>
-<div class="section" id="id15">
-<h2><a class="reference external" href="blogs/tiny_core_linux.html">Tiny Core Linux</a></h2>
-<p>Aug 16, 2018</p>
-<div class="section" id="id16">
-<h3>Playing around with Tiny Core Linux, a small (11MB) Linux destro.</h3>
-</div>
-</div>
-</div>
+<p>Converting Google calendar to ical format.</p>
+<p>Google calendar URL for Sunrise and Sunset time in Dhaka:</p>
+<pre class="literal-block">
+https://calendar.google.com/calendar/embed?src=i_117.103.85.142%23sunrise%40group.v.calendar.google.com&amp;ctz=Asia%2FDhaka
+</pre>
+<p>The part after <tt class="docutils literal">src=</tt> is the calendar id so for Sunrise and Sunset time calendar the calendar id is:</p>
+<pre class="literal-block">
+i_117.103.85.142%23sunrise%40group.v.calendar.google.com
+</pre>
+<p>The part after <tt class="docutils literal">&amp;</tt> is additional parameter giving the time zone which is Asia, Dhaka.</p>
+<p>A generic ical for Google calendar is the following:</p>
+<pre class="literal-block">
+https://calendar.google.com/calendar/ical/$calendar_id/public/basic.ics
+</pre>
+<p>So to transform the Sunrise and Sunset time calendar into a ical replace the calendar_id and we get:</p>
+<pre class="literal-block">
+https://calendar.google.com/calendar/ical/i_117.103.85.142%23sunrise%40group.v.calendar.google.com/public/basic.ics
+</pre>
 </div>
 </body>
 </html>
