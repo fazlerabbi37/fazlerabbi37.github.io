@@ -2,7 +2,7 @@ Fazle Rabbi's Blog
 ==================
 Welcome to my blog site?!
 
-This page contains notes/tips/tricks/hacks aka accumulated information about various topics that picked my interest. 
+This page contains notes/tips/tricks/hacks aka accumulated information about various topics that piqued my interest. 
 
 .. sidebar:: Category
 
