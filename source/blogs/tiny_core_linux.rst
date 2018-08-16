@@ -1,5 +1,6 @@
 Tiny Core Linux
 ===============
+Playing around with Tiny Core Linux, a small (11MB) Linux destro.
 
 Install with KVM
 ----------------
