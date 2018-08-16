@@ -23,4 +23,38 @@ Fazle Rabbi's site
 .. _Mail Me: mailto:fazlerabbi37@gmail.com
 .. _Blog: blog.html
 
+..
+
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+
+.. footer:: This entire site is made with reStructuredText(rST).
+
 
