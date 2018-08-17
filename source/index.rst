@@ -19,28 +19,12 @@ Fazle Rabbi's site
       `Projects`_         `Mail me`_              `Blog`_           
    =================  ==================  =======================
 
-.. _Projects: http://github.com/fazlerabbi37
+.. _Projects: https://github.com/fazlerabbi37?tab=repositories
 .. _Mail Me: mailto:fazlerabbi37@gmail.com
 .. _Blog: blog.html
 
 ..
 
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
     |
     |
     |
