@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Fazle Rabbi's site</title>
+<title>Publish Sphinx doc with GitHub Pages</title>
 <style type="text/css">
 
 /*
@@ -367,56 +367,42 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="fazle-rabbi-s-site">
-<h1 class="title">Fazle Rabbi's site</h1>
+<div class="document" id="publish-sphinx-doc-with-github-pages">
+<h1 class="title">Publish Sphinx doc with GitHub Pages</h1>
 
-<blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</blockquote>
-<table border="1" class="colwidths-given docutils align-center">
-<caption>Welcome to my site!</caption>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<tbody valign="top">
-<tr><td><a class="reference external" href="https://github.com/fazlerabbi37?tab=repositories">Projects</a></td>
-<td><a class="reference external" href="mailto:fazlerabbi37&#64;gmail.com">Mail me</a></td>
-<td><a class="reference external" href="blog.html">Blog</a></td>
-</tr>
-</tbody>
-</table>
-<!--  -->
-<blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</blockquote>
-</div>
-<div class="footer">
-<hr class="footer" />
-This entire site is made with reStructuredText(rST).
+<p>The whole process of publishing Sphinx generated doc with GitHub Pages.</p>
+<p>GitHub Pages is a very interesting and useful way to host project or code documentations. There are three ways we can use GitHub Pages in our project:</p>
+<ol class="arabic simple">
+<li>A <tt class="docutils literal">master</tt> branch with <tt class="docutils literal">index.html</tt> in the root directory</li>
+<li>A <tt class="docutils literal">docs</tt> directory in the <tt class="docutils literal">master</tt> branch with <tt class="docutils literal">index.html</tt> in the root directory</li>
+<li>A <tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch with <tt class="docutils literal">index.html</tt> in the root directory</li>
+</ol>
+<p>This site usages the first method. I use reStructuredText(rST) to write the content. Then I use a <tt class="docutils literal">shell</tt> script that usages <tt class="docutils literal">rst2html.py</tt> from <tt class="docutils literal">docutils</tt> to generate <tt class="docutils literal">html</tt> files. The <tt class="docutils literal">index.html</tt> is kept in the root directory of <tt class="docutils literal">master</tt> branch and all other <tt class="docutils literal">html</tt> files relative to the <tt class="docutils literal">index.html</tt> which is a bit complex if done manually and is not really clean if we are doing code documentation.</p>
+<p>I am using Sphinx for code and project documentation for sometime now. I like Sphinx as it usages rST which I am familiar with and it has tons of extension and a nice interface. Generating <tt class="docutils literal">html</tt> from Sphinx is as easy as typing <tt class="docutils literal">make html</tt> which generates <tt class="docutils literal">html</tt> files in a pre-defined build directory. The build directory is defined in the <tt class="docutils literal">Makefile</tt>.</p>
+<p>Now here is the problem, Sphinx generates docs to a pre-defined directory within a <tt class="docutils literal">html</tt> directory and GitHub Pages can only build pages if <tt class="docutils literal">index.html</tt> is found in the root directory of <tt class="docutils literal">master</tt> branch or <tt class="docutils literal">docs</tt> directory in <tt class="docutils literal">master</tt> branch or root directory of <tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch. If we are using separate directory for <tt class="docutils literal">source</tt> and <tt class="docutils literal">build</tt> the generated <tt class="docutils literal">html</tt> files will be in <tt class="docutils literal">build\html</tt> directory. From the project root directory the path is <tt class="docutils literal">docs\build\html</tt> which GitHub Pages can't find and throws a <tt class="docutils literal">404</tt> error. Even if we don't use separate directory for <tt class="docutils literal">source</tt> and <tt class="docutils literal">build</tt> the <tt class="docutils literal">html</tt> file path will be <tt class="docutils literal">docs\html</tt> which is not acceptable for GitHub Pages.</p>
+<p>Now we will use a trick to fool both Sphinx and GitHub Pages.</p>
+<ol class="arabic">
+<li><p class="first">At first modify the <tt class="docutils literal">Makefile</tt> in the docs directory that was generated with Sphinx. Modify the <tt class="docutils literal">BUILDDIR</tt> variable to be <tt class="docutils literal">..</tt> from <tt class="docutils literal">build</tt>.:</p>
+<pre class="literal-block">
+BUILDDIR      = ..
+#BUILDDIR      = build
+</pre>
+</li>
+</ol>
+<p>What it means that Sphinx will make a <tt class="docutils literal">html</tt> directory in the root directory of <tt class="docutils literal">master</tt> branch when we will make html with <tt class="docutils literal">make html</tt> command. We can modify the <tt class="docutils literal">make.bat</tt> to reflect the change if we wish make html in Windows as well:</p>
+<pre class="literal-block">
+set BUILDDIR=..
+REM set BUILDDIR=build
+</pre>
+<ol class="arabic simple" start="2">
+<li>Rename the <tt class="docutils literal">docs</tt> folder to <tt class="docutils literal">html</tt>.</li>
+<li>Build the documentation: <tt class="docutils literal">make html</tt>. It finds a <tt class="docutils literal">html</tt> directory at it's build path which is root  directory of <tt class="docutils literal">master</tt> branch and builds all the <tt class="docutils literal">html</tt> file there.</li>
+<li>Create a <tt class="docutils literal">.nojekyll</tt> file with <tt class="docutils literal">touch .nojekyll</tt> command which will say GitHub Pages to ignore Jekyll theme which fixes the broken <tt class="docutils literal">css</tt> problem.</li>
+<li>Undo <tt class="docutils literal">step 2</tt> by renaming the <tt class="docutils literal">html</tt> folder to <tt class="docutils literal">docs</tt> where the GitHub Pages will look for when build pages.</li>
+</ol>
+<p>I wrote a small shell script, <a class="reference external" href="https://github.com/fazlerabbi37/Code.random/blob/c7ae5ec32a8b6eb703a37cd6085a557f503a856c/shell/make_github_pages_from_sphinx.sh">make_github_pages_from_sphinx.sh</a> to do all this steps at one go. The script assumes you have a docs directory at the project root directory and you are using separate <tt class="docutils literal">source</tt> and <tt class="docutils literal">build</tt> directory.</p>
+<p>Now the last thing we need to do is head over to GitHub and go to the project <tt class="docutils literal">Settings</tt> and select 'master branch /docs folder' as Source in GitHub Pages section. Give GitHub Pages a minute to build the pages and visit the link given at 'Your site is ready to be published at...' and you should see the Sphinx generated docs.</p>
+<p>This blog is inspired by the blog <a class="reference external" href="https://jefflirion.github.io/sphinx-github-pages.html">Sphinx + GitHub pages</a> by <a class="reference external" href="https://jefflirion.github.io/">Jeff Irion</a> and tries to fix the broken <tt class="docutils literal">css</tt> problem by adding <tt class="docutils literal">.nojekyll</tt> in <tt class="docutils literal">docs</tt> directory.</p>
 </div>
 </body>
 </html>
