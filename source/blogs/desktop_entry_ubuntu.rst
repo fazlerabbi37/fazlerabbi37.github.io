@@ -17,3 +17,13 @@ A Desktop entry or Desktop icon or Desktop shortcut or a Deshboard icon is all t
     Icon=$/path/to/icon
     Categories=$categort_1,$categort_2
     StartupNotify=true
+
+.desktop files can be found at the following directories in Ubuntu
+
+- `/usr/share/applications/`
+- `~/.local/share/applications`
+- `/usr/local/share/applications`
+
+Source
+======
+- `How can I find *.desktop files? <https://askubuntu.com/questions/117341/how-can-i-find-desktop-files>`_
