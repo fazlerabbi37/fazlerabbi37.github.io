@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Fazle Rabbi's Blog</title>
+<title>Selenium</title>
 <style type="text/css">
 
 /*
@@ -367,111 +367,99 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="fazle-rabbi-s-blog">
-<h1 class="title">Fazle Rabbi's Blog</h1>
+<div class="document" id="selenium">
+<h1 class="title">Selenium</h1>
 
-<p>Welcome to my blog site?!</p>
-<p>This page contains notes/tips/tricks/hacks aka accumulated information about various topics that piqued my interest.</p>
-<div class="sidebar">
-<p class="first sidebar-title">Category</p>
-<p class="last"><a class="reference external" href="blogs/category_cheat_sheet.html">cheat sheet</a></p>
+<p>Notes for Selenium with Python3.</p>
+<div class="section" id="setup">
+<h1>Setup</h1>
+<div class="section" id="install-selenium">
+<h2>1. Install Selenium</h2>
+<p>we can install selenium with pip:</p>
+<pre class="literal-block">
+sudo pip3 install selenium
+</pre>
 </div>
-<div class="section" id="recent-blogs">
-<h1>Recent Blogs</h1>
-<div class="section" id="id1">
-<h2><a class="reference external" href="blogs/selenium.html">Selenium</a></h2>
-<p>Oct 28, 2018</p>
-<div class="section" id="notes-for-selenium-with-python3">
-<h3>Notes for Selenium with Python3.</h3>
+<div class="section" id="install-geckodriver">
+<h2>2. Install <tt class="docutils literal">geckodriver</tt></h2>
+<p>To run Firefox browser we need to install <tt class="docutils literal">geckodriver</tt>. Let's head over to <a class="reference external" href="https://github.com/mozilla/geckodriver/releases">geckodriver releases page</a> and get the latest version of <tt class="docutils literal">geckodriver</tt> for Linux 64 bit. Downloaded file will look like this <tt class="docutils literal"><span class="pre">geckodriver-vx.y.z-linux64.tar.gz</span></tt>. Now we will extract the <tt class="docutils literal">.tar</tt> file:</p>
+<pre class="literal-block">
+tar -xvzf geckodriver*
+</pre>
+<p>Make it executable:</p>
+<pre class="literal-block">
+chmod +x geckodriver
+</pre>
+<p>Move to <tt class="docutils literal">/usr/local/bin/</tt>:</p>
+<pre class="literal-block">
+sudo mv geckodriver /usr/local/bin/
+</pre>
+<p>Remove the <tt class="docutils literal">.tar</tt> file:</p>
+<pre class="literal-block">
+rm geckodriver*
+</pre>
 </div>
+<div class="section" id="install-chromedriver">
+<h2>3. Install <tt class="docutils literal">chromedriver</tt></h2>
+<p>To run Chrome and Chromium we need to install <tt class="docutils literal">chromedriver</tt> which we can get from <a class="reference external" href="https://sites.google.com/a/chromium.org/chromedriver/downloads">chromedriver download page</a>. Get the latest version of <tt class="docutils literal">chromedriver</tt> for  Linux 64 bit. Downloaded file will look like this <tt class="docutils literal">chromedriver_linux64.zip</tt>. Now we need to unzip the <tt class="docutils literal">.zip</tt> file:</p>
+<pre class="literal-block">
+unzip chromedriver*
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">if you don't have unzip install with <tt class="docutils literal">sudo apt install unzip</tt></p>
 </div>
-<div class="section" id="id2">
-<h2><a class="reference external" href="blogs/convert_ova_image_to_qcow.html">Convert OVA image to QCOW</a></h2>
-<p>Oct 27, 2018</p>
-<div class="section" id="converting-virtualbox-or-vmware-favoured-ova-image-to-kvm-or-qemu-favoured-qcow-image">
-<h3>Converting VirtualBox or VMware favoured OVA image to KVM or QEMU favoured QCOW image.</h3>
-</div>
-</div>
-<div class="section" id="id3">
-<h2><a class="reference external" href="blogs/desktop_entry_ubuntu.html">Desktop Entry in Ubuntu</a></h2>
-<p>Oct 25, 2018</p>
-<div class="section" id="explaining-desktop-entry-aka-desktop-icon-in-ubuntu">
-<h3>Explaining Desktop Entry aka Desktop icon in Ubuntu.</h3>
-</div>
-</div>
-<div class="section" id="id4">
-<h2><a class="reference external" href="blogs/install_kde_connect_in_ubuntu_18.04.html">Install KDE Connect in Ubuntu 18.04</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="installing-kde-connect-in-ubuntu-18-04-lts">
-<h3>Installing KDE Connect in Ubuntu 18.04 LTS.</h3>
-</div>
-</div>
-<div class="section" id="id5">
-<h2><a class="reference external" href="blogs/publish_sphinx_doc_with_github_pages.html">Publish Sphinx doc with GitHub Pages</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="the-whole-process-of-publishing-sphinx-generated-doc-with-github-pages">
-<h3>The whole process of publishing Sphinx generated doc with GitHub Pages.</h3>
-</div>
-</div>
-</div>
-<div class="section" id="all-blogs">
-<h1>All Blogs</h1>
-<div class="section" id="id7">
-<h2><a class="reference external" href="blogs/convert_ova_image_to_qcow.html">Convert OVA image to QCOW</a></h2>
-<p>Oct 27, 2018</p>
-<div class="section" id="id8">
-<h3>Converting VirtualBox or VMware favoured OVA image to KVM or QEMU favoured QCOW image.</h3>
-</div>
-</div>
-<div class="section" id="id10">
-<h2><a class="reference external" href="blogs/desktop_entry_ubuntu.html">Desktop Entry in Ubuntu</a></h2>
-<p>Oct 25, 2018</p>
-<div class="section" id="id11">
-<h3>Explaining Desktop Entry aka Desktop icon in Ubuntu.</h3>
+<p>Make it executable:</p>
+<pre class="literal-block">
+chmod +x chromedriver
+</pre>
+<p>Move to <tt class="docutils literal">/usr/local/bin/</tt>:</p>
+<pre class="literal-block">
+sudo mv chromedriver /usr/local/bin/
+</pre>
+<p>Remove the <tt class="docutils literal">.zip</tt> file:</p>
+<pre class="literal-block">
+rm chromedriver*
+</pre>
 </div>
 </div>
-<div class="section" id="id12">
-<h2><a class="reference external" href="blogs/google_calendar_to_ical.html">Google calendar to ical conversation</a></h2>
-<p>Sep 09, 2018</p>
-<div class="section" id="converting-google-calendar-to-ical-format">
-<h3>Converting Google calendar to ical format.</h3>
+<div class="section" id="getting-started">
+<h1>Getting Started</h1>
+<div class="section" id="import-webdriver">
+<h2>Import webdriver</h2>
+<p>To get started we need to import webdriver from selenium:</p>
+<pre class="literal-block">
+from selenium import webdriver
+</pre>
+</div>
+<div class="section" id="choose-browser">
+<h2>Choose browser</h2>
+<p>We can choose Firefox, Chrome or Chromium as our client browser:</p>
+<pre class="literal-block">
+browser = webdriver.$client_browser()
+</pre>
+<p>Where <tt class="docutils literal">$client_browser= 'Firefox', 'Chrome' or 'Chromium'</tt>.</p>
+</div>
+<div class="section" id="open-a-url">
+<h2>Open a URL</h2>
+<p>After the selecting the <tt class="docutils literal">browser</tt> we can use the <tt class="docutils literal">get()</tt> method to open a URL.:</p>
+<pre class="literal-block">
+browser.get('url.tld')
+</pre>
+<p>For exapmle:</p>
+<pre class="literal-block">
+browser.get('https://duckduckgo.com')
+</pre>
 </div>
 </div>
-<div class="section" id="id14">
-<h2><a class="reference external" href="blogs/install_kde_connect_in_ubuntu_18.04.html">Install KDE Connect in Ubuntu 18.04</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="id15">
-<h3>Installing KDE Connect in Ubuntu 18.04 LTS.</h3>
-</div>
-</div>
-<div class="section" id="id16">
-<h2><a class="reference external" href="blogs/markdown_cheat_sheet.html">Markdown Cheat Sheet</a></h2>
-<p>Sep 09, 2018</p>
-<div class="section" id="a-quick-reference-of-markdown">
-<h3>A quick reference of Markdown.</h3>
-</div>
-</div>
-<div class="section" id="id18">
-<h2><a class="reference external" href="blogs/publish_sphinx_doc_with_github_pages.html">Publish Sphinx doc with GitHub Pages</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="id19">
-<h3>The whole process of publishing Sphinx generated doc with GitHub Pages.</h3>
-</div>
-</div>
-<div class="section" id="id21">
-<h2><a class="reference external" href="blogs/selenium.html">Selenium</a></h2>
-<p>Oct 28, 2018</p>
-<div class="section" id="id22">
-<h3>Notes for Selenium with Python3.</h3>
-</div>
-</div>
-<div class="section" id="id23">
-<h2><a class="reference external" href="blogs/tiny_core_linux.html">Tiny Core Linux</a></h2>
-<p>Sep 09, 2018</p>
-<div class="section" id="playing-around-with-tiny-core-linux-a-small-11mb-linux-destro">
-<h3>Playing around with Tiny Core Linux, a small (11MB) Linux destro.</h3>
-</div>
-</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="https://askubuntu.com/a/863211">Where to find geckodriver needed by Selenium Python package?</a></li>
+<li><a class="reference external" href="http://blog.likewise.org/2015/01/setting-up-chromedriver-and-the-selenium-webdriver-python-bindings-on-ubuntu-14-dot-04/">Setting Up ChromeDriver and the Selenium-WebDriver Python bindings on Ubuntu 14.04</a></li>
+</ul>
+</blockquote>
 </div>
 </div>
 </body>

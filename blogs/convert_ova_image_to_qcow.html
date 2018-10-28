@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Fazle Rabbi's Blog</title>
+<title>convert_ova_image_to_qcow.rst</title>
 <style type="text/css">
 
 /*
@@ -367,111 +367,46 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="fazle-rabbi-s-blog">
-<h1 class="title">Fazle Rabbi's Blog</h1>
+<div class="document">
 
-<p>Welcome to my blog site?!</p>
-<p>This page contains notes/tips/tricks/hacks aka accumulated information about various topics that piqued my interest.</p>
-<div class="sidebar">
-<p class="first sidebar-title">Category</p>
-<p class="last"><a class="reference external" href="blogs/category_cheat_sheet.html">cheat sheet</a></p>
+
+<div class="section" id="convert-ova-image-to-qcow">
+<h1>Convert OVA image to QCOW</h1>
+<p>Converting VirtualBox or VMware favoured OVA image to KVM or QEMU favoured QCOW image.</p>
+<p>At first, we need to install <tt class="docutils literal"><span class="pre">qemu-utils</span></tt>, which we can do by this command:</p>
+<pre class="literal-block">
+sudo apt-get install qemu-utils
+</pre>
+<p>Then we will extract the <tt class="docutils literal">.ova</tt> file using <tt class="docutils literal">tar</tt> command:</p>
+<pre class="literal-block">
+tar -xvf $image.ova
+</pre>
+<p>Put your image name in the place of $image. We should see <tt class="docutils literal">$image.mf</tt>, <tt class="docutils literal">$image.ovf</tt> and <tt class="docutils literal">$image.vmdk</tt> or <tt class="docutils literal">$image.vdi</tt> files. The tool we are using <tt class="docutils literal"><span class="pre">qemu-img</span></tt> supports both <tt class="docutils literal">.vmdk</tt> and <tt class="docutils literal">.vdi</tt> file. To verify supported files list use the following command:</p>
+<pre class="literal-block">
+qemu-img -h | tail -n1
+</pre>
+<p>Finally, we will use the <tt class="docutils literal"><span class="pre">qemu-img</span></tt> to convert the <tt class="docutils literal">$image.vmdk</tt> or <tt class="docutils literal">$image.vdi</tt> file into <tt class="docutils literal">$image.qcow2</tt> or <tt class="docutils literal">$image.img</tt> format. For <tt class="docutils literal">.vdi</tt> image:</p>
+<pre class="literal-block">
+qemu-img convert -O qcow2 $image.vdi $image.qcow2
+</pre>
+<p>Or</p>
+<pre class="literal-block">
+qemu-img convert -O qcow2 $image.vdi $image.imag
+</pre>
+<p>For <tt class="docutils literal">.vmdk</tt> image:</p>
+<pre class="literal-block">
+qemu-img convert -O qcow2 $image.vmdk $image.qcow2
+</pre>
+<p>Or</p>
+<pre class="literal-block">
+qemu-img convert -O qcow2 $image.vmdk $image.img
+</pre>
 </div>
-<div class="section" id="recent-blogs">
-<h1>Recent Blogs</h1>
-<div class="section" id="id1">
-<h2><a class="reference external" href="blogs/selenium.html">Selenium</a></h2>
-<p>Oct 28, 2018</p>
-<div class="section" id="notes-for-selenium-with-python3">
-<h3>Notes for Selenium with Python3.</h3>
-</div>
-</div>
-<div class="section" id="id2">
-<h2><a class="reference external" href="blogs/convert_ova_image_to_qcow.html">Convert OVA image to QCOW</a></h2>
-<p>Oct 27, 2018</p>
-<div class="section" id="converting-virtualbox-or-vmware-favoured-ova-image-to-kvm-or-qemu-favoured-qcow-image">
-<h3>Converting VirtualBox or VMware favoured OVA image to KVM or QEMU favoured QCOW image.</h3>
-</div>
-</div>
-<div class="section" id="id3">
-<h2><a class="reference external" href="blogs/desktop_entry_ubuntu.html">Desktop Entry in Ubuntu</a></h2>
-<p>Oct 25, 2018</p>
-<div class="section" id="explaining-desktop-entry-aka-desktop-icon-in-ubuntu">
-<h3>Explaining Desktop Entry aka Desktop icon in Ubuntu.</h3>
-</div>
-</div>
-<div class="section" id="id4">
-<h2><a class="reference external" href="blogs/install_kde_connect_in_ubuntu_18.04.html">Install KDE Connect in Ubuntu 18.04</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="installing-kde-connect-in-ubuntu-18-04-lts">
-<h3>Installing KDE Connect in Ubuntu 18.04 LTS.</h3>
-</div>
-</div>
-<div class="section" id="id5">
-<h2><a class="reference external" href="blogs/publish_sphinx_doc_with_github_pages.html">Publish Sphinx doc with GitHub Pages</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="the-whole-process-of-publishing-sphinx-generated-doc-with-github-pages">
-<h3>The whole process of publishing Sphinx generated doc with GitHub Pages.</h3>
-</div>
-</div>
-</div>
-<div class="section" id="all-blogs">
-<h1>All Blogs</h1>
-<div class="section" id="id7">
-<h2><a class="reference external" href="blogs/convert_ova_image_to_qcow.html">Convert OVA image to QCOW</a></h2>
-<p>Oct 27, 2018</p>
-<div class="section" id="id8">
-<h3>Converting VirtualBox or VMware favoured OVA image to KVM or QEMU favoured QCOW image.</h3>
-</div>
-</div>
-<div class="section" id="id10">
-<h2><a class="reference external" href="blogs/desktop_entry_ubuntu.html">Desktop Entry in Ubuntu</a></h2>
-<p>Oct 25, 2018</p>
-<div class="section" id="id11">
-<h3>Explaining Desktop Entry aka Desktop icon in Ubuntu.</h3>
-</div>
-</div>
-<div class="section" id="id12">
-<h2><a class="reference external" href="blogs/google_calendar_to_ical.html">Google calendar to ical conversation</a></h2>
-<p>Sep 09, 2018</p>
-<div class="section" id="converting-google-calendar-to-ical-format">
-<h3>Converting Google calendar to ical format.</h3>
-</div>
-</div>
-<div class="section" id="id14">
-<h2><a class="reference external" href="blogs/install_kde_connect_in_ubuntu_18.04.html">Install KDE Connect in Ubuntu 18.04</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="id15">
-<h3>Installing KDE Connect in Ubuntu 18.04 LTS.</h3>
-</div>
-</div>
-<div class="section" id="id16">
-<h2><a class="reference external" href="blogs/markdown_cheat_sheet.html">Markdown Cheat Sheet</a></h2>
-<p>Sep 09, 2018</p>
-<div class="section" id="a-quick-reference-of-markdown">
-<h3>A quick reference of Markdown.</h3>
-</div>
-</div>
-<div class="section" id="id18">
-<h2><a class="reference external" href="blogs/publish_sphinx_doc_with_github_pages.html">Publish Sphinx doc with GitHub Pages</a></h2>
-<p>Sep 20, 2018</p>
-<div class="section" id="id19">
-<h3>The whole process of publishing Sphinx generated doc with GitHub Pages.</h3>
-</div>
-</div>
-<div class="section" id="id21">
-<h2><a class="reference external" href="blogs/selenium.html">Selenium</a></h2>
-<p>Oct 28, 2018</p>
-<div class="section" id="id22">
-<h3>Notes for Selenium with Python3.</h3>
-</div>
-</div>
-<div class="section" id="id23">
-<h2><a class="reference external" href="blogs/tiny_core_linux.html">Tiny Core Linux</a></h2>
-<p>Sep 09, 2018</p>
-<div class="section" id="playing-around-with-tiny-core-linux-a-small-11mb-linux-destro">
-<h3>Playing around with Tiny Core Linux, a small (11MB) Linux destro.</h3>
-</div>
-</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<ul class="simple">
+<li><a class="reference external" href="http://ask.xmodulo.com/convert-ova-to-qcow2-linux.html">How to convert OVA image to QCOW2 format on Linux</a></li>
+</ul>
 </div>
 </div>
 </body>
