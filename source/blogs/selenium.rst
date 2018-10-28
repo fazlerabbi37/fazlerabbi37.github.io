@@ -36,7 +36,7 @@ To run Chrome and Chromium we need to install ``chromedriver`` which we can get 
 
     unzip chromedriver*
 
-.. note:: if you don't have unzip isntalled ``sudo apt install unzip``
+.. note:: if you don't have unzip isntall with ``sudo apt install unzip``
 
 Make it executable::
 
