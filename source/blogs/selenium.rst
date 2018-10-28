@@ -36,7 +36,7 @@ To run Chrome and Chromium we need to install ``chromedriver`` which we can get 
 
     unzip chromedriver*
 
-.. note:: if you don't have unzip isntall with ``sudo apt install unzip``
+.. note:: if you don't have unzip install with ``sudo apt install unzip``
 
 Make it executable::
 
@@ -79,3 +79,4 @@ For exapmle::
 Source
 ------
  - `Where to find geckodriver needed by Selenium Python package? <https://askubuntu.com/a/863211>`_
+ - `Setting Up ChromeDriver and the Selenium-WebDriver Python bindings on Ubuntu 14.04 <http://blog.likewise.org/2015/01/setting-up-chromedriver-and-the-selenium-webdriver-python-bindings-on-ubuntu-14-dot-04/>`_
