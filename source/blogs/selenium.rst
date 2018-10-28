@@ -59,7 +59,7 @@ To get started we need to import webdriver from selenium::
     from selenium import webdriver
 
 Choose browser
-`````````````
+``````````````
 We can choose Firefox, Chrome or Chromium as our client browser::
 
     browser = webdriver.$client_browser()
