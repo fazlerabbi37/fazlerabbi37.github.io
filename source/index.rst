@@ -25,20 +25,6 @@ Fazle Rabbi's site
 
 ..
 
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
 
-.. footer:: This entire site is made with reStructuredText(rST).
 
 
