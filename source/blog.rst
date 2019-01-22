@@ -12,6 +12,30 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
+...............................................
+Jan 22, 2019
+
+A quick reference of KVM.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
+.......................................................
+Jan 22, 2019
+
+A quick reference of osmosis.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`osmfilter Cheat Sheet <blogs/osmfilter_cheat_sheet.html>`_
+...........................................................
+Jan 22, 2019
+
+A quick reference of osmfilter.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `osmconvert Cheat Sheet <blogs/osmconvert_cheat_sheet.html>`_
 .............................................................
 Jan 22, 2019
@@ -25,30 +49,6 @@ A quick reference of osmconvert.
 Jan 22, 2019
 
 A quick reference of Elasticsearch.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`osmfilter Cheat Sheet <blogs/osmfilter_cheat_sheet.html>`_
-...........................................................
-Jan 22, 2019
-
-A quick reference of osmfilter.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
-.......................................................
-Jan 22, 2019
-
-A quick reference of Osmosis.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
-...................................................................
-Jan 22, 2019
-
-A quick reference of Rails Console.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -144,11 +144,11 @@ A quick reference of osmfilter.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
+`osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
 .......................................................
 Jan 22, 2019
 
-A quick reference of Osmosis.
+A quick reference of osmosis.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
