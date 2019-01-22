@@ -2,7 +2,7 @@ Pandoc
 ======
 Using Pandoc to convert documents.
 
-I have recently discovered ``pandoc``, a command line tool for converting documents. It is a very useful tool and as it says in their site it is turning out to be a universal document convert for me. I am mainly using ``pandoc`` to convert Microsoft Word Documents (``.docx``) documents to Markdown (``.md``) which makes my life a whole lot easier as I get to partially version control the ``.docx`` file and keep them on a web-based hosting service for version control using git.
+I have recently discovered ``pandoc``, a command line tool for converting documents. It is a very useful tool and as it says in their site it is turning out to be a universal document convert for me. I am mainly using ``pandoc`` to convert Microsoft Word Documents (``.docx``) documents to Markdown (``.md``).
 
 Installation 
 ============
