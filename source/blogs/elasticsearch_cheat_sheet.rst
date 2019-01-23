@@ -2,49 +2,49 @@ Elasticsearch Cheat Sheet
 =========================
 A quick reference of Elasticsearch.
 
-Replace the ``$host`` and ``$port`` with you hostname and port information.
+Words wrapped with curly braces, like ``{host}`` are variable, replace them with appropriate value.
 
 List indexes
 ------------
 To list all the indexes of an Elasticsearch instance run the following command [1]_::
 
-    curl -XGET "http://$host:$port/_cat/indices?v"
+    curl -XGET "http://{host}:{port}/_cat/indices?v"
 
 Create an Index
 ---------------
 To create a new index run the following command [2]_::
 
-    curl -XPUT 'http://$host:$port/test?pretty&pretty'
+    curl -XPUT 'http://{host}:{port}/{index}?pretty&pretty'
 
 Delete an Index
 ---------------
 To delete an index run the following command [3]_::
 
-    curl -XDELETE 'http://$host:$port/test?pretty&pretty'
+    curl -XDELETE 'http://{host}:{port}/{index}?pretty&pretty'
 
 Upload data
 -----------
 To upload a single data to an index run the following command [4]_::
 
-    curl -XPUT 'http://$host:$port/$index/doc/$index_id?pretty&pretty' -H 'Content-Type: application/json' -d'
+    curl -XPUT 'http://{host}:{port}/{index}/{type}/{doc_id}?pretty&pretty' -H 'Content-Type: application/json' -d'
     {
-    "field_name": "date"
+    "field_name": "data"
     }'
 
 Update a field value
 --------------------
 To update a single data field run the following command [5]_::
 
-    curl -XPOST 'http://$host:$port/test/v1/doc_id/_update?pretty&pretty' -H 'Content-Type: application/json' -d'
+    curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&pretty' -H 'Content-Type: application/json' -d'
     {
-      "doc": { "weight": "1" }
+      "doc": { "field_name": "data" }
     }'
 
     OR
 
-    curl -XPOST 'http://$host:$port/test/v1/doc_id/_update?pretty&pretty' -H 'Content-Type: application/json' -d'
+    curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&pretty' -H 'Content-Type: application/json' -d'
     {
-      "script" : "ctx._source.filldname += 1"
+      "script" : "ctx._source.field_name += 1"
     }'
 
 
@@ -52,13 +52,13 @@ Search index
 ------------
 To search and index run the following command [6]_::
 
-    curl -XGET 'http://$host:$port/test/_search?q=user:kimchy'
+    curl -XGET 'http://{host}:{port}/{index}/_search?q={field_name}:{keyword}'
 
 Delete index data only
 ----------------------
 To delete only the data of an index run the following command [7]_::
 
-    curl -X POST "http://$host:$port/test/v1/_delete_by_query?conflicts=proceed" -H 'Content-Type: application/json' -d'
+    curl -X POST "http://{host}:{port}/{index}/{type}/_delete_by_query?conflicts=proceed" -H 'Content-Type: application/json' -d'
     {
       "query": {
         "match_all": {}

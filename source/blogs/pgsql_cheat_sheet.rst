@@ -18,7 +18,7 @@ reset password of a users
 -------------------------
 To reset password of a users::
 
-    sudo -u postgres psql -c "ALTER USER \"<psql_username>\" WITH PASSWORD '<psql_password>'"
+    sudo -u postgres psql -c "ALTER USER \"$psql_username\" WITH PASSWORD '$psql_password'"
 
 create a database on Postgresql
 -------------------------------
@@ -46,11 +46,10 @@ To check postgresql version::
 
 connect to remote psql host
 ---------------------------
-To connect to remote psql host::
+To connect to remote psql host [1]_::
 
     psql -h $host -U $user -d $database
 
-source:https://www.cyberciti.biz/tips/postgres-allow-remote-access-tcp-connection.html
 
 backup a psql database
 ----------------------
@@ -60,13 +59,12 @@ To backup a psql database::
 
 backup a psql database without typing password
 ----------------------------------------------
-To backup a psql database without typing password::
+To backup a psql database without typing password [2]_::
 
     PGPASSWORD="mypass" pg_dump -h localhost -p 5432 -U username -Fc -b -v -f dumpfilename.dump databasename
     OR
     PGPASSWORD="password" pg_dump -h localhost -p 5432 -U $user -Fc -b -v -f dumpfilename.dump $database
 
-source: https://stackoverflow.com/a/24953448/5350059
 
 restoring a psql database
 -------------------------
@@ -105,17 +103,22 @@ export a sql statement output to a csv file with header
 -------------------------------------------------------
 to export a sql statement output to a csv file with header::
 
-    Copy (<sql_statement>) To '/var/lib/postgresql/.csv' DELIMITER ',' CSV HEADER;
+    Copy (<sql_statement>) To '/var/lib/postgresql/$file_name.csv' DELIMITER ',' CSV HEADER;
 
 export a sql statement output to a geojson file
 -----------------------------------------------
 to export a sql statement output to a geojson file::
 
-    copy (<sql_statement_to_show_output_as_json>) to '/var/lib/postgresql/.geojson';
+    copy (<sql_statement_to_show_output_as_json>) to '/var/lib/postgresql/$file_name.geojson';
 
 export a table to a csv file
 -----------------------------
 to export a table to a csv file::
     COPY current_relation_members TO '/var/lib/postgresql/csv/current_relation_members.CSV' DELIMITER ',' CSV HEADER;
 
+Source
+------
+.. [1] `How Do I Enable remote access to PostgreSQL database server?
+ <https://www.cyberciti.biz/tips/postgres-allow-remote-access-tcp-connection.html>`_
+.. [2] `How to pass in password to pg_dump? <https://stackoverflow.com/a/24953448/5350059>`_
 

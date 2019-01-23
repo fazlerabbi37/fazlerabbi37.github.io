@@ -2,19 +2,33 @@ Rails Console Cheat Sheet
 =========================
 A quick reference of Rails Console.
 
-##rails console##
-#rails console output to file (source: https://stackoverflow.com/a/13380275/5350059)
-f = File.new("$file_name", 'w')
-f << command
-f.close
+Save rails console output to file
+---------------------------------
+To save rails console output to a file, do the following [1]_::
 
-# show all user (source: https://stackoverflow.com/a/6034846/5350059)
-User.all
+    f = File.new("$file_name", 'w')
+    f << command
+    f.close
 
-#show all user with pretty print (source: https://stackoverflow.com/a/6034846/5350059)
-pp User.all
+Show all user
+-------------
+Run the following command to see all user [2]_::
 
-#delete user (source: https://stackoverflow.com/a/6034846/5350059)
+    User.all
+
+Show all user with pretty print 
+-------------------------------
+Run the following command to see all user with pretty print [2]_::
+
+    pp User.all
+
+Delete user
+-----------
+To delete a user run the following [2]_::
 user = User.find_by_display_name("My New User Name")
 user.delete
 
+Source
+------
+.. [1] `rails - Redirecting console output to a file <https://stackoverflow.com/a/13380275/5350059>`_
+.. [2] `Deleting Users with Rails Console <https://stackoverflow.com/a/6034846/5350059>`_

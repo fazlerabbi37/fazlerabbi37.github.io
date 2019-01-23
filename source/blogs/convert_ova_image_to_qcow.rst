@@ -32,6 +32,5 @@ Or ::
     qemu-img convert -O qcow2 $image.vmdk $image.img
 
 Source
-======
-
+------
 - `How to convert OVA image to QCOW2 format on Linux <http://ask.xmodulo.com/convert-ova-to-qcow2-linux.html>`_

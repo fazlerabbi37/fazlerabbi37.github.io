@@ -57,6 +57,6 @@ Gives us the following output::
 We will look more closely in all of this file in future!
 
 Source
-======
+------
 - `--extract-media for docx reader not working <https://github.com/jgm/pandoc/issues/1979>`_
 - `'docx is a fancy zip' comment <https://github.com/jgm/pandoc/issues/1979#issuecomment-76958416>`_
