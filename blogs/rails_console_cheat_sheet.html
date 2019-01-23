@@ -371,18 +371,50 @@ body {
 <h1 class="title">Rails Console Cheat Sheet</h1>
 
 <p>A quick reference of Rails Console.</p>
-<p>##rails console##
-#rails console output to file (source: <a class="reference external" href="https://stackoverflow.com/a/13380275/5350059">https://stackoverflow.com/a/13380275/5350059</a>)
+<div class="section" id="save-rails-console-output-to-file">
+<h1>Save rails console output to file</h1>
+<p>To save rails console output to a file, do the following <a class="footnote-reference" href="#id5" id="id1">[1]</a>:</p>
+<pre class="literal-block">
 f = File.new(&quot;$file_name&quot;, 'w')
 f &lt;&lt; command
-f.close</p>
-<p># show all user (source: <a class="reference external" href="https://stackoverflow.com/a/6034846/5350059">https://stackoverflow.com/a/6034846/5350059</a>)
-User.all</p>
-<p>#show all user with pretty print (source: <a class="reference external" href="https://stackoverflow.com/a/6034846/5350059">https://stackoverflow.com/a/6034846/5350059</a>)
-pp User.all</p>
-<p>#delete user (source: <a class="reference external" href="https://stackoverflow.com/a/6034846/5350059">https://stackoverflow.com/a/6034846/5350059</a>)
+f.close
+</pre>
+</div>
+<div class="section" id="show-all-user">
+<h1>Show all user</h1>
+<p>Run the following command to see all user <a class="footnote-reference" href="#id6" id="id2">[2]</a>:</p>
+<pre class="literal-block">
+User.all
+</pre>
+</div>
+<div class="section" id="show-all-user-with-pretty-print">
+<h1>Show all user with pretty print</h1>
+<p>Run the following command to see all user with pretty print <a class="footnote-reference" href="#id6" id="id3">[2]</a>:</p>
+<pre class="literal-block">
+pp User.all
+</pre>
+</div>
+<div class="section" id="delete-user">
+<h1>Delete user</h1>
+<p>To delete a user run the following <a class="footnote-reference" href="#id6" id="id4">[2]</a>::
 user = User.find_by_display_name(&quot;My New User Name&quot;)
 user.delete</p>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/13380275/5350059">rails - Redirecting console output to a file</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>)</em> <a class="reference external" href="https://stackoverflow.com/a/6034846/5350059">Deleting Users with Rails Console</a></td></tr>
+</tbody>
+</table>
+</div>
 </div>
 </body>
 </html>

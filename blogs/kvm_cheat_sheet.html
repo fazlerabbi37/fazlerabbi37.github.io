@@ -371,42 +371,48 @@ body {
 <h1 class="title">KVM Cheat Sheet</h1>
 
 <p>A quick reference of KVM.</p>
-<div class="section" id="create-a-img-file-of-2gb-fo-qcow2-format">
-<h1>create a .img file of 2GB fo qcow2 format</h1>
-<pre class="literal-block">
-qemu-img create -f qcow2 test.img 2g
-</pre>
-</div>
-<div class="section" id="install-a-domain-with-iso-file">
-<h1>install a domain with ISO file</h1>
+<div class="section" id="make-guest-from-iso">
+<h1>Make guest from ISO</h1>
+<p>To create a new guest instance from ISO, run the following:</p>
 <pre class="literal-block">
 sudo virt-install --virt-type=kvm --name $name --ram $ram_size_in_mb --vcpus=2 --hvm --network=bridge:$bridge_name --cdrom=$iso_location --disk $img_file_location,size=$disk_size_in_gb
 </pre>
 </div>
-<div class="section" id="make-a-domain-form-a-exising-disk-image-img-file">
-<h1>make a domain form a exising disk image (.img) file</h1>
-<p>make a copy of a $old_img and give it a different name $new_img:</p>
+<div class="section" id="make-guest-from-a-img-file">
+<h1>Make guest from a <tt class="docutils literal">.img</tt> file</h1>
+<p>To make a guest from an existing <tt class="docutils literal">.img</tt> file, run the following:</p>
 <pre class="literal-block">
 sudo virt-install --virt-type=kvm --name $name --ram 512 --vcpus=1 --hvm --network=bridge:$bridge_name --import --disk $new_img_file_location
 </pre>
-</div>
-<div class="section" id="make-guest-from-linux-base">
-<h1>make guest from linux base</h1>
+<p>This makes possible to make one base image and then copy the image and spun a new guest. For example, let's consider we have a base image name <tt class="docutils literal">ubuntu_1604_server.img</tt> to make a new <tt class="docutils literal">$name</tt> guest, we do:</p>
 <pre class="literal-block">
-sudo cp ubuntu_1604_server.img $name.img;sudo virt-install --virt-type=kvm --name $name --ram 1024 --vcpus=1 --hvm --import --disk $name.img
+sudo cp ubuntu_1604_server.img $name.img
+sudo virt-install --virt-type=kvm --name $name --ram 1024 --vcpus=1 --hvm --import --disk $name.img
 </pre>
 </div>
-<div class="section" id="install-windows-10-in-kvm">
-<h1>install windows 10 in KVM</h1>
+<div class="section" id="make-a-widnows-guest-from-iso">
+<h1>Make a Widnows guest from ISO</h1>
+<p>To make a Windows guest from ISO, run this:</p>
 <pre class="literal-block">
 virt-install --name=windows10 --ram=4048 --vcpus=4 --os-type=windows --os-variant=win8.1 --network=bridge:br0 --cdrom=Windows_10.iso --disk windows10,size=40
 </pre>
 </div>
-<div class="section" id="make-guest-from-win-base">
-<h1>make guest from win base</h1>
+<div class="section" id="make-an-img-file">
+<h1>Make an <tt class="docutils literal">.img</tt> file</h1>
+<p>We will use <tt class="docutils literal"><span class="pre">qemu-img</span></tt> to create a new <tt class="docutils literal">.img</tt> file of 2 GB:</p>
 <pre class="literal-block">
-sudo cp windows10.img $name.img;sudo virt-install --name $name --ram 4048 --vcpus=4 --hvm --import --disk $name.img
+qemu-img create -f qcow2 $name.img 2g
 </pre>
+</div>
+<div class="section" id="see-info-of-an-img-file">
+<h1>See info of an <tt class="docutils literal">.img</tt> file</h1>
+<p>We can see the information of an existing <tt class="docutils literal">.img</tt> file using <tt class="docutils literal"><span class="pre">qemu-img</span></tt>:</p>
+<pre class="literal-block">
+qemu-img info $name
+</pre>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
 </div>
 </div>
 </body>

@@ -389,7 +389,7 @@ sudo -u postgres createuser -slPW $user_name
 <h1>reset password of a users</h1>
 <p>To reset password of a users:</p>
 <pre class="literal-block">
-sudo -u postgres psql -c &quot;ALTER USER \&quot;&lt;psql_username&gt;\&quot; WITH PASSWORD '&lt;psql_password&gt;'&quot;
+sudo -u postgres psql -c &quot;ALTER USER \&quot;$psql_username\&quot; WITH PASSWORD '$psql_password'&quot;
 </pre>
 </div>
 <div class="section" id="create-a-database-on-postgresql">
@@ -422,11 +422,10 @@ sudo -u postgres psql -c &quot;SELECT version();&quot;
 </div>
 <div class="section" id="connect-to-remote-psql-host">
 <h1>connect to remote psql host</h1>
-<p>To connect to remote psql host:</p>
+<p>To connect to remote psql host <a class="footnote-reference" href="#id3" id="id1">[1]</a>:</p>
 <pre class="literal-block">
 psql -h $host -U $user -d $database
 </pre>
-<p>source:https://www.cyberciti.biz/tips/postgres-allow-remote-access-tcp-connection.html</p>
 </div>
 <div class="section" id="backup-a-psql-database">
 <h1>backup a psql database</h1>
@@ -437,13 +436,12 @@ pg_dump -h $host -U username -d database &gt; database.dump
 </div>
 <div class="section" id="backup-a-psql-database-without-typing-password">
 <h1>backup a psql database without typing password</h1>
-<p>To backup a psql database without typing password:</p>
+<p>To backup a psql database without typing password <a class="footnote-reference" href="#id4" id="id2">[2]</a>:</p>
 <pre class="literal-block">
 PGPASSWORD=&quot;mypass&quot; pg_dump -h localhost -p 5432 -U username -Fc -b -v -f dumpfilename.dump databasename
 OR
 PGPASSWORD=&quot;password&quot; pg_dump -h localhost -p 5432 -U $user -Fc -b -v -f dumpfilename.dump $database
 </pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/24953448/5350059">https://stackoverflow.com/a/24953448/5350059</a></p>
 </div>
 <div class="section" id="restoring-a-psql-database">
 <h1>restoring a psql database</h1>
@@ -487,14 +485,14 @@ sudo -u postgres psql -c &quot;\du&quot;
 <h1>export a sql statement output to a csv file with header</h1>
 <p>to export a sql statement output to a csv file with header:</p>
 <pre class="literal-block">
-Copy (&lt;sql_statement&gt;) To '/var/lib/postgresql/.csv' DELIMITER ',' CSV HEADER;
+Copy (&lt;sql_statement&gt;) To '/var/lib/postgresql/$file_name.csv' DELIMITER ',' CSV HEADER;
 </pre>
 </div>
 <div class="section" id="export-a-sql-statement-output-to-a-geojson-file">
 <h1>export a sql statement output to a geojson file</h1>
 <p>to export a sql statement output to a geojson file:</p>
 <pre class="literal-block">
-copy (&lt;sql_statement_to_show_output_as_json&gt;) to '/var/lib/postgresql/.geojson';
+copy (&lt;sql_statement_to_show_output_as_json&gt;) to '/var/lib/postgresql/$file_name.geojson';
 </pre>
 </div>
 <div class="section" id="export-a-table-to-a-csv-file">
@@ -503,6 +501,21 @@ copy (&lt;sql_statement_to_show_output_as_json&gt;) to '/var/lib/postgresql/.geo
 <dt>to export a table to a csv file::</dt>
 <dd>COPY current_relation_members TO '/var/lib/postgresql/csv/current_relation_members.CSV' DELIMITER ',' CSV HEADER;</dd>
 </dl>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://www.cyberciti.biz/tips/postgres-allow-remote-access-tcp-connection.html">How Do I Enable remote access to PostgreSQL database server?</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/24953448/5350059">How to pass in password to pg_dump?</a></td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </body>

@@ -371,35 +371,35 @@ body {
 <h1 class="title">Elasticsearch Cheat Sheet</h1>
 
 <p>A quick reference of Elasticsearch.</p>
-<p>Replace the <tt class="docutils literal">$host</tt> and <tt class="docutils literal">$port</tt> with you hostname and port information.</p>
+<p>Words wrapped with curly braces, like <tt class="docutils literal">{host}</tt> are variable, replace them with appropriate value.</p>
 <div class="section" id="list-indexes">
 <h1>List indexes</h1>
 <p>To list all the indexes of an Elasticsearch instance run the following command <a class="footnote-reference" href="#id8" id="id1">[1]</a>:</p>
 <pre class="literal-block">
-curl -XGET &quot;http://$host:$port/_cat/indices?v&quot;
+curl -XGET &quot;http://{host}:{port}/_cat/indices?v&quot;
 </pre>
 </div>
 <div class="section" id="create-an-index">
 <h1>Create an Index</h1>
 <p>To create a new index run the following command <a class="footnote-reference" href="#id9" id="id2">[2]</a>:</p>
 <pre class="literal-block">
-curl -XPUT 'http://$host:$port/test?pretty&amp;pretty'
+curl -XPUT 'http://{host}:{port}/{index}?pretty&amp;pretty'
 </pre>
 </div>
 <div class="section" id="delete-an-index">
 <h1>Delete an Index</h1>
 <p>To delete an index run the following command <a class="footnote-reference" href="#id11" id="id3">[3]</a>:</p>
 <pre class="literal-block">
-curl -XDELETE 'http://$host:$port/test?pretty&amp;pretty'
+curl -XDELETE 'http://{host}:{port}/{index}?pretty&amp;pretty'
 </pre>
 </div>
 <div class="section" id="upload-data">
 <h1>Upload data</h1>
 <p>To upload a single data to an index run the following command <a class="footnote-reference" href="#id13" id="id4">[4]</a>:</p>
 <pre class="literal-block">
-curl -XPUT 'http://$host:$port/$index/doc/$index_id?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
+curl -XPUT 'http://{host}:{port}/{index}/{type}/{doc_id}?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
 {
-&quot;field_name&quot;: &quot;date&quot;
+&quot;field_name&quot;: &quot;data&quot;
 }'
 </pre>
 </div>
@@ -407,16 +407,16 @@ curl -XPUT 'http://$host:$port/$index/doc/$index_id?pretty&amp;pretty' -H 'Conte
 <h1>Update a field value</h1>
 <p>To update a single data field run the following command <a class="footnote-reference" href="#id14" id="id5">[5]</a>:</p>
 <pre class="literal-block">
-curl -XPOST 'http://$host:$port/test/v1/doc_id/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
+curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
 {
-  &quot;doc&quot;: { &quot;weight&quot;: &quot;1&quot; }
+  &quot;doc&quot;: { &quot;field_name&quot;: &quot;data&quot; }
 }'
 
 OR
 
-curl -XPOST 'http://$host:$port/test/v1/doc_id/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
+curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
 {
-  &quot;script&quot; : &quot;ctx._source.filldname += 1&quot;
+  &quot;script&quot; : &quot;ctx._source.field_name += 1&quot;
 }'
 </pre>
 </div>
@@ -424,14 +424,14 @@ curl -XPOST 'http://$host:$port/test/v1/doc_id/_update?pretty&amp;pretty' -H 'Co
 <h1>Search index</h1>
 <p>To search and index run the following command <a class="footnote-reference" href="#id15" id="id6">[6]</a>:</p>
 <pre class="literal-block">
-curl -XGET 'http://$host:$port/test/_search?q=user:kimchy'
+curl -XGET 'http://{host}:{port}/{index}/_search?q={field_name}:{keyword}'
 </pre>
 </div>
 <div class="section" id="delete-index-data-only">
 <h1>Delete index data only</h1>
 <p>To delete only the data of an index run the following command <a class="footnote-reference" href="#id16" id="id7">[7]</a>:</p>
 <pre class="literal-block">
-curl -X POST &quot;http://$host:$port/test/v1/_delete_by_query?conflicts=proceed&quot; -H 'Content-Type: application/json' -d'
+curl -X POST &quot;http://{host}:{port}/{index}/{type}/_delete_by_query?conflicts=proceed&quot; -H 'Content-Type: application/json' -d'
 {
   &quot;query&quot;: {
     &quot;match_all&quot;: {}

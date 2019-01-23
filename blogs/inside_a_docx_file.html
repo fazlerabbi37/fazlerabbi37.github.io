@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>inside_a_docx_file.rst</title>
+<title>Inside a docx file</title>
 <style type="text/css">
 
 /*
@@ -367,11 +367,9 @@ body {
 </style>
 </head>
 <body>
-<div class="document">
+<div class="document" id="inside-a-docx-file">
+<h1 class="title">Inside a docx file</h1>
 
-
-<div class="section" id="inside-a-docx-file">
-<h1>Inside a docx file</h1>
 <p>Let's take a peek inside a docx file.</p>
 <p>While converting <tt class="docutils literal">.docx</tt> file to <tt class="docutils literal">.md</tt> using <tt class="docutils literal">pandoc</tt> I faced a unique problem. Each time I converted the <tt class="docutils literal">.docx</tt> file to <tt class="docutils literal">.md</tt>, the images in the <tt class="docutils literal">.md</tt> file where getting jumbled. While investigating I came across this <a class="reference external" href="https://github.com/jgm/pandoc/issues/1979">GitHub issue</a> and a fascinating <a class="reference external" href="https://github.com/jgm/pandoc/issues/1979#issuecomment-76958416">comment</a> about <tt class="docutils literal">.docx</tt> files which says it is just a fancy <tt class="docutils literal">zip</tt> file with <tt class="docutils literal">xml</tt> mapping.</p>
 <p>Let's dive in. Let's take a <tt class="docutils literal">.docx</tt> file and start probing.</p>
@@ -423,7 +421,6 @@ demo/word/theme:
 theme1.xml
 </pre>
 <p>We will look more closely in all of this file in future!</p>
-</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <ul class="simple">

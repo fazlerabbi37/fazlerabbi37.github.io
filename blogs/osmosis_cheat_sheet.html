@@ -371,47 +371,65 @@ body {
 <h1 class="title">osmosis Cheat Sheet</h1>
 
 <p>A quick reference of osmosis.</p>
-<div class="section" id="using-osmosis-to-populate-a-database-from-osm-pbf">
-<h1>Using osmosis to populate a database from .osm.pbf</h1>
+<div class="section" id="populate-a-postgresql-database-with-pbf">
+<h1>Populate a PostgreSQL database with pbf</h1>
+<p>To populate a PostgreSQL database with a pbf file, run this command:</p>
 <pre class="literal-block">
-osmosis --read-pbf &lt;absulute_path_of_.osm.pbf_file&gt; --write-apidb host=&quot;localhost&quot; database=&quot;&lt;database_name&gt;&quot; user=&quot;&lt;psql_username&gt;&quot; password=&quot;&lt;psql_password&gt;&quot; validateSchemaVersion=&quot;no&quot;
+osmosis --read-pbf $absulute_file_path_of.osm.pbf --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot;
 </pre>
 </div>
-<div class="section" id="using-osmosis-to-create-a-osm-form-a-database">
-<h1>Using osmosis to create a .osm form a database</h1>
+<div class="section" id="create-a-osm-form-a-postgresql-database">
+<h1>Create a .osm form a PostgreSQL database</h1>
+<p>We can create a <tt class="docutils literal">.osm</tt> file from a PostgreSQL database:</p>
 <pre class="literal-block">
-osmosis --read-apidb host=&quot;localhost&quot; database=&quot;&quot; user=&quot;&lt;psql_username&gt;&quot; password=&quot;&lt;psql_password&quot; validateSchemaVersion=&quot;no&quot; --write-xml file=&quot;planet.osm&quot;
+osmosis --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot; --write-xml file=&quot;$file_name.osm&quot;
 </pre>
 </div>
-<div class="section" id="merge-two-osm-pbf-file-into-one">
-<h1>merge two .osm.pbf file into one</h1>
+<div class="section" id="merge-two-pbf">
+<h1>Merge two pbf</h1>
+<p>We can marge two pbf file using this command:</p>
 <pre class="literal-block">
 osmosis --read-pbf file=$input1.osm.pbf --read-pbf file=$input2.osm.pbf --merge --write-pbf omitmetadata=true file=$output.osm.pbf
 </pre>
 </div>
-<div class="section" id="load-new-osm-data-to-local-db">
-<h1>load new osm data to local db</h1>
+<div class="section" id="load-new-osm-data-on-postgresql">
+<h1>Load new osm data on PostgreSQL</h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">this is not working anymore.</p>
+</div>
+<p>Loading a new osm data on PostgreSQL database:</p>
 <pre class="literal-block">
-osmosis --read-xml filename=&quot;.osm.gz&quot; --write-apidb host=&quot;localhost&quot; database=&quot;openstreetmap&quot; user=&quot;openstreetmap&quot; password=&quot;secret&quot; populateCurrentTables=yes validateSchemaVersion=no
+osmosis --read-xml filename=&quot;$file.osm.gz&quot; --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; populateCurrentTables=yes validateSchemaVersion=no
 </pre>
 </div>
-<div class="section" id="generate-a-diff-osc-file-between-two-osm-file">
-<h1>generate a diff(osc) file between two osm file</h1>
+<div class="section" id="generate-diff-between-two-osm">
+<h1>Generate diff between two osm</h1>
+<p>We can generate a diff in <tt class="docutils literal">.osc</tt> or osm change format between two <tt class="docutils literal">.osm</tt> file using this command:</p>
 <pre class="literal-block">
-osmosis --read-xml file=&quot;planet1.osm&quot; --read-xml file=&quot;planet2.osm&quot; --derive-change --write-xml-change file=&quot;planetdiff-1-2.osc&quot;
+osmosis --read-xml file=&quot;input1.osm&quot; --read-xml file=&quot;input2.osm&quot; --derive-change --write-xml-change file=&quot;output_diff_1_to_2.osc&quot;
 </pre>
 </div>
-<div class="section" id="generate-a-diff-osc-file-between-a-osm-file-and-a-postgres-database">
-<h1>generate a diff(osc) file between a osm file and a postgres database</h1>
+<div class="section" id="generate-diff-between-osm-and-postgresql-db">
+<h1>Generate diff between osm and PostgreSQL db</h1>
+<p>We can generate a diff in <tt class="docutils literal">.osc</tt> between a <tt class="docutils literal">.osm</tt> file and a PostgreSQL database:</p>
 <pre class="literal-block">
-osmosis --read-xml /home/map_server/test_server/data/bangladesh_$current_date.osm --read-apidb host=&quot;localhost&quot; database=&quot;openstreetmap&quot; user=&quot;map_server&quot; password=&quot;pathaomap&quot; validateSchemaVersion=no --derive-change --write-xml-change file=&quot;bangladesh_$current_date_diff.osc&quot;
+osmosis --read-xml file=&quot;input.osm&quot; --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=no --derive-change --write-xml-change file=&quot;output_diff_input_to_db.osc&quot;
 </pre>
 </div>
-<div class="section" id="update-a-osm-file-with-osc">
-<h1>update a osm file with osc</h1>
+<div class="section" id="update-a-osm-with-diff">
+<h1>update a osm with diff</h1>
+<p>We can update a <tt class="docutils literal">.osm</tt> file with the diff generated in <tt class="docutils literal">.osc</tt>:</p>
 <pre class="literal-block">
 osmosis --read-xml-change file=&quot;$osc_file.osc&quot; --read-xml file=&quot;$old_osm_file.osm&quot; --apply-change --write-xml file=&quot;$new_osm_file.osm&quot;
 </pre>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis">Osmosis OpenStreetMap Wiki</a></li>
+<li><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis/Examples">Osmosis/Examples OpenStreetMap Wiki</a></li>
+</ul>
 </div>
 </div>
 </body>
