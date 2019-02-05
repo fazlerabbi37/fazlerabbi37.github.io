@@ -12,6 +12,20 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`Google Calendar sync on Android without signing in <blogs/sync_gcalendar_without_android_signin.html>`_
+...........................................................................................................
+Feb 05, 2019
+
+Want to sync your Google Calendar sync on Android but don't want to add your Google account on Android?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`ADB Cheat Sheet <blogs/adb_cheat_sheet.html>`_
+...........................................................................................................
+Feb 05, 2019
+
+A quick reference of `ADB <https://developer.android.com/studio/command-line/adb>`_.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 `Inside a docx file <blogs/inside_a_docx_file.html>`_
 ...........................................................................................................
 Jan 23, 2019
@@ -33,24 +47,17 @@ Jan 23, 2019
 A quick reference of Rails Console.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Convert OVA image to QCOW <blogs/convert_ova_image_to_qcow.html>`_
-...........................................................................................................
-Jan 23, 2019
-
-Converting VirtualBox or VMware favoured OVA image to KVM or QEMU favoured QCOW image.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
-...........................................................................................................
-Jan 23, 2019
-
-A quick reference of PostgreSQL.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 
 All Blogs
 ------------
+`ADB Cheat Sheet <blogs/adb_cheat_sheet.html>`_
+...........................................................................................................
+Feb 05, 2019
+
+A quick reference of `ADB <https://developer.android.com/studio/command-line/adb>`_.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 `Convert OVA image to QCOW <blogs/convert_ova_image_to_qcow.html>`_
 ...........................................................................................................
 Jan 23, 2019
@@ -175,6 +182,13 @@ A quick reference of Rails Console.
 Oct 30, 2018
 
 Notes for Selenium with Python3.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Google Calendar sync on Android without signing in <blogs/sync_gcalendar_without_android_signin.html>`_
+...........................................................................................................
+Feb 05, 2019
+
+Want to sync your Google Calendar sync on Android but don't want to add your Google account on Android?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Tiny Core Linux <blogs/tiny_core_linux.html>`_
