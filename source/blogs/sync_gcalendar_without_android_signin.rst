@@ -22,7 +22,7 @@ The suggested format on the thread `reply <https://forums.bitfire.at/topic/872/g
 
 The only lacking that is mentioned in the thread is that the delegates aka people on events are not synced. Please keep in mind that this end point is deprecated and we are using it at our own risk as it says on the `CalDAV API Developer's Guide page <https://developers.google.com/calendar/caldav/v2/guide#new_endpoint>`_
 
-**UPDATE:** Just a few days after writing this, I found that for normal Google Account or on G Suite if it's allowed, we can get the ``Secret address in iCal format``, we can bypass all the steps and just put that address on ICSx⁵ app and continue. The Secret address already contains a API key so there is no need for OAuth. 
+**UPDATE:** Just a few days after writing this, I saw this `comment <https://help.nextcloud.com/t/goodbye-google-sync-calendar-with-google-agenda/2372/12>`_ in the Nextcloud community forum where I found that for normal Google Account or on G Suite if it's allowed, we can get the ``Secret address in iCal format``, we can bypass all the steps and just put that address on ICSx⁵ app and continue. The Secret address already contains a API key so there is no need for OAuth. 
 
 Source
 ------
@@ -30,3 +30,4 @@ Source
 - `ICSx⁵ website <https://icsx5.bitfire.at/>`_
 - `ICSx⁵ app on F-Droid <https://f-droid.org/en/packages/at.bitfire.icsdroid/>`_
 - `CalDAV API Developer's Guide page <https://developers.google.com/calendar/caldav/v2/guide#new_endpoint>`_
+- `[Goodbye Google] Sync calendar with google agenda <https://help.nextcloud.com/t/goodbye-google-sync-calendar-with-google-agenda/2372>`_
