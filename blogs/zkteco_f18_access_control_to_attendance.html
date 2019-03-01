@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>Hacking an access control device to take attendance</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+body {
+    padding: 40px;
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="hacking-an-access-control-device-to-take-attendance">
+<h1 class="title">Hacking an access control device to take attendance</h1>
+
+<p>How we hacked(modified!?) a Zkteco access control device to take automatic attendance.</p>
+<p>We had a good old attendance system for our team in my workplace where we used to sign in and sign out the time on a piece of paper. Then those entries were added to an Google Sheet if needed. This system was going well for a starting member of 15 but it became very painful as we grew in number. We decided to automate the system if possible. We could have chosen the most convenient way and brought a time attendance device but if we went that route, I wouldn't be writing this hack-blog, would I be?</p>
+<!-- ::image:: ../source/media/zkteco_f18_back.jpg -->
+<p>We have know for sometime that we have a Zkteco device installed in front of our door but we didn't know anything about it at all so we started digging. On the first glance all we could see the is the Zkteco company logo so we searched with the company name and came up with their official website. The website has an array of different devices ranging from Access Control, Time Attendance, Biometrics Access, Entrance Control etc and most of them looked similar. Closer inspection of the devices was necessary and we unmounted the device from the wall.</p>
+<p>On the back we found an reset button. Oh, did I say we didn't have access to the menu of the device as it already had an admin setup? No worries, we would reset it. After the reset, I enrolled myself as an admin user and now we could see the menu and more option popped out. We saw a database management option where all the access logs were saved. We save an option to backup data to USB storage and after a close look, we also find a USB port on the side of the device. We plugged an empty USB device and used that option to dump the data onto that USB drive. To add to our problem it was a <tt class="docutils literal">.dat</tt> file that couldn't be opened with any online tool we tried.</p>
+<p>On the back side of device we found more information about the device. It was a Zkteco <a class="reference external" href="https://www.zkteco.com/en/product_detail/F18.html">F18</a> Access Control device. We found manual but Zkteco would not allow us to download the manual if we don't open an account first. We downloaded the manual after opening an account with a <a class="reference external" href="https://temp-mail.org/">Disposable</a> email account.</p>
+<p>After reading the somewhat long manual of 92 page, we found out the our device can only be used for access control, meaning upon presenting a valid credential it would sent signal to a door lock to open. That wouldn't be super helpful if want to take attendance with it.</p>
+<p>On the manual we also find that the device can be accessed over a network. Now we got curious and connected the device to our intranet. We tried to ping the device but go no response. After fiddling with the network settings a bit we figured out the subnet mask was wrong and after fixing that we got ping. Yea! But now what???</p>
+<p>On the Download Center, from where we downloaded the manual we noticed something call ZKAccess. We decided to install in on a Windows host. After the installing ZKAccess when we opened it it asked for a password but we didn't set any as of yet. Digging through the ZKAccess management we found out that the user name and password both are <tt class="docutils literal">admin</tt>.</p>
+<p>With the help of the might man, ahem manual we were able to connect our device over network to the ZKAccess software. Basically on Ethernet communication mode the device opens up a TCP/IP port, port 4370 to the LAN where ZKAccess connects with correct communication password. With ZKAccess we could pull the data from device and see the access log for each ID aka user. But we were still miles away from have a automatic attendance system. The log would show all the entries for for a user, as in each time a user has provided a valid credential it would log that. This is nowhere useful for use.</p>
+<p>On the ZKAccess manual's index we saw a section about reporting, Access Control Reporting and kept reading. We found out that we can create custom report and export them on as <tt class="docutils literal">xls</tt>. So we created a custom report that takes the time, first name, last name and the id and ran a few test export. All go so far. So now we have a semi-automated (semi as someone still need to download data form device, run the custom report and export the xls) way of getting the access log from the device to an easily usable format. What now?</p>
+<p>We need to put this attendance data on a Google Sheet for it to shareable with our Team Leads and HR. We started to tweak around ways to get a final output from the xls. Hmm, what can we do to achieve it? We tied to come up with all sorts of equation for Excel and Google Sheet to process the data until we saw a suggestion on the Stak Overflow to use <a class="reference external" href="https://script.google.com">Google Apps Script</a>. Google Apps Script aka GScript is JS adapted for Google API which is a topic on itself. So now the question is, can Google Apps Script save our day?</p>
+<p>On the journey to find our answer, we landed on the <a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/">Developer Doc</a> page for Spreadsheet Service. And we progressed one step at a tie from there on. I would rather say they were teeny-tiny, baby steps.</p>
+<p>The data from the xls was copy-pasted to a Worksheet of a Google Sheet. The first 4 columns are used keeping consistency with exported data; time, first name, last name and the id. The target is to process the data and get a in-time and out-time for each id and the also finding the duration for each id.</p>
+<p>First step was to figure out a way to load the data of the 4 columns from the Worksheet to GScript. When we succeeded on that we noticed that the date time wasn't quite correct. We wasted a good amount of time trying to figure out this problem.</p>
+<p>The basic operation to achieve our goal is as follows:</p>
+<ul class="simple">
+<li>get active Sheet's first Worksheet</li>
+<li>format the time column to time format of <tt class="docutils literal">hh:mm:ss A/P&quot;M&quot;</tt></li>
+<li>format the id column to integer number format</li>
+<li>format a long row to time format of <tt class="docutils literal">hh:mm:ss A/P&quot;M&quot;</tt> as this is where the final output will put</li>
+<li>get all the all id from the id column</li>
+<li>define a array where all the id that we need to take attendance is stored in a ascending order.</li>
+<li>get all id's and loop through all the id to check if it exist on our wanted id list if not clear the content for the id</li>
+<li>sort all the cells based on id column</li>
+<li>now we have a time sorted array of all the id we want to take attendance</li>
+<li>declare a dictionary with all the wanted id and a initial value of 0. this will hold the number of time in id has used the device.</li>
+<li>now loop through all the id and increase the value of dictionary to get the frequency</li>
+<li>now start at the top and you have the out time of the first id then look up the frequency of first id and jump that many row. you have the in time. the next row is next id's out time and so on</li>
+<li>make a function to return diff between tow time given as param.</li>
+<li>now take all 3 and put them on the long row that we defined before.</li>
+</ul>
+<p>That gets the job done! I know not the most efficient or elegant way of achieving our goal but it get's the job done. We have been using it for an year now and it working well till now.</p>
+<p>I would polish the code a bit and publish it in GitHub and link it here.</p>
+<p>A big thanks goes to Kazi Tusher for helping with the hardware specs, Bidhan Bhushan Roy for those crazy Execl equations, <a class="reference external" href="https://github.com/nr072">Nafiur Rahman</a> and <a class="reference external" href="https://github.com/RajibChanda">Rajib Kumar Chanda</a> for helping with the algo and tolerating my noob JS queries.</p>
+<div class="section" id="source">
+<h1>Source</h1>
+<ul class="simple">
+<li><a class="reference external" href="https://www.zkteco.com/en/product_detail/F18.html">Zkteco F18</a></li>
+</ul>
+</div>
+</div>
+</body>
+</html>
