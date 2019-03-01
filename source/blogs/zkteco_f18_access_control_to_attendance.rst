@@ -1,5 +1,5 @@
-Hacking a Zkteco access control device to take attendance
-=========================================================
+Hacking an access control device to take attendance
+===================================================
 How we hacked(modified!?) a Zkteco access control device to take automatic attendance.
 
 
