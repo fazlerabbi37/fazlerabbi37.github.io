@@ -12,6 +12,13 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`Bonsai: Elasticsearch playground <blogs/elasticsearch_with_bonsai.html>`_
+...........................................................................................................
+Mar 15, 2019
+
+Experimenting with Elasticsearch using Bonsai.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 `Hacking an access control device to take attendance <blogs/zkteco_f18_access_control_to_attendance.html>`_
 ...........................................................................................................
 Mar 01, 2019
@@ -38,13 +45,6 @@ A quick reference of `ADB <https://developer.android.com/studio/command-line/adb
 Jan 23, 2019
 
 Let's take a peek inside a docx file.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Desktop Entry in Ubuntu <blogs/desktop_entry_ubuntu.html>`_
-...........................................................................................................
-Jan 23, 2019
-
-Explaining Desktop Entry aka Desktop icon in Ubuntu.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -77,6 +77,13 @@ Explaining Desktop Entry aka Desktop icon in Ubuntu.
 Jan 23, 2019
 
 A quick reference of Elasticsearch.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Bonsai: Elasticsearch playground <blogs/elasticsearch_with_bonsai.html>`_
+...........................................................................................................
+Mar 15, 2019
+
+Experimenting with Elasticsearch using Bonsai.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `fdroidcl <blogs/fdroidcl.html>`_
