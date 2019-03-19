@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>Bonsai: Elasticsearch playground</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+body {
+    padding: 40px;
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="bonsai-elasticsearch-playground">
+<h1 class="title">Bonsai: Elasticsearch playground</h1>
+
+<p>Experimenting with Elasticsearch using Bonsai.</p>
+<p>If you are getting started with Elasticsearch and don't want to setup an Elasticsearch instance, Bonsai is here to rescue. Bonsai is a free Elasticsearch hosting service where we can experiment with Elasticsearch. With the free plan Bonsai provides one cluster with  10k docs, 125MB data, 10 shards and 125MB memory. It may doesn't look a lot but it would definitely give a tailwind on you getting started to Elasticsearch journey.</p>
+<p>To get started head over to <a class="reference external" href="https://bonsai.io/">Bonsai</a> and sign up. Once we get the confirmation mail we can head over to Bonsai and <a class="reference external" href="https://app.bonsai.io/login">Log in</a>.</p>
+<p>After successful login we should get redirected to the cluster creation page. There we need to give a name of our cluster, in this case, I am using <tt class="docutils literal">demo_for_blog</tt>. Then we need to choose server region. While choosing the server rescue, keep latency in mind and choose the one closest to your location. We don't have much option when it comes to choosing version and plan as we are using free plan.</p>
+<p>Upon successful cluster creation we should see the Overview tab of the cluster. I will give a brief intro of all the tabs on this page.</p>
+<p>First we see the Overview page on successful cluster creation. It shows the Status, Region and Elasticsearch Version on top. We should also see <tt class="docutils literal">Launch Kibana</tt> button on that same row. This page also shows the Cluster Usage and Performance info of last 24 hours.</p>
+<p>Then we have Metrics tab. It shows, you got it, different metrics for this cluster like Request Counts, Requests (Counts &amp; Duration), Request Duration Percentiles, Queue time, Concurrency, Bandwidth, Response Codes. The metrics can be seen over the time of 28d, 7d, 1d and 1h. More on how to read the metrics data can be found on <a class="reference external" href="https://docs.bonsai.io/article/131-cluster-metrics">How to read your metrics</a> doc.</p>
+<p>Next to Metrics we have Manage tab. It all about the cluster management and shows info for Current Plan, Current Limits, Update Plan, Trim Logs and Datadog Integration.</p>
+<p>The Console tab is quite interesting. It is an interactive web-based UI for interacting with our cluster. Here we can run all the curl equvelent commands to interact with our cluster.</p>
+<p>The next tab is Logs which shows log either for Recent Requests or for Top 20 Slow Requests.</p>
+<p>The Access tab is where we generate our API token to use it from other application. One of the cons of free plan is there is no read-only access which sucks.</p>
+<p>The last tab is Deprovision. When we are done with experimentation, we should deprovision our cluster. We can do that by entering the password for our account and clicking on <tt class="docutils literal">Enter Password to Deprovision</tt> button.</p>
+<p>Just to give an intro we will use our <tt class="docutils literal">demo_for_blog</tt> cluster and create a new index, update it's mapping, upload 5 data and search for one and update one.</p>
+<p>Before we start we will create a generate a new token from the Access tab and use that to perform our operation. Once we enter the name on the Add Credential section and click Generate New Token it should redirected us to a new page where we should see the Access Key and Access Secret for the user. A full URL will also be provided. Keep this 3 things safe. Now if we take a look at the URL is should follow the following schema:</p>
+<pre class="literal-block">
+https://randomuser:randompass&#64;cluster_name-ramdom_number.cluster_region.bonsaisearch.net
+</pre>
+<p>For example, I get this full URL:</p>
+<pre class="literal-block">
+https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net
+</pre>
+<p>Now we are ready to start playing around.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Most of the commands bellow usages <tt class="docutils literal">curl</tt> so make sure you have <tt class="docutils literal">curl</tt> installed. Same results can be achieved using the Console tab as well.</p>
+</div>
+<div class="section" id="create-an-index">
+<h1>Create an index</h1>
+<p>Index in Elasticsearch is much like a table of a database. Let's list all the indexes of our instance:</p>
+<pre class="literal-block">
+curl -XGET &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/_cat/indices?v&quot;
+</pre>
+<p>We can see in the following output that we don't have any index as of now.:</p>
+<pre class="literal-block">
+health    status    index    uuid                     pri    rep    docs.count    docs.deleted    store.size    pri.store.size
+</pre>
+<p>To create an index name <cite>demo</cite> using <tt class="docutils literal">curl</tt>:</p>
+<pre class="literal-block">
+curl -XPUT &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo?pretty&amp;pretty&quot;
+</pre>
+<p>If we are using the Console, we just need to change the verb from the drop down to <tt class="docutils literal">PUT</tt> and enter index name demo and press enter. In both case, we should see the following message on successful index creation:</p>
+<pre class="literal-block">
+{
+  &quot;acknowledged&quot; : true,
+  &quot;shards_acknowledged&quot; : true,
+  &quot;index&quot; : &quot;demo&quot;
+}
+</pre>
+<p>Let's list all the indexes using the same previous command:</p>
+<pre class="literal-block">
+curl -XGET &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/_cat/indices?v&quot;
+</pre>
+<p>We can see in the following output that we have created an index named <tt class="docutils literal">demo</tt>:</p>
+<pre class="literal-block">
+health    status    index    uuid                     pri    rep    docs.count    docs.deleted    store.size    pri.store.size
+green     open      demo     wHOxKkbhTxSd1eVG7MWhdw   1      1      0             0               460b          230b
+</pre>
+</div>
+<div class="section" id="update-mapping">
+<h1>Update Mapping</h1>
+<p>Mapping defines how the data will be stored on that table. Let's check the mapping of our index:</p>
+<pre class="literal-block">
+curl -XGET &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/_mapping?pretty&amp;pretty&quot;
+</pre>
+<p>We can see from the following output that mapping for our index is not defined.:</p>
+<pre class="literal-block">
+{
+  &quot;demo&quot;: {
+    &quot;mappings&quot;: {}
+  }
+}
+</pre>
+<p>Let's update he mapping our index:</p>
+<pre class="literal-block">
+curl -XPUT &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/_mapping/v1&quot; -H 'Content-Type: application/json' -d'
+{
+    &quot;v1&quot;: {
+      &quot;properties&quot;: {
+        &quot;name&quot;:     { &quot;type&quot;: &quot;text&quot;  },
+        &quot;age&quot;:      { &quot;type&quot;: &quot;integer&quot; }
+      }
+    }
+}'
+</pre>
+<p>For the Console just put /demo/_mapping/v1 on the URL input box paste the following in the box bellow and then press enter:</p>
+<pre class="literal-block">
+{
+    &quot;v1&quot;: {
+      &quot;properties&quot;: {
+        &quot;name&quot;:     { &quot;type&quot;: &quot;text&quot;  },
+        &quot;age&quot;:      { &quot;type&quot;: &quot;integer&quot; }
+      }
+    }
+}
+</pre>
+<p>In both case we should see the following message:</p>
+<pre class="literal-block">
+{
+  &quot;acknowledged&quot;: true
+}
+</pre>
+<p>Checking the mapping using the same <tt class="docutils literal">curl</tt> command now shows:</p>
+<pre class="literal-block">
+{
+    &quot;demo&quot;: {
+        &quot;mappings&quot;: {
+            &quot;v1&quot;: {
+                &quot;properties&quot;: {
+                    &quot;age&quot;: {
+                        &quot;type&quot;: &quot;integer&quot;
+                    },
+                    &quot;name&quot;: {
+                        &quot;type&quot;: &quot;text&quot;
+                    }
+                }
+            }
+        }
+    }
+}
+</pre>
+<p>So it seems we have updated our mapping!!!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We could have defined the mapping while creating the index but for this blog we choose not to do so.</p>
+</div>
+</div>
+<div class="section" id="uploading-data">
+<h1>Uploading Data</h1>
+<p>We have defined how to store the data. Now let's upload some:</p>
+<pre class="literal-block">
+curl -XPOST &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/v1?pretty&amp;pretty&quot; -H 'Content-Type: application/json' -d' { &quot;name&quot;: &quot;user1&quot;, &quot;age&quot;: 10 }'
+curl -XPOST &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/v1?pretty&amp;pretty&quot; -H 'Content-Type: application/json' -d' { &quot;name&quot;: &quot;user2&quot;, &quot;age&quot;: 20 }'
+curl -XPOST &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/v1?pretty&amp;pretty&quot; -H 'Content-Type: application/json' -d' { &quot;name&quot;: &quot;user3&quot;, &quot;age&quot;: 30 }'
+curl -XPOST &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/v1?pretty&amp;pretty&quot; -H 'Content-Type: application/json' -d' { &quot;name&quot;: &quot;user4&quot;, &quot;age&quot;: 40 }'
+curl -XPOST &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/v1?pretty&amp;pretty&quot; -H 'Content-Type: application/json' -d' { &quot;name&quot;: &quot;user5&quot;, &quot;age&quot;: 50 }'
+</pre>
+<p>For all successful data upload we should see output similar to this:</p>
+<pre class="literal-block">
+{
+  &quot;_index&quot; : &quot;demo&quot;,
+  &quot;_type&quot; : &quot;v1&quot;,
+  &quot;_id&quot; : &quot;yZJVfGkBdm4qJtidx0HD&quot;,
+  &quot;_version&quot; : 1,
+  &quot;result&quot; : &quot;created&quot;,
+  &quot;_shards&quot; : {
+    &quot;total&quot; : 2,
+    &quot;successful&quot; : 2,
+    &quot;failed&quot; : 0
+  },
+  &quot;_seq_no&quot; : 0,
+  &quot;_primary_term&quot; : 1
+}
+</pre>
+</div>
+<div class="section" id="searching-data">
+<h1>Searching Data</h1>
+<p>Elasticsearch as the name says is used for searching. So let's search the index for <tt class="docutils literal">user2</tt>:</p>
+<pre class="literal-block">
+curl -XGET &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/_search?q=name:user2&amp;pretty&amp;pretty&quot;
+</pre>
+<p>We should see this result like this:</p>
+<pre class="literal-block">
+{
+    &quot;took&quot;: 0,
+    &quot;timed_out&quot;: false,
+    &quot;_shards&quot;: {
+        &quot;total&quot;: 1,
+        &quot;successful&quot;: 1,
+        &quot;skipped&quot;: 0,
+        &quot;failed&quot;: 0
+    },
+    &quot;hits&quot;: {
+        &quot;total&quot;: 1,
+        &quot;max_score&quot;: 1.3862944,
+        &quot;hits&quot;: [
+            {
+                &quot;_index&quot;: &quot;demo&quot;,
+                &quot;_type&quot;: &quot;v1&quot;,
+                &quot;_id&quot;: &quot;pnBWfGkBLqG7BIrR8Z0d&quot;,
+                &quot;_score&quot;: 1.3862944,
+                &quot;_source&quot;: {
+                    &quot;name&quot;: &quot;user2&quot;,
+                    &quot;age&quot;: 20
+                }
+            }
+        ]
+    }
+}
+</pre>
+</div>
+<div class="section" id="update">
+<h1>Update</h1>
+<p>We can update the data stored in the index as well. We will update the age of <tt class="docutils literal">user2</tt> using two method but for use to update the age of we need to know the <tt class="docutils literal">_id</tt> of the document. We can use our previous result from search and can see that the <tt class="docutils literal">_id</tt> is <cite>pnBWfGkBLqG7BIrR8Z0d</cite>. Let's use it to update the age.</p>
+<ol class="arabic">
+<li><p class="first">Fix value. Update a field with a fixed value.:</p>
+<pre class="literal-block">
+curl -XPOST &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/v1/pnBWfGkBLqG7BIrR8Z0d/_update&quot; -H 'Content-Type: application/json' -d' { &quot;doc&quot;: { &quot;age&quot;: 21 } }'
+</pre>
+</li>
+<li><p class="first">Scripted updates. Update a filed with a scripts, in this case the current value of age field and update with 1.:</p>
+<pre class="literal-block">
+curl -XPOST &quot;https://isdrWzc7nq:3MuCsPLpNRU9ofgA4GY&#64;demo-for-blog-6448511871.eu-central-1.bonsaisearch.net/demo/v1/pnBWfGkBLqG7BIrR8Z0d/_update?pretty&amp;pretty&quot; -H 'Content-Type: application/json' -d' { &quot;script&quot; : &quot;ctx._source.age += 1&quot; }'
+</pre>
+</li>
+</ol>
+<p>In both case we should see output like this:</p>
+<pre class="literal-block">
+{
+  &quot;_index&quot;: &quot;demo&quot;,
+  &quot;_type&quot;: &quot;v1&quot;,
+  &quot;_id&quot;: &quot;pnBWfGkBLqG7BIrR8Z0d&quot;,
+  &quot;_version&quot;: 2,
+  &quot;result&quot;: &quot;updated&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 5,
+  &quot;_primary_term&quot;: 1
+}
+</pre>
+</div>
+<div class="section" id="bonsai-and-python">
+<h1>Bonsai and Python</h1>
+<p>We can interact very easily with <a class="reference external" href="https://docs.bonsai.io/article/102-python">Bonsai using Python</a>. But if we need to use bare bone way we can use Python <tt class="docutils literal">requests</tt> library and use the Access Key and Access Secret as user name and password.:</p>
+<pre class="literal-block">
+import requests
+bonsai_url = &quot;https://demo-for-blog-6448511871.eu-central-1.bonsaisearch.net&quot;
+user_name = &quot;isdrWzc7nq&quot;
+password = &quot;3MuCsPLpNRU9ofgA4GY&quot;
+index = &quot;demo&quot;
+doc_type = &quot;v1&quot;
+id = 1
+field_names = [&quot;name&quot;,&quot;age&quot;]
+user1 = [&quot;user1&quot;,10]
+temp_dict = dict(zip(field_names,user1))
+post_url = bonsai_url + &quot;/&quot; + index + &quot;/&quot; + doc_type + &quot;/&quot; + str(id)
+header = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+post_response = requests.post(post_url, json=temp_dict, headers=header, auth=(user_name, password))
+post_response.status_code #should give 201 if successful
+post_response.content #should give something like this: b'{&quot;_index&quot;:&quot;demo&quot;,&quot;_type&quot;:&quot;v1&quot;,&quot;_id&quot;:&quot;1&quot;,&quot;_version&quot;:1,&quot;result&quot;:&quot;created&quot;,&quot;_shards&quot;:{&quot;total&quot;:2,&quot;successful&quot;:2,&quot;failed&quot;:0},&quot;_seq_no&quot;:8,&quot;_primary_term&quot;:1}'
+</pre>
+</div>
+<div class="section" id="deprovision-cluster">
+<h1>Deprovision Cluster</h1>
+<p>Make sure to deprovision your cluster once you are done.</p>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<ul class="simple">
+<li><a class="reference external" href="https://stackoverflow.com/a/25471930">Create or update mapping in elasticsearch</a></li>
+<li><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html">Mapping: Elasticsearch Doc</a></li>
+<li><a class="reference external" href="http://docs.python-requests.org/en/master/user/authentication/#basic-authentication">Basic Authentication: Python Requests</a></li>
+<li><a class="reference external" href="https://docs.bonsai.io/article/102-python">Bonsai using Python</a></li>
+</ul>
+</div>
+</div>
+</body>
+</html>
