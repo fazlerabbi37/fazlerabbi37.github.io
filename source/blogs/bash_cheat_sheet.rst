@@ -1570,6 +1570,14 @@ debug a bash script
 
 (source: https://unix.stackexchange.com/a/155570/199183)
 
+print a char variable times
+---------------------------
+::
+
+     printf '%0.s-' $(seq 1 $var)
+
+https://stackoverflow.com/a/17030976
+
 lock and unlock screen over ssh
 -------------------------------
 ::
