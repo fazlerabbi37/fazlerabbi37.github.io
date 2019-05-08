@@ -99,6 +99,12 @@ to see all users::
 
     sudo -u postgres psql -c "\du"
 
+revoke user access from a database
+----------------------------------
+to revoke user access from a database [3]_::
+
+    REVOKE ALL PRIVILEGES ON DATABASE "$database" from $username;
+
 export a sql statement output to a csv file with header
 -------------------------------------------------------
 to export a sql statement output to a csv file with header::
@@ -121,4 +127,4 @@ Source
 .. [1] `How Do I Enable remote access to PostgreSQL database server?
  <https://www.cyberciti.biz/tips/postgres-allow-remote-access-tcp-connection.html>`_
 .. [2] `How to pass in password to pg_dump? <https://stackoverflow.com/a/24953448/5350059>`_
-
+.. [3] `postgresql - user privilege for a particular database <https://stackoverflow.com/a/33554900/5350059>`_
