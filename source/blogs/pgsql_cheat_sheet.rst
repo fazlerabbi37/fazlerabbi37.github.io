@@ -99,6 +99,12 @@ to see all users::
 
     sudo -u postgres psql -c "\du"
 
+revoke user access from a database
+----------------------------------
+to revoke user access from a database::
+
+    REVOKE ALL PRIVILEGES ON DATABASE "$database" from $username;
+
 export a sql statement output to a csv file with header
 -------------------------------------------------------
 to export a sql statement output to a csv file with header::
