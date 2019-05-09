@@ -38,7 +38,7 @@ If we are using Windows, we need to go to `Control Panel` > `Turn Windows featur
 
 We can save the code as ``.vbs`` file and use as in executable file.
 
-If you don't have telnet enable by default, for example in Netgear search for `Netgear Telnet Enabler` or see `NTE - A Portable Program to Enable Telnet Access on Netgear Routers <http://antinode.info/nte/>`_, `NetgearTelnetEnable <https://github.com/insanid/NetgearTelnetEnable>`_ and `Unlocking the Netgear Telnet Console <https://openwrt.org/toh/netgear/telnet.console>`.
+If you don't have telnet enable by default, for example in Netgear search for `Netgear Telnet Enabler` or see `NTE - A Portable Program to Enable Telnet Access on Netgear Routers <http://antinode.info/nte/>`_, `NetgearTelnetEnable <https://github.com/insanid/NetgearTelnetEnable>`_ and `Unlocking the Netgear Telnet Console <https://openwrt.org/toh/netgear/telnet.console>`_.
 
 cURL
 ----
@@ -48,8 +48,12 @@ For TP-Link [2]_::
 
     curl -D -s --header "Authorization:Basic ABCdef123456" --header "Referer: http://$ip:$port/userRpm/SysRebootRpm.htm" -u "$username:$password" "http://$ip:$port/userRpm/SysRebootRpm.htm?Reboot=Reboot"
 
+Netgear debug
+-------------
+While trying to figure this out I found that Netgear has a web debug page which can be access at this address: ``http://$ip/debug.htm``. [3]_   
 
 Source
 ------
 .. [1] `How to Automatically Reboot Your Router the Geeky Way <https://www.howtogeek.com/206620/how-to-automatically-reboot-your-router-the-geeky-way/>`_
 .. [2] `Reboot TP-Link Router TL-WA7510N using Curl <https://tricksty.com/coding/reboot-tp-link-router-tl-wa7510n-using-curl>`_
+.. [3] `Can I enable telnet on my R8000? <https://community.netgear.com/t5/Nighthawk-WiFi-Routers/Can-I-enable-telnet-on-my-R8000/m-p/1637900/highlight/true#M104722>`_
