@@ -1597,3 +1597,17 @@ getting WiFi network details in Raspberry Pi
     #OR
 
     iwgetid # (source: https://raspberrypi.stackexchange.com/a/41024)
+
+download and output it on STDOUT
+-----------------------------------------
+::
+
+    wget -qO- $link
+
+(source: https://stackoverflow.com/a/22926472/5350059)
+   
+
+image your hard disk using dd
+-----------------------------
+
+(source: http://www.linuxweblog.com/dd-image)
