@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Elasticsearch Cheat Sheet</title>
+<title>git_cheat_sheet.rst</title>
 <style type="text/css">
 
 /*
@@ -367,123 +367,85 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="elasticsearch-cheat-sheet">
-<h1 class="title">Elasticsearch Cheat Sheet</h1>
+<div class="document">
 
-<p>A quick reference to Elasticsearch.</p>
-<p>Words wrapped with curly braces, like <tt class="docutils literal">{host}</tt> are variable, replace them with appropriate value.</p>
-<div class="section" id="list-indexes">
-<h1>List indexes</h1>
-<p>To list all the indexes of an Elasticsearch instance run the following command <a class="footnote-reference" href="#id8" id="id1">[1]</a>:</p>
-<pre class="literal-block">
-curl -XGET &quot;http://{host}:{port}/_cat/indices?v&quot;
-</pre>
-</div>
-<div class="section" id="create-an-index">
-<h1>Create an Index</h1>
-<p>To create a new index run the following command <a class="footnote-reference" href="#id9" id="id2">[2]</a>:</p>
-<pre class="literal-block">
-curl -XPUT 'http://{host}:{port}/{index}?pretty&amp;pretty'
-</pre>
-</div>
-<div class="section" id="delete-an-index">
-<h1>Delete an Index</h1>
-<p>To delete an index run the following command <a class="footnote-reference" href="#id11" id="id3">[3]</a>:</p>
-<pre class="literal-block">
-curl -XDELETE 'http://{host}:{port}/{index}?pretty&amp;pretty'
-</pre>
-</div>
-<div class="section" id="upload-data">
-<h1>Upload data</h1>
-<p>To upload a single data to an index run the following command <a class="footnote-reference" href="#id13" id="id4">[4]</a>:</p>
-<pre class="literal-block">
-curl -XPUT 'http://{host}:{port}/{index}/{type}/{doc_id}?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
-{
-&quot;field_name&quot;: &quot;data&quot;
-}'
-</pre>
-</div>
-<div class="section" id="update-a-field-value">
-<h1>Update a field value</h1>
-<p>To update a single data field run the following command <a class="footnote-reference" href="#id14" id="id5">[5]</a>:</p>
-<pre class="literal-block">
-curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
-{
-  &quot;doc&quot;: { &quot;field_name&quot;: &quot;data&quot; }
-}'
 
-OR
+<div class="section" id="git">
+<h1>git</h1>
+<p>A quick reference to Git.</p>
+</div>
+<div class="section" id="git-remote-add-with-other-ssh-port-source-https-stackoverflow-com-a-3596272-5350059">
+<h1>git remote add with other SSH port (source: <a class="reference external" href="https://stackoverflow.com/a/3596272/5350059">https://stackoverflow.com/a/3596272/5350059</a>)</h1>
+<pre class="literal-block">
+git remote add origin ssh://user&#64;host:1234/srv/git/example
+</pre>
+</div>
+<div class="section" id="check-if-directory-is-git-repository-without-having-to-cd-into-it-source-https-stackoverflow-com-a-39518382-5350059">
+<h1>check if directory is git repository without having to cd into it (source: <a class="reference external" href="https://stackoverflow.com/a/39518382/5350059">https://stackoverflow.com/a/39518382/5350059</a>)</h1>
+<dl class="docutils">
+<dt>::</dt>
+<dd>git -C $dir_path rev-parse</dd>
+</dl>
+</div>
+<div class="section" id="using-a-git-command-inside-a-cron-job-while-using-ssh-key">
+<h1>using a git command inside a cron job while using ssh key</h1>
+<pre class="literal-block">
+#add those line at the top of script
+export SSH_AGENT_PID=`ps -a | grep ssh-agent | grep -o -e [0-9][0-9][0-9][0-9]`
+export SSH_AUTH_SOCK=`find /tmp/ -path '*keyring-*' -name '*ssh*' -print 2&gt;/dev/null`
 
-curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
-{
-  &quot;script&quot; : &quot;ctx._source.field_name += 1&quot;
-}'
+(source: https://stackoverflow.com/a/16580506)
 </pre>
-</div>
-<div class="section" id="search-index">
-<h1>Search index</h1>
-<p>To search and index run the following command <a class="footnote-reference" href="#id15" id="id6">[6]</a>:</p>
+<div class="section" id="make-vim-git-default-editor">
+<h2>make vim git default editor</h2>
 <pre class="literal-block">
-curl -XGET 'http://{host}:{port}/{index}/_search?q={field_name}:{keyword}'
+git config --global core.editor &quot;vim&quot;
 </pre>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/2596835/5350059">https://stackoverflow.com/a/2596835/5350059</a>)</p>
 </div>
-<div class="section" id="delete-index-data-only">
-<h1>Delete index data only</h1>
-<p>To delete only the data of an index run the following command <a class="footnote-reference" href="#id16" id="id7">[7]</a>:</p>
+<div class="section" id="git-file-location-linux">
+<h2>git file location linux</h2>
 <pre class="literal-block">
-curl -X POST &quot;http://{host}:{port}/{index}/{type}/_delete_by_query?conflicts=proceed&quot; -H 'Content-Type: application/json' -d'
-{
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
-  }
-}
-'
+git config --global -e
+git config --system -e
+git config --local -e
 </pre>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/23134785/5350059">https://stackoverflow.com/a/23134785/5350059</a>)</p>
 </div>
-<div class="section" id="source">
-<h1>Source</h1>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-list-indices.html">List All Indices</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-create-index.html#getting-started-create-index">Create an Index</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-delete-index.html#getting-started-delete-index">Delete an Index</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id13" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-modify-data.html#_indexing_replacing_documents">Indexing/Replacing Documents</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id14" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-update-documents.html#getting-started-update-documents">Updating Documents</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id15" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-search">Search</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id16" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[7]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/6.5/docs-delete-by-query.html#docs-delete-by-query">Delete By Query API</a></td></tr>
-</tbody>
-</table>
+<div class="section" id="git-commit-and-push-without-output">
+<h2>git commit and push without output</h2>
+<pre class="literal-block">
+git commit --quiet
+git push --quiet
+</pre>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/8943761/5350059">https://stackoverflow.com/a/8943761/5350059</a>)</p>
+</div>
+<div class="section" id="get-the-current-branch-name-in-git">
+<h2>get the current branch name in git</h2>
+<pre class="literal-block">
+git rev-parse --abbrev-ref HEAD | grep -v ^HEAD$ || git rev-parse HEAD
+</pre>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/46798693/5350059">https://stackoverflow.com/a/46798693/5350059</a>)</p>
+</div>
+<div class="section" id="set-proxy">
+<h2>set proxy</h2>
+<pre class="literal-block">
+git config --global http.proxy http://proxyuser:proxypwd&#64;proxy.server.com:8080
+</pre>
+<p>change proxyuser to your proxy user
+change proxypwd to your proxy password
+change proxy.server.com to the URL of your proxy server
+change 8080 to the proxy port configured on your proxy server</p>
+<p>to get current proxy settings:</p>
+<pre class="literal-block">
+git config --global --get http.proxy
+</pre>
+<p>to unset proxy:</p>
+<pre class="literal-block">
+git config --global --unset http.proxy
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/19213999">https://stackoverflow.com/a/19213999</a></p>
+</div>
 </div>
 </div>
 </body>

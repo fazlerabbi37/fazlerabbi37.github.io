@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Elasticsearch Cheat Sheet</title>
+<title>gnome_cheat_sheet.rst</title>
 <style type="text/css">
 
 /*
@@ -367,123 +367,91 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="elasticsearch-cheat-sheet">
-<h1 class="title">Elasticsearch Cheat Sheet</h1>
+<div class="document">
 
-<p>A quick reference to Elasticsearch.</p>
-<p>Words wrapped with curly braces, like <tt class="docutils literal">{host}</tt> are variable, replace them with appropriate value.</p>
-<div class="section" id="list-indexes">
-<h1>List indexes</h1>
-<p>To list all the indexes of an Elasticsearch instance run the following command <a class="footnote-reference" href="#id8" id="id1">[1]</a>:</p>
-<pre class="literal-block">
-curl -XGET &quot;http://{host}:{port}/_cat/indices?v&quot;
-</pre>
-</div>
-<div class="section" id="create-an-index">
-<h1>Create an Index</h1>
-<p>To create a new index run the following command <a class="footnote-reference" href="#id9" id="id2">[2]</a>:</p>
-<pre class="literal-block">
-curl -XPUT 'http://{host}:{port}/{index}?pretty&amp;pretty'
-</pre>
-</div>
-<div class="section" id="delete-an-index">
-<h1>Delete an Index</h1>
-<p>To delete an index run the following command <a class="footnote-reference" href="#id11" id="id3">[3]</a>:</p>
-<pre class="literal-block">
-curl -XDELETE 'http://{host}:{port}/{index}?pretty&amp;pretty'
-</pre>
-</div>
-<div class="section" id="upload-data">
-<h1>Upload data</h1>
-<p>To upload a single data to an index run the following command <a class="footnote-reference" href="#id13" id="id4">[4]</a>:</p>
-<pre class="literal-block">
-curl -XPUT 'http://{host}:{port}/{index}/{type}/{doc_id}?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
-{
-&quot;field_name&quot;: &quot;data&quot;
-}'
-</pre>
-</div>
-<div class="section" id="update-a-field-value">
-<h1>Update a field value</h1>
-<p>To update a single data field run the following command <a class="footnote-reference" href="#id14" id="id5">[5]</a>:</p>
-<pre class="literal-block">
-curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
-{
-  &quot;doc&quot;: { &quot;field_name&quot;: &quot;data&quot; }
-}'
 
-OR
-
-curl -XPOST 'http://{host}:{port}/{index}/{type}/{doc_id}/_update?pretty&amp;pretty' -H 'Content-Type: application/json' -d'
-{
-  &quot;script&quot; : &quot;ctx._source.field_name += 1&quot;
-}'
-</pre>
+<div class="section" id="gnome">
+<h1>GNOME</h1>
+<p>A quick reference to Gnome.</p>
+<p>make sure you have gnome-tweak-tool installed. <tt class="docutils literal">sudo apt install <span class="pre">gnome-tweak-tool</span></tt></p>
 </div>
-<div class="section" id="search-index">
-<h1>Search index</h1>
-<p>To search and index run the following command <a class="footnote-reference" href="#id15" id="id6">[6]</a>:</p>
+<div class="section" id="run-sh-file-by-double-clicking-on-them">
+<h1>run .sh file by double clicking on them</h1>
 <pre class="literal-block">
-curl -XGET 'http://{host}:{port}/{index}/_search?q={field_name}:{keyword}'
+#using gsettings (source: http://askubuntu.com/a/378473/502875)
+gsettings set org.gnome.nautilus.preferences executable-text-activation ask
+#using dconf (source: http://askubuntu.com/a/421537/502875)
+dconf write /org/gnome/nautilus/preferences/executable-text-activation &quot;'launch'&quot;
 </pre>
 </div>
-<div class="section" id="delete-index-data-only">
-<h1>Delete index data only</h1>
-<p>To delete only the data of an index run the following command <a class="footnote-reference" href="#id16" id="id7">[7]</a>:</p>
+<div class="section" id="ubunut-side-panel-pin-or-favourite-source-http-askubuntu-com-a-171723-502875">
+<h1>Ubunut side panel pin or favourite (source: <a class="reference external" href="http://askubuntu.com/a/171723/502875">http://askubuntu.com/a/171723/502875</a>)</h1>
 <pre class="literal-block">
-curl -X POST &quot;http://{host}:{port}/{index}/{type}/_delete_by_query?conflicts=proceed&quot; -H 'Content-Type: application/json' -d'
-{
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
-  }
-}
-'
+#remove all pin
+gsettings set com.canonical.Unity.Launcher favorites &quot;[]&quot;
+#pin allpication
+gsettings set com.canonical.Unity.Launcher favorites &quot;['application://firefox.desktop', 'unity://running-apps', 'application://evolution.desktop', 'unity://devices']&quot;
+#get pin item
+gsettings get com.canonical.Unity.Launcher favorites
 </pre>
 </div>
-<div class="section" id="source">
-<h1>Source</h1>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-list-indices.html">List All Indices</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-create-index.html#getting-started-create-index">Create an Index</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-delete-index.html#getting-started-delete-index">Delete an Index</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id13" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-modify-data.html#_indexing_replacing_documents">Indexing/Replacing Documents</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id14" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-update-documents.html#getting-started-update-documents">Updating Documents</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id15" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-search">Search</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id16" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[7]</a></td><td><a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/6.5/docs-delete-by-query.html#docs-delete-by-query">Delete By Query API</a></td></tr>
-</tbody>
-</table>
+<div class="section" id="additional-workspaces-in-gnome-source-http-askubuntu-com-a-370048-502875">
+<h1>Additional Workspaces in Gnome (source: <a class="reference external" href="http://askubuntu.com/a/370048/502875">http://askubuntu.com/a/370048/502875</a>)</h1>
+<pre class="literal-block">
+#get n workspaces vertically
+gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize n
+#get n workspaces horizontally
+gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize n
+</pre>
+</div>
+<div class="section" id="remove-workspace-switcher-launcher-icon-from-the-unity-launcher-source-https-askubuntu-com-a-286344-502875">
+<h1>remove Workspace Switcher launcher icon from the Unity launcher (source: <a class="reference external" href="https://askubuntu.com/a/286344/502875">https://askubuntu.com/a/286344/502875</a>)</h1>
+<pre class="literal-block">
+gsettings get com.canonical.Unity.Launcher favorites
+#should returen something like
+#['application://nautilus.desktop', 'application://chromium-browser.desktop', 'application://ubuntu-software-center.desktop', 'application://ubuntuone-installer.desktop', 'application://ubuntu-amazon-default.desktop', 'application://UbuntuOneMusiconeubuntucom.desktop', 'application://gnome-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']
+#copy the whole string and remove 'unity://expo-icon' and give the following command, don't forget the &quot;&quot;
+gsettings set com.canonical.Unity.Launcher favorites &quot;['application://nautilus.desktop', 'application://chromium-browser.desktop', 'application://ubuntu-software-center.desktop', 'application://ubuntuone-installer.desktop', 'application://ubuntu-amazon-default.desktop', 'application://UbuntuOneMusiconeubuntucom.desktop', 'application://gnome-control-center.desktop', 'unity://running-apps', 'unity://devices']&quot;
+</pre>
+</div>
+<div class="section" id="always-show-menu-items-in-unity">
+<h1>always show menu items in Unity</h1>
+<pre class="literal-block">
+#switch on:
+gsettings set com.canonical.Unity always-show-menus true
+#switch off:
+gsettings set com.canonical.Unity always-show-menus false
+</pre>
+</div>
+<div class="section" id="remove-the-switch-user-account-option-in-unity">
+<h1>remove the switch user account option in Unity</h1>
+<pre class="literal-block">
+gsettings set com.canonical.indicator.session user-show-menu false
+</pre>
+</div>
+<div class="section" id="lock-screen">
+<h1>lock screen</h1>
+<p>#gnome gnome-screensaver-command -l #xfce xflock4</p>
+</div>
+<div class="section" id="chnage-background-picture">
+<h1>chnage background picture</h1>
+<pre class="literal-block">
+#gnome
+gsettings set org.gnome.desktop.background picture-uri &quot;file:///location/file.extension&quot;
+</pre>
+</div>
+<div class="section" id="see-month-and-date-on-main-title-bar">
+<h1>see month and date on main title bar</h1>
+<dl class="docutils">
+<dt>::</dt>
+<dd>gsettings set org.gnome.desktop.interface clock-show-date true</dd>
+</dl>
+<p><a class="reference external" href="https://www.facebook.com/groups/ubuntubd/permalink/10156552582077217/">উবুন্টু বাংলাদেশ [Ubuntu Bangladesh]</a>
+hide user from gear button
+==========================</p>
+<pre class="literal-block">
+gsettings set com.canonical.indicator.session user-show-menu false
+</pre>
 </div>
 </div>
 </body>
