@@ -1,6 +1,6 @@
 ADB Cheat Sheet
 ===============
-A quick reference of `ADB <https://developer.android.com/studio/command-line/adb>`_.
+A quick reference to `ADB <https://developer.android.com/studio/command-line/adb>`_.
 
 
 see devices

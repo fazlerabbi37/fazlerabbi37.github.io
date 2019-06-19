@@ -1,6 +1,6 @@
 git
 ===
-Quick reference to Git.
+A quick reference to Git.
 
 git remote add with other SSH port (source: https://stackoverflow.com/a/3596272/5350059)
 ========================================================================================

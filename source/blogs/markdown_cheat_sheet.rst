@@ -1,6 +1,6 @@
 Markdown Cheat Sheet
 ====================
-A quick reference of Markdown.
+A quick reference to Markdown.
 
 
 Italics

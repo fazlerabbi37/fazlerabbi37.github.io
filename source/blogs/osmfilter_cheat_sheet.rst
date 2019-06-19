@@ -1,6 +1,6 @@
 osmfilter Cheat Sheet
 =====================
-A quick reference of osmfilter.
+A quick reference to osmfilter.
 
 drop tags
 ---------

@@ -1,5 +1,7 @@
 GNOME
 =====
+A quick reference to Gnome.
+
 make sure you have gnome-tweak-tool installed. ``sudo apt install gnome-tweak-tool``
 
 run .sh file by double clicking on them

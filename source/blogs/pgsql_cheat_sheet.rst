@@ -1,6 +1,6 @@
 PostgreSQL Cheat Sheet
 ======================
-A quick reference of PostgreSQL.
+A quick reference to PostgreSQL.
 
 Create User
 -----------

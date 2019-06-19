@@ -1,6 +1,6 @@
 osmconvert Cheat Sheet
 ======================
-A quick reference of osmconvert.
+A quick reference to osmconvert.
 
 osm to pbf
 ----------

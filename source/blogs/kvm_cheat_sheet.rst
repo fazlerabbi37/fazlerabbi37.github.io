@@ -1,6 +1,6 @@
 KVM Cheat Sheet
 ===============
-A quick reference of KVM.
+A quick reference to KVM.
 
 Make guest from ISO
 -------------------

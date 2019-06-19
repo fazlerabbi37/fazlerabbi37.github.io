@@ -1,6 +1,6 @@
 Rails Console Cheat Sheet
 =========================
-A quick reference of Rails Console.
+A quick reference to Rails Console.
 
 Save rails console output to file
 ---------------------------------

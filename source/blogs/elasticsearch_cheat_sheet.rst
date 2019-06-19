@@ -1,6 +1,6 @@
 Elasticsearch Cheat Sheet
 =========================
-A quick reference of Elasticsearch.
+A quick reference to Elasticsearch.
 
 Words wrapped with curly braces, like ``{host}`` are variable, replace them with appropriate value.
 

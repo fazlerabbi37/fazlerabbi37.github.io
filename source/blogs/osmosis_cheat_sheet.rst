@@ -1,6 +1,6 @@
 osmosis Cheat Sheet
 ===================
-A quick reference of osmosis.
+A quick reference to osmosis.
 
 Populate a PostgreSQL database with pbf
 ---------------------------------------

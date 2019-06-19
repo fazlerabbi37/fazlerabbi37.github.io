@@ -1,6 +1,6 @@
 bash
 ====
-quick reference to bash
+A quick reference to bash
 
 .. warning:: under heavy construction and not well organized
 

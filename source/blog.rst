@@ -12,6 +12,30 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`git <blogs/git_cheat_sheet.html>`_
+...................................
+Jun 19, 2019
+
+Quick reference to Git.
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`GNOME <blogs/gnome_cheat_sheet.html>`_
+.......................................
+Jun 19, 2019
+
+make sure you have gnome-tweak-tool installed. ``sudo apt install gnome-tweak-tool``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`docker <blogs/docker_cheat_sheet.html>`_
+.........................................
+Jun 19, 2019
+
+shell access on a docker container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `bash <blogs/bash_cheat_sheet.html>`_
 .....................................
 Jun 19, 2019
@@ -26,30 +50,6 @@ Jun 19, 2019
 
 Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
-........................................................
-Jun 19, 2019
-
-A quick reference of PostgreSQL.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Google Calendar sync on Android without signing in <blogs/sync_gcalendar_without_android_signin.html>`_
-........................................................................................................
-Mar 19, 2019
-
-Want to sync your Google Calendar sync on Android but don't want to add your Google account on Android?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Hacking an access control device to take attendance <blogs/zkteco_f18_access_control_to_attendance.html>`_
-...........................................................................................................
-Mar 19, 2019
-
-How we hacked(modified!?) a Zkteco access control device to take automatic attendance.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -96,6 +96,14 @@ Explaining Desktop Entry aka Desktop icon in Ubuntu.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`docker <blogs/docker_cheat_sheet.html>`_
+.........................................
+Jun 19, 2019
+
+shell access on a docker container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Elasticsearch Cheat Sheet <blogs/elasticsearch_cheat_sheet.html>`_
 ...................................................................
 Jan 23, 2019
@@ -118,6 +126,22 @@ Jan 21, 2019
 
 Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`git <blogs/git_cheat_sheet.html>`_
+...................................
+Jun 19, 2019
+
+Quick reference to Git.
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`GNOME <blogs/gnome_cheat_sheet.html>`_
+.......................................
+Jun 19, 2019
+
+make sure you have gnome-tweak-tool installed. ``sudo apt install gnome-tweak-tool``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Google calendar to ical conversation <blogs/google_calendar_to_ical.html>`_
