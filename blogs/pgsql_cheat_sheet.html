@@ -422,7 +422,7 @@ sudo -u postgres psql -c &quot;SELECT version();&quot;
 </div>
 <div class="section" id="connect-to-remote-psql-host">
 <h1>connect to remote psql host</h1>
-<p>To connect to remote psql host <a class="footnote-reference" href="#id3" id="id1">[1]</a>:</p>
+<p>To connect to remote psql host <a class="footnote-reference" href="#id4" id="id1">[1]</a>:</p>
 <pre class="literal-block">
 psql -h $host -U $user -d $database
 </pre>
@@ -436,7 +436,7 @@ pg_dump -h $host -U username -d database &gt; database.dump
 </div>
 <div class="section" id="backup-a-psql-database-without-typing-password">
 <h1>backup a psql database without typing password</h1>
-<p>To backup a psql database without typing password <a class="footnote-reference" href="#id4" id="id2">[2]</a>:</p>
+<p>To backup a psql database without typing password <a class="footnote-reference" href="#id5" id="id2">[2]</a>:</p>
 <pre class="literal-block">
 PGPASSWORD=&quot;mypass&quot; pg_dump -h localhost -p 5432 -U username -Fc -b -v -f dumpfilename.dump databasename
 OR
@@ -481,6 +481,13 @@ pg_dump -h $host -p 5432 -U $psql_user -d $database -t $table_name &gt; backup.s
 sudo -u postgres psql -c &quot;\du&quot;
 </pre>
 </div>
+<div class="section" id="revoke-user-access-from-a-database">
+<h1>revoke user access from a database</h1>
+<p>to revoke user access from a database <a class="footnote-reference" href="#id6" id="id3">[3]</a>:</p>
+<pre class="literal-block">
+REVOKE ALL PRIVILEGES ON DATABASE &quot;$database&quot; from $username;
+</pre>
+</div>
 <div class="section" id="export-a-sql-statement-output-to-a-csv-file-with-header">
 <h1>export a sql statement output to a csv file with header</h1>
 <p>to export a sql statement output to a csv file with header:</p>
@@ -504,16 +511,22 @@ copy (&lt;sql_statement_to_show_output_as_json&gt;) to '/var/lib/postgresql/$fil
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://www.cyberciti.biz/tips/postgres-allow-remote-access-tcp-connection.html">How Do I Enable remote access to PostgreSQL database server?</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/24953448/5350059">How to pass in password to pg_dump?</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/33554900/5350059">postgresql - user privilege for a particular database</a></td></tr>
 </tbody>
 </table>
 </div>
