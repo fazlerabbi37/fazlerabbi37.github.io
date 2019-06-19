@@ -20,6 +20,14 @@ quick reference to bash
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`Rebooting consumer router using CLI <blogs/cli_router_reboot.html>`_
+.....................................................................
+Jun 19, 2019
+
+Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
 ........................................................
 Jun 19, 2019
@@ -44,14 +52,6 @@ How we hacked(modified!?) a Zkteco access control device to take automatic atten
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Bonsai: Elasticsearch playground <blogs/elasticsearch_with_bonsai.html>`_
-..........................................................................
-Mar 19, 2019
-
-Experimenting with Elasticsearch using Bonsai.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 
 
 All Blogs
@@ -70,6 +70,14 @@ Jun 19, 2019
 
 quick reference to bash
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Rebooting consumer router using CLI <blogs/cli_router_reboot.html>`_
+.....................................................................
+Jun 19, 2019
+
+Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Convert OVA image to QCOW <blogs/convert_ova_image_to_qcow.html>`_
