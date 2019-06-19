@@ -89,12 +89,6 @@ deleting a substring
 
 (source: http://stackoverflow.com/a/13570430/5350059)
 
-check if directory is git repository without having to cd into it
------------------------------------------------------------------
-::
-    	git -C $dir_path rev-parse
-
-(source: https://stackoverflow.com/a/39518382/5350059)
 
 Get a spcecifice column form output
 -----------------------------------
@@ -228,7 +222,7 @@ if else if elif
 ---------------
 ::
 
-    f [ expression 1 ]
+    if [ expression 1 ]
     then
        Statement(s) to be executed if expression 1 is true
     elif [ expression 2 ]
@@ -839,8 +833,6 @@ run a terminal-lunched program after closing terminal (by removing it form job l
 
     app_name & disown
 
-run script at startup
----------------------
 
 delete last char of string
 --------------------------
@@ -1322,7 +1314,7 @@ connect to net using ethernet calbe if you have DHCP enabled
 
  (source: https://askubuntu.com/a/755263/502875)
 
-chnage hostname in linux
+change hostname in linux
 ------------------------
 ::
 
@@ -1330,7 +1322,7 @@ chnage hostname in linux
 
  (source: https://askubuntu.com/a/87687/502875)
 
-chnage the default shell
+change the default shell
 ------------------------
 sometime after doing ssh to a machine we see just ```$``` or ```#``` instead of the very familer ``user@hostname$`` thats beacuse the default shell for that user is not set or not bash.::
 
@@ -1393,7 +1385,7 @@ nmap find all alive hostnames and IPs in LAN
 
 (source: https://serverfault.com/a/153779)
 
-get curret IP if first interface is being used
+get current IP if first interface is being used
 ----------------------------------------------
 ::
 
@@ -1605,7 +1597,7 @@ download and output it on STDOUT
     wget -qO- $link
 
 (source: https://stackoverflow.com/a/22926472/5350059)
-   
+
 
 image your hard disk using dd
 -----------------------------
