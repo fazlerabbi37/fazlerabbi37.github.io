@@ -12,44 +12,44 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
-`git <blogs/git_cheat_sheet.html>`_
-...................................
+`Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
+...................................................................
 Jun 19, 2019
 
-Quick reference to Git.
-~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to Rails Console.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`GNOME <blogs/gnome_cheat_sheet.html>`_
-.......................................
+`PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
+........................................................
 Jun 19, 2019
 
-make sure you have gnome-tweak-tool installed. ``sudo apt install gnome-tweak-tool``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to PostgreSQL.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`docker <blogs/docker_cheat_sheet.html>`_
-.........................................
+`osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
+.......................................................
 Jun 19, 2019
 
-shell access on a docker container
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to osmosis.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`bash <blogs/bash_cheat_sheet.html>`_
-.....................................
+`osmfilter Cheat Sheet <blogs/osmfilter_cheat_sheet.html>`_
+...........................................................
 Jun 19, 2019
 
-quick reference to bash
-~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to osmfilter.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Rebooting consumer router using CLI <blogs/cli_router_reboot.html>`_
-.....................................................................
+`osmconvert Cheat Sheet <blogs/osmconvert_cheat_sheet.html>`_
+.............................................................
 Jun 19, 2019
 
-Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to osmconvert.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -58,9 +58,9 @@ All Blogs
 ------------
 `ADB Cheat Sheet <blogs/adb_cheat_sheet.html>`_
 ...............................................
-Mar 19, 2019
+Jun 19, 2019
 
-A quick reference of `ADB <https://developer.android.com/studio/command-line/adb>`_.
+A quick reference to `ADB <https://developer.android.com/studio/command-line/adb>`_.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -68,8 +68,8 @@ A quick reference of `ADB <https://developer.android.com/studio/command-line/adb
 .....................................
 Jun 19, 2019
 
-quick reference to bash
-~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to bash
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Rebooting consumer router using CLI <blogs/cli_router_reboot.html>`_
@@ -100,15 +100,15 @@ Explaining Desktop Entry aka Desktop icon in Ubuntu.
 .........................................
 Jun 19, 2019
 
-shell access on a docker container
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to Docker.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Elasticsearch Cheat Sheet <blogs/elasticsearch_cheat_sheet.html>`_
 ...................................................................
-Jan 23, 2019
+Jun 19, 2019
 
-A quick reference of Elasticsearch.
+A quick reference to Elasticsearch.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -132,16 +132,16 @@ Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client
 ...................................
 Jun 19, 2019
 
-Quick reference to Git.
-~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to Git.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `GNOME <blogs/gnome_cheat_sheet.html>`_
 .......................................
 Jun 19, 2019
 
-make sure you have gnome-tweak-tool installed. ``sudo apt install gnome-tweak-tool``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to Gnome.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Google calendar to ical conversation <blogs/google_calendar_to_ical.html>`_
@@ -170,41 +170,41 @@ Installing KDE Connect in Ubuntu 18.04 LTS.
 
 `KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
 ...............................................
-Jan 23, 2019
+Jun 19, 2019
 
-A quick reference of KVM.
+A quick reference to KVM.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Markdown Cheat Sheet <blogs/markdown_cheat_sheet.html>`_
 .........................................................
-Aug 29, 2018
+Jun 19, 2019
 
-A quick reference of Markdown.
+A quick reference to Markdown.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `osmconvert Cheat Sheet <blogs/osmconvert_cheat_sheet.html>`_
 .............................................................
-Jan 22, 2019
+Jun 19, 2019
 
-A quick reference of osmconvert.
+A quick reference to osmconvert.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `osmfilter Cheat Sheet <blogs/osmfilter_cheat_sheet.html>`_
 ...........................................................
-Jan 23, 2019
+Jun 19, 2019
 
-A quick reference of osmfilter.
+A quick reference to osmfilter.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
 .......................................................
-Jan 23, 2019
+Jun 19, 2019
 
-A quick reference of osmosis.
+A quick reference to osmosis.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -228,7 +228,7 @@ Using Pencil Project as GUI prototyping tool.
 ........................................................
 Jun 19, 2019
 
-A quick reference of PostgreSQL.
+A quick reference to PostgreSQL.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -242,9 +242,9 @@ The whole process of publishing Sphinx generated doc with GitHub Pages.
 
 `Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
 ...................................................................
-Jan 23, 2019
+Jun 19, 2019
 
-A quick reference of Rails Console.
+A quick reference to Rails Console.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
