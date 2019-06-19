@@ -371,6 +371,10 @@ body {
 <h1 class="title">bash</h1>
 
 <p>quick reference to bash</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">under heavy construction and not well organized</p>
+</div>
 <div class="section" id="sed">
 <h1>sed</h1>
 <div class="section" id="deleting-a-substring">
@@ -581,20 +585,19 @@ if [[ ! -z $string ]]
    fi
 
 (source: https://www.tutorialspoint.com/unix/if-elif-statement.htm)
-
-if string is equal to string
-----------------------------
-::
-
-    string=&quot;ABC&quot;
-    if [ &quot;$string&quot; = &quot;XYZ&quot; ]; then
-        echo &quot;string matched&quot;
-    else
-        echo &quot;string mismatched&quot;
-    fi;
-
-(source: http://stackoverflow.com/a/10849346/5350059)
 </pre>
+</div>
+<div class="section" id="if-string-is-equal-to-string">
+<h2>if string is equal to string</h2>
+<pre class="literal-block">
+string=&quot;ABC&quot;
+if [ &quot;$string&quot; = &quot;XYZ&quot; ]; then
+    echo &quot;string matched&quot;
+else
+    echo &quot;string mismatched&quot;
+fi;
+</pre>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/10849346/5350059">http://stackoverflow.com/a/10849346/5350059</a>)</p>
 </div>
 <div class="section" id="if-a-application-exist">
 <h2>if a application exist</h2>
@@ -1050,8 +1053,8 @@ sudo apt-get install notify-osd
 DISPLAY=:0.0 /usr/bin/notify-send &quot;title&quot; &quot;Message&quot;
 </pre>
 </div>
-<div class="section" id="notification-at-a-specific">
-<h2>notification at a specific</h2>
+<div class="section" id="notification-at-a-specific-time">
+<h2>notification at a specific time</h2>
 <pre class="literal-block">
 echo 'notify-send &quot;Work day is done!&quot;' | at 4:00PM
 echo 'notify-send &quot;Get your tea!&quot;' | at now + 3 minutes
@@ -1192,8 +1195,8 @@ jobs #see jobs
 [1]+  Terminated    ./my-shell-script.sh #sample output
 </pre>
 </div>
-<div class="section" id="terminal-based-lan-cat">
-<h2>terminal based lan cat</h2>
+<div class="section" id="terminal-based-lan-chat">
+<h2>terminal based lan chat</h2>
 <pre class="literal-block">
 pc1: nc -l $port
 pc2: nc $IP $port
@@ -1441,8 +1444,8 @@ sudo -v
 </pre>
 <p>(source: <a class="reference external" href="https://superuser.com/a/553939/655587">https://superuser.com/a/553939/655587</a>)</p>
 </div>
-<div class="section" id="echo-is-system-file">
-<h2>echo is system file</h2>
+<div class="section" id="echo-in-system-file">
+<h2>echo in system file</h2>
 <pre class="literal-block">
 echo &quot;line to be added&quot; | sudo tee -a /etc/fstab
 </pre>
@@ -1614,14 +1617,13 @@ cp /etc/bash.bashrc ~/.bashrc
 </div>
 <div class="section" id="show-last-octet-of-ip">
 <h2>show last octet of ip</h2>
-<dl class="docutils">
-<dt>::</dt>
-<dd>vim .bashrc
+<pre class="literal-block">
+vim .bashrc
 ip=lo:$(ifconfig | grep &quot;inet &quot; | grep -v 127.0.0. | awk '{print $2}' | cut -d . -f 4)
-ip=$(echo &quot;$ip&quot; | tr 'n' '/')
+ip=$(echo &quot;$ip&quot; | tr '\n' '/')
 ip=&quot;${ip::-1}&quot;
-PS1='${debian_chroot:+($debian_chroot)}[033[01;32m]u&#64;h($ip)[033[00m]:[033[01;34m]w[033[00m]$ '</dd>
-</dl>
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u&#64;\h($ip)\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+</pre>
 </div>
 <div class="section" id="make-video-with-image-and-audio">
 <h2>make video with image and audio</h2>
@@ -1636,8 +1638,8 @@ ffmpeg -loop 1 -i image.jpg -i audio.AMR -c:v libx264 -tune stillimage -c:a aac 
 ubuntu-support-status
 </pre>
 </div>
-<div class="section" id="get-all-system-if-as-html-page">
-<h2>get all system if as html page</h2>
+<div class="section" id="get-all-system-info-as-html-page">
+<h2>get all system info as html page</h2>
 <pre class="literal-block">
 sudo lshw -html&gt;sys.html
 </pre>
@@ -1687,13 +1689,14 @@ scriptname &gt;/dev/null
 touch -- -$folder_name
 </pre>
 <p>(source: udemy.com/intro-to-bash-linux-command-line section:6 lecture:23)</p>
-<p>Standard streams
-::
-----------------</p>
-<blockquote>
+</div>
+<div class="section" id="standard-streams">
+<h2>standard streams</h2>
+<pre class="literal-block">
 stdin 0
 stdout 1
-stderr 2</blockquote>
+stderr 2
+</pre>
 <p>(source: <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_streams">https://en.wikipedia.org/wiki/Standard_streams</a>)</p>
 </div>
 <div class="section" id="see-gup-info">
