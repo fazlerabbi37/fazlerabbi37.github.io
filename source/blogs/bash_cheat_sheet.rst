@@ -2,6 +2,8 @@ bash
 ====
 quick reference to bash
 
+.. warning:: under heavy construction and not well organized
+
 sed
 !!!
 
@@ -237,18 +239,18 @@ if else if elif
 
  (source: https://www.tutorialspoint.com/unix/if-elif-statement.htm)
 
- if string is equal to string
- ----------------------------
- ::
+if string is equal to string
+----------------------------
+::
 
-     string="ABC"
-     if [ "$string" = "XYZ" ]; then
-         echo "string matched"
-     else
-         echo "string mismatched"
-     fi;
+    string="ABC"
+    if [ "$string" = "XYZ" ]; then
+        echo "string matched"
+    else
+        echo "string mismatched"
+    fi;
 
- (source: http://stackoverflow.com/a/10849346/5350059)
+(source: http://stackoverflow.com/a/10849346/5350059)
 
 if a application exist
 ----------------------
@@ -449,6 +451,7 @@ use pc name instead of ip while ssh
 
 shutdown, restart, without sudo from terminal [munst have consolekit]
 ---------------------------------------------------------------------
+
 A safe way to do this without using sudo and without tinkering with the system, is by executing these one-liner commands:
 For Ubuntu 14.10 or earlier:
 Shutdown::
@@ -738,8 +741,8 @@ show notification in linux
     sudo apt-get install notify-osd
     DISPLAY=:0.0 /usr/bin/notify-send "title" "Message"
 
-notification at a specific
---------------------------
+notification at a specific time
+-------------------------------
 ::
 
     echo 'notify-send "Work day is done!"' | at 4:00PM
@@ -891,8 +894,8 @@ Execute a command in the background using '&' and killing it
 
 
 
-terminal based lan cat
-----------------------
+terminal based lan chat
+-----------------------
 ::
 
     pc1: nc -l $port
@@ -1159,7 +1162,7 @@ check if user is sudo if not ask for password
 
 (source: https://superuser.com/a/553939/655587)
 
-echo is system file
+echo in system file
 -------------------
 ::
 
@@ -1350,6 +1353,7 @@ if your .bashrc is lost
 show last octet of ip
 ---------------------
 ::
+    
     vim .bashrc
     ip=lo:$(ifconfig | grep "inet " | grep -v 127.0.0. | awk '{print $2}' | cut -d . -f 4)
     ip=$(echo "$ip" | tr '\n' '/')
@@ -1371,8 +1375,8 @@ show ubuntu-support-status
 
     ubuntu-support-status
 
-get all system if as html page
-------------------------------
+get all system info as html page
+--------------------------------
 ::
 
     sudo lshw -html>sys.html
@@ -1427,9 +1431,9 @@ make a dir with - in fornt of it
 
 (source: udemy.com/intro-to-bash-linux-command-line section:6 lecture:23)
 
-Standard streams
-::
+standard streams
 ----------------
+::
 
     stdin 0
     stdout 1
