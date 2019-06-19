@@ -1,5 +1,6 @@
 bash
 ====
+quick reference to bash
 
 sed
 !!!
@@ -104,6 +105,8 @@ Get a spcecifice row column output
 
 
 
+others
+!!!!!!
 save command output in vaiable
 ------------------------------
 ::
@@ -486,14 +489,16 @@ gnome-session-quit --power-off --force --no-prompt
 
 https://askubuntu.com/a/714940
 
-run applications as root (source: http://askubuntu.com/a/207467/502875)
----------------------------------------------------------------------------
+run applications as root
+------------------------
 ::
 
     #console
     sudo <program name>
     #GUI
     gksudo <program name>
+
+(source: http://askubuntu.com/a/207467/502875)
 
 grep for this or that (2 things) in a file?
 -------------------------------------------
@@ -687,8 +692,8 @@ connect to wifi::
 
     nmcli dev wifi connect $SSID password $PASS
 
-Source: https://www.quora.com/What-are-some-funny-Linux-commands
-----------------------------------------------------------------
+What are some funny Linux commands
+----------------------------------
 
 make::
 
@@ -720,6 +725,7 @@ bb::
     apt-get install bb
     bb
 
+(source: https://www.quora.com/What-are-some-funny-Linux-commands)
 
 show notification in linux
 --------------------------
@@ -1386,7 +1392,7 @@ nmap find all alive hostnames and IPs in LAN
 (source: https://serverfault.com/a/153779)
 
 get current IP if first interface is being used
-----------------------------------------------
+-----------------------------------------------
 ::
 
     ifconfig | grep "inet " | awk 'FNR == 1 {print $2}' | cut -d: -f2 #if first interface is not being used change the FNR == number of interface
