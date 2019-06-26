@@ -58,6 +58,31 @@ we can put pause in between two commands for 60 seconds by putting the following
 
 source: https://forums.docker.com/t/how-to-delay-execution-of-next-line-in-dockefile/50022/2
 
+completely remove docker
+------------------------
+to completely remove docker and all related file, first identify what installed package we have::
+
+    dpkg -l | grep -i docker
+Then run the following::
+
+    sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
+    sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce docker-ce-cli
+
+Make sure the above commands has all the following packages from the `dpkg -l` command. If not add them at the end. The above commands will not remove images, containers, volumes, or user created configuration files on your host. If you wish to delete all images, containers, and volumes run the following commands::
+
+    sudo rm -rf /var/lib/docker
+    sudo rm /etc/apparmor.d/docker
+    sudo groupdel docker
+    sudo rm -rf /var/run/docker.sock
+    sudo rm -rf /etc/docker
+    sudo rm -rf ~/.docker
+Finally remove docker-compose::
+
+    sudo rm /usr/local/bin/docker-compose
+
+source: https://askubuntu.com/a/1021506/502875
+
+    
 
 source
 ------
