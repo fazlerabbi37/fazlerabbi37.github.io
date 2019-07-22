@@ -1,27 +1,32 @@
-git
-===
+Git Cheat Sheet
+===============
 A quick reference to Git.
 
-git remote add with other SSH port (source: https://stackoverflow.com/a/3596272/5350059)
-========================================================================================
+git remote add with other SSH port 
+----------------------------------
 ::
 
     git remote add origin ssh://user@host:1234/srv/git/example
 
-check if directory is git repository without having to cd into it (source: https://stackoverflow.com/a/39518382/5350059)
-=========================================================================================================================
+(source: https://stackoverflow.com/a/3596272/5350059)
+
+
+check if directory is git repository without having to cd into it 
+-----------------------------------------------------------------
 ::
     	git -C $dir_path rev-parse
 
+(source: https://stackoverflow.com/a/39518382/5350059)
+
 using a git command inside a cron job while using ssh key
-========================================================================================================
+---------------------------------------------------------
 ::
 
     #add those line at the top of script
     export SSH_AGENT_PID=`ps -a | grep ssh-agent | grep -o -e [0-9][0-9][0-9][0-9]`
     export SSH_AUTH_SOCK=`find /tmp/ -path '*keyring-*' -name '*ssh*' -print 2>/dev/null`
 
-    (source: https://stackoverflow.com/a/16580506)
+(source: https://stackoverflow.com/a/16580506)
 
 make vim git default editor
 ---------------------------
@@ -77,6 +82,57 @@ to unset proxy::
 
     git config --global --unset http.proxy
 
-https://stackoverflow.com/a/19213999
+(source: https://stackoverflow.com/a/19213999)
+
+Changing author info
+--------------------
+to change the author info ie. name and email we need to use the `git fil` command. First save the following to a file.::
+
+    #!/bin/sh
+
+    git filter-branch --env-filter '
+
+    OLD_EMAIL="your-old-email@example.com"
+    CORRECT_NAME="Your Correct Name"
+    CORRECT_EMAIL="your-correct-email@example.com"
+
+    if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+    then
+        export GIT_COMMITTER_NAME="$CORRECT_NAME"
+        export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+    fi
+    if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+    then
+        export GIT_AUTHOR_NAME="$CORRECT_NAME"
+        export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+    fi
+    ' --tag-name-filter cat -- --branches --tags
+
+We will save this in a file named `filter_author_info.sh`. We need the modify the `OLD_EMAIL`, `CORRECT_NAME`, and `CORRECT_EMAIL` to the match our expectation. Now we will change the file permission and run the script::
+
+    chmod +x filter_author_info.sh
+    bash filter_author_info.sh
+    
+Next we will review the new Git history for errors. Push the corrected history to remote repo::
+
+    git push --force --tags origin 'refs/heads/*'
+
+And we are done.
+
+(source: https://help.github.com/en/articles/changing-author-info)
+
+commit message template
+-----------------------
+to set a custom commit message template::
+
+    git config commit.template /absolute/path/to/file
+
+    or
+
+    git config commit.template relative-path-from-repository-root
+
+(source: https://stackoverflow.com/a/28948582/5350059)
 
 
+Source
+------
