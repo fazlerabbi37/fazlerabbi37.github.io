@@ -5,12 +5,13 @@ A quick reference to Docker.
 shell access on a docker image
 ------------------------------
 
+
 https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605
 https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host#22050116
 
 run a docker image as a container in background
 -----------------------------------------------
-to run a docker image as a container do the following [4]_::
+to run a docker image as a container do the following::
 
     docker run -d repository
     docker run -d repository:tag
@@ -63,6 +64,7 @@ completely remove docker
 to completely remove docker and all related file, first identify what installed package we have::
 
     dpkg -l | grep -i docker
+
 Then run the following::
 
     sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
@@ -76,14 +78,31 @@ Make sure the above commands has all the following packages from the `dpkg -l` c
     sudo rm -rf /var/run/docker.sock
     sudo rm -rf /etc/docker
     sudo rm -rf ~/.docker
+
 Finally remove docker-compose::
 
     sudo rm /usr/local/bin/docker-compose
 
 source: https://askubuntu.com/a/1021506/502875
 
-    
+install tzdata without user interaction
+---------------------------------------
+to install tzdata without user interaction, put this in Dockerfile::
 
-source
+    ARG DEBIAN_FRONTEND=noninteractive
+
+source: https://askubuntu.com/a/1013396/502875
+
+remove all images and containers
+--------------------------------
+to remove all images and containers::
+
+    docker rm $(docker ps -a -q)
+    docker rmi -f $(docker images -q)
+
+source: https://techoverflow.net/2013/10/22/docker-remove-all-images-and-containers/
+
+
+Source
 ------
 .. [1] `How to get bash or ssh into a running container in background mode? <https://askubuntu.com/a/507009/502875>`_
