@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>docker</title>
+<title>Docker Cheat Sheet</title>
 <style type="text/css">
 
 /*
@@ -367,36 +367,110 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="docker">
-<h1 class="title">docker</h1>
+<div class="document" id="docker-cheat-sheet">
+<h1 class="title">Docker Cheat Sheet</h1>
 
 <p>A quick reference to Docker.</p>
+<div class="section" id="shell-access-on-a-docker-image">
+<h1>shell access on a docker image</h1>
+<p><a class="reference external" href="https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605">https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605</a>
+<a class="reference external" href="https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host#22050116">https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host#22050116</a></p>
+</div>
+<div class="section" id="run-a-docker-image-as-a-container-in-background">
+<h1>run a docker image as a container in background</h1>
+<p>to run a docker image as a container do the following:</p>
+<pre class="literal-block">
+docker run -d repository
+docker run -d repository:tag
+docker run -d image_id
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/50208526/5350059">https://stackoverflow.com/a/50208526/5350059</a></p>
+</div>
 <div class="section" id="shell-access-on-a-docker-container">
 <h1>shell access on a docker container</h1>
 <p>two ways to do it <a class="footnote-reference" href="#id2" id="id1">[1]</a>. <tt class="docutils literal">attach</tt> and <tt class="docutils literal">exec</tt>.</p>
 <div class="section" id="using-attach">
 <h2>using <tt class="docutils literal">attach</tt></h2>
-<dl class="docutils">
-<dt>::</dt>
-<dd><p class="first">sudo docker attach 665b4a1e17b6 #by ID</p>
-<p>#OR</p>
-<p class="last">sudo docker attach loving_heisenberg #by Name</p>
-</dd>
-</dl>
+<pre class="literal-block">
+sudo docker attach image_id
+
+#OR
+
+sudo docker attach repository #by Name
+</pre>
 </div>
 <div class="section" id="using-exec">
 <h2>using <tt class="docutils literal">exec</tt></h2>
-<dl class="docutils">
-<dt>::</dt>
-<dd><p class="first">sudo docker exec -i -t 665b4a1e17b6 /bin/bash #by ID</p>
-<p>#OR</p>
-<p class="last">sudo docker exec -i -t loving_heisenberg /bin/bash #by Name</p>
-</dd>
-</dl>
+<pre class="literal-block">
+sudo docker exec -i -t image_id /bin/bash
+
+#OR
+
+sudo docker exec -i -t repository /bin/bash
+</pre>
 </div>
+</div>
+<div class="section" id="duplicate-an-image">
+<h1>duplicate an image</h1>
+<p>to duplicate an image:</p>
+<pre class="literal-block">
+docker tag image new_image
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/45779866/5350059">https://stackoverflow.com/a/45779866/5350059</a></p>
+</div>
+<div class="section" id="sleep-in-between-two-commands">
+<h1>sleep in between two commands</h1>
+<p>we can put pause in between two commands for 60 seconds by putting the following in between those commands:</p>
+<pre class="literal-block">
+RUN sleep 60
+</pre>
+<p>source: <a class="reference external" href="https://forums.docker.com/t/how-to-delay-execution-of-next-line-in-dockefile/50022/2">https://forums.docker.com/t/how-to-delay-execution-of-next-line-in-dockefile/50022/2</a></p>
+</div>
+<div class="section" id="completely-remove-docker">
+<h1>completely remove docker</h1>
+<p>to completely remove docker and all related file, first identify what installed package we have:</p>
+<pre class="literal-block">
+dpkg -l | grep -i docker
+</pre>
+<p>Then run the following:</p>
+<pre class="literal-block">
+sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli
+sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce docker-ce-cli
+</pre>
+<p>Make sure the above commands has all the following packages from the <cite>dpkg -l</cite> command. If not add them at the end. The above commands will not remove images, containers, volumes, or user created configuration files on your host. If you wish to delete all images, containers, and volumes run the following commands:</p>
+<pre class="literal-block">
+sudo rm -rf /var/lib/docker
+sudo rm /etc/apparmor.d/docker
+sudo groupdel docker
+sudo rm -rf /var/run/docker.sock
+sudo rm -rf /etc/docker
+sudo rm -rf ~/.docker
+</pre>
+<p>Finally remove docker-compose:</p>
+<pre class="literal-block">
+sudo rm /usr/local/bin/docker-compose
+</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/1021506/502875">https://askubuntu.com/a/1021506/502875</a></p>
+</div>
+<div class="section" id="install-tzdata-without-user-interaction">
+<h1>install tzdata without user interaction</h1>
+<p>to install tzdata without user interaction, put this in Dockerfile:</p>
+<pre class="literal-block">
+ARG DEBIAN_FRONTEND=noninteractive
+</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/1013396/502875">https://askubuntu.com/a/1013396/502875</a></p>
+</div>
+<div class="section" id="remove-all-images-and-containers">
+<h1>remove all images and containers</h1>
+<p>to remove all images and containers:</p>
+<pre class="literal-block">
+docker rm $(docker ps -a -q)
+docker rmi -f $(docker images -q)
+</pre>
+<p>source: <a class="reference external" href="https://techoverflow.net/2013/10/22/docker-remove-all-images-and-containers/">https://techoverflow.net/2013/10/22/docker-remove-all-images-and-containers/</a></p>
 </div>
 <div class="section" id="source">
-<h1>source</h1>
+<h1>Source</h1>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
