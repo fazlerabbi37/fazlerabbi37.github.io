@@ -1,5 +1,5 @@
-docker
-======
+Docker Cheat Sheet
+==================
 A quick reference to Docker.
 
 shell access on a docker image
