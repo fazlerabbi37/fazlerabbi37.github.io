@@ -12,44 +12,44 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
+.................................................
+Jul 23, 2019
+
+A quick reference to bash
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
+.....................................................
+Jul 23, 2019
+
+A quick reference to Docker.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
+........................................................
+Jul 23, 2019
+
+A quick reference to PostgreSQL.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Git Cheat Sheet <blogs/git_cheat_sheet.html>`_
+...............................................
+Jul 23, 2019
+
+A quick reference to Git.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
 ...................................................................
 Jun 19, 2019
 
 A quick reference to Rails Console.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
-........................................................
-Jun 19, 2019
-
-A quick reference to PostgreSQL.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
-.......................................................
-Jun 19, 2019
-
-A quick reference to osmosis.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`osmfilter Cheat Sheet <blogs/osmfilter_cheat_sheet.html>`_
-...........................................................
-Jun 19, 2019
-
-A quick reference to osmfilter.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`osmconvert Cheat Sheet <blogs/osmconvert_cheat_sheet.html>`_
-.............................................................
-Jun 19, 2019
-
-A quick reference to osmconvert.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -64,9 +64,9 @@ A quick reference to `ADB <https://developer.android.com/studio/command-line/adb
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`bash <blogs/bash_cheat_sheet.html>`_
-.....................................
-Jun 19, 2019
+`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
+.................................................
+Jul 23, 2019
 
 A quick reference to bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,9 +96,9 @@ Explaining Desktop Entry aka Desktop icon in Ubuntu.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`docker <blogs/docker_cheat_sheet.html>`_
-.........................................
-Jun 19, 2019
+`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
+.....................................................
+Jul 23, 2019
 
 A quick reference to Docker.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,9 +128,9 @@ Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`git <blogs/git_cheat_sheet.html>`_
-...................................
-Jun 19, 2019
+`Git Cheat Sheet <blogs/git_cheat_sheet.html>`_
+...............................................
+Jul 23, 2019
 
 A quick reference to Git.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,7 +226,7 @@ Using Pencil Project as GUI prototyping tool.
 
 `PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
 ........................................................
-Jun 19, 2019
+Jul 23, 2019
 
 A quick reference to PostgreSQL.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
