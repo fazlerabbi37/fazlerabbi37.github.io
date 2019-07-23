@@ -1,5 +1,5 @@
-bash
-====
+Bash Cheat Sheet
+================
 A quick reference to bash
 
 .. warning:: under heavy construction and not well organized
@@ -1613,3 +1613,16 @@ image your hard disk using dd
 -----------------------------
 
 (source: http://www.linuxweblog.com/dd-image)
+
+use curl to download tar file
+-----------------------------
+to use curl to download tar file::
+
+    curl -L https://site.tld/file.tar.b2 | tar zx
+
+source: https://stackoverflow.com/a/5746376/5350059
+
+
+
+Source
+------
