@@ -370,13 +370,16 @@ body {
 <div class="document">
 
 
-<div class="section" id="gnome">
-<h1>GNOME</h1>
-<p>A quick reference to Gnome.</p>
-<p>make sure you have gnome-tweak-tool installed. <tt class="docutils literal">sudo apt install <span class="pre">gnome-tweak-tool</span></tt></p>
+<div class="section" id="gnome-cheat-sheet">
+<h1>GNOME Cheat Sheet</h1>
+<p>A quick reference to GNOME.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">under heavy construction and not well organized</p>
 </div>
+<p>make sure you have gnome-tweak-tool installed. <tt class="docutils literal">sudo apt install <span class="pre">gnome-tweak-tool</span></tt></p>
 <div class="section" id="run-sh-file-by-double-clicking-on-them">
-<h1>run .sh file by double clicking on them</h1>
+<h2>run .sh file by double clicking on them</h2>
 <pre class="literal-block">
 #using gsettings (source: http://askubuntu.com/a/378473/502875)
 gsettings set org.gnome.nautilus.preferences executable-text-activation ask
@@ -384,8 +387,8 @@ gsettings set org.gnome.nautilus.preferences executable-text-activation ask
 dconf write /org/gnome/nautilus/preferences/executable-text-activation &quot;'launch'&quot;
 </pre>
 </div>
-<div class="section" id="ubunut-side-panel-pin-or-favourite-source-http-askubuntu-com-a-171723-502875">
-<h1>Ubunut side panel pin or favourite (source: <a class="reference external" href="http://askubuntu.com/a/171723/502875">http://askubuntu.com/a/171723/502875</a>)</h1>
+<div class="section" id="ubunut-side-panel-pin-or-favourite">
+<h2>Ubunut side panel pin or favourite</h2>
 <pre class="literal-block">
 #remove all pin
 gsettings set com.canonical.Unity.Launcher favorites &quot;[]&quot;
@@ -394,18 +397,20 @@ gsettings set com.canonical.Unity.Launcher favorites &quot;['application://firef
 #get pin item
 gsettings get com.canonical.Unity.Launcher favorites
 </pre>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/171723/502875">http://askubuntu.com/a/171723/502875</a>)</p>
 </div>
-<div class="section" id="additional-workspaces-in-gnome-source-http-askubuntu-com-a-370048-502875">
-<h1>Additional Workspaces in Gnome (source: <a class="reference external" href="http://askubuntu.com/a/370048/502875">http://askubuntu.com/a/370048/502875</a>)</h1>
+<div class="section" id="additional-workspaces-in-gnome">
+<h2>Additional Workspaces in GNOME</h2>
 <pre class="literal-block">
 #get n workspaces vertically
 gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize n
 #get n workspaces horizontally
 gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize n
 </pre>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/370048/502875">http://askubuntu.com/a/370048/502875</a>)</p>
 </div>
-<div class="section" id="remove-workspace-switcher-launcher-icon-from-the-unity-launcher-source-https-askubuntu-com-a-286344-502875">
-<h1>remove Workspace Switcher launcher icon from the Unity launcher (source: <a class="reference external" href="https://askubuntu.com/a/286344/502875">https://askubuntu.com/a/286344/502875</a>)</h1>
+<div class="section" id="remove-workspace-switcher-launcher-icon-from-the-unity-launcher">
+<h2>remove Workspace Switcher launcher icon from the Unity launcher</h2>
 <pre class="literal-block">
 gsettings get com.canonical.Unity.Launcher favorites
 #should returen something like
@@ -413,9 +418,10 @@ gsettings get com.canonical.Unity.Launcher favorites
 #copy the whole string and remove 'unity://expo-icon' and give the following command, don't forget the &quot;&quot;
 gsettings set com.canonical.Unity.Launcher favorites &quot;['application://nautilus.desktop', 'application://chromium-browser.desktop', 'application://ubuntu-software-center.desktop', 'application://ubuntuone-installer.desktop', 'application://ubuntu-amazon-default.desktop', 'application://UbuntuOneMusiconeubuntucom.desktop', 'application://gnome-control-center.desktop', 'unity://running-apps', 'unity://devices']&quot;
 </pre>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/286344/502875">https://askubuntu.com/a/286344/502875</a>)</p>
 </div>
 <div class="section" id="always-show-menu-items-in-unity">
-<h1>always show menu items in Unity</h1>
+<h2>always show menu items in Unity</h2>
 <pre class="literal-block">
 #switch on:
 gsettings set com.canonical.Unity always-show-menus true
@@ -424,34 +430,35 @@ gsettings set com.canonical.Unity always-show-menus false
 </pre>
 </div>
 <div class="section" id="remove-the-switch-user-account-option-in-unity">
-<h1>remove the switch user account option in Unity</h1>
+<h2>remove the switch user account option in Unity</h2>
 <pre class="literal-block">
 gsettings set com.canonical.indicator.session user-show-menu false
 </pre>
+</div>
 </div>
 <div class="section" id="lock-screen">
 <h1>lock screen</h1>
 <p>#gnome gnome-screensaver-command -l #xfce xflock4</p>
-</div>
 <div class="section" id="chnage-background-picture">
-<h1>chnage background picture</h1>
+<h2>chnage background picture</h2>
 <pre class="literal-block">
-#gnome
 gsettings set org.gnome.desktop.background picture-uri &quot;file:///location/file.extension&quot;
 </pre>
 </div>
 <div class="section" id="see-month-and-date-on-main-title-bar">
-<h1>see month and date on main title bar</h1>
+<h2>see month and date on main title bar</h2>
 <dl class="docutils">
 <dt>::</dt>
 <dd>gsettings set org.gnome.desktop.interface clock-show-date true</dd>
 </dl>
-<p><a class="reference external" href="https://www.facebook.com/groups/ubuntubd/permalink/10156552582077217/">উবুন্টু বাংলাদেশ [Ubuntu Bangladesh]</a>
-hide user from gear button
-==========================</p>
+<p><a class="reference external" href="https://www.facebook.com/groups/ubuntubd/permalink/10156552582077217/">উবুন্টু বাংলাদেশ [Ubuntu Bangladesh]</a></p>
+</div>
+<div class="section" id="hide-user-from-gear-button">
+<h2>hide user from gear button</h2>
 <pre class="literal-block">
 gsettings set com.canonical.indicator.session user-show-menu false
 </pre>
+</div>
 </div>
 </div>
 </body>

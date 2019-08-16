@@ -12,44 +12,44 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`Pencil Project <blogs/pencil_project.html>`_
+.............................................
+Aug 16, 2019
+
+Using Pencil Project as GUI prototyping tool.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`GNOME Cheat Sheet <blogs/gnome_cheat_sheet.html>`_
+...................................................
+Aug 16, 2019
+
+A quick reference to GNOME.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Git Cheat Sheet <blogs/git_cheat_sheet.html>`_
+...............................................
+Aug 16, 2019
+
+A quick reference to Git.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
+.....................................................
+Aug 16, 2019
+
+A quick reference to Docker.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
 .................................................
 Jul 23, 2019
 
 A quick reference to bash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
-.....................................................
-Jul 23, 2019
-
-A quick reference to Docker.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
-........................................................
-Jul 23, 2019
-
-A quick reference to PostgreSQL.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Git Cheat Sheet <blogs/git_cheat_sheet.html>`_
-...............................................
-Jul 23, 2019
-
-A quick reference to Git.
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
-...................................................................
-Jun 19, 2019
-
-A quick reference to Rails Console.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -98,7 +98,7 @@ Explaining Desktop Entry aka Desktop icon in Ubuntu.
 
 `Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
 .....................................................
-Jul 23, 2019
+Aug 16, 2019
 
 A quick reference to Docker.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,17 +130,17 @@ Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client
 
 `Git Cheat Sheet <blogs/git_cheat_sheet.html>`_
 ...............................................
-Jul 23, 2019
+Aug 16, 2019
 
 A quick reference to Git.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`GNOME <blogs/gnome_cheat_sheet.html>`_
-.......................................
-Jun 19, 2019
+`GNOME Cheat Sheet <blogs/gnome_cheat_sheet.html>`_
+...................................................
+Aug 16, 2019
 
-A quick reference to Gnome.
+A quick reference to GNOME.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -218,7 +218,7 @@ Using Pandoc to convert documents.
 
 `Pencil Project <blogs/pencil_project.html>`_
 .............................................
-Jan 21, 2019
+Aug 16, 2019
 
 Using Pencil Project as GUI prototyping tool.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

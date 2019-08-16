@@ -2,7 +2,9 @@ Git Cheat Sheet
 ===============
 A quick reference to Git.
 
-git remote add with other SSH port 
+.. warning:: under heavy construction and not well organized
+
+git remote add with other SSH port
 ----------------------------------
 ::
 
@@ -11,7 +13,7 @@ git remote add with other SSH port
 (source: https://stackoverflow.com/a/3596272/5350059)
 
 
-check if directory is git repository without having to cd into it 
+check if directory is git repository without having to cd into it
 -----------------------------------------------------------------
 ::
     	git -C $dir_path rev-parse
@@ -112,7 +114,7 @@ We will save this in a file named `filter_author_info.sh`. We need the modify th
 
     chmod +x filter_author_info.sh
     bash filter_author_info.sh
-    
+
 Next we will review the new Git history for errors. Push the corrected history to remote repo::
 
     git push --force --tags origin 'refs/heads/*'

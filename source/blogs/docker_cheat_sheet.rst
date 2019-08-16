@@ -2,6 +2,8 @@ Docker Cheat Sheet
 ==================
 A quick reference to Docker.
 
+.. warning:: under heavy construction and not well organized
+
 shell access on a docker image
 ------------------------------
 
