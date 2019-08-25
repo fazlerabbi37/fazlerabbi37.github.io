@@ -69,8 +69,7 @@ remove the switch user account option in Unity
 
 
 lock screen
-===========
-
+-----------
 #gnome gnome-screensaver-command -l #xfce xflock4
 
 chnage background picture
@@ -91,3 +90,15 @@ hide user from gear button
 ::
 
     gsettings set com.canonical.indicator.session user-show-menu false
+
+disable screen lock
+-------------------
+To disable screen lock::
+
+    gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+
+To enable::
+
+    gsettings set org.gnome.desktop.lockdown disable-lock-screen false
+
+(source: https://askubuntu.com/a/1000458/502875)
