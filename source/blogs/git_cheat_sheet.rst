@@ -143,5 +143,13 @@ to rename a local branch::
 
 (source: https://stackoverflow.com/a/6591218/5350059)
 
+hide email address from commit log with GitHub provided email
+-------------------------------------------------------------
+we can hide out email address from commit log by using the GitHub provided email address::
+
+    git config --global user.email username@users.noreply.github.com
+
+(source: https://help.github.com/en/articles/setting-your-commit-email-address)
+
 Source
 ------
