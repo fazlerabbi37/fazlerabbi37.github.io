@@ -7,8 +7,9 @@ A quick reference to Python
 refresh output in the same line; echo update
 --------------------------------------------
 ::
+
     for i in range(11):
-        print (something, end=':raw-latex:`\r`')
+        print (something, end='\r')
 
 donwload http file
 ------------------
@@ -295,6 +296,14 @@ send mail with attachment
     s.quit()
 
 (source: https://www.geeksforgeeks.org/send-mail-attachment-gmail-account-using-python/)
+
+show package install location
+-----------------------------
+to see the package install location::
+
+    pip show <package name>
+
+(source: https://stackoverflow.com/a/45309460/5350059)
 
 
 Source
