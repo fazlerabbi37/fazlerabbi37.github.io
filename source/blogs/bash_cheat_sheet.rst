@@ -1622,7 +1622,22 @@ to use curl to download tar file::
 
 source: https://stackoverflow.com/a/5746376/5350059
 
+file sync
+---------
+::
 
+    #!/bin/sh
+    exitcode=1 
+    #do check if usb flash is mounted
+    if test -e '/your_path_to_usb_mountpoint';then 
+    exitcode=0
+    #from folder to usb if the files are newers
+    rsync -avun --inplace  /your_folder_wich_you_want_to_syncronize/ /your_path_to_usb_mountpoint ;
+    #from usb to folder if the files are newers
+    rsync -avun --inplace /your_path_to_usb_mountpoint/ /your_folder_wich_you_want_to_syncronize/ 
+    fi 
+    #if the flash is not mounted exit with exitcode=1 
+    exit $exitcode
 
 Source
 ------
