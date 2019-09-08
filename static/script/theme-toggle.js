@@ -97,6 +97,10 @@ function toggleTheme(targetTheme) {
     document.body.style.backgroundColor = bodyColor;
     document.body.style.color = textColor;
 
+    // Keep toggle button color black for visibility, no matter in which
+    // theme.
+    toggleButton.style.color = "initial";
+
     // Store theme name, so theme will be retained even after page change.
     sessionStorage.setItem('theme', theme);
 
