@@ -15,17 +15,31 @@ let darkBodyColor = "#333",
 
     // Two <input> eleemnts of type `radio`.
     for (let c=0; c<2; ++c) {
+        let label = document.createElement('label');
         let radio = document.createElement('input');
+        let span = document.createElement('span');
         radio.type = "radio";
         radio.name = "themeToggle";
-        form.appendChild(radio);
+        if (c==0) {
+            label.appendChild(span);
+            label.appendChild(radio);
+        } else {
+            label.appendChild(radio);
+            label.appendChild(span);
+        }
+        form.appendChild(label);
     }
 
-    form.children[0].value = "light";
-    form.children[1].value = "dark";
+    // Set values to radio <input> tags.
+    form.children[0].children[1].value = "light";
+    form.children[1].children[0].value = "dark";
+
+    // Put theme name beside radio buttons for better understanding.
+    form.children[0].children[0].innerText = "Light";
+    form.children[1].children[1].innerText = "Dark";
 
     // Light theme is selected by default.
-    form.children[0].checked = true;
+    form.children[0].childNodes[0].checked = true;
 
     document.body.appendChild(form);
 

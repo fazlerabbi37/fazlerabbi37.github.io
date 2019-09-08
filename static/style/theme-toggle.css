@@ -10,14 +10,6 @@
     top: 20px;
 }
 
-#themeToggleButton::before {
-    content: "Light";
-}
-
-#themeToggleButton::after {
-    content: "Dark";
-}
-
 #themeToggleButton input[type="radio"] {
     vertical-align: text-bottom;
 }
