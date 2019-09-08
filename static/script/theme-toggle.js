@@ -3,8 +3,8 @@
 
 let darkBodyColor = "#333",
     darkTextColor = "#ddd",
-    lightBodyColor = "beige",
-    lightTextColor = "slategray";
+    lightBodyColor = "#fff",
+    lightTextColor = "#000";
 
 
 // Create toggle button and add to page automatically.
