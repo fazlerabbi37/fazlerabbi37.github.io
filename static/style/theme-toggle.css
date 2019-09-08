@@ -1,0 +1,23 @@
+#themeToggleButton {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 0px #666;
+    font-family: arial;
+    font-size: 14px;
+    padding: 5px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
+
+#themeToggleButton::before {
+    content: "Light";
+}
+
+#themeToggleButton::after {
+    content: "Dark";
+}
+
+#themeToggleButton input[type="radio"] {
+    vertical-align: text-bottom;
+}
