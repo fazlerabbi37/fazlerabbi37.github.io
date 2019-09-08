@@ -95,7 +95,7 @@ function toggleTheme(targetTheme) {
 
     // Change colors.
     document.body.style.backgroundColor = bodyColor;
-    document.body.style.Color = textColor;
+    document.body.style.color = textColor;
 
     // Store theme name, so theme will be retained even after page change.
     sessionStorage.setItem('theme', theme);
