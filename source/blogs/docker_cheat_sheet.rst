@@ -104,6 +104,22 @@ to remove all images and containers::
 
 source: https://techoverflow.net/2013/10/22/docker-remove-all-images-and-containers/
 
+execute `source` command inside Dockerfile
+------------------------------------------
+to execute `source` command inside Dockerfile::
+
+    RUN /bin/bash -c "source /path/to/file"
+
+source: https://stackoverflow.com/a/25086628/5350059
+
+rebuild docker image
+--------------------
+to rebuild docker image with docker-compose::
+
+    docker-compose build -f /path/to/docker-compose.yml
+
+source: https://stackoverflow.com/a/57027380/5350059
+
 
 Source
 ------
