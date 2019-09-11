@@ -11,6 +11,17 @@ shell access on a docker image
 https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605
 https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host#22050116
 
+list container
+--------------
+to list running container::
+
+    docker ps
+
+to list all container::
+
+    docker ps -a
+
+
 run a docker image as a container in background
 -----------------------------------------------
 to run a docker image as a container do the following::
@@ -119,6 +130,36 @@ to rebuild docker image with docker-compose::
     docker-compose build -f /path/to/docker-compose.yml
 
 source: https://stackoverflow.com/a/57027380/5350059
+
+remove unused data
+------------------
+to removed unused data::
+
+    docker system prune
+
+source: https://docs.docker.com/engine/reference/commandline/system_prune/
+
+see log
+-------
+to see log::
+
+    docker logs container_id
+
+stop container
+--------------
+to stop a container gracefully with `SIGTERM`::
+
+    docker stop container_id
+
+to kill a container with `SIGKILL` when it is stuck::
+
+    docker kill container_id
+
+run command inside a container
+------------------------------
+to run command inside a container::
+
+    docker exac -it container_id command
 
 
 Source
