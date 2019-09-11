@@ -149,7 +149,20 @@ we can hide out email address from commit log by using the GitHub provided email
 
     git config --global user.email username@users.noreply.github.com
 
-(source: https://help.github.com/en/articles/setting-your-commit-email-address)
+source: https://help.github.com/en/articles/setting-your-commit-email-address
+
+Undo last commit
+----------------
+to undo last commit::
+
+    git reset HEAD~
+
+Then update remote::
+
+    git push origin master --force
+
+source: https://stackoverflow.com/a/927386/5350059
+
 
 Source
 ------
