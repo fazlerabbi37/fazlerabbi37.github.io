@@ -82,7 +82,11 @@ To tap aka click on screen [10]_::
 
     adb shell input tap x y
 
+see log of a package
+--------------------
+to see log of a specific package [11]_::
 
+    adb shell "logcat --pid=$(pidof -s <package_name>)"
 
 
 
@@ -98,3 +102,4 @@ Source
 .. [8] `ADB Shell Input Events: answered by Rene Barbosa <https://stackoverflow.com/a/28969112>`_
 .. [9] `ADB Shell Input Events: answered by LionCoder <https://stackoverflow.com/a/8483797>`_
 .. [10] `How to use ADB to send touch events to device using sendevent command? <https://stackoverflow.com/a/5392547>`_
+.. [11] `adb shell Logcat with Package Name <https://stackoverflow.com/a/32737594/5350059>`_
