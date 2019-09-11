@@ -3,8 +3,12 @@ Markdown Cheat Sheet
 A quick reference to Markdown.
 
 
+Styles
+------
+There are many styles support in Markdown. So of them are as follows:
+
 Italics
--------
+```````
 To make a phrase italic in Markdown, we can surround words which may span multiple words with an underscore '_' or '*' without quotes. For example::
 
     _Writing in Markdown is not that hard!_
@@ -16,7 +20,7 @@ Both gives the following output:
     *Writing in Markdown is not that hard!*
 
 Bold
-----
+````
 To make phrases bold in Markdown, we can surround words which may span multiple words with two asterisks '__' or '**' without quotes. For example::
 
     __Writing in Markdown is not that hard!__
@@ -29,7 +33,7 @@ Both gives the following output:
 
 
 Strikethrough
--------------
+`````````````
 To strikethrough a phrases in Markdown, we can surround words which may span multiple words with two asterisks '~~' without quotes. For example::
 
     ~~Writing in Markdown is not that hard!~~
@@ -44,7 +48,7 @@ Gives the following output:
 
 
 Headers
--------
+````````
 To make headers in Markdown, we preface the phrase with a hash mark '#' without quotes. There are six types of headers, in decreasing sizes. We need to place the same number of hash marks as the size of the header we want::
 
     # Header one
@@ -93,14 +97,14 @@ Alt-H2
 
 
 Links
------
+`````
 There are two different link types in Markdown:
 
  - Inline
  - Reference
 
 Inline
-``````
+''''''
 To create an inline link, we need to wrap the link text in brackets '[ ]' without quote, and then we wrap the link in parenthesis '( )' For example::
 
     [Visit GitHub!](www.github.com)
@@ -116,7 +120,7 @@ Above is the simplest way of Markdown inline link. Here are some more examples::
     [I'm a relative reference to this repository's index file](../index.html)
 
 Reference
-`````````
+'''''''''
 To create a reference link we wrap both the link text and the reference text in brackets '[ ]' without quote and at the bottom we write the reference by wrapping the reference text in '[]' followed by a ':' both without quote and then we put the actual URL. For example::
 
     Here's [a link to something else][another place].
@@ -145,7 +149,7 @@ Above is the simplest way of Markdown reference link. Here are some more example
 
 
 Images
-------
+``````
 If we know how to create links in Markdown, we can create images, too. The syntax is nearly the same.
 
 To create an inline image link to https://octodex.github.com/images/bannekat.png, with an alt text that says, Benjamin Bannekat, we would write this in Markdown::
@@ -210,7 +214,7 @@ Giving us the following output:
    :align: center
 
 Blockquotes
------------
+```````````
 If we need to call special attention to a quote from another source, or design a pull quote for a magazine article, then Markdown's blockquote syntax will be useful.
 
 To create a block quote, all we have to do is preface a line with the "greater than" caret '>' without quote. For example::
@@ -251,11 +255,11 @@ Gives us the following output:
 
 
 Lists
------
+`````
 There are two types of lists in the known universe: unordered and ordered. That's a fancy way of saying that there are lists with bullet points, and lists with numbers.
 
 Unordered
-`````````
+'''''''''
 To create an unordered list, we'll want to preface each item in the list with an asterisk '*' or '-' or '+' without quote, one item par line. For example, a grocery list in Markdown might look like this::
 
     * Milk
@@ -299,7 +303,7 @@ Gives us the following output:
     * Possibly also scotch?
 
 Ordered
-```````
+'''''''
 An ordered list is prefaced with numbers, instead of asterisks. Take a look at this recipe:
 
 1. Crack three eggs over a bowl
@@ -318,7 +322,7 @@ We can also make unordered list under ordered list and vice-versa.
 
 
 Paragraphs
-----------
+``````````
 Markdown has several ways of formatting paragraphs. If we forcefully insert a new line for each line, we would end up having a paragraph for each line. For example::
 
     Do I contradict myself?
@@ -337,11 +341,11 @@ Very well then I contradict myself,
 
 This is called a  hard break; where we can have soft break but giving two space '  ' without quote at the end of each line. For example::
 
-    Do I contradict myself?  
-    Very well then I contradict myself,  
-    (I am large, I contain multitudes.)  
+    Do I contradict myself?
+    Very well then I contradict myself,
+    (I am large, I contain multitudes.)
 
-Which will be rendered as 
+Which will be rendered as
 
 Do I contradict myself?
 
@@ -366,7 +370,49 @@ Very well then I contradict myself,
 .. note:: markdown-here Markdown Cheatsheet: Code and Syntax Highlighting, Tables, Inline HTML, Horizontal Rule, Line Breaks, YouTube Videos
 
 
+Markdown on different website
+-----------------------------
+Many website supports markdown or somewhat modified versions of markdown. I am listing a few bellow.
 
+Facebook
+````````
+It would seem as of Sept 11, 2019; Markdown is not supported in Facebook Post but it supports in Facebook Messenger. Messenger markdown support:
+
+- `Bold`_ with `*text*`
+- `Italics`_ with `_text_`
+- `Strikethrough`_ with `~text~`
+- `Monospace` with `\`text\``
+- `Codeblock` with::
+
+    ```
+    text
+    ````
+- `LaTeX typesetting` with `\\(text\\)`
+
+source: https://www.facebook.com/help/147348452522644
+
+
+Workplace
+`````````
+`Workplace by Facebook <https://www.facebook.com/workplace>`_ (sort of Facebook for organization) supports Markdown on both Messenger and Post.
+
+- Bold with `**text**`
+- Italics with `*text*`
+- List with  `- item`
+- Link with `[title](https://facebook.com)`
+- Numbered list with `1. first item`
+- Quote with `> quote`
+- H1 with `# Heading`
+- H2 with `## Heading`
+- Inline code with `code`
+
+source: https://www.facebook.com/help/work/541260132750354
+
+
+.. GitHub
+.. ``````
+.. GitLab
+.. ``````
 
 
 More Resources
