@@ -151,7 +151,7 @@ we can hide out email address from commit log by using the GitHub provided email
 
 source: https://help.github.com/en/articles/setting-your-commit-email-address
 
-Undo last commit
+undo last commit
 ----------------
 to undo last commit::
 
@@ -163,6 +163,21 @@ Then update remote::
 
 source: https://stackoverflow.com/a/927386/5350059
 
+generate patch
+--------------
+to generate patch and save it on a file::
+
+    git format-patch $brach_name_or_commit_hash --stdout > $filename.patch
+
+source: https://stackoverflow.com/a/44950939/5350059
+
+apply patch
+-----------
+to apply that patch file::
+
+    git apply --stat $filename.patch
+
+source: https://stackoverflow.com/a/2250170/5350059
 
 Source
 ------
