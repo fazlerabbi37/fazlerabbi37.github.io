@@ -14,3 +14,6 @@ TODO
 .. note:: task for source/blogs/install_kde_connect_in_ubuntu_18.04.rst
 .. note:: indent what is kde connect part
 
+----------------------------------------------------------------------
+
+.. note:: enclose all command line options/args with [] bracket
