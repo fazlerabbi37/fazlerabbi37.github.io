@@ -305,6 +305,97 @@ to see the package install location::
 
 (source: https://stackoverflow.com/a/45309460/5350059)
 
+build regex with variable or as string
+--------------------------------------
+to build regex with variable or as string::
+
+    regex = r"^([" + re.escape(string_or_var) + r"][" + re.escape(string_or_var) + r"]+)"
+
+source: https://stackoverflow.com/a/6931070/5350059
+
+find all that matches a regex
+-----------------------------
+to find all string that matches a regex::
+
+    re.findall(regex,string)
+
+source: https://stackoverflow.com/a/4697884/5350059
+
+repeat string
+-------------
+to repeat string::
+
+    print(deltimiter.join([string[:slice]] * times))
+
+example::
+
+    string = 'Hello There'
+    print(' '.join([string[:5]] * 2))
+    >>> Hello Hello
+
+source: https://stackoverflow.com/a/17183278/5350059
+
+OR
+
+use this::
+
+    "Hello world " * 2 
+    >>> 'Hello world Hello world '
+
+source: https://stackoverflow.com/a/43828469/5350059
+
+access command line arguments
+-----------------------------
+to access command line arguments::
+
+    import sys
+
+    print(sys.argv)
+
+.. note:: sys.argv is a list where sys.argv[0] is the program name.
+
+source: https://stackoverflow.com/a/4033743/5350059
+
+empty argument
+--------------
+to check if argument is empty::
+
+    if len(sys.argv) == 1:
+        # do stuff
+
+source: https://stackoverflow.com/a/2194187/5350059
+
+check if a list is empty
+------------------------
+to check if a list is empty::
+
+    if not a:
+      print("List is empty")
+
+source: https://stackoverflow.com/a/53522/5350059
+
+get full path from file and directory name
+------------------------------------------
+to get full path from file and directory name::
+
+    os.path.join(dir_name, base_filename + "." + filename_suffix)
+
+source: https://stackoverflow.com/a/7133204/5350059
+
+iterate over files in a directory
+---------------------------------
+to iterate over files in a directory::
+
+	import os
+
+	for filename in os.listdir(directory):
+		if filename.endswith(".asm") or filename.endswith(".py"): 
+			# print(os.path.join(directory, filename))
+			continue
+		else:
+			continue 
+
+source: https://stackoverflow.com/a/10378012/5350059
 
 Source
 ------
