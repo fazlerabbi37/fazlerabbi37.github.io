@@ -397,5 +397,22 @@ to iterate over files in a directory::
 
 source: https://stackoverflow.com/a/10378012/5350059
 
+django bash auto-completion
+---------------------------
+Django supports bash auto-completion. for this first download auto-completion script::
+
+    wget -O ~/.django_bash_completion.sh https://raw.github.com/django/django/master/extras/django_bash_completion
+
+Modify bashrc to add auto-completion script::
+
+    source $HOME/.django_bash_completion.sh
+
+Reload latest bashrc::
+
+    source ~/.bashrc
+
+source: http://www.indjango.com/ubuntu-django-bash-auto-completion/
+
+
 Source
 ------
