@@ -2,7 +2,7 @@ EBL cheque deposit on kiosk
 ===========================
 Navigating the ever forgetting process of using the EBL drop-box.
 
-
+.. note: Work in progress
 
 On the kiosk:
 language

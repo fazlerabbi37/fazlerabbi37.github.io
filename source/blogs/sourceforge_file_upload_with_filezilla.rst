@@ -2,6 +2,7 @@ SourceForge file upload with Filezilla
 ======================================
 Using FileZilla to upload to SourceForge project.
 
+.. note: Work in progress
 When I started
 
 
