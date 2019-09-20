@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>GNOME Cheat Sheet</title>
+<title>Google Cloud Platform</title>
 <style type="text/css">
 
 /*
@@ -367,108 +367,10 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="gnome-cheat-sheet">
-<h1 class="title">GNOME Cheat Sheet</h1>
+<div class="document" id="google-cloud-platform">
+<h1 class="title">Google Cloud Platform</h1>
 
-<p>A quick reference to GNOME.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">under heavy construction and not well organized</p>
-</div>
-<p>make sure you have gnome-tweak-tool installed. <tt class="docutils literal">sudo apt install <span class="pre">gnome-tweak-tool</span></tt></p>
-<div class="section" id="run-sh-file-by-double-clicking-on-them">
-<h1>run .sh file by double clicking on them</h1>
-<pre class="literal-block">
-#using gsettings (source: http://askubuntu.com/a/378473/502875)
-gsettings set org.gnome.nautilus.preferences executable-text-activation ask
-#using dconf (source: http://askubuntu.com/a/421537/502875)
-dconf write /org/gnome/nautilus/preferences/executable-text-activation &quot;'launch'&quot;
-</pre>
-</div>
-<div class="section" id="ubunut-side-panel-pin-or-favourite">
-<h1>Ubunut side panel pin or favourite</h1>
-<pre class="literal-block">
-#remove all pin
-gsettings set com.canonical.Unity.Launcher favorites &quot;[]&quot;
-#pin allpication
-gsettings set com.canonical.Unity.Launcher favorites &quot;['application://firefox.desktop', 'unity://running-apps', 'application://evolution.desktop', 'unity://devices']&quot;
-#get pin item
-gsettings get com.canonical.Unity.Launcher favorites
-</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/171723/502875">http://askubuntu.com/a/171723/502875</a>)</p>
-</div>
-<div class="section" id="additional-workspaces-in-gnome">
-<h1>Additional Workspaces in GNOME</h1>
-<pre class="literal-block">
-#get n workspaces vertically
-gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize n
-#get n workspaces horizontally
-gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize n
-</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/370048/502875">http://askubuntu.com/a/370048/502875</a>)</p>
-</div>
-<div class="section" id="remove-workspace-switcher-launcher-icon-from-the-unity-launcher">
-<h1>remove Workspace Switcher launcher icon from the Unity launcher</h1>
-<pre class="literal-block">
-gsettings get com.canonical.Unity.Launcher favorites
-#should returen something like
-#['application://nautilus.desktop', 'application://chromium-browser.desktop', 'application://ubuntu-software-center.desktop', 'application://ubuntuone-installer.desktop', 'application://ubuntu-amazon-default.desktop', 'application://UbuntuOneMusiconeubuntucom.desktop', 'application://gnome-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']
-#copy the whole string and remove 'unity://expo-icon' and give the following command, don't forget the &quot;&quot;
-gsettings set com.canonical.Unity.Launcher favorites &quot;['application://nautilus.desktop', 'application://chromium-browser.desktop', 'application://ubuntu-software-center.desktop', 'application://ubuntuone-installer.desktop', 'application://ubuntu-amazon-default.desktop', 'application://UbuntuOneMusiconeubuntucom.desktop', 'application://gnome-control-center.desktop', 'unity://running-apps', 'unity://devices']&quot;
-</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/286344/502875">https://askubuntu.com/a/286344/502875</a>)</p>
-</div>
-<div class="section" id="always-show-menu-items-in-unity">
-<h1>always show menu items in Unity</h1>
-<pre class="literal-block">
-#switch on:
-gsettings set com.canonical.Unity always-show-menus true
-#switch off:
-gsettings set com.canonical.Unity always-show-menus false
-</pre>
-</div>
-<div class="section" id="remove-the-switch-user-account-option-in-unity">
-<h1>remove the switch user account option in Unity</h1>
-<pre class="literal-block">
-gsettings set com.canonical.indicator.session user-show-menu false
-</pre>
-</div>
-<div class="section" id="lock-screen">
-<h1>lock screen</h1>
-<p>#gnome gnome-screensaver-command -l #xfce xflock4</p>
-</div>
-<div class="section" id="chnage-background-picture">
-<h1>chnage background picture</h1>
-<pre class="literal-block">
-gsettings set org.gnome.desktop.background picture-uri &quot;file:///location/file.extension&quot;
-</pre>
-</div>
-<div class="section" id="see-month-and-date-on-main-title-bar">
-<h1>see month and date on main title bar</h1>
-<dl class="docutils">
-<dt>::</dt>
-<dd>gsettings set org.gnome.desktop.interface clock-show-date true</dd>
-</dl>
-<p><a class="reference external" href="https://www.facebook.com/groups/ubuntubd/permalink/10156552582077217/">উবুন্টু বাংলাদেশ [Ubuntu Bangladesh]</a></p>
-</div>
-<div class="section" id="hide-user-from-gear-button">
-<h1>hide user from gear button</h1>
-<pre class="literal-block">
-gsettings set com.canonical.indicator.session user-show-menu false
-</pre>
-</div>
-<div class="section" id="disable-screen-lock">
-<h1>disable screen lock</h1>
-<p>To disable screen lock:</p>
-<pre class="literal-block">
-gsettings set org.gnome.desktop.lockdown disable-lock-screen true
-</pre>
-<p>To enable:</p>
-<pre class="literal-block">
-gsettings set org.gnome.desktop.lockdown disable-lock-screen false
-</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/1000458/502875">https://askubuntu.com/a/1000458/502875</a>)</p>
-</div>
+<!-- note: Work in progress -->
 </div>
 </body>
 </html>

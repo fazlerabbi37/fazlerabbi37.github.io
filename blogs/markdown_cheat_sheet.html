@@ -371,8 +371,11 @@ body {
 <h1 class="title">Markdown Cheat Sheet</h1>
 
 <p>A quick reference to Markdown.</p>
+<div class="section" id="styles">
+<h1>Styles</h1>
+<p>There are many styles support in Markdown. So of them are as follows:</p>
 <div class="section" id="italics">
-<h1>Italics</h1>
+<h2>Italics</h2>
 <p>To make a phrase italic in Markdown, we can surround words which may span multiple words with an underscore '_' or '*' without quotes. For example:</p>
 <pre class="literal-block">
 _Writing in Markdown is not that hard!_
@@ -384,7 +387,7 @@ _Writing in Markdown is not that hard!_
 <em>Writing in Markdown is not that hard!</em></blockquote>
 </div>
 <div class="section" id="bold">
-<h1>Bold</h1>
+<h2>Bold</h2>
 <p>To make phrases bold in Markdown, we can surround words which may span multiple words with two asterisks '__' or '**' without quotes. For example:</p>
 <pre class="literal-block">
 __Writing in Markdown is not that hard!__
@@ -396,7 +399,7 @@ __Writing in Markdown is not that hard!__
 <strong>Writing in Markdown is not that hard!</strong></blockquote>
 </div>
 <div class="section" id="strikethrough">
-<h1>Strikethrough</h1>
+<h2>Strikethrough</h2>
 <p>To strikethrough a phrases in Markdown, we can surround words which may span multiple words with two asterisks '~~' without quotes. For example:</p>
 <pre class="literal-block">
 ~~Writing in Markdown is not that hard!~~
@@ -407,7 +410,7 @@ Writing in Markdown is not that hard!</div>
 <!-- pulled this trick following this Stack Overflow `answer <https://stackoverflow.com/a/14295112>`_ -->
 </div>
 <div class="section" id="headers">
-<h1>Headers</h1>
+<h2>Headers</h2>
 <p>To make headers in Markdown, we preface the phrase with a hash mark '#' without quotes. There are six types of headers, in decreasing sizes. We need to place the same number of hash marks as the size of the header we want:</p>
 <pre class="literal-block">
 # Header one
@@ -418,6 +421,7 @@ Writing in Markdown is not that hard!</div>
 ###### Header six
 </pre>
 <p>Gives the following output:</p>
+</div>
 </div>
 <div class="section" id="header-one">
 <h1>Header one</h1>
@@ -451,9 +455,8 @@ Alt-H2
 <div class="section" id="alt-h2">
 <h2>Alt-H2</h2>
 </div>
-</div>
 <div class="section" id="links">
-<h1>Links</h1>
+<h2>Links</h2>
 <p>There are two different link types in Markdown:</p>
 <blockquote>
 <ul class="simple">
@@ -462,7 +465,7 @@ Alt-H2
 </ul>
 </blockquote>
 <div class="section" id="inline">
-<h2>Inline</h2>
+<h3>Inline</h3>
 <p>To create an inline link, we need to wrap the link text in brackets '[ ]' without quote, and then we wrap the link in parenthesis '( )' For example:</p>
 <pre class="literal-block">
 [Visit GitHub!](www.github.com)
@@ -478,7 +481,7 @@ Alt-H2
 </pre>
 </div>
 <div class="section" id="reference">
-<h2>Reference</h2>
+<h3>Reference</h3>
 <p>To create a reference link we wrap both the link text and the reference text in brackets '[ ]' without quote and at the bottom we write the reference by wrapping the reference text in '[]' followed by a ':' both without quote and then we put the actual URL. For example:</p>
 <pre class="literal-block">
 Here's [a link to something else][another place].
@@ -504,7 +507,7 @@ example.com (but not on Github, for example).
 </div>
 </div>
 <div class="section" id="images">
-<h1>Images</h1>
+<h2>Images</h2>
 <p>If we know how to create links in Markdown, we can create images, too. The syntax is nearly the same.</p>
 <p>To create an inline image link to <a class="reference external" href="https://octodex.github.com/images/bannekat.png">https://octodex.github.com/images/bannekat.png</a>, with an alt text that says, Benjamin Bannekat, we would write this in Markdown:</p>
 <pre class="literal-block">
@@ -542,7 +545,7 @@ example.com (but not on Github, for example).
 <img alt="Logo Title Text 2" class="align-center" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" />
 </div>
 <div class="section" id="blockquotes">
-<h1>Blockquotes</h1>
+<h2>Blockquotes</h2>
 <p>If we need to call special attention to a quote from another source, or design a pull quote for a magazine article, then Markdown's blockquote syntax will be useful.</p>
 <p>To create a block quote, all we have to do is preface a line with the &quot;greater than&quot; caret '&gt;' without quote. For example:</p>
 <pre class="literal-block">
@@ -576,10 +579,10 @@ loneliness which he feared.</p>
 </blockquote>
 </div>
 <div class="section" id="lists">
-<h1>Lists</h1>
+<h2>Lists</h2>
 <p>There are two types of lists in the known universe: unordered and ordered. That's a fancy way of saying that there are lists with bullet points, and lists with numbers.</p>
 <div class="section" id="unordered">
-<h2>Unordered</h2>
+<h3>Unordered</h3>
 <p>To create an unordered list, we'll want to preface each item in the list with an asterisk '*' or '-' or '+' without quote, one item par line. For example, a grocery list in Markdown might look like this:</p>
 <pre class="literal-block">
 * Milk
@@ -637,7 +640,7 @@ loneliness which he feared.</p>
 </blockquote>
 </div>
 <div class="section" id="ordered">
-<h2>Ordered</h2>
+<h3>Ordered</h3>
 <p>An ordered list is prefaced with numbers, instead of asterisks. Take a look at this recipe:</p>
 <ol class="arabic simple">
 <li>Crack three eggs over a bowl</li>
@@ -656,7 +659,7 @@ loneliness which he feared.</p>
 </div>
 </div>
 <div class="section" id="paragraphs">
-<h1>Paragraphs</h1>
+<h2>Paragraphs</h2>
 <p>Markdown has several ways of formatting paragraphs. If we forcefully insert a new line for each line, we would end up having a paragraph for each line. For example:</p>
 <pre class="literal-block">
 Do I contradict myself?
@@ -692,6 +695,55 @@ Very well then I contradict myself,
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">markdown-here Markdown Cheatsheet: Code and Syntax Highlighting, Tables, Inline HTML, Horizontal Rule, Line Breaks, YouTube Videos</p>
+</div>
+</div>
+</div>
+<div class="section" id="markdown-on-different-website">
+<h1>Markdown on different website</h1>
+<p>Many website supports markdown or somewhat modified versions of markdown. I am listing a few bellow.</p>
+<div class="section" id="facebook">
+<h2>Facebook</h2>
+<p>It would seem as of Sept 11, 2019; Markdown is not supported in Facebook Post but it supports in Facebook Messenger. Messenger markdown support:</p>
+<ul>
+<li><p class="first"><a class="reference internal" href="#bold">Bold</a> with <cite>*text*</cite></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#italics">Italics</a> with <cite>_text_</cite></p>
+</li>
+<li><p class="first"><a class="reference internal" href="#strikethrough">Strikethrough</a> with <cite>~text~</cite></p>
+</li>
+<li><p class="first"><cite>Monospace</cite> with <cite>`text`</cite></p>
+</li>
+<li><p class="first"><cite>Codeblock</cite> with:</p>
+<pre class="literal-block">
+```
+text
+````
+</pre>
+</li>
+<li><p class="first"><cite>LaTeX typesetting</cite> with <cite>\(text\)</cite></p>
+</li>
+</ul>
+<p>source: <a class="reference external" href="https://www.facebook.com/help/147348452522644">https://www.facebook.com/help/147348452522644</a></p>
+</div>
+<div class="section" id="workplace">
+<h2>Workplace</h2>
+<p><a class="reference external" href="https://www.facebook.com/workplace">Workplace by Facebook</a> (sort of Facebook for organization) supports Markdown on both Messenger and Post.</p>
+<ul class="simple">
+<li>Bold with <cite>**text**</cite></li>
+<li>Italics with <cite>*text*</cite></li>
+<li>List with  <cite>- item</cite></li>
+<li>Link with <cite>[title](https://facebook.com)</cite></li>
+<li>Numbered list with <cite>1. first item</cite></li>
+<li>Quote with <cite>&gt; quote</cite></li>
+<li>H1 with <cite># Heading</cite></li>
+<li>H2 with <cite>## Heading</cite></li>
+<li>Inline code with <cite>code</cite></li>
+</ul>
+<p>source: <a class="reference external" href="https://www.facebook.com/help/work/541260132750354">https://www.facebook.com/help/work/541260132750354</a></p>
+<!-- GitHub -->
+<!-- `````` -->
+<!-- GitLab -->
+<!-- `````` -->
 </div>
 </div>
 <div class="section" id="more-resources">

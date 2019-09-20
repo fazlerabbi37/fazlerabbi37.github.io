@@ -497,6 +497,50 @@ git config commit.template relative-path-from-repository-root
 </pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/28948582/5350059">https://stackoverflow.com/a/28948582/5350059</a>)</p>
 </div>
+<div class="section" id="rename-local-branch">
+<h1>rename local branch</h1>
+<p>to rename a local branch:</p>
+<pre class="literal-block">
+git branch -m &lt;oldname&gt; &lt;newname&gt;
+</pre>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/6591218/5350059">https://stackoverflow.com/a/6591218/5350059</a>)</p>
+</div>
+<div class="section" id="hide-email-address-from-commit-log-with-github-provided-email">
+<h1>hide email address from commit log with GitHub provided email</h1>
+<p>we can hide out email address from commit log by using the GitHub provided email address:</p>
+<pre class="literal-block">
+git config --global user.email username&#64;users.noreply.github.com
+</pre>
+<p>source: <a class="reference external" href="https://help.github.com/en/articles/setting-your-commit-email-address">https://help.github.com/en/articles/setting-your-commit-email-address</a></p>
+</div>
+<div class="section" id="undo-last-commit">
+<h1>undo last commit</h1>
+<p>to undo last commit:</p>
+<pre class="literal-block">
+git reset HEAD~
+</pre>
+<p>Then update remote:</p>
+<pre class="literal-block">
+git push origin master --force
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/927386/5350059">https://stackoverflow.com/a/927386/5350059</a></p>
+</div>
+<div class="section" id="generate-patch">
+<h1>generate patch</h1>
+<p>to generate patch and save it on a file:</p>
+<pre class="literal-block">
+git format-patch $brach_name_or_commit_hash --stdout &gt; $filename.patch
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/44950939/5350059">https://stackoverflow.com/a/44950939/5350059</a></p>
+</div>
+<div class="section" id="apply-patch">
+<h1>apply patch</h1>
+<p>to apply that patch file:</p>
+<pre class="literal-block">
+git apply --stat $filename.patch
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/2250170/5350059">https://stackoverflow.com/a/2250170/5350059</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>

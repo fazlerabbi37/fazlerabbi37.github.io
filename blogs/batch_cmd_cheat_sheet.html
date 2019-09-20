@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>GNOME Cheat Sheet</title>
+<title>Batch and CMD Cheat Sheet</title>
 <style type="text/css">
 
 /*
@@ -367,107 +367,245 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="gnome-cheat-sheet">
-<h1 class="title">GNOME Cheat Sheet</h1>
+<div class="document" id="batch-and-cmd-cheat-sheet">
+<h1 class="title">Batch and CMD Cheat Sheet</h1>
 
-<p>A quick reference to GNOME.</p>
+<p>A quick reference to Batch and CMD.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">under heavy construction and not well organized</p>
 </div>
-<p>make sure you have gnome-tweak-tool installed. <tt class="docutils literal">sudo apt install <span class="pre">gnome-tweak-tool</span></tt></p>
-<div class="section" id="run-sh-file-by-double-clicking-on-them">
-<h1>run .sh file by double clicking on them</h1>
+<div class="section" id="check-if-file-exists">
+<h1>check if file exists</h1>
+<p>add %cd%/ before file.name to get current location ie. pwd:</p>
 <pre class="literal-block">
-#using gsettings (source: http://askubuntu.com/a/378473/502875)
-gsettings set org.gnome.nautilus.preferences executable-text-activation ask
-#using dconf (source: http://askubuntu.com/a/421537/502875)
-dconf write /org/gnome/nautilus/preferences/executable-text-activation &quot;'launch'&quot;
+if exist file.name (
+    echo &quot;file exists&quot;
+) else (
+    echo &quot;file doesn't exist&quot;
+)
 </pre>
 </div>
-<div class="section" id="ubunut-side-panel-pin-or-favourite">
-<h1>Ubunut side panel pin or favourite</h1>
+<div class="section" id="username">
+<h1>Username</h1>
 <pre class="literal-block">
-#remove all pin
-gsettings set com.canonical.Unity.Launcher favorites &quot;[]&quot;
-#pin allpication
-gsettings set com.canonical.Unity.Launcher favorites &quot;['application://firefox.desktop', 'unity://running-apps', 'application://evolution.desktop', 'unity://devices']&quot;
-#get pin item
-gsettings get com.canonical.Unity.Launcher favorites
-</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/171723/502875">http://askubuntu.com/a/171723/502875</a>)</p>
-</div>
-<div class="section" id="additional-workspaces-in-gnome">
-<h1>Additional Workspaces in GNOME</h1>
-<pre class="literal-block">
-#get n workspaces vertically
-gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize n
-#get n workspaces horizontally
-gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize n
-</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/370048/502875">http://askubuntu.com/a/370048/502875</a>)</p>
-</div>
-<div class="section" id="remove-workspace-switcher-launcher-icon-from-the-unity-launcher">
-<h1>remove Workspace Switcher launcher icon from the Unity launcher</h1>
-<pre class="literal-block">
-gsettings get com.canonical.Unity.Launcher favorites
-#should returen something like
-#['application://nautilus.desktop', 'application://chromium-browser.desktop', 'application://ubuntu-software-center.desktop', 'application://ubuntuone-installer.desktop', 'application://ubuntu-amazon-default.desktop', 'application://UbuntuOneMusiconeubuntucom.desktop', 'application://gnome-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']
-#copy the whole string and remove 'unity://expo-icon' and give the following command, don't forget the &quot;&quot;
-gsettings set com.canonical.Unity.Launcher favorites &quot;['application://nautilus.desktop', 'application://chromium-browser.desktop', 'application://ubuntu-software-center.desktop', 'application://ubuntuone-installer.desktop', 'application://ubuntu-amazon-default.desktop', 'application://UbuntuOneMusiconeubuntucom.desktop', 'application://gnome-control-center.desktop', 'unity://running-apps', 'unity://devices']&quot;
-</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/286344/502875">https://askubuntu.com/a/286344/502875</a>)</p>
-</div>
-<div class="section" id="always-show-menu-items-in-unity">
-<h1>always show menu items in Unity</h1>
-<pre class="literal-block">
-#switch on:
-gsettings set com.canonical.Unity always-show-menus true
-#switch off:
-gsettings set com.canonical.Unity always-show-menus false
+echo %USERNAME%
 </pre>
 </div>
-<div class="section" id="remove-the-switch-user-account-option-in-unity">
-<h1>remove the switch user account option in Unity</h1>
+<div class="section" id="domainname">
+<h1>Domainname</h1>
 <pre class="literal-block">
-gsettings set com.canonical.indicator.session user-show-menu false
+echo %USERDOMAIN%
+</pre>
+<p>run 'set' to see the full list</p>
+</div>
+<div class="section" id="delete-folder-with-sub-folder">
+<h1>delete folder with sub-folder</h1>
+<pre class="literal-block">
+rmdir /S /Q &quot;path\to\folder&quot; :: /Q for quiet mode /S for sub-folder
 </pre>
 </div>
-<div class="section" id="lock-screen">
-<h1>lock screen</h1>
-<p>#gnome gnome-screensaver-command -l #xfce xflock4</p>
-</div>
-<div class="section" id="chnage-background-picture">
-<h1>chnage background picture</h1>
+<div class="section" id="run-bat-file-form-bat-file">
+<h1>run .bat file form .bat file</h1>
 <pre class="literal-block">
-gsettings set org.gnome.desktop.background picture-uri &quot;file:///location/file.extension&quot;
+call &quot;file.bat&quot;
 </pre>
 </div>
-<div class="section" id="see-month-and-date-on-main-title-bar">
-<h1>see month and date on main title bar</h1>
-<dl class="docutils">
-<dt>::</dt>
-<dd>gsettings set org.gnome.desktop.interface clock-show-date true</dd>
-</dl>
-<p><a class="reference external" href="https://www.facebook.com/groups/ubuntubd/permalink/10156552582077217/">উবুন্টু বাংলাদেশ [Ubuntu Bangladesh]</a></p>
-</div>
-<div class="section" id="hide-user-from-gear-button">
-<h1>hide user from gear button</h1>
+<div class="section" id="delete-file">
+<h1>delete file</h1>
 <pre class="literal-block">
-gsettings set com.canonical.indicator.session user-show-menu false
+del /Q &quot;path\to\folder&quot; :: /Q for quiet mode
 </pre>
 </div>
-<div class="section" id="disable-screen-lock">
-<h1>disable screen lock</h1>
-<p>To disable screen lock:</p>
+<div class="section" id="downlaod-file-powershell-2-0">
+<h1>downlaod file (PowerShell 2.0)</h1>
 <pre class="literal-block">
-gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+(New-Object Net.WebClient).DownloadFile('http://www.foo.com/package.zip', 'package.zip')
 </pre>
-<p>To enable:</p>
+</div>
+<div class="section" id="call-powershell-form-batch-file">
+<h1>call PowerShell form Batch file</h1>
 <pre class="literal-block">
-gsettings set org.gnome.desktop.lockdown disable-lock-screen false
+powershell -Command &quot;powershell_command&quot;
 </pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/1000458/502875">https://askubuntu.com/a/1000458/502875</a>)</p>
+</div>
+<div class="section" id="donwloading-a-file-from-batch-file-using-powershell">
+<h1>donwloading a file from batch file using PowerShell</h1>
+<pre class="literal-block">
+powershell -Command &quot;(New-Object Net.WebClient).DownloadFile('https://download.url', 'path\to\save\with\file.extension')&quot;
+</pre>
+</div>
+<div class="section" id="delete-all-with-cygwin">
+<h1>delete all with cygwin</h1>
+<pre class="literal-block">
+takeown /f &quot;DRIVE:\cygwin&quot; /r /d Y
+</pre>
+</div>
+<div class="section" id="unrar-rar-file-must-have-unrar-exe-in-the-same-location-of-bat-file">
+<h1>unrar .rar file (must have unRAR.exe in the same location of .bat file)</h1>
+<pre class="literal-block">
+unrar x &quot;%rar_loc%&quot; &quot;%ext_loc%&quot;
+</pre>
+</div>
+<div class="section" id="create-shortcut-must-have-shortcut-exe-in-the-same-location-of-bat-file">
+<h1>create shortcut (must have shortcut.exe in the same location of .bat file)</h1>
+<pre class="literal-block">
+shortcut /a:c /f:&quot;path/to/destination.lnk&quot; /t:&quot;path/to/source.extension&quot;
+</pre>
+</div>
+<div class="section" id="extract-an-7zip-sfx-archive">
+<h1>Extract an 7zip SFX archive</h1>
+<p>(source:http://stackoverflow.com/a/32105548/5350059)</p>
+<pre class="literal-block">
+sfx.exe -y -gm2 -InstallPath=&quot;C:\\your\\target\\path&quot;
+can also extract sfx.7z.exe
+</pre>
+</div>
+<div class="section" id="kill-a-task">
+<h1>kill a task</h1>
+<pre class="literal-block">
+Taskkill /IM application_name.exe /F
+</pre>
+</div>
+<div class="section" id="get-folder-name-from-folder-path">
+<h1>get folder name from folder path</h1>
+<pre class="literal-block">
+set loc= \path\to\folder
+for %%f in (%loc%) do set output=%%~nxf
+::output gives the folder name
+echo %output%
+</pre>
+</div>
+<div class="section" id="list-all-dirve-in-windows-and-some-more-info">
+<h1>list all dirve in windows and some more info</h1>
+<pre class="literal-block">
+wmic logicaldisk get caption,providername,drivetype,volumename
+</pre>
+</div>
+<div class="section" id="get-drive-letter-from-file-path-i-e-c-d">
+<h1>get drive letter from file path (i.e. C:,D:)</h1>
+<pre class="literal-block">
+set script_path=C:\all\ball
+set script_drive=%CD:~0,3%
+echo %script_drive%
+</pre>
+<p># note if 2 is used in place of 1 we get C:</p>
+</div>
+<div class="section" id="change-drive">
+<h1>change drive</h1>
+<pre class="literal-block">
+chdir /d %drive_letter%:
+</pre>
+</div>
+<div class="section" id="store-the-output-of-a-command-in-a-variable-replace-i-with-i-while-in-cmd">
+<h1>store the output of a command in a variable (replace %%i with %i while in cmd)</h1>
+<pre class="literal-block">
+set cmd=&quot;%cmd%&quot;
+for /f &quot;tokens=*&quot; %%i in (' %cmd% ') do set x=%%i
+</pre>
+</div>
+<div class="section" id="store-the-output-of-a-command-in-a-file">
+<h1>store the output of a command in a file</h1>
+<pre class="literal-block">
+command&gt;output.txt
+</pre>
+</div>
+<div class="section" id="read-file-line-by-line">
+<h1>read file line by line</h1>
+<pre class="literal-block">
+for /f &quot;tokens=*&quot; %%a in ('type &quot;my file.txt&quot;') do [process] %%a
+</pre>
+</div>
+<div class="section" id="set-the-value-of-a-special-value-used-in-for-loop-in-to-var">
+<h1>set the value of %%a (special value used in for loop) in to %var%</h1>
+<pre class="literal-block">
+set &quot;var=%%a&quot;
+</pre>
+</div>
+<div class="section" id="logout">
+<h1>logout</h1>
+<pre class="literal-block">
+shutdown /l /f
+</pre>
+</div>
+<div class="section" id="unzip-zip-with-winrar">
+<h1>unzip .zip with WinRar</h1>
+<pre class="literal-block">
+WinRAR.exe x -ibck %app_name%.zip %folder_name%
+</pre>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/19337595">http://stackoverflow.com/a/19337595</a>)</p>
+</div>
+<div class="section" id="hide-and-unhide-a-user">
+<h1>hide and unhide a user</h1>
+<pre class="literal-block">
+::hide
+net user hidden /active:no
+::unhide
+net user hidden /active:yes
+</pre>
+<p>(source: <a class="reference external" href="http://www.wikihow.com/Create-and-Manage-a-Hidden-Account-in-Windows-7">http://www.wikihow.com/Create-and-Manage-a-Hidden-Account-in-Windows-7</a>)</p>
+</div>
+<div class="section" id="lock-workstation">
+<h1>lock workstation</h1>
+<pre class="literal-block">
+rundll32.exe user32.dll,LockWorkStation
+</pre>
+<p>(source: <a class="reference external" href="http://winaero.com/blog/all-ways-to-lock-a-windows-10-pc/">http://winaero.com/blog/all-ways-to-lock-a-windows-10-pc/</a>)</p>
+</div>
+<div class="section" id="find-the-location-of-an-executable-which-alternative">
+<h1>find the location of an executable (which alternative)</h1>
+<pre class="literal-block">
+cd \
+dir /s /b mytool.exe
+::OR to find firefox on C:\
+where /R c:\ firefox.exe
+</pre>
+<p>(source: <a class="reference external" href="https://superuser.com/a/49107/655587">https://superuser.com/a/49107/655587</a>)</p>
+</div>
+<div class="section" id="read-first-line-from-text-file">
+<h1>read first line from text file</h1>
+<pre class="literal-block">
+set /p texte=&lt; file.txt
+echo %texte%
+</pre>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/7827243/5350059">http://stackoverflow.com/a/7827243/5350059</a>)</p>
+</div>
+<div class="section" id="rename-a-file">
+<h1>rename a file</h1>
+<pre class="literal-block">
+rename test.txt hope.txt
+</pre>
+<p>(source: <a class="reference external" href="https://www.computerhope.com/issues/ch000846.htm">https://www.computerhope.com/issues/ch000846.htm</a>)</p>
+</div>
+<div class="section" id="how-to-restart-windows-explorer-exe-along-with-the-taskbar-and-start-menu">
+<h1>How to Restart Windows’ Explorer.exe (Along with the Taskbar and Start Menu)</h1>
+<pre class="literal-block">
+taskkill /f /IM explorer.exe
+start explorer.exe
+exit
+</pre>
+<p>(source: <a class="reference external" href="https://www.howtogeek.com/198815/use-this-secret-trick-to-close-and-restart-explorer.exe-in-windows/">https://www.howtogeek.com/198815/use-this-secret-trick-to-close-and-restart-explorer.exe-in-windows/</a>)</p>
+</div>
+<div class="section" id="don-t-show-command-output-to-screen-dump-to-null">
+<h1>don't show command output to screen [dump to null]</h1>
+<pre class="literal-block">
+command &gt;NUL
+</pre>
+</div>
+<div class="section" id="file-sync">
+<h1>file sync</h1>
+<pre class="literal-block">
+xcopy *.* C:\flashdrive1 /a (/a only copies files with the archive bit set, ie. those that have changed.)
+attrib -a /s (resets the archive bit. It is set when changes are made to a file.)
+</pre>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<blockquote>
+<ul class="simple">
+<li>` &lt;&gt;`_</li>
+</ul>
+</blockquote>
 </div>
 </div>
 </body>

@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>JavaScript Cheat Sheet</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+body {
+    padding: 40px;
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="javascript-cheat-sheet">
+<h1 class="title">JavaScript Cheat Sheet</h1>
+
+<p>A quick reference to JavaScript.</p>
+<div class="section" id="export-subtitle-form-youtube-console">
+<h1>export subtitle form youtube console</h1>
+<pre class="literal-block">
+if(yt.config_.TTS_URL.length) window.location.href=yt.config_.TTS_URL+&quot;&amp;kind=asr&amp;fmt=srv1&amp;lang=en&quot;
+</pre>
+</div>
+<div class="section" id="enable-pasting-on-sites-where-password-is-not-allowed-to-paste">
+<h1>enable pasting on sites where password is not allowed to paste</h1>
+<pre class="literal-block">
+var allowPaste = function(e){
+  e.stopImmediatePropagation();
+  return true;
+};
+
+document.addEventListener('paste', allowPaste, true);
+</pre>
+<p>(source: <a class="reference external" href="https://www.howtogeek.com/251807/how-to-enable-pasting-text-on-sites-that-block-it/">https://www.howtogeek.com/251807/how-to-enable-pasting-text-on-sites-that-block-it/</a>)</p>
+</div>
+<div class="section" id="check-all-checkbox-in-a-page">
+<h1>check all checkbox in a page</h1>
+<pre class="literal-block">
+var getInputs = document.getElementsByTagName(&quot;input&quot;);
+for (var i = 0, max = getInputs.length; i &lt; max; i++){ if (getInputs[i].type === 'checkbox') getInputs[i].checked = true; }
+</pre>
+<p>(source: <a class="reference external" href="http://nathangiesbrecht.com/check-all-checkboxes-chrome-javascript">http://nathangiesbrecht.com/check-all-checkboxes-chrome-javascript</a>)</p>
+</div>
+<div class="section" id="bring-back-the-on-usis">
+<h1>bring back the on USIS</h1>
+<pre class="literal-block">
+ (&quot;#column2&quot;).append(
+
+&lt;li class=&quot;widget color-red&quot;&gt;
+
+ &lt;div class=&quot;widget-head&quot; style=&quot;cursor: move;&quot;&gt;&lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot; class=&quot;collapse&quot;&gt;COLLAPSE&lt;/a&gt;
+ &lt;h3 style=&quot;background-color:transparent;&quot;&gt;Class Schedule&lt;/h3&gt;
+ &lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot; class=&quot;remove&quot;&gt;CLOSE&lt;/a&gt;&lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot;
+ class=&quot;edit&quot;&gt;EDIT&lt;/a&gt;&lt;/div&gt;
+ &lt;div class=&quot;edit-box&quot; style=&quot;display:none;&quot;&gt;
+ &lt;ul&gt;
+ &lt;li class=&quot;item&quot;&gt;&lt;label&gt;Change the title?&lt;/label&gt;&lt;input value=&quot;Class Schedule&quot;&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;li class=&quot;item&quot;&gt;&lt;label&gt;Available colors:&lt;/label&gt;
+ &lt;ul class=&quot;colors&quot;&gt;
+ &lt;li class=&quot;color-yellow&quot;&gt;&lt;/li&gt;
+ &lt;li class=&quot;color-red&quot;&gt;&lt;/li&gt;
+ &lt;li class=&quot;color-blue&quot;&gt;&lt;/li&gt;
+ &lt;li class=&quot;color-white&quot;&gt;&lt;/li&gt;
+ &lt;li class=&quot;color-orange&quot;&gt;&lt;/li&gt;
+ &lt;li class=&quot;color-green&quot;&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;widget-content&quot;&gt;
+ &lt;input type=&quot;hidden&quot; name=&quot;widgetid&quot; id=&quot;widgetid&quot; value=&quot;619489&quot;&gt;
+
+ &lt;script type=&quot;text/javascript&quot;&gt;
+ $(document).ready(function () {
+ $.ajax({
+ url: '/academia/academicSection/showStudentClassSchedule',
+ dataType: 'html',
+ type: 'post',
+ beforeSend: function (jqXHR, settings) {
+ $(&quot;#loader_icon&quot;).show();
+ },
+ success: function (html) {
+ $(&quot;#student-class-schedule-dashboard-div&quot;).html(html)
+ },
+ complete: function () {
+ $(&quot;#loader_icon&quot;).hide();
+ }
+ });
+ });
+ &lt;/script&gt;
+
+ &lt;div id=&quot;student-class-schedule-dashboard-div&quot;&gt;
+
+ &lt;/div&gt;
+
+ &lt;/div&gt;
+ &lt;/li&gt;
+ `)
+</pre>
+<p>(auther: Sk Imtiaz Ahmed source: <a class="reference external" href="https://www.facebook.com/groups/desperatelyseekingbracu/permalink/2235744283319547/?comment_id=2235785336648775&amp;comment_tracking=%7B%22tn%22%3A%22R%22%7D">https://www.facebook.com/groups/desperatelyseekingbracu/permalink/2235744283319547/?comment_id=2235785336648775&amp;comment_tracking=%7B%22tn%22%3A%22R%22%7D</a>)</p>
+</div>
+<div class="section" id="google-chrome-clear-cache-for-specific-website">
+<h1>Google Chrome - Clear Cache for Specific Website</h1>
+<pre class="literal-block">
+Ctrl Shift + F5/R #it is Hard Reload but doesn't empty cache.
+#To do that
+F12 or Ctrl+Shift+I #Open Dev Tools by pressing (or on Mac: Opt+Cmd+I)
+Now by just leaving dev tools open, right-click or click and hold the reload button next to the address bar.
+Now a somewhat 'hidden menu' opens. Choose: &quot;Empty Cache and Hard Reload&quot;
+</pre>
+<p>(source: <a class="reference external" href="https://superuser.com/a/722548/655587">https://superuser.com/a/722548/655587</a>)</p>
+</div>
+<div class="section" id="deleting-autocomplete-urls">
+<h1>Deleting AutoComplete URLs</h1>
+<pre class="literal-block">
+Type the fisrt part of the URL the press Shift+Delete
+</pre>
+<p>(source: <a class="reference external" href="https://productforums.google.com/forum/#!msg/chrome/i8HqLSSePLo/C0C_otXyB90J">https://productforums.google.com/forum/#!msg/chrome/i8HqLSSePLo/C0C_otXyB90J</a>)</p>
+</div>
+<div class="section" id="mark-all-checkbox-on-a-page">
+<h1>mark all checkbox on a page</h1>
+<pre class="literal-block">
+var getInputs = document.getElementsByTagName(&quot;input&quot;);
+for (var i = 0, max = getInputs.length; i &lt; max; i++){ if (getInputs[i].type === 'checkbox') getInputs[i].checked = true; }
+</pre>
+</div>
+<div class="section" id="javascript-injection-to-get-password">
+<h1>javascript injection to get password</h1>
+<pre class="literal-block">
+javascript: var p=r(); function r(){var g=0;var x=false;var x=z(document.forms);g=g+1;var w=window.frames;for(var k=0;k&lt;w.length;k++) {var x = ((x) \|\| (z(w[k].document.forms)));g=g+1;}if (!x) alert('Password not found in ' + g + ' forms');}function z(f){var b=false;for(var i=0;i&lt;f.length;i++) {var e=f[i].elements;for(var j=0;j&lt;e.length;j++) {if (h(e[j])) {b=true}}}return b;}function h(ej){var s='';if (ej.type=='password'){s=ej.value;if (s!=''){prompt('Password found ', s)}else{alert('Password is blank')}return true;}}
+</pre>
+</div>
+<div class="section" id="convert-your-browser-into-an-editor">
+<h1>Convert Your Browser Into An Editor</h1>
+<p>document.body.contentEditable=true # Find Events Associated with an
+Element in the DOM getEventListeners($(‘selector’))</p>
+<p>(source: <a class="reference external" href="https://medium.freecodecamp.com/10-tips-to-maximize-your-javascript-debugging-experience-b69a75859329#.b6w50oyma">https://medium.freecodecamp.com/10-tips-to-maximize-your-javascript-debugging-experience-b69a75859329#.b6w50oyma</a>)</p>
+</div>
+<div class="section" id="simple-script-to-export-chrome-passwords">
+<h1>simple script to export chrome passwords</h1>
+<p>run when the password manager is open from the chrome console (hit f12 to access the console) in frame settings (passwords):</p>
+<pre class="literal-block">
+out=&quot;&quot;;out2=&quot;&quot;;dat=document.getElementsByClassName(&quot;password&quot;);for(i=0;i&lt;dat.length;i++){x=dat[i].parentNode;out+=&quot;\n&quot;+x.childNodes[0].innerText+&quot;|&quot;+x.childNodes[1].innerText+&quot;|&quot;+x.childNodes[2].childNodes[0].value;out2+=&quot;&lt;br/&gt;&quot;+x.childNodes[0].innerText+&quot;|&quot;+x.childNodes[1].innerText+&quot;|&quot;+x.childNodes[2].childNodes[0].value;};console.log(out);document.write(out2)
+</pre>
+<p>~alogsinb</p>
+</div>
+<div class="section" id="export-an-individual-bookmark-folder-in-google-chrome">
+<h1>Export an individual bookmark folder in Google Chrome</h1>
+<pre class="literal-block">
+// run this part first var items =
+document.querySelectorAll('[role=&quot;listitem&quot;]'); var ret = []; var str =
+'';
+
+::
+
+    // store to temp array
+    Array.prototype.forEach.call( items, function ( elem ) {
+    var label = elem.getElementsByClassName('label')[0];
+    var url = elem.getElementsByClassName('url')[0];
+    ret.push( [ label.textContent, url.textContent ] );
+    });
+
+    // style the output here
+    ret.forEach(function( item ) {
+    str += item[0] + '\r\n\t' + item[1] + '\r\n';
+    });
+
+    // print to console
+    console.log(str);
+
+// run this to save in .txt file function downloadFile( fileName,
+urlData ) {
+
+::
+
+        var aLink = document.createElement('a');
+        var evt = document.createEvent(&quot;HTMLEvents&quot;);
+        evt.initEvent(&quot;click&quot;);
+        aLink.download = fileName;
+        aLink.href = urlData;
+        aLink.dispatchEvent(evt);
+    }
+
+    var d = new Date();
+    var month = (d.getMonth() + '').length === 1 ? '0' + d.getMonth() : d.getMonth();
+    var year = d.getFullYear();
+    var date = d.getDate();
+    var dateStr = year + '-' + month + '-' + date;
+
+    downloadFile( 'bookmarks-'+ dateStr +'.txt', 'data:text/plain;charset=UTF-8,' + encodeURIComponent(str) );
+</pre>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<blockquote>
+<ul class="simple">
+<li>` &lt;&gt;`_</li>
+</ul>
+</blockquote>
+</div>
+</div>
+</body>
+</html>

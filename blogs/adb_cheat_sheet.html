@@ -373,28 +373,28 @@ body {
 <p>A quick reference to <a class="reference external" href="https://developer.android.com/studio/command-line/adb">ADB</a>.</p>
 <div class="section" id="see-devices">
 <h1>see devices</h1>
-<p>To see the list of all connected devices <a class="footnote-reference" href="#id13" id="id1">[1]</a>:</p>
+<p>To see the list of all connected devices <a class="footnote-reference" href="#id14" id="id1">[1]</a>:</p>
 <pre class="literal-block">
 adb devices -l
 </pre>
 </div>
 <div class="section" id="list-all-packages">
 <h1>list all packages</h1>
-<p>To see the list of all packages <a class="footnote-reference" href="#id14" id="id2">[2]</a>:</p>
+<p>To see the list of all packages <a class="footnote-reference" href="#id15" id="id2">[2]</a>:</p>
 <pre class="literal-block">
 adb shell 'pm list packages'
 </pre>
 </div>
 <div class="section" id="uninstall-an-app">
 <h1>uninstall an app</h1>
-<p>To uninstall an app <a class="footnote-reference" href="#id15" id="id3">[3]</a>:</p>
+<p>To uninstall an app <a class="footnote-reference" href="#id16" id="id3">[3]</a>:</p>
 <pre class="literal-block">
 adb uninstall -k --user 0 $package
 </pre>
 </div>
 <div class="section" id="backup-system-and-app-data">
 <h1>backup system and app data</h1>
-<p>To backup system and app data but not the apps <a class="footnote-reference" href="#id16" id="id4">[4]</a>:</p>
+<p>To backup system and app data but not the apps <a class="footnote-reference" href="#id17" id="id4">[4]</a>:</p>
 <pre class="literal-block">
 adb backup -all
 </pre>
@@ -402,35 +402,35 @@ adb backup -all
 </div>
 <div class="section" id="backup-system-and-app-data-to-a-file">
 <h1>backup system and app data to a file</h1>
-<p>To backup system and app data to a file but not the apps <a class="footnote-reference" href="#id16" id="id5">[4]</a>:</p>
+<p>To backup system and app data to a file but not the apps <a class="footnote-reference" href="#id17" id="id5">[4]</a>:</p>
 <pre class="literal-block">
 adb backup -all -f $path_to_backup_file.ab
 </pre>
 </div>
 <div class="section" id="restore-data">
 <h1>restore data</h1>
-<p>To restore data <a class="footnote-reference" href="#id16" id="id6">[4]</a>:</p>
+<p>To restore data <a class="footnote-reference" href="#id17" id="id6">[4]</a>:</p>
 <pre class="literal-block">
 adb restore $path_to_backup_file.ab
 </pre>
 </div>
 <div class="section" id="get-current-activity">
 <h1>get current activity</h1>
-<p>TO see the current activity <a class="footnote-reference" href="#id17" id="id7">[5]</a>:</p>
+<p>TO see the current activity <a class="footnote-reference" href="#id18" id="id7">[5]</a>:</p>
 <pre class="literal-block">
 adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'
 </pre>
 </div>
 <div class="section" id="start-an-application">
 <h1>start an application</h1>
-<p>To start an application aka an activity of an application <a class="footnote-reference" href="#id18" id="id8">[6]</a>:</p>
+<p>To start an application aka an activity of an application <a class="footnote-reference" href="#id19" id="id8">[6]</a>:</p>
 <pre class="literal-block">
 adb shell am start -n com.package.name/com.package.name.ActivityName
 </pre>
 </div>
 <div class="section" id="scroll-screen">
 <h1>scroll screen</h1>
-<p>To scroll up and down <a class="footnote-reference" href="#id19" id="id9">[7]</a>:</p>
+<p>To scroll up and down <a class="footnote-reference" href="#id20" id="id9">[7]</a>:</p>
 <pre class="literal-block">
 adb shell input swipe 300 300 500 1000 #up
 
@@ -439,14 +439,14 @@ adb shell input swipe 500 1000 300 300 #down
 </div>
 <div class="section" id="send-text">
 <h1>send text</h1>
-<p>To send text using virtual keyboard <a class="footnote-reference" href="#id20" id="id10">[8]</a>:</p>
+<p>To send text using virtual keyboard <a class="footnote-reference" href="#id21" id="id10">[8]</a>:</p>
 <pre class="literal-block">
 adb shell input text &quot;Hello World&quot;
 </pre>
 </div>
 <div class="section" id="send-keyevent">
 <h1>send keyevent</h1>
-<p>To send keyevent as physical keyboard <a class="footnote-reference" href="#id21" id="id11">[9]</a>:</p>
+<p>To send keyevent as physical keyboard <a class="footnote-reference" href="#id22" id="id11">[9]</a>:</p>
 <pre class="literal-block">
 adb shell input keyevent 66 #66 is key_code for enter
 </pre>
@@ -454,71 +454,84 @@ adb shell input keyevent 66 #66 is key_code for enter
 </div>
 <div class="section" id="send-tap">
 <h1>send tap</h1>
-<p>To tap aka click on screen <a class="footnote-reference" href="#id22" id="id12">[10]</a>:</p>
+<p>To tap aka click on screen <a class="footnote-reference" href="#id23" id="id12">[10]</a>:</p>
 <pre class="literal-block">
 adb shell input tap x y
 </pre>
 </div>
+<div class="section" id="see-log-of-a-package">
+<h1>see log of a package</h1>
+<p>to see log of a specific package <a class="footnote-reference" href="#id24" id="id13">[11]</a>:</p>
+<pre class="literal-block">
+adb shell &quot;logcat --pid=$(pidof -s &lt;package_name&gt;)&quot;
+</pre>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
-<table class="docutils footnote" frame="void" id="id13" rules="none">
+<table class="docutils footnote" frame="void" id="id14" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://developer.android.com/studio/command-line/adb#devicestatus">Query for devices</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id14" rules="none">
+<table class="docutils footnote" frame="void" id="id15" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://stackpointer.io/mobile/android-adb-list-installed-package-names/416/">Android: ADB – List Installed Package Names</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id15" rules="none">
+<table class="docutils footnote" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://android.stackexchange.com/a/186586">How to uninstall a system app using adb uninstall command (NOT remove via rm or any other way)</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id16" rules="none">
+<table class="docutils footnote" frame="void" id="id17" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>)</em> <a class="reference external" href="https://www.technipages.com/how-to-backup-your-entire-android-device">How to Backup Your Entire Android Device to PC</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id17" rules="none">
+<table class="docutils footnote" frame="void" id="id18" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id7">[5]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/13212310">ADB - Android - Getting the name of the current activity</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id18" rules="none">
+<table class="docutils footnote" frame="void" id="id19" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id8">[6]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/4567928">How to start an application using android ADB tools?</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id19" rules="none">
+<table class="docutils footnote" frame="void" id="id20" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id9">[7]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/39190185">How can I scroll an application using adb?</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id20" rules="none">
+<table class="docutils footnote" frame="void" id="id21" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id10">[8]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/28969112">ADB Shell Input Events: answered by Rene Barbosa</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id21" rules="none">
+<table class="docutils footnote" frame="void" id="id22" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id11">[9]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/8483797">ADB Shell Input Events: answered by LionCoder</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id22" rules="none">
+<table class="docutils footnote" frame="void" id="id23" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id12">[10]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/5392547">How to use ADB to send touch events to device using sendevent command?</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id24" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id13">[11]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/32737594/5350059">adb shell Logcat with Package Name</a></td></tr>
 </tbody>
 </table>
 </div>

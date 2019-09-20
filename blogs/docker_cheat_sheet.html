@@ -380,6 +380,17 @@ body {
 <p><a class="reference external" href="https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605">https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605</a>
 <a class="reference external" href="https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host#22050116">https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host#22050116</a></p>
 </div>
+<div class="section" id="list-container">
+<h1>list container</h1>
+<p>to list running container:</p>
+<pre class="literal-block">
+docker ps
+</pre>
+<p>to list all container:</p>
+<pre class="literal-block">
+docker ps -a
+</pre>
+</div>
 <div class="section" id="run-a-docker-image-as-a-container-in-background">
 <h1>run a docker image as a container in background</h1>
 <p>to run a docker image as a container do the following:</p>
@@ -472,6 +483,55 @@ docker rm $(docker ps -a -q)
 docker rmi -f $(docker images -q)
 </pre>
 <p>source: <a class="reference external" href="https://techoverflow.net/2013/10/22/docker-remove-all-images-and-containers/">https://techoverflow.net/2013/10/22/docker-remove-all-images-and-containers/</a></p>
+</div>
+<div class="section" id="execute-source-command-inside-dockerfile">
+<h1>execute <cite>source</cite> command inside Dockerfile</h1>
+<p>to execute <cite>source</cite> command inside Dockerfile:</p>
+<pre class="literal-block">
+RUN /bin/bash -c &quot;source /path/to/file&quot;
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/25086628/5350059">https://stackoverflow.com/a/25086628/5350059</a></p>
+</div>
+<div class="section" id="rebuild-docker-image">
+<h1>rebuild docker image</h1>
+<p>to rebuild docker image with docker-compose:</p>
+<pre class="literal-block">
+docker-compose build -f /path/to/docker-compose.yml
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/57027380/5350059">https://stackoverflow.com/a/57027380/5350059</a></p>
+</div>
+<div class="section" id="remove-unused-data">
+<h1>remove unused data</h1>
+<p>to removed unused data:</p>
+<pre class="literal-block">
+docker system prune
+</pre>
+<p>source: <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/system_prune/">https://docs.docker.com/engine/reference/commandline/system_prune/</a></p>
+</div>
+<div class="section" id="see-log">
+<h1>see log</h1>
+<p>to see log:</p>
+<pre class="literal-block">
+docker logs container_id
+</pre>
+</div>
+<div class="section" id="stop-container">
+<h1>stop container</h1>
+<p>to stop a container gracefully with <cite>SIGTERM</cite>:</p>
+<pre class="literal-block">
+docker stop container_id
+</pre>
+<p>to kill a container with <cite>SIGKILL</cite> when it is stuck:</p>
+<pre class="literal-block">
+docker kill container_id
+</pre>
+</div>
+<div class="section" id="run-command-inside-a-container">
+<h1>run command inside a container</h1>
+<p>to run command inside a container:</p>
+<pre class="literal-block">
+docker exac -it container_id command
+</pre>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
