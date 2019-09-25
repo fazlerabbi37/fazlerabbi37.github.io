@@ -339,7 +339,7 @@ OR
 
 use this::
 
-    "Hello world " * 2 
+    "Hello world " * 2
     >>> 'Hello world Hello world '
 
 source: https://stackoverflow.com/a/43828469/5350059
@@ -389,11 +389,11 @@ to iterate over files in a directory::
 	import os
 
 	for filename in os.listdir(directory):
-		if filename.endswith(".asm") or filename.endswith(".py"): 
+		if filename.endswith(".asm") or filename.endswith(".py"):
 			# print(os.path.join(directory, filename))
 			continue
 		else:
-			continue 
+			continue
 
 source: https://stackoverflow.com/a/10378012/5350059
 
@@ -412,6 +412,42 @@ Reload latest bashrc::
     source ~/.bashrc
 
 source: http://www.indjango.com/ubuntu-django-bash-auto-completion/
+
+install package from inside python shell
+----------------------------------------
+to install package from inside python shell::
+
+    from pip._internal import main as _main
+
+    package_names=['pandas'] #packages to install
+    _main(['install'] + package_names + ['--upgrade'])
+
+source: https://stackoverflow.com/a/57594338/5350059
+
+
+print bold text
+---------------
+to print bold text::
+
+    print('\033[1m' + 'Hello World !' + '\033[0m')
+
+We can do more tricks::
+
+    class color:
+        PURPLE = '\033[95m'
+        CYAN = '\033[96m'
+        DARKCYAN = '\033[36m'
+        BLUE = '\033[94m'
+        GREEN = '\033[92m'
+        YELLOW = '\033[93m'
+        RED = '\033[91m'
+        BOLD = '\033[1m'
+        UNDERLINE = '\033[4m'
+        END = '\033[0m'
+
+    print(color.BOLD + 'Hello World !' + color.END)
+
+source: https://stackoverflow.com/a/17303428/5350059
 
 
 Source
