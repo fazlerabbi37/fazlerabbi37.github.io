@@ -449,6 +449,15 @@ We can do more tricks::
 
 source: https://stackoverflow.com/a/17303428/5350059
 
+get all object attributes of a object
+-------------------------------------
+to get all object attributes of a object::
+
+    object.dir()
+
+source: https://stackoverflow.com/a/6886507/5350059
+
+
 
 Source
 ------
