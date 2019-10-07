@@ -457,7 +457,13 @@ to get all object attributes of a object::
 
 source: https://stackoverflow.com/a/6886507/5350059
 
+beautify JSON in Python
+-----------------------
+to beautify JSON in Python::
 
+    echo '{"one":1,"two":2}' | python -mjson.tool
+
+source: https://stackoverflow.com/a/9105132/5350059
 
 Source
 ------
