@@ -375,6 +375,49 @@ body {
 <p class="first admonition-title">Warning</p>
 <p class="last">under heavy construction and not well organized</p>
 </div>
+<div class="section" id="install-docker-on-ubuntu">
+<h1>install docker on ubuntu</h1>
+<p>to docker install on ubuntu:</p>
+<pre class="literal-block">
+sudo apt-get remove docker docker-engine docker.io -y
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;
+sudo apt-get update
+sudo apt-get install docker-ce
+</pre>
+<p>source: <a class="reference external" href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/</a></p>
+<p>after install:</p>
+<pre class="literal-block">
+sudo groupadd docker
+sudo usermod -aG docker $USER
+</pre>
+<p>Now logout or reboot to see the change in effect.</p>
+<p>source: <a class="reference external" href="https://docs.docker.com/v17.09/engine/installation/linux/linux-postinstall">https://docs.docker.com/v17.09/engine/installation/linux/linux-postinstall</a></p>
+<p>test your installation:</p>
+<pre class="literal-block">
+docker run hello-world
+</pre>
+</div>
+<div class="section" id="install-docker-compose-on-ubuntu">
+<h1>install docker-compose on ubuntu</h1>
+<p>to install docker-compose on ubuntu:</p>
+<pre class="literal-block">
+sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+</pre>
+<p>source: <a class="reference external" href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
+</div>
+<div class="section" id="docker-compose-bash-compilation">
+<h1>docker-compose bash compilation</h1>
+<p>to have bash compilation for docker-compose:</p>
+<pre class="literal-block">
+sudo curl -L https://raw.githubusercontent.com/docker/compose/1.24.1/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+</pre>
+<p>now restart bash</p>
+<p>source: <a class="reference external" href="https://docs.docker.com/compose/completion/">https://docs.docker.com/compose/completion/</a></p>
+</div>
 <div class="section" id="shell-access-on-a-docker-image">
 <h1>shell access on a docker image</h1>
 <p><a class="reference external" href="https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605">https://stackoverflow.com/questions/30172605/how-do-i-get-into-a-docker-containers-shell#comment75385171_30172605</a>

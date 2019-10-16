@@ -747,6 +747,57 @@ source ~/.bashrc
 </pre>
 <p>source: <a class="reference external" href="http://www.indjango.com/ubuntu-django-bash-auto-completion/">http://www.indjango.com/ubuntu-django-bash-auto-completion/</a></p>
 </div>
+<div class="section" id="install-package-from-inside-python-shell">
+<h1>install package from inside python shell</h1>
+<p>to install package from inside python shell:</p>
+<pre class="literal-block">
+from pip._internal import main as _main
+
+package_names=['pandas'] #packages to install
+_main(['install'] + package_names + ['--upgrade'])
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/57594338/5350059">https://stackoverflow.com/a/57594338/5350059</a></p>
+</div>
+<div class="section" id="print-bold-text">
+<h1>print bold text</h1>
+<p>to print bold text:</p>
+<pre class="literal-block">
+print('\033[1m' + 'Hello World !' + '\033[0m')
+</pre>
+<p>We can do more tricks:</p>
+<pre class="literal-block">
+class color:
+    PURPLE = '\033[95m'
+    CYAN = '\033[96m'
+    DARKCYAN = '\033[36m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    END = '\033[0m'
+
+print(color.BOLD + 'Hello World !' + color.END)
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/17303428/5350059">https://stackoverflow.com/a/17303428/5350059</a></p>
+</div>
+<div class="section" id="get-all-object-attributes-of-a-object">
+<h1>get all object attributes of a object</h1>
+<p>to get all object attributes of a object:</p>
+<pre class="literal-block">
+object.dir()
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/6886507/5350059">https://stackoverflow.com/a/6886507/5350059</a></p>
+</div>
+<div class="section" id="beautify-json-in-python">
+<h1>beautify JSON in Python</h1>
+<p>to beautify JSON in Python:</p>
+<pre class="literal-block">
+echo '{&quot;one&quot;:1,&quot;two&quot;:2}' | python -mjson.tool
+</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/9105132/5350059">https://stackoverflow.com/a/9105132/5350059</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
