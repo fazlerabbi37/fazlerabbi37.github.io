@@ -22,35 +22,12 @@ TODO
 
 .. note:: give api resposne as json and test: return ContentService.createTextOutput('Error!!! POST method not allowed.').setMimeType(ContentService.MimeType.TEXT);
 
-.. note:: get all URL enncoded params as json object: e.parameter where e is event
-
-.. note:: access object data with key: params.first_name
-
-.. note:: sha512 hash of a string: Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_512, 'string'))
 
 
-.. note:: sent request
 
-```
-options = {
-   "method": "post",
-   "headers": {},
-   "payload": data};
- var response = UrlFetchApp.fetch(url, options);
-```
 
-.. note: convert requet response to json
 
-```
- var json_parsed = JSON.parse(response)
-```
-
-.. note:: appendrow: sheet.appendRow([data,data]). must be a array
-
-.. note:: sent data as json in post: e.postData.contents (https://stackoverflow.com/a/53018010/5350059) 
  
-.. note:: filter range where string exist: sheet.getRange(coupon_column).getValues().filter(String)
 
-.. 
 
 :: .. note::
