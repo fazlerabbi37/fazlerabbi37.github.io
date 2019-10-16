@@ -2,6 +2,8 @@ JavaScript Cheat Sheet
 ======================
 A quick reference to JavaScript.
 
+.. warning:: under heavy construction and not well organized
+
 export subtitle form youtube console
 ------------------------------------
 ::
@@ -37,7 +39,7 @@ bring back the on USIS
 
     ("#column2").append(
 
-   <li class="widget color-red">
+    <li class="widget color-red">
 
     <div class="widget-head" style="cursor: move;"><a href="http://usis.bracu.ac.bd/academia/dashBoard/show#" class="collapse">COLLAPSE</a>
     <h3 style="background-color:transparent;">Class Schedule</h3>
@@ -138,6 +140,12 @@ run when the password manager is open from the chrome console (hit f12 to access
     out="";out2="";dat=document.getElementsByClassName("password");for(i=0;i<dat.length;i++){x=dat[i].parentNode;out+="\n"+x.childNodes[0].innerText+"|"+x.childNodes[1].innerText+"|"+x.childNodes[2].childNodes[0].value;out2+="<br/>"+x.childNodes[0].innerText+"|"+x.childNodes[1].innerText+"|"+x.childNodes[2].childNodes[0].value;};console.log(out);document.write(out2)
 
 ~alogsinb
+
+get current time
+----------------
+to get current time::
+
+	Date.now()
 
 
 Export an individual bookmark folder in Google Chrome
