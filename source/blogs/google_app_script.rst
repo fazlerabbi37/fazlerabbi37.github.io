@@ -98,8 +98,21 @@ to retrieve URL encoded params::
 
 	var params = e.parameter //where e is event
 
-subtopic
---------
+
+get sheet by sheet id
+---------------------
+to get sheet by sheet idi [6]_::
+
+    var sheet_id = "1vq-rgLqnWQm-WD1eDwdALCNPrY86g27AT--QJ6CIxPY";
+    var open_sheet = SpreadsheetApp.openById(sheet_id);
+     
+print log
+---------
+to print log [7]_::
+
+    Logger.log($string_in_quote_or_var);
+
+
 
 Source
 ------
@@ -109,3 +122,8 @@ Source
 .. [3] `getSheets | Class Spreadsheet | Apps Script | Google Devlopers <https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheets>`_
 .. [4] `getSheetByName | Class Spreadsheet | Apps Script | Google Devlopers <https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheetbynamename>`_
 .. [5] `Google Apps Script make HTTP POST <https://stackoverflow.com/a/14764242/5350059>`_
+.. [6] `openById | Class Spreadsheet | Apps Script | Google Devlopers <https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#openbyidid>`_
+.. [7] `log | Class Logger | Apps Script | Google Devlopers <https://developers.google.com/apps-script/reference/base/logger#logdata>`_
+
+
+
