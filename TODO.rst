@@ -20,8 +20,6 @@ TODO
 
 ---------------------------------------------------------------------
 
-.. note:: give api resposne as json and test: return ContentService.createTextOutput('Error!!! POST method not allowed.').setMimeType(ContentService.MimeType.TEXT);
-
 
 
 
