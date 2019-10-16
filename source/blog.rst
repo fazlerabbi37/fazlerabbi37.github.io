@@ -12,6 +12,30 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`Google App Script Cheat Sheet <blogs/google_app_script.html>`_
+...............................................................
+Oct 16, 2019
+
+A quick reference to Google App Script.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
+.....................................................
+Oct 16, 2019
+
+A quick reference to Python
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
+.....................................................
+Oct 16, 2019
+
+A quick reference to Docker.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Google Cloud Platform <blogs/google_cloud_platform.html>`_
 ...........................................................
 Sep 20, 2019
@@ -26,30 +50,6 @@ Sep 20, 2019
 
 Using FileZilla to upload to SourceForge project.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`EBL cheque deposit on kiosk <blogs/ebl_cheque_deposit_on_kiosk.html>`_
-.......................................................................
-Sep 20, 2019
-
-Navigating the ever forgetting process of using the EBL drop-box.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
-.....................................................
-Sep 20, 2019
-
-A quick reference to Python
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Markdown Cheat Sheet <blogs/markdown_cheat_sheet.html>`_
-.........................................................
-Sep 20, 2019
-
-A quick reference to Markdown.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -122,7 +122,7 @@ Explaining Desktop Entry aka Desktop icon in Ubuntu.
 
 `Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
 .....................................................
-Sep 20, 2019
+Oct 16, 2019
 
 A quick reference to Docker.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -174,6 +174,14 @@ Sep 20, 2019
 
 A quick reference to GNOME.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Google App Script Cheat Sheet <blogs/google_app_script.html>`_
+...............................................................
+Oct 16, 2019
+
+A quick reference to Google App Script.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Google calendar to ical conversation <blogs/google_calendar_to_ical.html>`_
@@ -290,7 +298,7 @@ The whole process of publishing Sphinx generated doc with GitHub Pages.
 
 `Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
 .....................................................
-Sep 20, 2019
+Oct 16, 2019
 
 A quick reference to Python
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
