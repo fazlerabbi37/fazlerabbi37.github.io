@@ -180,13 +180,25 @@ to list file name, id and size in a folder [11]_::
 
 automatically redirecting to a page
 -----------------------------------
-to automatically redirect to a page::
+to automatically redirect to a page [12]_::
 
 	function doGet() {
 		return HtmlService.createHtmlOutput(
 			"<script>window.top.location.href='+"url"+';</script>"
 		);
 	}
+
+
+save a html file as pdf
+-----------------------
+to save a html file as pdf [13]_::
+
+    var folder = DriveApp.getFolderById($folder_id);
+    var blob = HtmlService.createHtmlOutputFromFile($html_file_name);
+    blob = blob.getBlob();
+    var pdf = blob.getAs("application/pdf");
+    folder.createFile(pdf).setName("$file_name.pdf")
+
 
 
 Source
@@ -202,3 +214,5 @@ Source
 .. [9] `setValues | Class Range | Apps Script | Google Devlopers <https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues>`_
 .. [10] `Sending HTML content in mail <https://riptutorial.com/google-apps-script/example/18861/sending-html-content-in-mail>`_
 .. [11] `List all files id inside a folder (no subfolders) <https://stackoverflow.com/a/25360586/5350059>`_
+.. [12] `Automatically Redirecting to a Page <https://stackoverflow.com/a/48030297/5350059>`_
+.. [13] `Create PDF from HTML in Google Apps Script and include images - Images not showing up <https://stackoverflow.com/a/43944352/5350059>`_
