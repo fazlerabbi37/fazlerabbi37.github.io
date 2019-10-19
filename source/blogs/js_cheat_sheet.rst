@@ -4,6 +4,16 @@ A quick reference to JavaScript.
 
 .. warning:: under heavy construction and not well organized
 
+get the last char of the string
+-------------------------------
+to get the last char of the string::
+
+    let str = "asdf1";
+    str.slice(-1)
+
+(source: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_slice6)
+
+
 export subtitle form youtube console
 ------------------------------------
 ::
