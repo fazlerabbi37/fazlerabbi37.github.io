@@ -14,6 +14,24 @@ to get the last char of the string::
 (source: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_slice6)
 
 
+merge two json object
+---------------------
+to merge two json object::
+
+	var jo1 = {"name":"Thor", "dob":"964 A.D"}
+	var jo2 = {"citizenship":"asgardian", "gender":"male"}
+	for (var i = 0; i < Object.keys(jo2).length; i++){
+		jo1[Object.keys(jo2)[i]] = jo2[Object.keys(jo2)[i]]
+	}
+	
+	jo1
+    
+output:: 
+
+	{name: "Thor", dob: "964 A.D", citizenship: "asgardian", gender: "male"}
+
+
+
 export subtitle form youtube console
 ------------------------------------
 ::
