@@ -25,7 +25,18 @@ to merge two json object::
 	}
 	
 	jo1
-    
+
+OR::
+
+    var jo1 = {"name":"Thor", "dob":"964 A.D"}
+    var jo2 = {"citizenship":"asgardian", "gender":"male"}
+
+    for (var key in jo2){
+        jo1[key] = jo2[key]
+    }
+
+(source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+
 output:: 
 
 	{name: "Thor", dob: "964 A.D", citizenship: "asgardian", gender: "male"}
