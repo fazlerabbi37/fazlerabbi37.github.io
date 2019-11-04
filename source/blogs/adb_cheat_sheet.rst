@@ -89,6 +89,43 @@ to see log of a specific package [11]_::
     adb shell "logcat --pid=$(pidof -s <package_name>)"
 
 
+adb over wifi
+-------------
+we can use adb over wifi or specifically with a tcp connection [12]_ .to use adb over wifi, first connect the phone via usb and enable usb debug. then list all device::
+
+    adb devices
+
+this should give a output like this::
+
+    device_name    some_number
+
+now check the ip of the android device with::
+
+    adb shell ifconfig
+
+output::
+
+    wlan0     Link encap:UNSPEC    Driver icnss
+              inet addr:XXX.XXX.X.XX  Bcast:XXX.XXX.X.XXX
+
+take note of the ip address after ``inet addr``. we will need it later. now restart tcpip at some port with::
+
+    adb tcpip $port
+    
+for example 5555::
+
+    adb tcpip 5555
+
+you can disconnect the use now. to connect to the device now just give the following command::
+
+    adb connect $ip:$port
+
+like::
+
+    adb connect 192.168.1.4:5555
+
+
+
 
 Source
 ------
@@ -103,3 +140,4 @@ Source
 .. [9] `ADB Shell Input Events: answered by LionCoder <https://stackoverflow.com/a/8483797>`_
 .. [10] `How to use ADB to send touch events to device using sendevent command? <https://stackoverflow.com/a/5392547>`_
 .. [11] `adb shell Logcat with Package Name <https://stackoverflow.com/a/32737594/5350059>`_
+.. [12] `How can I connect to Android with ADB over TCP? <https://stackoverflow.com/a/58334911/5350059>`_
