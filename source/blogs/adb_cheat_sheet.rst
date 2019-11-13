@@ -86,7 +86,7 @@ see log of a package
 --------------------
 to see log of a specific package [11]_::
 
-    adb shell "logcat --pid=$(pidof -s <package_name>)"
+    adb shell 'logcat --pid=$(pidof -s <package_name>)'
 
 
 adb over wifi
