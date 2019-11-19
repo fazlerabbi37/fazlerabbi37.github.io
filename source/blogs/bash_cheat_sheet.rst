@@ -1639,5 +1639,17 @@ file sync
     #if the flash is not mounted exit with exitcode=1 
     exit $exitcode
 
+
+number of arguments equal
+-------------------------
+to check if number of arguments is equal to a number::
+
+    if [[ "$#" -ne 1 ]]; then
+        echo "Illegal number of parameters"
+    fi
+
+s: https://stackoverflow.com/a/18568726/5350059
+
+
 Source
 ------
