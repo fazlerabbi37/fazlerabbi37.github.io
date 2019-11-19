@@ -2,6 +2,54 @@ KVM Cheat Sheet
 ===============
 A quick reference to KVM.
 
+
+install kvm in ubuntu
+---------------------
+pre-installation check
+``````````````````````
+Check that our CPU supports hardware virtualization [1]_::
+
+    egrep -c '(vmx|svm)' /proc/cpuinfo
+
+if it is more 0 then your hardware doesn't support virtualization. If it is more then 0 then we are good to go. Alternatively we can use::
+
+    egrep -c ' lm ' /proc/cpuinfo
+
+which will give similar result.
+
+installation
+````````````
+to install KVM in Ubuntu [2]_::
+
+    sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+
+post-installation
+`````````````````
+on post-installation we need to configure the network. Here I will only give the example of bridged networking in DHCP.[3]_. First make backup of your netowrk configuration::
+
+	sudo cp /etc/network/interfaces /etc/network/interfaces.bak
+
+
+.. warning:: Unfortunately, the draw back of this method is that, on next boot it disables the network manager. If we use this we need to run `sudo /etc/init.d/networking restart` everytime to bring the bridge interface up.
+
+Now open `/etc/network/interfaces` file with your choice of editor and paste the following::
+
+	auto lo
+	iface lo inet loopback
+
+	auto br0
+	iface br0 inet dhcp
+			bridge_ports eth0 # change it to your ethernet adapter name
+			bridge_stp off
+			bridge_fd 0
+			bridge_maxwait 0
+
+Now restart the network adapter::
+
+	sudo systemctl restart networking.service
+
+    
+
 Make guest from ISO
 -------------------
 To create a new guest instance from ISO, run the following::
@@ -39,3 +87,6 @@ We can see the information of an existing ``.img`` file using ``qemu-img``::
 
 Source
 ------
+.. [1] `KVM/Installation - Pre-installation checklist <https://help.ubuntu.com/community/KVM/Installation#Pre-installation_checklist>`_
+.. [2] `KVM/Installation - Installation of KVM <https://help.ubuntu.com/community/KVM/Installation#Installation_of_KVM>`_
+.. [3] `KVM/Networking - Bridged Networking <https://help.ubuntu.com/community/KVM/Networking#Bridged_Networking>`_
