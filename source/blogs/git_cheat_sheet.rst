@@ -179,5 +179,17 @@ to apply that patch file::
 
 source: https://stackoverflow.com/a/2250170/5350059
 
+exclude files from git diff
+---------------------------
+to exclude files from git diff::
+
+    git diff -- . ':(exclude)filename'
+
+for branch::
+
+    git diff branchname -- ':(exclude)filename'
+
+s: https://stackoverflow.com/a/48651201/5350059
+
 Source
 ------
