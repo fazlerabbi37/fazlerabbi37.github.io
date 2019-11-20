@@ -371,6 +371,7 @@ body {
 <h1 class="title">Docker Cheat Sheet</h1>
 
 <p>A quick reference to Docker.</p>
+<p>Created on: 2019-03-19</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">under heavy construction and not well organized</p>
@@ -381,11 +382,13 @@ body {
 <pre class="literal-block">
 sudo apt-get remove docker docker-engine docker.io -y
 sudo apt-get update
+
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;
 sudo apt-get update
-sudo apt-get install docker-ce
+
+sudo apt-get install docker-ce -y
 </pre>
 <p>source: <a class="reference external" href="https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/">https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/</a></p>
 <p>after install:</p>
@@ -585,6 +588,11 @@ docker exac -it container_id command
 </tbody>
 </table>
 </div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2019-11-20 03:28 UTC.
+
 </div>
 </body>
 </html>

@@ -371,6 +371,47 @@ body {
 <h1 class="title">JavaScript Cheat Sheet</h1>
 
 <p>A quick reference to JavaScript.</p>
+<p>Created on: 2019-09-30</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">under heavy construction and not well organized</p>
+</div>
+<div class="section" id="get-the-last-char-of-the-string">
+<h1>get the last char of the string</h1>
+<p>to get the last char of the string:</p>
+<pre class="literal-block">
+let str = &quot;asdf1&quot;;
+str.slice(-1)
+</pre>
+<p>(source: <a class="reference external" href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_slice6">https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_slice6</a>)</p>
+</div>
+<div class="section" id="merge-two-json-object">
+<h1>merge two json object</h1>
+<p>to merge two json object:</p>
+<pre class="literal-block">
+var jo1 = {&quot;name&quot;:&quot;Thor&quot;, &quot;dob&quot;:&quot;964 A.D&quot;}
+var jo2 = {&quot;citizenship&quot;:&quot;asgardian&quot;, &quot;gender&quot;:&quot;male&quot;}
+for (var i = 0; i &lt; Object.keys(jo2).length; i++){
+        jo1[Object.keys(jo2)[i]] = jo2[Object.keys(jo2)[i]]
+}
+
+jo1
+</pre>
+<p>OR:</p>
+<pre class="literal-block">
+var jo1 = {&quot;name&quot;:&quot;Thor&quot;, &quot;dob&quot;:&quot;964 A.D&quot;}
+var jo2 = {&quot;citizenship&quot;:&quot;asgardian&quot;, &quot;gender&quot;:&quot;male&quot;}
+
+for (var key in jo2){
+    jo1[key] = jo2[key]
+}
+</pre>
+<p>(source: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in</a>)</p>
+<p>output:</p>
+<pre class="literal-block">
+{name: &quot;Thor&quot;, dob: &quot;964 A.D&quot;, citizenship: &quot;asgardian&quot;, gender: &quot;male&quot;}
+</pre>
+</div>
 <div class="section" id="export-subtitle-form-youtube-console">
 <h1>export subtitle form youtube console</h1>
 <pre class="literal-block">
@@ -400,58 +441,58 @@ for (var i = 0, max = getInputs.length; i &lt; max; i++){ if (getInputs[i].type 
 <div class="section" id="bring-back-the-on-usis">
 <h1>bring back the on USIS</h1>
 <pre class="literal-block">
- (&quot;#column2&quot;).append(
+(&quot;#column2&quot;).append(
 
 &lt;li class=&quot;widget color-red&quot;&gt;
 
- &lt;div class=&quot;widget-head&quot; style=&quot;cursor: move;&quot;&gt;&lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot; class=&quot;collapse&quot;&gt;COLLAPSE&lt;/a&gt;
- &lt;h3 style=&quot;background-color:transparent;&quot;&gt;Class Schedule&lt;/h3&gt;
- &lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot; class=&quot;remove&quot;&gt;CLOSE&lt;/a&gt;&lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot;
- class=&quot;edit&quot;&gt;EDIT&lt;/a&gt;&lt;/div&gt;
- &lt;div class=&quot;edit-box&quot; style=&quot;display:none;&quot;&gt;
- &lt;ul&gt;
- &lt;li class=&quot;item&quot;&gt;&lt;label&gt;Change the title?&lt;/label&gt;&lt;input value=&quot;Class Schedule&quot;&gt;&lt;/li&gt;
- &lt;/ul&gt;
- &lt;li class=&quot;item&quot;&gt;&lt;label&gt;Available colors:&lt;/label&gt;
- &lt;ul class=&quot;colors&quot;&gt;
- &lt;li class=&quot;color-yellow&quot;&gt;&lt;/li&gt;
- &lt;li class=&quot;color-red&quot;&gt;&lt;/li&gt;
- &lt;li class=&quot;color-blue&quot;&gt;&lt;/li&gt;
- &lt;li class=&quot;color-white&quot;&gt;&lt;/li&gt;
- &lt;li class=&quot;color-orange&quot;&gt;&lt;/li&gt;
- &lt;li class=&quot;color-green&quot;&gt;&lt;/li&gt;
- &lt;/ul&gt;
- &lt;/li&gt;
- &lt;/div&gt;
- &lt;div class=&quot;widget-content&quot;&gt;
- &lt;input type=&quot;hidden&quot; name=&quot;widgetid&quot; id=&quot;widgetid&quot; value=&quot;619489&quot;&gt;
+&lt;div class=&quot;widget-head&quot; style=&quot;cursor: move;&quot;&gt;&lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot; class=&quot;collapse&quot;&gt;COLLAPSE&lt;/a&gt;
+&lt;h3 style=&quot;background-color:transparent;&quot;&gt;Class Schedule&lt;/h3&gt;
+&lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot; class=&quot;remove&quot;&gt;CLOSE&lt;/a&gt;&lt;a href=&quot;http://usis.bracu.ac.bd/academia/dashBoard/show#&quot;
+class=&quot;edit&quot;&gt;EDIT&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;edit-box&quot; style=&quot;display:none;&quot;&gt;
+&lt;ul&gt;
+&lt;li class=&quot;item&quot;&gt;&lt;label&gt;Change the title?&lt;/label&gt;&lt;input value=&quot;Class Schedule&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li class=&quot;item&quot;&gt;&lt;label&gt;Available colors:&lt;/label&gt;
+&lt;ul class=&quot;colors&quot;&gt;
+&lt;li class=&quot;color-yellow&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;color-red&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;color-blue&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;color-white&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;color-orange&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;color-green&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/div&gt;
+&lt;div class=&quot;widget-content&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;widgetid&quot; id=&quot;widgetid&quot; value=&quot;619489&quot;&gt;
 
- &lt;script type=&quot;text/javascript&quot;&gt;
- $(document).ready(function () {
- $.ajax({
- url: '/academia/academicSection/showStudentClassSchedule',
- dataType: 'html',
- type: 'post',
- beforeSend: function (jqXHR, settings) {
- $(&quot;#loader_icon&quot;).show();
- },
- success: function (html) {
- $(&quot;#student-class-schedule-dashboard-div&quot;).html(html)
- },
- complete: function () {
- $(&quot;#loader_icon&quot;).hide();
- }
- });
- });
- &lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function () {
+$.ajax({
+url: '/academia/academicSection/showStudentClassSchedule',
+dataType: 'html',
+type: 'post',
+beforeSend: function (jqXHR, settings) {
+$(&quot;#loader_icon&quot;).show();
+},
+success: function (html) {
+$(&quot;#student-class-schedule-dashboard-div&quot;).html(html)
+},
+complete: function () {
+$(&quot;#loader_icon&quot;).hide();
+}
+});
+});
+&lt;/script&gt;
 
- &lt;div id=&quot;student-class-schedule-dashboard-div&quot;&gt;
+&lt;div id=&quot;student-class-schedule-dashboard-div&quot;&gt;
 
- &lt;/div&gt;
+&lt;/div&gt;
 
- &lt;/div&gt;
- &lt;/li&gt;
- `)
+&lt;/div&gt;
+&lt;/li&gt;
+`)
 </pre>
 <p>(auther: Sk Imtiaz Ahmed source: <a class="reference external" href="https://www.facebook.com/groups/desperatelyseekingbracu/permalink/2235744283319547/?comment_id=2235785336648775&amp;comment_tracking=%7B%22tn%22%3A%22R%22%7D">https://www.facebook.com/groups/desperatelyseekingbracu/permalink/2235744283319547/?comment_id=2235785336648775&amp;comment_tracking=%7B%22tn%22%3A%22R%22%7D</a>)</p>
 </div>
@@ -499,6 +540,13 @@ Element in the DOM getEventListeners($(‘selector’))</p>
 out=&quot;&quot;;out2=&quot;&quot;;dat=document.getElementsByClassName(&quot;password&quot;);for(i=0;i&lt;dat.length;i++){x=dat[i].parentNode;out+=&quot;\n&quot;+x.childNodes[0].innerText+&quot;|&quot;+x.childNodes[1].innerText+&quot;|&quot;+x.childNodes[2].childNodes[0].value;out2+=&quot;&lt;br/&gt;&quot;+x.childNodes[0].innerText+&quot;|&quot;+x.childNodes[1].innerText+&quot;|&quot;+x.childNodes[2].childNodes[0].value;};console.log(out);document.write(out2)
 </pre>
 <p>~alogsinb</p>
+</div>
+<div class="section" id="get-current-time">
+<h1>get current time</h1>
+<p>to get current time:</p>
+<pre class="literal-block">
+Date.now()
+</pre>
 </div>
 <div class="section" id="export-an-individual-bookmark-folder-in-google-chrome">
 <h1>Export an individual bookmark folder in Google Chrome</h1>
@@ -554,6 +602,11 @@ urlData ) {
 </ul>
 </blockquote>
 </div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2019-11-20 03:28 UTC.
+
 </div>
 </body>
 </html>

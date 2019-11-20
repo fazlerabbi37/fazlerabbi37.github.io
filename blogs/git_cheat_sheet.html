@@ -371,6 +371,7 @@ body {
 <h1 class="title">Git Cheat Sheet</h1>
 
 <p>A quick reference to Git.</p>
+<p>Created on: 2019-03-19</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">under heavy construction and not well organized</p>
@@ -541,9 +542,26 @@ git apply --stat $filename.patch
 </pre>
 <p>source: <a class="reference external" href="https://stackoverflow.com/a/2250170/5350059">https://stackoverflow.com/a/2250170/5350059</a></p>
 </div>
+<div class="section" id="exclude-files-from-git-diff">
+<h1>exclude files from git diff</h1>
+<p>to exclude files from git diff:</p>
+<pre class="literal-block">
+git diff -- . ':(exclude)filename'
+</pre>
+<p>for branch:</p>
+<pre class="literal-block">
+git diff branchname -- ':(exclude)filename'
+</pre>
+<p>s: <a class="reference external" href="https://stackoverflow.com/a/48651201/5350059">https://stackoverflow.com/a/48651201/5350059</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2019-11-20 03:28 UTC.
+
 </div>
 </body>
 </html>

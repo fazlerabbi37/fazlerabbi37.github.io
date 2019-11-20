@@ -371,7 +371,9 @@ body {
 <h1 class="title">Google App Script Cheat Sheet</h1>
 
 <p>A quick reference to Google App Script.</p>
+<p>Created on: 2019-10-16</p>
 <p>I have been using Google App Script for quick hack and automation for sometime now. Though it would be easy to record the reusable parts.</p>
+<p>Google App Script is based on JavaScript so many JavaScript syntax works here as well. Take a look at <a class="reference external" href="js_cheat_sheet.html">JavaScript Cheat Sheet</a></p>
 <div class="section" id="sha512-hash-of-a-string">
 <h1>sha512 hash of a string</h1>
 <p>to make a sha512 hash of a string:</p>
@@ -419,28 +421,28 @@ return ContentService.createTextOutput('Error!!! POST method not allowed.').setM
 </div>
 <div class="section" id="retrieve-post-data">
 <h1>retrieve post data</h1>
-<p>to retrieve post data <a class="footnote-reference" href="#id6" id="id1">[1]</a>:</p>
+<p>to retrieve post data <a class="footnote-reference" href="#id14" id="id1">[1]</a>:</p>
 <pre class="literal-block">
 var post_data = e.postData.contents // where `e` is event
 </pre>
 </div>
 <div class="section" id="append-row-to-google-sheet">
 <h1>append row to Google Sheet</h1>
-<p>to append row to a Google Sheet <a class="footnote-reference" href="#id7" id="id2">[2]</a>:</p>
+<p>to append row to a Google Sheet <a class="footnote-reference" href="#id15" id="id2">[2]</a>:</p>
 <pre class="literal-block">
 sheet.appendRow([data,data]) //must be a array
 </pre>
 </div>
 <div class="section" id="get-sheet-by-index">
 <h1>get sheet by index</h1>
-<p>to get sheet by index <a class="footnote-reference" href="#id8" id="id3">[3]</a>:</p>
+<p>to get sheet by index <a class="footnote-reference" href="#id16" id="id3">[3]</a>:</p>
 <pre class="literal-block">
 var sheet = sheet.getSheets()[index];
 </pre>
 </div>
 <div class="section" id="get-sheet-by-name">
 <h1>get sheet by name</h1>
-<p>to get sheet by name <a class="footnote-reference" href="#id9" id="id4">[4]</a>:</p>
+<p>to get sheet by name <a class="footnote-reference" href="#id17" id="id4">[4]</a>:</p>
 <pre class="literal-block">
 var sheet = sheet.getSheetByName($sheet_name);
 </pre>
@@ -454,7 +456,7 @@ var json_parsed = JSON.parse(response)
 </div>
 <div class="section" id="sent-request">
 <h1>sent request</h1>
-<p>to sent request <a class="footnote-reference" href="#id10" id="id5">[5]</a>:</p>
+<p>to sent request <a class="footnote-reference" href="#id18" id="id5">[5]</a>:</p>
 <pre class="literal-block">
 var url = &quot;https://example.com&quot;
 
@@ -475,42 +477,196 @@ var response = UrlFetchApp.fetch(url, options);
 var params = e.parameter //where e is event
 </pre>
 </div>
-<div class="section" id="subtopic">
-<h1>subtopic</h1>
+<div class="section" id="get-sheet-by-sheet-id">
+<h1>get sheet by sheet id</h1>
+<p>to get sheet by sheet idi <a class="footnote-reference" href="#id19" id="id6">[6]</a>:</p>
+<pre class="literal-block">
+var sheet_id = &quot;1vq-rgLqnWQm-WD1eDwdALCNPrY86g27AT--QJ6CIxPY&quot;;
+var open_sheet = SpreadsheetApp.openById(sheet_id);
+</pre>
+</div>
+<div class="section" id="print-log">
+<h1>print log</h1>
+<p>to print log <a class="footnote-reference" href="#id20" id="id7">[7]</a>:</p>
+<pre class="literal-block">
+Logger.log($string_in_quote_or_var);
+</pre>
+</div>
+<div class="section" id="set-value-to-cell">
+<h1>set value to cell</h1>
+<p>to set value to cell <a class="footnote-reference" href="#id21" id="id8">[8]</a>:</p>
+<pre class="literal-block">
+sheet.getRange(&quot;B2&quot;).setValue(100);
+</pre>
+</div>
+<div class="section" id="set-values-to-range">
+<h1>set values to range</h1>
+<p>to set values to a range <a class="footnote-reference" href="#id22" id="id9">[9]</a>:</p>
+<pre class="literal-block">
+var values = [
+  [ &quot;2.000&quot;, &quot;1,000,000&quot;, &quot;$2.99&quot; ]
+  ];
+
+var range = sheet.getRange(&quot;B2:D2&quot;);
+range.setValues(values);
+</pre>
+</div>
+<div class="section" id="sent-mail-using-gmail">
+<h1>sent mail using Gmail</h1>
+<p>to sent mail using Gmail <a class="footnote-reference" href="#id23" id="id10">[10]</a>:</p>
+<pre class="literal-block">
+var name = &quot;User&quot;;
+var var1 = &quot;value&quot;;
+var email = &quot;user&#64;mail.com&quot;
+var subject = &quot;Test Mail&quot;
+
+var htmlOutput = HtmlService.createHtmlOutputFromFile('mail'); // make sure you have a HTML mail template named 'mail' [try https://plnkr.co/edit]
+var message = htmlOutput.getContent()
+message = message.replace(&quot;%name&quot;, name); // make sure you have a variable with name '%name'
+message = message.replace(&quot;%var1&quot;, var1);  // make sure you have a variable with name '%var1'
+
+MailApp.sendEmail(email, subject, message, {htmlBody : message});
+</pre>
+</div>
+<div class="section" id="generate-random-alphanumeric-string">
+<h1>generate random alphanumeric string</h1>
+<p>to generate random alphanumeric string of twelve char:</p>
+<pre class="literal-block">
+number = Math.random().toString(36).slice(2,12).toUpperCase()
+</pre>
+</div>
+<div class="section" id="get-range-with-variable-cell-number">
+<h1>get range with variable cell number</h1>
+<p>to get range with variable cell number:</p>
+<pre class="literal-block">
+var cell = &quot;C&quot;+$var_num+&quot;:C&quot;
+var values = info_sheet.getRange(cell).getValues()
+</pre>
+</div>
+<div class="section" id="list-file-name-id-and-size-in-a-folder">
+<h1>list file name, id and size in a folder</h1>
+<p>to list file name, id and size in a folder <a class="footnote-reference" href="#id24" id="id11">[11]</a>:</p>
+<pre class="literal-block">
+var folder = DriveApp.getFolderById($folder_id);
+
+var files = folder.getFiles();
+
+  while (files.hasNext()){
+        file = files.next();
+        file_name = file.getName()
+        file_id = file.getId()
+        file_size = file.getSize()
+}
+</pre>
+</div>
+<div class="section" id="automatically-redirecting-to-a-page">
+<h1>automatically redirecting to a page</h1>
+<p>to automatically redirect to a page <a class="footnote-reference" href="#id25" id="id12">[12]</a>:</p>
+<pre class="literal-block">
+function doGet() {
+        return HtmlService.createHtmlOutput(
+                &quot;&lt;script&gt;window.top.location.href='+&quot;url&quot;+';&lt;/script&gt;&quot;
+        );
+}
+</pre>
+</div>
+<div class="section" id="save-a-html-file-as-pdf">
+<h1>save a html file as pdf</h1>
+<p>to save a html file as pdf <a class="footnote-reference" href="#id27" id="id13">[13]</a>:</p>
+<pre class="literal-block">
+var folder = DriveApp.getFolderById($folder_id);
+var blob = HtmlService.createHtmlOutputFromFile($html_file_name);
+blob = blob.getBlob();
+var pdf = blob.getAs(&quot;application/pdf&quot;);
+folder.createFile(pdf).setName(&quot;$file_name.pdf&quot;)
+</pre>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id14" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/53018010/5350059">How to take data in google sheet script via POST request in JSON format?</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="id15" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/sheet#appendrowrowcontents">appendRow | Class Sheet | Apps Script | Google Devlopers</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheets">getSheets | Class Spreadsheet | Apps Script | Google Devlopers</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
+<table class="docutils footnote" frame="void" id="id17" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheetbynamename">getSheetByName | Class Spreadsheet | Apps Script | Google Devlopers</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="id18" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/14764242/5350059">Google Apps Script make HTTP POST</a></td></tr>
 </tbody>
 </table>
+<table class="docutils footnote" frame="void" id="id19" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td><a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#openbyidid">openById | Class Spreadsheet | Apps Script | Google Devlopers</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id20" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[7]</a></td><td><a class="reference external" href="https://developers.google.com/apps-script/reference/base/logger#logdata">log | Class Logger | Apps Script | Google Devlopers</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id21" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[8]</a></td><td><a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluevalue">setValue | Class Range | Apps Script | Google Devlopers</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id22" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[9]</a></td><td><a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/range#setvaluesvalues">setValues | Class Range | Apps Script | Google Devlopers</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id23" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id10">[10]</a></td><td><a class="reference external" href="https://riptutorial.com/google-apps-script/example/18861/sending-html-content-in-mail">Sending HTML content in mail</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id24" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[11]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/25360586/5350059">List all files id inside a folder (no subfolders)</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id25" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[12]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/48030297/5350059">Automatically Redirecting to a Page</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id27" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id13">[13]</a></td><td><a class="reference external" href="https://stackoverflow.com/a/43944352/5350059">Create PDF from HTML in Google Apps Script and include images - Images not showing up</a></td></tr>
+</tbody>
+</table>
 </div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2019-11-20 03:28 UTC.
+
 </div>
 </body>
 </html>

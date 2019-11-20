@@ -371,6 +371,7 @@ body {
 <h1 class="title">Bash Cheat Sheet</h1>
 
 <p>A quick reference to bash</p>
+<p>Created on: 2019-02-03</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">under heavy construction and not well organized</p>
@@ -1877,10 +1878,25 @@ fi
 exit $exitcode
 </pre>
 </div>
+<div class="section" id="number-of-arguments-equal">
+<h2>number of arguments equal</h2>
+<p>to check if number of arguments is equal to a number:</p>
+<pre class="literal-block">
+if [[ &quot;$#&quot; -ne 1 ]]; then
+    echo &quot;Illegal number of parameters&quot;
+fi
+</pre>
+<p>s: <a class="reference external" href="https://stackoverflow.com/a/18568726/5350059">https://stackoverflow.com/a/18568726/5350059</a></p>
+</div>
 <div class="section" id="source">
 <h2>Source</h2>
 </div>
 </div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2019-11-20 03:28 UTC.
+
 </div>
 </body>
 </html>

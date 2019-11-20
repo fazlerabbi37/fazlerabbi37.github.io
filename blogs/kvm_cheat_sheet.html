@@ -371,6 +371,56 @@ body {
 <h1 class="title">KVM Cheat Sheet</h1>
 
 <p>A quick reference to KVM.</p>
+<p>Created on: 2019-01-22</p>
+<div class="section" id="install-kvm-in-ubuntu">
+<h1>install kvm in ubuntu</h1>
+<div class="section" id="pre-installation-check">
+<h2>pre-installation check</h2>
+<p>Check that our CPU supports hardware virtualization <a class="footnote-reference" href="#id3" id="id1">[1]</a>:</p>
+<pre class="literal-block">
+egrep -c '(vmx|svm)' /proc/cpuinfo
+</pre>
+<p>if it is more 0 then your hardware doesn't support virtualization. If it is more then 0 then we are good to go. Alternatively we can use:</p>
+<pre class="literal-block">
+egrep -c ' lm ' /proc/cpuinfo
+</pre>
+<p>which will give similar result.</p>
+</div>
+<div class="section" id="installation">
+<h2>installation</h2>
+<p>to install KVM in Ubuntu <a class="footnote-reference" href="#id4" id="id2">[2]</a>:</p>
+<pre class="literal-block">
+sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+</pre>
+</div>
+<div class="section" id="post-installation">
+<h2>post-installation</h2>
+<p>on post-installation we need to configure the network. Here I will only give the example of bridged networking in DHCP.[3]_. First make backup of your netowrk configuration:</p>
+<pre class="literal-block">
+sudo cp /etc/network/interfaces /etc/network/interfaces.bak
+</pre>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unfortunately, the draw back of this method is that, on next boot it disables the network manager. If we use this we need to run <cite>sudo /etc/init.d/networking restart</cite> everytime to bring the bridge interface up.</p>
+</div>
+<p>Now open <cite>/etc/network/interfaces</cite> file with your choice of editor and paste the following:</p>
+<pre class="literal-block">
+auto lo
+iface lo inet loopback
+
+auto br0
+iface br0 inet dhcp
+                bridge_ports eth0 # change it to your ethernet adapter name
+                bridge_stp off
+                bridge_fd 0
+                bridge_maxwait 0
+</pre>
+<p>Now restart the network adapter:</p>
+<pre class="literal-block">
+sudo systemctl restart networking.service
+</pre>
+</div>
+</div>
 <div class="section" id="make-guest-from-iso">
 <h1>Make guest from ISO</h1>
 <p>To create a new guest instance from ISO, run the following:</p>
@@ -413,7 +463,30 @@ qemu-img info $name
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Pre-installation_checklist">KVM/Installation - Pre-installation checklist</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Installation_of_KVM">KVM/Installation - Installation of KVM</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="https://help.ubuntu.com/community/KVM/Networking#Bridged_Networking">KVM/Networking - Bridged Networking</a></td></tr>
+</tbody>
+</table>
 </div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated on: 2019-11-20 03:28 UTC.
+
 </div>
 </body>
 </html>
