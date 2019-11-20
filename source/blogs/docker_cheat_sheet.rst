@@ -2,6 +2,8 @@ Docker Cheat Sheet
 ==================
 A quick reference to Docker.
 
+Created on: 2019-03-19
+
 .. warning:: under heavy construction and not well organized
 
 

@@ -2,6 +2,8 @@ Publish Sphinx doc with GitHub Pages
 ====================================
 The whole process of publishing Sphinx generated doc with GitHub Pages.
 
+Created on: 2018-08-17
+
 GitHub Pages is a very interesting and useful way to host project or code documentations. There are three ways we can use GitHub Pages in our project:
 
 1. A ``master`` branch with ``index.html`` in the root directory

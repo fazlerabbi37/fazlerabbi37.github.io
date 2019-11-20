@@ -2,6 +2,8 @@ Git Cheat Sheet
 ===============
 A quick reference to Git.
 
+Created on: 2019-03-19
+
 .. warning:: under heavy construction and not well organized
 
 git remote add with other SSH port

@@ -2,6 +2,8 @@ Add pause between audio tracks in VLC playlist
 ==============================================
 Adding pause between audio tracks in VLC playlist to stop continuous play.
 
+Created on: 2019-08-30
+
 .. warning:: just note, still needs work!
 
 The code::

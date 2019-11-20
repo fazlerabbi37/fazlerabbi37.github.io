@@ -2,6 +2,8 @@ Tiny Core Linux
 ===============
 Playing around with Tiny Core Linux, a small (11MB) Linux destro.
 
+Created on: 2018-08-08
+
 Install with KVM
 ----------------
 sudo virt-install --virt-type=kvm --name core --ram 512 --vcpus=1 --hvm --network=bridge:br0 --cdrom=Core-current.iso --disk core.img,size=10

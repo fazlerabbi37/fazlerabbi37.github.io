@@ -2,6 +2,8 @@ PostgreSQL Cheat Sheet
 ======================
 A quick reference to PostgreSQL.
 
+Created on: 2019-01-22
+
 Create User
 -----------
 To create a user::

@@ -2,6 +2,8 @@ Selenium
 ========
 Notes for Selenium with Python3.
 
+Created on: 2018-10-28
+
 Setup
 -----
 1. Install Selenium

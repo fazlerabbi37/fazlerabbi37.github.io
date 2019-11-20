@@ -2,6 +2,8 @@ fdroidcl
 ========
 Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client.
 
+Created on: 2019-01-20
+
 F-Droid is an awesome App store that focuses on open source Android application. fdroidcl as it says in its `GitHub repo <https://github.com/mvdan/fdroidcl>`_; is a F-Droid desktop client.
 
 fdroidcl can be used to perform much of the regular actions like update, search, install, uninstall, download and more. The major actions are documented at the GitHub repo. With fdroidcl we can perform some more advance actions like combination of two commands and not all of the are documented. While using fdroidcl I found a few and I will list them here.

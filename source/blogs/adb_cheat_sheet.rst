@@ -2,6 +2,7 @@ ADB Cheat Sheet
 ===============
 A quick reference to `ADB <https://developer.android.com/studio/command-line/adb>`_.
 
+Created on: 2019-02-03
 
 see devices
 -----------

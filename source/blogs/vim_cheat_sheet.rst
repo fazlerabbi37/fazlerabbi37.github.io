@@ -2,6 +2,8 @@ Vim Cheat Sheet
 ===============
 A quick reference to Vim.
 
+Created on: 2019-09-08
+
 .. warning:: under heavy construction and not well organized
 
 exit from vim

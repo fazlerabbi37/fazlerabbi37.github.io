@@ -2,6 +2,8 @@ Inside a docx file
 ==================
 Let's take a peek inside a docx file.
 
+Created on: 2019-01-22
+
 While converting ``.docx`` file to ``.md`` using ``pandoc`` I faced a unique problem. Each time I converted the ``.docx`` file to ``.md``, the images in the ``.md`` file where getting jumbled. While investigating I came across this `GitHub issue <https://github.com/jgm/pandoc/issues/1979>`_ and a fascinating `comment <https://github.com/jgm/pandoc/issues/1979#issuecomment-76958416>`_ about ``.docx`` files which says it is just a fancy ``zip`` file with ``xml`` mapping.
 
 Let's dive in. Let's take a ``.docx`` file and start probing.

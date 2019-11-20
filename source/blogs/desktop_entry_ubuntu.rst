@@ -2,6 +2,7 @@ Desktop Entry in Ubuntu
 =======================
 Explaining Desktop Entry aka Desktop icon in Ubuntu.
 
+Created on: 2018-08-16
 
 A Desktop entry or Desktop icon or Desktop shortcut or a Deshboard icon is all the same for Ubuntu which is a ``.desktop`` file. Follows is a example ``.desktop`` file contains::
 

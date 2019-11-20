@@ -2,6 +2,7 @@ Bonsai: Elasticsearch playground
 ================================
 Experimenting with Elasticsearch using Bonsai.
 
+Created on: 2019-03-15
 
 If you are getting started with Elasticsearch and don't want to setup an Elasticsearch instance, Bonsai is here to rescue. Bonsai is a free Elasticsearch hosting service where we can experiment with Elasticsearch. With the free plan Bonsai provides one cluster with  10k docs, 125MB data, 10 shards and 125MB memory. It may doesn't look a lot but it would definitely give a tailwind on you getting started to Elasticsearch journey.
 

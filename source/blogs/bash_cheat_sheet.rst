@@ -2,6 +2,8 @@ Bash Cheat Sheet
 ================
 A quick reference to bash
 
+Created on: 2019-02-03
+
 .. warning:: under heavy construction and not well organized
 
 sed

@@ -2,6 +2,8 @@ osmfilter Cheat Sheet
 =====================
 A quick reference to osmfilter.
 
+Created on: 2019-01-22
+
 drop tags
 ---------
 Generate a osm without specified tags from a large osm file::

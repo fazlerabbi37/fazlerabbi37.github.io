@@ -2,6 +2,8 @@ Rails Console Cheat Sheet
 =========================
 A quick reference to Rails Console.
 
+Created on: 2019-01-22
+
 Save rails console output to file
 ---------------------------------
 To save rails console output to a file, do the following [1]_::

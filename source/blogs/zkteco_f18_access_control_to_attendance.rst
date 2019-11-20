@@ -2,6 +2,7 @@ Hacking an access control device to take attendance
 ===================================================
 How we hacked(modified!?) a Zkteco access control device to take automatic attendance.
 
+Created on: 2019-02-25
 
 We had a good old attendance system for our team in my workplace where we used to sign in and sign out the time on a piece of paper. Then those entries were added to an Google Sheet if needed. This system was going well for a starting member of 15 but it became very painful as we grew in number. We decided to automate the system if possible. We could have chosen the most convenient way and brought a time attendance device but if we went that route, I wouldn't be writing this hack-blog, would I be?
 

@@ -2,6 +2,8 @@ Elasticsearch Cheat Sheet
 =========================
 A quick reference to Elasticsearch.
 
+Created on: 2019-01-22
+
 Words wrapped with curly braces, like ``{host}`` are variable, replace them with appropriate value.
 
 List indexes

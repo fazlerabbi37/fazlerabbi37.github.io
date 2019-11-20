@@ -2,6 +2,8 @@ JavaScript Cheat Sheet
 ======================
 A quick reference to JavaScript.
 
+Created on: 2019-09-30
+
 .. warning:: under heavy construction and not well organized
 
 get the last char of the string

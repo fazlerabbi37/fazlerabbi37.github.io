@@ -2,6 +2,7 @@ Markdown Cheat Sheet
 ====================
 A quick reference to Markdown.
 
+Created on: 2018-07-19
 
 Styles
 ------

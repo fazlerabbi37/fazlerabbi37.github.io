@@ -2,6 +2,8 @@ Python Cheat Sheet
 ==================
 A quick reference to Python
 
+Created on: 2019-09-29
+
 .. warning:: under heavy construction and not well organized
 
 refresh output in the same line; echo update

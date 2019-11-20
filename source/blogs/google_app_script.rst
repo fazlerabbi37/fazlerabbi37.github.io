@@ -2,6 +2,8 @@ Google App Script Cheat Sheet
 =============================
 A quick reference to Google App Script.
 
+Created on: 2019-10-16
+
 I have been using Google App Script for quick hack and automation for sometime now. Though it would be easy to record the reusable parts.
 
 Google App Script is based on JavaScript so many JavaScript syntax works here as well. Take a look at `JavaScript Cheat Sheet <js_cheat_sheet.html>`_ 

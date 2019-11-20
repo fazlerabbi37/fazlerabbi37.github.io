@@ -2,6 +2,8 @@ Cygwin Cheat Sheet
 ==================
 A quick reference to Cygwin.
 
+Created on: 2019-08-30
+
 add apt-cyg
 -----------
 ::
