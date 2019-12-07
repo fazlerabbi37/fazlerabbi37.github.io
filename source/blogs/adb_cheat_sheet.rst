@@ -98,7 +98,7 @@ we can use adb over wifi or specifically with a tcp connection [12]_ .to use adb
 
 this should give a output like this::
 
-    device_name    some_number
+    device_id    device
 
 now check the ip of the android device with::
 
@@ -126,6 +126,44 @@ like::
     adb connect 192.168.1.4:5555
 
 
+take a screenshot
+-----------------
+to take a screenshot::
+
+    adb exec-out screencap -p > screen.png
+
+https://stackoverflow.com/a/37191719/5350059
+
+or save it in phone then pull::
+
+    adb shell /system/bin/screencap -p /sdcard/screenshot.png
+    adb pull /sdcard/screenshot.png screenshot.png
+
+https://stackoverflow.com/a/32883890/5350059
+
+
+change setting with adb
+-----------------------
+changes are divided into 3 namespace: system, secure, global. we can `get`, `put`, `delete` individual keys and `list` all in a namespace. to `list` all in system::
+
+    adb shell settings --user 0 list system
+
+`get`, `put` and `delete` the same::
+
+    adb shell settings --user 0 get $namespace $key
+    adb shell settings --user 0 put $namespace $key $value
+    adb shell settings --user 0 delete $namespace $key
+
+
+
+https://stackoverflow.com/a/53319647/5350059
+
+
+limit the number of connected devices in hotspot
+------------------------------------------------
+::
+
+    adb shell settings --user 0 put system hotspot_max_station_num $num # num=0-6 where 0 is unlimited
 
 
 Source
