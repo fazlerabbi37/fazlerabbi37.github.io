@@ -1,13 +1,15 @@
 Fazle Rabbi's site
 ==================
 
-    |
-    |
-    |
-    |
-    |
-    |
-    |
+|
+|
+|
+|
+|
+|
+|
+|
+
 
 
 
@@ -23,8 +25,26 @@ Fazle Rabbi's site
 .. _Mail Me: mailto:fazlerabbi37@gmail.com
 .. _Blog: blog.html
 
-..
 
-
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 
 
