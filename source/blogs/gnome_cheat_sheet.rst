@@ -104,3 +104,22 @@ To enable::
     gsettings set org.gnome.desktop.lockdown disable-lock-screen false
 
 (source: https://askubuntu.com/a/1000458/502875)
+
+
+logout a user
+-------------
+for 11.10 and above run::
+
+    gnome-session-quit
+
+in 60 seconds the user will be logged out. https://askubuntu.com/a/15796/502875
+
+However, if you are in a ssh connection this will not work so use::
+
+    sudo pkill -u $username
+
+https://askubuntu.com/a/132351/502875
+
+
+Source
+------
