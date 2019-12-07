@@ -1,5 +1,7 @@
 Google Cloud Platform Cheat Sheet
 =================================
+`< Blog <../blog.html>`_
+
 A quick reference to Google Cloud Platform.
 
 Created on: 2019-12-05

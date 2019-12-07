@@ -1,5 +1,7 @@
 EBL cheque deposit on kiosk
 ===========================
+`< Blog <../blog.html>`_
+
 Navigating the ever forgetting process of using the EBL drop-box.
 
 Created on: 2019-09-08

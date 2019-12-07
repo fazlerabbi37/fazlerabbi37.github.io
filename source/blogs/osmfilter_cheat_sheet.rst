@@ -1,5 +1,7 @@
 osmfilter Cheat Sheet
 =====================
+`< Blog <../blog.html>`_
+
 A quick reference to osmfilter.
 
 Created on: 2019-01-22

@@ -1,5 +1,7 @@
 Selenium
 ========
+`< Blog <../blog.html>`_
+
 Notes for Selenium with Python3.
 
 Created on: 2018-10-28

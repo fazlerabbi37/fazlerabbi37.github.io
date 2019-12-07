@@ -1,5 +1,7 @@
 Google App Script Cheat Sheet
 =============================
+`< Blog <../blog.html>`_
+
 A quick reference to Google App Script.
 
 Created on: 2019-10-16

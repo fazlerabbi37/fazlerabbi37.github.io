@@ -1,5 +1,7 @@
 JavaScript Cheat Sheet
 ======================
+`< Blog <../blog.html>`_
+
 A quick reference to JavaScript.
 
 Created on: 2019-09-30

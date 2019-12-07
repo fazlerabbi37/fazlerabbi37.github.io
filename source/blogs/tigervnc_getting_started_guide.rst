@@ -1,5 +1,7 @@
 TigerVNC starter guilde
 =======================
+`< Blog <../blog.html>`_
+
 This is a getting started guide with TigerVNC. 
 
 Created on: 2019-12-04

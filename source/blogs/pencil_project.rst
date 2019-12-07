@@ -1,5 +1,7 @@
 Pencil Project
 ==============
+`< Blog <../blog.html>`_
+
 Using Pencil Project as GUI prototyping tool.
 
 Created on: 2019-01-20

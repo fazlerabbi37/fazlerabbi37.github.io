@@ -1,5 +1,7 @@
 Inside a docx file
 ==================
+`< Blog <../blog.html>`_
+
 Let's take a peek inside a docx file.
 
 Created on: 2019-01-22

@@ -1,5 +1,7 @@
 Publish Sphinx doc with GitHub Pages
 ====================================
+`< Blog <../blog.html>`_
+
 The whole process of publishing Sphinx generated doc with GitHub Pages.
 
 Created on: 2018-08-17

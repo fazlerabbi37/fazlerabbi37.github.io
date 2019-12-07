@@ -1,5 +1,7 @@
 fdroidcl
 ========
+`< Blog <../blog.html>`_
+
 Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client.
 
 Created on: 2019-01-20

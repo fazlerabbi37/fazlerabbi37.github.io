@@ -1,5 +1,7 @@
 Bonsai: Elasticsearch playground
 ================================
+`< Blog <../blog.html>`_
+
 Experimenting with Elasticsearch using Bonsai.
 
 Created on: 2019-03-15

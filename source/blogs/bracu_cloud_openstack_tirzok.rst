@@ -1,5 +1,7 @@
 Workshop on Cloud Computing based on BracU Cloud with Tirzok Private Limited
 ============================================================================
+`< Blog <../blog.html>`_
+
 Workshop note of Cloud Computing based on BracU Cloud conducted by Tirzok Private Limited
 
 Created on: 2019-11-19

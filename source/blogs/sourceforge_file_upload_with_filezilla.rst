@@ -1,5 +1,7 @@
 SourceForge file upload with Filezilla
 ======================================
+`< Blog <../blog.html>`_
+
 Using FileZilla to upload to SourceForge project.
 
 Created on: 2019-09-08

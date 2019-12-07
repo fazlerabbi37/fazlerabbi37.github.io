@@ -1,5 +1,7 @@
 Install KDE Connect in Ubuntu 18.04
 ===================================
+`< Blog <../blog.html>`_
+
 Installing KDE Connect in Ubuntu 18.04 LTS.
 
 Created on: 2018-08-29

@@ -1,5 +1,7 @@
 Rebooting consumer router using CLI
 ===================================
+`< Blog <../blog.html>`_
+
 Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
 
 Created on: 2019-05-09

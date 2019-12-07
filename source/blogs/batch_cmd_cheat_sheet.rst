@@ -1,5 +1,7 @@
 Batch and CMD Cheat Sheet
 =========================
+`< Blog <../blog.html>`_
+
 A quick reference to Batch and CMD.
 
 Created on: 2019-08-30

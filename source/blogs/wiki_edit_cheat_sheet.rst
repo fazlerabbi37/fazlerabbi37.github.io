@@ -1,5 +1,7 @@
 Wikipedia Edit
 ==============
+`< Blog <../blog.html>`_
+
 A quick reference to editing Wikipedia.
 
 Created on: 2019-11-19

@@ -1,5 +1,7 @@
 ReStructuredText Cheat Sheet
 ============================
+`< Blog <../blog.html>`_
+
 A quick reference to ReStructuredText
 
 Created on: 2019-11-19

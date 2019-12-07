@@ -1,5 +1,7 @@
 Nginx Cheat Sheet
 =================
+`< Blog <../blog.html>`_
+
 A quick reference to Nginx
 
 Created on: 2019-12-03

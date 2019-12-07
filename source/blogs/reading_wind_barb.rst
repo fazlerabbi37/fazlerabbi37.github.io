@@ -1,5 +1,7 @@
 Reading Wind Barb
 =================
+`< Blog <../blog.html>`_
+
 Reading wind barb to determine the speed and direction of wind.
 
 Created on: 2019-11-19

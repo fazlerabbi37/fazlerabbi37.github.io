@@ -1,5 +1,7 @@
 Hacking an access control device to take attendance
 ===================================================
+`< Blog <../blog.html>`_
+
 How we hacked(modified!?) a Zkteco access control device to take automatic attendance.
 
 Created on: 2019-02-25

@@ -1,5 +1,7 @@
 Desktop Entry in Ubuntu
 =======================
+`< Blog <../blog.html>`_
+
 Explaining Desktop Entry aka Desktop icon in Ubuntu.
 
 Created on: 2018-08-16

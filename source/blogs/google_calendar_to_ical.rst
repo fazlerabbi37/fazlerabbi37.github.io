@@ -1,5 +1,7 @@
 Google calendar to ical conversation
 ====================================
+`< Blog <../blog.html>`_
+
 Converting Google calendar to ical format.
 
 Created on: 2018-08-16

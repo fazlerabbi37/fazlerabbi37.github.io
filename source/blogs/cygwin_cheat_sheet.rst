@@ -1,5 +1,7 @@
 Cygwin Cheat Sheet
 ==================
+`< Blog <../blog.html>`_
+
 A quick reference to Cygwin.
 
 Created on: 2019-08-30

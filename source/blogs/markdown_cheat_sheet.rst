@@ -1,5 +1,7 @@
 Markdown Cheat Sheet
 ====================
+`< Blog <../blog.html>`_
+
 A quick reference to Markdown.
 
 Created on: 2018-07-19

@@ -1,5 +1,7 @@
 Tiny Core Linux
 ===============
+`< Blog <../blog.html>`_
+
 Playing around with Tiny Core Linux, a small (11MB) Linux destro.
 
 Created on: 2018-08-08

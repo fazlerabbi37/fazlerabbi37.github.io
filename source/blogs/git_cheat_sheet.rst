@@ -1,5 +1,7 @@
 Git Cheat Sheet
 ===============
+`< Blog <../blog.html>`_
+
 A quick reference to Git.
 
 Created on: 2019-03-19

@@ -1,5 +1,7 @@
 Python Cheat Sheet
 ==================
+`< Blog <../blog.html>`_
+
 A quick reference to Python
 
 Created on: 2019-09-29

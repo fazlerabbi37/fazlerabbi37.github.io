@@ -1,5 +1,7 @@
 Rails Console Cheat Sheet
 =========================
+`< Blog <../blog.html>`_
+
 A quick reference to Rails Console.
 
 Created on: 2019-01-22

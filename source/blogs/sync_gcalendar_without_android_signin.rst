@@ -1,5 +1,7 @@
 Google Calendar sync on Android without signing in
 ==================================================
+`< Blog <../blog.html>`_
+
 Want to sync your Google Calendar sync on Android but don't want to add your Google account on Android?
 
 Created on: 2019-02-05

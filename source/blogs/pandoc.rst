@@ -1,5 +1,7 @@
 Pandoc
 ======
+`< Blog <../blog.html>`_
+
 Using Pandoc to convert documents.
 
 Created on: 2019-01-21
