@@ -1653,5 +1653,32 @@ to check if number of arguments is equal to a number::
 s: https://stackoverflow.com/a/18568726/5350059
 
 
+set environment variables
+-------------------------
+::
+    export MY_VAR=value
+
+https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/
+
+
+global variable declaration
+---------------------------
+::
+
+    declare -g variable
+
+https://stackoverflow.com/a/58594644/5350059
+
+
+remove alias
+------------
+to remove alias::
+
+    unalias $ALIAS
+
+https://askubuntu.com/a/325380/502875
+
+
+
 Source
 ------
