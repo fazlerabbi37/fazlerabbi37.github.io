@@ -364,6 +364,26 @@ body {
     padding: 40px;
 }
 
+.kbd
+{
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
 </style>
 </head>
 <body>
@@ -1888,6 +1908,29 @@ fi
 </pre>
 <p>s: <a class="reference external" href="https://stackoverflow.com/a/18568726/5350059">https://stackoverflow.com/a/18568726/5350059</a></p>
 </div>
+<div class="section" id="set-environment-variables">
+<h2>set environment variables</h2>
+<dl class="docutils">
+<dt>::</dt>
+<dd>export MY_VAR=value</dd>
+</dl>
+<p><a class="reference external" href="https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/">https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/</a></p>
+</div>
+<div class="section" id="global-variable-declaration">
+<h2>global variable declaration</h2>
+<pre class="literal-block">
+declare -g variable
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/58594644/5350059">https://stackoverflow.com/a/58594644/5350059</a></p>
+</div>
+<div class="section" id="remove-alias">
+<h2>remove alias</h2>
+<p>to remove alias:</p>
+<pre class="literal-block">
+unalias $ALIAS
+</pre>
+<p><a class="reference external" href="https://askubuntu.com/a/325380/502875">https://askubuntu.com/a/325380/502875</a></p>
+</div>
 <div class="section" id="source">
 <h2>Source</h2>
 </div>
@@ -1895,7 +1938,7 @@ fi
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-11-20 03:28 UTC.
+Generated on: 2019-12-07 14:16 UTC.
 
 </div>
 </body>

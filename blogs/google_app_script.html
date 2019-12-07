@@ -364,6 +364,26 @@ body {
     padding: 40px;
 }
 
+.kbd
+{
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
 </style>
 </head>
 <body>
@@ -378,8 +398,9 @@ body {
 <h1>sha512 hash of a string</h1>
 <p>to make a sha512 hash of a string:</p>
 <pre class="literal-block">
-Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_512, 'string'))
+Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_512, 'string'));
 </pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/47636721/5350059">https://stackoverflow.com/a/47636721/5350059</a></p>
 </div>
 <div class="section" id="filter-range-where-string-exist">
 <h1>filter range where string exist</h1>
@@ -389,7 +410,7 @@ sheet.getRange(coupon_column).getValues().filter(String)
 </pre>
 <p>we can find the length with <tt class="docutils literal">.length</tt> method:</p>
 <pre class="literal-block">
-sheet.getRange(coupon_column).getValues().filter(String)..length
+sheet.getRange(coupon_column).getValues().filter(String).length
 </pre>
 </div>
 <div class="section" id="receive-get-and-post-request">
@@ -581,6 +602,13 @@ var pdf = blob.getAs(&quot;application/pdf&quot;);
 folder.createFile(pdf).setName(&quot;$file_name.pdf&quot;)
 </pre>
 </div>
+<div class="section" id="more">
+<h1>More</h1>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/contributorpw/google-apps-script-snippets">https://github.com/contributorpw/google-apps-script-snippets</a></li>
+<li><a class="reference external" href="https://github.com/contributorpw/google-apps-script-awesome-list">https://github.com/contributorpw/google-apps-script-awesome-list</a></li>
+</ul>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <table class="docutils footnote" frame="void" id="id14" rules="none">
@@ -665,7 +693,7 @@ folder.createFile(pdf).setName(&quot;$file_name.pdf&quot;)
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-11-20 03:28 UTC.
+Generated on: 2019-12-07 14:16 UTC.
 
 </div>
 </body>

@@ -364,6 +364,26 @@ body {
     padding: 40px;
 }
 
+.kbd
+{
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
 </style>
 </head>
 <body>
@@ -377,8 +397,84 @@ body {
 <p class="last">under heavy construction and not well organized</p>
 </div>
 <p>&lt;kbd&gt;</p>
-<div class="section" id="subtopic">
-<h1>subtopic</h1>
+<div class="section" id="render-html-code">
+<h1>render html code</h1>
+<p>to render html code:</p>
+<pre class="literal-block">
+.. raw:: html
+
+        &lt;a href=&quot;testurl&quot;&gt;testurl&lt;/a&gt;
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/50566700/5350059">https://stackoverflow.com/a/50566700/5350059</a></p>
+</div>
+<div class="section" id="add-custom-role-to-render-with-css">
+<h1>add custom role to render with css</h1>
+<p>first add the css style to css file and give it a name.:</p>
+<pre class="literal-block">
+.red {
+    color:red;
+    }
+</pre>
+<p>then use that name as role in rst:</p>
+<pre class="literal-block">
+.. role:: red
+
+An example of using :red:`interpreted text`
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/4669850/5350059">https://stackoverflow.com/a/4669850/5350059</a></p>
+</div>
+<div class="section" id="add-keyboard-key-rendering">
+<h1>add keyboard key rendering</h1>
+<p>by default rst doesn't support keyboard key rendering role <cite>:kdb:</cite> but we can add custom css to do that. edit the css file and put:</p>
+<pre class="literal-block">
+.kbd
+{
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:11px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+</pre>
+<p>now to use it in a file do:</p>
+<pre class="literal-block">
+.. role:: kbd
+
+:kbd:`keyboard_key`
+</pre>
+<p><a class="reference external" href="https://meta.superuser.com/q/4788/655587">https://meta.superuser.com/q/4788/655587</a></p>
+<p>and custom role source</p>
+</div>
+<div class="section" id="multiline-admonitions-ie-note-warning-hint">
+<h1>Multiline Admonitions (ie. note, warning, hint)</h1>
+<p>to add multiline admonitions like note, warning or hint, just indent the paragraph bellow the directives like this:</p>
+<pre class="literal-block">
+.. note::
+
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+    when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+    electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages
+    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</pre>
+<p><a class="reference external" href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/notes_warnings.html">https://sublime-and-sphinx-guide.readthedocs.io/en/latest/notes_warnings.html</a></p>
+</div>
+<div class="section" id="hyperlink-a-section-in-the-same-document">
+<h1>Hyperlink a section in the same document</h1>
+<p>to hyperline a section in the same document do:</p>
+<pre class="literal-block">
+`section name`_
+</pre>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
@@ -386,7 +482,7 @@ body {
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-11-20 03:28 UTC.
+Generated on: 2019-12-07 14:16 UTC.
 
 </div>
 </body>

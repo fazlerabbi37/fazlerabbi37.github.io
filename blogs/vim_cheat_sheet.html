@@ -364,6 +364,26 @@ body {
     padding: 40px;
 }
 
+.kbd
+{
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
 </style>
 </head>
 <body>
@@ -376,35 +396,55 @@ body {
 <p class="first admonition-title">Warning</p>
 <p class="last">under heavy construction and not well organized</p>
 </div>
-<p>exit from vim</p>
+<div class="section" id="exit-from-vim">
+<h1>exit from vim</h1>
+<p>to exit from vim press <span class="kbd">Esc</span> then type <cite>:q!</cite></p>
+</div>
+<div class="section" id="subscript">
+<h1>subscript</h1>
 <blockquote>
-&lt;Esc&gt;:q!</blockquote>
-<p>subscript</p>
-<blockquote>
-&lt;ctrl-k&gt;[digit]s</blockquote>
+<span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">s</span></blockquote>
 <p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
-<p>superscript</p>
+</div>
+<div class="section" id="superscript">
+<h1>superscript</h1>
 <blockquote>
-&lt;ctrl-k&gt;[digit]S</blockquote>
+<span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">S</span></blockquote>
 <p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
+</div>
 <div class="section" id="indent-multiple-lines">
 <h1>indent multiple lines</h1>
-<p>to indent multiple lines select lines in VISUAL mode and do:</p>
-<pre class="literal-block">
-&lt;kbd&gt;&gt;&lt;kbd&gt;
-</pre>
-<p>do one level indentation of next five line:</p>
-<pre class="literal-block">
-5 &gt;
-</pre>
+<p>to indent multiple lines select lines in VISUAL mode and do</p>
+<blockquote>
+<span class="kbd">&gt;</span></blockquote>
+<p>do one level indentation of next five line</p>
+<blockquote>
+<span class="kbd">5 &gt;</span></blockquote>
 <p><a class="reference external" href="https://stackoverflow.com/a/235841/5350059">https://stackoverflow.com/a/235841/5350059</a></p>
 </div>
 <div class="section" id="paste-mode">
 <h1>paste mode</h1>
-<p>to enable paste mode do:</p>
-<pre class="literal-block">
-&lt;Esc&gt;:set paste
-</pre>
+<p>to enable paste mode do</p>
+<blockquote>
+<span class="kbd">Esc</span> then type <cite>:set paste</cite></blockquote>
+</div>
+<div class="section" id="insert-current-date">
+<h1>insert current date</h1>
+<p>to insert current date</p>
+<blockquote>
+<span class="kbd">Esc</span> then type <cite>:pu=strftime('%Y-%m-%d')</cite></blockquote>
+<p><a class="reference external" href="https://vim.fandom.com/wiki/Insert_current_date_or_time">https://vim.fandom.com/wiki/Insert_current_date_or_time</a></p>
+</div>
+<div class="section" id="switching-case-of-characters">
+<h1>Switching case of characters</h1>
+<p>to switching case of characters</p>
+<blockquote>
+<p>Toggle case &quot;HellO&quot; to &quot;hELLo&quot; with <span class="kbd">g</span> + <span class="kbd">~</span> then a movement.</p>
+<p>Uppercase &quot;HellO&quot; to &quot;HELLO&quot; with <span class="kbd">g</span> + <span class="kbd">U</span> then a movement.</p>
+<p>Lowercase &quot;HellO&quot; to &quot;hello&quot; with <span class="kbd">g</span> + <span class="kbd">u</span> then a movement.</p>
+</blockquote>
+<p><a class="reference external" href="https://vim.fandom.com/wiki/Switching_case_of_characters">https://vim.fandom.com/wiki/Switching_case_of_characters</a>
+<a class="reference external" href="https://stackoverflow.com/a/2966034/5350059">https://stackoverflow.com/a/2966034/5350059</a></p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
@@ -417,7 +457,7 @@ body {
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-11-20 03:28 UTC.
+Generated on: 2019-12-07 14:16 UTC.
 
 </div>
 </body>

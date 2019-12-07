@@ -364,6 +364,26 @@ body {
     padding: 40px;
 }
 
+.kbd
+{
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
 </style>
 </head>
 <body>
@@ -579,6 +599,37 @@ docker kill container_id
 docker exac -it container_id command
 </pre>
 </div>
+<div class="section" id="docker-compose-environment-variables">
+<h1>docker-compose environment variables</h1>
+<p>either:</p>
+<pre class="literal-block">
+.env file
+</pre>
+<p>or:</p>
+<pre class="literal-block">
+-e
+</pre>
+<p>in docker run</p>
+<p><a class="reference external" href="https://docs.docker.com/compose/environment-variables/">https://docs.docker.com/compose/environment-variables/</a></p>
+</div>
+<div class="section" id="update-docker-images">
+<h1>update docker images</h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">need to test</p>
+</div>
+<pre class="literal-block">
+docker-compose pull
+
+docker-compose up -d
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/43515922/5350059">https://stackoverflow.com/a/43515922/5350059</a></p>
+<p><a class="reference external" href="https://stackoverflow.com/a/49316987/5350059">https://stackoverflow.com/a/49316987/5350059</a></p>
+</div>
+<div class="section" id="docker-nginx-custom-config">
+<h1>docker nginx custom config</h1>
+<p><a class="reference external" href="https://stackoverflow.com/a/30152496/5350059">https://stackoverflow.com/a/30152496/5350059</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
@@ -591,7 +642,7 @@ docker exac -it container_id command
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-11-20 03:28 UTC.
+Generated on: 2019-12-07 14:16 UTC.
 
 </div>
 </body>

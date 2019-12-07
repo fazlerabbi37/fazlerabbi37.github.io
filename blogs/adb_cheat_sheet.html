@@ -364,6 +364,26 @@ body {
     padding: 40px;
 }
 
+.kbd
+{
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
 </style>
 </head>
 <body>
@@ -475,7 +495,7 @@ adb devices
 </pre>
 <p>this should give a output like this:</p>
 <pre class="literal-block">
-device_name    some_number
+device_id    device
 </pre>
 <p>now check the ip of the android device with:</p>
 <pre class="literal-block">
@@ -501,6 +521,40 @@ adb connect $ip:$port
 <p>like:</p>
 <pre class="literal-block">
 adb connect 192.168.1.4:5555
+</pre>
+</div>
+<div class="section" id="take-a-screenshot">
+<h1>take a screenshot</h1>
+<p>to take a screenshot:</p>
+<pre class="literal-block">
+adb exec-out screencap -p &gt; screen.png
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/37191719/5350059">https://stackoverflow.com/a/37191719/5350059</a></p>
+<p>or save it in phone then pull:</p>
+<pre class="literal-block">
+adb shell /system/bin/screencap -p /sdcard/screenshot.png
+adb pull /sdcard/screenshot.png screenshot.png
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/32883890/5350059">https://stackoverflow.com/a/32883890/5350059</a></p>
+</div>
+<div class="section" id="change-setting-with-adb">
+<h1>change setting with adb</h1>
+<p>changes are divided into 3 namespace: system, secure, global. we can <cite>get</cite>, <cite>put</cite>, <cite>delete</cite> individual keys and <cite>list</cite> all in a namespace. to <cite>list</cite> all in system:</p>
+<pre class="literal-block">
+adb shell settings --user 0 list system
+</pre>
+<p><cite>get</cite>, <cite>put</cite> and <cite>delete</cite> the same:</p>
+<pre class="literal-block">
+adb shell settings --user 0 get $namespace $key
+adb shell settings --user 0 put $namespace $key $value
+adb shell settings --user 0 delete $namespace $key
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/53319647/5350059">https://stackoverflow.com/a/53319647/5350059</a></p>
+</div>
+<div class="section" id="limit-the-number-of-connected-devices-in-hotspot">
+<h1>limit the number of connected devices in hotspot</h1>
+<pre class="literal-block">
+adb shell settings --user 0 put system hotspot_max_station_num $num # num=0-6 where 0 is unlimited
 </pre>
 </div>
 <div class="section" id="source">
@@ -581,7 +635,7 @@ adb connect 192.168.1.4:5555
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-11-20 03:28 UTC.
+Generated on: 2019-12-07 14:16 UTC.
 
 </div>
 </body>

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Cygwin Cheat Sheet</title>
+<title>TigerVNC starter guilde</title>
 <style type="text/css">
 
 /*
@@ -387,67 +387,180 @@ body {
 </style>
 </head>
 <body>
-<div class="document" id="cygwin-cheat-sheet">
-<h1 class="title">Cygwin Cheat Sheet</h1>
+<div class="document" id="tigervnc-starter-guilde">
+<h1 class="title">TigerVNC starter guilde</h1>
 
-<p>A quick reference to Cygwin.</p>
-<p>Created on: 2019-08-30</p>
-<div class="section" id="add-apt-cyg">
-<h1>add apt-cyg</h1>
+<p>This is a getting started guide with TigerVNC.</p>
+<p>Created on: 2019-12-04</p>
+<div class="section" id="installing-tigervnc-server">
+<h1>Installing TigerVNC Server</h1>
+<p>To install TigerVNC run the following:</p>
 <pre class="literal-block">
-lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg &gt; apt-cyg
-install apt-cyg /bin
+sudo apt install tigervnc-standalone-server tigervnc-common -y
+</pre>
+<p>If our desktop environment is GNOME this additional package needs to install:</p>
+<pre class="literal-block">
+sudo apt install tigervnc-xorg-extension -y
 </pre>
 </div>
-<div class="section" id="install-any-package">
-<h1>install any package</h1>
+<div class="section" id="run-tigervnc-server">
+<h1>Run TigerVNC Server</h1>
+<p>To run TigerVNC Server:</p>
 <pre class="literal-block">
-apt-cyg install $package
+vncserver
+</pre>
+<p>We will see the following output:</p>
+<pre class="literal-block">
+You will require a password to access your desktops.
+
+Password:
+Verify:
+Would you like to enter a view-only password (y/n)? n
+/usr/bin/xauth:  file /home/user/.Xauthority does not exist
+
+New 'hostname:1 (user)' desktop at :1 on machine hostname
+
+Starting applications specified in /etc/X11/Xvnc-session
+Log file is /home/user/.vnc/debian9.localdomain:1.log
+
+Use xtigervncviewer -SecurityTypes VncAuth -passwd /home/user/.vnc/passwd :1 to connect to the VNC server.
 </pre>
 </div>
-<div class="section" id="open-bash-cygwin-here">
-<h1>open bash(cygwin) here</h1>
+<div class="section" id="configuring-gnome-desktop-environment">
+<h1>Configuring GNOME Desktop environment</h1>
+<p>For this we need to create a file name <cite>~/.vnc/xstartup</cite>. Let's start by open a file with favourite our text editor. I am using vim:</p>
 <pre class="literal-block">
-apt-cyg install chere
+vim ~/.vnc/xstartup
+</pre>
+<p>Now paste the following code:</p>
+<pre class="literal-block">
+#!/bin/bash
+# Start Gnome Desktop
+[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources
+vncconfig -iconic &amp;
+dbus-launch --exit-with-session gnome-session &amp;
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If we see <cite>dbus-launch</cite> error, we need to install <cite>dbus-x11</cite> package. In ubuntu we can do this with <cite>sudo apt install dbus-x11 -y</cite></p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If this script is not used we may see the following error:</p>
+<pre class="last literal-block">
+server: Failed command '/etc/X11/Xvnc-session': 256!
+
+=================== tail -15 /$USER/.vnc/$HOST:1.log ===================
+See http://www.tigervnc.org for information on TigerVNC.
+Underlying X server release 12004000, The X.Org Foundation
+
+
+Fri Jan  5 71:03:23 2091
+ vncext:      VNC extension running!
+ vncext:      Listening for VNC connections on local interface(s), port 5901
+ vncext:      created VNC server for screen 0
+XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server &quot;:1&quot;
+      after 173 requests (173 known processed) with 0 events remaining.
+
+Fri Jan  5 71:03:33 2091
+ ComparingUpdateTracker: 0 pixels in / 0 pixels out
+ ComparingUpdateTracker: (1:-nan ratio)
+Killing Xtigervnc process ID 5137... which seems to be deadlocked. Using SIGKILL!
+
+======================================================================
+
+Starting applications specified in /etc/X11/Xvnc-session has failed.
+Maybe try something simple first, e.g.,
+        tigervncserver -xstartup /usr/bin/xterm
 </pre>
 </div>
-<div class="section" id="install-git">
-<h1>install git</h1>
+<p>VNC is not an encrypted protocol and can be subject to packet sniffing. So is by default when it starts it only accept connections from the localhost interface. We will need to use SSH tunnel to connect to the remote host. We will how to do that later in <a class="reference internal" href="#view-from-local-host">View from local host</a> section.</p>
+<p>But if you are not concern about security like you are running a VM on local network then and sure about security then you can allow accepting connections from all interfaces by runnnig:</p>
 <pre class="literal-block">
-apt-cyg install git
+vncserver -localhost no
 </pre>
 </div>
-<div class="section" id="install-bash-completion">
-<h1>install bash completion</h1>
+<div class="section" id="creating-a-systemd-unit-file">
+<h1>Creating a Systemd unit file</h1>
+<p>The systemd unit file will allow us to easily start, stop, and restart the VNC service as needed. Now we need to open a file with favourite our text editor. I am using vim:</p>
 <pre class="literal-block">
-apt-cyg install bash-completion
+sudo vim /etc/systemd/system/vncserver&#64;.service
+</pre>
+<p>PS: if we are using vim it would be a good time to enable paste mode with <span class="kbd">Esc</span> then <span class="kbd">:</span> the type <cite>set paste</cite></p>
+<p>Now paste the following lines in that file:</p>
+<pre class="literal-block">
+[Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=$USER
+PAMName=login
+PIDFile=/home/%u/.vnc/%H%i.pid
+ExecStartPre=/bin/bash -c '/usr/bin/vncserver -kill :%i &gt; /dev/null 2&gt;&amp;1 || :'
+# this start vncserver to accept connection from localhost only so need to use SSH tunnel
+ExecStart=/usr/bin/vncserver :%i -geometry 1440x900 -autokill
+# this start vncserver to accept connection from all interface so this is insecure. only use this if you know what you are doing
+# ExecStart=/usr/bin/vncserver :%i -localhost no -geometry 1440x900 -autokill
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">maybe we should move the config like -geometry, -autokill and -localhost to config file</p>
+</div>
+<p>If we notice the code for the systemd file we will see:</p>
+<ul class="simple">
+<li>In line 6 we have a <cite>$USER</cite> variable. We need to replace that to our user name.</li>
+<li>In line 11 we have used the <cite>vncserver</cite> command to start the vncserver to only accept connections from localhost interface. This is recommended and used by default. To connect from remote host we must use SSH tunnel mentioned in the previous section.</li>
+<li>In line 13 we have used the <cite>vncserver</cite> command to start the vncserver to only accept connections from all interfaces. This is NOT recommended and thus commented out. If you want to use it comment out line 11 and uncomment this (13) line. We mast run <cite>sudo systemctl daemon-reload</cite> to see the effect of our change in vncserver&#64;.service.</li>
+</ul>
+<p>Now let's proceed to using the systemd file. First save the file and then run:</p>
+<pre class="literal-block">
+sudo systemctl daemon-reload
+</pre>
+<p>Next, enable the service:</p>
+<pre class="literal-block">
+sudo systemctl enable vncserver&#64;1.service
+</pre>
+<p>The number <cite>1</cite> after the <cite>&#64;</cite> sign defines the display port on which the VNC service will run. As we discussed in the previous section since we are using <cite>1</cite> the VNC server will listen on port <cite>5901</cite></p>
+<p>Start the VNC service by executing:</p>
+<pre class="literal-block">
+sudo systemctl start vncserver&#64;1.service
+</pre>
+<p>Verify that the service is successfully started with:</p>
+<pre class="literal-block">
+sudo systemctl status vncserver&#64;1.service
 </pre>
 </div>
-<div class="section" id="install-python3">
-<h1>install python3</h1>
+<div class="section" id="view-from-local-host">
+<h1>View from local host</h1>
+<p>The recommended approach is to create an <a class="reference external" href="https://linuxize.com/post/how-to-setup-ssh-tunneling/">SSH tunnel</a> that will securely forwards traffic from our local host on port 5901 to the server on the same port. To setup port forwarding run:</p>
 <pre class="literal-block">
-apt-cyg install python3
+ssh -L 5901:127.0.0.1:5901 -N -f -l $USERNAME $SERVER_IP_ADDRESS
 </pre>
-</div>
-<div class="section" id="install-nano">
-<h1>install nano</h1>
+<p>Now we will install a VNC viwer in our local host:</p>
 <pre class="literal-block">
-apt-cyg install nano
+sudo apt install tigervnc-viewer -y
 </pre>
-</div>
-<div class="section" id="need-to-test">
-<h1>need to test</h1>
-<pre class="literal-block">
-E:\fr37\Softwares\Cygwin\cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico -
-</pre>
+<p>Or you can use the <a class="reference external" href="https://remmina.org/">Remmina</a> if you are in Ubuntu.</p>
+<p>If you used port forwarding then put <cite>127.0.0.1:5901</cite> in and connect.</p>
+<p>If you used <cite>-localhost no</cite> the put the ip address of the remote host and connect.</p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<blockquote>
 <ul class="simple">
-<li>` &lt;&gt;`_</li>
+<li><a class="reference external" href="https://linuxize.com/post/how-to-install-and-configure-vnc-on-debian-9/">How to Install and Configure VNC on Debian 9</a></li>
+<li><a class="reference external" href="https://www.cyberciti.biz/faq/install-and-configure-tigervnc-server-on-ubuntu-18-04/">Install and Configure TigerVNC server on Ubuntu 18.04</a></li>
+<li><a class="reference external" href="https://askubuntu.com/a/1159514/502875">Unable to connect through VNC</a></li>
+<li><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-18-04">How to Install and Configure VNC on Ubuntu 18.04</a></li>
+<li><a class="reference external" href="https://bbs.archlinux.org/viewtopic.php?pid=1648878#p1648878">https://bbs.archlinux.org/viewtopic.php?pid=1648878#p1648878</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/TigerVNC">https://wiki.archlinux.org/index.php/TigerVNC</a></li>
 </ul>
-</blockquote>
 </div>
 </div>
 <div class="footer">
