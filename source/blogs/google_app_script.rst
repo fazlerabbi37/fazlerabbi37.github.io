@@ -12,7 +12,9 @@ sha512 hash of a string
 -----------------------
 to make a sha512 hash of a string::
 
-    Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_512, 'string'))
+    Utilities.base64EncodeWebSafe(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_512, 'string'));
+
+https://stackoverflow.com/a/47636721/5350059
 
 filter range where string exist
 -------------------------------
@@ -22,7 +24,7 @@ to filter range where string exist::
 
 we can find the length with ``.length`` method::
 
-    sheet.getRange(coupon_column).getValues().filter(String)..length
+    sheet.getRange(coupon_column).getValues().filter(String).length
 
 receive GET and POST request
 ----------------------------
@@ -201,7 +203,10 @@ to save a html file as pdf [13]_::
     var pdf = blob.getAs("application/pdf");
     folder.createFile(pdf).setName("$file_name.pdf")
 
-
+More
+----
+- https://github.com/contributorpw/google-apps-script-snippets
+- https://github.com/contributorpw/google-apps-script-awesome-list
 
 Source
 ------
