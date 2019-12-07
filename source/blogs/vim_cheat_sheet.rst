@@ -6,39 +6,67 @@ Created on: 2019-09-08
 
 .. warning:: under heavy construction and not well organized
 
-exit from vim
+.. role:: kbd
 
-  <Esc>:q!
+exit from vim
+-------------
+to exit from vim press :kbd:`Esc` then type `:q!`
+
 
 subscript
+---------
 
-  <ctrl-k>[digit]s
+  :kbd:`ctrl` + :kbd:`k` [digit] :kbd:`s`
+
 
 (source: https://vi.stackexchange.com/q/7368)
 
 superscript
+-----------
 
-  <ctrl-k>[digit]S
+  :kbd:`ctrl` + :kbd:`k` [digit] :kbd:`S`
 
 (source: https://vi.stackexchange.com/q/7368)
 
 indent multiple lines
 ---------------------
-to indent multiple lines select lines in VISUAL mode and do::
+to indent multiple lines select lines in VISUAL mode and do
 
-    <kbd>><kbd>
+    :kbd:`>`
 
-do one level indentation of next five line::
+do one level indentation of next five line
 
-    5 > 
+    :kbd:`5 >` 
 
 https://stackoverflow.com/a/235841/5350059
 
 paste mode
 ----------
-to enable paste mode do::
+to enable paste mode do
 
-   <Esc>:set paste 
+   :kbd:`Esc` then type `:set paste`
+
+insert current date
+-------------------
+to insert current date
+
+     :kbd:`Esc` then type `:pu=strftime('%Y-%m-%d')`
+
+https://vim.fandom.com/wiki/Insert_current_date_or_time
+
+Switching case of characters
+----------------------------
+to switching case of characters
+
+    Toggle case "HellO" to "hELLo" with :kbd:`g` + :kbd:`~` then a movement.
+    
+    Uppercase "HellO" to "HELLO" with :kbd:`g` + :kbd:`U` then a movement.
+    
+    Lowercase "HellO" to "hello" with :kbd:`g` + :kbd:`u` then a movement.
+
+https://vim.fandom.com/wiki/Switching_case_of_characters
+https://stackoverflow.com/a/2966034/5350059
+
 
 Source
 ------
