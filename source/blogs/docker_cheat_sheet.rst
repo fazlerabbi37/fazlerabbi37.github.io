@@ -217,6 +217,40 @@ to run command inside a container::
     docker exac -it container_id command
 
 
+docker-compose environment variables
+------------------------------------
+either::
+
+    .env file
+
+or::
+
+    -e
+
+in docker run
+
+https://docs.docker.com/compose/environment-variables/
+
+update docker images
+--------------------
+.. warning:: need to test
+
+::
+
+    docker-compose pull
+
+    docker-compose up -d
+
+https://stackoverflow.com/a/43515922/5350059
+
+https://stackoverflow.com/a/49316987/5350059
+
+
+docker nginx custom config
+--------------------------
+https://stackoverflow.com/a/30152496/5350059
+
+
 Source
 ------
 .. [1] `How to get bash or ssh into a running container in background mode? <https://askubuntu.com/a/507009/502875>`_
