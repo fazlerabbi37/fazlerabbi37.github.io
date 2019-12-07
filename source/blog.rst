@@ -12,6 +12,30 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`Google Cloud Platform Cheat Sheet <blogs/gcp_cheat_sheet.html>`_
+.................................................................
+Created on: 2019-12-05
+
+A quick reference to Google Cloud Platform.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
+......................................................................
+Created on: 2019-12-04
+
+This is a getting started guide with TigerVNC. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
+...................................................
+Created on: 2019-12-03
+
+A quick reference to Nginx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Wikipedia Edit <blogs/wiki_edit_cheat_sheet.html>`_
 ....................................................
 Created on: 2019-11-19
@@ -26,30 +50,6 @@ Created on: 2019-11-19
 
 A quick reference to ReStructuredText
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Reading Wind Barb <blogs/reading_wind_barb.html>`_
-...................................................
-Created on: 2019-11-19
-
-Reading wind barb to determine the speed and direction of wind.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Workshop on Cloud Computing based on BracU Cloud with Tirzok Private Limited <blogs/bracu_cloud_openstack_tirzok.html>`_
-.........................................................................................................................
-Created on: 2019-11-19
-
-Workshop note of Cloud Computing based on BracU Cloud conducted by Tirzok Private Limited
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Google App Script Cheat Sheet <blogs/google_app_script.html>`_
-...............................................................
-Created on: 2019-10-16
-
-A quick reference to Google App Script.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -168,6 +168,14 @@ Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`Google Cloud Platform Cheat Sheet <blogs/gcp_cheat_sheet.html>`_
+.................................................................
+Created on: 2019-12-05
+
+A quick reference to Google Cloud Platform.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Git Cheat Sheet <blogs/git_cheat_sheet.html>`_
 ...............................................
 Created on: 2019-03-19
@@ -198,14 +206,6 @@ Created on: 2018-08-16
 
 Converting Google calendar to ical format.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Google Cloud Platform <blogs/google_cloud_platform.html>`_
-...........................................................
-Created on: 2019-09-20
-
-
-~
 
 
 `Inside a docx file <blogs/inside_a_docx_file.html>`_
@@ -246,6 +246,14 @@ Created on: 2018-07-19
 
 A quick reference to Markdown.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
+...................................................
+Created on: 2019-12-03
+
+A quick reference to Nginx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `osmconvert Cheat Sheet <blogs/osmconvert_cheat_sheet.html>`_
@@ -358,6 +366,14 @@ Created on: 2019-02-05
 
 Want to sync your Google Calendar sync on Android but don't want to add your Google account on Android?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
+......................................................................
+Created on: 2019-12-04
+
+This is a getting started guide with TigerVNC. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Tiny Core Linux <blogs/tiny_core_linux.html>`_
