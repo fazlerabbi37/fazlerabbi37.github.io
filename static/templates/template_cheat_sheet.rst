@@ -10,4 +10,3 @@ subtopic
 Source
 ------
 
-Last Update: pu=strftime('%Y-%m-%d')
