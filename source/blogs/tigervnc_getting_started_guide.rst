@@ -8,6 +8,8 @@ Created on: 2019-12-04
 
 .. role:: kbd
 
+
+
 Installing TigerVNC Server
 --------------------------
 To install TigerVNC run the following::
@@ -94,6 +96,8 @@ But if you are not concern about security like you are running a VM on local net
 
     vncserver -localhost no
 
+
+.. warning:: as of Today(2019-12-09) the systemd is not working. please skip it until I fix it.
 
 Creating a Systemd unit file
 ----------------------------
