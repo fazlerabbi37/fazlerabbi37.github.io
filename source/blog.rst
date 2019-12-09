@@ -1,5 +1,7 @@
 Fazle Rabbi's Blog
 ==================
+`< Home <index.html>`_
+
 Welcome to my blog site?!
 
 This page contains notes/tips/tricks/hacks aka accumulated information about various topics that piqued my interest. 
@@ -12,6 +14,14 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
+`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+.......................................................
+Created on: 2019-12-08
+
+A quick reference to OpenWrt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Google Cloud Platform Cheat Sheet <blogs/gcp_cheat_sheet.html>`_
 .................................................................
 Created on: 2019-12-05
@@ -42,14 +52,6 @@ Created on: 2019-11-19
 
 A quick reference to editing Wikipedia.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
-............................................................
-Created on: 2019-11-19
-
-A quick reference to ReStructuredText
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -256,6 +258,14 @@ A quick reference to Nginx
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+.......................................................
+Created on: 2019-12-08
+
+A quick reference to OpenWrt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `osmconvert Cheat Sheet <blogs/osmconvert_cheat_sheet.html>`_
 .............................................................
 Created on: 2019-01-22
@@ -408,3 +418,4 @@ How we hacked(modified!?) a Zkteco access control device to take automatic atten
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`< Home <index.html>`_		`^ Back to top <blog.html>`_
