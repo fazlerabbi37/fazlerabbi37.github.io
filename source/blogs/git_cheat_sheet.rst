@@ -195,5 +195,20 @@ for branch::
 
 s: https://stackoverflow.com/a/48651201/5350059
 
+speed up git clone
+------------------
+unfortunately there is no way to speed up git clone like `make -j` but we can do a shallow clone::
+
+    git clone --depth 1 $REPO
+
+https://stackoverflow.com/a/26957305/5350059
+
+If we want the full clone just do::
+
+    git fetch --unshallow
+
+https://stackoverflow.com/a/17937889/5350059
+
+
 Source
 ------
