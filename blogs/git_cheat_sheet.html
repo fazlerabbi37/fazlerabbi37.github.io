@@ -390,6 +390,7 @@ body {
 <div class="document" id="git-cheat-sheet">
 <h1 class="title">Git Cheat Sheet</h1>
 
+<p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
 <p>A quick reference to Git.</p>
 <p>Created on: 2019-03-19</p>
 <div class="admonition warning">
@@ -574,13 +575,26 @@ git diff branchname -- ':(exclude)filename'
 </pre>
 <p>s: <a class="reference external" href="https://stackoverflow.com/a/48651201/5350059">https://stackoverflow.com/a/48651201/5350059</a></p>
 </div>
+<div class="section" id="speed-up-git-clone">
+<h1>speed up git clone</h1>
+<p>unfortunately there is no way to speed up git clone like <cite>make -j</cite> but we can do a shallow clone:</p>
+<pre class="literal-block">
+git clone --depth 1 $REPO
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/26957305/5350059">https://stackoverflow.com/a/26957305/5350059</a></p>
+<p>If we want the full clone just do:</p>
+<pre class="literal-block">
+git fetch --unshallow
+</pre>
+<p><a class="reference external" href="https://stackoverflow.com/a/17937889/5350059">https://stackoverflow.com/a/17937889/5350059</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-12-07 14:16 UTC.
+Generated on: 2019-12-09 11:15 UTC.
 
 </div>
 </body>
