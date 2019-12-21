@@ -113,8 +113,8 @@ Get a spcecifice row column output
 
 others
 !!!!!!
-save command output in vaiable
-------------------------------
+save command output in variable
+-------------------------------
 ::
 
     OUTPUT="$(ls -1)"
@@ -1680,6 +1680,70 @@ to remove alias::
 
 https://askubuntu.com/a/325380/502875
 
+export variable from bash script
+--------------------------------
+we can export variable from bash script. If our shell is `test.sh` and it contains::
+
+    #! /usr/bin/env bash
+    export VAR="HELLO, VARIABLE"
+    echo "hello"
+
+To run we will use::
+
+    . ./test.sh
+
+Instead of `./test.sh`, this will source the file and run it at the same time. The output::
+
+    hello
+
+The environment variable is also set which gives the output on `echo`::
+
+    echo $VAR
+
+    HELLO, VARIABLE
+
+source: `Can I export a variable to the environment from a bash script without sourcing it? <https://stackoverflow.com/a/16618248/5350059>`_
+
+
+remove an exported variable
+---------------------------
+to remove an exported variable::
+
+    unset $VAIABLE
+
+source: `How do I delete an exported environment variable? <https://stackoverflow.com/a/6877747/5350059>`_
+
+create a django secret key with bash
+------------------------------------
+to create a django secret key with bash::
+
+    export SECRET_KEY=$(head /dev/urandom | tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' | head -c 49 ; echo '')
+
+source: `How to generate a random string? <https://unix.stackexchange.com/a/230676/199183>`_
+
+write multiple line to a file with variables
+--------------------------------------------
+to write multiple line to a file with variables::
+
+    VAR=4
+    cat > $FILE_NAME.EXT << EOL
+    line 1
+    line 2
+    line 3
+    line ${VAR}
+    EOL
+
+P.S: We can replace the `EOL` with anything like `CAT` ;)
+
+source: `How to write multiple line string using Bash with variables? <https://stackoverflow.com/a/7875614/5350059>`_
+
+remove user from a group
+------------------------
+to remove a user from a group::
+
+    sudo gpasswd -d $USER $GROUP
+
+source: `How do I remove a user from a group? <https://unix.stackexchange.com/a/29572/199183>`_
 
 
 Source
