@@ -26,6 +26,8 @@ to docker install on ubuntu::
 
 source: https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/
 
+.. warning:: This is not recommanded as it creates an attack serface for privilege escalation. See more at: `Privilege escalation via Docker<https://fosterelli.co/privilege-escalation-via-docker>`. To fix this just remove the user from `docker` group with `sudo gpasswd -d $USER docker`.
+
 after install::
 
     sudo groupadd docker
@@ -221,17 +223,30 @@ to run command inside a container::
 
 docker-compose environment variables
 ------------------------------------
-either::
+in compose either::
 
     .env file
 
 or::
 
-    -e
+    environment:
+      - key1=value1
+      - key2=value2
 
-in docker run
+source: https://docs.docker.com/compose/environment-variables/
 
-https://docs.docker.com/compose/environment-variables/
+docker run environment variables
+--------------------------------
+to use environment variables in docker run either::
+
+     docker run --env-file ./env.list ubuntu bash
+
+
+or::
+
+    docker run -e "key1=value1" -e "key2=value2" ubuntu bash
+   
+source: https://docs.docker.com/engine/reference/run/#env-environment-variables https://stackoverflow.com/a/30494145/5350059
 
 update docker images
 --------------------
@@ -250,8 +265,53 @@ https://stackoverflow.com/a/49316987/5350059
 
 docker nginx custom config
 --------------------------
-https://stackoverflow.com/a/30152496/5350059
+to use a custom configuration for nginx::
 
+    FROM nginx
+
+    COPY more_web_nginx.conf /etc/nginx/conf.d/
+
+    RUN rm /etc/nginx/conf.d/default.conf
+
+    COPY . /usr/share/nginx/html
+
+
+source: https://stackoverflow.com/a/30152496/5350059
+
+map docker container port to a specific interface on host
+---------------------------------------------------------
+to map docker container port to a specific interface on host::
+
+    docker run -p <interface IP>:<outside port>:<inside port> $REST_OF_THE_COMMAND
+
+source: https://stackoverflow.com/a/48874124/5350059
+ 
+give name to a image
+--------------------
+to give name to a image::
+
+	version: '3'
+	services:
+	  # for an image already build just put container_name bellow image
+	  db:
+		image: postgres:10.1-alpine
+		container_name: more_db
+	  # for an image we are building put container_name bellow build
+	  web:
+		build:
+		  context: .
+		  dockerfile: Dockerfile
+		container_name: web_dev
+
+source: `How do I define the name of image built with docker-compose <https://stackoverflow.com/a/35662191/5350059>`_
+
+COPY as non root
+----------------
+to COPY as non root::
+
+    COPY --chown=<user>:<group> <hostPath> <containerPath>
+
+source: `How do I Docker COPY as non root? <https://stackoverflow.com/a/44766666/5350059>`_
 
 Source
 ------
