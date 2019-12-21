@@ -469,5 +469,73 @@ to beautify JSON in Python::
 
 source: https://stackoverflow.com/a/9105132/5350059
 
+create a django secret key with bash
+------------------------------------
+to create a django secret key with bash::
+
+    export SECRET_KEY=$(head /dev/urandom | tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' | head -c 49 ; echo '')
+
+Kept also in the `Bash Cheat Sheet <bash_cheat_sheet.html#create-a-django-secret-key-with-bash>`_ as it is relevant.
+
+source: `How to generate a random string? <https://unix.stackexchange.com/a/230676/199183>`_
+
+read dictionary in pandas
+-------------------------
+to read dictionary in pandas::
+
+    # the dictionary
+    examinee = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew',
+    'Laura', 'Kevin', 'Jonas'],
+    'scores': [12.5, 9, 16.5, 2.3, 9, 20, 14.5, 4.5, 8, 19],
+    'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+    'qualified': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+
+    # now let's load the dictionary in pandas
+    df = pd.DataFrame.from_dict(examinee)
+
+source: `pandas.DataFrame.from_dict <https://pandas.pydata.org/pandas-docs/version/0.25/reference/api/pandas.DataFrame.from_dict.html>`_
+
+print a column in pandas
+------------------------
+to print a column in pandas::
+
+    print(df.Name.to_string(index=False))
+
+Output::
+
+     Adam
+     Bob
+     Cathy
+
+source: `Display/Print one column from a DataFrame of Series in Pandas <https://stackoverflow.com/a/46123959/5350059>`_
+
+see heading columns in pandas
+-----------------------------
+to see heading columns in pandas::
+
+    # for a dataframe
+    df = pd.DataFrame({'animal':['alligator', 'bee', 'falcon', 'lion', 'monkey', 'parrot', 'shark', 'whale', 'zebra']})
+
+    # now print the heading aka the first 5 lines
+    df.head()
+
+    # output
+            animal
+      0  alligator
+      1        bee
+      2     falcon
+      3       lion
+      4     monkey
+
+source: `pandas.DataFrame.head <https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html>`_
+
+dot matrix of two numpy array
+-----------------------------
+to do a dot matrix of two numpy array::
+
+    numpy.dot($ARRAY_A,$ARRAY_B)
+
+source: `NumPy v1.17 Manual: numpy.dot <https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html>`_
+
 Source
 ------
