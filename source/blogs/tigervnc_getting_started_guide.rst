@@ -8,7 +8,7 @@ Created on: 2019-12-04
 
 .. role:: kbd
 
-
+.. warning:: this is till a woring progress, it works on my system but doesn't in another. I am still squashing the bugs. sorry!!!
 
 Installing TigerVNC Server
 --------------------------
@@ -55,13 +55,15 @@ Now paste the following code::
     # Start Gnome Desktop 
     [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
     [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+    export XDG_CURRENT_DESKTOP=GNOME-Classic:GNOME
+    export GNOME_SHELL_SESSION_MODE=classic
     vncconfig -iconic &
     dbus-launch --exit-with-session gnome-session &
 
 .. note:: If we see `dbus-launch` error, we need to install `dbus-x11` package. In ubuntu we can do this with `sudo apt install dbus-x11 -y`
 
 .. warning:: 
-	If this script is not used we may see the following error::
+    If this script is not used we may see the following error::
 
 		server: Failed command '/etc/X11/Xvnc-session': 256!
 
@@ -173,6 +175,7 @@ If you used port forwarding then put `127.0.0.1:5901` in and connect.
 If you used `-localhost no` the put the ip address of the remote host and connect.
 
 
+
 Source
 ------
 - `How to Install and Configure VNC on Debian 9 <https://linuxize.com/post/how-to-install-and-configure-vnc-on-debian-9/>`_
@@ -181,3 +184,6 @@ Source
 - `How to Install and Configure VNC on Ubuntu 18.04 <https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-18-04>`_
 - https://bbs.archlinux.org/viewtopic.php?pid=1648878#p1648878
 - https://wiki.archlinux.org/index.php/TigerVNC
+- https://linux.die.net/man/1/vncserver
+- https://linux.die.net/man/1/vncconfig
+
