@@ -28,6 +28,30 @@ https://serverfault.com/questions/514044/nginx-is-cutting-the-end-of-dynamic-pag
 custom 404
 ----------
 https://www.digitalocean.com/community/questions/404-error-page-instead-of-default-nginx-welcome-page
+https://serverfault.com/questions/354803/nginx-custom-404-error-page-for-virtual-host
+
+reverse proxy
+-------------
+reverse proxy config::
+
+    http {
+        server {
+            listen 80;
+            server_name foo.com;
+
+            location /service1/ {
+                proxy_pass http://$IP:PORT/;
+            }
+
+            location /service2/ {
+                proxy_pass http://$IP:PORT/;
+            }
+
+        }
+    } 
+
+source: https://stackoverflow.com/a/42452204/5350059
+
 
 
 Source
