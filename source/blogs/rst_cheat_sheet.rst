@@ -8,8 +8,6 @@ Created on: 2019-11-19
 
 .. warning:: under heavy construction and not well organized
 
-<kbd>
-
 render html code
 ----------------
 to render html code::
