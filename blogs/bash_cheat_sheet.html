@@ -1,282 +1,512 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
 <title>Bash Cheat Sheet</title>
 <style type="text/css">
 
-/*
-:Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
-:Copyright: This stylesheet has been placed in the public domain.
+/* Minimal style sheet for the HTML output of Docutils.                    */
+/*                                                                         */
+/* :Author: Günter Milde, based on html4css1.css by David Goodger          */
+/* :Id: $Id: minimal.css 8036 2017-02-14 13:05:46Z milde $               */
+/* :Copyright: © 2015 Günter Milde.                                        */
+/* :License: Released under the terms of the `2-Clause BSD license`_,      */
+/*    in short:                                                            */
+/*                                                                         */
+/*    Copying and distribution of this file, with or without modification, */
+/*    are permitted in any medium without royalty provided the copyright   */
+/*    notice and this notice are preserved.                                */
+/*                                                                         */
+/*    This file is offered as-is, without any warranty.                    */
+/*                                                                         */
+/* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause     */
 
-Default cascading style sheet for the HTML output of Docutils.
+/* This CSS2.1_ stylesheet defines rules for Docutils elements without    */
+/* HTML equivalent. It is required to make the document semantic visible. */
+/*                                                                        */
+/* .. _CSS2.1: http://www.w3.org/TR/CSS2                                  */
+/* .. _validates: http://jigsaw.w3.org/css-validator/validator$link       */
 
-See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
-customize this style sheet.
-*/
+/* alignment of text and inline objects inside block objects*/
+.align-left   { text-align: left; }
+.align-right  { text-align: right; }
+.align-center { clear: both; text-align: center; }
+.align-top    { vertical-align: top; }
+.align-middle { vertical-align: middle; }
+.align-bottom { vertical-align: bottom; }
 
-/* used to remove borders from tables and images */
-.borderless, table.borderless td, table.borderless th {
-  border: 0 }
-
-table.borderless td, table.borderless th {
-  /* Override padding for "table.docutils td" with "! important".
-     The right padding separates the table cells. */
-  padding: 0 0.5em 0 0 ! important }
-
-.first {
-  /* Override more specific margin styles with "! important". */
-  margin-top: 0 ! important }
-
-.last, .with-subtitle {
-  margin-bottom: 0 ! important }
-
-.hidden {
-  display: none }
-
-.subscript {
-  vertical-align: sub;
-  font-size: smaller }
-
-.superscript {
-  vertical-align: super;
-  font-size: smaller }
-
+/* titles */
+h1.title, p.subtitle {
+  text-align: center;
+}
+p.admonition-title,
+p.topic-title,
+p.sidebar-title,
+p.rubric,
+p.system-message-title {
+  font-weight: bold;
+}
+h1 + p.subtitle,
+h1 + p.section-subtitle {
+  font-size: 1.6em;
+}
+h2 + p.section-subtitle { font-size: 1.28em; }
+p.subtitle,
+p.section-subtitle,
+p.sidebar-subtitle {
+  font-weight: bold;
+  margin-top: -0.5em;
+}
+p.sidebar-title,
+p.rubric {
+  font-size: larger;
+}
+p.rubric { color: maroon; }
 a.toc-backref {
-  text-decoration: none ;
-  color: black }
+  color: black;
+  text-decoration: none; }
 
-blockquote.epigraph {
-  margin: 2em 5em ; }
-
-dl.docutils dd {
-  margin-bottom: 0.5em }
-
-object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
-  overflow: hidden;
+/* Warnings, Errors */
+div.caution p.admonition-title,
+div.attention p.admonition-title,
+div.danger p.admonition-title,
+div.error p.admonition-title,
+div.warning p.admonition-title,
+div.system-messages h1,
+div.error,
+span.problematic,
+p.system-message-title {
+  color: red;
 }
 
-/* Uncomment (and remove this text!) to get bold-faced definition list terms
-dl.docutils dt {
-  font-weight: bold }
-*/
+/* inline literals */
+span.docutils.literal {
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+/* do not wraph at hyphens and similar: */
+.literal > span.pre { white-space: nowrap; }
 
-div.abstract {
-  margin: 2em 5em }
+/* Lists */
 
-div.abstract p.topic-title {
-  font-weight: bold ;
-  text-align: center }
+/* compact and simple lists: no margin between items */
+.simple  li, .compact li,
+.simple  ul, .compact ul,
+.simple  ol, .compact ol,
+.simple > li p, .compact > li p,
+dl.simple > dd, dl.compact > dd {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-div.admonition, div.attention, div.caution, div.danger, div.error,
-div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em ;
-  border: medium outset ;
-  padding: 1em }
+/* Table of Contents */
+div.topic.contents { margin: 0; }
+ul.auto-toc {
+  list-style-type: none;
+  padding-left: 1.5em; }
 
-div.admonition p.admonition-title, div.hint p.admonition-title,
-div.important p.admonition-title, div.note p.admonition-title,
-div.tip p.admonition-title {
-  font-weight: bold ;
-  font-family: sans-serif }
+/* Enumerated Lists */
+ol.arabic     { list-style: decimal }
+ol.loweralpha { list-style: lower-alpha }
+ol.upperalpha { list-style: upper-alpha }
+ol.lowerroman { list-style: lower-roman }
+ol.upperroman { list-style: upper-roman }
 
-div.attention p.admonition-title, div.caution p.admonition-title,
-div.danger p.admonition-title, div.error p.admonition-title,
-div.warning p.admonition-title, .code .error {
-  color: red ;
-  font-weight: bold ;
-  font-family: sans-serif }
+dt span.classifier { font-style: italic }
+dt span.classifier:before {
+  font-style: normal;
+  margin: 0.5em;
+  content: ":";
+}
 
-/* Uncomment (and remove this text!) to get reduced vertical space in
-   compound paragraphs.
-div.compound .compound-first, div.compound .compound-middle {
-  margin-bottom: 0.5em }
+/* Field Lists and drivatives */
+/* bold field name, content starts on the same line */
+dl.field-list > dt,
+dl.option-list > dt,
+dl.docinfo > dt,
+dl.footnote > dt,
+dl.citation > dt {
+  font-weight: bold;
+  clear: left;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+}
+/* Offset for field content (corresponds to the --field-name-limit option) */
+dl.field-list > dd,
+dl.option-list > dd,
+dl.docinfo > dd {
+  margin-left:  9em; /* ca. 14 chars in the test examples */
+}
+/* start field-body on a new line after long field names */
+dl.field-list > dd > *:first-child,
+dl.option-list > dd > *:first-child
+{
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+/* field names followed by a colon */
+dl.field-list > dt:after,
+dl.docinfo > dt:after {
+  content: ":";
+}
 
-div.compound .compound-last, div.compound .compound-middle {
-  margin-top: 0.5em }
-*/
+/* Bibliographic Fields (docinfo) */
+pre.address { font: inherit; }
+dd.authors > p { margin: 0; }
 
-div.dedication {
-  margin: 2em 5em ;
-  text-align: center ;
-  font-style: italic }
+/* Option Lists */
+dl.option-list { margin-left: 40px; }
+dl.option-list > dt { font-weight: normal; }
+span.option { white-space: nowrap; }
 
-div.dedication p.topic-title {
-  font-weight: bold ;
-  font-style: normal }
+/* Footnotes and Citations  */
+dl.footnote.superscript > dd {margin-left: 1em; }
+dl.footnote.brackets > dd {margin-left: 2em; }
+dl > dt.label { font-weight: normal; }
+a.footnote-reference.brackets:before,
+dt.label > span.brackets:before { content: "["; }
+a.footnote-reference.brackets:after,
+dt.label > span.brackets:after { content: "]"; }
+a.footnote-reference.superscript,
+dl.footnote.superscript > dt.label {
+  vertical-align: super;
+  font-size: smaller;
+}
+dt.label > span.fn-backref { margin-left: 0.2em; }
+dt.label > span.fn-backref > a { font-style: italic; }
 
-div.figure {
-  margin-left: 2em ;
-  margin-right: 2em }
-
-div.footer, div.header {
-  clear: both;
-  font-size: smaller }
-
-div.line-block {
-  display: block ;
-  margin-top: 1em ;
-  margin-bottom: 1em }
-
+/* Line Blocks */
+div.line-block { display: block; }
 div.line-block div.line-block {
-  margin-top: 0 ;
-  margin-bottom: 0 ;
-  margin-left: 1.5em }
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40px;
+}
 
-div.sidebar {
-  margin: 0 0 0.5em 1em ;
-  border: medium outset ;
-  padding: 1em ;
-  background-color: #ffffee ;
-  width: 40% ;
-  float: right ;
-  clear: right }
-
-div.sidebar p.rubric {
-  font-family: sans-serif ;
-  font-size: medium }
-
-div.system-messages {
-  margin: 5em }
-
-div.system-messages h1 {
-  color: red }
-
-div.system-message {
-  border: medium outset ;
-  padding: 1em }
-
-div.system-message p.system-message-title {
-  color: red ;
-  font-weight: bold }
-
-div.topic {
-  margin: 2em }
-
-h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
-h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
-  margin-top: 0.4em }
-
-h1.title {
-  text-align: center }
-
-h2.subtitle {
-  text-align: center }
-
-hr.docutils {
-  width: 75% }
-
-img.align-left, .figure.align-left, object.align-left, table.align-left {
-  clear: left ;
-  float: left ;
-  margin-right: 1em }
-
-img.align-right, .figure.align-right, object.align-right, table.align-right {
-  clear: right ;
-  float: right ;
-  margin-left: 1em }
-
-img.align-center, .figure.align-center, object.align-center {
-  display: block;
-  margin-left: auto;
+/* Figures, Images, and Tables */
+.figure.align-left,
+img.align-left,
+object.align-left,
+table.align-left {
   margin-right: auto;
 }
-
+.figure.align-center,
+img.align-center,
+object.align-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 table.align-center {
   margin-left: auto;
   margin-right: auto;
 }
+.figure.align-right,
+img.align-right,
+object.align-right,
+table.align-right {
+  margin-left: auto;
+}
+/* reset inner alignment in figures and tables */
+/* div.align-left, div.align-center, div.align-right, */
+table.align-left, table.align-center, table.align-right
+{ text-align: inherit }
 
-.align-left {
-  text-align: left }
+/* Admonitions and System Messages */
+div.admonition,
+div.system-message,
+div.sidebar{
+  margin: 40px;
+  border: medium outset;
+  padding-right: 1em;
+  padding-left: 1em;
+}
 
-.align-center {
-  clear: both ;
-  text-align: center }
+/* Sidebar */
+div.sidebar {
+  width: 30%;
+  max-width: 26em;
+  float: right;
+  clear: right;
+}
 
-.align-right {
-  text-align: right }
+/* Text Blocks */
+div.topic,
+pre.literal-block,
+pre.doctest-block,
+pre.math,
+pre.code {
+  margin-right: 40px;
+  margin-left: 40px;
+}
+pre.code .ln { color: gray; } /* line numbers */
 
-/* reset inner alignment in figures */
-div.align-right {
-  text-align: inherit }
+/* Tables */
+table { border-collapse: collapse; }
+td, th {
+  border-style: solid;
+  border-color: silver;
+  padding: 0 1ex;
+  border-width: thin;
+}
+td > p:first-child, th > p:first-child { margin-top: 0; }
+td > p, th > p { margin-bottom: 0; }
 
-/* div.align-center * { */
-/*   text-align: left } */
+table > caption {
+  text-align: left;
+  margin-bottom: 0.25em
+}
 
-.align-top    {
-  vertical-align: top }
+table.borderless td, table.borderless th {
+  border: 0;
+  padding: 0;
+  padding-right: 0.5em /* separate table cells */
+}
 
-.align-middle {
-  vertical-align: middle }
+</style>
+<style type="text/css">
 
-.align-bottom {
-  vertical-align: bottom }
+/* CSS31_ style sheet for the output of Docutils HTML writers.             */
+/* Rules for easy reading and pre-defined style variants.		   */
+/*                                                                         */
+/* :Author: Günter Milde, based on html4css1.css by David Goodger          */
+/* :Id: $Id: plain.css 8120 2017-06-22 21:02:40Z milde $               */
+/* :Copyright: © 2015 Günter Milde.                                        */
+/* :License: Released under the terms of the `2-Clause BSD license`_,      */
+/*    in short:                                                            */
+/*                                                                         */
+/*    Copying and distribution of this file, with or without modification, */
+/*    are permitted in any medium without royalty provided the copyright   */
+/*    notice and this notice are preserved.                                */
+/*    	     	      	     	 					   */
+/*    This file is offered as-is, without any warranty.                    */
+/*                                                                         */
+/* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause     */
+/* .. _CSS3: http://www.w3.org/TR/CSS3		        		   */
 
-ol.simple, ul.simple {
-  margin-bottom: 1em }
 
-ol.arabic {
-  list-style: decimal }
+/* Document Structure */
+/* ****************** */
 
-ol.loweralpha {
-  list-style: lower-alpha }
+/* "page layout" */
+body {
+  padding: 0 5%;
+  margin: 8px 0;
+}
+div.document {
+  line-height:1.3;
+  counter-reset: table;
+  /* counter-reset: figure; */
+  /* avoid long lines --> better reading */
+  /* OTOH: lines should not be too short because of missing hyphenation, */
+  max-width: 50em;
+  margin: auto;
+}
 
-ol.upperalpha {
-  list-style: upper-alpha }
+/* Sections */
 
-ol.lowerroman {
-  list-style: lower-roman }
+/* Transitions */
 
-ol.upperroman {
-  list-style: upper-roman }
+hr.docutils {
+  width: 80%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  clear: both;
+}
 
-p.attribution {
-  text-align: right ;
-  margin-left: 50% }
+/* Paragraphs               */
+/* ==========               */
 
-p.caption {
-  font-style: italic }
+/* vertical space (parskip) */
+p, ol, ul, dl,
+div.line-block,
+table{
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+h1, h2, h3, h4, h5, h6,
+dl > dd {
+  margin-bottom: 0.5em;
+}
 
-p.credits {
-  font-style: italic ;
-  font-size: smaller }
+/* Lists                    */
+/* ==========               */
 
-p.label {
-  white-space: nowrap }
+/* Definition Lists         */
 
-p.rubric {
-  font-weight: bold ;
-  font-size: larger ;
-  color: maroon ;
-  text-align: center }
+dl > dd > p:first-child { margin-top: 0; }
+/* :last-child is not part of CSS 2.1 (introduced in CSS 3) */
+dl > dd > p:last-child  { margin-bottom: 0; }
 
-p.sidebar-title {
-  font-family: sans-serif ;
-  font-weight: bold ;
-  font-size: larger }
+/* lists nested in definition lists */
+/* :only-child is not part of CSS 2.1 (introduced in CSS 3) */
+dd > ul:only-child, dd > ol:only-child { padding-left: 1em; }
 
-p.sidebar-subtitle {
-  font-family: sans-serif ;
-  font-weight: bold }
+/* Description Lists */
+/* styled like in most dictionaries, encyclopedias etc. */
+dl.description > dt {
+  font-weight: bold;
+  clear: left;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+}
 
-p.topic-title {
-  font-weight: bold }
+/* Field Lists */
 
-pre.address {
-  margin-bottom: 0 ;
-  margin-top: 0 ;
-  font: inherit }
+/* example for custom field-name width */
+dl.field-list.narrow > dd {
+  margin-left: 5em;
+}
+/* run-in: start field-body on same line after long field names */
+dl.field-list.run-in > dd p {
+  display: block;
+}
 
-pre.literal-block, pre.doctest-block, pre.math, pre.code {
-  margin-left: 2em ;
-  margin-right: 2em }
+/* Bibliographic Fields */
 
-pre.code .ln { color: grey; } /* line numbers */
+/* generally, bibliographic fields use special definition list dl.docinfo */
+/* but dedication and abstract are placed into "topic" divs */
+div.abstract p.topic-title {
+  text-align: center;
+}
+div.dedication {
+  margin: 2em 5em;
+  text-align: center;
+  font-style: italic;
+}
+div.dedication p.topic-title {
+  font-style: normal;
+}
+
+/* Citations */
+dl.citation dt.label {
+  font-weight: bold;
+}
+span.fn-backref {
+  font-weight: normal;
+}
+
+/* Text Blocks           */
+/* ============          */
+
+/* Literal Blocks           */
+pre.literal-block, pre.doctest-block,
+pre.math, pre.code {
+  margin-left: 1.5em;
+  margin-right: 1.5em
+}
+
+/* Block Quotes             */
+
+blockquote,
+div.topic {
+  margin-left: 1.5em;
+  margin-right: 1.5em
+}
+blockquote > table,
+div.topic > table {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+blockquote p.attribution,
+div.topic p.attribution {
+  text-align: right;
+  margin-left: 20%;
+}
+
+/* Tables                   */
+/* ======                   */
+
+/* th { vertical-align: bottom; } */
+
+table tr { text-align: left; }
+
+/* "booktabs" style (no vertical lines) */
+table.booktabs {
+  border: 0;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.booktabs * {
+  border: 0;
+}
+table.booktabs th {
+  border-bottom: thin solid;
+}
+
+/* numbered tables (counter defined in div.document) */
+table.numbered > caption:before {
+  counter-increment: table;
+  content: "Table " counter(table) ": ";
+  font-weight: bold;
+}
+
+/* Explicit Markup Blocks   */
+/* ======================   */
+
+/* Footnotes and Citations  */
+/* -----------------------  */
+
+/* line on the left */
+dl.footnote {
+  padding-left: 1ex;
+  border-left: solid;
+  border-left-width: thin;
+}
+
+/* Directives               */
+/* ----------               */
+
+/* Body Elements            */
+/* ~~~~~~~~~~~~~            */
+
+/* Images and Figures */
+
+/* let content flow to the side of aligned images and figures */
+.figure.align-left,
+img.align-left,
+object.align-left {
+  display: block;
+  clear: left;
+  float: left;
+  margin-right: 1em
+}
+.figure.align-right,
+img.align-right,
+object.align-right {
+  display: block;
+  clear: right;
+  float: right;
+  margin-left: 1em
+}
+/* Stop floating sidebars, images and figures at section level 1,2,3 */
+h1, h2, h3 { clear: both; }
+
+/* Sidebar */
+
+/* Move into the margin. In a layout with fixed margins, */
+/* it can be moved into the margin completely.		 */
+div.sidebar {
+  width: 30%;
+  max-width: 26em;
+  margin-left: 1em;
+  margin-right: -5.5%;
+  background-color: #ffffee ;
+}
+
+/* Code                     */
+
 pre.code, code { background-color: #eeeeee }
+pre.code .ln { color: gray; } /* line numbers */
+/* basic highlighting: for a complete scheme, see */
+/* http://docutils.sourceforge.net/sandbox/stylesheets/ */
 pre.code .comment, code .comment { color: #5C6576 }
 pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
 pre.code .literal.string, code .literal.string { color: #0C5404 }
@@ -284,85 +514,53 @@ pre.code .name.builtin, code .name.builtin { color: #352B84 }
 pre.code .deleted, code .deleted { background-color: #DEB0A1}
 pre.code .inserted, code .inserted { background-color: #A3D289}
 
-span.classifier {
-  font-family: sans-serif ;
-  font-style: oblique }
+/* Math                     */
+/* styled separately (see math.css for math-output=HTML) */
 
-span.classifier-delimiter {
-  font-family: sans-serif ;
-  font-weight: bold }
+/* Epigraph                 */
+/* Highlights               */
+/* Pull-Quote               */
+/* Compound Paragraph       */
+/* Container                */
 
-span.interpreted {
-  font-family: sans-serif }
+/* can be styled in a custom stylesheet */
 
-span.option {
-  white-space: nowrap }
+/* Document Header and Footer */
 
-span.pre {
-  white-space: pre }
-
-span.problematic {
-  color: red }
-
-span.section-subtitle {
-  /* font-size relative to parent (h1..h6 element) */
-  font-size: 80% }
-
-table.citation {
-  border-left: solid 1px gray;
-  margin-left: 1px }
-
-table.docinfo {
-  margin: 2em 4em }
-
-table.docutils {
-  margin-top: 0.5em ;
-  margin-bottom: 0.5em }
-
-table.footnote {
-  border-left: solid 1px black;
-  margin-left: 1px }
-
-table.docutils td, table.docutils th,
-table.docinfo td, table.docinfo th {
-  padding-left: 0.5em ;
-  padding-right: 0.5em ;
-  vertical-align: top }
-
-table.docutils th.field-name, table.docinfo th.docinfo-name {
-  font-weight: bold ;
-  text-align: left ;
-  white-space: nowrap ;
-  padding-left: 0 }
-
-/* "booktabs" style (no vertical lines) */
-table.docutils.booktabs {
-  border: 0px;
-  border-top: 2px solid;
-  border-bottom: 2px solid;
-  border-collapse: collapse;
-}
-table.docutils.booktabs * {
-  border: 0px;
-}
-table.docutils.booktabs th {
-  border-bottom: thin solid;
-  text-align: left;
+div.footer, div.header {
+  clear: both;
+  font-size: smaller;
 }
 
-h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
-h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
-  font-size: 100% }
+/* Inline Markup            */
+/* =============            */
 
-ul.auto-toc {
-  list-style-type: none }
+/* Emphasis                 */
+/*   em                     */
+/* Strong Emphasis          */
+/*   strong		    */
+/* Interpreted Text         */
+/*   span.interpreted  	    */
+/* Title Reference 	    */
+/*   cite		    */
+/* Inline Literals          */
+/* possible values: normal, nowrap, pre, pre-wrap, pre-line */
+/*   span.docutils.literal { white-space: pre-wrap; } */
+
+/* Hyperlink References     */
+a { text-decoration: none; }
+
+/* External Targets         */
+/*   span.target.external   */
+/* Internal Targets  	    */
+/*   span.target.internal   */
+/* Footnote References      */
+/*   a.footnote-reference   */
+/* Citation References      */
+/*   a.citation-reference   */
 
 </style>
 <style type="text/css">
-
-body {
-    padding: 40px;
-}
 
 .kbd
 {
@@ -394,165 +592,126 @@ body {
 <p>A quick reference to bash</p>
 <p>Created on: 2019-02-03</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">under heavy construction and not well organized</p>
+<p class="admonition-title">Warning</p>
+<p>under heavy construction and not well organized</p>
 </div>
 <div class="section" id="sed">
 <h1>sed</h1>
 <div class="section" id="deleting-a-substring">
 <h2>deleting a substring</h2>
-<pre class="literal-block">
-echo $str | sed -E 's/(.*?)\..*/\1/'
-</pre>
+<pre class="literal-block">echo $str | sed -E 's/(.*?)\..*/\1/'</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/5350059">http://stackoverflow.com/a/13570430/5350059</a>)</p>
 </div>
 <div class="section" id="replace-char-with-another-char">
 <h2>replace char with another char</h2>
-<pre class="literal-block">
-sed -ie 's/char/achar/g' /path/to/hello.txt #replacing char with achar
-</pre>
+<pre class="literal-block">sed -ie 's/char/achar/g' /path/to/hello.txt #replacing char with achar</pre>
 <p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/159369/199183">http://unix.stackexchange.com/a/159369/199183</a>)</p>
 </div>
 <div class="section" id="replace-whole-line-containing-a-string-using-sed">
 <h2>Replace whole line containing a string using sed</h2>
-<pre class="literal-block">
-sed -i '/replace this/c\with this' /tmp/foo
-</pre>
+<pre class="literal-block">sed -i '/replace this/c\with this' /tmp/foo</pre>
 </div>
 <div class="section" id="append-line-before-pattern-in-file">
 <h2>append line before pattern in file</h2>
-<pre class="literal-block">
-sed -i '/find this pattern/i \append pattern' /path/to/file.extension
-</pre>
+<pre class="literal-block">sed -i '/find this pattern/i \append pattern' /path/to/file.extension</pre>
 </div>
 <div class="section" id="delete-specific-line-in-file-creates-a-bak-file-of-same-name">
 <h2>delete specific line in file (creates a .bak file of same name)</h2>
-<pre class="literal-block">
-sudo sed -i.bak -e '{line_number}d' /path/to/file.extension
-</pre>
+<pre class="literal-block">sudo sed -i.bak -e '{line_number}d' /path/to/file.extension</pre>
 </div>
 <div class="section" id="delete-the-first-5-chars-on-any-line-with-sed">
 <h2>delete the first 5 chars on any line with sed</h2>
-<pre class="literal-block">
-sed 's/^.....//'
-</pre>
+<pre class="literal-block">sed 's/^.....//'</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/3806107/5350059">https://stackoverflow.com/a/3806107/5350059</a>)</p>
 </div>
 <div class="section" id="delete-lines-containing-a-specific-string">
 <h2>delete lines containing a specific string</h2>
-<pre class="literal-block">
-sed -i '/pattern to match/d' ./infile
-</pre>
+<pre class="literal-block">sed -i '/pattern to match/d' ./infile</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/5410784/5350059">https://stackoverflow.com/a/5410784/5350059</a>)</p>
 </div>
 <div class="section" id="read-specific-line">
 <h2>read specific line</h2>
-<pre class="literal-block">
-sed '$line_number!d' file_name
-</pre>
+<pre class="literal-block">sed '$line_number!d' file_name</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/19327690/5350059">http://stackoverflow.com/a/19327690/5350059</a>)</p>
 </div>
 <div class="section" id="comment-or-uncomment-ie-append-before-line-using-sed">
 <h2>comment or uncomment ie. append before line using sed</h2>
-<pre class="literal-block">
-sed -i 'start_line,end_line s/char_to_be_replaced/replacing_char/' file_name
-#use ^ as char_to_be_replaced for unknown char_to_be_replaced
-</pre>
+<pre class="literal-block">sed -i 'start_line,end_line s/char_to_be_replaced/replacing_char/' file_name
+#use ^ as char_to_be_replaced for unknown char_to_be_replaced</pre>
 </div>
 </div>
 <div class="section" id="awk">
 <h1>awk</h1>
 <div class="section" id="split-string-to-array-using-awk">
 <h2>split string to array using awk</h2>
-<pre class="literal-block">
-echo &quot;12|23|11&quot; | awk '{split($0,a,&quot;|&quot;); print a[3],a[2],a[1]}'
-</pre>
+<pre class="literal-block">echo &quot;12|23|11&quot; | awk '{split($0,a,&quot;|&quot;); print a[3],a[2],a[1]}'</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/8009724/5350059">http://stackoverflow.com/a/8009724/5350059</a>)</p>
 </div>
 <div class="section" id="id1">
 <h2>deleting a substring</h2>
-<dl class="docutils">
+<dl class="simple">
 <dt>::</dt>
-<dd>echo $str | awk -F. '{print $1}'</dd>
+<dd><p>echo $str | awk -F. '{print $1}'</p>
+</dd>
 </dl>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/5350059">http://stackoverflow.com/a/13570430/5350059</a>)</p>
 </div>
 <div class="section" id="get-a-spcecifice-column-form-output">
 <h2>Get a spcecifice column form output</h2>
-<pre class="literal-block">
-command | awk '{print $n}' #n is the number of column
-</pre>
+<pre class="literal-block">command | awk '{print $n}' #n is the number of column</pre>
 </div>
 <div class="section" id="get-a-spcecifice-row-column-output">
 <h2>Get a spcecifice row column output</h2>
-<pre class="literal-block">
-command | awk 'FNR == row {print $column}' #row is row/line number and column is column number
-</pre>
+<pre class="literal-block">command | awk 'FNR == row {print $column}' #row is row/line number and column is column number</pre>
 </div>
 </div>
 <div class="section" id="others">
 <h1>others</h1>
-<div class="section" id="save-command-output-in-vaiable">
-<h2>save command output in vaiable</h2>
-<pre class="literal-block">
-OUTPUT=&quot;$(ls -1)&quot;
-echo &quot;${OUTPUT}&quot;
-</pre>
+<div class="section" id="save-command-output-in-variable">
+<h2>save command output in variable</h2>
+<pre class="literal-block">OUTPUT=&quot;$(ls -1)&quot;
+echo &quot;${OUTPUT}&quot;</pre>
 </div>
 <div class="section" id="echo-in-red-color">
 <h2>echo in red color</h2>
-<pre class="literal-block">
-echo -e &quot;\e[31m{message to echo with out 2nd brackets}\e[0m&quot;
-</pre>
+<pre class="literal-block">echo -e &quot;\e[31m{message to echo with out 2nd brackets}\e[0m&quot;</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/28938235/5350059">http://stackoverflow.com/a/28938235/5350059</a>)</p>
 </div>
 <div class="section" id="get-current-directory-name-without-full-path">
 <h2>Get current directory name (without full path)</h2>
-<pre class="literal-block">
-dir=&quot;$(pwd | grep -o '[^/]*$')&quot;
-</pre>
+<pre class="literal-block">dir=&quot;$(pwd | grep -o '[^/]*$')&quot;</pre>
 </div>
 <div class="section" id="press-enter-to-continue">
 <h2>Press Enter to continue</h2>
-<pre class="literal-block">
-read -p &quot;Press Enter to continue&quot;
-</pre>
+<pre class="literal-block">read -p &quot;Press Enter to continue&quot;</pre>
 </div>
 <div class="section" id="take-one-line-from-file-and-save-it-in-a-variable">
 <h2>take one line from file and save it in a variable</h2>
-<pre class="literal-block">
-var1=&quot;$(head -n 1 file | tail -n 1)&quot; #save line 1 on in var1
-var2=&quot;$(head -n 2 file | tail -n 1)&quot; #save line 2 on in var2
-</pre>
+<pre class="literal-block">var1=&quot;$(head -n 1 file | tail -n 1)&quot; #save line 1 on in var1
+var2=&quot;$(head -n 2 file | tail -n 1)&quot; #save line 2 on in var2</pre>
 </div>
 <div class="section" id="read-on-same-line-after-echoing-a-message">
 <h2>read on same line after echoing a message</h2>
-<pre class="literal-block">
-read -p &quot;[y/n]: &quot; opt (#saves value in opt variable)
-</pre>
+<pre class="literal-block">read -p &quot;[y/n]: &quot; opt (#saves value in opt variable)</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/9720209/5350059">http://stackoverflow.com/a/9720209/5350059</a>)</p>
 </div>
 <div class="section" id="split-a-string-on-a-delimiter">
 <h2>split a string on a delimiter</h2>
-<pre class="literal-block">
-string=&quot;1;2&quot;
+<pre class="literal-block">string=&quot;1;2&quot;
 echo $string | cut -d';' -f1 # output is 1
-echo $string | cut -d';' -f2 # output is 2
-</pre>
+echo $string | cut -d';' -f2 # output is 2</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/38905821/5350059">http://stackoverflow.com/a/38905821/5350059</a>)</p>
 </div>
 <div class="section" id="clear-screen">
 <h2>clear screen</h2>
-<pre class="literal-block">
-printf &quot;\033c&quot;
-</pre>
+<pre class="literal-block">printf &quot;\033c&quot;</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/5367075/5350059">http://stackoverflow.com/a/5367075/5350059</a>)</p>
 </div>
 <div class="section" id="id2">
 <h2>deleting a substring</h2>
-<dl class="docutils">
+<dl>
 <dt>::</dt>
-<dd><p class="first">str=abc.out</p>
+<dd><p>str=abc.out</p>
 <p>#shell:
 echo ${str%.*}</p>
 <p>#grep:
@@ -563,7 +722,7 @@ echo $str | sed -E 's/(.*?)..*/1/'</p>
 echo $str | awk -F. '{print $1}'</p>
 <p>#cut:
 echo $str | cut -d. -f1</p>
-<p class="last">#All output:
+<p>#All output:
 abc</p>
 </dd>
 </dl>
@@ -571,8 +730,7 @@ abc</p>
 </div>
 <div class="section" id="split-a-sting-with-oifs">
 <h2>split a sting with OIFS</h2>
-<pre class="literal-block">
-IN=&quot;bla&#64;some.com;john&#64;home.com&quot;
+<pre class="literal-block">IN=&quot;bla&#64;some.com;john&#64;home.com&quot;
 OIFS=$IFS
 IFS=';'
 mails2=$IN
@@ -580,23 +738,19 @@ for x in $mails2
 do
     echo &quot;&gt; [$x]&quot;
 done
-IFS=$OIFS
-</pre>
+IFS=$OIFS</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/q/918886/5350059">http://stackoverflow.com/q/918886/5350059</a>)</p>
 </div>
 <div class="section" id="if-string-is-not-empty">
 <h2>if string is not empty</h2>
-<pre class="literal-block">
-if [ ! -z &quot;$string&quot; ]
+<pre class="literal-block">if [ ! -z &quot;$string&quot; ]
 #OR
-if [[ ! -z $string ]]
-</pre>
+if [[ ! -z $string ]]</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/6592241/5350059">http://stackoverflow.com/a/6592241/5350059</a>)</p>
 </div>
 <div class="section" id="if-else-if-elif">
 <h2>if else if elif</h2>
-<pre class="literal-block">
-   if [ expression 1 ]
+<pre class="literal-block">   if [ expression 1 ]
    then
       Statement(s) to be executed if expression 1 is true
    elif [ expression 2 ]
@@ -606,158 +760,124 @@ if [[ ! -z $string ]]
       Statement(s) to be executed if no expression is true
    fi
 
-(source: https://www.tutorialspoint.com/unix/if-elif-statement.htm)
-</pre>
+(source: https://www.tutorialspoint.com/unix/if-elif-statement.htm)</pre>
 </div>
 <div class="section" id="if-string-is-equal-to-string">
 <h2>if string is equal to string</h2>
-<pre class="literal-block">
-string=&quot;ABC&quot;
+<pre class="literal-block">string=&quot;ABC&quot;
 if [ &quot;$string&quot; = &quot;XYZ&quot; ]; then
     echo &quot;string matched&quot;
 else
     echo &quot;string mismatched&quot;
-fi;
-</pre>
+fi;</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/10849346/5350059">http://stackoverflow.com/a/10849346/5350059</a>)</p>
 </div>
 <div class="section" id="if-a-application-exist">
 <h2>if a application exist</h2>
-<pre class="literal-block">
-e=$(which $app_name)
+<pre class="literal-block">e=$(which $app_name)
 if [[ ! -z &quot;$e&quot; ]]
 then
     echo -e &quot;\e[32mApplication exist.\e[0m&quot;
 else
     echo -e &quot;\e[31mApplication doens't exist!!!\e[0m&quot;
-fi
-</pre>
+fi</pre>
 </div>
 <div class="section" id="insert-line-number-in-file">
 <h2>insert line number in file</h2>
-<pre class="literal-block">
-cat -n inputfile &gt; result
+<pre class="literal-block">cat -n inputfile &gt; result
 #OR
 nl infile
 #OR
 nl -w1 -s.\  infile
 #OR
-cat &lt;inputfile&gt; | grep -n '' &gt; &lt;outputfile&gt;
-</pre>
+cat &lt;inputfile&gt; | grep -n '' &gt; &lt;outputfile&gt;</pre>
 <p>(source: <a class="reference external" href="http://www.unix.com/shell-programming-and-scripting/99016-how-add-line-numbers-text-file.html">http://www.unix.com/shell-programming-and-scripting/99016-how-add-line-numbers-text-file.html</a>)</p>
 </div>
 <div class="section" id="get-number-of-line-in-a-file">
 <h2>get number of line in a file</h2>
-<pre class="literal-block">
-wc -l file.txt | awk '{print $1}'
+<pre class="literal-block">wc -l file.txt | awk '{print $1}'
 #OR
-wc -l &lt; file.txt
-</pre>
+wc -l &lt; file.txt</pre>
 </div>
 <div class="section" id="add-sub-multiply-and-devide">
 <h2>add, sub, multiply and devide</h2>
-<pre class="literal-block">
-swap_size=&quot;$(($ram * $size_choice))&quot; #(source: https://stackoverflow.com/a/11039905
+<pre class="literal-block">swap_size=&quot;$(($ram * $size_choice))&quot; #(source: https://stackoverflow.com/a/11039905
 
 OR
 
-expr $x / $y #(source: http://stackoverflow.com/a/18093887/5350059)
-</pre>
+expr $x / $y #(source: http://stackoverflow.com/a/18093887/5350059)</pre>
 </div>
 <div class="section" id="use-specific-app-through-ssh">
 <h2>use specific app through ssh</h2>
-<pre class="literal-block">
-ssh -X username&#64;xxx.xxx.xxx.xxx
-nohup $app_name &amp;
-</pre>
+<pre class="literal-block">ssh -X username&#64;xxx.xxx.xxx.xxx
+nohup $app_name &amp;</pre>
 <p>(source: <a class="reference external" href="http://tiny.cc/i04fjy">http://tiny.cc/i04fjy</a>)</p>
 </div>
 <div class="section" id="detect-line-break">
 <h2>detect line break</h2>
-<pre class="literal-block">
-if [[ &quot;$a&quot; == '\012' ]] ; then
+<pre class="literal-block">if [[ &quot;$a&quot; == '\012' ]] ; then
             echo &quot;FOUND NEWLINE&quot;
-    fi
-</pre>
+    fi</pre>
 <p>(source: <a class="reference external" href="http://unix.stackexchange.com/q/27423/199183">http://unix.stackexchange.com/q/27423/199183</a>)</p>
 </div>
 <div class="section" id="kill-a-shell-form-that-shell">
 <h2>kill a shell form that shell</h2>
-<pre class="literal-block">
-kill $$
-</pre>
+<pre class="literal-block">kill $$</pre>
 </div>
 <div class="section" id="get-file-name-from-file-path">
 <h2>get file name from file path</h2>
-<pre class="literal-block">
-file_path=/path/to/file.extension
+<pre class="literal-block">file_path=/path/to/file.extension
 file=$(basename &quot;$file_path&quot;)
-echo &quot;$file&quot;
-</pre>
+echo &quot;$file&quot;</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/4645575/5350059">http://stackoverflow.com/a/4645575/5350059</a>)</p>
 </div>
 <div class="section" id="kill-all-instance-of-an-application">
 <h2>kill all instance of an application</h2>
-<pre class="literal-block">
-e=&quot;$(ps ax | grep $app | awk '{print $1}')&quot;
-kill $e
-</pre>
+<pre class="literal-block">e=&quot;$(ps ax | grep $app | awk '{print $1}')&quot;
+kill $e</pre>
 </div>
 <div class="section" id="convert-to-lowercase">
 <h2>convert to lowercase</h2>
-<pre class="literal-block">
-var= &quot;HI ALL&quot;
+<pre class="literal-block">var= &quot;HI ALL&quot;
 low=$(echo &quot;$var&quot; | tr '[:upper:]' '[:lower:]')
 low=$(echo &quot;$var&quot; | awk '{print tolower($0)}')
-#both produces &quot;hi all&quot;
-</pre>
+#both produces &quot;hi all&quot;</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/2264537/5350059">http://stackoverflow.com/a/2264537/5350059</a>)</p>
 </div>
 <div class="section" id="get-real-ip">
 <h2>get real ip</h2>
-<pre class="literal-block">
-curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'
-</pre>
+<pre class="literal-block">curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'</pre>
 <p>(source: <a class="reference external" href="http://sh.howtocode.com.bd/3.4.3.secure-connection.html">http://sh.howtocode.com.bd/3.4.3.secure-connection.html</a>)</p>
 </div>
 <div class="section" id="delete-script-after-execution">
 <h2>delete script after execution</h2>
-<pre class="literal-block">
-#add at the end of script
+<pre class="literal-block">#add at the end of script
 rm -- &quot;$0&quot;
 #OR
-rm $script_name
-</pre>
+rm $script_name</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/8981233/5350059">http://stackoverflow.com/a/8981233/5350059</a>)</p>
 </div>
 <div class="section" id="unzip-zip">
 <h2>unzip .zip</h2>
-<pre class="literal-block">
-unzip file.zip -d destination_folder
-</pre>
+<pre class="literal-block">unzip file.zip -d destination_folder</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/86852/502875">http://askubuntu.com/a/86852/502875</a>)</p>
 </div>
 <div class="section" id="go-to-each-sub-directory-and-execute-a-command">
 <h2>go to each sub directory and execute a command</h2>
-<pre class="literal-block">
-for d in ./*/
+<pre class="literal-block">for d in ./*/
 do
     (cd &quot;$d&quot; &amp;&amp; somecommand)
-done
-</pre>
+done</pre>
 <p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/171679/199183">http://unix.stackexchange.com/a/171679/199183</a>)</p>
 </div>
 <div class="section" id="change-password-without-typing-non-interactive">
 <h2>change password without typing (non interactive)</h2>
-<pre class="literal-block">
-echo $uname:$passwd | sudo chpasswd
-</pre>
+<pre class="literal-block">echo $uname:$passwd | sudo chpasswd</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/41223440/5350059">http://stackoverflow.com/a/41223440/5350059</a>)</p>
 </div>
 <div class="section" id="refresh-output-in-the-same-line-echo-update">
 <h2>refresh output in the same line(echo update)</h2>
-<pre class="literal-block">
-echo -e &quot;\e[1A&quot; # moving the cursor back to the previously printed line
+<pre class="literal-block">echo -e &quot;\e[1A&quot; # moving the cursor back to the previously printed line
 echo -ne &quot;$line\e[K&quot; # \e[K cleans the residues of the previous output.
 #example:
 #!/bin/bash
@@ -768,36 +888,29 @@ do
     sleep 1s;
     echo -ne &quot;Waiting time : &quot;$i&quot; Seconds\e[K&quot;
 done
-echo #print new line
-</pre>
+echo #print new line</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/34466100/5350059">http://stackoverflow.com/a/34466100/5350059</a>)</p>
 </div>
 <div class="section" id="go-back-to-last-visited-directory">
 <h2>go back to last visited directory</h2>
-<pre class="literal-block">
-cd -
-</pre>
+<pre class="literal-block">cd -</pre>
 <p>(source: <a class="reference external" href="https://superuser.com/q/113219/655587">https://superuser.com/q/113219/655587</a>)</p>
 </div>
 <div class="section" id="rm-move-to-trash">
 <h2>rm move to trash</h2>
-<pre class="literal-block">
-#in .bashrc
+<pre class="literal-block">#in .bashrc
 #start by defining a move_to_trash function:
 move_to_trash () {
     mv &quot;$&#64;&quot; /path/to/trash #/home/$USER/.local/share/Trash/files
 }
 #then alias rm to that:
-alias rm='move_to_trash'
-</pre>
+alias rm='move_to_trash'</pre>
 <p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/42758/199183">https://unix.stackexchange.com/a/42758/199183</a>)</p>
 </div>
 <div class="section" id="use-pc-name-instead-of-ip-while-ssh">
 <h2>use pc name instead of ip while ssh</h2>
-<pre class="literal-block">
-#add at the end of /etc/hosts
-ip_address(tab)pc_name
-</pre>
+<pre class="literal-block">#add at the end of /etc/hosts
+ip_address(tab)pc_name</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/487319/502875">https://askubuntu.com/a/487319/502875</a>)</p>
 </div>
 <div class="section" id="shutdown-restart-without-sudo-from-terminal-munst-have-consolekit">
@@ -805,24 +918,15 @@ ip_address(tab)pc_name
 <p>A safe way to do this without using sudo and without tinkering with the system, is by executing these one-liner commands:
 For Ubuntu 14.10 or earlier:
 Shutdown:</p>
-<pre class="literal-block">
-/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.ConsoleKit&quot; /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
-</pre>
+<pre class="literal-block">/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.ConsoleKit&quot; /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop</pre>
 <p>Restart:</p>
-<pre class="literal-block">
-/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.ConsoleKit&quot; /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart
-</pre>
+<pre class="literal-block">/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.ConsoleKit&quot; /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart</pre>
 <p>Suspend:</p>
-<pre class="literal-block">
-/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.UPower&quot; /org/freedesktop/UPower org.freedesktop.UPower.Suspend
-</pre>
+<pre class="literal-block">/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.UPower&quot; /org/freedesktop/UPower org.freedesktop.UPower.Suspend</pre>
 <p>Hibernate(if enabled on your system):</p>
-<pre class="literal-block">
-/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.UPower&quot; /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
-</pre>
+<pre class="literal-block">/usr/bin/dbus-send --system --print-reply --dest=&quot;org.freedesktop.UPower&quot; /org/freedesktop/UPower org.freedesktop.UPower.Hibernate</pre>
 <p>For Ubuntu 15.04 and later[This is due to Ubuntu's shift in using systemd instead of Upstart]:</p>
-<pre class="literal-block">
-systemctl poweroff
+<pre class="literal-block">systemctl poweroff
 
 systemctl reboot
 
@@ -830,8 +934,7 @@ systemctl suspend
 
 systemctl hibernate
 
-systemctl hybrid-sleep
-</pre>
+systemctl hybrid-sleep</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/385316/502875">http://askubuntu.com/a/385316/502875</a>)</p>
 <p>OR</p>
 <p>gnome-session-quit --power-off --force --no-prompt</p>
@@ -839,53 +942,43 @@ systemctl hybrid-sleep
 </div>
 <div class="section" id="run-applications-as-root">
 <h2>run applications as root</h2>
-<pre class="literal-block">
-#console
+<pre class="literal-block">#console
 sudo &lt;program name&gt;
 #GUI
-gksudo &lt;program name&gt;
-</pre>
+gksudo &lt;program name&gt;</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/207467/502875">http://askubuntu.com/a/207467/502875</a>)</p>
 </div>
 <div class="section" id="grep-for-this-or-that-2-things-in-a-file">
 <h2>grep for this or that (2 things) in a file?</h2>
-<pre class="literal-block">
-grep -E '(then|there)' x.x
-</pre>
+<pre class="literal-block">grep -E '(then|there)' x.x</pre>
 <p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/82993/199183">https://unix.stackexchange.com/a/82993/199183</a>)</p>
 </div>
 <div class="section" id="execute-date-inside-corntab">
-<h2>execute <tt class="docutils literal">date</tt> inside corntab</h2>
-<pre class="literal-block">
-0 * * * * echo hello &gt;&gt; ~/cron-logs/hourly/test_`date &quot;+\%d-\%b-\%Y&quot;`
-</pre>
+<h2>execute <span class="docutils literal">date</span> inside corntab</h2>
+<pre class="literal-block">0 * * * * echo hello &gt;&gt; ~/cron-logs/hourly/test_`date &quot;+\%d-\%b-\%Y&quot;`</pre>
 <p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/29582/199183">https://unix.stackexchange.com/a/29582/199183</a>)</p>
 </div>
 <div class="section" id="execute-sudo-command-over-ssh">
 <h2>execute sudo command over ssh</h2>
-<pre class="literal-block">
-ssh -t user&#64;server &quot;sudo script&quot;
-</pre>
+<pre class="literal-block">ssh -t user&#64;server &quot;sudo script&quot;</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/10312700/5350059">https://stackoverflow.com/a/10312700/5350059</a>)</p>
 </div>
 <div class="section" id="see-port-address-and-pid">
 <h2>see port address and PID</h2>
-<pre class="literal-block">
-netstat -tulpn
-</pre>
+<pre class="literal-block">netstat -tulpn</pre>
 </div>
 <div class="section" id="check-curl-and-install-if-not-found">
 <h2>check curl and install if not found</h2>
-<dl class="docutils">
+<dl class="simple">
 <dt>::</dt>
-<dd>if command -v curl &gt; /dev/null then echo &quot;Detected curl...&quot; else echo
-&quot;Installing curl...&quot; apt-get install -q -y curl fi</dd>
+<dd><p>if command -v curl &gt; /dev/null then echo &quot;Detected curl...&quot; else echo
+&quot;Installing curl...&quot; apt-get install -q -y curl fi</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="special-dollar-sign-shell-variables">
 <h2>special dollar sign shell variables</h2>
-<pre class="literal-block">
-$1, $2, $3, ... are the positional parameters.
+<pre class="literal-block">$1, $2, $3, ... are the positional parameters.
 &quot;$&#64;&quot; is an array-like construct of all positional parameters, {$1, $2, $3 ...}.
 &quot;$*&quot; is the IFS expansion of all positional parameters, $1 $2 $3 ....
 $# is the number of positional parameters.
@@ -895,216 +988,158 @@ $_ most recent parameter (or the abs path of the command to start the current sh
 $IFS is the (input) field separator.
 $? is the most recent foreground pipeline exit status.
 $! is the PID of the most recent background command.
-$0 is the name of the shell or shell script.
-</pre>
+$0 is the name of the shell or shell script.</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/5163260">https://stackoverflow.com/a/5163260</a>)</p>
 </div>
 <div class="section" id="show-files-only">
 <h2>show files only</h2>
-<pre class="literal-block">
-ls -p | grep -v /
-</pre>
+<pre class="literal-block">ls -p | grep -v /</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/questions/811210/how-can-i-make-ls-only-display-files#811236">https://askubuntu.com/questions/811210/how-can-i-make-ls-only-display-files#811236</a>)</p>
 </div>
 <div class="section" id="disallow-peter-from-logging-in">
 <h2>disallow peter from logging in</h2>
-<pre class="literal-block">
-sudo usermod --expiredate 1 peter
-</pre>
+<pre class="literal-block">sudo usermod --expiredate 1 peter</pre>
 </div>
 <div class="section" id="set-expiration-date-of-peter-to-never">
 <h2>set expiration date of peter to Never</h2>
-<pre class="literal-block">
-sudo usermod --expiredate &quot;&quot; peter
-</pre>
+<pre class="literal-block">sudo usermod --expiredate &quot;&quot; peter</pre>
 </div>
 <div class="section" id="take-away-peters-password">
 <h2>take away peters password</h2>
-<pre class="literal-block">
-sudo passwd -l peter
-</pre>
+<pre class="literal-block">sudo passwd -l peter</pre>
 </div>
 <div class="section" id="give-peter-back-his-password">
 <h2>give peter back his password</h2>
-<pre class="literal-block">
-sudo passwd -u peter
-</pre>
+<pre class="literal-block">sudo passwd -u peter</pre>
 </div>
 <div class="section" id="make-peter-think-of-a-new-password-on-login">
 <h2>make peter think of a new password on login</h2>
-<pre class="literal-block">
-sudo passwd -e  YYYY-MM-DD peter
-</pre>
+<pre class="literal-block">sudo passwd -e  YYYY-MM-DD peter</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/607108/502875">https://askubuntu.com/a/607108/502875</a>)</p>
 </div>
 <div class="section" id="set-static-ip">
 <h2>set static ip</h2>
-<pre class="literal-block">
-#edit /etc/network/interfaces and put the following there, don't forget to change $interface and address, netmask, network, gateway and dns
+<pre class="literal-block">#edit /etc/network/interfaces and put the following there, don't forget to change $interface and address, netmask, network, gateway and dns
 auto $interface
 iface $interface inet static
    address 10.253.0.50
    netmask 255.255.255.0
    network 10.253.0.0
    gateway 10.253.0.1
-   dns-nameservers 8.8.8.8
-</pre>
+   dns-nameservers 8.8.8.8</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/470245/502875">https://askubuntu.com/a/470245/502875</a>)</p>
 </div>
 <div class="section" id="login-with-sshpass">
 <h2>Login with sshpass</h2>
-<pre class="literal-block">
-sshpass -p 'your_password' ssh user&#64;host_ip
-</pre>
+<pre class="literal-block">sshpass -p 'your_password' ssh user&#64;host_ip</pre>
 </div>
 <div class="section" id="show-line-number-in-nano-for-filename">
 <h2>Show line number in nano for 'filename'</h2>
-<pre class="literal-block">
-#Show while opening file
+<pre class="literal-block">#Show while opening file
 nano -c [filename]
 #Show always
 nano ~/.nanorc
 #don't worry if its empty - this file doesn't exist by default
 set const
-#save
-</pre>
+#save</pre>
 </div>
 <div class="section" id="record-your-encryption-passphrase-in-ubuntu">
 <h2>Record your encryption passphrase in Ubuntu</h2>
-<pre class="literal-block">
-ecryptfs-unwrap-passphrase
-</pre>
+<pre class="literal-block">ecryptfs-unwrap-passphrase</pre>
 </div>
 <div class="section" id="see-usb-information-in-linux-terminal">
 <h2>See USB information in Linux Terminal</h2>
-<pre class="literal-block">
-user&#64;user-pc:~$ lsusb
+<pre class="literal-block">user&#64;user-pc:~$ lsusb
 // open terminal and type lsusb
 user&#64;user-pc:~$ Bus #bus_number Device #device_number: ID #vendor:#product USB_Name
 //output of command 'lsusb' including your expected device
 user&#64;user-pc:~$ lsusb -D /dev/bus/usb/#bus_number/#device_number
-//replace the #bus_number and #device_number of you expected device
-</pre>
+//replace the #bus_number and #device_number of you expected device</pre>
 </div>
 <div class="section" id="shell-script-to-install-application-s-in-ubuntu">
 <h2>Shell script to install application(s) in Ubuntu</h2>
 </div>
 <div class="section" id="method-01">
 <h2>method 01</h2>
-<pre class="literal-block">
-#!/bin/sh
+<pre class="literal-block">#!/bin/sh
 apt-get update  # To get the latest package lists
 apt-get install &lt;package name&gt; -y #apt-get install &lt;package name&gt; -y
-#etc.
-</pre>
+#etc.</pre>
 </div>
 <div class="section" id="method-02">
 <h2>method 02</h2>
-<pre class="literal-block">
-#!/bin/sh
+<pre class="literal-block">#!/bin/sh
 LIST_OF_APPS=&quot;a b c d e&quot;
 aptitude update
-aptitude install -y $LIST_OF_APPS
-</pre>
+aptitude install -y $LIST_OF_APPS</pre>
 </div>
 <div class="section" id="method-03">
 <h2>method 03</h2>
-<pre class="literal-block">
-cat example.list | xargs sudo apt-get -y install
-</pre>
+<pre class="literal-block">cat example.list | xargs sudo apt-get -y install</pre>
 </div>
 <div class="section" id="method-04">
 <h2>method 04</h2>
-<pre class="literal-block">
-#!/bin/bash
+<pre class="literal-block">#!/bin/bash
 apt-get update  # To get the latest package lists
-apt-get install $1 -y
-</pre>
+apt-get install $1 -y</pre>
 </div>
 <div class="section" id="connect-to-wifi-from-terminal">
 <h2>Connect to wifi from terminal</h2>
 <p>List all the wifi:</p>
-<pre class="literal-block">
-nmcli dev wifi
-</pre>
+<pre class="literal-block">nmcli dev wifi</pre>
 <p>connect to wifi:</p>
-<pre class="literal-block">
-nmcli dev wifi connect $SSID password $PASS
-</pre>
+<pre class="literal-block">nmcli dev wifi connect $SSID password $PASS</pre>
 </div>
 <div class="section" id="what-are-some-funny-linux-commands">
 <h2>What are some funny Linux commands</h2>
 <p>make:</p>
-<pre class="literal-block">
-make LOVE=war
-</pre>
+<pre class="literal-block">make LOVE=war</pre>
 <p>rev: reverse char of a line in a file:</p>
-<pre class="literal-block">
-rev &lt;file&gt; # if file contains 12 shows 21
-</pre>
+<pre class="literal-block">rev &lt;file&gt; # if file contains 12 shows 21</pre>
 <p>fortune will display some random sentence #sudo apt-get install fortune:</p>
-<pre class="literal-block">
-fortune
-</pre>
+<pre class="literal-block">fortune</pre>
 <p>yes command will keep displaying the string for infinite until the process is killed by the user.:</p>
-<pre class="literal-block">
-yes yes
-</pre>
+<pre class="literal-block">yes yes</pre>
 <p>figlet command can be installed with apt-get, comes with some ascii
 fonts which are located in /usr/share/figlet. cd /usr/share/figlet
 figlet -f Ex: figlet -f big.flf unixmen</p>
 <p>asciiquarium command will transform your terminal in to a Sea Aquarium:</p>
-<pre class="literal-block">
-search Term-Animation in http://www.cpan.org/authors/id/K/KB/KBAUCOM/
-</pre>
+<pre class="literal-block">search Term-Animation in http://www.cpan.org/authors/id/K/KB/KBAUCOM/</pre>
 <p>bb:</p>
-<pre class="literal-block">
-apt-get install bb
-bb
-</pre>
+<pre class="literal-block">apt-get install bb
+bb</pre>
 <p>(source: <a class="reference external" href="https://www.quora.com/What-are-some-funny-Linux-commands">https://www.quora.com/What-are-some-funny-Linux-commands</a>)</p>
 </div>
 <div class="section" id="show-notification-in-linux">
 <h2>show notification in linux</h2>
-<pre class="literal-block">
-#must have libnotify for notify-send
+<pre class="literal-block">#must have libnotify for notify-send
 #install libnotify
 sudo apt-get install libnotify-bin
 #install notify-send
 sudo apt-get install notify-osd
-DISPLAY=:0.0 /usr/bin/notify-send &quot;title&quot; &quot;Message&quot;
-</pre>
+DISPLAY=:0.0 /usr/bin/notify-send &quot;title&quot; &quot;Message&quot;</pre>
 </div>
 <div class="section" id="notification-at-a-specific-time">
 <h2>notification at a specific time</h2>
-<pre class="literal-block">
-echo 'notify-send &quot;Work day is done!&quot;' | at 4:00PM
+<pre class="literal-block">echo 'notify-send &quot;Work day is done!&quot;' | at 4:00PM
 echo 'notify-send &quot;Get your tea!&quot;' | at now + 3 minutes
-echo 'notify-send &quot;Meeting in 1 hour with the big boss!&quot;' | at 1pm tomorrow
-</pre>
+echo 'notify-send &quot;Meeting in 1 hour with the big boss!&quot;' | at 1pm tomorrow</pre>
 </div>
 <div class="section" id="mute-the-microphone">
 <h2>Mute the microphone</h2>
-<pre class="literal-block">
-amixer set Capture nocap
-</pre>
+<pre class="literal-block">amixer set Capture nocap</pre>
 </div>
 <div class="section" id="unmute-the-microphone">
 <h2>Unmute the microphone</h2>
-<pre class="literal-block">
-amixer set Capture cap
-</pre>
+<pre class="literal-block">amixer set Capture cap</pre>
 </div>
 <div class="section" id="chnage-avatar-must-be-png">
 <h2>chnage avatar (must be png)</h2>
-<pre class="literal-block">
-sudo cp /path/to/file /var/lib/AccountsService/icons/$(whoami)
-</pre>
+<pre class="literal-block">sudo cp /path/to/file /var/lib/AccountsService/icons/$(whoami)</pre>
 </div>
 <div class="section" id="stopwatch-and-countdown-timer-function">
 <h2>stopwatch and countdown timer function</h2>
-<pre class="literal-block">
-countdown(){
+<pre class="literal-block">countdown(){
     date1=$((`date +%s` + $1));
     while [ &quot;$date1&quot; -ge `date +%s` ]; do
     ## Is this more than 24h away?
@@ -1120,60 +1155,46 @@ stopwatch(){
     echo -ne &quot;$days day(s) and $(date -u --date &#64;$((`date +%s` - $date1)) +%H:%M:%S)\r&quot;;
     sleep 0.1
     done
-}
-</pre>
+}</pre>
 <p>(source: <a class="reference external" href="http://superuser.com/a/611582">http://superuser.com/a/611582</a>)</p>
 </div>
 <div class="section" id="using-rsync-to-mirror">
 <h2>using rsync to mirror</h2>
-<pre class="literal-block">
-rsync -ar source/ destination
-</pre>
+<pre class="literal-block">rsync -ar source/ destination</pre>
 </div>
 <div class="section" id="hide-all-user-list-on-login-screen">
 <h2>hide (all) user list on login screen</h2>
-<pre class="literal-block">
-sudo mkdir -p /etc/lightdm/lightdm.conf.d
-sudo printf &quot;[SeatDefaults]\nuser-session=ubuntu\ngreeter-show-manual-login=true\ngreeter-hide-users=true\nall&quot; &gt; /etc/lightdm/lightdm.conf.d/10-ubuntu.conf
-</pre>
+<pre class="literal-block">sudo mkdir -p /etc/lightdm/lightdm.conf.d
+sudo printf &quot;[SeatDefaults]\nuser-session=ubuntu\ngreeter-show-manual-login=true\ngreeter-hide-users=true\nall&quot; &gt; /etc/lightdm/lightdm.conf.d/10-ubuntu.conf</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/731455/502875">http://askubuntu.com/a/731455/502875</a>)</p>
 </div>
 <div class="section" id="hide-a-specific-user-form-login-screen">
 <h2>hide a specific user form login screen</h2>
-<pre class="literal-block">
-touch $user_name
+<pre class="literal-block">touch $user_name
 printf &quot;[User]\nSystemAccount=true\n&quot; &gt; $user_name
-sudo mv $user_name /var/lib/AccountsService/users/$user_name
-</pre>
+sudo mv $user_name /var/lib/AccountsService/users/$user_name</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/575390/502875">http://askubuntu.com/a/575390/502875</a>)</p>
 </div>
 <div class="section" id="open-files-form-terminal">
 <h2>open files form terminal</h2>
-<pre class="literal-block">
-#Ubuntu
-nautilus .
-</pre>
+<pre class="literal-block">#Ubuntu
+nautilus .</pre>
 </div>
 <div class="section" id="see-execution-time-of-a-command">
 <h2>see execution time of a command</h2>
-<pre class="literal-block">
-time command
+<pre class="literal-block">time command
 #for getting real time only
 /usr/bin/time -f &quot;%e&quot; command
 #save the command execution time in a variable
-down_time=`/usr/bin/time -f %e sleep 2 2&gt;&amp;1`
-</pre>
+down_time=`/usr/bin/time -f %e sleep 2 2&gt;&amp;1`</pre>
 </div>
 <div class="section" id="run-a-terminal-lunched-program-after-closing-terminal-by-removing-it-form-job-list">
 <h2>run a terminal-lunched program after closing terminal (by removing it form job list)</h2>
-<pre class="literal-block">
-app_name &amp; disown
-</pre>
+<pre class="literal-block">app_name &amp; disown</pre>
 </div>
 <div class="section" id="delete-last-char-of-string">
 <h2>delete last char of string</h2>
-<pre class="literal-block">
-#with bash 4.2
+<pre class="literal-block">#with bash 4.2
 a=123
 echo &quot;${a::-1}&quot;
 12
@@ -1181,32 +1202,26 @@ echo &quot;${a::-1}&quot;
 #older bash
 a=123
 echo &quot;${a: : -1}&quot;
-12
-</pre>
+12</pre>
 </div>
 <div class="section" id="open-chrome-using-crontab-as-because-cron-can-do-terminal-jobs-only-we-need-to-export-display-for-gui">
 <h2>open chrome using crontab (as because cron can do terminal jobs only we need to export DISPLAY for GUI)</h2>
-<pre class="literal-block">
-export DISPLAY=:0
-/opt/google/chrome/chrome $URL
-</pre>
+<pre class="literal-block">export DISPLAY=:0
+/opt/google/chrome/chrome $URL</pre>
 </div>
 <div class="section" id="stop-max-brightness-on-restart">
 <h2>stop max brightness on restart</h2>
-<pre class="literal-block">
-sudo -v
+<pre class="literal-block">sudo -v
 #get directory name
 cd /sys/class/backlight/*/ &amp;&amp; dir=&quot;$(pwd | grep -o '[^/]*$')&quot;
 #the following line added the given pattern twice as there is a exit 0 in the comment section, delete it mannualy
 #250 is the number of brightness level
-sudo sed -i &quot;/exit 0/i \echo 250 &gt; /sys/class/backlight/$dir/brightness&quot; /etc/rc.local
-</pre>
+sudo sed -i &quot;/exit 0/i \echo 250 &gt; /sys/class/backlight/$dir/brightness&quot; /etc/rc.local</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/151665/502875">http://askubuntu.com/a/151665/502875</a>)</p>
 </div>
 <div class="section" id="execute-a-command-in-the-background-using-and-killing-it">
 <h2>Execute a command in the background using '&amp;' and killing it</h2>
-<pre class="literal-block">
-./my-shell-script.sh &amp; #execute command in background
+<pre class="literal-block">./my-shell-script.sh &amp; #execute command in background
 
 jobs #see jobs
 [1]+  Running        my-shell-script.sh #sample output
@@ -1214,165 +1229,128 @@ jobs #see jobs
 kill %1 #kill with the number in [n]+ recived from jobs
 
 jobs #see jobs
-[1]+  Terminated    ./my-shell-script.sh #sample output
-</pre>
+[1]+  Terminated    ./my-shell-script.sh #sample output</pre>
 </div>
 <div class="section" id="terminal-based-lan-chat">
 <h2>terminal based lan chat</h2>
-<pre class="literal-block">
-pc1: nc -l $port
-pc2: nc $IP $port
-</pre>
+<pre class="literal-block">pc1: nc -l $port
+pc2: nc $IP $port</pre>
 </div>
 <div class="section" id="open-a-terminal-and-execute-shell-on-that-terminal-using-crontab">
 <h2>open a terminal and execute shell on that terminal using crontab</h2>
-<pre class="literal-block">
-export DISPLAY=:0 &amp;&amp; /usr/bin/gnome-termina -e /path/to/script
-</pre>
+<pre class="literal-block">export DISPLAY=:0 &amp;&amp; /usr/bin/gnome-termina -e /path/to/script</pre>
 </div>
 <div class="section" id="display-network-traffic-in-terminal">
 <h2>display network traffic in terminal</h2>
-<pre class="literal-block">
-tcpdump -i $interface #(i.e. eth0,wlan0)
+<pre class="literal-block">tcpdump -i $interface #(i.e. eth0,wlan0)
 #OR
 netstat -tnp
 #OR
-sudo watch -n1 netstat -tunap
-</pre>
+sudo watch -n1 netstat -tunap</pre>
 </div>
 <div class="section" id="assign-ip-to-interface">
 <h2>assign ip to interface</h2>
-<dl class="docutils">
+<dl class="simple">
 <dt>::</dt>
-<dd>sudo ip ad add $ip/$subnet dev $interface
+<dd><p>sudo ip ad add $ip/$subnet dev $interface
 i.e.
-sudo ip ad add 10.0.0.10/24 dev eth0</dd>
+sudo ip ad add 10.0.0.10/24 dev eth0</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="connect-two-pc-over-crossover-cable">
 <h2>connect two pc over crossover cable</h2>
-<pre class="literal-block">
-#on pc 1
+<pre class="literal-block">#on pc 1
 sudo ip ad add 10.0.0.10/24 dev eth0
 #on pc 2
-sudo ip ad add 10.0.0.20/24 dev eth0
-</pre>
+sudo ip ad add 10.0.0.20/24 dev eth0</pre>
 </div>
 <div class="section" id="recursively-list-all-files-in-a-directory">
 <h2>recursively list all files in a directory</h2>
-<pre class="literal-block">
-ls -LR
+<pre class="literal-block">ls -LR
 #OR
-find -follow
-</pre>
+find -follow</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/105249/5350059">http://stackoverflow.com/a/105249/5350059</a>)</p>
 </div>
 <div class="section" id="check-battery-status">
 <h2>check battery status</h2>
-<pre class="literal-block">
-upower -i $(upower -e | grep 'BAT') | grep -E &quot;state|to\ full|percentage&quot;
+<pre class="literal-block">upower -i $(upower -e | grep 'BAT') | grep -E &quot;state|to\ full|percentage&quot;
 #OR
 cat /proc/acpi/battery/BAT0/info
 #OR
-cat /proc/acpi/battery/BAT0/state
-</pre>
+cat /proc/acpi/battery/BAT0/state</pre>
 </div>
 <div class="section" id="schedule-jobs-with-cron">
 <h2>schedule jobs with cron</h2>
-<pre class="literal-block">
-corntab -e #run jobs for user
-sudo corntab -e #run jobs for root user
-</pre>
+<pre class="literal-block">corntab -e #run jobs for user
+sudo corntab -e #run jobs for root user</pre>
 </div>
 <div class="section" id="show-jobs-schedule-with-cron">
 <h2>show jobs schedule with cron</h2>
-<pre class="literal-block">
-corntab -l #show jobs for user
-sudo corntab -e #show jobs for root user
-</pre>
+<pre class="literal-block">corntab -l #show jobs for user
+sudo corntab -e #show jobs for root user</pre>
 </div>
 <div class="section" id="change-bluetooth-broadcast-device-name">
 <h2>change bluetooth broadcast device name</h2>
-<pre class="literal-block">
-sudo echo &quot;PRETTY_HOSTNAME=$device_name&quot; &gt;&gt;/etc/machine-info
+<pre class="literal-block">sudo echo &quot;PRETTY_HOSTNAME=$device_name&quot; &gt;&gt;/etc/machine-info
 sudo service bluetooth restart
 #OR (source: http://askubuntu.com/a/80964/502875)
-sudo hciconfig hci0 name '$device_name'
-</pre>
+sudo hciconfig hci0 name '$device_name'</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/80963/502875">http://askubuntu.com/a/80963/502875</a>)</p>
 </div>
 <div class="section" id="change-lcd-brightness">
 <h2>change LCD brightness</h2>
-<pre class="literal-block">
-display=&quot;$(xrandr -q | grep &quot; connected&quot; | awk '{print $1}')&quot;
-xrandr --output $display --brightness m.n #(0&lt;=m&lt;=10(tested can be greater),0&lt;=m&lt;=9 )
-</pre>
+<pre class="literal-block">display=&quot;$(xrandr -q | grep &quot; connected&quot; | awk '{print $1}')&quot;
+xrandr --output $display --brightness m.n #(0&lt;=m&lt;=10(tested can be greater),0&lt;=m&lt;=9 )</pre>
 <p>(source: <a class="reference external" href="http://askubuntu.com/a/149264/502875">http://askubuntu.com/a/149264/502875</a>)</p>
 </div>
 <div class="section" id="export-display-to-run-a-gui-of-a-program-in-remote-client-like-over-ssh">
 <h2>export display (to run a GUI of a program in remote client like over ssh)</h2>
-<pre class="literal-block">
-export DISPLAY=:0 &amp;&amp; program command
-</pre>
+<pre class="literal-block">export DISPLAY=:0 &amp;&amp; program command</pre>
 </div>
 <div class="section" id="read-file-from-line-x-to-the-end-of-a-file-read-from-specific-line">
 <h2>read file from line x to the end of a file (read from specific line)</h2>
-<pre class="literal-block">
-linesToSkip=1
+<pre class="literal-block">linesToSkip=1
 
 { for ((i=$linesToSkip;i--;)) ;do read done while read line ;do echo
-$line done } &lt; file.csv
-</pre>
+$line done } &lt; file.csv</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/14110529/5350059">http://stackoverflow.com/a/14110529/5350059</a>)</p>
 </div>
 <div class="section" id="copy-all-except-one-file-or-folder">
 <h2>copy all except one file or folder</h2>
-<pre class="literal-block">
-shopt -s extglob &amp;&amp; cp source\!($name) \destination #(first part extends regexes)
-</pre>
+<pre class="literal-block">shopt -s extglob &amp;&amp; cp source\!($name) \destination #(first part extends regexes)</pre>
 <p>(idea source: <a class="reference external" href="http://askubuntu.com/a/786613/502875">http://askubuntu.com/a/786613/502875</a> &amp; <a class="reference external" href="http://stackoverflow.com/a/27655311/5350059">http://stackoverflow.com/a/27655311/5350059</a>)</p>
 </div>
 <div class="section" id="get-date-in-yyy-mm-dd-format">
 <h2>get date in yyy-mm-dd format</h2>
-<pre class="literal-block">
-DATE=`date +%Y-%m-%d`
-</pre>
+<pre class="literal-block">DATE=`date +%Y-%m-%d`</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/1401495/5350059">http://stackoverflow.com/a/1401495/5350059</a>)</p>
 </div>
 <div class="section" id="in-ubuntu-all-deb-file-are-in-this-folder">
 <h2>in ubuntu all .deb file are in this folder</h2>
-<pre class="literal-block">
-/var/cache/apt/archives
-</pre>
+<pre class="literal-block">/var/cache/apt/archives</pre>
 </div>
 <div class="section" id="install-all-deb">
 <h2>install all .deb</h2>
-<pre class="literal-block">
-sudo dpkg -i *.deb #(* for all)
-</pre>
+<pre class="literal-block">sudo dpkg -i *.deb #(* for all)</pre>
 </div>
 <div class="section" id="encrypting-and-compressing-with-7z">
 <h2>Encrypting and compressing with 7z</h2>
-<pre class="literal-block">
-7z a -p stuff.7z MyStuff
+<pre class="literal-block">7z a -p stuff.7z MyStuff
    ^  ^    ^        ^
    |  |    |        `--- Files/directories to compress &amp; encrypt.
    |  |    `--- Output filename
    |  `---- Use a password
-   `---- Add files to archive
-</pre>
+   `---- Add files to archive</pre>
 <p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/325783/199183">http://unix.stackexchange.com/a/325783/199183</a>)</p>
 </div>
 <div class="section" id="bluetooth-tool">
 <h2>bluetooth tool</h2>
-<pre class="literal-block">
-hcitool
-</pre>
+<pre class="literal-block">hcitool</pre>
 </div>
 <div class="section" id="terminal-hacks">
 <h2>Terminal Hacks</h2>
-<pre class="literal-block">
-#see wather in terminal
+<pre class="literal-block">#see wather in terminal
 curl http://wttr.in/$name_of_city
 
 #Increase the maximum volume of your speakers by a certain percentage (150 in this case)
@@ -1405,469 +1383,354 @@ xinput list
 xinput set-prop $id &quot;Device Enabled&quot; 0
 #enable input device (see form &quot;xinput list&quot; command output id column)
 xinput set-prop $id &quot;Device Enabled&quot; 1
-#if mouse found in usb dieable touchpad see github Code.random
-</pre>
+#if mouse found in usb dieable touchpad see github Code.random</pre>
 <p>(source: <a class="reference external" href="https://www.quora.com/What-are-the-best-Linux-Terminal-hacks-that-you-can-learn-in-10-seconds">https://www.quora.com/What-are-the-best-Linux-Terminal-hacks-that-you-can-learn-in-10-seconds</a>)</p>
 </div>
 <div class="section" id="reboot-alsamixer">
 <h2>reboot alsamixer</h2>
-<pre class="literal-block">
-sudo alsa force-reload
-</pre>
+<pre class="literal-block">sudo alsa force-reload</pre>
 </div>
 <div class="section" id="download-youtube-video-with-youtube-dl">
 <h2>download YouTube video with youtube-dl</h2>
-<pre class="literal-block">
-youtube-dl  --sub-lang en --sub-format srt --batch-file youtube_url.txt
-</pre>
+<pre class="literal-block">youtube-dl  --sub-lang en --sub-format srt --batch-file youtube_url.txt</pre>
 </div>
 <div class="section" id="add-bookmark-in-nautilus">
 <h2>add bookmark in nautilus</h2>
-<pre class="literal-block">
-echo &quot;location_path $name_of_bookmark&quot; &gt;&gt; ~/.gtk-bookmarks
-</pre>
+<pre class="literal-block">echo &quot;location_path $name_of_bookmark&quot; &gt;&gt; ~/.gtk-bookmarks</pre>
 <p>(source: <a class="reference external" href="https://ubuntuforums.org/showthread.php?t=1736534">https://ubuntuforums.org/showthread.php?t=1736534</a>)</p>
 </div>
 <div class="section" id="speaker-test">
 <h2>speaker test</h2>
-<pre class="literal-block">
-speaker-test -t sine -f 1000 -l 1
-</pre>
+<pre class="literal-block">speaker-test -t sine -f 1000 -l 1</pre>
 <p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/163716">http://unix.stackexchange.com/a/163716</a>)</p>
 </div>
 <div class="section" id="disable-and-enable-mouse-driver">
 <h2>disable and enable mouse driver</h2>
-<pre class="literal-block">
-sudo modprobe -r psmouse  # disable the driver
-sudo modprobe psmouse # enable the mouse driver
-</pre>
+<pre class="literal-block">sudo modprobe -r psmouse  # disable the driver
+sudo modprobe psmouse # enable the mouse driver</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/697952/502875">https://askubuntu.com/a/697952/502875</a>)</p>
 </div>
 <div class="section" id="list-all-users-and-groups">
 <h2>list all users and groups</h2>
-<pre class="literal-block">
-getent passwd #user
-getent group #group
-</pre>
+<pre class="literal-block">getent passwd #user
+getent group #group</pre>
 <p>(source: <a class="reference external" href="https://serverfault.com/a/355294">https://serverfault.com/a/355294</a>)</p>
 </div>
 <div class="section" id="turn-off-bluetooth-on-startup-ubuntu">
 <h2>turn off bluetooth on startup ubuntu</h2>
-<pre class="literal-block">
-#the following line added the given pattern twice as there is a exit 0 in the comment section, delete it mannualy
-sudo sed -i '/exit 0/i \rfkill block bluetooth' /etc/rc.local
-</pre>
+<pre class="literal-block">#the following line added the given pattern twice as there is a exit 0 in the comment section, delete it mannualy
+sudo sed -i '/exit 0/i \rfkill block bluetooth' /etc/rc.local</pre>
 <p>(source: <a class="reference external" href="https://itsfoss.com/turn-off-bluetooth-by-default-in-ubuntu-14-04/">https://itsfoss.com/turn-off-bluetooth-by-default-in-ubuntu-14-04/</a>)</p>
 </div>
 <div class="section" id="check-if-user-is-sudo-if-not-ask-for-password">
 <h2>check if user is sudo if not ask for password</h2>
-<pre class="literal-block">
-sudo -v
-</pre>
+<pre class="literal-block">sudo -v</pre>
 <p>(source: <a class="reference external" href="https://superuser.com/a/553939/655587">https://superuser.com/a/553939/655587</a>)</p>
 </div>
 <div class="section" id="echo-in-system-file">
 <h2>echo in system file</h2>
-<pre class="literal-block">
-echo &quot;line to be added&quot; | sudo tee -a /etc/fstab
-</pre>
+<pre class="literal-block">echo &quot;line to be added&quot; | sudo tee -a /etc/fstab</pre>
 <p>(source: <a class="reference external" href="https://ubuntuforums.org/showthread.php?t=978334">https://ubuntuforums.org/showthread.php?t=978334</a>)</p>
 </div>
 <div class="section" id="missing-date-time-from-top-panel">
 <h2>missing date &amp; time from top panel</h2>
-<pre class="literal-block">
-dconf reset -f /com/canonical/indicator/datetime/
-pkill -f datetime
-</pre>
+<pre class="literal-block">dconf reset -f /com/canonical/indicator/datetime/
+pkill -f datetime</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/462176/502875">https://askubuntu.com/a/462176/502875</a>)</p>
 </div>
 <div class="section" id="spell-checking-in-vim">
 <h2>spell checking in vim</h2>
-<pre class="literal-block">
-#while editing on vim
+<pre class="literal-block">#while editing on vim
 :set spell spelllang=en_us
 #
-echo &quot;set spell spelllang=en_us&quot; &gt;&gt; ~/.vimrc #chnage en_us to any language you want
-</pre>
+echo &quot;set spell spelllang=en_us&quot; &gt;&gt; ~/.vimrc #chnage en_us to any language you want</pre>
 <p>(source: <a class="reference external" href="https://www.linux.com/learn/using-spell-checking-vim">https://www.linux.com/learn/using-spell-checking-vim</a>)</p>
 </div>
 <div class="section" id="compare-two-file-and-get-the-diff">
 <h2>compare two file and get the diff</h2>
-<pre class="literal-block">
-comm -2 -3 &lt;(sort file1) &lt;(sort file2) &gt; file3 #here we will redrict the output to file3
-</pre>
+<pre class="literal-block">comm -2 -3 &lt;(sort file1) &lt;(sort file2) &gt; file3 #here we will redrict the output to file3</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/4546712">https://stackoverflow.com/a/4546712</a>)</p>
 </div>
 <div class="section" id="remove-a-fixed-prefix-suffix-from-a-strin-or-delete-string-from-string">
 <h2>remove a fixed prefix/suffix from a strin or delete string from string</h2>
-<pre class="literal-block">
-string=&quot;hello-world&quot;
+<pre class="literal-block">string=&quot;hello-world&quot;
 prefix=&quot;hell&quot;
 suffix=&quot;ld&quot;
 foo=${string#$prefix}
 foo=${foo%$suffix}
-echo &quot;${foo}&quot; #o-wor
-</pre>
+echo &quot;${foo}&quot; #o-wor</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/16623897">https://stackoverflow.com/a/16623897</a>)</p>
 </div>
 <div class="section" id="if-file-exists">
 <h2>if file exists</h2>
-<pre class="literal-block">
-if [ -e x.txt ]
+<pre class="literal-block">if [ -e x.txt ]
 then
     echo &quot;ok&quot;
 else
     echo &quot;not ok&quot;
-fi
-</pre>
+fi</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/40082454">https://stackoverflow.com/a/40082454</a>)</p>
 </div>
 <div class="section" id="read-file-line-by-line">
 <h2>read file line by line</h2>
-<pre class="literal-block">
-filename=&quot;$1&quot;
+<pre class="literal-block">filename=&quot;$1&quot;
 while read -r line
 do
         echo $line
-done &lt; &quot;$filename&quot;
-</pre>
+done &lt; &quot;$filename&quot;</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/10929955">https://stackoverflow.com/a/10929955</a>)</p>
 </div>
 <div class="section" id="if-a-sub-string-is-part-of-string">
 <h2>if a sub string is part of string</h2>
-<pre class="literal-block">
-string='My long string'
+<pre class="literal-block">string='My long string'
 if [[ $string == *&quot;My long&quot;* ]]; then
     echo &quot;It's there!&quot;
-fi
-</pre>
+fi</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/229606">https://stackoverflow.com/a/229606</a>)</p>
 </div>
 <div class="section" id="generate-a-random-filename-in-unix-shell">
 <h2>generate a random filename in unix shell</h2>
-<pre class="literal-block">
-# generates a srting consisting of alpha(a-z) and num(0-9) of 32 char
-cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32
-</pre>
+<pre class="literal-block"># generates a srting consisting of alpha(a-z) and num(0-9) of 32 char
+cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/2793856">https://stackoverflow.com/a/2793856</a>)</p>
 </div>
 <div class="section" id="crontab-log">
 <h2>crontab log</h2>
-<pre class="literal-block">
-grep CRON /var/log/syslog
-</pre>
+<pre class="literal-block">grep CRON /var/log/syslog</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/56811">https://askubuntu.com/a/56811</a>)</p>
 </div>
 <div class="section" id="using-git-commands-in-shell-script">
 <h2>using git commands in shell script</h2>
-<pre class="literal-block">
-#!/bin/sh
+<pre class="literal-block">#!/bin/sh
 GIT=`which git`
 REPO_DIR=/home/username/Sites/git/repo/
 cd ${REPO_DIR}
 ${GIT} add --all .
 ${GIT} commit -m &quot;Test commit&quot;
-${GIT} push git&#64;bitbucket.org:username/repo.git master
-</pre>
+${GIT} push git&#64;bitbucket.org:username/repo.git master</pre>
 <p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/226678">https://unix.stackexchange.com/a/226678</a>)</p>
 </div>
 <div class="section" id="numbers-of-line-in-a-commands-output">
 <h2>numbers of line in a commands output</h2>
-<pre class="literal-block">
-ps aux | grep &quot;docker&quot; | wc -l
-</pre>
+<pre class="literal-block">ps aux | grep &quot;docker&quot; | wc -l</pre>
 </div>
 <div class="section" id="backup-and-restore-crontab">
 <h2>backup and restore crontab</h2>
-<pre class="literal-block">
-#backup
+<pre class="literal-block">#backup
 crontab -l &gt; crontab_backup
 #restore
-crontab crontab_backup
-</pre>
+crontab crontab_backup</pre>
 <p>(source: <a class="reference external" href="http://www.roman10.net/2012/07/09/how-to-backup-crontab-settings/">http://www.roman10.net/2012/07/09/how-to-backup-crontab-settings/</a>)</p>
 </div>
 <div class="section" id="execute-command-without-keeping-it-in-history">
 <h2>execute command without keeping it in history</h2>
-<pre class="literal-block">
-command;history -d $(history 1)
-</pre>
+<pre class="literal-block">command;history -d $(history 1)</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/33511637/5350059">https://stackoverflow.com/a/33511637/5350059</a>)</p>
 <p>OR</p>
 <p>just add a space before your command</p>
 </div>
 <div class="section" id="get-hostname-from-ip">
 <h2>get hostname from ip</h2>
-<pre class="literal-block">
-nbtscan &lt;ip&gt; #install nbtscan sudo apt-get install nbtscan
-</pre>
+<pre class="literal-block">nbtscan &lt;ip&gt; #install nbtscan sudo apt-get install nbtscan</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/205067/502875">https://askubuntu.com/a/205067/502875</a>)</p>
 </div>
 <div class="section" id="connect-to-net-using-ethernet-calbe-if-you-have-dhcp-enabled">
 <h2>connect to net using ethernet calbe if you have DHCP enabled</h2>
-<pre class="literal-block">
-   sudo dhclient eth0
+<pre class="literal-block">   sudo dhclient eth0
 
-(source: https://askubuntu.com/a/755263/502875)
-</pre>
+(source: https://askubuntu.com/a/755263/502875)</pre>
 </div>
 <div class="section" id="change-hostname-in-linux">
 <h2>change hostname in linux</h2>
-<pre class="literal-block">
-   sudo hostname your-new-name #name shows after reboot
+<pre class="literal-block">   sudo hostname your-new-name #name shows after reboot
 
-(source: https://askubuntu.com/a/87687/502875)
-</pre>
+(source: https://askubuntu.com/a/87687/502875)</pre>
 </div>
 <div class="section" id="change-the-default-shell">
 <h2>change the default shell</h2>
-<p>sometime after doing ssh to a machine we see just <tt class="docutils literal">`$`</tt> or <tt class="docutils literal">`#`</tt> instead of the very familer <tt class="docutils literal">user&#64;hostname$</tt> thats beacuse the default shell for that user is not set or not bash.:</p>
-<pre class="literal-block">
-sudo chsh &lt;username&gt; -s /bin/bash
-</pre>
+<p>sometime after doing ssh to a machine we see just <span class="docutils literal">`$`</span> or <span class="docutils literal">`#`</span> instead of the very familer <span class="docutils literal">user&#64;hostname$</span> thats beacuse the default shell for that user is not set or not bash.:</p>
+<pre class="literal-block">sudo chsh &lt;username&gt; -s /bin/bash</pre>
 <p>(source: <a class="reference external" href="https://unix.stackexchange.com/q/50264/199183">https://unix.stackexchange.com/q/50264/199183</a>)</p>
 </div>
 <div class="section" id="if-your-bashrc-is-lost">
 <h2>if your .bashrc is lost</h2>
-<pre class="literal-block">
-#normal user
+<pre class="literal-block">#normal user
 /bin/cp /etc/skel/.bashrc ~/
 #root
-cp /etc/bash.bashrc ~/.bashrc
-</pre>
+cp /etc/bash.bashrc ~/.bashrc</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/404428/502875">https://askubuntu.com/a/404428/502875</a> and me)</p>
 </div>
 <div class="section" id="show-last-octet-of-ip">
 <h2>show last octet of ip</h2>
-<pre class="literal-block">
-vim .bashrc
+<pre class="literal-block">vim .bashrc
 ip=lo:$(ifconfig | grep &quot;inet &quot; | grep -v 127.0.0. | awk '{print $2}' | cut -d . -f 4)
 ip=$(echo &quot;$ip&quot; | tr '\n' '/')
 ip=&quot;${ip::-1}&quot;
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u&#64;\h($ip)\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-</pre>
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u&#64;\h($ip)\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '</pre>
 </div>
 <div class="section" id="make-video-with-image-and-audio">
 <h2>make video with image and audio</h2>
-<pre class="literal-block">
-ffmpeg -loop 1 -i image.jpg -i audio.AMR -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4
-</pre>
+<pre class="literal-block">ffmpeg -loop 1 -i image.jpg -i audio.AMR -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4</pre>
 <p>(source: <a class="reference external" href="https://superuser.com/a/1041818/655587">https://superuser.com/a/1041818/655587</a>)</p>
 </div>
 <div class="section" id="show-ubuntu-support-status">
 <h2>show ubuntu-support-status</h2>
-<pre class="literal-block">
-ubuntu-support-status
-</pre>
+<pre class="literal-block">ubuntu-support-status</pre>
 </div>
 <div class="section" id="get-all-system-info-as-html-page">
 <h2>get all system info as html page</h2>
-<pre class="literal-block">
-sudo lshw -html&gt;sys.html
-</pre>
+<pre class="literal-block">sudo lshw -html&gt;sys.html</pre>
 </div>
 <div class="section" id="open-a-gui-app-from-terminal-while-keeping-the-terminal-clean-form-log-output">
 <h2>open a GUI app from terminal while keeping the terminal clean form log output</h2>
-<pre class="literal-block">
-$app 2&gt;/dev/null &amp; disown
-</pre>
+<pre class="literal-block">$app 2&gt;/dev/null &amp; disown</pre>
 </div>
 <div class="section" id="nmap-find-all-alive-hostnames-and-ips-in-lan">
 <h2>nmap find all alive hostnames and IPs in LAN</h2>
-<pre class="literal-block">
-nmap -sP first_3_octet.*
-</pre>
+<pre class="literal-block">nmap -sP first_3_octet.*</pre>
 <p>(source: <a class="reference external" href="https://serverfault.com/a/153779">https://serverfault.com/a/153779</a>)</p>
 </div>
 <div class="section" id="get-current-ip-if-first-interface-is-being-used">
 <h2>get current IP if first interface is being used</h2>
-<pre class="literal-block">
-ifconfig | grep &quot;inet &quot; | awk 'FNR == 1 {print $2}' | cut -d: -f2 #if first interface is not being used change the FNR == number of interface
-</pre>
+<pre class="literal-block">ifconfig | grep &quot;inet &quot; | awk 'FNR == 1 {print $2}' | cut -d: -f2 #if first interface is not being used change the FNR == number of interface</pre>
 </div>
 <div class="section" id="get-first-3-octet-of-network-if-first-interface-is-being-used">
 <h2>get first 3 octet of network if first interface is being used</h2>
-<pre class="literal-block">
-ifconfig | grep &quot;inet &quot; | awk 'FNR == 1 {print $2}' | cut -d: -f2 | cut -d. -f1,2,3 #if first interface is not being used change the FNR == number of interface
-</pre>
+<pre class="literal-block">ifconfig | grep &quot;inet &quot; | awk 'FNR == 1 {print $2}' | cut -d: -f2 | cut -d. -f1,2,3 #if first interface is not being used change the FNR == number of interface</pre>
 </div>
 <div class="section" id="convert-a-pdf-into-jpg-one-page-one-pic">
 <h2>convert a .pdf into .jpg [one-page-one-pic]</h2>
-<pre class="literal-block">
-pdftoppm -jpeg raw-er-cowboyra.pdf prefix
-</pre>
+<pre class="literal-block">pdftoppm -jpeg raw-er-cowboyra.pdf prefix</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/50180/502875">https://askubuntu.com/a/50180/502875</a>)</p>
 </div>
 <div class="section" id="suppress-all-output-from-a-command">
 <h2>suppress all output from a command</h2>
-<pre class="literal-block">
-scriptname &gt;/dev/null
-</pre>
+<pre class="literal-block">scriptname &gt;/dev/null</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/617184/5350059">https://stackoverflow.com/a/617184/5350059</a>)</p>
 </div>
 <div class="section" id="make-a-dir-with-in-fornt-of-it">
 <h2>make a dir with - in fornt of it</h2>
-<pre class="literal-block">
-touch -- -$folder_name
-</pre>
+<pre class="literal-block">touch -- -$folder_name</pre>
 <p>(source: udemy.com/intro-to-bash-linux-command-line section:6 lecture:23)</p>
 </div>
 <div class="section" id="standard-streams">
 <h2>standard streams</h2>
-<pre class="literal-block">
-stdin 0
+<pre class="literal-block">stdin 0
 stdout 1
-stderr 2
-</pre>
+stderr 2</pre>
 <p>(source: <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_streams">https://en.wikipedia.org/wiki/Standard_streams</a>)</p>
 </div>
 <div class="section" id="see-gup-info">
 <h2>see gup info</h2>
-<pre class="literal-block">
-sudo lshw -C display
-</pre>
+<pre class="literal-block">sudo lshw -C display</pre>
 </div>
 <div class="section" id="print-contents-of-x-events">
 <h2>print contents of X events</h2>
 <p>all mouse, keyboard event event can be used to test other input device:</p>
-<pre class="literal-block">
-xev
-</pre>
+<pre class="literal-block">xev</pre>
 <p>(source: <a class="reference external" href="https://linux.die.net/man/1/xev">https://linux.die.net/man/1/xev</a>)</p>
 </div>
 <div class="section" id="mute-and-unmute-a-microphone">
 <h2>mute and unmute a microphone</h2>
-<pre class="literal-block">
-#mute
+<pre class="literal-block">#mute
 amixer set Capture nocap
 #unmute
-amixer set Capture cap
-</pre>
+amixer set Capture cap</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/337662/502875">https://askubuntu.com/a/337662/502875</a>)</p>
 </div>
 <div class="section" id="enabling-and-disabling-ethernet">
 <h2>enabling and disabling Ethernet</h2>
-<pre class="literal-block">
-#enable
+<pre class="literal-block">#enable
 sudo ip link set up eth0
 #disable
-sudo ip link set down eth0
-</pre>
+sudo ip link set down eth0</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/739502/502875">https://askubuntu.com/a/739502/502875</a>)</p>
 </div>
 <div class="section" id="add-a-timestamp-to-script-log">
 <h2>add a timestamp to script log?</h2>
-<pre class="literal-block">
-(date &amp;&amp; script.sh) &gt;&gt; /var/log/logfile
-</pre>
+<pre class="literal-block">(date &amp;&amp; script.sh) &gt;&gt; /var/log/logfile</pre>
 <p>(source: <a class="reference external" href="https://serverfault.com/a/310648">https://serverfault.com/a/310648</a>)</p>
 </div>
 <div class="section" id="run-php-from-terminal">
 <h2>run PHP from terminal</h2>
-<pre class="literal-block">
-php filename.php
-</pre>
+<pre class="literal-block">php filename.php</pre>
 <p>(source: <a class="reference external" href="https://askubuntu.com/a/447254/502875">https://askubuntu.com/a/447254/502875</a>)</p>
 </div>
 <div class="section" id="wget-show-progress-bar-only">
 <h2>wget show progress bar only</h2>
-<pre class="literal-block">
-wget $url -q --show-progress
-</pre>
+<pre class="literal-block">wget $url -q --show-progress</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/29457649/5350059">https://stackoverflow.com/a/29457649/5350059</a>)</p>
 </div>
 <div class="section" id="redirect-output-to-multiple-log-files">
 <h2>redirect output to multiple log files</h2>
-<pre class="literal-block">
-echo test | tee file1 file2 file3
-</pre>
+<pre class="literal-block">echo test | tee file1 file2 file3</pre>
 <p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/41249/199183">https://unix.stackexchange.com/a/41249/199183</a>)</p>
 </div>
 <div class="section" id="single-line-sftp-from-terminal">
 <h2>single line sftp from terminal</h2>
-<pre class="literal-block">
-   sftp username&#64;hostname:remoteFileName localFileName
+<pre class="literal-block">   sftp username&#64;hostname:remoteFileName localFileName
 
-(source: https://stackoverflow.com/a/16723151/5350059)
-</pre>
+(source: https://stackoverflow.com/a/16723151/5350059)</pre>
 </div>
 <div class="section" id="check-if-file-exists-on-remote-host-with-ssh">
 <h2>check if file exists on remote host with ssh</h2>
-<pre class="literal-block">
-if ssh $HOST stat $FILE_PATH \&gt; /dev/null 2\&gt;\&amp;1
+<pre class="literal-block">if ssh $HOST stat $FILE_PATH \&gt; /dev/null 2\&gt;\&amp;1
 then
     echo &quot;File exists&quot;
 else
     echo &quot;File does not exist&quot;
-fi
-</pre>
+fi</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/12845254/5350059">https://stackoverflow.com/a/12845254/5350059</a>)</p>
 </div>
 <div class="section" id="cleanest-way-to-ssh-and-run-multiple-commands-source">
 <h2>cleanest way to ssh and run multiple commands source</h2>
-<pre class="literal-block">
-ssh otherhost &lt;&lt; EOF
+<pre class="literal-block">ssh otherhost &lt;&lt; EOF
   ls some_folder;
   ./someaction.sh 'some params'
   pwd
   ./some_other_action 'other params'
-EOF
-</pre>
+EOF</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/4412338/5350059">https://stackoverflow.com/a/4412338/5350059</a>)</p>
 </div>
 <div class="section" id="passing-variables-in-remote-ssh-command">
 <h2>passing variables in remote ssh command</h2>
-<pre class="literal-block">
-ssh pvt&#64;192.168.1.133 &quot;~/tools/run_pvt.pl $BUILD_NUMBER&quot;
-</pre>
+<pre class="literal-block">ssh pvt&#64;192.168.1.133 &quot;~/tools/run_pvt.pl $BUILD_NUMBER&quot;</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/3314678/5350059">https://stackoverflow.com/a/3314678/5350059</a>)</p>
 </div>
 <div class="section" id="whether-or-not-a-variable-is-empty">
 <h2>whether or not a variable is empty</h2>
-<pre class="literal-block">
-if [[ -z &quot;$var&quot; ]]
-</pre>
+<pre class="literal-block">if [[ -z &quot;$var&quot; ]]</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/3063887/5350059">https://stackoverflow.com/a/3063887/5350059</a>)</p>
 </div>
 <div class="section" id="debug-a-bash-script">
 <h2>debug a bash script</h2>
-<pre class="literal-block">
-set -x
+<pre class="literal-block">set -x
 ..code to debug...
-set +x
-</pre>
+set +x</pre>
 <p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/155570/199183">https://unix.stackexchange.com/a/155570/199183</a>)</p>
 </div>
 <div class="section" id="print-a-char-variable-times">
 <h2>print a char variable times</h2>
-<pre class="literal-block">
-printf '%0.s-' $(seq 1 $var)
-</pre>
+<pre class="literal-block">printf '%0.s-' $(seq 1 $var)</pre>
 <p><a class="reference external" href="https://stackoverflow.com/a/17030976">https://stackoverflow.com/a/17030976</a></p>
 </div>
 <div class="section" id="lock-and-unlock-screen-over-ssh">
 <h2>lock and unlock screen over ssh</h2>
-<pre class="literal-block">
-#this is for gnome
-ssh -X user&#64;server &quot;export DISPLAY=:0; gnome-screensaver-command -l&quot;
-</pre>
+<pre class="literal-block">#this is for gnome
+ssh -X user&#64;server &quot;export DISPLAY=:0; gnome-screensaver-command -l&quot;</pre>
 <p>(source: <a class="reference external" href="https://z-computer-z.blogspot.com/2010/01/remote-lock-screen-and-remote-unlock.html">https://z-computer-z.blogspot.com/2010/01/remote-lock-screen-and-remote-unlock.html</a>)</p>
 </div>
 <div class="section" id="getting-wifi-network-details-in-raspberry-pi">
 <h2>getting WiFi network details in Raspberry Pi</h2>
-<pre class="literal-block">
-sudo iwlist wlan0 scan #(source: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
+<pre class="literal-block">sudo iwlist wlan0 scan #(source: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
 
 #OR
 
-iwgetid # (source: https://raspberrypi.stackexchange.com/a/41024)
-</pre>
+iwgetid # (source: https://raspberrypi.stackexchange.com/a/41024)</pre>
 </div>
 <div class="section" id="download-and-output-it-on-stdout">
 <h2>download and output it on STDOUT</h2>
-<pre class="literal-block">
-wget -qO- $link
-</pre>
+<pre class="literal-block">wget -qO- $link</pre>
 <p>(source: <a class="reference external" href="https://stackoverflow.com/a/22926472/5350059">https://stackoverflow.com/a/22926472/5350059</a>)</p>
 </div>
 <div class="section" id="image-your-hard-disk-using-dd">
@@ -1877,15 +1740,12 @@ wget -qO- $link
 <div class="section" id="use-curl-to-download-tar-file">
 <h2>use curl to download tar file</h2>
 <p>to use curl to download tar file:</p>
-<pre class="literal-block">
-curl -L https://site.tld/file.tar.b2 | tar zx
-</pre>
+<pre class="literal-block">curl -L https://site.tld/file.tar.b2 | tar zx</pre>
 <p>source: <a class="reference external" href="https://stackoverflow.com/a/5746376/5350059">https://stackoverflow.com/a/5746376/5350059</a></p>
 </div>
 <div class="section" id="file-sync">
 <h2>file sync</h2>
-<pre class="literal-block">
-#!/bin/sh
+<pre class="literal-block">#!/bin/sh
 exitcode=1
 #do check if usb flash is mounted
 if test -e '/your_path_to_usb_mountpoint';then
@@ -1896,41 +1756,82 @@ rsync -avun --inplace  /your_folder_wich_you_want_to_syncronize/ /your_path_to_u
 rsync -avun --inplace /your_path_to_usb_mountpoint/ /your_folder_wich_you_want_to_syncronize/
 fi
 #if the flash is not mounted exit with exitcode=1
-exit $exitcode
-</pre>
+exit $exitcode</pre>
 </div>
 <div class="section" id="number-of-arguments-equal">
 <h2>number of arguments equal</h2>
 <p>to check if number of arguments is equal to a number:</p>
-<pre class="literal-block">
-if [[ &quot;$#&quot; -ne 1 ]]; then
+<pre class="literal-block">if [[ &quot;$#&quot; -ne 1 ]]; then
     echo &quot;Illegal number of parameters&quot;
-fi
-</pre>
+fi</pre>
 <p>s: <a class="reference external" href="https://stackoverflow.com/a/18568726/5350059">https://stackoverflow.com/a/18568726/5350059</a></p>
 </div>
 <div class="section" id="set-environment-variables">
 <h2>set environment variables</h2>
-<dl class="docutils">
+<dl class="simple">
 <dt>::</dt>
-<dd>export MY_VAR=value</dd>
+<dd><p>export MY_VAR=value</p>
+</dd>
 </dl>
 <p><a class="reference external" href="https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/">https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/</a></p>
 </div>
 <div class="section" id="global-variable-declaration">
 <h2>global variable declaration</h2>
-<pre class="literal-block">
-declare -g variable
-</pre>
+<pre class="literal-block">declare -g variable</pre>
 <p><a class="reference external" href="https://stackoverflow.com/a/58594644/5350059">https://stackoverflow.com/a/58594644/5350059</a></p>
 </div>
 <div class="section" id="remove-alias">
 <h2>remove alias</h2>
 <p>to remove alias:</p>
-<pre class="literal-block">
-unalias $ALIAS
-</pre>
+<pre class="literal-block">unalias $ALIAS</pre>
 <p><a class="reference external" href="https://askubuntu.com/a/325380/502875">https://askubuntu.com/a/325380/502875</a></p>
+</div>
+<div class="section" id="export-variable-from-bash-script">
+<h2>export variable from bash script</h2>
+<p>we can export variable from bash script. If our shell is <cite>test.sh</cite> and it contains:</p>
+<pre class="literal-block">#! /usr/bin/env bash
+export VAR=&quot;HELLO, VARIABLE&quot;
+echo &quot;hello&quot;</pre>
+<p>To run we will use:</p>
+<pre class="literal-block">. ./test.sh</pre>
+<p>Instead of <cite>./test.sh</cite>, this will source the file and run it at the same time. The output:</p>
+<pre class="literal-block">hello</pre>
+<p>The environment variable is also set which gives the output on <cite>echo</cite>:</p>
+<pre class="literal-block">echo $VAR
+
+HELLO, VARIABLE</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/16618248/5350059">Can I export a variable to the environment from a bash script without sourcing it?</a></p>
+</div>
+<div class="section" id="remove-an-exported-variable">
+<h2>remove an exported variable</h2>
+<p>to remove an exported variable:</p>
+<pre class="literal-block">unset $VAIABLE</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/6877747/5350059">How do I delete an exported environment variable?</a></p>
+</div>
+<div class="section" id="create-a-django-secret-key-with-bash">
+<h2>create a django secret key with bash</h2>
+<p>to create a django secret key with bash:</p>
+<pre class="literal-block">export SECRET_KEY=$(head /dev/urandom | tr -dc 'A-Za-z0-9!&quot;#$%&amp;'\''()*+,-./:;&lt;=&gt;?&#64;[\]^_`{|}~' | head -c 49 ; echo '')</pre>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/230676/199183">How to generate a random string?</a></p>
+</div>
+<div class="section" id="write-multiple-line-to-a-file-with-variables">
+<h2>write multiple line to a file with variables</h2>
+<p>to write multiple line to a file with variables:</p>
+<pre class="literal-block">VAR=4
+cat &gt; $FILE_NAME.EXT &lt;&lt; EOL
+line 1
+line 2
+line 3
+line ${VAR}
+EOL</pre>
+<p>P.S: We can replace the <cite>EOL</cite> with anything like <cite>CAT</cite> ;)</p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/7875614/5350059">How to write multiple line string using Bash with variables?</a></p>
+</div>
+<div class="section" id="remove-user-from-a-group">
+<h2>remove user from a group</h2>
+<p>to remove a user from a group:</p>
+<pre class="literal-block">sudo gpasswd -d $USER $GROUP</pre>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/29572/199183">How do I remove a user from a group?</a></p>
 </div>
 <div class="section" id="source">
 <h2>Source</h2>
@@ -1939,7 +1840,9 @@ unalias $ALIAS
 </div>
 <div class="footer">
 <hr class="footer" />
-Generated on: 2019-12-09 11:15 UTC.
+<p><a class="reference external" href="/source/blogs/bash_cheat_sheet.rst">View document source</a>.
+Generated on: 2019-12-21 12:31 UTC.
+</p>
 
 </div>
 </body>
