@@ -70,6 +70,18 @@ https://vim.fandom.com/wiki/Switching_case_of_characters
 https://stackoverflow.com/a/2966034/5350059
 
 
+find and replace
+----------------
+to find and replace
+
+    :kbd:`Esc` the :kbd:`:` the `%s/$REPLACE_THIS/$WITH_THIS/g`
+
+pecific lines
+
+    :kbd:`Esc` the :kbd:`:` the `$START_LINE,$END_LINEs/$REPLACE_THIS/$WITH_THIS/g`
+
+source: `Find and replace strings in vim on multiple lines <https://stackoverflow.com/a/19995072/5350059>`_
+
 Source
 ------
  - ` <>`_
