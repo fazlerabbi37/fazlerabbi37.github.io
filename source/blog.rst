@@ -14,14 +14,6 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 Recent Blogs
 ------------
-` <blogs/openwrt_cheat_sheet.rhtml>`_
-.....................................
-
-
-
-~
-
-
 `OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
 .......................................................
 Created on: 2019-12-08
@@ -52,6 +44,14 @@ Created on: 2019-12-03
 
 A quick reference to Nginx
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Wikipedia Edit <blogs/wiki_edit_cheat_sheet.html>`_
+....................................................
+Created on: 2019-11-19
+
+A quick reference to editing Wikipedia.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
