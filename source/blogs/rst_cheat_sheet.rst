@@ -40,8 +40,7 @@ add keyboard key rendering
 --------------------------
 by default rst doesn't support keyboard key rendering role `:kdb:` but we can add custom css to do that. edit the css file and put::
 
-    .kbd
-    {
+    .kbd {
         -moz-border-radius:3px;
         -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
         -webkit-border-radius:3px;
@@ -91,6 +90,30 @@ to hyperline a section in the same document do::
 
     `section name`_
 
+Inline Markup
+-------------
+This are the following inline markups. Source: `Quick reStructuredText:Inline Markup <https://docutils.sourceforge.io/docs/user/rst/quickref.html#inline-markup>`_
+
+
+italic or emphasis
+``````````````````
+
+bold or strong emphasis
+```````````````````````
+To do bold or strong emphasis::
+
+    **strong emphasis**
+
+The result will be **strong emphasis**.
+
+hyperlink
+----------
+https://docutils.sourceforge.io/docs/user/rst/quickref.html#hyperlink-targets
+
+
+Comments
+--------
+https://docutils.sourceforge.io/docs/user/rst/quickref.html#comments
 
 Source
 ------
