@@ -8,7 +8,7 @@ Created on: 2020-01-09
 
 .. role:: kbd
 
-.. warning:: I know in the server banner is says 'again, DONT POST SPOILERS! This includes writeups of your solution on your blog or website!'. I fully respect that thus this is my duty to warn the reader not to use this to cheat in the game. This is just a personal note in an attempt to getting started with CTF writeup. I choose Bandit because it is easy and CTF/Techinal writeups are tough enough. I have been using Linux for sometime now and I can assure you that copy-pasting commands without understanding to cross a level or fix a problem don't make you a expert, it makes you a unprepared imposter and good mouse user. So DO NOT USE this to play the game! Use it as a getting started guide to write CTF writeup.
+.. warning:: I know in the server banner is says 'DONT POST SPOILERS! This includes writeups of your solution on your blog or website!'. I fully respect that thus this is my duty to warn the reader not to use this to cheat in the game. This is just a personal note in an attempt to getting started with CTF writeup. I choose Bandit because it is easy and CTF/Techinal writeups are tough enough. I have been using Linux for sometime now and I can assure you that copy-pasting commands without understanding to cross a level or fix a problem don't make you a expert, it makes you a unprepared imposter and good mouse user. So DO NOT USE this to play the game! Use it as a getting started guide to write CTF writeup.
 
 From the Bandit webpage::
 
@@ -32,11 +32,11 @@ Level 0
 -------
 To start we need to type in our terminal::
 
-    ssh bandit0@bandit.labs.overthewire.org -p 2220
+    root@bandit:~# ssh bandit0@bandit.labs.overthewire.org -p 2220
 
 It will ask our permission to add the host to the list of known hosts. Type `yes`. Then it will ask for the password. The password for this level is given and it is *bandit0*. Typing that will allow us to enter the game which is a Linux machine with rather long `motd <https://en.wikipedia.org/wiki/Motd_(Unix)>`_. 
 
-The goal set for Level 0 is to find file called **readme** located in the home directory. After login with SSH, generally the user lands on the home directory. So let's see if we can find the file with `ls`_::
+The `goal set for level 0 <https://overthewire.org/wargames/bandit/bandit1.html>`_ is to find file called **readme** located in the home directory. After login with SSH, generally the user lands on the home directory. So let's see if we can find the file with `ls`_::
 
     bandit0@bandit:~$ ls
     readme
@@ -59,9 +59,9 @@ Level 1
 -------
 First let's go to Level 1::
 
-    ssh bandit1@bandit.labs.overthewire.org -p 2220
+    root@bandit:~# ssh bandit1@bandit.labs.overthewire.org -p 2220
 
-This will ask for password and use the string from previous level. To go to next level we need to get the content of a file called **-** located in the home directory. If we try `cat`_-ing the file as before is hangs::
+This will ask for password and use the string from previous level. If we see the `instructions for level 1 <https://overthewire.org/wargames/bandit/bandit2.html>`_, to go to next level we need to get the content of a file called **-** located in the home directory. If we try `cat`_-ing the file as before is hangs::
 
     bandit1@bandit:~$ cat -
 
@@ -85,9 +85,9 @@ Level 2
 -------
 First let's go to Level 2::
 
-    ssh bandit2@bandit.labs.overthewire.org -p 2220
+    root@bandit:~# ssh bandit2@bandit.labs.overthewire.org -p 2220
 
-Use the password from previous level as before. The password for the next level is in a file called **spaces in this filename**.
+Use the password from previous level as before. The password for the next level is in a file called **spaces in this filename** as it says in the `level 2 web page <https://overthewire.org/wargames/bandit/bandit3.html>`_.
 
 Let's try to see the file with `ls`_::
 
@@ -117,9 +117,9 @@ Level 3
 -------
 Entering the Level 3 machine::
 
-    ssh bandit3@bandit.labs.overthewire.org -p 2220
+    root@bandit:~# ssh bandit3@bandit.labs.overthewire.org -p 2220
 
-Use the password from previous level as before. The password for the next level is in a **hidden** file in the **inhere** directory.
+Use the password from previous level as before. We get the `instructions from level 3 <https://overthewire.org/wargames/bandit/bandit4.html>`_ that the password for the next level is in a **hidden** file in the **inhere** directory.
 
 Let's see what we have in our current directory with `ls`_::
 
@@ -154,9 +154,9 @@ Level 4
 -------
 Entering the Level 4 machine using the password from previous level::
 
-    ssh bandit4@bandit.labs.overthewire.org -p 2220
+    root@bandit:~# ssh bandit4@bandit.labs.overthewire.org -p 2220
 
-The password is in is stored in the **only human-readable** file in the **inhere** directory
+The password is in is stored in the **only human-readable** file in the **inhere** directory as we can see in `level 4 instructions page <https://overthewire.org/wargames/bandit/bandit5.html>`_.
 
 Now if we follow the previous level to enter the `inhere` directory and list file, we see::
 
@@ -217,9 +217,9 @@ Level 5
 -------
 Entering the Level 5 machine using the password from previous level::
 
-    ssh bandit5@bandit.labs.overthewire.org -p 2220
+    root@bandit:~# ssh bandit5@bandit.labs.overthewire.org -p 2220
 
-Like before the password in in a directory named **inhere** which is **human-readable**, **1033 bytes in size** and **not executable**. If we see the contents of the file::
+Like before the password in in a directory named **inhere** which is **human-readable**, **1033 bytes in size** and **not executable**. The details of the level is in the `level 5's page <https://overthewire.org/wargames/bandit/bandit6.html>`_ If we see the contents of the file::
 
     bandit5@bandit:~$ ls inhere/
     maybehere00  maybehere02  maybehere04  maybehere06  maybehere08  maybehere10  maybehere12  maybehere14  maybehere16  maybehere18
@@ -265,10 +265,10 @@ Level 6
 -------
 Use the password from previous level to get into Level 6::
 
-   ssh bandit6@bandit.labs.overthewire.org -p 2220
+   root@bandit:~# ssh bandit6@bandit.labs.overthewire.org -p 2220
 
 
-The password is saved **somewhere on the server** and is **owned by user bandit7**, **owned by group bandit6** and **33 bytes in size**. Lets see if we have any file or directory in the home directory::
+The `goal of level 6 <https://overthewire.org/wargames/bandit/bandit7.html>`_ is to get the password which is saved **somewhere on the server** and is **owned by user bandit7**, **owned by group bandit6** and **33 bytes in size**. Lets see if we have any file or directory in the home directory::
 
     bandit6@bandit:~$ ls
     bandit6@bandit:~$ 
@@ -318,9 +318,9 @@ Level 7
 -------
 Entering the Level 7 machine using the password from previous level same as before::
 
-   ssh bandit7@bandit.labs.overthewire.org -p 2220
+   root@bandit:~# ssh bandit7@bandit.labs.overthewire.org -p 2220
 
-We can find the password in a file named **data.txt** next to the word **millionth**. Let's list all home directory file::
+We can find the password in a file named **data.txt** next to the word **millionth** as per the `level 7 goal instructions <https://overthewire.org/wargames/bandit/bandit8.html>`_ Let's list all home directory file::
 
     bandit7@bandit:~$ ls
     data.txt
@@ -341,9 +341,9 @@ Level 8
 -------
 As usual, entering the Level 8 with password previous level::
 
-   ssh bandit8@bandit.labs.overthewire.org -p 2220
+   root@bandit:~# ssh bandit8@bandit.labs.overthewire.org -p 2220
 
-The password is in the in the file **data.txt** and is **the only line of text that occurs only once**. Just like the `Level 8`_ we can see the `data.txt` is in home directory. Now we need to sort all the files and find all the unique values with a count of how many time they have been repeated. Our password will have a count of 1. We need to use `sort`_ and `uniq`_ commands to accomplish our task.::
+The password is in the in the file **data.txt** and is **the only line of text that occurs only once**. More details in the `level 8 page <https://overthewire.org/wargames/bandit/bandit9.html>`_ Just like the `Level 8`_ we can see the `data.txt` is in home directory. Now we need to sort all the files and find all the unique values with a count of how many time they have been repeated. Our password will have a count of 1. We need to use `sort`_ and `uniq`_ commands to accomplish our task.::
 
     bandit8@bandit:~$ cat data.txt | sort | uniq -c
 
@@ -354,11 +354,11 @@ Now exit from the machine to go to the next level.
 
 Level 9
 -------
-Let's ssh Bandit server with password form level 8::
+Let's `ssh`_ to Bandit server with password form level 8::
 
-   ssh bandit9@bandit.labs.overthewire.org -p 2220
+   root@bandit:~# ssh bandit9@bandit.labs.overthewire.org -p 2220
 
-The password is in the file **data.txt** in one of the few **human-readable strings**, **beginning with several ‘=’ characters**. We can see the **data.txt** file in the home directory. Let's `cat`_ file::
+As the `level 9 instructions <https://overthewire.org/wargames/bandit/bandit10.html>`_ says the password is in the file **data.txt** in one of the few **human-readable strings**, **beginning with several ‘=’ characters**. We can see the **data.txt** file in the home directory. Let's `cat`_ file::
 
 	bandit9@bandit:~$ cat data.txt
 
@@ -389,9 +389,9 @@ Level 10
 --------
 Level 10 machine can be accessed with the password from previous level::
 
-   ssh bandit10@bandit.labs.overthewire.org -p 2220
+   root@bandit:~# ssh bandit10@bandit.labs.overthewire.org -p 2220
 
-The password as stored in a file **data.txt** as usual, but it contains **base64 encoded data**. The `data.txt` file is in the home directory same as previous levels. We know from the hint that the content of the file is base64 encoded. In Linux we already have a command named `base64`_. So how does it work? Let's use the `--help` flag that is available in almost all the Linux commands. If we use `base64 --help` it would give use all the functions of the `base64`_ command but the notable one is the `-d` flag that is said to be used to **decode data**. So let's decode it.::
+Let's check out the instructions of `level 10 page <https://overthewire.org/wargames/bandit/bandit11.html>`_. The password as stored in a file **data.txt** as usual, but it contains **base64 encoded data**. The `data.txt` file is in the home directory same as previous levels. We know from the hint that the content of the file is base64 encoded. In Linux we already have a command named `base64`_. So how does it work? Let's use the `--help` flag that is available in almost all the Linux commands. If we use `base64 --help` it would give use all the functions of the `base64`_ command but the notable one is the `-d` flag that is said to be used to **decode data**. So let's decode it.::
 
     bandit10@bandit:~$ base64 -d data.txt
 
@@ -401,9 +401,9 @@ Level 11
 --------
 As usual enter Level 11 with password from Level 10::
 
-    ssh bandit11@bandit.labs.overthewire.org -p 2220
+    root@bandit:~# ssh bandit11@bandit.labs.overthewire.org -p 2220
 
-The key to unlock Level 12 is in **data.txt** and **all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions**. This technique is a very common letter substitution cipher called `ROT13 <https://en.wikipedia.org/wiki/ROT13>`_. The `data.txt` file is already in the home directory so all we need to do is rotate letters by 13 positions. The `tr`_ command can help us do that. The man page says it takes a set of characters and changes it into another set. So the lowercase letter **a** will be replaced by the letter that is after 13 positions after **a** that is **n**. Like that **b** would be **o**. But the cool thing about the `tr`_ command is that we can also specify range of characters like `[a-z]` `[n-m]`. Let's try it out::
+The key to unlock Level 12 is in **data.txt** and **all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions** as we see in the `level 11 instructions page <https://overthewire.org/wargames/bandit/bandit12.html>`_ This technique is a very common letter substitution cipher called `ROT13 <https://en.wikipedia.org/wiki/ROT13>`_. The `data.txt` file is already in the home directory so all we need to do is rotate letters by 13 positions. The `tr`_ command can help us do that. The man page says it takes a set of characters and changes it into another set. So the lowercase letter **a** will be replaced by the letter that is after 13 positions after **a** that is **n**. Like that **b** would be **o**. But the cool thing about the `tr`_ command is that we can also specify range of characters like `[a-z]` `[n-m]`. Let's try it out::
 
     bandit11@bandit:~$ cat data.txt | tr '[a-zA-Z]' '[n-mN-M]'
     tr: range-endpoints of 'n-m' are in reverse collating sequence order
@@ -419,11 +419,11 @@ Which works because it breaks the range into `n-z` and the starts from `a-m`. No
 
 Level 12
 --------
-SSH into Level 12 machine::
+We can began by doing `ssh`_ into Level 12 machine::
 
-   ssh bandit12@bandit.labs.overthewire.org -p 2220
+   root@bandit:~# ssh bandit12@bandit.labs.overthewire.org -p 2220
 
-Use the password from Level 11 when asked for. The password for next level is in the **data.txt** and **a hexdump of a file that has been repeatedly compressed**. After reading the instructions, we get to learn that it would be useful to create a directory but as home directory is write protected we are suggested in the instruction to make it in the `/tmp` directory. Let's navigate to the `/tmp` directory and make a directory::
+Use the password from `Level 11`_ when asked for. The password for next level is in the **data.txt** and **a hexdump of a file that has been repeatedly compressed**. After reading the `level 12 instructions <https://overthewire.org/wargames/bandit/bandit13.html>`_, we get to learn that it would be useful to create a directory but as home directory is write protected we are suggested in the instruction to make it in the `/tmp` directory. Let's navigate to the `/tmp` directory and make a directory::
 
     bandit12@bandit:~$ cd /tmp/
     bandit12@bandit:/tmp$ mkdir jonedoe12
@@ -515,16 +515,16 @@ Let's use the `-f` flag for archive file and the `-v` flag for increased verbosi
 
 We get a `POSIX tar archive (GNU)` (I mean again!?). Same procedure for this one as well::
 
-     bandit12@bandit:/tmp/jonedoe12$ ls
-     data  data5.bin  data.bin  data.bzip2.out  data.out  data.tar  data.txt
-     bandit12@bandit:/tmp/jonedoe12$ cp data5.bin data5.tar
-     bandit12@bandit:/tmp/jonedoe12$ tar xfv data5.tar 
-     data6.bin
-     bandit12@bandit:/tmp/jonedoe12$ ls
-     data  data5.bin  data5.tar  data6.bin  data.bin  data.bzip2.out  data.out  data.tar  data.txt
-     bandit12@bandit:/tmp/jonedoe12$ file data6.bin 
-     data6.bin: bzip2 compressed data, block size = 900k
-     bandit12@bandit:/tmp/jonedoe12$ 
+    bandit12@bandit:/tmp/jonedoe12$ ls
+    data  data5.bin  data.bin  data.bzip2.out  data.out  data.tar  data.txt
+    bandit12@bandit:/tmp/jonedoe12$ cp data5.bin data5.tar
+    bandit12@bandit:/tmp/jonedoe12$ tar xfv data5.tar 
+    data6.bin
+    bandit12@bandit:/tmp/jonedoe12$ ls
+    data  data5.bin  data5.tar  data6.bin  data.bin  data.bzip2.out  data.out  data.tar  data.txt
+    bandit12@bandit:/tmp/jonedoe12$ file data6.bin 
+    data6.bin: bzip2 compressed data, block size = 900k
+    bandit12@bandit:/tmp/jonedoe12$ 
 
 Now we will change the file extension and decompress it again::
 
@@ -560,13 +560,346 @@ Finally we have an ASCII text!!! I am guessing the password is in this file. Let
 
 Now exit from the machine to continue.
 
+Level 13
+--------
+Let's enter Level 13 machine and the password is one we obtained in the last level::
+
+    root@bandit:~# ssh bandit13@bandit.labs.overthewire.org -p 2220
+
+The password for next level is in the file **/etc/bandit_pass/bandit14** and it can **only be read by user bandit14**. The problem is we will get the password for bandit14 in this level so how do we get it? The `clue of level 13 <https://overthewire.org/wargames/bandit/bandit14.html>`_ also says that we have private SSH key. If we list the files in our how directory we can see the private SSH key file::
+
+    bandit13@bandit:~$ ls
+    sshkey.private
+    bandit13@bandit:~$ 
+
+Let's see the man page of the `ssh`_ command to see how can we use it. The `-i` flag allows it to use private key and we know from the instructions that user is `bandit14` and `localhost` can be used as a host name::
+
+    bandit13@bandit:~$ ssh -i sshkey.private bandit14@localhost
+    Could not create directory '/home/bandit13/.ssh'.
+    The authenticity of host 'localhost (127.0.0.1)' can't be established.
+    ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+    Are you sure you want to continue connecting (yes/no)? 
+
+We type **yes** and we should be logged in as `bandit14`. Now we can see the file in `/etc/bandit_pass/bandit14`::
+
+    bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+
+Now exit from the machine.
+
+
+Level 14
+--------
+We can get into this level by 3 ways:
+
+- We can continue our previous session where we `ssh`_-ed to become `bandit14` because it is in the same machine as Level 13.
+
+- Use the password we got from the previous level and use it::
+
+   root@bandit:~# ssh bandit14@bandit.labs.overthewire.org -p 2220
+
+- Or pulling the SSH private key to our local machine with `sftp`_ and using it to `ssh`_::
+
+    root@bandit:~# sftp -P 2220 bandit13@bandit.labs.overthewire.org
+    This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+    bandit13@bandit.labs.overthewire.org's password: 
+
+If we put the password for `bandit13` here and we should see::
+
+    root@bandit:~# bandit13@bandit.labs.overthewire.org's password: 
+    Connected to bandit.labs.overthewire.org.
+    sftp> 
+
+`sftp`_ has a command `get` to that can be used to get a file from remote machine to local machine. So let's get the SSH private key with `get` and exit from `sftp`_::
+
+    sftp> get sshkey.private 
+    Fetching /home/bandit13/sshkey.private to sshkey.private
+    /home/bandit13/sshkey.private                                                                                                         100% 1679     4.8KB/s   00:00    
+    sftp> exit
+    root@bandit:~#
+
+The last step is to use the SSH private key to log in to Level 14::
+
+    root@bandit:~# ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+    This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    Permissions 0640 for 'sshkey.private' are too open.
+    It is required that your private key files are NOT accessible by others.
+    This private key will be ignored.
+    Load key "sshkey.private": bad permissions
+    bandit14@bandit.labs.overthewire.org's password: 
+
+As we can see we get an permission error that is because it needs to be read-writable by the current user aka 600 permission::
+
+    root@bandit:~# chmod 600 sshkey.private
+
+Now we can ssh::
+
+    root@bandit:~# ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+
+The password for next level can be obtained if we submit the **password of this level** to port **30000 on localhost** as we see in the `level 14 goal page <https://overthewire.org/wargames/bandit/bandit15.html>`_. We can use the `nc`_ tool to connect to a port. After reading the man page we see that we can connect to a specific port like `30000` of a specific host like `localhost` like this::
+
+    bandit14@bandit:~$ nc localhost 30000
+
+Our courser should be seen stuck in the left most side which is actually waiting for our input. If we type or paste the password of this level we should get a **Correct!** message followed by a password string. Now exit from the machine to continue.
+
+.. note:: try to do it with `curl` or maybe `wget`?
+
+
+Level 15
+--------
+As always we will start by entering the machine by using the password from previous level::
+
+    root@bandit:~# ssh bandit15@bandit.labs.overthewire.org -p 2220
+
+The password for the next level will be `echo`_-ed back to us just like before if we submit the **password of this level** to port **30001 on localhost** which is using **SSL encryption** as per `level 15 instructions <https://overthewire.org/wargames/bandit/bandit16.html>`_. Can we use `nc`_ to do that? Unfortunately `nc`_ doesn't support ssl but if we check the instructions we see emphasized paragraph named `Helpful note` there is discussed what should we do if we get  “HEARTBEATING” and “Read R BLOCK” and suggests us to use `-ign_eof`. A quick search in the web reveales that it is a flag for `openssl`_. The man page of `openssl`_ gives us the `s_client`_ flag which as you can see has it's own man page. On the man page of `s_client`_ the first option is `-connect` that takes a host and port. Let's try that::
+
+    bandit15@bandit:~$ openssl s_client -connect localhost:30001
+    CONNECTED(00000003)
+    ... a lot of output about ssl ...
+    ---
+
+Here the courser is stuck, waiting for our input. If we give it the password of this level it would return **Correct!** followed by the `password string` then a line space and finally we should see a text **closed**. Now exit from the machine.
+
+
+Level 16
+--------
+Let's begin by `ssh`_-ing into the Level 16 machine to search for next levels password::
+
+    root@bandit:~# ssh bandit16@bandit.labs.overthewire.org -p 2220
+
+
+
+After reading the `level 16 instructions <https://overthewire.org/wargames/bandit/bandit17.html>`_ we can see that the password for next level if we enter **this levels password** to a **localhost port in between 31000 and 32000** and it **usages SSL** . 31000 to 32000 is 1000 port and scanning it would require a lot of time. Lucky for us we have `nmap`_ to help us. If we load the man page for `nmap`_ we would see it is huge so we can use `grep`_ to help us with this. We need to see what the man page tells us about `range`::
+
+    man grep | grep range
+
+We would see that `-p` flag can help us with that. Let see some examples on how to use `nmap`_, we will use the `-A` flag that prints number of lines after the matching pattern::
+
+    man nmap | grep EXAMPLES -A 3
+
+Now that we have seen some examples we get a general format to run `nmap`_ which is `nmap -p port-range host` and for our case it would be::
+
+    bandit16@bandit:~$ nmap -p 31000-32000 localhost
+
+    Starting Nmap 7.40 ( https://nmap.org ) at 2020-01-16 09:26 CET
+    Nmap scan report for localhost (127.0.0.1)
+    Host is up (0.00023s latency).
+    Not shown: 999 closed ports
+    PORT      STATE SERVICE
+    31518/tcp open  unknown
+    31790/tcp open  unknown
+
+    Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds
+
+We see two open ports. Last time we used `openssl`_, this time we will use a improved version of `nc`_ which is `ncat`_ which has a `-ssl` flag. Let's try `ncat`_ for first port `31518`::
+
+    bandit16@bandit:~$ ncat --ssl localhost 31518
+
+If we paste the password it `echo`_'s back the same thing which is not what we want. Let's try the next port, `31790`::
+
+    bandit16@bandit:~$ ncat --ssl localhost 31790
+
+If we paste the password this time it `echo`_'s **Correct!** followed by **-----BEGIN RSA PRIVATE KEY-----** and a lot of string and then ends with **-----END RSA PRIVATE KEY-----**. This seems like a private key. It could be the SSH private key for next level. Let's get out of this by pressing Ctrl + c. Now we can copy the key and exit from the machine. Now open a file named `bandit17.key`, paste the key and save that::
+
+    root@bandit:~# vim bandit17.key
+
+We have to change the permission of the file to access the next level::
+
+    root@bandit:~# chmod 600 bandit17.key
+
+
+Level 17
+--------
+We will us the SSH private key from the previous level to get into Level 17::
+
+    root@bandit:~# ssh -i bandit17.key bandit17@bandit.labs.overthewire.org -p 2220
+
+There is two file in the home directory **passwords.old** and **passwords.new**. The password for next level is in **passwords.new** and it is the only line that is different from **passwords.old** according to the `instructions of level 17 <https://overthewire.org/wargames/bandit/bandit18.html>`_. We have a handy-dandy tool named `diff`_ that `compare files line by line`. Let's use it::
+
+    bandit17@bandit:~$ diff passwords.new passwords.old 
+
+We should see the difference between two file and the first string would be the password for next level.
+
+We can also get the password for this level::
+
+    bandit17@bandit:~$ cat /etc/bandit_pass/bandit17
+
+Now exit from the machine.
+
+
+Level 18
+--------
+We will use the password from the previous level to `ssh`_ into this level::
+
+    root@bandit:~# ssh bandit18@bandit.labs.overthewire.org -p 2220
+
+But as soon as we enter the password we see the long banner which says::
+
+    Byebye !
+    Connection to bandit.labs.overthewire.org closed.
+
+And get are back to our local machine. If we see the `instructions on level 18 <https://overthewire.org/wargames/bandit/bandit19.html>`_ we would see that the password in a **readme in the home directory** and our **.bashrc to log us out when we log in with SSH**. So we can SSH but can stay in the session. If we look closely in the `ssh`_ man page or the output of the `ssh --help` command we should see at the usage part, after all those flags and options we have a command option. Would it mean it would let us execute commands in the remote machine? Let's try to list the file in the remote machine with `ls`_ with `ssh`_'s command option::
+
+    root@bandit:~# ssh bandit18@bandit.labs.overthewire.org -p 2220 ls
+    This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+    bandit18@bandit.labs.overthewire.org's password: 
+    readme
+    root@bandit:~# 
+
+If we enter the password for this level we see that we can see one `readme` file as output. This could be the file with password! So let's `cat`_ the file just like we listed the file::
+
+    root@bandit:~# ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
+
+This will reviled the password for next level. Time to exit the box or machine to move on to the next one.
+
+
+Level 19
+--------
+Get inside the box with with `ssh` with last password form last level::
+
+    root@bandit:~# ssh bandit19@bandit.labs.overthewire.org -p 2220
+
+The `goal of level 19 <https://overthewire.org/wargames/bandit/bandit20.html>`_ is to is to obtain password for next level by using the **setuid binary in the home directory** form the usual place for password in **/etc/bandit_pass** directory. Let's see what we have in our home directory::
+
+    bandit19@bandit:~$ ls
+    bandit20-do
+    bandit19@bandit:~$ file bandit20-do 
+    bandit20-do: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8e941f24b8c5cd0af67b22b724c57e1ab92a92a1, not stripped
+    bandit19@bandit:~$
+
+We see a we have one file named `bandit20-do` and our `file`_ command shows that it is a `setuid ELF 32-bit LSB executable` and ss the instruction also suggests let execute it without any argument::
+
+    bandit19@bandit:~$ ./bandit20-do 
+    Run a command as another user.
+      Example: ./bandit20-do id
+    bandit19@bandit:~$ 
+
+Cool! So we can use this to run any command as another user for this case as `bandit20` user I guess. This would definitely be useful.
+
+Now if we check out the `/etc/bandit_pass` directory we will see a lot's of file::
+
+    bandit19@bandit:~$ ls /etc/bandit_pass/
+    bandit0  bandit10  bandit12  bandit14  bandit16  bandit18  bandit2   bandit21  bandit23  bandit25  bandit27  bandit29  bandit30  bandit32  bandit4  bandit6  bandit8
+    bandit1  bandit11  bandit13  bandit15  bandit17  bandit19  bandit20  bandit22  bandit24  bandit26  bandit28  bandit3   bandit31  bandit33  bandit5  bandit7  bandit9
+    bandit19@bandit:~$ 
+
+So the password for next level should be one file `bandit20`. Let's check out it's contents::
+
+    bandit19@bandit:~$ cat /etc/bandit_pass/bandit20
+    cat: /etc/bandit_pass/bandit20: Permission denied
+    bandit19@bandit:~$ 
+
+Alas! We, the user `bandit19` doesn't have access to this file but we have a tool that can solve this problem. Yes, it is the `bandit20-do` setuid **binary executable**. Let's use it to achieve our goal::
+
+    bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
+
+Now that we have the password string, we should exit from the box.
+
+
+Level 20
+--------
+Entering the Level 20 machine using the password from previous level::
+
+   root@bandit:~# ssh bandit20@bandit.labs.overthewire.org -p 2220
+
+
+If we go through the `instructions of level 20 <https://overthewire.org/wargames/bandit/bandit21.html>`_, we will see that here we have a **setuid binary in the home directory** that **connects to localhost** on a **port that we will specify**, in the next line it will **read the password of this level** and **if matches it will return the password for next level**. If we list home directory we should see a `suconnect` file which is `setuid ELF 32-bit LSB executable`::
+
+    bandit20@bandit:~$ ls
+    suconnect
+    bandit20@bandit:~$ file suconnect 
+    suconnect: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=74c0f6dc184e0412b6dc52e542782f43807268e1, not stripped
+    bandit20@bandit:~$ 
+
+If we execute it with out any argument like the previous level we see::
+
+    bandit20@bandit:~$ ./suconnect 
+    Usage: ./suconnect <portnumber>
+    This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+    bandit20@bandit:~$ 
+
+We have no port list or port range so we will use the `-p` flag of `nmap`_ to scan all port::
+
+    bandit20@bandit:~$ nmap -p- localhost
+
+    Starting Nmap 7.40 ( https://nmap.org ) at 2020-01-16 12:11 CET
+    Nmap scan report for localhost (127.0.0.1)
+    Host is up (0.00017s latency).
+    Not shown: 65525 closed ports
+    PORT      STATE SERVICE
+    22/tcp    open  ssh
+    113/tcp   open  ident
+    6013/tcp  open  x11
+    30000/tcp open  ndmps
+    30001/tcp open  pago-services1
+    30002/tcp open  pago-services2
+    30003/tcp open  amicon-fpsu-ra
+    31518/tcp open  unknown
+    31790/tcp open  unknown
+    39063/tcp open  unknown
+
+    Nmap done: 1 IP address (1 host up) scanned in 2.69 seconds
+    bandit20@bandit:~$ 
+
+We have a lots of open port but I would like to start from the bottom of the list because top of list has port like `22` `113` which runs well recognized services like `SSH` and `Identification Protocol`. So let's try with the last port `39063`::
+
+    bandit20@bandit:~$ ./suconnect 39063
+    Could not connect
+    bandit20@bandit:~$ 
+
+No luck! If we try port `31790` we get a place to give input but after taking input it just stays stuck. We see the same for `31518`. In port `30003` we see a ourput::
+
+    bandit20@bandit:~$ ./suconnect 30003
+    Read: I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secr
+    ERROR: This doesn't match the current password!
+    bandit20@bandit:~$ 
+
+So maybe we have many ports in the machine that takes something like a password of current level and a secret and returns the password for next level. Let's keep digging. Port `30002` gives us something similar port `30003` and port `30001`, `30000` same as port `31790` and `31518`. I went on and tried all the ports even SSH at `22`. It all failed in some way or other. So I decided to read the instructions again which I did for couple of times but could not get anything. It was getting frustrating. Finally, I got my break when I read the **Note** that said "Try connecting to your **own** network daemon". Can we do that? So for this to work we need one more `ssh`_ connection. We can use the `-l` flag of `nc`_ to start a listener with `-p` flag to specify source port and `-v` flag for verbose mode in the first terminal::
+
+    bandit20@bandit:~$ nc -lv -p 10101
+
+From the second terminal we will connect to this port::
+
+    bandit20@bandit:~$ ./suconnect 10101
+
+
+We can see that the courser is waiting for input. Let's press Ctrl + c to exit. If we check our first terminal we should see that we have or shall we say had a connection::
+
+    bandit20@bandit:~$ nc -lv -p 10101
+    listening on [any] 10101 ...
+    connect to [127.0.0.1] from localhost [127.0.0.1] 53372
+    bandit20@bandit:~$ 
+
+Now we can see the password of next level by sending the password of `bandit20` to a port from terminal 1::
+
+    bandit20@bandit:~$ cat /etc/bandit_pass/bandit20 | nc -lv 127.0.0.1 -p 10101
+    listening on [any] 10101 ...
+
+
+It is waiting and waiting for us to connect. Now if we go to terminal 2 and connect to port `10101` with our setuid binary::
+
+    bandit20@bandit:~$ ./suconnect 10101
+    Read: password_strings_of_bandit20
+    Password matches, sending next password
+    bandit20@bandit:~$ 
+
+In terminal 1 we should be able to see the password for next level.
+
+
+
+
 
 
 .. Level L
 .. --------
 .. Entering the Level L machine using the password from previous level::
 
-..    ssh bandit L@bandit.labs.overthewire.org -p 2220
+..    root@bandit:~# ssh bandit L@bandit.labs.overthewire.org -p 2220
 
 .. We can to see the password for Level L by::
 
@@ -575,6 +908,22 @@ Now exit from the machine to continue.
 .. Now exit from the machine.
 
 .. macro: d
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
 
 Source
 ------
@@ -597,4 +946,13 @@ Source
 .. _cp: https://linux.die.net/man/1/cp
 .. _bzip2: https://linux.die.net/man/1/bzip2
 .. _tar: https://linux.die.net/man/1/tar
+.. _ssh: https://linux.die.net/man/1/ssh
+.. _sftp: https://linux.die.net/man/1/sftp
+.. _nc: https://linux.die.net/man/1/nc
+.. _openssl: https://linux.die.net/man/1/openssl
+.. _s_client: https://linux.die.net/man/1/s_client
+.. _nmap: https://linux.die.net/man/1/nmap
+.. _echo: https://linux.die.net/man/1/echo
+.. _ncat: https://linux.die.net/man/1/ncat
+.. _diff: https://linux.die.net/man/1/diff
 .. _explainshell.com: https://explainshell.com
