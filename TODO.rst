@@ -20,12 +20,40 @@ TODO
 
 ---------------------------------------------------------------------
 
+.. note:: alt ideas for bandit_walkthrough.rst:
 
+	all nmap can be replaced with netcat: https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections-on-a-vps
 
+.. note::
+    hackersploit solves
+    file of human redable:
+    find . - type f | xargs file
 
+    L7:
+    strings data.txt | grep "millionth"
 
+    L8:
+    sort data.txt | uniq -c
 
+    L9:
+    string data.txt | grep "="
+
+    L11:
+    used cyberchef
+
+    L15:
+    man nc | grep ssl
+    ncat -ssl localhost port
+
+	L19:
+	ssh -t bandit18@address -p 2220 /bin/sh
+	alt idea
+	get the bashrc file to see if we can change file from with ssh.
+
+	
  
+
+---------------------------------------------------------------------
 
 
 :: .. note::
