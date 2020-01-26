@@ -10,48 +10,40 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 	`cheat sheet <blogs/category_cheat_sheet.html>`_
 
+.. sidebar:: New Blogs
+
+	`Bandit Walkthrough <blogs/bandit_walkthrough.html>`_
 
 
-Recent Blogs
-------------
-`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
-.......................................................
-Created on: 2019-12-08
-
-A quick reference to OpenWrt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
 
 
-`Google Cloud Platform Cheat Sheet <blogs/gcp_cheat_sheet.html>`_
-.................................................................
-Created on: 2019-12-05
-
-A quick reference to Google Cloud Platform.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	`Google Cloud Platform Cheat Sheet <blogs/gcp_cheat_sheet.html>`_
 
 
-`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
-......................................................................
-Created on: 2019-12-04
-
-This is a getting started guide with TigerVNC. 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
 
 
-`Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
-...................................................
-Created on: 2019-12-03
-
-A quick reference to Nginx
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	`Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
 
 
-`Wikipedia Edit <blogs/wiki_edit_cheat_sheet.html>`_
-....................................................
-Created on: 2019-11-19
 
-A quick reference to editing Wikipedia.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. sidebar:: Recently Updated Blogs
+
+	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
+
+
+	`Bandit Walkthrough <blogs/bandit_walkthrough.html>`_
+
+
+	`ADB Cheat Sheet <blogs/adb_cheat_sheet.html>`_
+
+
+	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+
+
+	`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
 
 
 
@@ -72,6 +64,14 @@ Created on: 2019-08-30
 
 Adding pause between audio tracks in VLC playlist to stop continuous play.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Bandit Walkthrough <blogs/bandit_walkthrough.html>`_
+.....................................................
+Created on: 2020-01-09
+
+Walkthrough of Bandit, a wargame by OverTheWire
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
@@ -418,4 +418,4 @@ How we hacked(modified!?) a Zkteco access control device to take automatic atten
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`< Home <index.html>`_		`^ Back to top <blog.html>`_
+`< Home <index.html>`_		`^ Back to top <#>`_
