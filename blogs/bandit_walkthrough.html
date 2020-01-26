@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>Bandit Walkthrough</title>
+<style type="text/css">
+
+/* Minimal style sheet for the HTML output of Docutils.                    */
+/*                                                                         */
+/* :Author: Günter Milde, based on html4css1.css by David Goodger          */
+/* :Id: $Id: minimal.css 8036 2017-02-14 13:05:46Z milde $               */
+/* :Copyright: © 2015 Günter Milde.                                        */
+/* :License: Released under the terms of the `2-Clause BSD license`_,      */
+/*    in short:                                                            */
+/*                                                                         */
+/*    Copying and distribution of this file, with or without modification, */
+/*    are permitted in any medium without royalty provided the copyright   */
+/*    notice and this notice are preserved.                                */
+/*                                                                         */
+/*    This file is offered as-is, without any warranty.                    */
+/*                                                                         */
+/* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause     */
+
+/* This CSS2.1_ stylesheet defines rules for Docutils elements without    */
+/* HTML equivalent. It is required to make the document semantic visible. */
+/*                                                                        */
+/* .. _CSS2.1: http://www.w3.org/TR/CSS2                                  */
+/* .. _validates: http://jigsaw.w3.org/css-validator/validator$link       */
+
+/* alignment of text and inline objects inside block objects*/
+.align-left   { text-align: left; }
+.align-right  { text-align: right; }
+.align-center { clear: both; text-align: center; }
+.align-top    { vertical-align: top; }
+.align-middle { vertical-align: middle; }
+.align-bottom { vertical-align: bottom; }
+
+/* titles */
+h1.title, p.subtitle {
+  text-align: center;
+}
+p.admonition-title,
+p.topic-title,
+p.sidebar-title,
+p.rubric,
+p.system-message-title {
+  font-weight: bold;
+}
+h1 + p.subtitle,
+h1 + p.section-subtitle {
+  font-size: 1.6em;
+}
+h2 + p.section-subtitle { font-size: 1.28em; }
+p.subtitle,
+p.section-subtitle,
+p.sidebar-subtitle {
+  font-weight: bold;
+  margin-top: -0.5em;
+}
+p.sidebar-title,
+p.rubric {
+  font-size: larger;
+}
+p.rubric { color: maroon; }
+a.toc-backref {
+  color: black;
+  text-decoration: none; }
+
+/* Warnings, Errors */
+div.caution p.admonition-title,
+div.attention p.admonition-title,
+div.danger p.admonition-title,
+div.error p.admonition-title,
+div.warning p.admonition-title,
+div.system-messages h1,
+div.error,
+span.problematic,
+p.system-message-title {
+  color: red;
+}
+
+/* inline literals */
+span.docutils.literal {
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+/* do not wraph at hyphens and similar: */
+.literal > span.pre { white-space: nowrap; }
+
+/* Lists */
+
+/* compact and simple lists: no margin between items */
+.simple  li, .compact li,
+.simple  ul, .compact ul,
+.simple  ol, .compact ol,
+.simple > li p, .compact > li p,
+dl.simple > dd, dl.compact > dd {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Table of Contents */
+div.topic.contents { margin: 0; }
+ul.auto-toc {
+  list-style-type: none;
+  padding-left: 1.5em; }
+
+/* Enumerated Lists */
+ol.arabic     { list-style: decimal }
+ol.loweralpha { list-style: lower-alpha }
+ol.upperalpha { list-style: upper-alpha }
+ol.lowerroman { list-style: lower-roman }
+ol.upperroman { list-style: upper-roman }
+
+dt span.classifier { font-style: italic }
+dt span.classifier:before {
+  font-style: normal;
+  margin: 0.5em;
+  content: ":";
+}
+
+/* Field Lists and drivatives */
+/* bold field name, content starts on the same line */
+dl.field-list > dt,
+dl.option-list > dt,
+dl.docinfo > dt,
+dl.footnote > dt,
+dl.citation > dt {
+  font-weight: bold;
+  clear: left;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+}
+/* Offset for field content (corresponds to the --field-name-limit option) */
+dl.field-list > dd,
+dl.option-list > dd,
+dl.docinfo > dd {
+  margin-left:  9em; /* ca. 14 chars in the test examples */
+}
+/* start field-body on a new line after long field names */
+dl.field-list > dd > *:first-child,
+dl.option-list > dd > *:first-child
+{
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+/* field names followed by a colon */
+dl.field-list > dt:after,
+dl.docinfo > dt:after {
+  content: ":";
+}
+
+/* Bibliographic Fields (docinfo) */
+pre.address { font: inherit; }
+dd.authors > p { margin: 0; }
+
+/* Option Lists */
+dl.option-list { margin-left: 40px; }
+dl.option-list > dt { font-weight: normal; }
+span.option { white-space: nowrap; }
+
+/* Footnotes and Citations  */
+dl.footnote.superscript > dd {margin-left: 1em; }
+dl.footnote.brackets > dd {margin-left: 2em; }
+dl > dt.label { font-weight: normal; }
+a.footnote-reference.brackets:before,
+dt.label > span.brackets:before { content: "["; }
+a.footnote-reference.brackets:after,
+dt.label > span.brackets:after { content: "]"; }
+a.footnote-reference.superscript,
+dl.footnote.superscript > dt.label {
+  vertical-align: super;
+  font-size: smaller;
+}
+dt.label > span.fn-backref { margin-left: 0.2em; }
+dt.label > span.fn-backref > a { font-style: italic; }
+
+/* Line Blocks */
+div.line-block { display: block; }
+div.line-block div.line-block {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40px;
+}
+
+/* Figures, Images, and Tables */
+.figure.align-left,
+img.align-left,
+object.align-left,
+table.align-left {
+  margin-right: auto;
+}
+.figure.align-center,
+img.align-center,
+object.align-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.figure.align-right,
+img.align-right,
+object.align-right,
+table.align-right {
+  margin-left: auto;
+}
+/* reset inner alignment in figures and tables */
+/* div.align-left, div.align-center, div.align-right, */
+table.align-left, table.align-center, table.align-right
+{ text-align: inherit }
+
+/* Admonitions and System Messages */
+div.admonition,
+div.system-message,
+div.sidebar{
+  margin: 40px;
+  border: medium outset;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+/* Sidebar */
+div.sidebar {
+  width: 30%;
+  max-width: 26em;
+  float: right;
+  clear: right;
+}
+
+/* Text Blocks */
+div.topic,
+pre.literal-block,
+pre.doctest-block,
+pre.math,
+pre.code {
+  margin-right: 40px;
+  margin-left: 40px;
+}
+pre.code .ln { color: gray; } /* line numbers */
+
+/* Tables */
+table { border-collapse: collapse; }
+td, th {
+  border-style: solid;
+  border-color: silver;
+  padding: 0 1ex;
+  border-width: thin;
+}
+td > p:first-child, th > p:first-child { margin-top: 0; }
+td > p, th > p { margin-bottom: 0; }
+
+table > caption {
+  text-align: left;
+  margin-bottom: 0.25em
+}
+
+table.borderless td, table.borderless th {
+  border: 0;
+  padding: 0;
+  padding-right: 0.5em /* separate table cells */
+}
+
+</style>
+<style type="text/css">
+
+/* CSS31_ style sheet for the output of Docutils HTML writers.             */
+/* Rules for easy reading and pre-defined style variants.		   */
+/*                                                                         */
+/* :Author: Günter Milde, based on html4css1.css by David Goodger          */
+/* :Id: $Id: plain.css 8120 2017-06-22 21:02:40Z milde $               */
+/* :Copyright: © 2015 Günter Milde.                                        */
+/* :License: Released under the terms of the `2-Clause BSD license`_,      */
+/*    in short:                                                            */
+/*                                                                         */
+/*    Copying and distribution of this file, with or without modification, */
+/*    are permitted in any medium without royalty provided the copyright   */
+/*    notice and this notice are preserved.                                */
+/*    	     	      	     	 					   */
+/*    This file is offered as-is, without any warranty.                    */
+/*                                                                         */
+/* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause     */
+/* .. _CSS3: http://www.w3.org/TR/CSS3		        		   */
+
+
+/* Document Structure */
+/* ****************** */
+
+/* "page layout" */
+body {
+  padding: 0 5%;
+  margin: 8px 0;
+}
+div.document {
+  line-height:1.3;
+  counter-reset: table;
+  /* counter-reset: figure; */
+  /* avoid long lines --> better reading */
+  /* OTOH: lines should not be too short because of missing hyphenation, */
+  max-width: 50em;
+  margin: auto;
+}
+
+/* Sections */
+
+/* Transitions */
+
+hr.docutils {
+  width: 80%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  clear: both;
+}
+
+/* Paragraphs               */
+/* ==========               */
+
+/* vertical space (parskip) */
+p, ol, ul, dl,
+div.line-block,
+table{
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+h1, h2, h3, h4, h5, h6,
+dl > dd {
+  margin-bottom: 0.5em;
+}
+
+/* Lists                    */
+/* ==========               */
+
+/* Definition Lists         */
+
+dl > dd > p:first-child { margin-top: 0; }
+/* :last-child is not part of CSS 2.1 (introduced in CSS 3) */
+dl > dd > p:last-child  { margin-bottom: 0; }
+
+/* lists nested in definition lists */
+/* :only-child is not part of CSS 2.1 (introduced in CSS 3) */
+dd > ul:only-child, dd > ol:only-child { padding-left: 1em; }
+
+/* Description Lists */
+/* styled like in most dictionaries, encyclopedias etc. */
+dl.description > dt {
+  font-weight: bold;
+  clear: left;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+}
+
+/* Field Lists */
+
+/* example for custom field-name width */
+dl.field-list.narrow > dd {
+  margin-left: 5em;
+}
+/* run-in: start field-body on same line after long field names */
+dl.field-list.run-in > dd p {
+  display: block;
+}
+
+/* Bibliographic Fields */
+
+/* generally, bibliographic fields use special definition list dl.docinfo */
+/* but dedication and abstract are placed into "topic" divs */
+div.abstract p.topic-title {
+  text-align: center;
+}
+div.dedication {
+  margin: 2em 5em;
+  text-align: center;
+  font-style: italic;
+}
+div.dedication p.topic-title {
+  font-style: normal;
+}
+
+/* Citations */
+dl.citation dt.label {
+  font-weight: bold;
+}
+span.fn-backref {
+  font-weight: normal;
+}
+
+/* Text Blocks           */
+/* ============          */
+
+/* Literal Blocks           */
+pre.literal-block, pre.doctest-block,
+pre.math, pre.code {
+  margin-left: 1.5em;
+  margin-right: 1.5em
+}
+
+/* Block Quotes             */
+
+blockquote,
+div.topic {
+  margin-left: 1.5em;
+  margin-right: 1.5em
+}
+blockquote > table,
+div.topic > table {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+blockquote p.attribution,
+div.topic p.attribution {
+  text-align: right;
+  margin-left: 20%;
+}
+
+/* Tables                   */
+/* ======                   */
+
+/* th { vertical-align: bottom; } */
+
+table tr { text-align: left; }
+
+/* "booktabs" style (no vertical lines) */
+table.booktabs {
+  border: 0;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.booktabs * {
+  border: 0;
+}
+table.booktabs th {
+  border-bottom: thin solid;
+}
+
+/* numbered tables (counter defined in div.document) */
+table.numbered > caption:before {
+  counter-increment: table;
+  content: "Table " counter(table) ": ";
+  font-weight: bold;
+}
+
+/* Explicit Markup Blocks   */
+/* ======================   */
+
+/* Footnotes and Citations  */
+/* -----------------------  */
+
+/* line on the left */
+dl.footnote {
+  padding-left: 1ex;
+  border-left: solid;
+  border-left-width: thin;
+}
+
+/* Directives               */
+/* ----------               */
+
+/* Body Elements            */
+/* ~~~~~~~~~~~~~            */
+
+/* Images and Figures */
+
+/* let content flow to the side of aligned images and figures */
+.figure.align-left,
+img.align-left,
+object.align-left {
+  display: block;
+  clear: left;
+  float: left;
+  margin-right: 1em
+}
+.figure.align-right,
+img.align-right,
+object.align-right {
+  display: block;
+  clear: right;
+  float: right;
+  margin-left: 1em
+}
+/* Stop floating sidebars, images and figures at section level 1,2,3 */
+h1, h2, h3 { clear: both; }
+
+/* Sidebar */
+
+/* Move into the margin. In a layout with fixed margins, */
+/* it can be moved into the margin completely.		 */
+div.sidebar {
+  width: 30%;
+  max-width: 26em;
+  margin-left: 1em;
+  margin-right: -5.5%;
+  background-color: #ffffee ;
+}
+
+/* Code                     */
+
+pre.code, code { background-color: #eeeeee }
+pre.code .ln { color: gray; } /* line numbers */
+/* basic highlighting: for a complete scheme, see */
+/* http://docutils.sourceforge.net/sandbox/stylesheets/ */
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+/* Math                     */
+/* styled separately (see math.css for math-output=HTML) */
+
+/* Epigraph                 */
+/* Highlights               */
+/* Pull-Quote               */
+/* Compound Paragraph       */
+/* Container                */
+
+/* can be styled in a custom stylesheet */
+
+/* Document Header and Footer */
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller;
+}
+
+/* Inline Markup            */
+/* =============            */
+
+/* Emphasis                 */
+/*   em                     */
+/* Strong Emphasis          */
+/*   strong		    */
+/* Interpreted Text         */
+/*   span.interpreted  	    */
+/* Title Reference 	    */
+/*   cite		    */
+/* Inline Literals          */
+/* possible values: normal, nowrap, pre, pre-wrap, pre-line */
+/*   span.docutils.literal { white-space: pre-wrap; } */
+
+/* Hyperlink References     */
+a { text-decoration: none; }
+
+/* External Targets         */
+/*   span.target.external   */
+/* Internal Targets  	    */
+/*   span.target.internal   */
+/* Footnote References      */
+/*   a.footnote-reference   */
+/* Citation References      */
+/*   a.citation-reference   */
+
+</style>
+<style type="text/css">
+
+.kbd {
+    -moz-border-radius:3px;
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-border-radius:3px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+
+h1, h2, h3 { 
+    clear: none;     
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="bandit-walkthrough">
+<h1 class="title">Bandit Walkthrough</h1>
+
+<p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
+<p>Walkthrough of Bandit, a wargame by OverTheWire</p>
+<p>Created on: 2020-01-09</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I know in the server banner is says 'DONT POST SPOILERS! This includes writeups of your solution on your blog or website!'. I fully respect that thus this is my duty to warn the reader not to use this to cheat in the game. This is just a personal note in an attempt to getting started with CTF writeup. I choose Bandit because it is easy and CTF/Techinal writeups are tough enough. I have been using Linux for sometime now and I can assure you that copy-pasting commands without understanding to cross a level or fix a problem don't make you a expert, it makes you a unprepared imposter and good mouse user. So DO NOT USE this to play the game! Use it as a getting started guide to write CTF writeup.</p>
+</div>
+<p>From the Bandit webpage:</p>
+<pre class="literal-block">The Bandit wargame is aimed at absolute beginners. It will teach the basics needed to be able to play other wargames.</pre>
+<div class="section" id="presequisite">
+<h1>Presequisite</h1>
+<p>To play Bandit we will need a <a class="reference external" href="https://en.wikipedia.org/wiki/Terminal_emulator">Terminal emulator</a> and a <a class="reference external" href="https://www.ssh.com/ssh/client">SSH client</a>. If we are in Linux Or macOS then we should already have both of this available in our machine. If we are in Windows then <a class="reference external" href="https://cmder.net/">Cmder</a> is the way to go!  We will also need a working internet connection.</p>
+</div>
+<div class="section" id="starting-the-game">
+<h1>Starting the game</h1>
+<p>To start playing the Bandit wargame:</p>
+<ul class="simple">
+<li><p>Open <a class="reference external" href="https://overthewire.org/wargames/bandit">Bandit</a> wargame webpage in a browser.</p></li>
+<li><p>Open a terminal emulator</p></li>
+<li><p>Start reading the instructions in the webpage and follow them to get started.</p></li>
+</ul>
+<p>The game is deviled into levels. Current level has the password for the next level. So, if we go to the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit1.html">Bandit Level 0 → Level 1</a> page we will see the goal if Level 0. If we successfully achieve that goal we will be able to go to Level 1.</p>
+</div>
+<div class="section" id="level-0">
+<h1>Level 0</h1>
+<p>To start we need to type in our terminal:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit0&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>It will ask our permission to add the host to the list of known hosts. Type <cite>yes</cite>. Then it will ask for the password. The password for this level is given and it is <em>bandit0</em>. Typing that will allow us to enter the game which is a Linux machine with rather long <a class="reference external" href="https://en.wikipedia.org/wiki/Motd_(Unix)">motd</a>.</p>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit1.html">goal set for level 0</a> is to find file called <strong>readme</strong> located in the home directory. After login with SSH, generally the user lands on the home directory. So let's see if we can find the file with <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a>:</p>
+<pre class="literal-block">bandit0&#64;bandit:~$ ls
+readme
+bandit0&#64;bandit:~$</pre>
+<p>There we have our file. Now let's see the content of the file with <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>:</p>
+<pre class="literal-block">bandit0&#64;bandit:~$ cat readme</pre>
+<p>We should be able to see a 33 character long string. This is our password for Level 1.</p>
+<p>Now we need exit from the machine:</p>
+<pre class="literal-block">bandit0&#64;bandit:~$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.</pre>
+</div>
+<div class="section" id="level-1">
+<h1>Level 1</h1>
+<p>First let's go to Level 1:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit1&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>This will ask for password and use the string from previous level. If we see the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit2.html">instructions for level 1</a>, to go to next level we need to get the content of a file called <strong>-</strong> located in the home directory. If we try <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>-ing the file as before is hangs:</p>
+<pre class="literal-block">bandit1&#64;bandit:~$ cat -</pre>
+<p>Pressing <span class="kbd">Ctrl</span> + <span class="kbd">c</span> will give us back our terminal. The <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> command doesn't work on the <strong>-</strong> file because it indicates stdin or stdout.</p>
+<!-- read the links bellow to explane more:
+https://www.tldp.org/LDP/abs/html/special-chars.html#DASHREF2
+https://stackoverflow.com/questions/8045479/whats-the-magic-of-a-dash-in-command-line-parameters
+https://unix.stackexchange.com/questions/16357/usage-of-dash-in-place-of-a-filename -->
+<p>To see the content of the file:</p>
+<pre class="literal-block">bandit1&#64;bandit:~$ cat ./-</pre>
+<p>We should be able to see a 33 character long string aka the flag. This is our password for Level 2. Now exit from the machine as before with the <a class="reference external" href="https://linux.die.net/man/3/exit">exit</a> command.</p>
+</div>
+<div class="section" id="level-2">
+<h1>Level 2</h1>
+<p>First let's go to Level 2:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit2&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>Use the password from previous level as before. The password for the next level is in a file called <strong>spaces in this filename</strong> as it says in the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit3.html">level 2 web page</a>.</p>
+<p>Let's try to see the file with <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a>:</p>
+<pre class="literal-block">bandit2&#64;bandit:~$ ls
+spaces in this filename
+bandit2&#64;bandit:~$</pre>
+<p>If we try to see the file by typing <cite>cat spaces in this filename</cite>, we get:</p>
+<pre class="literal-block">bandit2&#64;bandit:~$ cat spaces in this filename
+cat: spaces: No such file or directory
+cat: in: No such file or directory
+cat: this: No such file or directory
+cat: filename: No such file or directory
+bandit2&#64;bandit:~$</pre>
+<p>This is because with the spaces the <cite>spaces</cite>, <cite>in</cite>, <cite>the</cite> and <cite>filename</cite> are treated as separate file and obviously those doesn't exit. We can solve it by escaping the space with <em>``</em></p>
+<pre class="literal-block">bandit2&#64;bandit:~$ cat spaces\ in\ this\ filename</pre>
+<p>P.S: we don't need to type those, just hit <span class="kbd">Tab</span> to autocomplete.</p>
+<p>We should be able to see the flag with Level 3 login password. Now exit from the machine.</p>
+</div>
+<div class="section" id="level-3">
+<h1>Level 3</h1>
+<p>Entering the Level 3 machine:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit3&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>Use the password from previous level as before. We get the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit4.html">instructions from level 3</a> that the password for the next level is in a <strong>hidden</strong> file in the <strong>inhere</strong> directory.</p>
+<p>Let's see what we have in our current directory with <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a>:</p>
+<pre class="literal-block">bandit3&#64;bandit:~$ ls
+inhere
+bandit3&#64;bandit:~$</pre>
+<p>As expected we see the <cite>inhere</cite> directory. Let's go inside the directory with <a class="reference external" href="https://linux.die.net/man/1/cd">cd</a> command:</p>
+<pre class="literal-block">bandit3&#64;bandit:~$ cd inhere/
+bandit3&#64;bandit:~/inhere$</pre>
+<p>Now we are inside the <cite>inhere</cite> directory. Now we will use <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> again to list all files and we see this:</p>
+<pre class="literal-block">bandit3&#64;bandit:~/inhere$ ls
+bandit3&#64;bandit:~/inhere$</pre>
+<p>Or do we? We can't see any file here. Now if we remember the goal we or file is a <strong>hidden</strong> file and the <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> command list all file except for the hidden one. We will use a additional flag of the <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> command to see the hidden files. The flag is <cite>-a</cite> which is pronounced <cite>dash or tack a</cite>. So let's see the file:</p>
+<pre class="literal-block">bandit3&#64;bandit:~/inhere$ ls -a
+.  ..  .hidden
+bandit3&#64;bandit:~/inhere$</pre>
+<p>There we see the <cite>.hidden</cite> file. The <cite>.</cite> and the <cite>..</cite> before the <cite>.hidden</cite> are reference to the current and one directory up from the current directory. Finally, to see the content of the file:</p>
+<pre class="literal-block">bandit3&#64;bandit:~/inhere$ cat .hidden</pre>
+<p>We should be able to see the password for Level 4. Now exit from the machine.</p>
+</div>
+<div class="section" id="level-4">
+<h1>Level 4</h1>
+<p>Entering the Level 4 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit4&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The password is in is stored in the <strong>only human-readable</strong> file in the <strong>inhere</strong> directory as we can see in <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit5.html">level 4 instructions page</a>.</p>
+<p>Now if we follow the previous level to enter the <cite>inhere</cite> directory and list file, we see:</p>
+<pre class="literal-block">bandit4&#64;bandit:~/inhere$ ls
+-file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
+bandit4&#64;bandit:~/inhere$</pre>
+<p>Now if we try to see the content of the first file <cite>-file00</cite>, we use <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> command like we did on <a class="reference internal" href="#level-1">Level 1</a> and see this:</p>
+<pre class="literal-block">bandit4&#64;bandit:~/inhere$ cat ./-file00
+����������~%    C[�걱&gt;��| �bandit4&#64;bandit:~/inhere$</pre>
+<p>What is this gibberish!? Let's see what kind of file it is with <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command:</p>
+<pre class="literal-block">bandit4&#64;bandit:~/inhere$ file ./-file00
+./-file00: data
+bandit4&#64;bandit:~/inhere$</pre>
+<p>So this is a data file and is most definitely not <em>human-readable</em> which is what our file is. Now we can use the <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command to check the file type of each 10 files and see which one is human-readable but that is very useful when we have hundreds or thousands of files. We can use the wild character <cite>*</cite> to specify all the files in a directory and as we know our file is in the <cite>inhere</cite> directory we can run <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command on all the files of <cite>inhere</cite> directory:</p>
+<pre class="literal-block">bandit4&#64;bandit:~/inhere$ file ./*
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+bandit4&#64;bandit:~/inhere$</pre>
+<p>We can see that the <cite>-file07</cite> file has <a class="reference external" href="https://en.wikipedia.org/wiki/Ascii">ASCII text</a> which is human-readable. We can see the password for Level 4 by:</p>
+<pre class="literal-block">bandit4&#64;bandit:~/inhere$ cat ./-file07</pre>
+<p>Now exit from the machine.</p>
+<div class="section" id="alternative-solution">
+<h2>Alternative solution</h2>
+<p>We could have used the <cite>-i</cite> flag of <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command to see the mime type strings of the files and find the file as well:</p>
+<pre class="literal-block">bandit4&#64;bandit:~/inhere$ file -i ./*
+./-file00: application/octet-stream; charset=binary
+./-file01: application/octet-stream; charset=binary
+./-file02: application/octet-stream; charset=binary
+./-file03: application/octet-stream; charset=binary
+./-file04: application/octet-stream; charset=binary
+./-file05: application/octet-stream; charset=binary
+./-file06: application/octet-stream; charset=binary
+./-file07: text/plain; charset=us-ascii
+./-file08: application/octet-stream; charset=binary
+./-file09: application/octet-stream; charset=binary</pre>
+</div>
+</div>
+<div class="section" id="level-5">
+<h1>Level 5</h1>
+<p>Entering the Level 5 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit5&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>Like before the password in in a directory named <strong>inhere</strong> which is <strong>human-readable</strong>, <strong>1033 bytes in size</strong> and <strong>not executable</strong>. The details of the level is in the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit6.html">level 5's page</a> If we see the contents of the file:</p>
+<pre class="literal-block">bandit5&#64;bandit:~$ ls inhere/
+maybehere00  maybehere02  maybehere04  maybehere06  maybehere08  maybehere10  maybehere12  maybehere14  maybehere16  maybehere18
+maybehere01  maybehere03  maybehere05  maybehere07  maybehere09  maybehere11  maybehere13  maybehere15  maybehere17  maybehere19
+bandit5&#64;bandit:~$</pre>
+<p>That is a lot of directory! If we want to go through all those directory to find our specific file it would take a lot of time. We can use the <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command to assist us in our task:</p>
+<pre class="literal-block">bandit5&#64;bandit:~$ find inhere/ -type f -size 1033c ! -executable
+inhere/maybehere07/.file2
+bandit5&#64;bandit:~$</pre>
+<p>We get one file in return! Before we use our known commands to see the attributes of the file to match our criteria, let's first see what the <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command did. If we check the man page for <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command, we see <cite>-type</cite> flag checks for file type and <cite>f</cite> is used for regular file, the <cite>-size</cite> flag checks the size of a file as for size in byte we use <cite>c</cite> after the numeric value. Finally, the <cite>-executable</cite> flag checks if the file is executable. We used <cite>!</cite> to as NOT operator so it check if the file is NOT executable. To understand complex commands we can use <a class="reference external" href="https://explainshell.com">explainshell.com</a>.</p>
+<p>Now let's check if the file the <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command found for us matches the criteria by using known commands.</p>
+<ul>
+<li><p>Is it <strong>human-readable</strong>?:</p>
+<pre class="literal-block">bandit5&#64;bandit:~$ file inhere/maybehere07/.file2
+inhere/maybehere07/.file2: ASCII text, with very long lines
+bandit5&#64;bandit:~$</pre>
+</li>
+</ul>
+<p>It is ASCII text.</p>
+<ul>
+<li><p>Is it <strong>1033 bytes in size</strong>?:</p>
+<pre class="literal-block">bandit5&#64;bandit:~$ ls -la inhere/maybehere07/.file2
+-rw-r----- 1 root bandit5 1033 Oct 16  2018 inhere/maybehere07/.file2
+bandit5&#64;bandit:~$</pre>
+</li>
+</ul>
+<p>It is 1033 bytes in size.</p>
+<ul class="simple">
+<li><p>Is it <strong>not executable</strong>?</p></li>
+</ul>
+<p>From the previous output of <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> command we can see that the file <cite>inhere/maybehere07/.file2</cite> is not executable. To see the password for Level 6:</p>
+<pre class="literal-block">bandit5&#64;bandit:~/inhere$ cat inhere/maybehere07/.file2</pre>
+<p>Now exit from the machine.</p>
+</div>
+<div class="section" id="level-6">
+<h1>Level 6</h1>
+<p>Use the password from previous level to get into Level 6:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit6&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit7.html">goal of level 6</a> is to get the password which is saved <strong>somewhere on the server</strong> and is <strong>owned by user bandit7</strong>, <strong>owned by group bandit6</strong> and <strong>33 bytes in size</strong>. Lets see if we have any file or directory in the home directory:</p>
+<pre class="literal-block">bandit6&#64;bandit:~$ ls
+bandit6&#64;bandit:~$</pre>
+<p>No files. Are there any hidden files in the home directory?:</p>
+<pre class="literal-block">bandit6&#64;bandit:~$ ls -la
+total 20
+drwxr-xr-x  2 root root 4096 Oct 16  2018 .
+drwxr-xr-x 41 root root 4096 Oct 16  2018 ..
+-rw-r--r--  1 root root  220 May 15  2017 .bash_logout
+-rw-r--r--  1 root root 3526 May 15  2017 .bashrc
+-rw-r--r--  1 root root  675 May 15  2017 .profile
+bandit6&#64;bandit:~$</pre>
+<p>This are the common hidden files in a users home directory. Let's widen our search radius to the whole file system with <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command:</p>
+<pre class="literal-block">bandit6&#64;bandit:~$ find / -user bandit7 -group bandit6 -size 33c
+find: ‘/run/lvm’: Permission denied
+find: ‘/run/screen/S-bandit33’: Permission denied
+find: ‘/run/screen/S-bandit13’: Permission denied
+...
+/var/lib/dpkg/info/bandit7.password
+...
+find: ‘/proc/1056/fd/5’: No such file or directory
+find: ‘/proc/1056/fdinfo/5’: No such file or directory
+find: ‘/boot/lost+found’: Permission denied</pre>
+<p>We can see one file named <cite>/var/lib/dpkg/info/bandit7.password</cite> that can be our desire file but first let's see the explanation of the <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command used to find the file. The man page for find or in the <a class="reference external" href="https://explainshell.com">explainshell.com</a> site of <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command can be used for this. We will always prefer the man page but just for a change and more ease of use we can use <a class="reference external" href="https://explainshell.com">explainshell.com</a>. Now if we go to the <a class="reference external" href="https://explainshell.com">explainshell.com</a> site and paste the <a class="reference external" href="https://explainshell.com/explain?cmd=find+%2F+-user+bandit7+-group+bandit6+-size+33c">find / -user bandit7 -group bandit6 -size 33c</a> command we see a nice segmented command with explanation with each segment. The <cite>-user</cite> flag finds file of a specific user name, the <cite>-group</cite> flag finds file of a specific group and the <cite>-size</cite> flag works exactly like we explained before in <a class="reference internal" href="#level-5">Level 5</a>.</p>
+<p>We can also check if the file matches our criteria by only using <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a>:</p>
+<pre class="literal-block">bandit6&#64;bandit:~$ ls -la /var/lib/dpkg/info/bandit7.password
+-rw-r----- 1 bandit7 bandit6 33 Oct 16  2018 /var/lib/dpkg/info/bandit7.password
+bandit6&#64;bandit:~$</pre>
+<p>As we can see the file is indeed <strong>owned by user bandit7</strong>, <strong>owned by group bandit6</strong> and <strong>33 bytes in size</strong>.</p>
+<p>See the password for Level L by:</p>
+<pre class="literal-block">bandit L&#64;bandit:~/inhere$ cat /var/lib/dpkg/info/bandit7.password</pre>
+<p>Now exit from the machine.</p>
+</div>
+<div class="section" id="level-7">
+<h1>Level 7</h1>
+<p>Entering the Level 7 machine using the password from previous level same as before:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit7&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>We can find the password in a file named <strong>data.txt</strong> next to the word <strong>millionth</strong> as per the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit8.html">level 7 goal instructions</a> Let's list all home directory file:</p>
+<pre class="literal-block">bandit7&#64;bandit:~$ ls
+data.txt
+bandit7&#64;bandit:~$</pre>
+<p>We can see the <cite>data.txt</cite> file in the home directory. Now, only if we had a tool that can search all the contents of a file and print the result. Lucky us! We have a tool named <a class="reference external" href="https://linux.die.net/man/1/grep">grep</a> that does exactly does as pre <a class="reference external" href="https://en.wikipedia.org/wiki/Grep">Wikipedia</a>. If we see the man page of the grep, in the synopsis we can see that the grep is general used like this:</p>
+<pre class="literal-block">grep [OPTIONS] PATTERN [FILE...]</pre>
+<p>So we need a pattern and one file. The word <cite>millionth</cite> can be our pattern and the file is obviously <cite>data.txt</cite>. Let's try that shall we?:</p>
+<pre class="literal-block">bandit7&#64;bandit:~$ grep millionth data.txt</pre>
+<p>The output of the command would show the <cite>millionth</cite> and the password side by side separated by tab. Let's exit from here so that we can continue to the next level.</p>
+</div>
+<div class="section" id="level-8">
+<h1>Level 8</h1>
+<p>As usual, entering the Level 8 with password previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit8&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The password is in the in the file <strong>data.txt</strong> and is <strong>the only line of text that occurs only once</strong>. More details in the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit9.html">level 8 page</a> Just like the <a class="reference internal" href="#level-8">Level 8</a> we can see the <cite>data.txt</cite> is in home directory. Now we need to sort all the files and find all the unique values with a count of how many time they have been repeated. Our password will have a count of 1. We need to use <a class="reference external" href="https://linux.die.net/man/1/sort">sort</a> and <a class="reference external" href="https://linux.die.net/man/1/uniq">uniq</a> commands to accomplish our task.:</p>
+<pre class="literal-block">bandit8&#64;bandit:~$ cat data.txt | sort | uniq -c</pre>
+<p>First we will <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> the <cite>data.txt</cite> file and we will <a class="reference external" href="https://www.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-4.html">pipe</a> the output to the <a class="reference external" href="https://linux.die.net/man/1/sort">sort</a> command which will sort the output then we will pass the sorted output to <a class="reference external" href="https://linux.die.net/man/1/uniq">uniq</a> command with <cite>-c</cite> flag that will show the count of the entry before the line.</p>
+<p>Now exit from the machine to go to the next level.</p>
+</div>
+<div class="section" id="level-9">
+<h1>Level 9</h1>
+<p>Let's <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> to Bandit server with password form level 8:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit9&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>As the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit10.html">level 9 instructions</a> says the password is in the file <strong>data.txt</strong> in one of the few <strong>human-readable strings</strong>, <strong>beginning with several ‘=’ characters</strong>. We can see the <strong>data.txt</strong> file in the home directory. Let's <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> file:</p>
+<pre class="literal-block">bandit9&#64;bandit:~$ cat data.txt</pre>
+<p>Wow that is a lot of unrecognized junk! Let's do a quick check what type of file it is:</p>
+<pre class="literal-block">bandit9&#64;bandit:~$ file data.txt
+data.txt: data
+bandit9&#64;bandit:~$</pre>
+<p>We see the junks because this is a data file. I haven't worked with data file or binary a lot but I know about <a class="reference external" href="https://linux.die.net/man/1/xxd">xxd</a> command which creates a hex dump of a given file. So let's try that and try to <a class="reference external" href="https://linux.die.net/man/1/grep">grep</a> <strong>===</strong> as we know password begins with several <cite>=</cite>:</p>
+<pre class="literal-block">bandit9&#64;bandit:~$ xxd data.txt | grep &quot;===&quot;
+00000460: 30b0 323d 3d3d 3d3d 3d3d 3d3d 3d20 7468  0.2========== th
+000014a0: 67a8 fcf3 4d26 54dc fbc0 f7c3 be3d 3d3d  g...M&amp;T......===
+000014b0: 3d3d 3d3d 3d3d 3d20 7061 7373 776f 7264  ======= password
+00001b40: c4cd 3d3d 3d3d 3d3d 3d3d 3d3d 2069 7361  ..========== isa
+00003f40: 3d3d 3d3d 3d3d 3d3d 2074 7275 4b4c 646a  ======== truKLdj
+bandit9&#64;bandit:~$</pre>
+<p>We can see the partial strings but not the complete one. At this point I don't know any tool that can improve the result so I searched for <a class="reference external" href="https://duckduckgo.com/?q=xxd+binary+file+and+grep+string">xxd binary file and grep string</a> and went to the <a class="reference external" href="https://stackoverflow.com/a/17168847/5350059">Stack Overflow answer</a> from the <a class="reference external" href="https://duck.co/ia">Instant Answer panel</a> in the side bar. After going through a few answer after I found this <a class="reference external" href="https://stackoverflow.com/a/6320787/5350059">answer</a> about a command named <a class="reference external" href="https://linux.die.net/man/1/strings">strings</a> and tried that:</p>
+<pre class="literal-block">bandit9&#64;bandit:~$ strings -ao data.txt | grep &quot;===&quot;</pre>
+<p>Yes! We got the password this time. Now that We have the password, let's get to know more about the <a class="reference external" href="https://linux.die.net/man/1/strings">strings</a> command. If we go to <a class="reference external" href="https://explainshell.com">explainshell.com</a> and paste the <a class="reference external" href="https://explainshell.com/explain?cmd=strings+-ao+data.txt">strings -ao data.txt</a> command. We see that the <a class="reference external" href="https://linux.die.net/man/1/strings">strings</a> command print the strings of all printable characters in files. The <cite>-a</cite> flag scans the whole file and the <cite>-o</cite> flag works like <cite>-t</cite>. If we check the man page of <a class="reference external" href="https://linux.die.net/man/1/strings">strings</a> command we see that the <cite>-t</cite> flag prints the offset within the file before each string. Now that we understand the command and have our password, let's exit from the machine.</p>
+</div>
+<div class="section" id="level-10">
+<h1>Level 10</h1>
+<p>Level 10 machine can be accessed with the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit10&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>Let's check out the instructions of <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit11.html">level 10 page</a>. The password as stored in a file <strong>data.txt</strong> as usual, but it contains <strong>base64 encoded data</strong>. The <cite>data.txt</cite> file is in the home directory same as previous levels. We know from the hint that the content of the file is base64 encoded. In Linux we already have a command named <a class="reference external" href="https://linux.die.net/man/1/base64">base64</a>. So how does it work? Let's use the <cite>--help</cite> flag that is available in almost all the Linux commands. If we use <cite>base64 --help</cite> it would give use all the functions of the <a class="reference external" href="https://linux.die.net/man/1/base64">base64</a> command but the notable one is the <cite>-d</cite> flag that is said to be used to <strong>decode data</strong>. So let's decode it.:</p>
+<pre class="literal-block">bandit10&#64;bandit:~$ base64 -d data.txt</pre>
+<p>We can to see the password for Level 11. Now we will exit from the machine go continue.</p>
+</div>
+<div class="section" id="level-11">
+<h1>Level 11</h1>
+<p>As usual enter Level 11 with password from Level 10:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit11&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The key to unlock Level 12 is in <strong>data.txt</strong> and <strong>all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</strong> as we see in the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit12.html">level 11 instructions page</a> This technique is a very common letter substitution cipher called <a class="reference external" href="https://en.wikipedia.org/wiki/ROT13">ROT13</a>. The <cite>data.txt</cite> file is already in the home directory so all we need to do is rotate letters by 13 positions. The <a class="reference external" href="https://linux.die.net/man/1/tr">tr</a> command can help us do that. The man page says it takes a set of characters and changes it into another set. So the lowercase letter <strong>a</strong> will be replaced by the letter that is after 13 positions after <strong>a</strong> that is <strong>n</strong>. Like that <strong>b</strong> would be <strong>o</strong>. But the cool thing about the <a class="reference external" href="https://linux.die.net/man/1/tr">tr</a> command is that we can also specify range of characters like <cite>[a-z]</cite> <cite>[n-m]</cite>. Let's try it out:</p>
+<pre class="literal-block">bandit11&#64;bandit:~$ cat data.txt | tr '[a-zA-Z]' '[n-mN-M]'
+tr: range-endpoints of 'n-m' are in reverse collating sequence order
+bandit11&#64;bandit:~$</pre>
+<p>This doesn't seem to work! That is because the <a class="reference external" href="https://linux.die.net/man/1/tr">tr</a> command goes through the range in ascending order and when it sees <cite>m</cite> after <cite>n</cite> it can't process it. To know more read <a class="reference external" href="https://stackoverflow.com/a/8425152/5350059">link1</a> and <a class="reference external" href="https://aweirdimagination.net/2015/03/01/reverse-sequence-for-tr">link2</a>.</p>
+<p>To see the password for Level 12:</p>
+<pre class="literal-block">bandit11&#64;bandit:~$ cat data.txt | tr '[a-zA-Z]' '[n-za-mN-ZA-M]</pre>
+<p>Which works because it breaks the range into <cite>n-z</cite> and the starts from <cite>a-m</cite>. Now that we have our password, exit from the machine.</p>
+</div>
+<div class="section" id="level-12">
+<h1>Level 12</h1>
+<p>We can began by doing <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> into Level 12 machine:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit12&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>Use the password from <a class="reference internal" href="#level-11">Level 11</a> when asked for. The password for next level is in the <strong>data.txt</strong> and <strong>a hexdump of a file that has been repeatedly compressed</strong>. After reading the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit13.html">level 12 instructions</a>, we get to learn that it would be useful to create a directory but as home directory is write protected we are suggested in the instruction to make it in the <cite>/tmp</cite> directory. Let's navigate to the <cite>/tmp</cite> directory and make a directory:</p>
+<pre class="literal-block">bandit12&#64;bandit:~$ cd /tmp/
+bandit12&#64;bandit:/tmp$ mkdir jonedoe12
+bandit12&#64;bandit:/tmp$</pre>
+<p>Now let's get into newly created <cite>jonedoe12</cite> directory and copy the <cite>data.txt</cite> file from home directory:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp$ cd jonedoe12
+bandit12&#64;bandit:/tmp/jonedoe12$ cp ~/data.txt .
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>At this point I tried using <a class="reference external" href="https://linux.die.net/man/1/xxd">xxd</a> command to see the hexdump of the file but get nothing. As the clue say it is a <strong>hexdump</strong> of a <strong>compressed</strong> file so I tried to figure out what type of compression was using in the file using <a class="reference external" href="https://linux.die.net/man/1/xxd">xxd</a> in the hexdump file. By going through the man page of he <a class="reference external" href="https://linux.die.net/man/1/xxd">xxd</a> command we see that it has a <cite>-r</cite> or <cite>-revert</cite> flag that reverts the hexdump to binary which would be helpful:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ xxd -r data.txt</pre>
+<p>We see a lot of garbage as binary. We need to save the output to a file to process it further.:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ xxd -r data.txt &gt;&gt; data.bin</pre>
+<p>The <cite>bin</cite> extension is for binary. Now we can check the file type by using the <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ file data.bin
+data.bin: gzip compressed data, was &quot;data2.bin&quot;, last modified: Tue Oct 16 12:00:23 2018, max compression, from Unix</pre>
+<p>We can see a lot of information among which the part <cite>gzip compressed data</cite> is important as it suggests that it is gzip compressed file. If we type <cite>man gzip</cite> we can see that <a class="reference external" href="https://linux.die.net/man/1/gzip">gzip</a> file exists. Let's keep reading! The <cite>-d</cite> flag seems to decompress gzip file, so we can try that:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ gzip -d data.bin
+gzip: data.bin: unknown suffix -- ignored
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>A quick search in the web with the error message <a class="reference external" href="https://superuser.com/a/544175/655587">gzip: unknown suffix -- ignored</a> reviled that <a class="reference external" href="https://linux.die.net/man/1/gzip">gzip</a> only works on <cite>.gz</cite> file extension. We can run the same command after copying the file with <a class="reference external" href="https://linux.die.net/man/1/cp">cp</a> and renaming it to <cite>data.gz</cite>:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ cp data.bin data.gz
+bandit12&#64;bandit:/tmp/jonedoe12$ gzip -d data.gz
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>Let's list all the files in the current directory:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ ls
+data  data.bin  data.txt
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>So the <cite>data.gz</cite> file is no more and we have a new <cite>data</cite> file. If we check the file type of the <cite>data</cite> file with <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command we see:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ file data
+data: bzip2 compressed data, block size = 900k
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>Again a compressed file but this time a <cite>bzip2 compressed data</cite>. The man page for <cite>bzip2</cite> reviles a <cite>-d</cite> flag that can decompress the file. For safe keeping we will make a copy of the file first just like last step and then run the decompression:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ cp data data.bzip2
+bandit12&#64;bandit:/tmp/jonedoe12$ bzip2 -d data.bzip2
+bzip2: Can't guess original name for data.bzip2 -- using data.bzip2.out
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>We see that <a class="reference external" href="https://linux.die.net/man/1/bzip2">bzip2</a> decompressed the file into <cite>data.bzip2.out</cite>. Now we will check the file type again:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ file data.bzip2.out
+data.bzip2.out: gzip compressed data, was &quot;data4.bin&quot;, last modified: Tue Oct 16 12:00:23 2018, max compression, from Unix
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>This time it is a <cite>gzip compressed data</cite> again. From previous step we know that we can decompress file with the <cite>-d</cite> flag. We will list the existing files, make a copy of the original file, decompress it, the list the files again to find the new decompressed file and finally run the <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command in the new file to see the type of the file.:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ ls
+data  data.bin  data.bzip2.out  data.txt
+bandit12&#64;bandit:/tmp/jonedoe12$ cp data.bzip2.out data.out.gz
+bandit12&#64;bandit:/tmp/jonedoe12$ gzip -d data.bzip2.out.gz
+bandit12&#64;bandit:/tmp/jonedoe12$ ls
+data  data.bin  data.bzip2.out  data.out  data.txt
+bandit12&#64;bandit:/tmp/jonedoe12$ file data.out
+data.out: POSIX tar archive (GNU)
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>This is a <cite>POSIX tar archive (GNU)</cite>. Ugh! This is getting tiresome layered compression. But patients is the key to success. We need to keep going. The man page for <a class="reference external" href="https://linux.die.net/man/1/tar">tar</a> say that to decompress a tar file we need to use the <cite>-x</cite> flag. We will follow the same steps as previous, list current files, copy the original file, decompress it, then list the files again and see file type by running <a class="reference external" href="https://linux.die.net/man/1/find">find</a> command in the new file:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ ls
+data  data.bin  data.bzip2.out  data.out  data.txt
+bandit12&#64;bandit:/tmp/jonedoe12$ cp data.out data.tar
+bandit12&#64;bandit:/tmp/jonedoe12$ tar x data.tar
+tar: Refusing to read archive contents from terminal (missing -f option?)
+tar: Error is not recoverable: exiting now</pre>
+<p>Let's use the <cite>-f</cite> flag for archive file and the <cite>-v</cite> flag for increased verbosity and continue with our procedure:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ tar xfv data.tar
+data5.bin
+bandit12&#64;bandit:/tmp/jonedoe12$ file data5.bin
+data5.bin: POSIX tar archive (GNU)</pre>
+<p>We get a <cite>POSIX tar archive (GNU)</cite> (I mean again!?). Same procedure for this one as well:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ ls
+data  data5.bin  data.bin  data.bzip2.out  data.out  data.tar  data.txt
+bandit12&#64;bandit:/tmp/jonedoe12$ cp data5.bin data5.tar
+bandit12&#64;bandit:/tmp/jonedoe12$ tar xfv data5.tar
+data6.bin
+bandit12&#64;bandit:/tmp/jonedoe12$ ls
+data  data5.bin  data5.tar  data6.bin  data.bin  data.bzip2.out  data.out  data.tar  data.txt
+bandit12&#64;bandit:/tmp/jonedoe12$ file data6.bin
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>Now we will change the file extension and decompress it again:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ cp data6.bin data6.bzip2
+bandit12&#64;bandit:/tmp/jonedoe12$ bzip2 -d data6.bzip2
+bzip2: Can't guess original name for data6.bzip2 -- using data6.bzip2.out
+bandit12&#64;bandit:/tmp/jonedoe12$
+bandit12&#64;bandit:/tmp/jonedoe12$ file data6.bzip2.out
+data6.bzip2.out: POSIX tar archive (GNU)
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>Decompressing the tar file:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ tar xvf data6.bzip2.out.tar
+data8.bin
+bandit12&#64;bandit:/tmp/jonedoe12$ file data8.bin
+data8.bin: gzip compressed data, was &quot;data9.bin&quot;, last modified: Tue Oct 16 12:00:23 2018, max compression, from Unix
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>Decompressing the gzip file:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ cp data8.bin data8.gz
+bandit12&#64;bandit:/tmp/jonedoe12$ gzip -d data8.gz
+bandit12&#64;bandit:/tmp/jonedoe12$ ls
+data  data5.bin  data5.tar  data6.bin  data6.bzip2.out  data6.bzip2.out.tar  data8  data8.bin  data.bin  data.bzip2.out  data.out  data.tar  data.txt
+bandit12&#64;bandit:/tmp/jonedoe12$ file data8
+data8: ASCII text
+bandit12&#64;bandit:/tmp/jonedoe12$</pre>
+<p>Finally we have an ASCII text!!! I am guessing the password is in this file. Let's see by:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ cat data8</pre>
+<p>Before we exit, it is considered good practice to clean up the file or directories we created to erase our tress of intrusion. We can do a lot of things to &quot;clean up&quot; our intrusion but for starters let's remove the files and directories we created:</p>
+<pre class="literal-block">bandit12&#64;bandit:/tmp/jonedoe12$ cd ..
+bandit12&#64;bandit:/tmp$ rm -rf jonedoe12</pre>
+<p>Now exit from the machine to continue.</p>
+</div>
+<div class="section" id="level-13">
+<h1>Level 13</h1>
+<p>Let's enter Level 13 machine and the password is one we obtained in the last level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit13&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The password for next level is in the file <strong>/etc/bandit_pass/bandit14</strong> and it can <strong>only be read by user bandit14</strong>. The problem is we will get the password for bandit14 in this level so how do we get it? The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit14.html">clue of level 13</a> also says that we have private SSH key. If we list the files in our how directory we can see the private SSH key file:</p>
+<pre class="literal-block">bandit13&#64;bandit:~$ ls
+sshkey.private
+bandit13&#64;bandit:~$</pre>
+<p>Let's see the man page of the <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> command to see how can we use it. The <cite>-i</cite> flag allows it to use private key and we know from the instructions that user is <cite>bandit14</cite> and <cite>localhost</cite> can be used as a host name:</p>
+<pre class="literal-block">bandit13&#64;bandit:~$ ssh -i sshkey.private bandit14&#64;localhost
+Could not create directory '/home/bandit13/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)?</pre>
+<p>We type <strong>yes</strong> and we should be logged in as <cite>bandit14</cite>. Now we can see the file in <cite>/etc/bandit_pass/bandit14</cite>:</p>
+<pre class="literal-block">bandit14&#64;bandit:~$ cat /etc/bandit_pass/bandit14</pre>
+<p>Now exit from the machine.</p>
+</div>
+<div class="section" id="level-14">
+<h1>Level 14</h1>
+<p>We can get into this level by 3 ways:</p>
+<ul>
+<li><p>We can continue our previous session where we <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a>-ed to become <cite>bandit14</cite> because it is in the same machine as Level 13.</p></li>
+<li><p>Use the password we got from the previous level and use it:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit14&#64;bandit.labs.overthewire.org -p 2220</pre>
+</li>
+<li><p>Or pulling the SSH private key to our local machine with <a class="reference external" href="https://linux.die.net/man/1/sftp">sftp</a> and using it to <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a>:</p>
+<pre class="literal-block">root&#64;bandit:~# sftp -P 2220 bandit13&#64;bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit13&#64;bandit.labs.overthewire.org's password:</pre>
+</li>
+</ul>
+<p>If we put the password for <cite>bandit13</cite> here and we should see:</p>
+<pre class="literal-block">root&#64;bandit:~# bandit13&#64;bandit.labs.overthewire.org's password:
+Connected to bandit.labs.overthewire.org.
+sftp&gt;</pre>
+<p><a class="reference external" href="https://linux.die.net/man/1/sftp">sftp</a> has a command <cite>get</cite> to that can be used to get a file from remote machine to local machine. So let's get the SSH private key with <cite>get</cite> and exit from <a class="reference external" href="https://linux.die.net/man/1/sftp">sftp</a>:</p>
+<pre class="literal-block">sftp&gt; get sshkey.private
+Fetching /home/bandit13/sshkey.private to sshkey.private
+/home/bandit13/sshkey.private                                                                                                         100% 1679     4.8KB/s   00:00
+sftp&gt; exit
+root&#64;bandit:~#</pre>
+<p>The last step is to use the SSH private key to log in to Level 14:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh -i sshkey.private bandit14&#64;bandit.labs.overthewire.org -p 2220
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;
+&#64;         WARNING: UNPROTECTED PRIVATE KEY FILE!          &#64;
+&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;&#64;
+Permissions 0640 for 'sshkey.private' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key &quot;sshkey.private&quot;: bad permissions
+bandit14&#64;bandit.labs.overthewire.org's password:</pre>
+<p>As we can see we get an permission error that is because it needs to be read-writable by the current user aka 600 permission:</p>
+<pre class="literal-block">root&#64;bandit:~# chmod 600 sshkey.private</pre>
+<p>Now we can ssh:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh -i sshkey.private bandit14&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The password for next level can be obtained if we submit the <strong>password of this level</strong> to port <strong>30000 on localhost</strong> as we see in the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit15.html">level 14 goal page</a>. We can use the <a class="reference external" href="https://linux.die.net/man/1/nc">nc</a> tool to connect to a port. After reading the man page we see that we can connect to a specific port like <cite>30000</cite> of a specific host like <cite>localhost</cite> like this:</p>
+<pre class="literal-block">bandit14&#64;bandit:~$ nc localhost 30000</pre>
+<p>Our courser should be seen stuck in the left most side which is actually waiting for our input. If we type or paste the password of this level we should get a <strong>Correct!</strong> message followed by a password string. Now exit from the machine to continue.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>try to do it with <cite>curl</cite> or maybe <cite>wget</cite>?</p>
+</div>
+</div>
+<div class="section" id="level-15">
+<h1>Level 15</h1>
+<p>As always we will start by entering the machine by using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit15&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The password for the next level will be <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>-ed back to us just like before if we submit the <strong>password of this level</strong> to port <strong>30001 on localhost</strong> which is using <strong>SSL encryption</strong> as per <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit16.html">level 15 instructions</a>. Can we use <a class="reference external" href="https://linux.die.net/man/1/nc">nc</a> to do that? Unfortunately <a class="reference external" href="https://linux.die.net/man/1/nc">nc</a> doesn't support ssl but if we check the instructions we see emphasized paragraph named <cite>Helpful note</cite> there is discussed what should we do if we get  “HEARTBEATING” and “Read R BLOCK” and suggests us to use <cite>-ign_eof</cite>. A quick search in the web reveales that it is a flag for <a class="reference external" href="https://linux.die.net/man/1/openssl">openssl</a>. The man page of <a class="reference external" href="https://linux.die.net/man/1/openssl">openssl</a> gives us the <a class="reference external" href="https://linux.die.net/man/1/s_client">s_client</a> flag which as you can see has it's own man page. On the man page of <a class="reference external" href="https://linux.die.net/man/1/s_client">s_client</a> the first option is <cite>-connect</cite> that takes a host and port. Let's try that:</p>
+<pre class="literal-block">bandit15&#64;bandit:~$ openssl s_client -connect localhost:30001
+CONNECTED(00000003)
+... a lot of output about ssl ...
+---</pre>
+<p>Here the courser is stuck, waiting for our input. If we give it the password of this level it would return <strong>Correct!</strong> followed by the <cite>password string</cite> then a line space and finally we should see a text <strong>closed</strong>. Now exit from the machine.</p>
+</div>
+<div class="section" id="level-16">
+<h1>Level 16</h1>
+<p>Let's begin by <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a>-ing into the Level 16 machine to search for next levels password:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit16&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>After reading the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit17.html">level 16 instructions</a> we can see that the password for next level if we enter <strong>this levels password</strong> to a <strong>localhost port in between 31000 and 32000</strong> and it <strong>usages SSL</strong> . 31000 to 32000 is 1000 port and scanning it would require a lot of time. Lucky for us we have <a class="reference external" href="https://linux.die.net/man/1/nmap">nmap</a> to help us. If we load the man page for <a class="reference external" href="https://linux.die.net/man/1/nmap">nmap</a> we would see it is huge so we can use <a class="reference external" href="https://linux.die.net/man/1/grep">grep</a> to help us with this. We need to see what the man page tells us about <cite>range</cite>:</p>
+<pre class="literal-block">man grep | grep range</pre>
+<p>We would see that <cite>-p</cite> flag can help us with that. Let see some examples on how to use <a class="reference external" href="https://linux.die.net/man/1/nmap">nmap</a>, we will use the <cite>-A</cite> flag that prints number of lines after the matching pattern:</p>
+<pre class="literal-block">man nmap | grep EXAMPLES -A 3</pre>
+<p>Now that we have seen some examples we get a general format to run <a class="reference external" href="https://linux.die.net/man/1/nmap">nmap</a> which is <cite>nmap -p port-range host</cite> and for our case it would be:</p>
+<pre class="literal-block">bandit16&#64;bandit:~$ nmap -p 31000-32000 localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2020-01-16 09:26 CET
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00023s latency).
+Not shown: 999 closed ports
+PORT      STATE SERVICE
+31518/tcp open  unknown
+31790/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds</pre>
+<p>We see two open ports. Last time we used <a class="reference external" href="https://linux.die.net/man/1/openssl">openssl</a>, this time we will use a improved version of <a class="reference external" href="https://linux.die.net/man/1/nc">nc</a> which is <a class="reference external" href="https://linux.die.net/man/1/ncat">ncat</a> which has a <cite>-ssl</cite> flag. Let's try <a class="reference external" href="https://linux.die.net/man/1/ncat">ncat</a> for first port <cite>31518</cite>:</p>
+<pre class="literal-block">bandit16&#64;bandit:~$ ncat --ssl localhost 31518</pre>
+<p>If we paste the password it <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>'s back the same thing which is not what we want. Let's try the next port, <cite>31790</cite>:</p>
+<pre class="literal-block">bandit16&#64;bandit:~$ ncat --ssl localhost 31790</pre>
+<p>If we paste the password this time it <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>'s <strong>Correct!</strong> followed by <strong>-----BEGIN RSA PRIVATE KEY-----</strong> and a lot of string and then ends with <strong>-----END RSA PRIVATE KEY-----</strong>. This seems like a private key. It could be the SSH private key for next level. Let's get out of this by pressing Ctrl + c. Now we can copy the key and exit from the machine. Now open a file named <cite>bandit17.key</cite>, paste the key and save that:</p>
+<pre class="literal-block">root&#64;bandit:~# vim bandit17.key</pre>
+<p>We have to change the permission of the file to access the next level:</p>
+<pre class="literal-block">root&#64;bandit:~# chmod 600 bandit17.key</pre>
+</div>
+<div class="section" id="level-17">
+<h1>Level 17</h1>
+<p>We will us the SSH private key from the previous level to get into Level 17:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh -i bandit17.key bandit17&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>There is two file in the home directory <strong>passwords.old</strong> and <strong>passwords.new</strong>. The password for next level is in <strong>passwords.new</strong> and it is the only line that is different from <strong>passwords.old</strong> according to the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit18.html">instructions of level 17</a>. We have a handy-dandy tool named <a class="reference external" href="https://linux.die.net/man/1/diff">diff</a> that <cite>compare files line by line</cite>. Let's use it:</p>
+<pre class="literal-block">bandit17&#64;bandit:~$ diff passwords.new passwords.old</pre>
+<p>We should see the difference between two file and the first string would be the password for next level.</p>
+<p>We can also get the password for this level:</p>
+<pre class="literal-block">bandit17&#64;bandit:~$ cat /etc/bandit_pass/bandit17</pre>
+<p>Now exit from the machine.</p>
+</div>
+<div class="section" id="level-18">
+<h1>Level 18</h1>
+<p>We will use the password from the previous level to <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> into this level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit18&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>But as soon as we enter the password we see the long banner which says:</p>
+<pre class="literal-block">Byebye !
+Connection to bandit.labs.overthewire.org closed.</pre>
+<p>And get are back to our local machine. If we see the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit19.html">instructions on level 18</a> we would see that the password in a <strong>readme in the home directory</strong> and our <strong>.bashrc to log us out when we log in with SSH</strong>. So we can SSH but can stay in the session. If we look closely in the <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> man page or the output of the <cite>ssh --help</cite> command we should see at the usage part, after all those flags and options we have a command option. Would it mean it would let us execute commands in the remote machine? Let's try to list the file in the remote machine with <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> with <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a>'s command option:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit18&#64;bandit.labs.overthewire.org -p 2220 ls
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18&#64;bandit.labs.overthewire.org's password:
+readme
+root&#64;bandit:~#</pre>
+<p>If we enter the password for this level we see that we can see one <cite>readme</cite> file as output. This could be the file with password! So let's <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> the file just like we listed the file:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit18&#64;bandit.labs.overthewire.org -p 2220 cat readme</pre>
+<p>This will reviled the password for next level. Time to exit the box or machine to move on to the next one.</p>
+</div>
+<div class="section" id="level-19">
+<h1>Level 19</h1>
+<p>Get inside the box with with <cite>ssh</cite> with last password form last level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit19&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit20.html">goal of level 19</a> is to is to obtain password for next level by using the <strong>setuid binary in the home directory</strong> form the usual place for password in <strong>/etc/bandit_pass</strong> directory. Let's see what we have in our home directory:</p>
+<pre class="literal-block">bandit19&#64;bandit:~$ ls
+bandit20-do
+bandit19&#64;bandit:~$ file bandit20-do
+bandit20-do: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8e941f24b8c5cd0af67b22b724c57e1ab92a92a1, not stripped
+bandit19&#64;bandit:~$</pre>
+<p>We see a we have one file named <cite>bandit20-do</cite> and our <a class="reference external" href="https://linux.die.net/man/1/file">file</a> command shows that it is a <cite>setuid ELF 32-bit LSB executable</cite> and ss the instruction also suggests let execute it without any argument:</p>
+<pre class="literal-block">bandit19&#64;bandit:~$ ./bandit20-do
+Run a command as another user.
+  Example: ./bandit20-do id
+bandit19&#64;bandit:~$</pre>
+<p>Cool! So we can use this to run any command as another user for this case as <cite>bandit20</cite> user I guess. This would definitely be useful.</p>
+<p>Now if we check out the <cite>/etc/bandit_pass</cite> directory we will see a lot's of file:</p>
+<pre class="literal-block">bandit19&#64;bandit:~$ ls /etc/bandit_pass/
+bandit0  bandit10  bandit12  bandit14  bandit16  bandit18  bandit2   bandit21  bandit23  bandit25  bandit27  bandit29  bandit30  bandit32  bandit4  bandit6  bandit8
+bandit1  bandit11  bandit13  bandit15  bandit17  bandit19  bandit20  bandit22  bandit24  bandit26  bandit28  bandit3   bandit31  bandit33  bandit5  bandit7  bandit9
+bandit19&#64;bandit:~$</pre>
+<p>So the password for next level should be one file <cite>bandit20</cite>. Let's check out it's contents:</p>
+<pre class="literal-block">bandit19&#64;bandit:~$ cat /etc/bandit_pass/bandit20
+cat: /etc/bandit_pass/bandit20: Permission denied
+bandit19&#64;bandit:~$</pre>
+<p>Alas! We, the user <cite>bandit19</cite> doesn't have access to this file but we have a tool that can solve this problem. Yes, it is the <cite>bandit20-do</cite> setuid <strong>binary executable</strong>. Let's use it to achieve our goal:</p>
+<pre class="literal-block">bandit19&#64;bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20</pre>
+<p>Now that we have the password string, we should exit from the box.</p>
+</div>
+<div class="section" id="level-20">
+<h1>Level 20</h1>
+<p>Entering the Level 20 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit20&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>If we go through the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit21.html">instructions of level 20</a>, we will see that here we have a <strong>setuid binary in the home directory</strong> that <strong>connects to localhost</strong> on a <strong>port that we will specify</strong>, in the next line it will <strong>read the password of this level</strong> and <strong>if matches it will return the password for next level</strong>. If we list home directory we should see a <cite>suconnect</cite> file which is <cite>setuid ELF 32-bit LSB executable</cite>:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ ls
+suconnect
+bandit20&#64;bandit:~$ file suconnect
+suconnect: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=74c0f6dc184e0412b6dc52e542782f43807268e1, not stripped
+bandit20&#64;bandit:~$</pre>
+<p>If we execute it with out any argument like the previous level we see:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ ./suconnect
+Usage: ./suconnect &lt;portnumber&gt;
+This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+bandit20&#64;bandit:~$</pre>
+<p>We have no port list or port range so we will use the <cite>-p</cite> flag of <a class="reference external" href="https://linux.die.net/man/1/nmap">nmap</a> to scan all port:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ nmap -p- localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2020-01-16 12:11 CET
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00017s latency).
+Not shown: 65525 closed ports
+PORT      STATE SERVICE
+22/tcp    open  ssh
+113/tcp   open  ident
+6013/tcp  open  x11
+30000/tcp open  ndmps
+30001/tcp open  pago-services1
+30002/tcp open  pago-services2
+30003/tcp open  amicon-fpsu-ra
+31518/tcp open  unknown
+31790/tcp open  unknown
+39063/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 2.69 seconds
+bandit20&#64;bandit:~$</pre>
+<p>We have a lots of open port but I would like to start from the bottom of the list because top of list has port like <cite>22</cite> <cite>113</cite> which runs well recognized services like <cite>SSH</cite> and <cite>Identification Protocol</cite>. So let's try with the last port <cite>39063</cite>:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ ./suconnect 39063
+Could not connect
+bandit20&#64;bandit:~$</pre>
+<p>No luck! If we try port <cite>31790</cite> we get a place to give input but after taking input it just stays stuck. We see the same for <cite>31518</cite>. In port <cite>30003</cite> we see a ourput:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ ./suconnect 30003
+Read: I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secr
+ERROR: This doesn't match the current password!
+bandit20&#64;bandit:~$</pre>
+<p>So maybe we have many ports in the machine that takes something like a password of current level and a secret and returns the password for next level. Let's keep digging. Port <cite>30002</cite> gives us something similar port <cite>30003</cite> and port <cite>30001</cite>, <cite>30000</cite> same as port <cite>31790</cite> and <cite>31518</cite>. I went on and tried all the ports even SSH at <cite>22</cite>. It all failed in some way or other. So I decided to read the instructions again which I did for couple of times but could not get anything. It was getting frustrating. Finally, I got my break when I read the <strong>Note</strong> that said &quot;Try connecting to your <strong>own</strong> network daemon&quot;. Can we do that? So for this to work we need one more <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> connection. We can use the <cite>-l</cite> flag of <a class="reference external" href="https://linux.die.net/man/1/nc">nc</a> to start a listener with <cite>-p</cite> flag to specify source port and <cite>-v</cite> flag for verbose mode in the first terminal:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ nc -lv -p 10101</pre>
+<p>From the second terminal we will connect to this port:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ ./suconnect 10101</pre>
+<p>We can see that the courser is waiting for input. Let's press Ctrl + c to exit. If we check our first terminal we should see that we have or shall we say had a connection:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ nc -lv -p 10101
+listening on [any] 10101 ...
+connect to [127.0.0.1] from localhost [127.0.0.1] 53372
+bandit20&#64;bandit:~$</pre>
+<p>Now we can see the password of next level by sending the password of <cite>bandit20</cite> to a port from terminal 1:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ cat /etc/bandit_pass/bandit20 | nc -lv 127.0.0.1 -p 10101
+listening on [any] 10101 ...</pre>
+<p>It is waiting and waiting for us to connect. Now if we go to terminal 2 and connect to port <cite>10101</cite> with our setuid binary:</p>
+<pre class="literal-block">bandit20&#64;bandit:~$ ./suconnect 10101
+Read: password_strings_of_bandit20
+Password matches, sending next password
+bandit20&#64;bandit:~$</pre>
+<p>In terminal 1 we should be able to see the password for next level.</p>
+</div>
+<div class="section" id="level-21">
+<h1>Level 21</h1>
+<p>Into the Level 21 machine we go, obviously with <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> and password from Level 20:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit21&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>As the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit22.html">web page of level 21</a> says, a program is running automatically at <strong>regular intervals from cron</strong> and we should take a <strong>look in /etc/cron.d/</strong>. To know more about cron we can take a look at the <a class="reference external" href="https://en.wikipedia.org/wiki/Cron">cron - Wikipedia</a> page. There we see that it comes from <cite>crontab</cite>. Now we have a command in Linux named <a class="reference external" href="https://linux.die.net/man/1/crontab">crontab</a> and the man page says the <cite>-l</cite> flag should show us the current <cite>crontab</cite>:</p>
+<pre class="literal-block">bandit21&#64;bandit:~$ crontab -l
+crontabs/bandit21/: fopen: Permission denied
+bandit21&#64;bandit:~$</pre>
+<p>Well we don't have permission. So let's see what we find in the <cite>/etc/cron.d/</cite> directory:</p>
+<pre class="literal-block">bandit21&#64;bandit:/etc/cron.d$ ls
+atop  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24
+bandit21&#64;bandit:/etc/cron.d$</pre>
+<p>We are in Level 21 machine so maybe the <cite>cronjob_bandit22</cite> could have something of value. Let's see the contains of file with <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>:</p>
+<pre class="literal-block">bandit21&#64;bandit:/etc/cron.d$ cat cronjob_bandit22
+&#64;reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+bandit21&#64;bandit:/etc/cron.d$</pre>
+<p>So we have two lines in <a class="reference external" href="https://linux.die.net/man/1/crontab">crontab</a>. Basically it has two part, the first one is a event or time and the second one is a command. For the first line the event is <strong>After rebooting</strong> and the command is running the <strong>bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null</strong> and for second line the event is <strong>At every minute.</strong> run the <strong>bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null</strong>  command. The explanation and details can be found in the <a class="reference external" href="https://linux.die.net/man/5/crontab">crontab(5)</a> man page or we can cheat a bit by using <a class="reference external" href="https://crontab.guru/">crontab guru</a> site.</p>
+<p>Now that we know that the <cite>/usr/bin/cronjob_bandit22.sh</cite> script is running <cite>every minute</cite>, time to take a closer look at it. First we will see the file permission and then the contents of the script:</p>
+<pre class="literal-block">bandit21&#64;bandit:/etc/cron.d$ ls -la /usr/bin/cronjob_bandit22.sh
+-rwxr-x--- 1 bandit22 bandit21 130 Oct 16  2018 /usr/bin/cronjob_bandit22.sh
+bandit21&#64;bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 &gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21&#64;bandit:/etc/cron.d$</pre>
+<p>So from the permission we can see that we <cite>bandit21</cite> user can only read and execute the script but can't write to it. From the content of the script we can see that it changes the permission of a file in the <cite>/tmp</cite> directory with <a class="reference external" href="https://linux.die.net/man/1/chmod">chmod</a> to give read-write permission to the user and read permission to the group and everyone. Then <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>-s the password of <cite>bandit22</cite> user's password to the file. So we don't have access to the password file of <cite>bandit22</cite> user saved on <cite>/etc/bandit_pass/bandit22</cite> nor we can modify the script to give it to us but we sure do have read access to the file in <cite>/tmp</cite> directory. We can to see the password for Level 22 by:</p>
+<pre class="literal-block">bandit21&#64;bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</pre>
+<p>Now exit from the machine.</p>
+</div>
+<div class="section" id="level-22">
+<h1>Level 22</h1>
+<p>Entering the Level 22 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit22&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The flag of this level is as same as the previous level where a program is running automatically at <strong>regular intervals from cron</strong> and we should take a <strong>look in /etc/cron.d/</strong> as per the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit23.html">instructions of level 22</a>. Just like before if we run <cite>crontab -l</cite> we get permission denied. We let's take a look at the <span class="docutils literal">/etc/cron.d/</span> directory:</p>
+<pre class="literal-block">bandit22&#64;bandit:~$ ls /etc/cron.d/
+atop  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24
+bandit22&#64;bandit:~$</pre>
+<p>Just like before we will see the content of the <cite>cronjob_bandit23</cite> file:</p>
+<pre class="literal-block">bandit22&#64;bandit:/etc/cron.d$ cat cronjob_bandit23
+&#64;reboot bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null
+bandit22&#64;bandit:/etc/cron.d$</pre>
+<p>It's same like <a class="reference internal" href="#level-22">Level 22</a>. Checking the file permission and contains of the script <cite>/usr/bin/cronjob_bandit23.sh</cite>:</p>
+<pre class="literal-block">bandit22&#64;bandit:/etc/cron.d$ ls -la /usr/bin/cronjob_bandit23.sh
+-rwxr-x--- 1 bandit23 bandit22 211 Oct 16  2018 /usr/bin/cronjob_bandit23.sh
+bandit22&#64;bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo &quot;Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget&quot;
+
+cat /etc/bandit_pass/$myname &gt; /tmp/$mytarget
+bandit22&#64;bandit:/etc/cron.d$</pre>
+<p>This one has the same permission as previous level except for one little change people of group <cite>bandit22</cite> can execute it which can be very helpful to debug the script. The contents of the script may seem a bit hard at the first look but let's read it line by line:</p>
+<ul class="simple">
+<li><p>The 1st line is the <a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">Shebang</a> that indicates that it is a <a class="reference external" href="https://www.gnu.org/software/bash/">bash script</a> file.</p></li>
+<li><p>The 3rd line executes the <cite>whoami</cite> command and saves it value to the <cite>myname</cite> variable.</p></li>
+<li><p>The 4th line concats the string <strong>&quot;I am user &quot;</strong> and the variable <strong>myname</strong> then <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>-s the string to <a class="reference external" href="https://linux.die.net/man/1/md5sum">md5sum</a> command via pipe. The <a class="reference external" href="https://linux.die.net/man/1/md5sum">md5sum</a> calculates the <a class="reference external" href="https://en.wikipedia.org/wiki/Md5sum">MD5 sum</a> of the <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>-ed string and pass to <a class="reference external" href="https://linux.die.net/man/1/cut">cut</a> command. The man page of <a class="reference external" href="https://linux.die.net/man/1/cut">cut</a> says that the <cite>-d</cite> flag helps <a class="reference external" href="https://linux.die.net/man/1/cut">cut</a> to divide a string by a given delimiter and <cite>-f</cite> flag selects a specified number. Finally the value is saved in the <cite>mytarget</cite> variable.</p></li>
+<li><p>The 6th line just echos a string saying that &quot;Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget&quot; which if the variables are replace with values of our current user, <cite>bandit22</cite>; would say: &quot;Copying passwordfile /etc/bandit_pass/bandit22 to /tmp/8169b67bd894ddbb4412f91573b38db3&quot;.</p></li>
+<li><p>The 8th line <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>-s the contents of the <cite>/etc/bandit_pass/$myname</cite> aka the password of a user to the file in <cite>/tmp</cite> directory with the file name saved in <cite>mytarget</cite> variable.</p></li>
+</ul>
+<p>We can see all this in action if we execute the script in debug mode of <a class="reference external" href="https://linux.die.net/man/1/bash">bash</a> with the <cite>-x</cite> flag.</p>
+<p>Now we can't write or modify the script. But if we can figure out the file name that will be saved in the <cite>/tmp</cite> directory we can get the password. We know the script will be executed as <cite>bandit23</cite> user so the <cite>myname</cite> variable will be <cite>bandit23</cite>. The easy way to do it is to take the existing script, copy to a place we have write access, change the permission bit with <a class="reference external" href="https://linux.die.net/man/1/chmod">chmod</a> and modify it to change to fit our need:</p>
+<pre class="literal-block">bandit22&#64;bandit:~$ mkdir -p /tmp/jonedoe22
+bandit22&#64;bandit:~$ cd /tmp/jonedoe22
+bandit22&#64;bandit:/tmp/jonedoe22$ cp /usr/bin/cronjob_bandit23.sh bandit23.sh
+bandit22&#64;bandit:/tmp/jonedoe22$ chmod 777 bandit23.sh
+bandit22&#64;bandit:/tmp/jonedoe22$ ls -la
+total 305928
+drwxr-sr-x 2 bandit22 root      4096 Jan 18 10:31 .
+drwxrws-wt 1 root     root 313204736 Jan 18 10:33 ..
+-rwxrwxrwx 1 bandit22 root       210 Jan 18 10:31 bandit23.sh
+bandit22&#64;bandit:/tmp/jonedoe22$</pre>
+<p>For the sake of simplicity we have given read-write-execute permission to user-group-everyone. Now let's modify the <cite>myname</cite> variable to set the value to be <cite>bandit23</cite> and execute it:</p>
+<pre class="literal-block">bandit22&#64;bandit:/tmp/jonedoe22$ ./bandit23.sh</pre>
+<p>We should see the output of the <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a> command on line 6 and an additional error saying that the access to file in <cite>/tmp</cite> directory is denied. Now if we take the file path and <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> it we should see the password for <a class="reference internal" href="#level-23">Level 23</a>. Let's do the clean up:</p>
+<pre class="literal-block">bandit22&#64;bandit:/tmp/jonedoe22$ cd ..
+bandit22&#64;bandit:/tmp$ rm -r jonedoe22
+bandit22&#64;bandit:/tmp$</pre>
+<p>Now let's exit from the machine.</p>
+</div>
+<div class="section" id="level-23">
+<h1>Level 23</h1>
+<p>Using the password from previous level, let's entering the Level 23 machine:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit23&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>Just like <a class="reference internal" href="#level-22">Level 22</a> the flag can obtained by exploiting a program running at <strong>regular intervals from cron</strong> via <cite>cron</cite> and we can check the files under <strong>/etc/
+cron.d/</strong> directory to see how it is running.:</p>
+<pre class="literal-block">bandit23&#64;bandit:/etc$ cd /etc/cron.d/
+bandit23&#64;bandit:/etc/cron.d$ ls
+atop  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24
+bandit23&#64;bandit:/etc/cron.d$ cat cronjob_bandit24
+&#64;reboot bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+bandit23&#64;bandit:/etc/cron.d$</pre>
+<p>We see the same things as before. Let's move on to check the file permission and contents of the script:</p>
+<pre class="literal-block">bandit23&#64;bandit:/etc/cron.d$ ls -la /usr/bin/cronjob_bandit24.sh
+-rwxr-x--- 1 bandit24 bandit23 253 Oct 16  2018 /usr/bin/cronjob_bandit24.sh
+bandit23&#64;bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit24.sh
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo &quot;Executing and deleting all scripts in /var/spool/$myname:&quot;
+for i in * .*;
+do
+        if [ &quot;$i&quot; != &quot;.&quot; -a &quot;$i&quot; != &quot;..&quot; ];
+        then
+        echo &quot;Handling $i&quot;
+        timeout -s 9 60 ./$i
+        rm -f ./$i
+        fi
+done
+
+
+bandit23&#64;bandit:/etc/cron.d$</pre>
+<p>So we have as we are in <cite>bandit23</cite> group we can read-execute the script. Let's read the file line-by-line to understand what is happening:</p>
+<ul class="simple">
+<li><p>The 1st line is the <a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">Shebang</a> that indicates that it is a <a class="reference external" href="https://www.gnu.org/software/bash/">bash script</a> file.</p></li>
+<li><p>The 3rd line executes the <cite>whoami</cite> command and saves it value to the <cite>myname</cite> variable.</p></li>
+<li><p>The 5th line changes directory with <a class="reference external" href="https://linux.die.net/man/1/cd">cd</a> to <cite>/var/spool/$myname</cite>.</p></li>
+<li><p>The 6th line <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>-s the line &quot;Executing and deleting all scripts in /var/spool/$myname:&quot;. That means we have some file in <cite>/var/spool/$myname</cite> which this scripts and the deletes them. If we resolve the <cite>myname</cite> variable to the user <cite>bandit24</cite> it would say &quot;Executing and deleting all scripts in /var/spool/bandit24&quot;.</p></li>
+<li><p>The 7th line starts a <a class="reference external" href="https://linux.die.net/man/1/for">for</a> loop that goes through all the files and directories in the <cite>/var/spool/$myname</cite> directory.</p></li>
+<li><p>The 9th line has an <a class="reference external" href="https://linux.die.net/man/3/if">if</a> condition that check if the file is not <strong>.</strong> and <strong>..</strong> then let's the program proceed.</p></li>
+<li><p>The 11th line <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>-s the line &quot;Handling $i&quot;  which should &quot;Handling some-script.sh&quot; if we resolve the variable <cite>i</cite> with a valid script name.</p></li>
+<li><p>The 12th line usages a command <a class="reference external" href="https://linux.die.net/man/1/timeout">timeout</a> with <cite>-s</cite> flag. If we load the man page for <a class="reference external" href="https://linux.die.net/man/1/timeout">timeout</a> command we would see in the description that it would start a command and kill it if the command is running after a mentioned time. The <cite>-s</cite> flag is used for specifying a signal on timeout. If we compare that to our command we would see that we are running a script from the directory and after 60 seconds we are sending signal 9 with the <cite>-s</cite> flag to kill the script.</p></li>
+<li><p>The 13th line removes the script with <a class="reference external" href="https://linux.die.net/man/1/rm">rm</a> command with <cite>-f</cite> flag that forces the process.</p></li>
+</ul>
+<p>Now as we can see the script itself is very simple that just executes all the scripts in the <cite>/var/spool/$myname</cite> directory in the case of <cite>bandit24</cite> it would be <cite>/var/spool/bandit24</cite>. We don't have any command that can help use to get use the password for user <cite>bandit24</cite>. If we see first <strong>Note</strong> in the instructions page we would see that it say's we need to <strong>create our own first shell-script</strong> and may be we can drop the script in the directory? Let's check the file permission of the <cite>/var/spool/bandit24</cite> directory:</p>
+<pre class="literal-block">bandit23&#64;bandit:~$ ls -la /var/spool/bandit24
+ls: cannot open directory '/var/spool/bandit24': Permission denied
+bandit23&#64;bandit:~$</pre>
+<p>So we don't have permission inside the <cite>/var/spool/bandit24</cite> directory but what permission does it have:</p>
+<pre class="literal-block">bandit23&#64;bandit:~$ ls -la /var/spool/
+total 1348
+drwxr-xr-x  5 root root        4096 Oct 16  2018 .
+drwxr-xr-x 11 root root        4096 Oct 16  2018 ..
+drwxrwx-wx  7 root bandit24 1359872 Jan 18 13:06 bandit24
+drwxr-xr-x  3 root root        4096 Oct 16  2018 cron
+lrwxrwxrwx  1 root root           7 Oct 16  2018 mail -&gt; ../mail
+drwx------  2 root root        4096 Jan 14  2018 rsyslog
+bandit23&#64;bandit:~$</pre>
+<p>We can see that <cite>root</cite> and <cite>bandit24</cite> user have read-write-execute permission but everyone has write-execute permission but just not the read permission. That's why we get permission denied when we tried to list all the file in <cite>/var/spool/bandit24</cite> directory. Now that we know that we have write access to the directory we can write our own script and put in on <cite>/var/spool/bandit24</cite> what will be execute by <cite>bandit24</cite> user via the script. This will also delete that script from the <cite>/var/spool/bandit24</cite> directory so we must keep a copy of the original shell. We can write a shell that will <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> the password of <cite>bandit24</cite> user in our read-writable directory. First let's create a directory in <cite>/tmp</cite> directory:</p>
+<pre class="literal-block">bandit23&#64;bandit:/var/spool$ mkdir -p /tmp/jonedoe23
+bandit23&#64;bandit:/var/spool$ cd /tmp/jonedoe23</pre>
+<p>Now we will write the script. We will reuse the script from <a class="reference internal" href="#level-21">Level 21</a>. The content is as follows:</p>
+<pre class="literal-block">bandit23&#64;bandit:/tmp/jonedoe23$ cat get-pass.sh
+#!/bin/bash
+touch /tmp/jonedoe23/bandit24_pass
+chmod 777 /tmp/jonedoe23/bandit24_pass
+cat /etc/bandit_pass/bandit24 &gt; /tmp/jonedoe23/bandit24_pass
+bandit23&#64;bandit:/tmp/jonedoe23$</pre>
+<p>We have a script name <cite>get-pass.sh</cite>. It creates a file named <cite>bandit24_pass</cite> in our read-writable directory <cite>/tmp/jonedoe23/</cite> changes the permission bit to <cite>777</cite> so that everyone has read-write-execute permission and <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>-s the password of <cite>/bandit24</cite> to the previously created file <cite>bandit24_pass</cite>. Now let's change the scripts file permission to be executable and copy it to <cite>/var/spool/bandit24/</cite>:</p>
+<pre class="literal-block">bandit23&#64;bandit:/tmp/jonedoe23$ chmod +x get-pass.sh
+bandit23&#64;bandit:/tmp/jonedoe23$ cp get-pass.sh /var/spool/bandit24/
+bandit23&#64;bandit:/tmp/jonedoe23$</pre>
+<p>We can check current time with the <a class="reference external" href="https://linux.die.net/man/1/date">date</a> command. Once a new minute has started the script will be executed and we will have able to see the password with:</p>
+<pre class="literal-block">bandit23&#64;bandit:/tmp/jonedoe23$ cat bandit24_pass</pre>
+<p>Little bit of clean up to remove the files and directories created:</p>
+<pre class="literal-block">bandit23&#64;bandit:/tmp/jonedoe23$ cd ..
+bandit23&#64;bandit:/tmp$ rm -r jonedoe23
+bandit23&#64;bandit:/tmp$</pre>
+<p>Now exit from the machine.</p>
+</div>
+<div class="section" id="level-24">
+<h1>Level 24</h1>
+<p>The Level 24 machine is accessible with password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit24&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit25.html">goal of level 24</a> it to get the password for <a class="reference internal" href="#level-25">Level 25</a> which can be will be provided to us if we connect to a daemon <strong>listening on port 30002</strong> which takes the <strong>password for bandit24</strong> and a <strong>secret numeric 4-digit pincode</strong>. Now as the instructions says there is no way to get the password <strong>except by trying all of the 10000 combinations aka brute-forcing</strong>. Doing this 10000 combination by hand would be a tiresome task. So we will write a script for this. But first check if we can connect to the daemon at port 30002 with <a class="reference external" href="https://linux.die.net/man/1/nc">nc</a>:</p>
+<pre class="literal-block">bandit24&#64;bandit:~$ nc localhost 30002
+I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+Timeout. Exiting.</pre>
+<p>It was waiting for a input but it exited with a timeout. Now let's create a directory in <cite>/tmp</cite> and create our script named <cite>bandit25-brute-force.sh</cite> with the following contents:</p>
+<pre class="literal-block">bandit24&#64;bandit:/tmp/jonedoe24$ cat bandit25-brute-force.sh
+#!/bin/bash
+
+BANDIT24_PASS=&quot;&quot;
+
+for PIN in {0..9}{0..9}{0..9}{0..9}
+do
+    echo &quot;$BANDIT24_PASS $PIN&quot;
+done | nc localhost 30002</pre>
+<p>Now the script is very very simple. As usual the first line contains <a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">Shebang</a> to indicate that is is a <a class="reference external" href="https://www.gnu.org/software/bash/">bash script</a> . The password for <cite>bandit24</cite> user will be saved in the <cite>BANDIT24_PASS</cite> variable in 3rd line. I have intentionally left it blank so make sure to put the password. The 5th line starts a for loop that will iterate first digit from 0 to 9 and so for the second, third and forth digit and save it in a variable named <cite>PIN</cite>. Next we are <a class="reference external" href="https://linux.die.net/man/1/echo">echo</a>-ing the value of <cite>BANDIT24_PASS</cite> variable followed by a space, then followed by the value of <cite>PIN</cite> variable. The loop ends with the <cite>done</cite> syntax and everything gets piped it to the <a class="reference external" href="https://linux.die.net/man/1/nc">nc</a> command.</p>
+<p>The important thing to notice here is that this script it very rudimentary because it has no way of knowing that if we are successful thus it would keep trying after the goal is complete. So we need to keep a close eye when it is trying the different pin. Let's make it executable first and then execute it:</p>
+<pre class="literal-block">bandit24&#64;bandit:/tmp/jonedoe24$ chmod +x bandit25-brute-force.sh
+bandit24&#64;bandit:/tmp/jonedoe24$ ./bandit25-brute-force.sh
+I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+... same error ...
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+Correct!</pre>
+<p>The next line will give use the password to go to next level. We will do the basic clean up and will exit the machine:</p>
+<pre class="literal-block">bandit24&#64;bandit:/tmp/jonedoe24$ cd ..
+bandit24&#64;bandit:/tmp$ rm -r jonedoe24
+bandit24&#64;bandit:/tmp$ exit</pre>
+</div>
+<div class="section" id="level-25">
+<h1>Level 25</h1>
+<p>Entering the Level 25 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit25&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit26.html">level 25 instructions</a> says that going to next level should be <strong>fairly easy</strong> but the <strong>default shell for bandit26 is not /bin/bash</strong>. We need to <strong>find out what it is, how it works and how to break out of it.</strong></p>
+<p>Alright then, let's see what we have in the home directory of <cite>bandit25</cite> user with <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a>:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ ls
+bandit26.sshkey
+bandit25&#64;bandit:~$</pre>
+<p>We have a SSH key for <cite>bandit26</cite>. Maybe that it what the <cite>fairly easy</cite> part was about. If we check the file type we will see it is a SSH private key:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ file bandit26.sshkey
+bandit26.sshkey: PEM RSA private key
+bandit25&#64;bandit:~$</pre>
+<p>Let's use it to <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> into <a class="reference internal" href="#level-26">Level 26</a>:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ ssh -i bandit26.sshkey bandit26&#64;localhost
+Could not create directory '/home/bandit25/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit25/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+Linux bandit 4.18.12 x86_64 GNU/Linux
+
+--- rest of the motd ---
+
+Connection to localhost closed.</pre>
+<p>So we can <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> into the machine but get kicked out because the <cite>default shell for bandit26 is not /bin/bash</cite>. The default shell for all users are saved in the <cite>/etc/passwd</cite> file. Let's <a class="reference external" href="https://linux.die.net/man/1/grep">grep</a> for <cite>bandit26</cite> user in the <cite>/etc/passwd</cite> file see it's shell:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ grep bandit26 /etc/passwd
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+bandit25&#64;bandit:~$</pre>
+<p>The last part with <cite>/usr/bin/showtext</cite> is the default shell for user <cite>bandit26</cite>. Generally, a shell is a binary executable file like <cite>bash</cite>. Let's check the file type of the shell:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ file /usr/bin/showtext
+/usr/bin/showtext: POSIX shell script, ASCII text executable
+bandit25&#64;bandit:~$</pre>
+<p>We can see that for <cite>showtext</cite> shell is a <cite>POSIX shell script, ASCII text executable</cite>. That means we can see the contains of the file with <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ cat /usr/bin/showtext
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+bandit25&#64;bandit:~$</pre>
+<p>If we check the script it is obvious form the <a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">Shebang</a> that it is a <a class="reference external" href="https://en.wikipedia.org/wiki/Bourne_shell">sh script</a>. The script <cite>export</cite> or <cite>set</cite>-'s the <cite>TERM</cite> environment variable to <cite>linux</cite> the shows us a text from the file saved in the home directory of user and named <cite>text.txt</cite>. Then it <a class="reference external" href="https://linux.die.net/man/3/exit">exit</a>-s with code 0. I don't see any way to move forward. How about we try to give it a different shell?</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ ssh -i bandit26.sshkey bandit26&#64;localhost /bin/sh
+Could not create directory '/home/bandit25/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit25/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+ls
+^Cbandit25&#64;bandit:~$</pre>
+<p>It just hangs there until <cite>Ctrl</cite> + <cite>c</cite> is pressed to exit. If we try the <cite>-T</cite> flag of <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> which <cite>Disable pseudo-terminal allocation</cite> gives the same result. For <cite>-t</cite> flag of the <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> command, which <cite>Force pseudo-terminal allocation</cite> we don't see the long <a class="reference external" href="https://en.wikipedia.org/wiki/Motd_(Unix)">motd</a>, just the <cite>bandit</cite> ascii art:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ ssh -t -i bandit26.sshkey bandit26&#64;localhost /bin/sh
+Could not create directory '/home/bandit25/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit25/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+  _                     _ _ _   ___   __
+ | |                   | (_) | |__ \ / /
+ | |__   __ _ _ __   __| |_| |_   ) / /_
+ | '_ \ / _` | '_ \ / _` | | __| / / '_ \
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/
+Connection to localhost closed.
+bandit25&#64;bandit:~$</pre>
+<p>So we are going back to analyzing our shell <cite>showtext</cite>. Let's see the contains of the script again:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ cat /usr/bin/showtext
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+bandit25&#64;bandit:~$</pre>
+<p>We have 3 things here: <cite>export</cite>, <a class="reference external" href="https://linux.die.net/man/1/more">more</a> and <a class="reference external" href="https://linux.die.net/man/3/exit">exit</a>. We see that <cite>export</cite> has no man page:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ man export
+No manual entry for export
+bandit25&#64;bandit:~$</pre>
+<p>But help is here to rescue:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ export --help
+export: export [-fn] [name[=value] ...] or export -p
+Set export attribute for shell variables.
+
+Marks each NAME for automatic export to the environment of subsequently
+executed commands.  If VALUE is supplied, assign VALUE before exporting.
+
+Options:
+  -f    refer to shell functions
+  -n    remove the export property from each NAME
+  -p    display a list of all exported variables and functions
+
+An argument of `--' disables further option processing.
+
+Exit Status:
+Returns success unless an invalid option is given or NAME is invalid.
+bandit25&#64;bandit:~$</pre>
+<p>We see the <cite>-f</cite> flag that can refer to shell functions but I am not knowledgeable enough. Moving into <a class="reference external" href="https://linux.die.net/man/1/more">more</a>. If we run <a class="reference external" href="https://linux.die.net/man/1/grep">grep</a> on the man page of <a class="reference external" href="https://linux.die.net/man/1/more">more</a> for &quot;command&quot;, we would see:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ man more | grep command
+        Options are also taken from the environment variable MORE (make sure to precede them with a dash (-)) but command-line options will override those.
+        Interactive commands for more are based on vi(1).  Some commands may be preceded by a decimal number, called k in the descriptions below.  In the  following
+                  h or ?    Help; display a summary of these commands.  If you forget all other commands, remember this one.
+                  !command or :!command
+                                        Execute command in a subshell.
+                  .         Repeat previous command.
+        The more command respects the following environment variables, if they exist:
+        VISUAL The editor the user prefers.  Invoked when command key v is pressed.
+        The more command appeared in 3.0BSD.  This man page documents more version 5.19 (Berkeley 6/29/88), which is currently in use in the Linux community.  Docu‐
+        The more command is part of the util-linux package and is available from Linux Kernel Archive ⟨ftp://ftp.kernel.org/pub/linux/utils/util-linux/⟩.
+bandit25&#64;bandit:~$</pre>
+<p>We see that we have an option to give interactive commands based on <a class="reference external" href="https://linux.die.net/man/1/vi">vi</a> and pressing <cite>v</cite> invokes the <a class="reference external" href="https://linux.die.net/man/1/vi">vi</a>. We let's try that. But wait how do we get into <a class="reference external" href="https://linux.die.net/man/1/more">more</a>-'s interactive mode? The only time <a class="reference external" href="https://linux.die.net/man/1/more">more</a> enters an interactive mode when it has more text then the screen size. So first we need to re-size our screen to make it very small so that no more then 5 lines are seen at a time. Then <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> into the <cite>bandit26</cite> account:</p>
+<pre class="literal-block">bandit25&#64;bandit:~$ ssh -i bandit26.sshkey bandit26&#64;localhost</pre>
+<p>When we type <cite>yes</cite> after a bit of <cite>motd</cite> we should see something like <cite>--More--(83%)</cite>. It would mean we are in interactive mode. Now let's active the <a class="reference external" href="https://linux.die.net/man/1/vi">vi</a> mode by pressing <cite>v</cite>. At least some success! Now how do we get the password for <cite>bandit26</cite> user? If we run <a class="reference external" href="https://linux.die.net/man/1/grep">grep</a> for command in the man page of <a class="reference external" href="https://linux.die.net/man/1/vi">vi</a> we see a lot of flag but they are <cite>flag</cite> that we can't use there. Let's check up on the web with <a class="reference external" href="https://duckduckgo.com/?q=see+the+content+of+a+file+while+in+vim">see the content of a file while in vim</a> and our trusty <cite>instant answer panel</cite> says that we can do that by pressing <cite>:</cite> and then typing <strong>r</strong> and the <strong>filename</strong>. We know that the password for user <cite>bandit26</cite> is in <strong>/etc/bandit_pass/bandit26</strong>. If we do <cite>:</cite> then type: <cite>r /etc/bandit_pass/bandit26</cite> we will see a warning with <strong>Warning: Changing a readonly file</strong> and lot of info about the file like owned by, file name, date etc. If we press <cite>q</cite> to exit we will see the password in the screen. Now exit from the machine.</p>
+</div>
+<div class="section" id="level-26">
+<h1>Level 26</h1>
+<p>It was very tough for me to get the password for previous level. Let's use it to entering the Level 26 machine:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit26&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>Oh no! We are still getting the same error that we got when we first tried to login into <a class="reference internal" href="#level-25">Level 25</a>. Though we have the password for this user, the default shell is same <cite>showtext</cite> which only works in re-sized screen via <a class="reference external" href="https://linux.die.net/man/1/vi">vi</a>. If we run <a class="reference external" href="https://linux.die.net/man/1/grep">grep</a> with <strong>shell</strong> in the man page of <a class="reference external" href="https://linux.die.net/man/1/vi">vi</a> we see there is a option to <strong>start shell commands</strong> but we can't see any more details. Maybe we can change the default shell of our <cite>bandit26</cite> user? If we search in the web with <a class="reference external" href="https://duckduckgo.com/?q=set+shell+variable+inside+vi">set shell variable inside vi</a> we land in a Stack Overflow thread were we see that it is possible to set the shell variable value by pressing <cite>:</cite> and typing <cite>set shell=/bin/bash</cite> and then we would press <cite>:</cite> and type <cite>shell</cite> to go to the <a class="reference external" href="https://linux.die.net/man/1/bash">bash</a> shell of user <cite>bandit26</cite>:</p>
+<pre class="literal-block">:shell
+bandit26&#64;bandit:~$</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit27.html">instructions for level 26</a> just says that &quot;Good job getting a shell! Now hurry and grab the password for bandit27!&quot; No clues! Let's see the files in the home directory with <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a>:</p>
+<pre class="literal-block">bandit26&#64;bandit:~$ ls
+bandit27-do  text.txt
+bandit26&#64;bandit:~$</pre>
+<p>So we have 2 files <cite>bandit27-do</cite> and <cite>text.txt</cite> file. The <cite>bandit27-do</cite> file seems interesting. If we check the file permission of the file with the <cite>-la</cite> flag of <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> command:</p>
+<pre class="literal-block">bandit26&#64;bandit:~$ ls -la bandit27-do
+-rwsr-x--- 1 bandit27 bandit26 7296 Oct 16  2018 bandit27-do
+bandit26&#64;bandit:~$</pre>
+<p>We can see that we are in the files group and group users have execution permission. Let's try to see the password of <cite>bandit27</cite> user from it's usual location <cite>/etc/bandit_pass/bandit27</cite>:</p>
+<pre class="literal-block">bandit26&#64;bandit:~$ ./bandit27-do cat  /etc/bandit_pass/bandit27</pre>
+<p>Well that was easy! We should be able to see the 33 character log string which is the flag for this level. Now we can exit from the machine.</p>
+</div>
+<div class="section" id="level-27">
+<h1>Level 27</h1>
+<p>Use the password from <a class="reference internal" href="#level-26">Level 26</a> to <a class="reference external" href="https://linux.die.net/man/1/ssh">ssh</a> into the machine:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit27&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>We can see in the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit28.html">level 27 web page</a> that we have a <strong>git repository at ssh://bandit27-git&#64;localhost/home/bandit27-git/repo</strong> the password for <strong>bandit27-git is the same as bandit27</strong>. We have to <strong>Clone the repository to find the password</strong>. So let's start by cloning the repository with <a class="reference external" href="https://linux.die.net/man/1/git">git</a>-s <a class="reference external" href="https://linux.die.net/man/1/git-clone">git-clone</a> command using the password of <cite>bandit27</cite> user. But to do that we need to create a directory in <cite>/tmp</cite> where we have read-write-execute access:</p>
+<pre class="literal-block">bandit27&#64;bandit:~$ mkdir -p /tmp/jonedoe27
+bandit27&#64;bandit:~$ cd /tmp/jonedoe27
+bandit27&#64;bandit:/tmp/jonedoe27$ git clone ssh://bandit27-git&#64;localhost/home/bandit27-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit27/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit27/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit27-git&#64;localhost's password:
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (3/3), done.
+bandit27&#64;bandit:/tmp/jonedoe27$</pre>
+<p>Now that we have the <cite>repo</cite> repository, let's take a look inside the directory to see what it has:</p>
+<pre class="literal-block">bandit27&#64;bandit:/tmp/jonedoe27$ ls repo/
+README
+bandit27&#64;bandit:/tmp/jonedoe27$</pre>
+<p>One <cite>README</cite> is all we got. Checking the file contains of the <cite>README</cite> file gives us the password for next level:</p>
+<pre class="literal-block">bandit27&#64;bandit:/tmp/jonedoe27$ cat repo/README</pre>
+<p>Now clean up the file for make it hard to detect our intrusion and exit the machine:</p>
+<pre class="literal-block">bandit27&#64;bandit:/tmp/jonedoe27$ cd ..
+bandit27&#64;bandit:/tmp$ rm -rf jonedoe27
+bandit27&#64;bandit:/tmp$ exit
+logout</pre>
+</div>
+<div class="section" id="level-28">
+<h1>Level 28</h1>
+<p>Entering the Level 28 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit28&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit29.html">goal for level 28</a> is same as before. Get the password for next level from a <strong>git repository at ssh://bandit28-git&#64;localhost/home/bandit28-git/repo</strong> and use <strong>bandit28's password when asked for bandit28-git's password as the are same</strong>. So we will follow the same path to create a directory in <cite>/tmp</cite> directory and clone the <cite>repo</cite> repository and list it's files and directories:</p>
+<pre class="literal-block">bandit28&#64;bandit:~$ mkdir -p /tmp/jonedoe28
+bandit28&#64;bandit:~$ cd /tmp/jonedoe28
+bandit28&#64;bandit:/tmp/jonedoe28$ git clone ssh://bandit28-git&#64;localhost/home/bandit28-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit28/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit28/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit28-git&#64;localhost's password:
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 9 (delta 2), reused 0 (delta 0)
+Receiving objects: 100% (9/9), done.
+Resolving deltas: 100% (2/2), done.
+bandit28&#64;bandit:/tmp/jonedoe28$ ls repo/
+README.md
+bandit28&#64;bandit:/tmp/jonedoe28$</pre>
+<p>Same as before we see a <cite>README.md</cite> file. If we see the contents of the file with <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>:</p>
+<pre class="literal-block">bandit28&#64;bandit:/tmp/jonedoe28$ cat repo/README.md
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+
+bandit28&#64;bandit:/tmp/jonedoe28$</pre>
+<p>That doesn't see to be a valid password. We know that <a class="reference external" href="https://linux.die.net/man/1/git">git</a> is version control system so maybe the password was there at some previous version but later changed? Let's change directory to enter the <cite>repo</cite> directory and run the <a class="reference external" href="https://linux.die.net/man/1/git-log">git-log</a> command to see the commited changes:</p>
+<pre class="literal-block">bandit28&#64;bandit:/tmp/jonedoe28$ cd repo/
+bandit28&#64;bandit:/tmp/jonedoe28/repo$ git log
+commit 073c27c130e6ee407e12faad1dd3848a110c4f95
+Author: Morla Porla &lt;morla&#64;overthewire.org&gt;
+Date:   Tue Oct 16 14:00:39 2018 +0200
+
+    fix info leak
+
+commit 186a1038cc54d1358d42d468cdc8e3cc28a93fcb
+Author: Morla Porla &lt;morla&#64;overthewire.org&gt;
+Date:   Tue Oct 16 14:00:39 2018 +0200
+
+    add missing data
+
+commit b67405defc6ef44210c53345fc953e6a21338cc7
+Author: Ben Dover &lt;noone&#64;overthewire.org&gt;
+Date:   Tue Oct 16 14:00:39 2018 +0200
+
+    initial commit of README.md
+bandit28&#64;bandit:/tmp/jonedoe28/repo$</pre>
+<p>So there we can see all the commits made in this repository and our initial guess was right. The password was there but it was removed with the last commit as it <strong>leaks info</strong>. Now we can go back to the version with password by using <cite>git-checkout</cite> command with the hash of the commit. The first 8 character of the hash is enough to identify it:</p>
+<pre class="literal-block">bandit28&#64;bandit:/tmp/jonedoe28/repo$ git checkout 186a1038
+Note: checking out '186a1038'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at 186a103... add missing data
+bandit28&#64;bandit:/tmp/jonedoe28/repo$</pre>
+<p>We see a bunch of message where basically <a class="reference external" href="https://linux.die.net/man/1/git">git</a> is complaining about going back to a version without creating a branch. At the last line it also says we are at <strong>186a103... add missing data</strong> commit. Now if we check the contents of the <cite>README.md</cite> file we should get the password for <a class="reference internal" href="#level-29">Level 29</a>:</p>
+<pre class="literal-block">bandit28&#64;bandit:/tmp/jonedoe28/repo$ cat README.md</pre>
+<p>Before we exit, we must remove work:</p>
+<pre class="literal-block">bandit28&#64;bandit:/tmp/jonedoe28/repo$ cd ../..
+bandit28&#64;bandit:/tmp$ rm -rf jonedoe28
+bandit28&#64;bandit:/tmp$ exit
+logout</pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Git is a bit complex and has a very stiff learning curve but once mastared it can be a very helpful tool. It is out of scope for us to discuss the tricks of git here. A good place to get started with git would be at the <a class="reference external" href="https://git-scm.com/">Official Website of Git</a>. I am also working on a <a class="reference external" href="git_cheat_sheet.html">Git Cheat Sheet</a>.</p>
+</div>
+</div>
+<div class="section" id="level-29">
+<h1>Level 29</h1>
+<p>Entering the Level 29 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit29&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>We have the same <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit30.html">goal for level 29</a> as we had in <a class="reference internal" href="#level-28">Level 28</a>. We have to get the password for next level from a <strong>git repository at ssh://bandit29-git&#64;localhost/home/bandit29-git/repo</strong> and use <strong>bandit29 and bandit29-git user has same password</strong>. So we will follow the same path to create a directory in <cite>/tmp</cite> directory and clone the <cite>repo</cite> repository, change directory to <cite>repo</cite> directory and list it's files and directories:</p>
+<pre class="literal-block">bandit29&#64;bandit:~$ mkdir -p /tmp/jonedoe29
+bandit29&#64;bandit:~$ cd /tmp/jonedoe29
+bandit29&#64;bandit:/tmp/jonedoe29$ git clone ssh://bandit29-git&#64;localhost/home/bandit29-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit29/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit29/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit29-git&#64;localhost's password:
+remote: Counting objects: 16, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 16 (delta 2), reused 0 (delta 0)
+Receiving objects: 100% (16/16), done.
+Resolving deltas: 100% (2/2), done.
+bandit29&#64;bandit:/tmp/jonedoe29$
+bandit29&#64;bandit:/tmp/jonedoe29$ cd repo/
+bandit29&#64;bandit:/tmp/jonedoe29/repo$ ls -la
+total 16
+drwxr-sr-x 3 bandit29 root 4096 Jan 21 13:19 .
+drwxr-sr-x 3 bandit29 root 4096 Jan 21 13:19 ..
+drwxr-sr-x 8 bandit29 root 4096 Jan 21 13:19 .git
+-rw-r--r-- 1 bandit29 root  131 Jan 21 13:19 README.md
+bandit29&#64;bandit:/tmp/jonedoe29/repo$</pre>
+<p>If we see the contents of the <cite>README.md</cite> file with <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a>:</p>
+<pre class="literal-block">bandit29&#64;bandit:/tmp/jonedoe29/repo$ cat README.md
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: &lt;no passwords in production!&gt;
+
+bandit29&#64;bandit:/tmp/jonedoe29/repo$</pre>
+<p>Again we see that in the place of password we have some sort of variable that say's &quot;no passwords in production!&quot;. Let's run <a class="reference external" href="https://linux.die.net/man/1/git-log">git-log</a> in the repository:</p>
+<pre class="literal-block">bandit29&#64;bandit:/tmp/jonedoe29/repo$ git log
+commit 84abedc104bbc0c65cb9eb74eb1d3057753e70f8
+Author: Ben Dover &lt;noone&#64;overthewire.org&gt;
+Date:   Tue Oct 16 14:00:41 2018 +0200
+
+    fix username
+
+commit 9b19e7d8c1aadf4edcc5b15ba8107329ad6c5650
+Author: Ben Dover &lt;noone&#64;overthewire.org&gt;
+Date:   Tue Oct 16 14:00:41 2018 +0200
+
+    initial commit of README.md
+    bandit29&#64;bandit:/tmp/jonedoe29/repo$</pre>
+<p>Hmm, so they fix <strong>username</strong> on the last commit!? I am not sure what that is. Let's check the difference between the <cite>fix username</cite> commit with commit id <cite>84abedc1</cite> and the <cite>initial commit of README.md</cite> with commit id <cite>9b19e7d8</cite>:</p>
+<pre class="literal-block">bandit29&#64;bandit:/tmp/jonedoe29/repo$ git diff 84abedc1 9b19e7d8
+diff --git a/README.md b/README.md
+index 1af21d3..2da2f39 100644
+--- a/README.md
++++ b/README.md
+&#64;&#64; -3,6 +3,6 &#64;&#64; Some notes for bandit30 of bandit.
+
+  ## credentials
+
+-- username: bandit30
++- username: bandit29
+  - password: &lt;no passwords in production!&gt;
+
+bandit29&#64;bandit:/tmp/jonedoe29/repo$</pre>
+<p>So previously the user name was <cite>bandit29</cite> now it is <cite>bandit30</cite>. Could be that the password for <cite>bandit29</cite> is same as <cite>bandit30</cite>? If we try that it doesn't work. Nor the passwords <cite>&lt;no passwords in production!&gt;</cite> and <cite>no passwords in production!</cite>. I got stuck here for some time. After sometime it came to mind that it also support branches. Maybe there is a branch that is not production and contains the password? Usually when we clone only <cite>master</cite> branch is created but the remote can have more branches. We can we use <cite>git branch --help</cite> command to see how to list remote branches. We find that <cite>-r</cite> flag list the remote tracking branches. Let's see what branches we have:</p>
+<pre class="literal-block">   bandit29&#64;bandit:/tmp/jonedoe29/repo$ git branch -r
+     origin/HEAD -&gt; origin/master
+     origin/dev
+     origin/master
+     origin/sploits-dev
+   bandit29&#64;bandit:/tmp/jonedoe29/repo$
+
+So we have 2 more branch `dev` and `sploits-dev` in our remote repository named `origin`. Let's checkout the `dev` with `git-checkout`_::
+
+   bandit29&#64;bandit:/tmp/jonedoe29/repo$ git checkout -b dev origin/dev
+   Branch dev set up to track remote branch dev from origin.
+   Switched to a new branch 'dev'
+   bandit29&#64;bandit:/tmp/jonedoe29/repo$</pre>
+<p>If we list the files and directories with <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a>:</p>
+<pre class="literal-block">bandit29&#64;bandit:/tmp/jonedoe29/repo$ ls
+code  README.md
+bandit29&#64;bandit:/tmp/jonedoe29/repo$</pre>
+<p>We see the <cite>README.md</cite> here. We can to see the password for Level 30 by:</p>
+<pre class="literal-block">bandit29&#64;bandit:/tmp/jonedoe29/repo$ cat README.md</pre>
+<p>We will exit from the machine, after the basic clean up:</p>
+<pre class="literal-block">bandit29&#64;bandit:/tmp/jonedoe29/repo$ cd ../..
+bandit29&#64;bandit:/tmp$ rm -rf jonedoe29
+bandit29&#64;bandit:/tmp$ exit
+logout</pre>
+</div>
+<div class="section" id="level-30">
+<h1>Level 30</h1>
+<p>We will enter Level 30 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit30&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit31.html">instructions of level 30</a> is just like before. Find the password from <strong>ssh://bandit30-git&#64;localhost/home/bandit30-git/repo git repository</strong> and use <strong>bandit30 and bandit30-git password interchangeable</strong>. We will proceed as before, create a directory in <cite>/tmp</cite>, clone the repository, enter the <cite>repo</cite> directory and list the files and directories:</p>
+<pre class="literal-block">bandit30&#64;bandit:/tmp/jonedoe30$ git clone ssh://bandit30-git&#64;localhost/home/bandit30-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit30/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit30/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit30-git&#64;localhost's password:
+remote: Counting objects: 4, done.
+remote: Total 4 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (4/4), done.
+bandit30&#64;bandit:/tmp/jonedoe30$ cd repo/
+bandit30&#64;bandit:/tmp/jonedoe30/repo$ ls
+README.md
+bandit30&#64;bandit:/tmp/jonedoe30$</pre>
+<p>Does the <cite>README.md</cite> contains something for us?:</p>
+<pre class="literal-block">bandit30&#64;bandit:/tmp/jonedoe30/repo$ cat README.md
+just an epmty file... muahaha
+bandit30&#64;bandit:/tmp/jonedoe30/repo$</pre>
+<p>No luck there! Let's get <a class="reference external" href="https://linux.die.net/man/1/git">git</a>-ing. First we will check the log:</p>
+<pre class="literal-block">bandit30&#64;bandit:/tmp/jonedoe30/repo$ git log
+commit 3aa4c239f729b07deb99a52f125893e162daac9e
+Author: Ben Dover &lt;noone&#64;overthewire.org&gt;
+Date:   Tue Oct 16 14:00:44 2018 +0200
+
+    initial commit of README.md
+bandit30&#64;bandit:/tmp/jonedoe30/repo$</pre>
+<p>Nothing much in the log as well. Listing the remote branches shows us:</p>
+<pre class="literal-block">bandit30&#64;bandit:/tmp/jonedoe30/repo$ git branch -r
+  origin/HEAD -&gt; origin/master
+  origin/master
+bandit30&#64;bandit:/tmp/jonedoe30/repo$</pre>
+<p>No extra branch in the remote repository as well. Git also supports tagging [see more at <a class="reference external" href="https://linux.die.net/man/1/git-tag">git-tag</a>]. If we give list all tags with the <cite>-l</cite> flag, we see:</p>
+<pre class="literal-block">bandit30&#64;bandit:/tmp/jonedoe30/repo$ git tag -l
+secret
+bandit30&#64;bandit:/tmp/jonedoe30/repo$</pre>
+<p>So we have a tag named <cite>secret</cite>, let's check it out to a branch named <cite>test</cite>:</p>
+<pre class="literal-block">bandit30&#64;bandit:/tmp/jonedoe30/repo$ git checkout -b test secret
+fatal: reference is not a tree: secret
+bandit30&#64;bandit:/tmp/jonedoe30/repo$</pre>
+<p>After reading some more man page on <cite>git-tag</cite>, I decided to take help from the <a class="reference external" href="https://git-scm.com/book/en/v2">Pro Git book</a>-'s <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">Tagging</a> section. There I saw the <cite>git-show</cite> command. Using the command on the <cite>secret</cite> tag like this <cite>git show secret</cite> returned a 33 character long string. This seems to be our flag. Let's move on!</p>
+<p>We will do some house keeping like good guys before we exit the machine:</p>
+<pre class="literal-block">bandit30&#64;bandit:/tmp/jonedoe30/repo$ cd ../..
+bandit30&#64;bandit:/tmp$ rm -rf jonedoe30
+bandit30&#64;bandit:/tmp$ exit
+logout</pre>
+</div>
+<div class="section" id="level-31">
+<h1>Level 31</h1>
+<p>Entering the Level 31 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit31&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit32.html">goal of level 31</a> is simple and same as before. Clone the repository at <strong>ssh://bandit31-git&#64;localhost/home/bandit31-git/repo</strong> use <strong>bandit31's password for bandit31-git user</strong>, use your <a class="reference external" href="https://linux.die.net/man/1/git">git</a> skill and find the password.</p>
+<p>We will start same as before by clone the repository, going into it and list it's contents:</p>
+<pre class="literal-block">bandit31&#64;bandit:~$ mkdir -p /tmp/jonedoe31
+bandit31&#64;bandit:~$ cd /tmp/jonedoe31
+bandit31&#64;bandit:/tmp/jonedoe31$ git clone ssh://bandit31-git&#64;localhost/home/bandit31-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit31/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit31/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit31-git&#64;localhost's password:
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (4/4), done.
+bandit31&#64;bandit:/tmp/jonedoe31$ cd repo/
+bandit31&#64;bandit:/tmp/jonedoe31/repo$ ls
+README.md
+bandit31&#64;bandit:/tmp/jonedoe31/repo$</pre>
+<p>Just like before we have a handy-dandy <cite>README.md</cite>. What is inside it? Wait no more:</p>
+<pre class="literal-block">bandit31&#64;bandit:/tmp/jonedoe31/repo$ cat README.md
+This time your task is to push a file to the remote repository.
+
+Details:
+    File name: key.txt
+    Content: 'May I come in?'
+    Branch: master
+
+bandit31&#64;bandit:/tmp/jonedoe31/repo$</pre>
+<p>This time we have task description in the <cite>README.md</cite>, where we have to push a file named <strong>key.txt</strong> with the content <strong>May I come in?</strong> to the <strong>master</strong> branch of the remote repository. This seemingly easy task can be very problematic for the <a class="reference external" href="https://linux.die.net/man/1/git">git</a> uninitiated. If we just know the basics of <a class="reference external" href="https://linux.die.net/man/1/git">git</a>, we would know that this is a simple task of creating the file adding it with <a class="reference external" href="https://linux.die.net/man/1/git-add">git-add</a>, commiting with <a class="reference external" href="https://linux.die.net/man/1/git-commit">git-commit</a> and pushing to remote with <a class="reference external" href="https://linux.die.net/man/1/git-push">git-push</a>. Let's do that step by step:</p>
+<pre class="literal-block">bandit31&#64;bandit:/tmp/jonedoe31/repo$ echo May I come in? &gt;&gt; key.txt
+bandit31&#64;bandit:/tmp/jonedoe31/repo$ git add key.txt
+The following paths are ignored by one of your .gitignore files:
+key.txt
+Use -f if you really want to add them.
+bandit31&#64;bandit:/tmp/jonedoe31/repo$</pre>
+<p>What now? So it seems that the <cite>key.txt</cite> in been added to the <a class="reference external" href="https://linux.die.net/man/5/gitignore">gitignore</a> file. <a class="reference external" href="https://linux.die.net/man/1/git">Git</a>, Our dear friend, is suggesting us that we can use the <cite>-f</cite> flag to for <a class="reference external" href="https://linux.die.net/man/1/git">git</a> to add the file. We will do that and continue with the steps:</p>
+<pre class="literal-block">bandit31&#64;bandit:/tmp/jonedoe31/repo$ man gitignore
+bandit31&#64;bandit:/tmp/jonedoe31/repo$ git add -f key.txt
+bandit31&#64;bandit:/tmp/jonedoe31/repo$ git commit -m &quot;added key.txt file&quot;
+[master 8a337d7] added key.txt file
+ 1 file changed, 1 insertion(+)
+  create mode 100644 key.txt
+bandit31&#64;bandit:/tmp/jonedoe31/repo$ git push</pre>
+<p>Once we give it the password of <cite>bandit31</cite> it will try to push the changes and will fail. But if we see the log of the <a class="reference external" href="https://linux.die.net/man/1/git-push">git-push</a> command we can see that we have the password for Level 32 by. We will do some house keeping before exiting:</p>
+<pre class="literal-block">bandit31&#64;bandit:/tmp/jonedoe31/repo$ cd ../..
+bandit31&#64;bandit:/tmp$ rm -rf jonedoe31
+bandit31&#64;bandit:/tmp$ exit
+logout</pre>
+</div>
+<div class="section" id="level-32">
+<h1>Level 32</h1>
+<p>Using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit32&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>This time we see there is something different, at the end of the <a class="reference external" href="https://en.wikipedia.org/wiki/Motd_(Unix)">motd</a> we see this:</p>
+<pre class="literal-block">WELCOME TO THE UPPERCASE SHELL
+&gt;&gt;</pre>
+<p>It is not our default shell. The <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit33.html">hint for level 32</a> just say's <strong>its time for another escape</strong>. Let's see what we have in the home directory shall we:</p>
+<pre class="literal-block">WELCOME TO THE UPPERCASE SHELL
+&gt;&gt; ls
+sh: 1: LS: not found
+&gt;&gt;</pre>
+<p>Oh well, no it becomes more clear. <strong>THE UPPERCASE SHELL</strong> transforms every command to uppercase and we need to <strong>escape</strong> it. What if we give the command in upper case? Would it transform it to lower case?:</p>
+<pre class="literal-block">&gt;&gt; LS
+sh: 1: LS: not found
+&gt;&gt;</pre>
+<p>That doesn't work! What about numbers?:</p>
+<pre class="literal-block">&gt;&gt; 0
+sh: 1: 0: not found
+&gt;&gt; 1
+sh: 1: 1: not found
+&gt;&gt;</pre>
+<p>We it seems it is not changes the numbers. From all this errors it is clear to us that it usages the <a class="reference external" href="https://linux.die.net/man/1/sh">sh</a> shell. Let's check the man page for it. Now as there is now clue left for us, after searching the man page, scratching head for a very very long time we would come across the <cite>Special Parameters</cite> section where we would see special characters like <cite>&#64;</cite> that expands to positional parameters or <cite>#</cite> that expands to number of positional parameters and then <cite>$</cite> that gives use the PID of invoked shell and <cite>0</cite> expands to the name of the shell or shell script. We have seen numbers before, haven't we? Like in <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> it gives error that <strong>sh: 1: LS: not found</strong> so <a class="reference external" href="https://linux.die.net/man/1/ls">ls</a> is taken as argument 1 so let's try to invoke shell with the script name:</p>
+<pre class="literal-block">&gt;&gt; $0
+$</pre>
+<p>Hmm, can we try to run <cite>/bin/bash</cite> to get the <a class="reference external" href="https://linux.die.net/man/1/bash">bash</a> shell?:</p>
+<pre class="literal-block">$ /bin/bash
+bandit33&#64;bandit:~$</pre>
+<p>Yes! At last we are inside a <a class="reference external" href="https://linux.die.net/man/1/bash">bash</a> shell. We can to see the password for Level 33 with:</p>
+<pre class="literal-block">bandit33&#64;bandit:~$ cat /etc/bandit_pass/bandit33</pre>
+<p>This will give us a 33 character long string which is the flag of this level. Now exit from the machine.</p>
+</div>
+<div class="section" id="level-33">
+<h1>Level 33</h1>
+<p>Entering the Level 33 machine using the password from previous level:</p>
+<pre class="literal-block">root&#64;bandit:~# ssh bandit33&#64;bandit.labs.overthewire.org -p 2220</pre>
+<p>If we check the web <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit34.html">page of level 33</a> it says that <strong>At this moment, level 34 does not exist yet.</strong>. Let's see what we have in the home directory:</p>
+<pre class="literal-block">bandit33&#64;bandit:~$ ls
+README.txt
+bandit33&#64;bandit:~$</pre>
+<p>We see a <cite>README.txt</cite> file. If we <a class="reference external" href="https://linux.die.net/man/1/cat">cat</a> the file, we see that:</p>
+<pre class="literal-block">bandit33&#64;bandit:~$ cat README.txt
+Congratulations on solving the last level of this game!
+
+At this moment, there are no more levels to play in this game. However, we are constantly working
+on new levels and will most likely expand this game with more levels soon.
+Keep an eye out for an announcement on our usual communication channels!
+In the meantime, you could play some of our other wargames.
+
+If you have an idea for an awesome new level, please let us know!
+bandit33&#64;bandit:~$</pre>
+<p>We see the message of compilation for Bandit game! Hooray!</p>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://overthewire.org/wargames/bandit/">Bandit: OverTheWire</a></p></li>
+</ul>
+<!-- Loots!!
+bandit0:bandit0
+bandit1:boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+bandit2:CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+bandit3:UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+bandit4:pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+bandit5:koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+bandit6:DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+bandit7:HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+bandit8:cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+bandit9:UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+bandit10:truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+bandit11:IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+bandit12:5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+bandit13:8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+bandit14:4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+bandit15:BfMYroe26WYalil77FoDi9qh59eK5xNr
+bandit16:cluFn7wTiGryunymYOu4RcffSxQluehd
+bandit17:xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+bandit18:kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+bandit19:IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+bandit20:GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+bandit21:gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+bandit22:Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+bandit23:jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+bandit24:UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+bandit25:uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+bandit26:5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+bandit27:3ba3118a22e93127a4ed485be72ef5ea
+bandit28:0ef186ac70e04ea33b4c1853d2526fa2
+bandit29:bbc96594b4e001778eee9975372716b2
+bandit30:5b90576bedb2cc04c86a9e924ce42faf
+bandit31:47e603bb428404d265f59c42920d81e5
+bandit32:56a9bf19c63d650ce78e6ec0354ee45e
+bandit33:c9c3199ddf4121b10cf581a98d51caee -->
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p><a class="reference external" href="/source/blogs/bandit_walkthrough.rst">View document source</a>.
+Generated on: 2020-01-26 14:05 UTC.
+</p>
+
+</div>
+</body>
+</html>
