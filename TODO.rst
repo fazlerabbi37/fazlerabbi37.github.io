@@ -26,7 +26,8 @@ TODO
 
 .. note::
     hackersploit solves
-    file of human redable:
+
+    L4:
     find . - type f | xargs file
 
     L7:
@@ -46,11 +47,22 @@ TODO
     ncat -ssl localhost port
 
 	L19:
-	ssh -t bandit18@address -p 2220 /bin/sh
+	change shell
+    ssh -t bandit18@address -p 2220 /bin/sh
 	alt idea
 	get the bashrc file to see if we can change file from with ssh.
 
-	
+    L24:
+    use {0000..9999} in loop range
+
+    L25:
+    :e /etc/bandit_pass/bandit26
+
+    L31:
+    checked the contains of .gitignore file
+    deleted the .gitignore file
+
+
  
 
 ---------------------------------------------------------------------
