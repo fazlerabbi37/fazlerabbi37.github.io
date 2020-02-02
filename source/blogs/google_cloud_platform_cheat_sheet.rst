@@ -21,11 +21,11 @@ For Ubuntu we can use `apt` [1]_::
 
 Or we can use Docker [2]_::
 
-    docker pull gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+    sudo docker pull gcr.io/google.com/cloudsdktool/cloud-sdk:latest
 
 To run like normal tool instead of using docker run, make an alias like::
 
-    alias gcloud_docker='docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud $@'
+    alias gcloud_docker='sudo docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud $@'
 
 See here for more `Installation options <https://cloud.google.com/sdk/install#installation_options>`_.
 
@@ -59,11 +59,11 @@ connect with ssh
 ````````````````
 to connect with ssh first add ssh key with `gcloud` [3]_::
 
-    gcloud compute --project "$PROJECT" ssh --zone "$ZONE" "$INSTANCE-NAME"
+    gcloud compute --project "$PROJECT" ssh --zone "$ZONE" "$INSTANCE_NAME"
 
 after that we can login with::
 
-    ssh $PUBLIC-IP
+    ssh $PUBLIC_IP
 
 If we forget this command, we don't need to worry as it is available in the drop down list located beside the `SSH` button on the `VM instances <https://console.cloud.google.com/compute/instances>`_ page.
 
@@ -79,34 +79,34 @@ push a docker image
 ```````````````````
 to push a docker image, we need to tag an image [4]_::
 
-    docker tag $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE:$TAG
+    sudo docker tag $SOURCE_IMAGE $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
 
-$HOSTNAME could be:
+`$HOSTNAME` could be:
 
 - gcr.io
 - us.gcr.io
 - eu.gcr.io
 - asia.gcr.io
 
-choose the one closest to you. Now push the image::
+Choose the one closest to you. Now push the image::
 
-    docker push $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE:$TAG
+    sudo docker push $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
 
 
 pull a docker image
 ```````````````````
-to pull a docker image we need to configure our docker auth first [5]_::
+To pull a docker image we need to configure our docker auth first [5]_::
 
     gcloud auth configure-docker
 
 
 then the pull is done usually [6]_::
 
-    docker pull $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE:$TAG
+    sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
 
 OR::
 
-    docker pull $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE@$IMAGE_DIGEST
+    sudo docker pull $HOSTNAME/$PROJECT-ID/$IMAGE@$IMAGE_DIGEST
 
 
 
