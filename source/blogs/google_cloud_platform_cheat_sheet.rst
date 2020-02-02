@@ -106,7 +106,7 @@ then the pull is done usually [6]_::
 
 OR::
 
-    sudo docker pull $HOSTNAME/$PROJECT-ID/$IMAGE@$IMAGE_DIGEST
+    sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE@$IMAGE_DIGEST
 
 
 
