@@ -18,7 +18,7 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
 
 
-	`Google Cloud Platform Cheat Sheet <blogs/gcp_cheat_sheet.html>`_
+	`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
 
 
 	`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
@@ -31,6 +31,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: Recently Updated Blogs
 
+	`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
+
+
 	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
 
 
@@ -41,9 +44,6 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 
 	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
-
-
-	`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
 
 
 
@@ -170,14 +170,6 @@ Playing around with fdroidcl; a `F-Droid <https://f-droid.org/>`_ desktop client
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Google Cloud Platform Cheat Sheet <blogs/gcp_cheat_sheet.html>`_
-.................................................................
-Created on: 2019-12-05
-
-A quick reference to Google Cloud Platform.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 `Git Cheat Sheet <blogs/git_cheat_sheet.html>`_
 ...............................................
 Created on: 2019-03-19
@@ -208,6 +200,14 @@ Created on: 2018-08-16
 
 Converting Google calendar to ical format.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
+...................................................................................
+Created on: 2019-12-05
+
+A quick reference to Google Cloud Platform.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Inside a docx file <blogs/inside_a_docx_file.html>`_
