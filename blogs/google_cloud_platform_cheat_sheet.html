@@ -606,9 +606,9 @@ sudo apt-get install apt-transport-https ca-certificates gnupg
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 sudo apt-get update &amp;&amp; sudo apt-get install google-cloud-sdk</pre>
 <p>Or we can use Docker <a class="footnote-reference brackets" href="#id8" id="id2">2</a>:</p>
-<pre class="literal-block">docker pull gcr.io/google.com/cloudsdktool/cloud-sdk:latest</pre>
+<pre class="literal-block">sudo docker pull gcr.io/google.com/cloudsdktool/cloud-sdk:latest</pre>
 <p>To run like normal tool instead of using docker run, make an alias like:</p>
-<pre class="literal-block">alias gcloud_docker='docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud $&#64;'</pre>
+<pre class="literal-block">alias gcloud_docker='sudo docker run gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud $&#64;'</pre>
 <p>See here for more <a class="reference external" href="https://cloud.google.com/sdk/install#installation_options">Installation options</a>.</p>
 </div>
 <div class="section" id="start-using-the-gcloud-tool">
@@ -631,9 +631,9 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 <div class="section" id="connect-with-ssh">
 <h2>connect with ssh</h2>
 <p>to connect with ssh first add ssh key with <cite>gcloud</cite> <a class="footnote-reference brackets" href="#id9" id="id3">3</a>:</p>
-<pre class="literal-block">gcloud compute --project &quot;$PROJECT&quot; ssh --zone &quot;$ZONE&quot; &quot;$INSTANCE-NAME&quot;</pre>
+<pre class="literal-block">gcloud compute --project &quot;$PROJECT&quot; ssh --zone &quot;$ZONE&quot; &quot;$INSTANCE_NAME&quot;</pre>
 <p>after that we can login with:</p>
-<pre class="literal-block">ssh $PUBLIC-IP</pre>
+<pre class="literal-block">ssh $PUBLIC_IP</pre>
 <p>If we forget this command, we don't need to worry as it is available in the drop down list located beside the <cite>SSH</cite> button on the <a class="reference external" href="https://console.cloud.google.com/compute/instances">VM instances</a> page.</p>
 </div>
 </div>
@@ -642,25 +642,25 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 <div class="section" id="push-a-docker-image">
 <h2>push a docker image</h2>
 <p>to push a docker image, we need to tag an image <a class="footnote-reference brackets" href="#id10" id="id4">4</a>:</p>
-<pre class="literal-block">docker tag $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE:$TAG</pre>
-<p>$HOSTNAME could be:</p>
+<pre class="literal-block">sudo docker tag $SOURCE_IMAGE $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
+<p><cite>$HOSTNAME</cite> could be:</p>
 <ul class="simple">
 <li><p>gcr.io</p></li>
 <li><p>us.gcr.io</p></li>
 <li><p>eu.gcr.io</p></li>
 <li><p>asia.gcr.io</p></li>
 </ul>
-<p>choose the one closest to you. Now push the image:</p>
-<pre class="literal-block">docker push $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE:$TAG</pre>
+<p>Choose the one closest to you. Now push the image:</p>
+<pre class="literal-block">sudo docker push $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
 </div>
 <div class="section" id="pull-a-docker-image">
 <h2>pull a docker image</h2>
-<p>to pull a docker image we need to configure our docker auth first <a class="footnote-reference brackets" href="#id11" id="id5">5</a>:</p>
+<p>To pull a docker image we need to configure our docker auth first <a class="footnote-reference brackets" href="#id11" id="id5">5</a>:</p>
 <pre class="literal-block">gcloud auth configure-docker</pre>
 <p>then the pull is done usually <a class="footnote-reference brackets" href="#id12" id="id6">6</a>:</p>
-<pre class="literal-block">docker pull $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE:$TAG</pre>
+<pre class="literal-block">sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
 <p>OR:</p>
-<pre class="literal-block">docker pull $SOURCE_IMAGE $HOSTNAME/$PROJECT-ID/$IMAGE&#64;$IMAGE_DIGEST</pre>
+<pre class="literal-block">sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE&#64;$IMAGE_DIGEST</pre>
 </div>
 </div>
 <div class="section" id="source">
@@ -689,8 +689,8 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/gcp_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-01-26 14:05 UTC.
+<p><a class="reference external" href="/source/blogs/google_cloud_platform_cheat_sheet.rst">View document source</a>.
+Generated on: 2020-02-02 05:49 UTC.
 </p>
 
 </div>
