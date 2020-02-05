@@ -2,7 +2,6 @@ catagory: cheat sheet
 =====================
 `< Blog <../blog.html>`_
 
-
 - `Elasticsearch Cheat Sheet <elasticsearch_cheat_sheet.html>`_
 - `KVM Cheat Sheet <kvm_cheat_sheet.html>`_
 - `Markdown Cheat Sheet <markdown_cheat_sheet.html>`_
