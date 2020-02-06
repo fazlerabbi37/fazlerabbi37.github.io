@@ -109,6 +109,27 @@ Get a spcecifice row column output
 
     command | awk 'FNR == row {print $column}' #row is row/line number and column is column number
 
+Skip first line
+---------------
+::
+
+    cat file | awk 'FNR > 1 { print $2 }'
+
+    OR
+
+    awk 'FNR > 1 { print $2 }' file
+
+source: https://unix.stackexchange.com/a/198066/199183
+
+Merge 2 columns separated by colon
+----------------------------------
+::
+
+    cat file | awk 'FNR>1 {print $1 ":" $2}'
+
+
+source: https://stackoverflow.com/a/34775751/5350059
+
 
 
 others
