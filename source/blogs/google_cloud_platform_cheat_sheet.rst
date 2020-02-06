@@ -79,9 +79,9 @@ push a docker image
 ```````````````````
 to push a docker image, we need to tag an image [4]_::
 
-    sudo docker tag $SOURCE_IMAGE $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
+    sudo docker tag $IMAGE:$STAG $GCR_HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
 
-`$HOSTNAME` could be:
+`$GCR_HOSTNAME` could be:
 
 - gcr.io
 - us.gcr.io
@@ -90,7 +90,7 @@ to push a docker image, we need to tag an image [4]_::
 
 Choose the one closest to you. Now push the image::
 
-    sudo docker push $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
+    sudo docker push $GCR_HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
 
 
 pull a docker image
@@ -102,11 +102,11 @@ To pull a docker image we need to configure our docker auth first [5]_::
 
 then the pull is done usually [6]_::
 
-    sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
+    sudo docker pull $GCR_HOSTNAME/$PROJECT_ID/$IMAGE:$TAG
 
 OR::
 
-    sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE@$IMAGE_DIGEST
+    sudo docker pull $GCR_HOSTNAME/$PROJECT_ID/$IMAGE@$IMAGE_DIGEST
 
 
 
