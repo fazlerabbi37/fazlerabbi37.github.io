@@ -82,6 +82,14 @@ pecific lines
 
 source: `Find and replace strings in vim on multiple lines <https://stackoverflow.com/a/19995072/5350059>`_
 
+move to the end of line
+-----------------------
+to move to the end of line::
+
+    :kbd:`$`
+
+source: https://stackoverflow.com/a/105734/5350059
+
 Source
 ------
  - ` <>`_
