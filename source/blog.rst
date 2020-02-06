@@ -10,21 +10,23 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 	`cheat sheet <blogs/category_cheat_sheet.html>`_
 
+	`cryptography  <blogs/category_cryptography.html>`_
+
 .. sidebar:: New Blogs
 
-	`Bandit Walkthrough <blogs/bandit_walkthrough.html>`_
+	`fDLuDCf's Practical Cryptography: Lesson 04 <blogs/fdludcf_practical_cryptography_lesson_04.html>`_
 
 
-	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+	`fDLuDCf's Practical Cryptography: Lesson 03 <blogs/fdludcf_practical_cryptography_lesson_03.html>`_
 
 
-	`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
+	`fDLuDCf's Practical Cryptography: Lesson 02 <blogs/fdludcf_practical_cryptography_lesson_02.html>`_
 
 
-	`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
+	`fDLuDCf's Practical Cryptography: Lesson 01 <blogs/fdludcf_practical_cryptography_lesson_01.html>`_
 
 
-	`Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
+	`HackGame Walkthrough <blogs/hackgame_walkthrough.html>`_
 
 
 
@@ -34,16 +36,16 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
 
 
+	`HackGame Walkthrough <blogs/hackgame_walkthrough.html>`_
+
+
 	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
 
 
-	`Bandit Walkthrough <blogs/bandit_walkthrough.html>`_
+	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`ADB Cheat Sheet <blogs/adb_cheat_sheet.html>`_
-
-
-	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+	`fDLuDCf's Practical Cryptography: Lesson 01 <blogs/fdludcf_practical_cryptography_lesson_01.html>`_
 
 
 
@@ -162,6 +164,38 @@ Experimenting with Elasticsearch using Bonsai.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`fDLuDCf's Practical Cryptography: Lesson 01 <blogs/fdludcf_practical_cryptography_lesson_01.html>`_
+....................................................................................................
+Created on: 2020-02-03
+
+fDLuDCf's Practical Cryptography DLC: Introduction to Cryptography
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`fDLuDCf's Practical Cryptography: Lesson 02 <blogs/fdludcf_practical_cryptography_lesson_02.html>`_
+....................................................................................................
+Created on: 2020-02-03
+
+fDLuDCf's Practical Cryptography DLC: Hash and Message Authentication Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`fDLuDCf's Practical Cryptography: Lesson 03 <blogs/fdludcf_practical_cryptography_lesson_03.html>`_
+....................................................................................................
+Created on: 2020-02-05
+
+fDLuDCf's Practical Cryptography DLC: Symmetric Key Cryptography
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`fDLuDCf's Practical Cryptography: Lesson 04 <blogs/fdludcf_practical_cryptography_lesson_04.html>`_
+....................................................................................................
+Created on: 2020-02-05
+
+fDLuDCf's Practical Cryptography DLC: Block Cipher Operation Modes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `fdroidcl <blogs/fdroidcl.html>`_
 .................................
 Created on: 2019-01-20
@@ -208,6 +242,14 @@ Created on: 2019-12-05
 
 A quick reference to Google Cloud Platform.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`HackGame Walkthrough <blogs/hackgame_walkthrough.html>`_
+.........................................................
+Created on: 2020-02-02
+
+Walkthrough of `HackGame3 <https://hackgame.chaurocks.com>`_, a browser-based web CTF.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Inside a docx file <blogs/inside_a_docx_file.html>`_
