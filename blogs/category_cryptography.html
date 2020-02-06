@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>osmosis Cheat Sheet</title>
+<title>catagory: cryptography</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -588,62 +588,20 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="osmosis-cheat-sheet">
-<h1 class="title">osmosis Cheat Sheet</h1>
+<div class="document" id="catagory-cryptography">
+<h1 class="title">catagory: cryptography</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to osmosis.</p>
-<p>Created on: 2019-01-22</p>
-<div class="section" id="populate-a-postgresql-database-with-pbf">
-<h1>Populate a PostgreSQL database with pbf</h1>
-<p>To populate a PostgreSQL database with a pbf file, run this command:</p>
-<pre class="literal-block">osmosis --read-pbf $absulute_file_path_of.osm.pbf --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot;</pre>
-</div>
-<div class="section" id="create-a-osm-form-a-postgresql-database">
-<h1>Create a .osm form a PostgreSQL database</h1>
-<p>We can create a <span class="docutils literal">.osm</span> file from a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot; --write-xml file=&quot;$file_name.osm&quot;</pre>
-</div>
-<div class="section" id="merge-two-pbf">
-<h1>Merge two pbf</h1>
-<p>We can marge two pbf file using this command:</p>
-<pre class="literal-block">osmosis --read-pbf file=$input1.osm.pbf --read-pbf file=$input2.osm.pbf --merge --write-pbf omitmetadata=true file=$output.osm.pbf</pre>
-</div>
-<div class="section" id="load-new-osm-data-on-postgresql">
-<h1>Load new osm data on PostgreSQL</h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>this is not working anymore.</p>
-</div>
-<p>Loading a new osm data on PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml filename=&quot;$file.osm.gz&quot; --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; populateCurrentTables=yes validateSchemaVersion=no</pre>
-</div>
-<div class="section" id="generate-diff-between-two-osm">
-<h1>Generate diff between two osm</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> or osm change format between two <span class="docutils literal">.osm</span> file using this command:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input1.osm&quot; --read-xml file=&quot;input2.osm&quot; --derive-change --write-xml-change file=&quot;output_diff_1_to_2.osc&quot;</pre>
-</div>
-<div class="section" id="generate-diff-between-osm-and-postgresql-db">
-<h1>Generate diff between osm and PostgreSQL db</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> between a <span class="docutils literal">.osm</span> file and a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input.osm&quot; --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=no --derive-change --write-xml-change file=&quot;output_diff_input_to_db.osc&quot;</pre>
-</div>
-<div class="section" id="update-a-osm-with-diff">
-<h1>update a osm with diff</h1>
-<p>We can update a <span class="docutils literal">.osm</span> file with the diff generated in <span class="docutils literal">.osc</span>:</p>
-<pre class="literal-block">osmosis --read-xml-change file=&quot;$osc_file.osc&quot; --read-xml file=&quot;$old_osm_file.osm&quot; --apply-change --write-xml file=&quot;$new_osm_file.osm&quot;</pre>
-</div>
-<div class="section" id="source">
-<h1>Source</h1>
 <ul class="simple">
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis">Osmosis OpenStreetMap Wiki</a></p></li>
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis/Examples">Osmosis/Examples OpenStreetMap Wiki</a></p></li>
+<li><p><a class="reference external" href="fdludcf_practical_cryptography_lesson_01.rst">fDLuDCf's Practical Cryptography: Lesson 01</a></p></li>
+<li><p><a class="reference external" href="fdludcf_practical_cryptography_lesson_02.rst">fDLuDCf's Practical Cryptography: Lesson 02</a></p></li>
+<li><p><a class="reference external" href="fdludcf_practical_cryptography_lesson_03.rst">fDLuDCf's Practical Cryptography: Lesson 03</a></p></li>
 </ul>
-</div>
+<!-- - ` <>`_ -->
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/osmosis_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/category_cryptography.rst">View document source</a>.
 Generated on: 2020-02-06 13:19 UTC.
 </p>
 

@@ -667,6 +667,20 @@ h1, h2, h3 {
 <h2>Get a spcecifice row column output</h2>
 <pre class="literal-block">command | awk 'FNR == row {print $column}' #row is row/line number and column is column number</pre>
 </div>
+<div class="section" id="skip-first-line">
+<h2>Skip first line</h2>
+<pre class="literal-block">cat file | awk 'FNR &gt; 1 { print $2 }'
+
+OR
+
+awk 'FNR &gt; 1 { print $2 }' file</pre>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/198066/199183">https://unix.stackexchange.com/a/198066/199183</a></p>
+</div>
+<div class="section" id="merge-2-columns-separated-by-colon">
+<h2>Merge 2 columns separated by colon</h2>
+<pre class="literal-block">cat file | awk 'FNR&gt;1 {print $1 &quot;:&quot; $2}'</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/34775751/5350059">https://stackoverflow.com/a/34775751/5350059</a></p>
+</div>
 </div>
 <div class="section" id="others">
 <h1>others</h1>
@@ -1844,7 +1858,7 @@ EOL</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/bash_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-02 05:49 UTC.
+Generated on: 2020-02-06 13:19 UTC.
 </p>
 
 </div>

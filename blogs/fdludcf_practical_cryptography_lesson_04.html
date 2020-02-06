@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>osmosis Cheat Sheet</title>
+<title>fDLuDCf's Practical Cryptography: Lesson 04</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -588,62 +588,140 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="osmosis-cheat-sheet">
-<h1 class="title">osmosis Cheat Sheet</h1>
+<div class="document" id="fdludcf-s-practical-cryptography-lesson-04">
+<h1 class="title">fDLuDCf's Practical Cryptography: Lesson 04</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to osmosis.</p>
-<p>Created on: 2019-01-22</p>
-<div class="section" id="populate-a-postgresql-database-with-pbf">
-<h1>Populate a PostgreSQL database with pbf</h1>
-<p>To populate a PostgreSQL database with a pbf file, run this command:</p>
-<pre class="literal-block">osmosis --read-pbf $absulute_file_path_of.osm.pbf --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot;</pre>
-</div>
-<div class="section" id="create-a-osm-form-a-postgresql-database">
-<h1>Create a .osm form a PostgreSQL database</h1>
-<p>We can create a <span class="docutils literal">.osm</span> file from a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot; --write-xml file=&quot;$file_name.osm&quot;</pre>
-</div>
-<div class="section" id="merge-two-pbf">
-<h1>Merge two pbf</h1>
-<p>We can marge two pbf file using this command:</p>
-<pre class="literal-block">osmosis --read-pbf file=$input1.osm.pbf --read-pbf file=$input2.osm.pbf --merge --write-pbf omitmetadata=true file=$output.osm.pbf</pre>
-</div>
-<div class="section" id="load-new-osm-data-on-postgresql">
-<h1>Load new osm data on PostgreSQL</h1>
+<p>fDLuDCf's Practical Cryptography DLC: Block Cipher Operation Modes</p>
+<p>Created on: 2020-02-05</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>this is not working anymore.</p>
+<p>This is my class-note for <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography">fDLuDCf's Practical Cryptography DLC</a>. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.</p>
 </div>
-<p>Loading a new osm data on PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml filename=&quot;$file.osm.gz&quot; --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; populateCurrentTables=yes validateSchemaVersion=no</pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this note has numeras spelling mistakes and not yet fixed.</p>
 </div>
-<div class="section" id="generate-diff-between-two-osm">
-<h1>Generate diff between two osm</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> or osm change format between two <span class="docutils literal">.osm</span> file using this command:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input1.osm&quot; --read-xml file=&quot;input2.osm&quot; --derive-change --write-xml-change file=&quot;output_diff_1_to_2.osc&quot;</pre>
+<div class="section" id="class-slides">
+<h1>Class Slides</h1>
+<p>The slides for Lesson 01 is available <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/DLE-3/L4(CryptoModes).pdf">here</a>.</p>
 </div>
-<div class="section" id="generate-diff-between-osm-and-postgresql-db">
-<h1>Generate diff between osm and PostgreSQL db</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> between a <span class="docutils literal">.osm</span> file and a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input.osm&quot; --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=no --derive-change --write-xml-change file=&quot;output_diff_input_to_db.osc&quot;</pre>
+<div class="section" id="class-video">
+<h1>Class Video</h1>
+<p>The video for all lessons are available in the <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/dle-course-3-practical-cryptography/">video page</a></p>
 </div>
-<div class="section" id="update-a-osm-with-diff">
-<h1>update a osm with diff</h1>
-<p>We can update a <span class="docutils literal">.osm</span> file with the diff generated in <span class="docutils literal">.osc</span>:</p>
-<pre class="literal-block">osmosis --read-xml-change file=&quot;$osc_file.osc&quot; --read-xml file=&quot;$old_osm_file.osm&quot; --apply-change --write-xml file=&quot;$new_osm_file.osm&quot;</pre>
+<div class="section" id="notes">
+<h1>Notes</h1>
+<ul class="simple">
+<li><p>review of last class</p></li>
+<li><dl class="simple">
+<dt>the following converts block cipher to stream cipher</dt>
+<dd><ul>
+<li><p>Cipher feedback (CFB)</p></li>
+<li><p>Output Feed Back(OFB)</p></li>
+<li><p>Counter (CTR)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Cipher feed back (CFB)</dt>
+<dd><ul>
+<li><p>couldn't understand from lecture so watched this: <a class="reference external" href="https://youtu.be/Xm37066R38E">https://youtu.be/Xm37066R38E</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output Feed Back(OFB)</dt>
+<dd><ul>
+<li><p>not clearly understooed</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Counter (CTR)</dt>
+<dd><ul>
+<li><p>use use counter that starts for a number and increases by one</p></li>
+<li><p>each counter is enctypted with the key</p></li>
+<li><p>the encrypted counter and plain text is XOR-ed to produce ciphertext</p></li>
+<li><p>it goes on until finished</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>advantage of (CTR)</dt>
+<dd><ul>
+<li><p>can do parallal process</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GCM block mode</dt>
+<dd><ul>
+<li><p>advantage is that we can check the intrigity of the message</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>how GCM works</dt>
+<dd><ul>
+<li><p>take an initial value (IV), do XOR (speculating as not clear from lecture) with counter 0 value</p></li>
+<li><p>enctypt the XOR-ed value</p></li>
+<li><p>increase counter</p></li>
+<li><p>use the value of first step as next steps IV do XOR (speculating as not clear from lecture) with counter 1 and then encrypt it.</p></li>
+<li><p>XOR the encrypted value and plain text to get the ciphertext</p></li>
+<li><p>now again XOR the ciphertext with Auth data which will be used as the Auth data for next step</p></li>
+<li><p>in the final round we XOR Auth data, length of the key and enctypted the XOR-ed value of second step to produce an Auth Tag</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Use of GCM</dt>
+<dd><ul>
+<li><p>used in networking with AES so called AES-GCM Authinticated Encryption</p></li>
+<li><p>Galios hash function [see more at slide 28]</p></li>
+<li><p>for a network packet with header, sequence and data, AES-GCM usages the header as Additional Auth data, sequence as IV and data as plain-text and produces a new packet with same header, sequence and encrypted ciphertext and a new auth tag as ICV</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>IDEA</p></li>
+<li><p>Blowfish</p></li>
+<li><dl class="simple">
+<dt>RC5</dt>
+<dd><ul>
+<li><p>was used by WAP</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Cast-128</p></li>
+<li><p>Demo in Java</p></li>
+<li><dl class="simple">
+<dt>Key Escrow Standerd</dt>
+<dd><ul>
+<li><p>devide the key in two part and put one to escrow agency and another to govt</p></li>
+<li><p>never got implemented due to public opposition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>advantage and disadvantage [see slide]</p></li>
+</ul>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis">Osmosis OpenStreetMap Wiki</a></p></li>
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis/Examples">Osmosis/Examples OpenStreetMap Wiki</a></p></li>
-</ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/osmosis_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/fdludcf_practical_cryptography_lesson_04.rst">View document source</a>.
 Generated on: 2020-02-06 13:19 UTC.
 </p>
 

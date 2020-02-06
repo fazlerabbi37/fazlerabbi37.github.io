@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>osmosis Cheat Sheet</title>
+<title>HackGame Walkthrough</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -588,62 +588,85 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="osmosis-cheat-sheet">
-<h1 class="title">osmosis Cheat Sheet</h1>
+<div class="document" id="hackgame-walkthrough">
+<h1 class="title">HackGame Walkthrough</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to osmosis.</p>
-<p>Created on: 2019-01-22</p>
-<div class="section" id="populate-a-postgresql-database-with-pbf">
-<h1>Populate a PostgreSQL database with pbf</h1>
-<p>To populate a PostgreSQL database with a pbf file, run this command:</p>
-<pre class="literal-block">osmosis --read-pbf $absulute_file_path_of.osm.pbf --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot;</pre>
+<p>Walkthrough of <a class="reference external" href="https://hackgame.chaurocks.com">HackGame3</a>, a browser-based web CTF.</p>
+<p>Created on: 2020-02-02</p>
+<p>From the HackGame3 homepage:</p>
+<pre class="literal-block">HackGame3 is a free, safe, legal, browser-based and timed game for hackers to test and expand their exploration skills.</pre>
+<p>I can't remember exactly where I did I get the <a class="reference external" href="https://hackgame.chaurocks.com">HackGame3</a> site but I find it somewhere floating in the internet around a year ago and gave it a go. I went till level 6 both because till that it was very easy, just picking up the connections. I stopped at level 7 because it required some JavaScript and at that time I had zero understanding of JavaScript. It not like that now I know JavaScript so I am up for round 2. 😛 It's just that after finishing <a class="reference external" href="blogs/bandit_walkthrough.html">Bandit Walkthrough</a>, I was going through my old notes and I found that I already wrote bits of how to pass form one level to another till level 7. From there I just picked up the old clues, organized them and tried to solve the next level with the help of my mate <a class="reference external" href="https://github.com/nr072">&#64;nr072</a>. So let's began!</p>
+<div class="section" id="presequisite">
+<h1>Presequisite</h1>
+<p>We need a working internet, any modern browser like Google Chrome or Firefox and time.</p>
 </div>
-<div class="section" id="create-a-osm-form-a-postgresql-database">
-<h1>Create a .osm form a PostgreSQL database</h1>
-<p>We can create a <span class="docutils literal">.osm</span> file from a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot; --write-xml file=&quot;$file_name.osm&quot;</pre>
+<div class="section" id="starting-the-game">
+<h1>Starting the game</h1>
+<p>To start the game, just visit <a class="reference external" href="https://hackgame.chaurocks.com">HackGame3</a>. We will see a big <strong>Start</strong> button with basic instructions bellow and a leaderboard on the right. Clicking on the <strong>Start</strong> button starts the game. Each level has a web page designated for it. The structure of the pages are same. Level heading, level hint, two input box for username and password and finally a <strong>Lasson larned</strong> section where it is said what should be done to remedy the problem. Remember that the game is time base, so time required to solve each level is recorded and the quicker the better.</p>
 </div>
-<div class="section" id="merge-two-pbf">
-<h1>Merge two pbf</h1>
-<p>We can marge two pbf file using this command:</p>
-<pre class="literal-block">osmosis --read-pbf file=$input1.osm.pbf --read-pbf file=$input2.osm.pbf --merge --write-pbf omitmetadata=true file=$output.osm.pbf</pre>
+<div class="section" id="level-1">
+<h1>Level 1</h1>
+<p>The clue for this level is <strong>Do you notice something in the URL? Try to access level 2 directly!</strong>. If we see the URL, we would see:</p>
+<blockquote>
+<p><a class="reference external" href="https://hackgame.chaurocks.com/level1">https://hackgame.chaurocks.com/level1</a></p>
+</blockquote>
+<p>This is a screenshot of the URL bar of that level:</p>
+<img alt="Level 1 URL Screenshot" class="align-center" src="../static/media/hackgame_walkthrough_image_01.png" />
+<p>As the clue suggested we can change end of the URL form <cite>level1</cite> to <cite>level2</cite> and go to the next level.</p>
 </div>
-<div class="section" id="load-new-osm-data-on-postgresql">
-<h1>Load new osm data on PostgreSQL</h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>this is not working anymore.</p>
+<div class="section" id="level-2">
+<h1>Level 2</h1>
+<p>The clue for this level is <strong>Was level one too easy? Try again with something different!</strong>. Again, if we see the URL, we would see:</p>
+<blockquote>
+<p><a class="reference external" href="https://hackgame.chaurocks.com/level2?logged=false">https://hackgame.chaurocks.com/level2?logged=false</a></p>
+</blockquote>
+<p>What would happen if we changed the <cite>logged</cite> to <strong>true</strong> from <strong>false</strong>?</p>
+<p>As I said the beginning levels are too easy! We are in level 3.</p>
 </div>
-<p>Loading a new osm data on PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml filename=&quot;$file.osm.gz&quot; --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; populateCurrentTables=yes validateSchemaVersion=no</pre>
+<div class="section" id="level-3">
+<h1>Level 3</h1>
+<p>The clue for this level is <strong>Very good! Do you know some default username/password combinations?</strong>. I am sure everyone guessed it by now! Yes, it it <cite>admin</cite>, <cite>admin</cite>. Let's move on to <a class="reference internal" href="#level-4">Level 4</a></p>
 </div>
-<div class="section" id="generate-diff-between-two-osm">
-<h1>Generate diff between two osm</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> or osm change format between two <span class="docutils literal">.osm</span> file using this command:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input1.osm&quot; --read-xml file=&quot;input2.osm&quot; --derive-change --write-xml-change file=&quot;output_diff_1_to_2.osc&quot;</pre>
+<div class="section" id="level-4">
+<h1>Level 4</h1>
+<p>The clue for this level is <strong>Do you know how to read source code?</strong>. That means we have to get the source of this page. IMO, the clean way to read code would be to view source. Press <span class="kbd">Ctrl</span> + <span class="kbd">u</span> to open current pages source code in new window.</p>
+<p>In the source we could see comments along with the actual source code. One comment says <cite>Start looking here</cite> as we see in the screenshot:</p>
+<img alt="Start looking here Comment" class="align-center" src="../static/media/hackgame_walkthrough_image_02.png" />
+<p>Just under the comment we have a from that takes an username and password. If we skip that we would see one more comment that says <cite>TODO: Remove this comment before publishing</cite>. With that we would have our username and password as we see in the screenshot bellow:</p>
+<img alt="Devlopment username and password" class="align-center" src="../static/media/hackgame_walkthrough_image_03.png" />
+<p>Use this in the actual page to go to the next level.</p>
 </div>
-<div class="section" id="generate-diff-between-osm-and-postgresql-db">
-<h1>Generate diff between osm and PostgreSQL db</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> between a <span class="docutils literal">.osm</span> file and a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input.osm&quot; --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=no --derive-change --write-xml-change file=&quot;output_diff_input_to_db.osc&quot;</pre>
+<div class="section" id="level-5">
+<h1>Level 5</h1>
+<p>The clue for this level is <strong>Great job! Try it again!</strong>. So we will do the same as <a class="reference internal" href="#level-4">Level 4</a>. We will view the source code with <span class="kbd">Ctrl</span> + <span class="kbd">u</span> where we would see the same <cite>Start looking here</cite> comment and bellow that comment we should see the login form. If we go a bit bellow we would see a script were a JavaScript function named <strong>checkSubmit</strong>. The function first gets the <cite>username</cite> and <cite>password</cite> from the page and then first check if it is <cite>undefined</cite> then if not it would check our input with a hard-coded username and password and return <strong>true</strong> if it matches or else returns <cite>false</cite>.</p>
+<img alt="Hard-coded username and password" class="align-center" src="../static/media/hackgame_walkthrough_image_04.png" />
+<p>If we use this we would be able to go to the next level, <a class="reference internal" href="#level-6">Level 6</a>.</p>
+<p>P.S: For me, the novice in JavaScript, I wondered how did after from submission the from knew it had to run the <cite>checkSubmit</cite> function? Well, just after the check finises we see 3 more lines of code that gets the <cite>password-form</cite> <a class="reference external" href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp">element by ID</a> and if it is not <cite>undefined</cite> then calls itself.</p>
+<img alt="Calling the checkSubmit function." class="align-center" src="../static/media/hackgame_walkthrough_image_05.png" />
 </div>
-<div class="section" id="update-a-osm-with-diff">
-<h1>update a osm with diff</h1>
-<p>We can update a <span class="docutils literal">.osm</span> file with the diff generated in <span class="docutils literal">.osc</span>:</p>
-<pre class="literal-block">osmosis --read-xml-change file=&quot;$osc_file.osc&quot; --read-xml file=&quot;$old_osm_file.osm&quot; --apply-change --write-xml file=&quot;$new_osm_file.osm&quot;</pre>
+<div class="section" id="level-6">
+<h1>Level 6</h1>
+<!-- The clue for this level is ****. If we see the , we would see: -->
+<!--  -->
+<!-- .. image:: -->
+<!-- :align: center -->
+<!-- :alt: alternate text -->
+<!-- Level -->
+<!-- - - - - - - - -->
+<!-- The clue for this level is ****. If we see the , we would see: -->
+<!--  -->
+<!-- .. image:: -->
+<!-- :align: center -->
+<!-- :alt: alternate text -->
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis">Osmosis OpenStreetMap Wiki</a></p></li>
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis/Examples">Osmosis/Examples OpenStreetMap Wiki</a></p></li>
-</ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/osmosis_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/hackgame_walkthrough.rst">View document source</a>.
 Generated on: 2020-02-06 13:19 UTC.
 </p>
 

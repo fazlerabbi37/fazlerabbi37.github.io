@@ -642,8 +642,8 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 <div class="section" id="push-a-docker-image">
 <h2>push a docker image</h2>
 <p>to push a docker image, we need to tag an image <a class="footnote-reference brackets" href="#id10" id="id4">4</a>:</p>
-<pre class="literal-block">sudo docker tag $SOURCE_IMAGE $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
-<p><cite>$HOSTNAME</cite> could be:</p>
+<pre class="literal-block">sudo docker tag $IMAGE:$STAG $GCR_HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
+<p><cite>$GCR_HOSTNAME</cite> could be:</p>
 <ul class="simple">
 <li><p>gcr.io</p></li>
 <li><p>us.gcr.io</p></li>
@@ -651,16 +651,16 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 <li><p>asia.gcr.io</p></li>
 </ul>
 <p>Choose the one closest to you. Now push the image:</p>
-<pre class="literal-block">sudo docker push $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
+<pre class="literal-block">sudo docker push $GCR_HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
 </div>
 <div class="section" id="pull-a-docker-image">
 <h2>pull a docker image</h2>
 <p>To pull a docker image we need to configure our docker auth first <a class="footnote-reference brackets" href="#id11" id="id5">5</a>:</p>
 <pre class="literal-block">gcloud auth configure-docker</pre>
 <p>then the pull is done usually <a class="footnote-reference brackets" href="#id12" id="id6">6</a>:</p>
-<pre class="literal-block">sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
+<pre class="literal-block">sudo docker pull $GCR_HOSTNAME/$PROJECT_ID/$IMAGE:$TAG</pre>
 <p>OR:</p>
-<pre class="literal-block">sudo docker pull $HOSTNAME/$PROJECT_ID/$IMAGE&#64;$IMAGE_DIGEST</pre>
+<pre class="literal-block">sudo docker pull $GCR_HOSTNAME/$PROJECT_ID/$IMAGE&#64;$IMAGE_DIGEST</pre>
 </div>
 </div>
 <div class="section" id="source">
@@ -690,7 +690,7 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/google_cloud_platform_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-02 05:49 UTC.
+Generated on: 2020-02-06 13:19 UTC.
 </p>
 
 </div>
