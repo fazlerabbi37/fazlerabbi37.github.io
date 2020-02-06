@@ -115,5 +115,18 @@ Comments
 --------
 https://docutils.sourceforge.io/docs/user/rst/quickref.html#comments
 
+Add image
+---------
+to add image::
+
+   .. image:: path/to/image.ext
+      :height: 100
+      :width: 200
+      :scale: 50
+      :alt: alternate text 
+
+source: https://docutils.sourceforge.io/docs/user/rst/quickstart.html#images
+
+
 Source
 ------
