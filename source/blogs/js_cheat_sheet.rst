@@ -149,9 +149,7 @@ Google Chrome - Clear Cache for Specific Website
 
 Deleting AutoComplete URLs
 --------------------------
-::
-
-    Type the fisrt part of the URL the press Shift+Delete
+Type the fisrt part of the URL the press Shift+Delete
 
 (source: https://productforums.google.com/forum/#!msg/chrome/i8HqLSSePLo/C0C\_otXyB90J)
 
@@ -236,6 +234,42 @@ Export an individual bookmark folder in Google Chrome
         var dateStr = year + '-' + month + '-' + date;
 
         downloadFile( 'bookmarks-'+ dateStr +'.txt', 'data:text/plain;charset=UTF-8,' + encodeURIComponent(str) );
+
+
+go back to previous page
+------------------------
+to go back to previous page::
+
+    window.history.go(-1);
+
+source: https://stackoverflow.com/a/34178688/5350059
+
+check a button by class name
+----------------------------
+to check a button by class name::
+
+    var classes = document.getElementsByClassName('ui green button');
+    var Rate = classes[0];
+    Rate.click(); 
+
+source: https://stackoverflow.com/questions/25587762/javascript-click-on-element-by-class
+
+auto-fill user name and pass from bookmark
+------------------------------------------
+to auto-fill user name and pass from bookmark::
+
+	javascript:(function(){
+		document.getElementById("user_name").value = "Johnny Bravo";
+		document.getElementById("password").value = "Johnny Bravo";
+	})();
+
+source: IppSec Bitlab Youtube Video
+
+change type of an element
+-------------------------
+to change type of an element::
+
+	document.getElementById("password").type = "text"
 
 
 Source
