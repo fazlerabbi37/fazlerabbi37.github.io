@@ -271,6 +271,14 @@ to change type of an element::
 
 	document.getElementById("password").type = "text"
 
+sleep for millisecond
+---------------------
+to sleep for millisecond::
+
+    await new Promise(r => setTimeout(r, 2000));
+
+source: https://stackoverflow.com/a/39914235/5350059
+
 
 Source
 ------
