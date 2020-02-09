@@ -537,5 +537,33 @@ to do a dot matrix of two numpy array::
 
 source: `NumPy v1.17 Manual: numpy.dot <https://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html>`_
 
+char to int and int to char
+---------------------------
+to convert character to integer::
+
+    >>> ord('a')
+    97
+
+to convert integer to character::
+
+    >>> chr(97)
+    'a'
+
+source: https://stackoverflow.com/a/704160/5350059
+
+check if string is upper case
+-----------------------------
+to check if string is upper case::
+
+    >>> "AaBC".isupper()
+    False
+    >>> "ABC".isupper()
+    True
+    >>> 
+
+source: https://stackoverflow.com/a/3669033/5350059
+
+    
+
 Source
 ------
