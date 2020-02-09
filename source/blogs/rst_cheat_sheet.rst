@@ -113,6 +113,16 @@ https://docutils.sourceforge.io/docs/user/rst/quickref.html#hyperlink-targets
 
 Comments
 --------
+one line comment::
+
+    .. comment 
+
+multi line comments::
+
+   .. This text will not be shown
+   (but, for instance, in HTML might be
+   rendered as an HTML comment) 
+
 https://docutils.sourceforge.io/docs/user/rst/quickref.html#comments
 
 Add image
