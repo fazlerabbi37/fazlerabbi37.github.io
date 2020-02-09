@@ -8,8 +8,59 @@ Created on: 2019-02-03
 
 .. warning:: under heavy construction and not well organized
 
+.. role:: kbd
+
 sed
 !!!
+
+find an replace
+---------------
+to find and replace::
+
+    sed -e 's/</\n&/g' << '<hello><world>'
+
+Output::
+
+     <hello>
+     <world>
+
+general pattern::
+
+    sed -e 's/$FIND/$REPALCE_WITH&/g' << '$STRING'
+
+source: https://stackoverflow.com/a/8349811/
+
+split a string with a delimiter
+-------------------------------
+to split a string with a delimiter::
+
+    sed 's/delimiter/\n/g' 
+
+Like if we want to split the string "he:llo:you" with `:` delimiter, we do::
+
+    sed 's/:/\n/g' <<< "he:llo:you"
+
+source: https://stackoverflow.com/a/18234407/
+
+delete text before a delimiter
+------------------------------
+to delete text before a delimiter::
+
+    sed -i 's/^[^:]*:/:/' file
+
+the delimiter is inside the `[]` and after `^` which is a `:`.
+
+source: https://unix.stackexchange.com/a/149764/
+
+append a string at end of a specific line
+-----------------------------------------
+to append a string at end of a specific line::
+
+    sed '2s/$/ myalias/' file
+
+replace 2 with the line number.
+
+source: https://stackoverflow.com/a/22159086/
 
 deleting a substring
 --------------------
@@ -17,7 +68,7 @@ deleting a substring
 
     echo $str | sed -E 's/(.*?)\..*/\1/'
 
-(source: http://stackoverflow.com/a/13570430/5350059)
+(source: http://stackoverflow.com/a/13570430/)
 
 replace char with another char
 ------------------------------
@@ -25,7 +76,7 @@ replace char with another char
 
     sed -ie 's/char/achar/g' /path/to/hello.txt #replacing char with achar
 
-(source: http://unix.stackexchange.com/a/159369/199183)
+(source: http://unix.stackexchange.com/a/159369/)
 
 Replace whole line containing a string using sed
 ------------------------------------------------
@@ -51,7 +102,7 @@ delete the first 5 chars on any line with sed
 
     sed 's/^.....//'
 
-(source: https://stackoverflow.com/a/3806107/5350059)
+(source: https://stackoverflow.com/a/3806107/)
 
 delete lines containing a specific string
 -----------------------------------------
@@ -59,15 +110,15 @@ delete lines containing a specific string
 
     sed -i '/pattern to match/d' ./infile
 
-(source: https://stackoverflow.com/a/5410784/5350059)
+(source: https://stackoverflow.com/a/5410784/)
 
 read specific line
 ------------------
-::
+to read/get/print specific line::
 
     sed '$line_number!d' file_name
 
-(source: http://stackoverflow.com/a/19327690/5350059)
+(source: http://stackoverflow.com/a/19327690/)
 
 comment or uncomment ie. append before line using sed
 -----------------------------------------------------
@@ -81,20 +132,41 @@ awk
 !!!
 
 
+find and replace
+----------------
+to find and replace::
+
+    echo '<hello><world>' | awk '{gsub(/</,"\n<",$0)}1'
+
+general pattern::
+
+    echo $STRING'' | awk '{gsub(/$FIND/,"$REPALCE_WITH<",$0)}1'
+
+source: https://stackoverflow.com/a/8349811/5350059
+
+
+read specific line
+------------------
+to read/get/print specific line::
+
+    awk 'NR==$LINE' file
+
+source: https://stackoverflow.com/a/19327690/
+
 split string to array using awk
 -------------------------------
 ::
 
     echo "12|23|11" | awk '{split($0,a,"|"); print a[3],a[2],a[1]}'
 
-(source: http://stackoverflow.com/a/8009724/5350059)
+(source: http://stackoverflow.com/a/8009724/)
 
 deleting a substring
 --------------------
 ::
     echo $str | awk -F. '{print $1}'
 
-(source: http://stackoverflow.com/a/13570430/5350059)
+(source: http://stackoverflow.com/a/13570430/)
 
 
 Get a spcecifice column form output
@@ -119,7 +191,7 @@ Skip first line
 
     awk 'FNR > 1 { print $2 }' file
 
-source: https://unix.stackexchange.com/a/198066/199183
+source: https://unix.stackexchange.com/a/198066/
 
 Merge 2 columns separated by colon
 ----------------------------------
@@ -128,7 +200,7 @@ Merge 2 columns separated by colon
     cat file | awk 'FNR>1 {print $1 ":" $2}'
 
 
-source: https://stackoverflow.com/a/34775751/5350059
+source: https://stackoverflow.com/a/34775751/
 
 
 
@@ -147,7 +219,7 @@ echo in red color
 
     echo -e "\e[31m{message to echo with out 2nd brackets}\e[0m"
 
-(source: http://stackoverflow.com/a/28938235/5350059)
+(source: http://stackoverflow.com/a/28938235/)
 
 Get current directory name (without full path)
 ----------------------------------------------
@@ -176,7 +248,7 @@ read on same line after echoing a message
 
     read -p "[y/n]: " opt (#saves value in opt variable)
 
-(source: http://stackoverflow.com/a/9720209/5350059)
+(source: http://stackoverflow.com/a/9720209/)
 
 split a string on a delimiter
 -----------------------------
@@ -186,7 +258,7 @@ split a string on a delimiter
     echo $string | cut -d';' -f1 # output is 1
     echo $string | cut -d';' -f2 # output is 2
 
-(source: http://stackoverflow.com/a/38905821/5350059)
+(source: http://stackoverflow.com/a/38905821/)
 
 clear screen
 ------------
@@ -194,7 +266,7 @@ clear screen
 
     printf "\033c"
 
-(source: http://stackoverflow.com/a/5367075/5350059)
+(source: http://stackoverflow.com/a/5367075/)
 
 deleting a substring
 --------------------
@@ -220,7 +292,7 @@ deleting a substring
     #All output:
     abc
 
-(source: http://stackoverflow.com/a/13570430/5350059)
+(source: http://stackoverflow.com/a/13570430/)
 
 split a sting with OIFS
 -----------------------
@@ -236,7 +308,7 @@ split a sting with OIFS
     done
     IFS=$OIFS
 
-(source: http://stackoverflow.com/q/918886/5350059)
+(source: http://stackoverflow.com/q/918886/)
 
 if string is not empty
 ----------------------
@@ -246,7 +318,7 @@ if string is not empty
     #OR
     if [[ ! -z $string ]]
 
-(source: http://stackoverflow.com/a/6592241/5350059)
+(source: http://stackoverflow.com/a/6592241/)
 
 if else if elif
 ---------------
@@ -264,6 +336,19 @@ if else if elif
 
  (source: https://www.tutorialspoint.com/unix/if-elif-statement.htm)
 
+multiple conditions in if
+-------------------------
+to put multiple conditions in if::
+
+    if [ "$option" = "Y" ] || [ "$option" = "y" ]
+    then
+        echo "Entered $option"
+    fi
+
+here `||` is used as example, replace with with `&&` if need be.
+
+source: https://stackoverflow.com/a/28064741/
+
 if string is equal to string
 ----------------------------
 ::
@@ -275,7 +360,7 @@ if string is equal to string
         echo "string mismatched"
     fi;
 
-(source: http://stackoverflow.com/a/10849346/5350059)
+(source: http://stackoverflow.com/a/10849346/)
 
 if a application exist
 ----------------------
@@ -317,11 +402,15 @@ add, sub, multiply and devide
 ---------------------------------------------------------------------------
 ::
 
-    swap_size="$(($ram * $size_choice))" #(source: https://stackoverflow.com/a/11039905
+    swap_size="$(($ram * $size_choice))" 
+    
+(source: https://stackoverflow.com/a/11039905
 
-    OR
+OR::
 
-    expr $x / $y #(source: http://stackoverflow.com/a/18093887/5350059)
+    expr $x / $y
+    
+(source: http://stackoverflow.com/a/18093887/)
 
 
 use specific app through ssh
@@ -341,7 +430,7 @@ detect line break
                 echo "FOUND NEWLINE"
         fi
 
-(source: http://unix.stackexchange.com/q/27423/199183)
+(source: http://unix.stackexchange.com/q/27423/)
 
 kill a shell form that shell
 ----------------------------
@@ -358,7 +447,7 @@ get file name from file path
     file=$(basename "$file_path")
     echo "$file"
 
-(source: http://stackoverflow.com/a/4645575/5350059)
+(source: http://stackoverflow.com/a/4645575/)
 
 kill all instance of an application
 -----------------------------------
@@ -376,7 +465,7 @@ convert to lowercase
     low=$(echo "$var" | awk '{print tolower($0)}')
     #both produces "hi all"
 
-(source: http://stackoverflow.com/a/2264537/5350059)
+(source: http://stackoverflow.com/a/2264537/)
 
 get real ip
 -----------
@@ -395,7 +484,7 @@ delete script after execution
     #OR
     rm $script_name
 
-(source: http://stackoverflow.com/a/8981233/5350059)
+(source: http://stackoverflow.com/a/8981233/)
 
 unzip .zip
 ----------
@@ -403,7 +492,7 @@ unzip .zip
 
     unzip file.zip -d destination_folder
 
-(source: http://askubuntu.com/a/86852/502875)
+(source: http://askubuntu.com/a/86852/)
 
 go to each sub directory and execute a command
 ----------------------------------------------
@@ -414,7 +503,7 @@ go to each sub directory and execute a command
         (cd "$d" && somecommand)
     done
 
-(source: http://unix.stackexchange.com/a/171679/199183)
+(source: http://unix.stackexchange.com/a/171679/)
 
 change password without typing (non interactive)
 ------------------------------------------------
@@ -422,7 +511,7 @@ change password without typing (non interactive)
 
     echo $uname:$passwd | sudo chpasswd
 
-(source: http://stackoverflow.com/a/41223440/5350059)
+(source: http://stackoverflow.com/a/41223440/)
 
 refresh output in the same line(echo update)
 --------------------------------------------
@@ -441,7 +530,7 @@ refresh output in the same line(echo update)
     done
     echo #print new line
 
-(source: http://stackoverflow.com/a/34466100/5350059)
+(source: http://stackoverflow.com/a/34466100/)
 
 go back to last visited directory
 ---------------------------------
@@ -449,7 +538,7 @@ go back to last visited directory
 
     cd -
 
-(source: https://superuser.com/q/113219/655587)
+(source: https://superuser.com/q/113219/)
 
 rm move to trash
 ----------------
@@ -463,7 +552,7 @@ rm move to trash
     #then alias rm to that:
     alias rm='move_to_trash'
 
-(source: https://unix.stackexchange.com/a/42758/199183)
+(source: https://unix.stackexchange.com/a/42758/)
 
 use pc name instead of ip while ssh
 -----------------------------------
@@ -472,7 +561,7 @@ use pc name instead of ip while ssh
     #add at the end of /etc/hosts
     ip_address(tab)pc_name
 
-(source: https://askubuntu.com/a/487319/502875)
+(source: https://askubuntu.com/a/487319/)
 
 shutdown, restart, without sudo from terminal [munst have consolekit]
 ---------------------------------------------------------------------
@@ -509,7 +598,7 @@ For Ubuntu 15.04 and later[This is due to Ubuntu's shift in using systemd instea
 
     systemctl hybrid-sleep
 
-(source: http://askubuntu.com/a/385316/502875)
+(source: http://askubuntu.com/a/385316/)
 
 OR
 
@@ -526,7 +615,7 @@ run applications as root
     #GUI
     gksudo <program name>
 
-(source: http://askubuntu.com/a/207467/502875)
+(source: http://askubuntu.com/a/207467/)
 
 grep for this or that (2 things) in a file?
 -------------------------------------------
@@ -534,7 +623,7 @@ grep for this or that (2 things) in a file?
 
     grep -E '(then|there)' x.x
 
-(source: https://unix.stackexchange.com/a/82993/199183)
+(source: https://unix.stackexchange.com/a/82993/)
 
 execute ``date`` inside corntab
 -------------------------------
@@ -542,7 +631,7 @@ execute ``date`` inside corntab
 
     0 * * * * echo hello >> ~/cron-logs/hourly/test_`date "+\%d-\%b-\%Y"`
 
-(source: https://unix.stackexchange.com/a/29582/199183)
+(source: https://unix.stackexchange.com/a/29582/)
 
 execute sudo command over ssh
 -----------------------------
@@ -550,7 +639,7 @@ execute sudo command over ssh
 
     ssh -t user@server "sudo script"
 
-(source: https://stackoverflow.com/a/10312700/5350059)
+(source: https://stackoverflow.com/a/10312700/)
 
 see port address and PID
 ------------------------
@@ -622,7 +711,7 @@ make peter think of a new password on login
     sudo passwd -e  YYYY-MM-DD peter
 
 
-(source: https://askubuntu.com/a/607108/502875)
+(source: https://askubuntu.com/a/607108/)
 
 set static ip
 -------------
@@ -637,7 +726,7 @@ set static ip
        gateway 10.253.0.1
        dns-nameservers 8.8.8.8
 
-(source: https://askubuntu.com/a/470245/502875)
+(source: https://askubuntu.com/a/470245/)
 
 Login with sshpass
 ------------------
@@ -831,7 +920,7 @@ hide (all) user list on login screen
     sudo mkdir -p /etc/lightdm/lightdm.conf.d
     sudo printf "[SeatDefaults]\nuser-session=ubuntu\ngreeter-show-manual-login=true\ngreeter-hide-users=true\nall" > /etc/lightdm/lightdm.conf.d/10-ubuntu.conf
 
-(source: http://askubuntu.com/a/731455/502875)
+(source: http://askubuntu.com/a/731455/)
 
 hide a specific user form login screen
 --------------------------------------
@@ -841,7 +930,7 @@ hide a specific user form login screen
     printf "[User]\nSystemAccount=true\n" > $user_name
     sudo mv $user_name /var/lib/AccountsService/users/$user_name
 
-(source: http://askubuntu.com/a/575390/502875)
+(source: http://askubuntu.com/a/575390/)
 
 open files form terminal
 ------------------------
@@ -901,7 +990,7 @@ stop max brightness on restart
     #250 is the number of brightness level
     sudo sed -i "/exit 0/i \echo 250 > /sys/class/backlight/$dir/brightness" /etc/rc.local
 
-(source: http://askubuntu.com/a/151665/502875)
+(source: http://askubuntu.com/a/151665/)
 
 Execute a command in the background using '&' and killing it
 ------------------------------------------------------------
@@ -967,7 +1056,7 @@ recursively list all files in a directory
     #OR
     find -follow
 
-(source: http://stackoverflow.com/a/105249/5350059)
+(source: http://stackoverflow.com/a/105249/)
 
 check battery status
 --------------------
@@ -999,10 +1088,10 @@ change bluetooth broadcast device name
 
         sudo echo "PRETTY_HOSTNAME=$device_name" >>/etc/machine-info
         sudo service bluetooth restart
-        #OR (source: http://askubuntu.com/a/80964/502875)
+        #OR (source: http://askubuntu.com/a/80964/)
         sudo hciconfig hci0 name '$device_name'
 
-(source: http://askubuntu.com/a/80963/502875)
+(source: http://askubuntu.com/a/80963/)
 
 change LCD brightness
 ---------------------
@@ -1011,7 +1100,7 @@ change LCD brightness
     display="$(xrandr -q | grep " connected" | awk '{print $1}')"
     xrandr --output $display --brightness m.n #(0<=m<=10(tested can be greater),0<=m<=9 )
 
-(source: http://askubuntu.com/a/149264/502875)
+(source: http://askubuntu.com/a/149264/)
 
 export display (to run a GUI of a program in remote client like over ssh)
 -------------------------------------------------------------------------
@@ -1030,7 +1119,7 @@ read file from line x to the end of a file (read from specific line)
     { for ((i=$linesToSkip;i--;)) ;do read done while read line ;do echo
     $line done } < file.csv
 
-(source: http://stackoverflow.com/a/14110529/5350059)
+(source: http://stackoverflow.com/a/14110529/)
 
 copy all except one file or folder
 ----------------------------------
@@ -1038,7 +1127,7 @@ copy all except one file or folder
 
     shopt -s extglob && cp source\!($name) \destination #(first part extends regexes)
 
-(idea source: http://askubuntu.com/a/786613/502875 & http://stackoverflow.com/a/27655311/5350059)
+(idea source: http://askubuntu.com/a/786613/ & http://stackoverflow.com/a/27655311/)
 
 get date in yyy-mm-dd format
 ----------------------------
@@ -1046,7 +1135,7 @@ get date in yyy-mm-dd format
 
     DATE=`date +%Y-%m-%d`
 
-(source: http://stackoverflow.com/a/1401495/5350059)
+(source: http://stackoverflow.com/a/1401495/)
 
 in ubuntu all .deb file are in this folder
 ------------------------------------------
@@ -1071,7 +1160,7 @@ Encrypting and compressing with 7z
        |  `---- Use a password
        `---- Add files to archive
 
-(source: http://unix.stackexchange.com/a/325783/199183)
+(source: http://unix.stackexchange.com/a/325783/)
 
 bluetooth tool
 --------------
@@ -1159,7 +1248,7 @@ disable and enable mouse driver
     sudo modprobe -r psmouse  # disable the driver
     sudo modprobe psmouse # enable the mouse driver
 
-(source: https://askubuntu.com/a/697952/502875)
+(source: https://askubuntu.com/a/697952/)
 
 list all users and groups
 -------------------------
@@ -1185,7 +1274,7 @@ check if user is sudo if not ask for password
 
     sudo -v
 
-(source: https://superuser.com/a/553939/655587)
+(source: https://superuser.com/a/553939/)
 
 echo in system file
 -------------------
@@ -1202,7 +1291,7 @@ missing date & time from top panel
     dconf reset -f /com/canonical/indicator/datetime/
     pkill -f datetime
 
-(source: https://askubuntu.com/a/462176/502875)
+(source: https://askubuntu.com/a/462176/)
 
 spell checking in vim
 ---------------------
@@ -1326,7 +1415,7 @@ execute command without keeping it in history
 
     command;history -d $(history 1)
 
-(source: https://stackoverflow.com/a/33511637/5350059)
+(source: https://stackoverflow.com/a/33511637/)
 
 OR
 
@@ -1338,7 +1427,7 @@ get hostname from ip
 
     nbtscan <ip> #install nbtscan sudo apt-get install nbtscan
 
-(source: https://askubuntu.com/a/205067/502875)
+(source: https://askubuntu.com/a/205067/)
 
 connect to net using ethernet calbe if you have DHCP enabled
 ------------------------------------------------------------
@@ -1346,7 +1435,7 @@ connect to net using ethernet calbe if you have DHCP enabled
 
     sudo dhclient eth0
 
- (source: https://askubuntu.com/a/755263/502875)
+ (source: https://askubuntu.com/a/755263/)
 
 change hostname in linux
 ------------------------
@@ -1354,7 +1443,7 @@ change hostname in linux
 
     sudo hostname your-new-name #name shows after reboot
 
- (source: https://askubuntu.com/a/87687/502875)
+ (source: https://askubuntu.com/a/87687/)
 
 change the default shell
 ------------------------
@@ -1362,7 +1451,7 @@ sometime after doing ssh to a machine we see just ```$``` or ```#``` instead of 
 
     sudo chsh <username> -s /bin/bash
 
-(source: https://unix.stackexchange.com/q/50264/199183)
+(source: https://unix.stackexchange.com/q/50264/)
 
 if your .bashrc is lost
 -----------------------
@@ -1373,7 +1462,7 @@ if your .bashrc is lost
     #root
     cp /etc/bash.bashrc ~/.bashrc
 
-(source: https://askubuntu.com/a/404428/502875 and me)
+(source: https://askubuntu.com/a/404428/ and me)
 
 show last octet of ip
 ---------------------
@@ -1392,7 +1481,7 @@ make video with image and audio
 
     ffmpeg -loop 1 -i image.jpg -i audio.AMR -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4
 
-(source: https://superuser.com/a/1041818/655587)
+(source: https://superuser.com/a/1041818/)
 
 show ubuntu-support-status
 --------------------------
@@ -1438,7 +1527,7 @@ convert a .pdf into .jpg [one-page-one-pic]
 
     pdftoppm -jpeg raw-er-cowboyra.pdf prefix
 
-(source: https://askubuntu.com/a/50180/502875)
+(source: https://askubuntu.com/a/50180/)
 
 suppress all output from a command
 ----------------------------------
@@ -1446,7 +1535,7 @@ suppress all output from a command
 
     scriptname >/dev/null
 
-(source: https://stackoverflow.com/a/617184/5350059)
+(source: https://stackoverflow.com/a/617184/)
 
 make a dir with - in fornt of it
 --------------------------------
@@ -1490,7 +1579,7 @@ mute and unmute a microphone
     #unmute
     amixer set Capture cap
 
-(source: https://askubuntu.com/a/337662/502875)
+(source: https://askubuntu.com/a/337662/)
 
 enabling and disabling Ethernet
 -------------------------------
@@ -1501,7 +1590,7 @@ enabling and disabling Ethernet
     #disable
     sudo ip link set down eth0
 
-(source: https://askubuntu.com/a/739502/502875)
+(source: https://askubuntu.com/a/739502/)
 
 
 add a timestamp to script log?
@@ -1518,7 +1607,7 @@ run PHP from terminal
 
     php filename.php
 
-(source: https://askubuntu.com/a/447254/502875)
+(source: https://askubuntu.com/a/447254/)
 
 wget show progress bar only
 ---------------------------
@@ -1526,7 +1615,7 @@ wget show progress bar only
 
     wget $url -q --show-progress
 
-(source: https://stackoverflow.com/a/29457649/5350059)
+(source: https://stackoverflow.com/a/29457649/)
 
 redirect output to multiple log files
 -------------------------------------
@@ -1534,7 +1623,7 @@ redirect output to multiple log files
 
     echo test | tee file1 file2 file3
 
-(source: https://unix.stackexchange.com/a/41249/199183)
+(source: https://unix.stackexchange.com/a/41249/)
 
 single line sftp from terminal
 ------------------------------
@@ -1543,7 +1632,7 @@ single line sftp from terminal
 
     sftp username@hostname:remoteFileName localFileName
 
- (source: https://stackoverflow.com/a/16723151/5350059)
+ (source: https://stackoverflow.com/a/16723151/)
 
 check if file exists on remote host with ssh
 ---------------------------------------------
@@ -1556,7 +1645,7 @@ check if file exists on remote host with ssh
         echo "File does not exist"
     fi
 
-(source: https://stackoverflow.com/a/12845254/5350059)
+(source: https://stackoverflow.com/a/12845254/)
 
 cleanest way to ssh and run multiple commands source
 ----------------------------------------------------
@@ -1569,7 +1658,7 @@ cleanest way to ssh and run multiple commands source
       ./some_other_action 'other params'
     EOF
 
-(source: https://stackoverflow.com/a/4412338/5350059)
+(source: https://stackoverflow.com/a/4412338/)
 
 passing variables in remote ssh command
 ---------------------------------------
@@ -1577,7 +1666,7 @@ passing variables in remote ssh command
 
     ssh pvt@192.168.1.133 "~/tools/run_pvt.pl $BUILD_NUMBER"
 
-(source: https://stackoverflow.com/a/3314678/5350059)
+(source: https://stackoverflow.com/a/3314678/)
 
 whether or not a variable is empty
 ----------------------------------
@@ -1585,7 +1674,7 @@ whether or not a variable is empty
 
     if [[ -z "$var" ]]
 
-(source: https://stackoverflow.com/a/3063887/5350059)
+(source: https://stackoverflow.com/a/3063887/)
 
 debug a bash script
 -------------------
@@ -1595,7 +1684,7 @@ debug a bash script
     ..code to debug...
     set +x
 
-(source: https://unix.stackexchange.com/a/155570/199183)
+(source: https://unix.stackexchange.com/a/155570/)
 
 print a char variable times
 ---------------------------
@@ -1631,7 +1720,7 @@ download and output it on STDOUT
 
     wget -qO- $link
 
-(source: https://stackoverflow.com/a/22926472/5350059)
+(source: https://stackoverflow.com/a/22926472/)
 
 
 image your hard disk using dd
@@ -1645,7 +1734,7 @@ to use curl to download tar file::
 
     curl -L https://site.tld/file.tar.b2 | tar zx
 
-source: https://stackoverflow.com/a/5746376/5350059
+source: https://stackoverflow.com/a/5746376/
 
 file sync
 ---------
@@ -1673,7 +1762,7 @@ to check if number of arguments is equal to a number::
         echo "Illegal number of parameters"
     fi
 
-s: https://stackoverflow.com/a/18568726/5350059
+s: https://stackoverflow.com/a/18568726/
 
 
 set environment variables
@@ -1690,7 +1779,7 @@ global variable declaration
 
     declare -g variable
 
-https://stackoverflow.com/a/58594644/5350059
+https://stackoverflow.com/a/58594644/
 
 
 remove alias
@@ -1699,7 +1788,7 @@ to remove alias::
 
     unalias $ALIAS
 
-https://askubuntu.com/a/325380/502875
+https://askubuntu.com/a/325380/
 
 export variable from bash script
 --------------------------------
@@ -1723,7 +1812,7 @@ The environment variable is also set which gives the output on `echo`::
 
     HELLO, VARIABLE
 
-source: `Can I export a variable to the environment from a bash script without sourcing it? <https://stackoverflow.com/a/16618248/5350059>`_
+source: `Can I export a variable to the environment from a bash script without sourcing it? <https://stackoverflow.com/a/16618248/>`_
 
 
 remove an exported variable
@@ -1732,7 +1821,7 @@ to remove an exported variable::
 
     unset $VAIABLE
 
-source: `How do I delete an exported environment variable? <https://stackoverflow.com/a/6877747/5350059>`_
+source: `How do I delete an exported environment variable? <https://stackoverflow.com/a/6877747/>`_
 
 create a django secret key with bash
 ------------------------------------
@@ -1740,7 +1829,7 @@ to create a django secret key with bash::
 
     export SECRET_KEY=$(head /dev/urandom | tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' | head -c 49 ; echo '')
 
-source: `How to generate a random string? <https://unix.stackexchange.com/a/230676/199183>`_
+source: `How to generate a random string? <https://unix.stackexchange.com/a/230676/>`_
 
 write multiple line to a file with variables
 --------------------------------------------
@@ -1756,7 +1845,7 @@ to write multiple line to a file with variables::
 
 P.S: We can replace the `EOL` with anything like `CAT` ;)
 
-source: `How to write multiple line string using Bash with variables? <https://stackoverflow.com/a/7875614/5350059>`_
+source: `How to write multiple line string using Bash with variables? <https://stackoverflow.com/a/7875614/>`_
 
 remove user from a group
 ------------------------
@@ -1764,7 +1853,251 @@ to remove a user from a group::
 
     sudo gpasswd -d $USER $GROUP
 
-source: `How do I remove a user from a group? <https://unix.stackexchange.com/a/29572/199183>`_
+source: `How do I remove a user from a group? <https://unix.stackexchange.com/a/29572/>`_
+
+keyboard shortcut for recalling last argument
+---------------------------------------------
+to recall last argument use the following keyboard shortcut:
+
+    :kbd:`Alt` + :kbd:`.`
+
+source: https://stackoverflow.com/a/3371299/ and https://askubuntu.com/a/304831/
+
+run nc -q with millisecond
+--------------------------
+to run nc -q with millisecond::
+
+    nc 192.168.1.106 23 -q 10ms
+
+.. warning:: need to check if it works
+
+source: https://stackoverflow.com/a/42137257/
+
+array in bash
+-------------
+create an empty array
+`````````````````````
+to create an empty array::
+
+    ARR=()
+
+save data to aa array
+`````````````````````
+to save data to an array::
+
+    ARR[0]="A"
+    ARR[1]="B"
+    ARR[2]="C"
+
+OR::
+
+    ARR=("A" "B" "C")
+
+length of an array
+``````````````````
+to check the length of an array::
+
+    ${#ARR[@]}
+
+access an element of an array
+`````````````````````````````
+to access an element of an array::
+
+    echo ${ARR[0]}
+
+all elements in an array
+````````````````````````
+get all elements in an array::
+
+    ${ARR[*]}
+
+source: https://stackoverflow.com/a/52331532/
+
+add element to array
+````````````````````
+to add element to array::
+
+    ARRAY=()
+    ARRAY+=('foo')
+    ARRAY+=('bar')
+
+source: https://stackoverflow.com/a/1951523/
+
+sort array
+``````````
+to sort an array::
+
+    IFS=$'\n' sorted=($(sort <<<"${array[*]}"))
+    unset IFS
+
+source: https://stackoverflow.com/a/11789688/
+
+append elements to array inside for loop
+````````````````````````````````````````
+to append elements to array inside for loop::
+
+    declare -ag exceeded_users
+    arr=()
+    for i in {1..5}
+    do
+        arr+=($i)
+    done
+
+the `declare -ag exceeded_users` part is the most important.
+
+source: https://stackoverflow.com/a/58594644/
+
+get from char to char of a string
+---------------------------------
+to cut a specific length of a string like, 3rd char to 6th char::
+
+    str="abcdefghij"
+    char=${str:2:4}
+
+so it is like `${parameter:offset:length}`
+
+source: https://stackoverflow.com/a/7306483/
+
+
+remove symbolic link
+--------------------
+to remove symbolic link::
+
+    rm linked_file
+
+source: https://askubuntu.com/a/398850/
+
+convert character to ASCII
+-----------------------------
+to convert character to ASCII::
+
+    printf "%d\n" "'A"
+
+OR::
+
+    echo "A" | tr -d "\n" | od -An -t dC
+
+convert ASCII to character::
+
+    awk -v char=65 'BEGIN { printf "%c\n", char; exit }'
+
+source: https://www.unix.com/shell-programming-and-scripting/93355-how-get-ascii-value-using-shell-commands-script.html
+
+delete large directory with thousands of files
+----------------------------------------------
+to delete large directory with thousands of files::
+
+    mkdir empty_dir
+    rsync -a --delete empty_dir/    yourdirectory/
+
+OR::
+
+    cd yourdirectory
+    perl -e 'for(<*>){((stat)[9]<(unlink))}'
+
+source: https://unix.stackexchange.com/a/79656/
+
+curl output HTTP status
+-----------------------
+see curl output HTTP status::
+
+    curl -s -o /dev/null -I -w "%{http_code}" http://www.example.org/
+
+source: https://superuser.com/a/442395/
+
+output specific line of huge file
+---------------------------------
+to output specific line of huge file::
+
+    sed -n -e $LINEp file_name
+
+source: https://stackoverflow.com/a/8166496/
+
+OR::
+
+    head -$LINE file_name | tail -1
+
+
+output line range of huge file
+------------------------------
+to output line range of huge file::
+
+    sed -n $START_LINE,$END_LINEp file_name
+
+source: https://stackoverflow.com/a/8166496/
+
+sort by specific field
+----------------------
+to sort by 4th field::
+
+    sort -k4
+
+source: https://stackoverflow.com/a/5243126/
+
+show file contains with file name
+---------------------------------
+to show file contains with file name::
+
+    tail -n +1 file1.txt file2.txt file3.txt
+
+Output::
+
+    ==> file1.txt <==
+    <contents of file1.txt>
+
+    ==> file2.txt <==
+    <contents of file2.txt>
+
+    ==> file3.txt <==
+    <contents of file3.txt>
+
+source: https://stackoverflow.com/a/7816490/
+
+get current path of a symlink
+-----------------------------
+to get the current path of a symlink::
+
+    DIR="$(cd "$(dirname "$0")" && pwd)"
+
+source: https://unix.stackexchange.com/a/17500/
+
+less show line number
+---------------------
+to show line number in less::
+
+    less -N file_name
+
+source: https://stackoverflow.com/a/831707/
+
+grep certain file extensions
+----------------------------
+to grep certain file extensions::
+
+    grep -r -i -include=\*.${file_extension} /path/to/dir
+
+source: https://stackoverflow.com/a/12517022/
+
+detecting change in files in a directory
+----------------------------------------
+to detect change in files in a directory we can use `inotifywait`::
+
+    inotifywait -r  -m /dir/to/monitor/
+
+source: https://unix.stackexchange.com/a/283875/
+
+or with `find` command::
+
+    while :
+    do
+        find /dir/to/monitor/ -type f -mmin $TIME_IN_SECOND
+    done
+
+
+
+    
+
+
+
 
 
 Source
