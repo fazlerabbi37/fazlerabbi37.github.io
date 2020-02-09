@@ -626,7 +626,7 @@ h1, h2, h3 {
 <blockquote>
 <p><span class="kbd">5 &gt;</span></p>
 </blockquote>
-<p><a class="reference external" href="https://stackoverflow.com/a/235841/5350059">https://stackoverflow.com/a/235841/5350059</a></p>
+<p><a class="reference external" href="https://stackoverflow.com/a/235841">https://stackoverflow.com/a/235841</a></p>
 </div>
 <div class="section" id="paste-mode">
 <h1>paste mode</h1>
@@ -652,7 +652,7 @@ h1, h2, h3 {
 <p>Lowercase &quot;HellO&quot; to &quot;hello&quot; with <span class="kbd">g</span> + <span class="kbd">u</span> then a movement.</p>
 </blockquote>
 <p><a class="reference external" href="https://vim.fandom.com/wiki/Switching_case_of_characters">https://vim.fandom.com/wiki/Switching_case_of_characters</a>
-<a class="reference external" href="https://stackoverflow.com/a/2966034/5350059">https://stackoverflow.com/a/2966034/5350059</a></p>
+<a class="reference external" href="https://stackoverflow.com/a/2966034">https://stackoverflow.com/a/2966034</a></p>
 </div>
 <div class="section" id="find-and-replace">
 <h1>find and replace</h1>
@@ -664,13 +664,70 @@ h1, h2, h3 {
 <blockquote>
 <p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>$START_LINE,$END_LINEs/$REPLACE_THIS/$WITH_THIS/g</cite></p>
 </blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/19995072/5350059">Find and replace strings in vim on multiple lines</a></p>
+<p>add <cite>c</cite> after <cite>g</cite> to enter an interactive mode.</p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/19995072">Find and replace strings in vim on multiple lines</a></p>
+</div>
+<div class="section" id="move-to-the-beginning-of-line">
+<h1>move to the beginning of line</h1>
+<p>to move to the beginning or start of line:</p>
+<blockquote>
+<p><span class="kbd">0</span></p>
+</blockquote>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/10243634">https://stackoverflow.com/a/10243634</a></p>
 </div>
 <div class="section" id="move-to-the-end-of-line">
 <h1>move to the end of line</h1>
 <p>to move to the end of line:</p>
-<pre class="literal-block">:kbd:`$`</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/105734/5350059">https://stackoverflow.com/a/105734/5350059</a></p>
+<blockquote>
+<p><span class="kbd">$</span></p>
+</blockquote>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/105734">https://stackoverflow.com/a/105734</a></p>
+</div>
+<div class="section" id="delete-all-line-till-end">
+<h1>delete all line till end</h1>
+<p>to delete all line till end:</p>
+<blockquote>
+<p><span class="kbd">d</span> + <span class="kbd">G</span></p>
+</blockquote>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/8124616">https://stackoverflow.com/a/8124616</a></p>
+</div>
+<div class="section" id="open-in-readonly-mode">
+<h1>open in readonly mode</h1>
+<p>to open in readonly mode inside vim:</p>
+<blockquote>
+<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>view /path/to/file</cite></p>
+</blockquote>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/18395765">https://stackoverflow.com/a/18395765</a></p>
+</div>
+<div class="section" id="display-line-numbers">
+<h1>display line numbers</h1>
+<p>to display line numbers:</p>
+<blockquote>
+<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set number</cite> or <cite>set nu</cite></p>
+</blockquote>
+<p>to disable:</p>
+<pre class="literal-block">:kbd:`Esc` + :kbd:`:` then type `set nonumber` or `set nonu`</pre>
+<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Display_line_numbers">https://vim.fandom.com/wiki/Display_line_numbers</a></p>
+</div>
+<div class="section" id="see-file-type">
+<h1>see file type</h1>
+<p>to see file type:</p>
+<blockquote>
+<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set ft</cite></p>
+</blockquote>
+<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Filetype.vim">https://vim.fandom.com/wiki/Filetype.vim</a></p>
+</div>
+<div class="section" id="macros">
+<h1>macros</h1>
+<p>record a macros:</p>
+<blockquote>
+<p><span class="kbd">Esc</span> then <span class="kbd">q</span> + <span class="kbd">any key like d,m,n</span> for register.</p>
+</blockquote>
+<p>the do you task and press <span class="kbd">q</span>. It will save the macro to the register [one of those d,m,n that you pressed]. To use the macro:</p>
+<blockquote>
+<p>number_of_times_you_want_to_execute + <span class="kbd">&#64;</span> + <span class="kbd">register_key_d_m_or_n</span></p>
+</blockquote>
+<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Macros">https://vim.fandom.com/wiki/Macros</a></p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
@@ -684,7 +741,7 @@ h1, h2, h3 {
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/vim_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-06 13:19 UTC.
+Generated on: 2020-02-09 12:56 UTC.
 </p>
 
 </div>

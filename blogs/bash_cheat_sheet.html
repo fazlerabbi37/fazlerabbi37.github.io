@@ -600,15 +600,48 @@ h1, h2, h3 {
 </div>
 <div class="section" id="sed">
 <h1>sed</h1>
+<div class="section" id="find-an-replace">
+<h2>find an replace</h2>
+<p>to find and replace:</p>
+<pre class="literal-block">sed -e 's/&lt;/\n&amp;/g' &lt;&lt; '&lt;hello&gt;&lt;world&gt;'</pre>
+<p>Output:</p>
+<pre class="literal-block">&lt;hello&gt;
+&lt;world&gt;</pre>
+<p>general pattern:</p>
+<pre class="literal-block">sed -e 's/$FIND/$REPALCE_WITH&amp;/g' &lt;&lt; '$STRING'</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/8349811/">https://stackoverflow.com/a/8349811/</a></p>
+</div>
+<div class="section" id="split-a-string-with-a-delimiter">
+<h2>split a string with a delimiter</h2>
+<p>to split a string with a delimiter:</p>
+<pre class="literal-block">sed 's/delimiter/\n/g'</pre>
+<p>Like if we want to split the string &quot;he:llo:you&quot; with <cite>:</cite> delimiter, we do:</p>
+<pre class="literal-block">sed 's/:/\n/g' &lt;&lt;&lt; &quot;he:llo:you&quot;</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/18234407/">https://stackoverflow.com/a/18234407/</a></p>
+</div>
+<div class="section" id="delete-text-before-a-delimiter">
+<h2>delete text before a delimiter</h2>
+<p>to delete text before a delimiter:</p>
+<pre class="literal-block">sed -i 's/^[^:]*:/:/' file</pre>
+<p>the delimiter is inside the <cite>[]</cite> and after <cite>^</cite> which is a <cite>:</cite>.</p>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/149764/">https://unix.stackexchange.com/a/149764/</a></p>
+</div>
+<div class="section" id="append-a-string-at-end-of-a-specific-line">
+<h2>append a string at end of a specific line</h2>
+<p>to append a string at end of a specific line:</p>
+<pre class="literal-block">sed '2s/$/ myalias/' file</pre>
+<p>replace 2 with the line number.</p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/22159086/">https://stackoverflow.com/a/22159086/</a></p>
+</div>
 <div class="section" id="deleting-a-substring">
 <h2>deleting a substring</h2>
 <pre class="literal-block">echo $str | sed -E 's/(.*?)\..*/\1/'</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/5350059">http://stackoverflow.com/a/13570430/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/">http://stackoverflow.com/a/13570430/</a>)</p>
 </div>
 <div class="section" id="replace-char-with-another-char">
 <h2>replace char with another char</h2>
 <pre class="literal-block">sed -ie 's/char/achar/g' /path/to/hello.txt #replacing char with achar</pre>
-<p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/159369/199183">http://unix.stackexchange.com/a/159369/199183</a>)</p>
+<p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/159369/">http://unix.stackexchange.com/a/159369/</a>)</p>
 </div>
 <div class="section" id="replace-whole-line-containing-a-string-using-sed">
 <h2>Replace whole line containing a string using sed</h2>
@@ -625,17 +658,18 @@ h1, h2, h3 {
 <div class="section" id="delete-the-first-5-chars-on-any-line-with-sed">
 <h2>delete the first 5 chars on any line with sed</h2>
 <pre class="literal-block">sed 's/^.....//'</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/3806107/5350059">https://stackoverflow.com/a/3806107/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/3806107/">https://stackoverflow.com/a/3806107/</a>)</p>
 </div>
 <div class="section" id="delete-lines-containing-a-specific-string">
 <h2>delete lines containing a specific string</h2>
 <pre class="literal-block">sed -i '/pattern to match/d' ./infile</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/5410784/5350059">https://stackoverflow.com/a/5410784/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/5410784/">https://stackoverflow.com/a/5410784/</a>)</p>
 </div>
 <div class="section" id="read-specific-line">
 <h2>read specific line</h2>
+<p>to read/get/print specific line:</p>
 <pre class="literal-block">sed '$line_number!d' file_name</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/19327690/5350059">http://stackoverflow.com/a/19327690/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/19327690/">http://stackoverflow.com/a/19327690/</a>)</p>
 </div>
 <div class="section" id="comment-or-uncomment-ie-append-before-line-using-sed">
 <h2>comment or uncomment ie. append before line using sed</h2>
@@ -645,19 +679,33 @@ h1, h2, h3 {
 </div>
 <div class="section" id="awk">
 <h1>awk</h1>
+<div class="section" id="find-and-replace">
+<h2>find and replace</h2>
+<p>to find and replace:</p>
+<pre class="literal-block">echo '&lt;hello&gt;&lt;world&gt;' | awk '{gsub(/&lt;/,&quot;\n&lt;&quot;,$0)}1'</pre>
+<p>general pattern:</p>
+<pre class="literal-block">echo $STRING'' | awk '{gsub(/$FIND/,&quot;$REPALCE_WITH&lt;&quot;,$0)}1'</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/8349811/5350059">https://stackoverflow.com/a/8349811/5350059</a></p>
+</div>
+<div class="section" id="id1">
+<h2>read specific line</h2>
+<p>to read/get/print specific line:</p>
+<pre class="literal-block">awk 'NR==$LINE' file</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/19327690/">https://stackoverflow.com/a/19327690/</a></p>
+</div>
 <div class="section" id="split-string-to-array-using-awk">
 <h2>split string to array using awk</h2>
 <pre class="literal-block">echo &quot;12|23|11&quot; | awk '{split($0,a,&quot;|&quot;); print a[3],a[2],a[1]}'</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/8009724/5350059">http://stackoverflow.com/a/8009724/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/8009724/">http://stackoverflow.com/a/8009724/</a>)</p>
 </div>
-<div class="section" id="id1">
+<div class="section" id="id2">
 <h2>deleting a substring</h2>
 <dl class="simple">
 <dt>::</dt>
 <dd><p>echo $str | awk -F. '{print $1}'</p>
 </dd>
 </dl>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/5350059">http://stackoverflow.com/a/13570430/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/">http://stackoverflow.com/a/13570430/</a>)</p>
 </div>
 <div class="section" id="get-a-spcecifice-column-form-output">
 <h2>Get a spcecifice column form output</h2>
@@ -674,12 +722,12 @@ h1, h2, h3 {
 OR
 
 awk 'FNR &gt; 1 { print $2 }' file</pre>
-<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/198066/199183">https://unix.stackexchange.com/a/198066/199183</a></p>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/198066/">https://unix.stackexchange.com/a/198066/</a></p>
 </div>
 <div class="section" id="merge-2-columns-separated-by-colon">
 <h2>Merge 2 columns separated by colon</h2>
 <pre class="literal-block">cat file | awk 'FNR&gt;1 {print $1 &quot;:&quot; $2}'</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/34775751/5350059">https://stackoverflow.com/a/34775751/5350059</a></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/34775751/">https://stackoverflow.com/a/34775751/</a></p>
 </div>
 </div>
 <div class="section" id="others">
@@ -692,7 +740,7 @@ echo &quot;${OUTPUT}&quot;</pre>
 <div class="section" id="echo-in-red-color">
 <h2>echo in red color</h2>
 <pre class="literal-block">echo -e &quot;\e[31m{message to echo with out 2nd brackets}\e[0m&quot;</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/28938235/5350059">http://stackoverflow.com/a/28938235/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/28938235/">http://stackoverflow.com/a/28938235/</a>)</p>
 </div>
 <div class="section" id="get-current-directory-name-without-full-path">
 <h2>Get current directory name (without full path)</h2>
@@ -710,21 +758,21 @@ var2=&quot;$(head -n 2 file | tail -n 1)&quot; #save line 2 on in var2</pre>
 <div class="section" id="read-on-same-line-after-echoing-a-message">
 <h2>read on same line after echoing a message</h2>
 <pre class="literal-block">read -p &quot;[y/n]: &quot; opt (#saves value in opt variable)</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/9720209/5350059">http://stackoverflow.com/a/9720209/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/9720209/">http://stackoverflow.com/a/9720209/</a>)</p>
 </div>
 <div class="section" id="split-a-string-on-a-delimiter">
 <h2>split a string on a delimiter</h2>
 <pre class="literal-block">string=&quot;1;2&quot;
 echo $string | cut -d';' -f1 # output is 1
 echo $string | cut -d';' -f2 # output is 2</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/38905821/5350059">http://stackoverflow.com/a/38905821/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/38905821/">http://stackoverflow.com/a/38905821/</a>)</p>
 </div>
 <div class="section" id="clear-screen">
 <h2>clear screen</h2>
 <pre class="literal-block">printf &quot;\033c&quot;</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/5367075/5350059">http://stackoverflow.com/a/5367075/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/5367075/">http://stackoverflow.com/a/5367075/</a>)</p>
 </div>
-<div class="section" id="id2">
+<div class="section" id="id3">
 <h2>deleting a substring</h2>
 <dl>
 <dt>::</dt>
@@ -743,7 +791,7 @@ echo $str | cut -d. -f1</p>
 abc</p>
 </dd>
 </dl>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/5350059">http://stackoverflow.com/a/13570430/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/">http://stackoverflow.com/a/13570430/</a>)</p>
 </div>
 <div class="section" id="split-a-sting-with-oifs">
 <h2>split a sting with OIFS</h2>
@@ -756,14 +804,14 @@ do
     echo &quot;&gt; [$x]&quot;
 done
 IFS=$OIFS</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/q/918886/5350059">http://stackoverflow.com/q/918886/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/q/918886/">http://stackoverflow.com/q/918886/</a>)</p>
 </div>
 <div class="section" id="if-string-is-not-empty">
 <h2>if string is not empty</h2>
 <pre class="literal-block">if [ ! -z &quot;$string&quot; ]
 #OR
 if [[ ! -z $string ]]</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/6592241/5350059">http://stackoverflow.com/a/6592241/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/6592241/">http://stackoverflow.com/a/6592241/</a>)</p>
 </div>
 <div class="section" id="if-else-if-elif">
 <h2>if else if elif</h2>
@@ -779,6 +827,16 @@ if [[ ! -z $string ]]</pre>
 
 (source: https://www.tutorialspoint.com/unix/if-elif-statement.htm)</pre>
 </div>
+<div class="section" id="multiple-conditions-in-if">
+<h2>multiple conditions in if</h2>
+<p>to put multiple conditions in if:</p>
+<pre class="literal-block">if [ &quot;$option&quot; = &quot;Y&quot; ] || [ &quot;$option&quot; = &quot;y&quot; ]
+then
+    echo &quot;Entered $option&quot;
+fi</pre>
+<p>here <cite>||</cite> is used as example, replace with with <cite>&amp;&amp;</cite> if need be.</p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/28064741/">https://stackoverflow.com/a/28064741/</a></p>
+</div>
 <div class="section" id="if-string-is-equal-to-string">
 <h2>if string is equal to string</h2>
 <pre class="literal-block">string=&quot;ABC&quot;
@@ -787,7 +845,7 @@ if [ &quot;$string&quot; = &quot;XYZ&quot; ]; then
 else
     echo &quot;string mismatched&quot;
 fi;</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/10849346/5350059">http://stackoverflow.com/a/10849346/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/10849346/">http://stackoverflow.com/a/10849346/</a>)</p>
 </div>
 <div class="section" id="if-a-application-exist">
 <h2>if a application exist</h2>
@@ -818,11 +876,11 @@ wc -l &lt; file.txt</pre>
 </div>
 <div class="section" id="add-sub-multiply-and-devide">
 <h2>add, sub, multiply and devide</h2>
-<pre class="literal-block">swap_size=&quot;$(($ram * $size_choice))&quot; #(source: https://stackoverflow.com/a/11039905
-
-OR
-
-expr $x / $y #(source: http://stackoverflow.com/a/18093887/5350059)</pre>
+<pre class="literal-block">swap_size=&quot;$(($ram * $size_choice))&quot;</pre>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/11039905">https://stackoverflow.com/a/11039905</a></p>
+<p>OR:</p>
+<pre class="literal-block">expr $x / $y</pre>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/18093887/">http://stackoverflow.com/a/18093887/</a>)</p>
 </div>
 <div class="section" id="use-specific-app-through-ssh">
 <h2>use specific app through ssh</h2>
@@ -835,7 +893,7 @@ nohup $app_name &amp;</pre>
 <pre class="literal-block">if [[ &quot;$a&quot; == '\012' ]] ; then
             echo &quot;FOUND NEWLINE&quot;
     fi</pre>
-<p>(source: <a class="reference external" href="http://unix.stackexchange.com/q/27423/199183">http://unix.stackexchange.com/q/27423/199183</a>)</p>
+<p>(source: <a class="reference external" href="http://unix.stackexchange.com/q/27423/">http://unix.stackexchange.com/q/27423/</a>)</p>
 </div>
 <div class="section" id="kill-a-shell-form-that-shell">
 <h2>kill a shell form that shell</h2>
@@ -846,7 +904,7 @@ nohup $app_name &amp;</pre>
 <pre class="literal-block">file_path=/path/to/file.extension
 file=$(basename &quot;$file_path&quot;)
 echo &quot;$file&quot;</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/4645575/5350059">http://stackoverflow.com/a/4645575/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/4645575/">http://stackoverflow.com/a/4645575/</a>)</p>
 </div>
 <div class="section" id="kill-all-instance-of-an-application">
 <h2>kill all instance of an application</h2>
@@ -859,7 +917,7 @@ kill $e</pre>
 low=$(echo &quot;$var&quot; | tr '[:upper:]' '[:lower:]')
 low=$(echo &quot;$var&quot; | awk '{print tolower($0)}')
 #both produces &quot;hi all&quot;</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/2264537/5350059">http://stackoverflow.com/a/2264537/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/2264537/">http://stackoverflow.com/a/2264537/</a>)</p>
 </div>
 <div class="section" id="get-real-ip">
 <h2>get real ip</h2>
@@ -872,12 +930,12 @@ low=$(echo &quot;$var&quot; | awk '{print tolower($0)}')
 rm -- &quot;$0&quot;
 #OR
 rm $script_name</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/8981233/5350059">http://stackoverflow.com/a/8981233/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/8981233/">http://stackoverflow.com/a/8981233/</a>)</p>
 </div>
 <div class="section" id="unzip-zip">
 <h2>unzip .zip</h2>
 <pre class="literal-block">unzip file.zip -d destination_folder</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/86852/502875">http://askubuntu.com/a/86852/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/86852/">http://askubuntu.com/a/86852/</a>)</p>
 </div>
 <div class="section" id="go-to-each-sub-directory-and-execute-a-command">
 <h2>go to each sub directory and execute a command</h2>
@@ -885,12 +943,12 @@ rm $script_name</pre>
 do
     (cd &quot;$d&quot; &amp;&amp; somecommand)
 done</pre>
-<p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/171679/199183">http://unix.stackexchange.com/a/171679/199183</a>)</p>
+<p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/171679/">http://unix.stackexchange.com/a/171679/</a>)</p>
 </div>
 <div class="section" id="change-password-without-typing-non-interactive">
 <h2>change password without typing (non interactive)</h2>
 <pre class="literal-block">echo $uname:$passwd | sudo chpasswd</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/41223440/5350059">http://stackoverflow.com/a/41223440/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/41223440/">http://stackoverflow.com/a/41223440/</a>)</p>
 </div>
 <div class="section" id="refresh-output-in-the-same-line-echo-update">
 <h2>refresh output in the same line(echo update)</h2>
@@ -906,12 +964,12 @@ do
     echo -ne &quot;Waiting time : &quot;$i&quot; Seconds\e[K&quot;
 done
 echo #print new line</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/34466100/5350059">http://stackoverflow.com/a/34466100/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/34466100/">http://stackoverflow.com/a/34466100/</a>)</p>
 </div>
 <div class="section" id="go-back-to-last-visited-directory">
 <h2>go back to last visited directory</h2>
 <pre class="literal-block">cd -</pre>
-<p>(source: <a class="reference external" href="https://superuser.com/q/113219/655587">https://superuser.com/q/113219/655587</a>)</p>
+<p>(source: <a class="reference external" href="https://superuser.com/q/113219/">https://superuser.com/q/113219/</a>)</p>
 </div>
 <div class="section" id="rm-move-to-trash">
 <h2>rm move to trash</h2>
@@ -922,13 +980,13 @@ move_to_trash () {
 }
 #then alias rm to that:
 alias rm='move_to_trash'</pre>
-<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/42758/199183">https://unix.stackexchange.com/a/42758/199183</a>)</p>
+<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/42758/">https://unix.stackexchange.com/a/42758/</a>)</p>
 </div>
 <div class="section" id="use-pc-name-instead-of-ip-while-ssh">
 <h2>use pc name instead of ip while ssh</h2>
 <pre class="literal-block">#add at the end of /etc/hosts
 ip_address(tab)pc_name</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/487319/502875">https://askubuntu.com/a/487319/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/487319/">https://askubuntu.com/a/487319/</a>)</p>
 </div>
 <div class="section" id="shutdown-restart-without-sudo-from-terminal-munst-have-consolekit">
 <h2>shutdown, restart, without sudo from terminal [munst have consolekit]</h2>
@@ -952,7 +1010,7 @@ systemctl suspend
 systemctl hibernate
 
 systemctl hybrid-sleep</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/385316/502875">http://askubuntu.com/a/385316/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/385316/">http://askubuntu.com/a/385316/</a>)</p>
 <p>OR</p>
 <p>gnome-session-quit --power-off --force --no-prompt</p>
 <p><a class="reference external" href="https://askubuntu.com/a/714940">https://askubuntu.com/a/714940</a></p>
@@ -963,22 +1021,22 @@ systemctl hybrid-sleep</pre>
 sudo &lt;program name&gt;
 #GUI
 gksudo &lt;program name&gt;</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/207467/502875">http://askubuntu.com/a/207467/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/207467/">http://askubuntu.com/a/207467/</a>)</p>
 </div>
 <div class="section" id="grep-for-this-or-that-2-things-in-a-file">
 <h2>grep for this or that (2 things) in a file?</h2>
 <pre class="literal-block">grep -E '(then|there)' x.x</pre>
-<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/82993/199183">https://unix.stackexchange.com/a/82993/199183</a>)</p>
+<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/82993/">https://unix.stackexchange.com/a/82993/</a>)</p>
 </div>
 <div class="section" id="execute-date-inside-corntab">
 <h2>execute <span class="docutils literal">date</span> inside corntab</h2>
 <pre class="literal-block">0 * * * * echo hello &gt;&gt; ~/cron-logs/hourly/test_`date &quot;+\%d-\%b-\%Y&quot;`</pre>
-<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/29582/199183">https://unix.stackexchange.com/a/29582/199183</a>)</p>
+<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/29582/">https://unix.stackexchange.com/a/29582/</a>)</p>
 </div>
 <div class="section" id="execute-sudo-command-over-ssh">
 <h2>execute sudo command over ssh</h2>
 <pre class="literal-block">ssh -t user&#64;server &quot;sudo script&quot;</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/10312700/5350059">https://stackoverflow.com/a/10312700/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/10312700/">https://stackoverflow.com/a/10312700/</a>)</p>
 </div>
 <div class="section" id="see-port-address-and-pid">
 <h2>see port address and PID</h2>
@@ -1032,7 +1090,7 @@ $0 is the name of the shell or shell script.</pre>
 <div class="section" id="make-peter-think-of-a-new-password-on-login">
 <h2>make peter think of a new password on login</h2>
 <pre class="literal-block">sudo passwd -e  YYYY-MM-DD peter</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/607108/502875">https://askubuntu.com/a/607108/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/607108/">https://askubuntu.com/a/607108/</a>)</p>
 </div>
 <div class="section" id="set-static-ip">
 <h2>set static ip</h2>
@@ -1044,7 +1102,7 @@ iface $interface inet static
    network 10.253.0.0
    gateway 10.253.0.1
    dns-nameservers 8.8.8.8</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/470245/502875">https://askubuntu.com/a/470245/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/470245/">https://askubuntu.com/a/470245/</a>)</p>
 </div>
 <div class="section" id="login-with-sshpass">
 <h2>Login with sshpass</h2>
@@ -1183,14 +1241,14 @@ stopwatch(){
 <h2>hide (all) user list on login screen</h2>
 <pre class="literal-block">sudo mkdir -p /etc/lightdm/lightdm.conf.d
 sudo printf &quot;[SeatDefaults]\nuser-session=ubuntu\ngreeter-show-manual-login=true\ngreeter-hide-users=true\nall&quot; &gt; /etc/lightdm/lightdm.conf.d/10-ubuntu.conf</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/731455/502875">http://askubuntu.com/a/731455/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/731455/">http://askubuntu.com/a/731455/</a>)</p>
 </div>
 <div class="section" id="hide-a-specific-user-form-login-screen">
 <h2>hide a specific user form login screen</h2>
 <pre class="literal-block">touch $user_name
 printf &quot;[User]\nSystemAccount=true\n&quot; &gt; $user_name
 sudo mv $user_name /var/lib/AccountsService/users/$user_name</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/575390/502875">http://askubuntu.com/a/575390/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/575390/">http://askubuntu.com/a/575390/</a>)</p>
 </div>
 <div class="section" id="open-files-form-terminal">
 <h2>open files form terminal</h2>
@@ -1234,7 +1292,7 @@ cd /sys/class/backlight/*/ &amp;&amp; dir=&quot;$(pwd | grep -o '[^/]*$')&quot;
 #the following line added the given pattern twice as there is a exit 0 in the comment section, delete it mannualy
 #250 is the number of brightness level
 sudo sed -i &quot;/exit 0/i \echo 250 &gt; /sys/class/backlight/$dir/brightness&quot; /etc/rc.local</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/151665/502875">http://askubuntu.com/a/151665/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/151665/">http://askubuntu.com/a/151665/</a>)</p>
 </div>
 <div class="section" id="execute-a-command-in-the-background-using-and-killing-it">
 <h2>Execute a command in the background using '&amp;' and killing it</h2>
@@ -1287,7 +1345,7 @@ sudo ip ad add 10.0.0.20/24 dev eth0</pre>
 <pre class="literal-block">ls -LR
 #OR
 find -follow</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/105249/5350059">http://stackoverflow.com/a/105249/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/105249/">http://stackoverflow.com/a/105249/</a>)</p>
 </div>
 <div class="section" id="check-battery-status">
 <h2>check battery status</h2>
@@ -1311,15 +1369,15 @@ sudo corntab -e #show jobs for root user</pre>
 <h2>change bluetooth broadcast device name</h2>
 <pre class="literal-block">sudo echo &quot;PRETTY_HOSTNAME=$device_name&quot; &gt;&gt;/etc/machine-info
 sudo service bluetooth restart
-#OR (source: http://askubuntu.com/a/80964/502875)
+#OR (source: http://askubuntu.com/a/80964/)
 sudo hciconfig hci0 name '$device_name'</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/80963/502875">http://askubuntu.com/a/80963/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/80963/">http://askubuntu.com/a/80963/</a>)</p>
 </div>
 <div class="section" id="change-lcd-brightness">
 <h2>change LCD brightness</h2>
 <pre class="literal-block">display=&quot;$(xrandr -q | grep &quot; connected&quot; | awk '{print $1}')&quot;
 xrandr --output $display --brightness m.n #(0&lt;=m&lt;=10(tested can be greater),0&lt;=m&lt;=9 )</pre>
-<p>(source: <a class="reference external" href="http://askubuntu.com/a/149264/502875">http://askubuntu.com/a/149264/502875</a>)</p>
+<p>(source: <a class="reference external" href="http://askubuntu.com/a/149264/">http://askubuntu.com/a/149264/</a>)</p>
 </div>
 <div class="section" id="export-display-to-run-a-gui-of-a-program-in-remote-client-like-over-ssh">
 <h2>export display (to run a GUI of a program in remote client like over ssh)</h2>
@@ -1331,17 +1389,17 @@ xrandr --output $display --brightness m.n #(0&lt;=m&lt;=10(tested can be greater
 
 { for ((i=$linesToSkip;i--;)) ;do read done while read line ;do echo
 $line done } &lt; file.csv</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/14110529/5350059">http://stackoverflow.com/a/14110529/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/14110529/">http://stackoverflow.com/a/14110529/</a>)</p>
 </div>
 <div class="section" id="copy-all-except-one-file-or-folder">
 <h2>copy all except one file or folder</h2>
 <pre class="literal-block">shopt -s extglob &amp;&amp; cp source\!($name) \destination #(first part extends regexes)</pre>
-<p>(idea source: <a class="reference external" href="http://askubuntu.com/a/786613/502875">http://askubuntu.com/a/786613/502875</a> &amp; <a class="reference external" href="http://stackoverflow.com/a/27655311/5350059">http://stackoverflow.com/a/27655311/5350059</a>)</p>
+<p>(idea source: <a class="reference external" href="http://askubuntu.com/a/786613/">http://askubuntu.com/a/786613/</a> &amp; <a class="reference external" href="http://stackoverflow.com/a/27655311/">http://stackoverflow.com/a/27655311/</a>)</p>
 </div>
 <div class="section" id="get-date-in-yyy-mm-dd-format">
 <h2>get date in yyy-mm-dd format</h2>
 <pre class="literal-block">DATE=`date +%Y-%m-%d`</pre>
-<p>(source: <a class="reference external" href="http://stackoverflow.com/a/1401495/5350059">http://stackoverflow.com/a/1401495/5350059</a>)</p>
+<p>(source: <a class="reference external" href="http://stackoverflow.com/a/1401495/">http://stackoverflow.com/a/1401495/</a>)</p>
 </div>
 <div class="section" id="in-ubuntu-all-deb-file-are-in-this-folder">
 <h2>in ubuntu all .deb file are in this folder</h2>
@@ -1359,7 +1417,7 @@ $line done } &lt; file.csv</pre>
    |  |    `--- Output filename
    |  `---- Use a password
    `---- Add files to archive</pre>
-<p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/325783/199183">http://unix.stackexchange.com/a/325783/199183</a>)</p>
+<p>(source: <a class="reference external" href="http://unix.stackexchange.com/a/325783/">http://unix.stackexchange.com/a/325783/</a>)</p>
 </div>
 <div class="section" id="bluetooth-tool">
 <h2>bluetooth tool</h2>
@@ -1425,7 +1483,7 @@ xinput set-prop $id &quot;Device Enabled&quot; 1
 <h2>disable and enable mouse driver</h2>
 <pre class="literal-block">sudo modprobe -r psmouse  # disable the driver
 sudo modprobe psmouse # enable the mouse driver</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/697952/502875">https://askubuntu.com/a/697952/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/697952/">https://askubuntu.com/a/697952/</a>)</p>
 </div>
 <div class="section" id="list-all-users-and-groups">
 <h2>list all users and groups</h2>
@@ -1442,7 +1500,7 @@ sudo sed -i '/exit 0/i \rfkill block bluetooth' /etc/rc.local</pre>
 <div class="section" id="check-if-user-is-sudo-if-not-ask-for-password">
 <h2>check if user is sudo if not ask for password</h2>
 <pre class="literal-block">sudo -v</pre>
-<p>(source: <a class="reference external" href="https://superuser.com/a/553939/655587">https://superuser.com/a/553939/655587</a>)</p>
+<p>(source: <a class="reference external" href="https://superuser.com/a/553939/">https://superuser.com/a/553939/</a>)</p>
 </div>
 <div class="section" id="echo-in-system-file">
 <h2>echo in system file</h2>
@@ -1453,7 +1511,7 @@ sudo sed -i '/exit 0/i \rfkill block bluetooth' /etc/rc.local</pre>
 <h2>missing date &amp; time from top panel</h2>
 <pre class="literal-block">dconf reset -f /com/canonical/indicator/datetime/
 pkill -f datetime</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/462176/502875">https://askubuntu.com/a/462176/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/462176/">https://askubuntu.com/a/462176/</a>)</p>
 </div>
 <div class="section" id="spell-checking-in-vim">
 <h2>spell checking in vim</h2>
@@ -1542,32 +1600,32 @@ crontab crontab_backup</pre>
 <div class="section" id="execute-command-without-keeping-it-in-history">
 <h2>execute command without keeping it in history</h2>
 <pre class="literal-block">command;history -d $(history 1)</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/33511637/5350059">https://stackoverflow.com/a/33511637/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/33511637/">https://stackoverflow.com/a/33511637/</a>)</p>
 <p>OR</p>
 <p>just add a space before your command</p>
 </div>
 <div class="section" id="get-hostname-from-ip">
 <h2>get hostname from ip</h2>
 <pre class="literal-block">nbtscan &lt;ip&gt; #install nbtscan sudo apt-get install nbtscan</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/205067/502875">https://askubuntu.com/a/205067/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/205067/">https://askubuntu.com/a/205067/</a>)</p>
 </div>
 <div class="section" id="connect-to-net-using-ethernet-calbe-if-you-have-dhcp-enabled">
 <h2>connect to net using ethernet calbe if you have DHCP enabled</h2>
 <pre class="literal-block">   sudo dhclient eth0
 
-(source: https://askubuntu.com/a/755263/502875)</pre>
+(source: https://askubuntu.com/a/755263/)</pre>
 </div>
 <div class="section" id="change-hostname-in-linux">
 <h2>change hostname in linux</h2>
 <pre class="literal-block">   sudo hostname your-new-name #name shows after reboot
 
-(source: https://askubuntu.com/a/87687/502875)</pre>
+(source: https://askubuntu.com/a/87687/)</pre>
 </div>
 <div class="section" id="change-the-default-shell">
 <h2>change the default shell</h2>
 <p>sometime after doing ssh to a machine we see just <span class="docutils literal">`$`</span> or <span class="docutils literal">`#`</span> instead of the very familer <span class="docutils literal">user&#64;hostname$</span> thats beacuse the default shell for that user is not set or not bash.:</p>
 <pre class="literal-block">sudo chsh &lt;username&gt; -s /bin/bash</pre>
-<p>(source: <a class="reference external" href="https://unix.stackexchange.com/q/50264/199183">https://unix.stackexchange.com/q/50264/199183</a>)</p>
+<p>(source: <a class="reference external" href="https://unix.stackexchange.com/q/50264/">https://unix.stackexchange.com/q/50264/</a>)</p>
 </div>
 <div class="section" id="if-your-bashrc-is-lost">
 <h2>if your .bashrc is lost</h2>
@@ -1575,7 +1633,7 @@ crontab crontab_backup</pre>
 /bin/cp /etc/skel/.bashrc ~/
 #root
 cp /etc/bash.bashrc ~/.bashrc</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/404428/502875">https://askubuntu.com/a/404428/502875</a> and me)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/404428/">https://askubuntu.com/a/404428/</a> and me)</p>
 </div>
 <div class="section" id="show-last-octet-of-ip">
 <h2>show last octet of ip</h2>
@@ -1588,7 +1646,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u&#64;\h($ip)\[\033[00m\]
 <div class="section" id="make-video-with-image-and-audio">
 <h2>make video with image and audio</h2>
 <pre class="literal-block">ffmpeg -loop 1 -i image.jpg -i audio.AMR -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4</pre>
-<p>(source: <a class="reference external" href="https://superuser.com/a/1041818/655587">https://superuser.com/a/1041818/655587</a>)</p>
+<p>(source: <a class="reference external" href="https://superuser.com/a/1041818/">https://superuser.com/a/1041818/</a>)</p>
 </div>
 <div class="section" id="show-ubuntu-support-status">
 <h2>show ubuntu-support-status</h2>
@@ -1618,12 +1676,12 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u&#64;\h($ip)\[\033[00m\]
 <div class="section" id="convert-a-pdf-into-jpg-one-page-one-pic">
 <h2>convert a .pdf into .jpg [one-page-one-pic]</h2>
 <pre class="literal-block">pdftoppm -jpeg raw-er-cowboyra.pdf prefix</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/50180/502875">https://askubuntu.com/a/50180/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/50180/">https://askubuntu.com/a/50180/</a>)</p>
 </div>
 <div class="section" id="suppress-all-output-from-a-command">
 <h2>suppress all output from a command</h2>
 <pre class="literal-block">scriptname &gt;/dev/null</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/617184/5350059">https://stackoverflow.com/a/617184/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/617184/">https://stackoverflow.com/a/617184/</a>)</p>
 </div>
 <div class="section" id="make-a-dir-with-in-fornt-of-it">
 <h2>make a dir with - in fornt of it</h2>
@@ -1653,7 +1711,7 @@ stderr 2</pre>
 amixer set Capture nocap
 #unmute
 amixer set Capture cap</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/337662/502875">https://askubuntu.com/a/337662/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/337662/">https://askubuntu.com/a/337662/</a>)</p>
 </div>
 <div class="section" id="enabling-and-disabling-ethernet">
 <h2>enabling and disabling Ethernet</h2>
@@ -1661,7 +1719,7 @@ amixer set Capture cap</pre>
 sudo ip link set up eth0
 #disable
 sudo ip link set down eth0</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/739502/502875">https://askubuntu.com/a/739502/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/739502/">https://askubuntu.com/a/739502/</a>)</p>
 </div>
 <div class="section" id="add-a-timestamp-to-script-log">
 <h2>add a timestamp to script log?</h2>
@@ -1671,23 +1729,23 @@ sudo ip link set down eth0</pre>
 <div class="section" id="run-php-from-terminal">
 <h2>run PHP from terminal</h2>
 <pre class="literal-block">php filename.php</pre>
-<p>(source: <a class="reference external" href="https://askubuntu.com/a/447254/502875">https://askubuntu.com/a/447254/502875</a>)</p>
+<p>(source: <a class="reference external" href="https://askubuntu.com/a/447254/">https://askubuntu.com/a/447254/</a>)</p>
 </div>
 <div class="section" id="wget-show-progress-bar-only">
 <h2>wget show progress bar only</h2>
 <pre class="literal-block">wget $url -q --show-progress</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/29457649/5350059">https://stackoverflow.com/a/29457649/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/29457649/">https://stackoverflow.com/a/29457649/</a>)</p>
 </div>
 <div class="section" id="redirect-output-to-multiple-log-files">
 <h2>redirect output to multiple log files</h2>
 <pre class="literal-block">echo test | tee file1 file2 file3</pre>
-<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/41249/199183">https://unix.stackexchange.com/a/41249/199183</a>)</p>
+<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/41249/">https://unix.stackexchange.com/a/41249/</a>)</p>
 </div>
 <div class="section" id="single-line-sftp-from-terminal">
 <h2>single line sftp from terminal</h2>
 <pre class="literal-block">   sftp username&#64;hostname:remoteFileName localFileName
 
-(source: https://stackoverflow.com/a/16723151/5350059)</pre>
+(source: https://stackoverflow.com/a/16723151/)</pre>
 </div>
 <div class="section" id="check-if-file-exists-on-remote-host-with-ssh">
 <h2>check if file exists on remote host with ssh</h2>
@@ -1697,7 +1755,7 @@ then
 else
     echo &quot;File does not exist&quot;
 fi</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/12845254/5350059">https://stackoverflow.com/a/12845254/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/12845254/">https://stackoverflow.com/a/12845254/</a>)</p>
 </div>
 <div class="section" id="cleanest-way-to-ssh-and-run-multiple-commands-source">
 <h2>cleanest way to ssh and run multiple commands source</h2>
@@ -1707,24 +1765,24 @@ fi</pre>
   pwd
   ./some_other_action 'other params'
 EOF</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/4412338/5350059">https://stackoverflow.com/a/4412338/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/4412338/">https://stackoverflow.com/a/4412338/</a>)</p>
 </div>
 <div class="section" id="passing-variables-in-remote-ssh-command">
 <h2>passing variables in remote ssh command</h2>
 <pre class="literal-block">ssh pvt&#64;192.168.1.133 &quot;~/tools/run_pvt.pl $BUILD_NUMBER&quot;</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/3314678/5350059">https://stackoverflow.com/a/3314678/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/3314678/">https://stackoverflow.com/a/3314678/</a>)</p>
 </div>
 <div class="section" id="whether-or-not-a-variable-is-empty">
 <h2>whether or not a variable is empty</h2>
 <pre class="literal-block">if [[ -z &quot;$var&quot; ]]</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/3063887/5350059">https://stackoverflow.com/a/3063887/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/3063887/">https://stackoverflow.com/a/3063887/</a>)</p>
 </div>
 <div class="section" id="debug-a-bash-script">
 <h2>debug a bash script</h2>
 <pre class="literal-block">set -x
 ..code to debug...
 set +x</pre>
-<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/155570/199183">https://unix.stackexchange.com/a/155570/199183</a>)</p>
+<p>(source: <a class="reference external" href="https://unix.stackexchange.com/a/155570/">https://unix.stackexchange.com/a/155570/</a>)</p>
 </div>
 <div class="section" id="print-a-char-variable-times">
 <h2>print a char variable times</h2>
@@ -1748,7 +1806,7 @@ iwgetid # (source: https://raspberrypi.stackexchange.com/a/41024)</pre>
 <div class="section" id="download-and-output-it-on-stdout">
 <h2>download and output it on STDOUT</h2>
 <pre class="literal-block">wget -qO- $link</pre>
-<p>(source: <a class="reference external" href="https://stackoverflow.com/a/22926472/5350059">https://stackoverflow.com/a/22926472/5350059</a>)</p>
+<p>(source: <a class="reference external" href="https://stackoverflow.com/a/22926472/">https://stackoverflow.com/a/22926472/</a>)</p>
 </div>
 <div class="section" id="image-your-hard-disk-using-dd">
 <h2>image your hard disk using dd</h2>
@@ -1758,7 +1816,7 @@ iwgetid # (source: https://raspberrypi.stackexchange.com/a/41024)</pre>
 <h2>use curl to download tar file</h2>
 <p>to use curl to download tar file:</p>
 <pre class="literal-block">curl -L https://site.tld/file.tar.b2 | tar zx</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/5746376/5350059">https://stackoverflow.com/a/5746376/5350059</a></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/5746376/">https://stackoverflow.com/a/5746376/</a></p>
 </div>
 <div class="section" id="file-sync">
 <h2>file sync</h2>
@@ -1781,7 +1839,7 @@ exit $exitcode</pre>
 <pre class="literal-block">if [[ &quot;$#&quot; -ne 1 ]]; then
     echo &quot;Illegal number of parameters&quot;
 fi</pre>
-<p>s: <a class="reference external" href="https://stackoverflow.com/a/18568726/5350059">https://stackoverflow.com/a/18568726/5350059</a></p>
+<p>s: <a class="reference external" href="https://stackoverflow.com/a/18568726/">https://stackoverflow.com/a/18568726/</a></p>
 </div>
 <div class="section" id="set-environment-variables">
 <h2>set environment variables</h2>
@@ -1795,13 +1853,13 @@ fi</pre>
 <div class="section" id="global-variable-declaration">
 <h2>global variable declaration</h2>
 <pre class="literal-block">declare -g variable</pre>
-<p><a class="reference external" href="https://stackoverflow.com/a/58594644/5350059">https://stackoverflow.com/a/58594644/5350059</a></p>
+<p><a class="reference external" href="https://stackoverflow.com/a/58594644/">https://stackoverflow.com/a/58594644/</a></p>
 </div>
 <div class="section" id="remove-alias">
 <h2>remove alias</h2>
 <p>to remove alias:</p>
 <pre class="literal-block">unalias $ALIAS</pre>
-<p><a class="reference external" href="https://askubuntu.com/a/325380/502875">https://askubuntu.com/a/325380/502875</a></p>
+<p><a class="reference external" href="https://askubuntu.com/a/325380/">https://askubuntu.com/a/325380/</a></p>
 </div>
 <div class="section" id="export-variable-from-bash-script">
 <h2>export variable from bash script</h2>
@@ -1817,19 +1875,19 @@ echo &quot;hello&quot;</pre>
 <pre class="literal-block">echo $VAR
 
 HELLO, VARIABLE</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/16618248/5350059">Can I export a variable to the environment from a bash script without sourcing it?</a></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/16618248/">Can I export a variable to the environment from a bash script without sourcing it?</a></p>
 </div>
 <div class="section" id="remove-an-exported-variable">
 <h2>remove an exported variable</h2>
 <p>to remove an exported variable:</p>
 <pre class="literal-block">unset $VAIABLE</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/6877747/5350059">How do I delete an exported environment variable?</a></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/6877747/">How do I delete an exported environment variable?</a></p>
 </div>
 <div class="section" id="create-a-django-secret-key-with-bash">
 <h2>create a django secret key with bash</h2>
 <p>to create a django secret key with bash:</p>
 <pre class="literal-block">export SECRET_KEY=$(head /dev/urandom | tr -dc 'A-Za-z0-9!&quot;#$%&amp;'\''()*+,-./:;&lt;=&gt;?&#64;[\]^_`{|}~' | head -c 49 ; echo '')</pre>
-<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/230676/199183">How to generate a random string?</a></p>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/230676/">How to generate a random string?</a></p>
 </div>
 <div class="section" id="write-multiple-line-to-a-file-with-variables">
 <h2>write multiple line to a file with variables</h2>
@@ -1842,13 +1900,195 @@ line 3
 line ${VAR}
 EOL</pre>
 <p>P.S: We can replace the <cite>EOL</cite> with anything like <cite>CAT</cite> ;)</p>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/7875614/5350059">How to write multiple line string using Bash with variables?</a></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/7875614/">How to write multiple line string using Bash with variables?</a></p>
 </div>
 <div class="section" id="remove-user-from-a-group">
 <h2>remove user from a group</h2>
 <p>to remove a user from a group:</p>
 <pre class="literal-block">sudo gpasswd -d $USER $GROUP</pre>
-<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/29572/199183">How do I remove a user from a group?</a></p>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/29572/">How do I remove a user from a group?</a></p>
+</div>
+<div class="section" id="keyboard-shortcut-for-recalling-last-argument">
+<h2>keyboard shortcut for recalling last argument</h2>
+<p>to recall last argument use the following keyboard shortcut:</p>
+<blockquote>
+<p><span class="kbd">Alt</span> + <span class="kbd">.</span></p>
+</blockquote>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/3371299/">https://stackoverflow.com/a/3371299/</a> and <a class="reference external" href="https://askubuntu.com/a/304831/">https://askubuntu.com/a/304831/</a></p>
+</div>
+<div class="section" id="run-nc-q-with-millisecond">
+<h2>run nc -q with millisecond</h2>
+<p>to run nc -q with millisecond:</p>
+<pre class="literal-block">nc 192.168.1.106 23 -q 10ms</pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>need to check if it works</p>
+</div>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/42137257/">https://stackoverflow.com/a/42137257/</a></p>
+</div>
+<div class="section" id="array-in-bash">
+<h2>array in bash</h2>
+<div class="section" id="create-an-empty-array">
+<h3>create an empty array</h3>
+<p>to create an empty array:</p>
+<pre class="literal-block">ARR=()</pre>
+</div>
+<div class="section" id="save-data-to-aa-array">
+<h3>save data to aa array</h3>
+<p>to save data to an array:</p>
+<pre class="literal-block">ARR[0]=&quot;A&quot;
+ARR[1]=&quot;B&quot;
+ARR[2]=&quot;C&quot;</pre>
+<p>OR:</p>
+<pre class="literal-block">ARR=(&quot;A&quot; &quot;B&quot; &quot;C&quot;)</pre>
+</div>
+<div class="section" id="length-of-an-array">
+<h3>length of an array</h3>
+<p>to check the length of an array:</p>
+<pre class="literal-block">${#ARR[&#64;]}</pre>
+</div>
+<div class="section" id="access-an-element-of-an-array">
+<h3>access an element of an array</h3>
+<p>to access an element of an array:</p>
+<pre class="literal-block">echo ${ARR[0]}</pre>
+</div>
+<div class="section" id="all-elements-in-an-array">
+<h3>all elements in an array</h3>
+<p>get all elements in an array:</p>
+<pre class="literal-block">${ARR[*]}</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/52331532/">https://stackoverflow.com/a/52331532/</a></p>
+</div>
+<div class="section" id="add-element-to-array">
+<h3>add element to array</h3>
+<p>to add element to array:</p>
+<pre class="literal-block">ARRAY=()
+ARRAY+=('foo')
+ARRAY+=('bar')</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/1951523/">https://stackoverflow.com/a/1951523/</a></p>
+</div>
+<div class="section" id="sort-array">
+<h3>sort array</h3>
+<p>to sort an array:</p>
+<pre class="literal-block">IFS=$'\n' sorted=($(sort &lt;&lt;&lt;&quot;${array[*]}&quot;))
+unset IFS</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/11789688/">https://stackoverflow.com/a/11789688/</a></p>
+</div>
+<div class="section" id="append-elements-to-array-inside-for-loop">
+<h3>append elements to array inside for loop</h3>
+<p>to append elements to array inside for loop:</p>
+<pre class="literal-block">declare -ag exceeded_users
+arr=()
+for i in {1..5}
+do
+    arr+=($i)
+done</pre>
+<p>the <cite>declare -ag exceeded_users</cite> part is the most important.</p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/58594644/">https://stackoverflow.com/a/58594644/</a></p>
+</div>
+</div>
+<div class="section" id="get-from-char-to-char-of-a-string">
+<h2>get from char to char of a string</h2>
+<p>to cut a specific length of a string like, 3rd char to 6th char:</p>
+<pre class="literal-block">str=&quot;abcdefghij&quot;
+char=${str:2:4}</pre>
+<p>so it is like <cite>${parameter:offset:length}</cite></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/7306483/">https://stackoverflow.com/a/7306483/</a></p>
+</div>
+<div class="section" id="remove-symbolic-link">
+<h2>remove symbolic link</h2>
+<p>to remove symbolic link:</p>
+<pre class="literal-block">rm linked_file</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/398850/">https://askubuntu.com/a/398850/</a></p>
+</div>
+<div class="section" id="convert-character-to-ascii">
+<h2>convert character to ASCII</h2>
+<p>to convert character to ASCII:</p>
+<pre class="literal-block">printf &quot;%d\n&quot; &quot;'A&quot;</pre>
+<p>OR:</p>
+<pre class="literal-block">echo &quot;A&quot; | tr -d &quot;\n&quot; | od -An -t dC</pre>
+<p>convert ASCII to character:</p>
+<pre class="literal-block">awk -v char=65 'BEGIN { printf &quot;%c\n&quot;, char; exit }'</pre>
+<p>source: <a class="reference external" href="https://www.unix.com/shell-programming-and-scripting/93355-how-get-ascii-value-using-shell-commands-script.html">https://www.unix.com/shell-programming-and-scripting/93355-how-get-ascii-value-using-shell-commands-script.html</a></p>
+</div>
+<div class="section" id="delete-large-directory-with-thousands-of-files">
+<h2>delete large directory with thousands of files</h2>
+<p>to delete large directory with thousands of files:</p>
+<pre class="literal-block">mkdir empty_dir
+rsync -a --delete empty_dir/    yourdirectory/</pre>
+<p>OR:</p>
+<pre class="literal-block">cd yourdirectory
+perl -e 'for(&lt;*&gt;){((stat)[9]&lt;(unlink))}'</pre>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/79656/">https://unix.stackexchange.com/a/79656/</a></p>
+</div>
+<div class="section" id="curl-output-http-status">
+<h2>curl output HTTP status</h2>
+<p>see curl output HTTP status:</p>
+<pre class="literal-block">curl -s -o /dev/null -I -w &quot;%{http_code}&quot; http://www.example.org/</pre>
+<p>source: <a class="reference external" href="https://superuser.com/a/442395/">https://superuser.com/a/442395/</a></p>
+</div>
+<div class="section" id="output-specific-line-of-huge-file">
+<h2>output specific line of huge file</h2>
+<p>to output specific line of huge file:</p>
+<pre class="literal-block">sed -n -e $LINEp file_name</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/8166496/">https://stackoverflow.com/a/8166496/</a></p>
+<p>OR:</p>
+<pre class="literal-block">head -$LINE file_name | tail -1</pre>
+</div>
+<div class="section" id="output-line-range-of-huge-file">
+<h2>output line range of huge file</h2>
+<p>to output line range of huge file:</p>
+<pre class="literal-block">sed -n $START_LINE,$END_LINEp file_name</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/8166496/">https://stackoverflow.com/a/8166496/</a></p>
+</div>
+<div class="section" id="sort-by-specific-field">
+<h2>sort by specific field</h2>
+<p>to sort by 4th field:</p>
+<pre class="literal-block">sort -k4</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/5243126/">https://stackoverflow.com/a/5243126/</a></p>
+</div>
+<div class="section" id="show-file-contains-with-file-name">
+<h2>show file contains with file name</h2>
+<p>to show file contains with file name:</p>
+<pre class="literal-block">tail -n +1 file1.txt file2.txt file3.txt</pre>
+<p>Output:</p>
+<pre class="literal-block">==&gt; file1.txt &lt;==
+&lt;contents of file1.txt&gt;
+
+==&gt; file2.txt &lt;==
+&lt;contents of file2.txt&gt;
+
+==&gt; file3.txt &lt;==
+&lt;contents of file3.txt&gt;</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/7816490/">https://stackoverflow.com/a/7816490/</a></p>
+</div>
+<div class="section" id="get-current-path-of-a-symlink">
+<h2>get current path of a symlink</h2>
+<p>to get the current path of a symlink:</p>
+<pre class="literal-block">DIR=&quot;$(cd &quot;$(dirname &quot;$0&quot;)&quot; &amp;&amp; pwd)&quot;</pre>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/17500/">https://unix.stackexchange.com/a/17500/</a></p>
+</div>
+<div class="section" id="less-show-line-number">
+<h2>less show line number</h2>
+<p>to show line number in less:</p>
+<pre class="literal-block">less -N file_name</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/831707/">https://stackoverflow.com/a/831707/</a></p>
+</div>
+<div class="section" id="grep-certain-file-extensions">
+<h2>grep certain file extensions</h2>
+<p>to grep certain file extensions:</p>
+<pre class="literal-block">grep -r -i -include=\*.${file_extension} /path/to/dir</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/12517022/">https://stackoverflow.com/a/12517022/</a></p>
+</div>
+<div class="section" id="detecting-change-in-files-in-a-directory">
+<h2>detecting change in files in a directory</h2>
+<p>to detect change in files in a directory we can use <cite>inotifywait</cite>:</p>
+<pre class="literal-block">inotifywait -r  -m /dir/to/monitor/</pre>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/283875/">https://unix.stackexchange.com/a/283875/</a></p>
+<p>or with <cite>find</cite> command:</p>
+<pre class="literal-block">while :
+do
+    find /dir/to/monitor/ -type f -mmin $TIME_IN_SECOND
+done</pre>
 </div>
 <div class="section" id="source">
 <h2>Source</h2>
@@ -1858,7 +2098,7 @@ EOL</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/bash_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-06 13:19 UTC.
+Generated on: 2020-02-09 12:56 UTC.
 </p>
 
 </div>

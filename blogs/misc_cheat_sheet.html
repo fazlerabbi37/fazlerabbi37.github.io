@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>OpenWrt Cheat Sheet</title>
+<title>Miscellaneous Cheat Sheet</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -588,134 +588,30 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="openwrt-cheat-sheet">
-<h1 class="title">OpenWrt Cheat Sheet</h1>
+<div class="document" id="miscellaneous-cheat-sheet">
+<h1 class="title">Miscellaneous Cheat Sheet</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to OpenWrt</p>
-<p>Created on: 2019-12-08</p>
-<div class="section" id="install">
-<h1>Install</h1>
-<p>Given we have a supported hardware, installing OpenWrt is very simple. Head over to <a class="reference external" href="https://openwrt.org/toh/start">Table of Hardware</a> and check if our hardware is supported. We can search by putting our device's Brand and Model on the white input box and pressing enter. We must make sure to match the version number. If we see our device on the list, we should also see a Device Page on the 5th column. The link on the device page would have detailed instruction on how to install OpenWrt on that device. The general steps would be:</p>
-<ul class="simple">
-<li><p>Taking a backup of the router</p></li>
-<li><p>Downloading the firmware</p></li>
-<li><p>Resetting the router</p></li>
-<li><p>Powering up the router</p></li>
-<li><p>Connecting to the router via LAN cable</p></li>
-<li><p>Going to the routers web management portal</p></li>
-<li><p>Going to System Tools -&gt; Firmware Upgrade section from the menu</p></li>
-<li><p>Uploading the firmware</p></li>
-<li><p>Waiting for the router to reboot</p></li>
-<li><p>The either Telnet to 192.168.1.1 and set a root password, or browse to <a class="reference external" href="http://192.168.1.1">http://192.168.1.1</a> if LuCI is installed.</p></li>
-<li><p>And we are done!</p></li>
-</ul>
+<p>A quick reference to all things miscellaneous and those things that have no home yet.</p>
+<p>Created on: 2020-02-09</p>
+<div class="section" id="html">
+<h1>HTML</h1>
+<div class="section" id="jump-to-top-of-page-link">
+<h2>jump to top of page link</h2>
+<p>to create a jump to top of page link:</p>
+<pre class="literal-block">&lt;a href=&quot;#&quot;&gt;Go to top&lt;/a&gt;
+
+&lt;a href=&quot;#top&quot;&gt;Go to top&lt;/a&gt;</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/11751756/5350059">https://stackoverflow.com/a/11751756/5350059</a></p>
 </div>
-<div class="section" id="building-from-source">
-<h1>Building from source</h1>
-<p>In Ubuntu 18.04, to build OpenWrt from source we need to follow this steps:</p>
-<ol class="arabic">
-<li><p>Installing the necessary packages:</p>
-<pre class="literal-block">sudo apt install subversion g++ zlib1g-dev build-essential git python python3 libncurses5-dev gawk gettext unzip file libssl-dev \
-                 wget libelf-dev ecj fastjar java-propose-classpath build-essential libncursesw5-dev python unzip -y</pre>
-</li>
-<li><p>Getting the OpenWrt source code:</p>
-<pre class="literal-block">git clone https://github.com/openwrt/openwrt.git</pre>
-</li>
-<li><p>Going inside the directory and running the scripts to update and install feeds:</p>
-<pre class="literal-block">cd openwrt
-./scripts/feeds update -a
-./scripts/feeds install -a</pre>
-</li>
-<li><p>Making the configuration:</p>
-<pre class="literal-block">make menuconfig</pre>
-</li>
-</ol>
-<p>This will open a menu for us to select our router configuration. For example, if we want to build images for the &quot;TL-WR841N v11&quot; Wifi-Router, the options will be</p>
-<ul class="simple">
-<li><p>Target System = Atheros AR7xxx/AR9xxx</p></li>
-<li><p>Subtarget = Devices with small flash</p></li>
-<li><p>Target Profile = TP-LINK TL-WR841N/ND v11</p></li>
-</ul>
-<p>We can get most of the info in the Device Page column ofn <a class="reference external" href="https://openwrt.org/toh/start">Table of Hardware</a>.</p>
-<ol class="arabic" start="5">
-<li><p>Building the firmware:</p>
-<pre class="literal-block">make</pre>
-</li>
-</ol>
-<p>Afterwards, we can get the images in ./bin/targets/$SYSTEM/generic directory.</p>
-</div>
-<div class="section" id="building-from-source-with-docker">
-<h1>Building from source with Docker</h1>
-<p>For convenience of not installing a lot of dependency in the system, I put together a Dockerfile for building the firmware from source. The process is similar to the <a class="reference internal" href="#building-from-source">Building from source</a>.</p>
-<ol class="arabic">
-<li><p>First we need to get the OpenWrt source code:</p>
-<pre class="literal-block">git clone https://github.com/openwrt/openwrt.git</pre>
-</li>
-<li><p>We need to change our directory to openwrt:</p>
-<pre class="literal-block">cd openwrt</pre>
-</li>
-<li><p>Then we will open a file named Dockerfile with our favourite editor. I would be using vim:</p>
-<pre class="literal-block">vim Dockerfile</pre>
-</li>
-</ol>
-<p>P.S. Enable paste mode if you are also using vim with <span class="kbd">Esc</span> th <span class="kbd">:</span> and type <cite>set paste</cite></p>
-<ol class="arabic" start="4">
-<li><p>Then we will paste the following:</p>
-<pre class="literal-block">    FROM ubuntu:18.04
-
-    RUN apt update
-
-RUN apt install subversion g++ zlib1g-dev build-essential git python python3 libncurses5-dev gawk gettext unzip file libssl-dev \
-                 wget libelf-dev ecj fastjar java-propose-classpath build-essential libncursesw5-dev python unzip -y
-
-    ARG USER_ID
-    ARG GROUP_ID
-
-    USER $USER_ID:$GROUP_ID
-
-    WORKDIR /app
-
-    COPY --chown=$USER_ID:$GROUP_ID . .</pre>
-</li>
-<li><p>Building the OpenWrt Docker image:</p>
-<pre class="literal-block">sudo docker build --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) -t openwrt .</pre>
-</li>
-<li><p>Running the scripts to update and install the feeds:</p>
-<pre class="literal-block">sudo ddocker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt ./scripts/feeds update -a
-sudo ddocker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt ./scripts/feeds install -a</pre>
-</li>
-<li><p>Making the configuration is same as manual build:</p>
-<pre class="literal-block">sudo ddocker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g)  openwrt make menuconfig</pre>
-</li>
-</ol>
-<p>This will open a menu for us to select our router configuration. For example, if we want to build images for the &quot;TL-WR841N v11&quot; Wifi-Router, the options will be</p>
-<ul class="simple">
-<li><p>Target System = Atheros AR7xxx/AR9xxx</p></li>
-<li><p>Subtarget = Devices with small flash</p></li>
-<li><p>Target Profile = TP-LINK TL-WR841N/ND v11</p></li>
-</ul>
-<p>We can get most of the info in the Device Page column ofn <a class="reference external" href="https://openwrt.org/toh/start">Table of Hardware</a>.</p>
-<ol class="arabic" start="8">
-<li><p>Building the firmware:</p>
-<pre class="literal-block">docker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt make</pre>
-</li>
-</ol>
-<p>Afterwards, we can get the images in ./bin/targets/$SYSTEM/generic directory.</p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://openwrt.org/docs/guide-developer/quickstart-build-images">Quick Image Building Guide</a></p></li>
-</ul>
-<!-- - `How to enable WIFI on first firmware boot by default? <https://forum.openwrt.org/t/how-to-enable-wifi-on-first-firmware-boot-by-default/6568>`_ -->
-<!-- - `OpenWrt build system – Usage:Custom files <https://oldwiki.archive.openwrt.org/doc/howto/build#custom_files>`_ -->
-<!-- - `Wi-Fi /etc/config/wireless <https://openwrt.org/docs/guide-user/network/wifi/basic>`_ -->
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/openwrt_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/misc_cheat_sheet.rst">View document source</a>.
 Generated on: 2020-02-09 12:56 UTC.
 </p>
 

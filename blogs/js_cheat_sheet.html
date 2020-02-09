@@ -713,7 +713,7 @@ Now a somewhat 'hidden menu' opens. Choose: &quot;Empty Cache and Hard Reload&qu
 </div>
 <div class="section" id="deleting-autocomplete-urls">
 <h1>Deleting AutoComplete URLs</h1>
-<pre class="literal-block">Type the fisrt part of the URL the press Shift+Delete</pre>
+<p>Type the fisrt part of the URL the press Shift+Delete</p>
 <p>(source: <a class="reference external" href="https://productforums.google.com/forum/#!msg/chrome/i8HqLSSePLo/C0C_otXyB90J">https://productforums.google.com/forum/#!msg/chrome/i8HqLSSePLo/C0C_otXyB90J</a>)</p>
 </div>
 <div class="section" id="mark-all-checkbox-on-a-page">
@@ -786,6 +786,40 @@ urlData ) {
 
     downloadFile( 'bookmarks-'+ dateStr +'.txt', 'data:text/plain;charset=UTF-8,' + encodeURIComponent(str) );</pre>
 </div>
+<div class="section" id="go-back-to-previous-page">
+<h1>go back to previous page</h1>
+<p>to go back to previous page:</p>
+<pre class="literal-block">window.history.go(-1);</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/34178688/5350059">https://stackoverflow.com/a/34178688/5350059</a></p>
+</div>
+<div class="section" id="check-a-button-by-class-name">
+<h1>check a button by class name</h1>
+<p>to check a button by class name:</p>
+<pre class="literal-block">var classes = document.getElementsByClassName('ui green button');
+var Rate = classes[0];
+Rate.click();</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/questions/25587762/javascript-click-on-element-by-class">https://stackoverflow.com/questions/25587762/javascript-click-on-element-by-class</a></p>
+</div>
+<div class="section" id="auto-fill-user-name-and-pass-from-bookmark">
+<h1>auto-fill user name and pass from bookmark</h1>
+<p>to auto-fill user name and pass from bookmark:</p>
+<pre class="literal-block">javascript:(function(){
+        document.getElementById(&quot;user_name&quot;).value = &quot;Johnny Bravo&quot;;
+        document.getElementById(&quot;password&quot;).value = &quot;Johnny Bravo&quot;;
+})();</pre>
+<p>source: IppSec Bitlab Youtube Video</p>
+</div>
+<div class="section" id="change-type-of-an-element">
+<h1>change type of an element</h1>
+<p>to change type of an element:</p>
+<pre class="literal-block">document.getElementById(&quot;password&quot;).type = &quot;text&quot;</pre>
+</div>
+<div class="section" id="sleep-for-millisecond">
+<h1>sleep for millisecond</h1>
+<p>to sleep for millisecond:</p>
+<pre class="literal-block">await new Promise(r =&gt; setTimeout(r, 2000));</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/39914235/5350059">https://stackoverflow.com/a/39914235/5350059</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <blockquote>
@@ -798,7 +832,7 @@ urlData ) {
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/js_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-06 13:19 UTC.
+Generated on: 2020-02-09 12:56 UTC.
 </p>
 
 </div>
