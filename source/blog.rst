@@ -14,6 +14,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: New Blogs
 
+	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
+
+
 	`fDLuDCf's Practical Cryptography: Lesson 04 <blogs/fdludcf_practical_cryptography_lesson_04.html>`_
 
 
@@ -26,18 +29,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`fDLuDCf's Practical Cryptography: Lesson 01 <blogs/fdludcf_practical_cryptography_lesson_01.html>`_
 
 
-	`HackGame Walkthrough <blogs/hackgame_walkthrough.html>`_
-
-
 
 
 .. sidebar:: Recently Updated Blogs
-
-	`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
-
-
-	`HackGame Walkthrough <blogs/hackgame_walkthrough.html>`_
-
 
 	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
 
@@ -45,7 +39,13 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 01 <blogs/fdludcf_practical_cryptography_lesson_01.html>`_
+	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
+
+
+	`JavaScript Cheat Sheet <blogs/js_cheat_sheet.html>`_
+
+
+	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
 
@@ -290,6 +290,14 @@ Created on: 2018-07-19
 
 A quick reference to Markdown.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
+..........................................................
+Created on: 2020-02-09
+
+A quick reference to all things miscellaneous and those things that have no home yet.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
