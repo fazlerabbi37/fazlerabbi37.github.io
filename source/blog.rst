@@ -33,19 +33,19 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: Recently Updated Blogs
 
-	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
-
-
 	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
+	`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
 
 
-	`JavaScript Cheat Sheet <blogs/js_cheat_sheet.html>`_
+	`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
 
 
-	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
+	`Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
+
+
+	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
 
 
 
