@@ -52,7 +52,45 @@ reverse proxy config::
 
 source: https://stackoverflow.com/a/42452204/5350059
 
+simple reverse proxy with ssl
+-----------------------------
+simple reverse proxy with ssl::
 
+   server {
+    listen 80;
+    return 301 https://$host$request_uri;
+    }
+
+    server {
+
+        listen 443;
+        server_name sub.domain.com;
+
+        ssl_certificate           /etc/nginx/cert.crt;
+        ssl_certificate_key       /etc/nginx/cert.key;
+
+        ssl on;
+
+
+        location / {
+          proxy_pass          http://localhost:8080;
+        }
+    }
+
+source: https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins
+
+replace or remove subdirectory in reverse proxy
+-----------------------------------------------
+to replace or remove subdirectory in reverse proxy::
+
+   location /site1/ {
+        proxy_pass http://localhost:8081/;
+        # ... more config ... #
+    }
+
+notice the tailing `/` both after the `site` and `http://localhost:8081`
+
+source: https://serverfault.com/a/444753/
 
 Source
 ------
