@@ -39,7 +39,7 @@ source: https://docs.docker.com/v17.09/engine/installation/linux/linux-postinsta
 
 test your installation::
 
-    docker run hello-world
+    sudo docker run hello-world
 
 
 install docker-compose on ubuntu
@@ -74,7 +74,7 @@ list container
 --------------
 to list running container::
 
-    docker ps
+    sudo docker ps
 
 to list all container::
 
