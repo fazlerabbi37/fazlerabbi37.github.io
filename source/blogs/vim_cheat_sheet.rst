@@ -148,6 +148,18 @@ the do you task and press :kbd:`q`. It will save the macro to the register [one 
 
 source: https://vim.fandom.com/wiki/Macros
 
+abbreviations
+-------------
+set an abbreviation:
+
+    :kbd:`Esc` then :kbd:`:` `ab $ABBREVIATION $FULL_TEXT_FOR_THE_ABBREVIATION`
+
+for example:
+
+    :kbd:`:` `ab rtfm read the fine manual`
+
+source: https://vim.fandom.com/wiki/Using_abbreviations
+
 Source
 ------
  - ` <>`_
