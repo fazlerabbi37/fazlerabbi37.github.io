@@ -59,7 +59,7 @@ connect with ssh
 ````````````````
 to connect with ssh first add ssh key with `gcloud` [3]_::
 
-    gcloud compute --project "$PROJECT" ssh --zone "$ZONE" "$INSTANCE_NAME"
+    gcloud compute --project "$PROJECT" ssh --zone "$ZONE" "$INSTANCE-NAME"
 
 after that we can login with::
 
@@ -68,6 +68,17 @@ after that we can login with::
 If we forget this command, we don't need to worry as it is available in the drop down list located beside the `SSH` button on the `VM instances <https://console.cloud.google.com/compute/instances>`_ page.
 
 
+copy file with scp
+``````````````````
+to copy file with scp from remote to local::
+
+    gcloud compute scp "$INSTANCE-NAME":/remote/path /local/path
+
+to copy file with scp from local to remote::
+
+    gcloud compute scp /local/path "$INSTANCE-NAME":/remote/path
+
+source: https://cloud.google.com/sdk/gcloud/reference/compute/scp
 
 
 
