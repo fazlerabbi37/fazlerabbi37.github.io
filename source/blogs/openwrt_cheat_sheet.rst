@@ -107,13 +107,13 @@ P.S. Enable paste mode if you are also using vim with :kbd:`Esc` th :kbd:`:` and
 
 6. Running the scripts to update and install the feeds::
 
-	sudo ddocker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt ./scripts/feeds update -a
-	sudo ddocker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt ./scripts/feeds install -a
+	sudo docker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt ./scripts/feeds update -a
+	sudo docker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt ./scripts/feeds install -a
 
 
 7. Making the configuration is same as manual build::
 
-    sudo ddocker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g)  openwrt make menuconfig
+    sudo docker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g)  openwrt make menuconfig
 
 This will open a menu for us to select our router configuration. For example, if we want to build images for the "TL-WR841N v11" Wifi-Router, the options will be 
 
@@ -125,9 +125,28 @@ We can get most of the info in the Device Page column ofn `Table of Hardware <ht
 
 8. Building the firmware::
 
-    docker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt make
+    sudo docker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openwrt make
 
 Afterwards, we can get the images in ./bin/targets/$SYSTEM/generic directory.
+
+
+revert back to original firmware
+--------------------------------
+::
+
+    dd if=orig.bin of=tplink.bin skip=257 bs=512
+    mtd -r write /tmp/tplink.bin firmware
+
+
+- https://forum.archive.openwrt.org/viewtopic.php?id=50608
+- https://oldwiki.archive.openwrt.org/toh/tp-link/tl-wr741nd#back.to.original.firmware
+- https://openwrt.org/docs/guide-user/installation/generic.uninstall
+
+
+enable wifi by default
+----------------------
+- https://forum.openwrt.org/t/solved-enable-wi-fi-and-connect-to-a-network-on-first-boot/47399/31
+
 
 
 
