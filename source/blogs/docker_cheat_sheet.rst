@@ -313,6 +313,45 @@ to COPY as non root::
 
 source: `How do I Docker COPY as non root? <https://stackoverflow.com/a/44766666/5350059>`_
 
+useful aliases
+--------------
+stop and remove all container
+`````````````````````````````
+::
+
+    sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)
+
+remove unfinished build (<none>) image
+``````````````````````````````````````
+::
+
+    sudo docker rmi -f $(sudo docker images | grep "<none>" | awk "{print $3}")
+
+update all docker images
+````````````````````````
+::
+
+    update_docker_images() {
+    for iid in $(sudo docker images | awk 'FNR>1 {print $1 ":" $2}')
+    do
+        echo updating $iid...
+        sudo docker pull $iid
+    done
+    }
+
+OR one-liner::
+
+    for iid in $(sudo docker images | awk 'FNR>1 {print $1 ":" $2}'); do     echo updating $iid..;     sudo docker pull $iid; done
+
+remove all image containing string
+``````````````````````````````````
+::
+
+    sudo docker rmi -f $(sudo docker images | grep $string | awk '{print $3}')
+
+
+
+
 Source
 ------
 .. [1] `How to get bash or ssh into a running container in background mode? <https://askubuntu.com/a/507009/502875>`_
