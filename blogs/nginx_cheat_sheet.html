@@ -635,6 +635,41 @@ h1, h2, h3 {
 }</pre>
 <p>source: <a class="reference external" href="https://stackoverflow.com/a/42452204/5350059">https://stackoverflow.com/a/42452204/5350059</a></p>
 </div>
+<div class="section" id="simple-reverse-proxy-with-ssl">
+<h1>simple reverse proxy with ssl</h1>
+<p>simple reverse proxy with ssl:</p>
+<pre class="literal-block">server {
+ listen 80;
+ return 301 https://$host$request_uri;
+ }
+
+ server {
+
+     listen 443;
+     server_name sub.domain.com;
+
+     ssl_certificate           /etc/nginx/cert.crt;
+     ssl_certificate_key       /etc/nginx/cert.key;
+
+     ssl on;
+
+
+     location / {
+       proxy_pass          http://localhost:8080;
+     }
+ }</pre>
+<p>source: <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins">https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins</a></p>
+</div>
+<div class="section" id="replace-or-remove-subdirectory-in-reverse-proxy">
+<h1>replace or remove subdirectory in reverse proxy</h1>
+<p>to replace or remove subdirectory in reverse proxy:</p>
+<pre class="literal-block">location /site1/ {
+     proxy_pass http://localhost:8081/;
+     # ... more config ... #
+ }</pre>
+<p>notice the tailing <cite>/</cite> both after the <cite>site</cite> and <cite>http://localhost:8081</cite></p>
+<p>source: <a class="reference external" href="https://serverfault.com/a/444753/">https://serverfault.com/a/444753/</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
@@ -642,7 +677,7 @@ h1, h2, h3 {
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/nginx_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-09 12:56 UTC.
+Generated on: 2020-02-19 17:13 UTC.
 </p>
 
 </div>

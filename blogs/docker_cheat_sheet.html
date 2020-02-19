@@ -621,7 +621,7 @@ sudo usermod -aG docker $USER</pre>
 <p>Now logout or reboot to see the change in effect.</p>
 <p>source: <a class="reference external" href="https://docs.docker.com/v17.09/engine/installation/linux/linux-postinstall">https://docs.docker.com/v17.09/engine/installation/linux/linux-postinstall</a></p>
 <p>test your installation:</p>
-<pre class="literal-block">docker run hello-world</pre>
+<pre class="literal-block">sudo docker run hello-world</pre>
 </div>
 <div class="section" id="install-docker-compose-on-ubuntu">
 <h1>install docker-compose on ubuntu</h1>
@@ -645,7 +645,7 @@ sudo chmod +x /usr/local/bin/docker-compose</pre>
 <div class="section" id="list-container">
 <h1>list container</h1>
 <p>to list running container:</p>
-<pre class="literal-block">docker ps</pre>
+<pre class="literal-block">sudo docker ps</pre>
 <p>to list all container:</p>
 <pre class="literal-block">docker ps -a</pre>
 </div>
@@ -826,6 +826,33 @@ services:
 <pre class="literal-block">COPY --chown=&lt;user&gt;:&lt;group&gt; &lt;hostPath&gt; &lt;containerPath&gt;</pre>
 <p>source: <a class="reference external" href="https://stackoverflow.com/a/44766666/5350059">How do I Docker COPY as non root?</a></p>
 </div>
+<div class="section" id="useful-aliases">
+<h1>useful aliases</h1>
+<div class="section" id="stop-and-remove-all-container">
+<h2>stop and remove all container</h2>
+<pre class="literal-block">sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)</pre>
+</div>
+<div class="section" id="remove-unfinished-build-none-image">
+<h2>remove unfinished build (&lt;none&gt;) image</h2>
+<pre class="literal-block">sudo docker rmi -f $(sudo docker images | grep &quot;&lt;none&gt;&quot; | awk &quot;{print $3}&quot;)</pre>
+</div>
+<div class="section" id="update-all-docker-images">
+<h2>update all docker images</h2>
+<pre class="literal-block">update_docker_images() {
+for iid in $(sudo docker images | awk 'FNR&gt;1 {print $1 &quot;:&quot; $2}')
+do
+    echo updating $iid...
+    sudo docker pull $iid
+done
+}</pre>
+<p>OR one-liner:</p>
+<pre class="literal-block">for iid in $(sudo docker images | awk 'FNR&gt;1 {print $1 &quot;:&quot; $2}'); do     echo updating $iid..;     sudo docker pull $iid; done</pre>
+</div>
+<div class="section" id="remove-all-image-containing-string">
+<h2>remove all image containing string</h2>
+<pre class="literal-block">sudo docker rmi -f $(sudo docker images | grep $string | awk '{print $3}')</pre>
+</div>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <dl class="footnote brackets">
@@ -838,7 +865,7 @@ services:
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/docker_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-09 12:56 UTC.
+Generated on: 2020-02-19 17:13 UTC.
 </p>
 
 </div>

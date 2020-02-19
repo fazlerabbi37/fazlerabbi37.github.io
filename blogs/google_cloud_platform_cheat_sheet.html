@@ -631,10 +631,18 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 <div class="section" id="connect-with-ssh">
 <h2>connect with ssh</h2>
 <p>to connect with ssh first add ssh key with <cite>gcloud</cite> <a class="footnote-reference brackets" href="#id9" id="id3">3</a>:</p>
-<pre class="literal-block">gcloud compute --project &quot;$PROJECT&quot; ssh --zone &quot;$ZONE&quot; &quot;$INSTANCE_NAME&quot;</pre>
+<pre class="literal-block">gcloud compute --project &quot;$PROJECT&quot; ssh --zone &quot;$ZONE&quot; &quot;$INSTANCE-NAME&quot;</pre>
 <p>after that we can login with:</p>
 <pre class="literal-block">ssh $PUBLIC_IP</pre>
 <p>If we forget this command, we don't need to worry as it is available in the drop down list located beside the <cite>SSH</cite> button on the <a class="reference external" href="https://console.cloud.google.com/compute/instances">VM instances</a> page.</p>
+</div>
+<div class="section" id="copy-file-with-scp">
+<h2>copy file with scp</h2>
+<p>to copy file with scp from remote to local:</p>
+<pre class="literal-block">gcloud compute scp &quot;$INSTANCE-NAME&quot;:/remote/path /local/path</pre>
+<p>to copy file with scp from local to remote:</p>
+<pre class="literal-block">gcloud compute scp /local/path &quot;$INSTANCE-NAME&quot;:/remote/path</pre>
+<p>source: <a class="reference external" href="https://cloud.google.com/sdk/gcloud/reference/compute/scp">https://cloud.google.com/sdk/gcloud/reference/compute/scp</a></p>
 </div>
 </div>
 <div class="section" id="google-container-registry-gcr">
@@ -690,7 +698,7 @@ sudo rm /usr/share/keyrings/cloud.google.gpg</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/google_cloud_platform_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-09 12:56 UTC.
+Generated on: 2020-02-19 17:13 UTC.
 </p>
 
 </div>
