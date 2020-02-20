@@ -387,6 +387,15 @@ to add persistent data volume::
 source: https://docs.docker.com/compose/compose-file/compose-file-v2/#volume-configuration-reference    
 
 
+docker-compose not getting the host environment variables
+---------------------------------------------------------
+While running docker-compose with `sudo` docker-compose doesn't get the host environment variables. The `-E` flag of the `sudo` command solves the problem::
+
+    sudo -E docker-compose up
+
+source: https://forums.docker.com/t/docker-compose-not-seeing-environment-variables-on-the-host/11837/8
+
+
 Source
 ------
 .. [1] `How to get bash or ssh into a running container in background mode? <https://askubuntu.com/a/507009/502875>`_
