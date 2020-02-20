@@ -350,6 +350,41 @@ remove all image containing string
     sudo docker rmi -f $(sudo docker images | grep $string | awk '{print $3}')
 
 
+persistent data volume for PostgreSQL
+-------------------------------------
+to add persistent data volume for PostgreSQL::
+
+    postgres:
+      container_name: postgres
+      restart: always
+      image: postgres:latest
+      volumes:
+        - ./database:/var/lib/postgresql/data
+      ports:
+        - "5432:5432
+
+source: https://stackoverflow.com/a/41650891
+
+shared persistent data volume
+-----------------------------
+to add persistent data volume::
+
+	version: "2.4"
+
+	services:
+	  db:
+	    image: db
+	    volumes:
+	      - data-volume:/var/lib/db
+	  backup:
+	    image: backup-service
+	    volumes:
+	      - data-volume:/var/lib/backup/data
+
+	volumes:
+	  data-volume:
+
+source: https://docs.docker.com/compose/compose-file/compose-file-v2/#volume-configuration-reference    
 
 
 Source
