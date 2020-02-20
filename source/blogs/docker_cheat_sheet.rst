@@ -395,6 +395,33 @@ While running docker-compose with `sudo` docker-compose doesn't get the host env
 
 source: https://forums.docker.com/t/docker-compose-not-seeing-environment-variables-on-the-host/11837/8
 
+supply docker build args inside docker-compose
+----------------------------------------------
+consider the following ``Dockerfile`` contains::
+
+    FROM ubuntu:18.04
+
+    ARG PACKAGE
+
+    RUN apt update && apt install $PACKAGE
+
+We need to supply a value for the PACKAGE variable in the build stage and to do that in the ``docker-compose.yml`` we will do::
+
+    version: '3'
+
+    services:
+      docker-installer:
+        image: docker-installer:v1
+        build:
+          context: .
+          dockerfile: Dockerfile
+          args:
+            - PACKAGE=docker-ce
+
+
+source: https://stackoverflow.com/a/41792420
+
+Source
 
 Source
 ------
