@@ -47,7 +47,7 @@ Notes
     - everyone has two key public and private 
     - sender usages the recipient's public key to encrypt the message and sent that encrypted message to recipient
     - recipient decrypts the message with his/her privet key
-- *** video's that helped me understand public key cryptography [The Internet: Encryption & Public Keys](https://youtu.be/ZghMPWGXexs), [Public Key Cryptography - Computerphile](https://youtu.be/GSIDS_lvRv4)
+- extra: `The Internet: Encryption & Public Keys <https://youtu.be/ZghMPWGXexs>`_, `Public Key Cryptography - Computerphile <https://youtu.be/GSIDS_lvRv4>`_
 - encryption with private key and decryption with public key is also possible but it is not secure as anyone with public key can decrypt the message. This feature can be used for message authentication. If user A encrypts a messages with his private key and If we can decrypt it with user A's public key then we can verify that it is from user A. This process is call signing. 
 - use case for public key cryptography:
     - encryption and decryption: encrypt with public key
@@ -76,6 +76,7 @@ Notes
     - randomly selects x from 1 to q-1
     - compute y = g^x (mod p)
     - not very clear
+    - extra: `Secret Key Exchange (Diffie-Hellman) - Computerphile <https://youtu.be/NmM9HA2MQGI>`_, `Diffie Hellman -the Mathematics bit- Computerphile <https://youtu.be/Yjrfm_oRO0w>`_
 - RSA
     - dominant alog
     - all use case are possible
