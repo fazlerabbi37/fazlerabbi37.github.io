@@ -160,6 +160,18 @@ for example:
 
 source: https://vim.fandom.com/wiki/Using_abbreviations
 
+fix indentation
+---------------
+to fix indentation on a selected part of the file:
+
+    :kbd:`=`
+
+to fix indentation on a whole file:
+
+    :kbd:`g` + :kbd:`g` + :kbd:`=` + :kbd:`G`
+
+source: https://vim.fandom.com/wiki/Fix_indentation
+
 Source
 ------
  - ` <>`_
