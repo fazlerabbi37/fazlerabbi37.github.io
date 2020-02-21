@@ -295,7 +295,7 @@ to give name to a image::
 	  # for an image already build just put container_name bellow image
 	  db:
 		image: postgres:10.1-alpine
-		container_name: more_db
+		container_name: pg_db
 	  # for an image we are building put container_name bellow build
 	  web:
 		build:
@@ -421,7 +421,16 @@ We need to supply a value for the PACKAGE variable in the build stage and to do 
 
 source: https://stackoverflow.com/a/41792420
 
-Source
+docker ignore
+-------------
+ignore file from being coping to docker image while building with ``.dockerignore``. Just put the file and directories to be ignored in the ``.dockerignore`` file lie::
+
+    # comment
+    */temp*
+    */*/temp*
+    temp?
+
+source: https://docs.docker.com/engine/reference/builder/#dockerignore-file
 
 Source
 ------
