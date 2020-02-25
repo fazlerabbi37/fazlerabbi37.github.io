@@ -227,6 +227,12 @@ Get current directory name (without full path)
 
     dir="$(pwd | grep -o '[^/]*$')"
 
+OR::
+
+    result=${PWD##*/}
+
+source: https://stackoverflow.com/a/1371283/
+
 Press Enter to continue
 -----------------------
 
