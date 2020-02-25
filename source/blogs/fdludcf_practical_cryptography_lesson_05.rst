@@ -13,7 +13,7 @@ Created on: 2020-02-21
 
 Class Slides
 ------------
-The slides for Lesson 01 is available `here <https://dle.asiaconnect.bdren.net.bd/DLE-3/L5(PublicKey).pdf>`_.
+The slides for Lesson 05 is available `here <https://dle.asiaconnect.bdren.net.bd/DLE-3/L5(PublicKey).pdf>`_.
 
 
 Class Video
@@ -106,8 +106,8 @@ Notes
         - if we can retrive p and q from n, then RSA will be broken which still has no happaned
     - select a large integer e that is a relative prime of p-1 and q-1
     - then select d which satisfies this equation: e*d mod (p-1)*(q-1) = 1
-    - encryption, C = P^e mod n
-    - decryption, P = C^d mod n
+    - encryption, C = P :sup:`e` mod n
+    - decryption, P = C :sup:`d` mod n
     - this means e is public key and d is the private key
 
 
