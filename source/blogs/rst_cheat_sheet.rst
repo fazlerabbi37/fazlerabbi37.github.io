@@ -137,6 +137,25 @@ to add image::
 
 source: https://docutils.sourceforge.io/docs/user/rst/quickstart.html#images
 
+superscript
+-----------
+to do superscript::
+
+    x :sup:`y`
+
+The result would be x :sup:`y`.
+
+source: https://docutils.sourceforge.io/docs/ref/rst/roles.html#superscript
+
+subscript
+---------
+to do subscript::
+
+    x :sub:`y`
+
+The result would be x :sub:`y`.
+
+source: https://docutils.sourceforge.io/docs/ref/rst/roles.html#subscript
 
 Source
 ------
