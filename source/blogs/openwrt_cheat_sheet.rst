@@ -129,6 +129,17 @@ We can get most of the info in the Device Page column ofn `Table of Hardware <ht
 
 Afterwards, we can get the images in ./bin/targets/$SYSTEM/generic directory.
 
+.. warning:: I just found out that LuCi is not working when build with the above two methods. I am working on how to solve this.
+
+More resource:
+
+- `compile openwrt from source <https://duckduckgo.com/?q=compile+openwrt+from+source>`_
+- `Quick Image Building Guide <https://openwrt.org/docs/guide-developer/quickstart-build-images>`_
+- `Developer guide <https://openwrt.org/docs/guide-developer/start>`_
+- `Using the Image Builder <https://openwrt.org/docs/guide-user/additional-software/imagebuilder>`_
+- `Beginners guide to building your own firmware <https://openwrt.org/docs/guide-user/additional-software/beginners-build-guide>`_
+- `ImageBuilder frontends <https://openwrt.org/docs/guide-developer/imagebuilder_frontends>`_
+
 
 revert back to original firmware
 --------------------------------
