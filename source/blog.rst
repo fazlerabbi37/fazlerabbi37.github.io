@@ -14,6 +14,12 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: New Blogs
 
+	`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
+
+
+	`fDLuDCf's Practical Cryptography: Lesson 05 <blogs/fdludcf_practical_cryptography_lesson_05.html>`_
+
+
 	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
@@ -23,29 +29,23 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`fDLuDCf's Practical Cryptography: Lesson 03 <blogs/fdludcf_practical_cryptography_lesson_03.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 02 <blogs/fdludcf_practical_cryptography_lesson_02.html>`_
-
-
-	`fDLuDCf's Practical Cryptography: Lesson 01 <blogs/fdludcf_practical_cryptography_lesson_01.html>`_
-
-
 
 
 .. sidebar:: Recently Updated Blogs
 
-	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
+	`KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
 
 
 	`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
 
 
-	`Google Cloud Platform Cheat Sheet <blogs/google_cloud_platform_cheat_sheet.html>`_
-
-
-	`Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
+	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
 	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+
+
+	`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
 
 
 
@@ -194,6 +194,22 @@ Created on: 2020-02-05
 
 fDLuDCf's Practical Cryptography DLC: Block Cipher Operation Modes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`fDLuDCf's Practical Cryptography: Lesson 05 <blogs/fdludcf_practical_cryptography_lesson_05.html>`_
+....................................................................................................
+Created on: 2020-02-21
+
+fDLuDCf's Practical Cryptography DLC: Public Key Cryptography Part 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
+....................................................................................................
+Created on: 2020-02-23
+
+fDLuDCf's Practical Cryptography DLC: Public Key Cryptography Part 2 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `fdroidcl <blogs/fdroidcl.html>`_
