@@ -37,21 +37,54 @@ on post-installation we need to configure the network. Here I will only give the
 
 Now open `/etc/network/interfaces` file with your choice of editor and paste the following::
 
-	auto lo
-	iface lo inet loopback
+    iface eth0 inet manual #  change eth0 to your ethernet adapter name
 
-	auto br0
-	iface br0 inet dhcp
-			bridge_ports eth0 # change it to your ethernet adapter name
-			bridge_stp off
-			bridge_fd 0
-			bridge_maxwait 0
+    auto lo
+    iface lo inet loopback
+
+    auto br0
+    iface br0 inet dhcp
+        bridge_ports eth0 # change eth0 to your ethernet adapter name
+        bridge_stp off
+        bridge_fd 0
+        bridge_maxwait 0
+
+Also, edit ``/etc/sysctl.conf`` to uncomment::
+
+    net.ipv4.ip_forward=1
+
+Got it from this source: https://askubuntu.com/a/1134422
 
 Now restart the network adapter::
 
 	sudo systemctl restart networking.service
 
-    
+
+uninstall kvm
+-------------
+::
+
+    sudo apt-get remove --purge qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+
+also check and remove this::
+
+    sudo rm -rf /etc/kvm
+    sudo rm -rf /etc/udev/rules.d/45-kvm.rules
+    sudo rm -rf /etc/init.d/kvm
+
+source: https://askubuntu.com/a/385358
+
+I normally do this::
+
+    sudo rm -rf /etc/apparmor.d/libvirt
+    sudo rm -rf /etc/libvirt
+    sudo rm -rf /usr/lib/libvirt
+    sudo rm -rf /usr/lib/qemu
+    sudo rm -rf /usr/lib/x86_64-linux-gnu/qemu/
+    sudo rm -rf /usr/share/libvirt
+    sudo rm -rf /var/lib/libvirt
+
+
 
 Make guest from ISO
 -------------------
