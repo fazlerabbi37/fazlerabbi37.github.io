@@ -33,16 +33,16 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: Recently Updated Blogs
 
-	`KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
+	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
-
-
-	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
+	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
 
 
 	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+
+
+	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
 	`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
