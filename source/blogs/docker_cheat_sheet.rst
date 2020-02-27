@@ -350,6 +350,13 @@ remove all image containing string
     sudo docker rmi -f $(sudo docker images | grep $string | awk '{print $3}')
 
 
+remove all volume
+`````````````````
+::
+
+    sudo docker volume rm $(sudo docker volume ls -q)
+
+
 persistent data volume for PostgreSQL
 -------------------------------------
 to add persistent data volume for PostgreSQL::
@@ -431,6 +438,7 @@ ignore file from being coping to docker image while building with ``.dockerignor
     temp?
 
 source: https://docs.docker.com/engine/reference/builder/#dockerignore-file
+
 
 Source
 ------
