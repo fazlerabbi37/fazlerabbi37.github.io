@@ -594,16 +594,74 @@ h1, h2, h3 {
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
 <p>A quick reference to all things miscellaneous and those things that have no home yet.</p>
 <p>Created on: 2020-02-09</p>
-<div class="section" id="html">
-<h1>HTML</h1>
-<div class="section" id="jump-to-top-of-page-link">
-<h2>jump to top of page link</h2>
+<div class="section" id="html-jump-to-top-of-page-link">
+<h1>HTML: jump to top of page link</h1>
 <p>to create a jump to top of page link:</p>
 <pre class="literal-block">&lt;a href=&quot;#&quot;&gt;Go to top&lt;/a&gt;
 
 &lt;a href=&quot;#top&quot;&gt;Go to top&lt;/a&gt;</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/11751756/5350059">https://stackoverflow.com/a/11751756/5350059</a></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/11751756">https://stackoverflow.com/a/11751756</a></p>
 </div>
+<div class="section" id="linux-best-place-to-store-ssl-certificate-and-key">
+<h1>Linux best place to store SSL certificate and key</h1>
+<p>store SSL certificate inside:</p>
+<pre class="literal-block">/etc/ssl/certs</pre>
+<p>with <cite>777</cite> file permission.</p>
+<p>store SSL key inside:</p>
+<pre class="literal-block">/etc/ssl/private</pre>
+<p>with <cite>700</cite> file permission.</p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/4267602">https://stackoverflow.com/a/4267602</a></p>
+</div>
+<div class="section" id="qr-code-bangladesh-railway-online-ticket">
+<h1>QR Code: Bangladesh Railway Online Ticket</h1>
+<p>If we scan it, we see:</p>
+<pre class="literal-block">TRAIN: NELSAGORE_EXPRESS (765.)     // train name and number
+STATION: DHAKA to ABDULPUR          // source station to distination station
+DATE: 01-JAN-1001 08:00             // date and time of train diperture from source station
+CLASS: S_CHAIR                      // seat class
+COACH_NO: CHA                       // coach number
+SEAT_RANGE: 1,2                     // seat number
+E-PIN: 6NZ95                        // e-pin number
+FULL NAME: Jane Doe                 // name of passenger
+MOBILE_NO: 01704522104              // phone number of passenger
+PNR_NO: 1704522104                  // not sure what is it
+ID: 1382533015                      // ID of user
+GATEWAY: EBL_BANK                   // bank with what the payment was made</pre>
+</div>
+<div class="section" id="qr-code-dhaka-university-masters-admit">
+<h1>QR Code: Dhaka University Masters Admit</h1>
+<p>If we scan it, we see:</p>
+<pre class="literal-block">DU-ADMT&lt;&lt;&lt;1001822312&lt;&lt;REF&lt;&lt;19966095654&lt;&lt;Regular&lt;&lt;62867&lt;&lt;&lt;
+               ^                ^          ^       ^
+               |                |          |       |
+         registration       referance    type     roll
+         number like:         number      of     number
+         1001-822-312                   student
+          ^
+          |
+    registration
+       year!?</pre>
+</div>
+<div class="section" id="veracrypt-mount-volume-from-command-line">
+<h1>VeraCrypt: mount volume from command line</h1>
+<p>to mount a VeraCrypt volume from command line:</p>
+<pre class="literal-block">veracrypt -t --mount /dev/sdb1 --non-interactive --stdin</pre>
+<p>This will be stuck on a blank line. Typing the volume password would mount the volume. The <cite>-t</cite> flag is for <strong>text user interface</strong>, the <cite>--mount</cite> flag <strong>mounts volume interactively</strong> which takes a device path as argument, <cite>--non-interactive</cite> flag <strong>disabals user interaction</strong> and finally the <cite>--stdin</cite> flag <strong>reads password from standard input</strong>.</p>
+<p>source: <a class="reference external" href="https://www.veracrypt.fr/en/Command%20Line%20Usage.html">https://www.veracrypt.fr/en/Command%20Line%20Usage.html</a>. Thought not all options are document there and needed to be look at the <cite>veracrypt -t --help</cite>.</p>
+</div>
+<div class="section" id="veracrypt-unmount-volume-from-command-line">
+<h1>VeraCrypt: unmount volume from command line</h1>
+<p>to unmount a VeraCrypt volume from command line:</p>
+<pre class="literal-block">veracrypt -d</pre>
+<p>The <cite>-d</cite> flag <strong>dismounts volume</strong>.</p>
+<p>source: <a class="reference external" href="https://www.veracrypt.fr/en/Command%20Line%20Usage.html">https://www.veracrypt.fr/en/Command%20Line%20Usage.html</a></p>
+</div>
+<div class="section" id="veracrypt-list-volume-from-command-line">
+<h1>VeraCrypt: list volume from command line</h1>
+<p>to list VeraCrypt volume(s) from command line:</p>
+<pre class="literal-block">veracrypt -l</pre>
+<p>The <cite>-l</cite> flag <strong>displays a list of mounted volumes</strong>.</p>
+<p>source: <cite>veracrypt -t --help</cite> options.</p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
@@ -612,7 +670,7 @@ h1, h2, h3 {
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/misc_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-19 17:13 UTC.
+Generated on: 2020-02-27 11:20 UTC.
 </p>
 
 </div>

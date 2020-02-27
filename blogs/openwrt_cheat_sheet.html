@@ -702,6 +702,19 @@ sudo docker run -it -v $(pwd):/app -eUSER_ID=$(id -u) -e GROUP_ID=$(id -g) openw
 </li>
 </ol>
 <p>Afterwards, we can get the images in ./bin/targets/$SYSTEM/generic directory.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I just found out that LuCi is not working when build with the above two methods. I am working on how to solve this.</p>
+</div>
+<p>More resource:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://duckduckgo.com/?q=compile+openwrt+from+source">compile openwrt from source</a></p></li>
+<li><p><a class="reference external" href="https://openwrt.org/docs/guide-developer/quickstart-build-images">Quick Image Building Guide</a></p></li>
+<li><p><a class="reference external" href="https://openwrt.org/docs/guide-developer/start">Developer guide</a></p></li>
+<li><p><a class="reference external" href="https://openwrt.org/docs/guide-user/additional-software/imagebuilder">Using the Image Builder</a></p></li>
+<li><p><a class="reference external" href="https://openwrt.org/docs/guide-user/additional-software/beginners-build-guide">Beginners guide to building your own firmware</a></p></li>
+<li><p><a class="reference external" href="https://openwrt.org/docs/guide-developer/imagebuilder_frontends">ImageBuilder frontends</a></p></li>
+</ul>
 </div>
 <div class="section" id="revert-back-to-original-firmware">
 <h1>revert back to original firmware</h1>
@@ -732,7 +745,7 @@ mtd -r write /tmp/tplink.bin firmware</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/openwrt_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-19 17:13 UTC.
+Generated on: 2020-02-27 11:20 UTC.
 </p>
 
 </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>osmosis Cheat Sheet</title>
+<title>fDLuDCf's Practical Cryptography: Lesson 05</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -588,62 +588,232 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="osmosis-cheat-sheet">
-<h1 class="title">osmosis Cheat Sheet</h1>
+<div class="document" id="fdludcf-s-practical-cryptography-lesson-05">
+<h1 class="title">fDLuDCf's Practical Cryptography: Lesson 05</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to osmosis.</p>
-<p>Created on: 2019-01-22</p>
-<div class="section" id="populate-a-postgresql-database-with-pbf">
-<h1>Populate a PostgreSQL database with pbf</h1>
-<p>To populate a PostgreSQL database with a pbf file, run this command:</p>
-<pre class="literal-block">osmosis --read-pbf $absulute_file_path_of.osm.pbf --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot;</pre>
-</div>
-<div class="section" id="create-a-osm-form-a-postgresql-database">
-<h1>Create a .osm form a PostgreSQL database</h1>
-<p>We can create a <span class="docutils literal">.osm</span> file from a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot; --write-xml file=&quot;$file_name.osm&quot;</pre>
-</div>
-<div class="section" id="merge-two-pbf">
-<h1>Merge two pbf</h1>
-<p>We can marge two pbf file using this command:</p>
-<pre class="literal-block">osmosis --read-pbf file=$input1.osm.pbf --read-pbf file=$input2.osm.pbf --merge --write-pbf omitmetadata=true file=$output.osm.pbf</pre>
-</div>
-<div class="section" id="load-new-osm-data-on-postgresql">
-<h1>Load new osm data on PostgreSQL</h1>
+<p>fDLuDCf's Practical Cryptography DLC: Public Key Cryptography Part 1</p>
+<p>Created on: 2020-02-21</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>this is not working anymore.</p>
+<p>This is my class-note for <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography">fDLuDCf's Practical Cryptography DLC</a>. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.</p>
 </div>
-<p>Loading a new osm data on PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml filename=&quot;$file.osm.gz&quot; --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; populateCurrentTables=yes validateSchemaVersion=no</pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this note has numeras spelling mistakes and not yet fixed.</p>
 </div>
-<div class="section" id="generate-diff-between-two-osm">
-<h1>Generate diff between two osm</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> or osm change format between two <span class="docutils literal">.osm</span> file using this command:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input1.osm&quot; --read-xml file=&quot;input2.osm&quot; --derive-change --write-xml-change file=&quot;output_diff_1_to_2.osc&quot;</pre>
+<div class="section" id="class-slides">
+<h1>Class Slides</h1>
+<p>The slides for Lesson 05 is available <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/DLE-3/L5(PublicKey).pdf">here</a>.</p>
 </div>
-<div class="section" id="generate-diff-between-osm-and-postgresql-db">
-<h1>Generate diff between osm and PostgreSQL db</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> between a <span class="docutils literal">.osm</span> file and a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input.osm&quot; --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=no --derive-change --write-xml-change file=&quot;output_diff_input_to_db.osc&quot;</pre>
+<div class="section" id="class-video">
+<h1>Class Video</h1>
+<p>The video for all lessons are available in the <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/dle-course-3-practical-cryptography/">video page</a></p>
 </div>
-<div class="section" id="update-a-osm-with-diff">
-<h1>update a osm with diff</h1>
-<p>We can update a <span class="docutils literal">.osm</span> file with the diff generated in <span class="docutils literal">.osc</span>:</p>
-<pre class="literal-block">osmosis --read-xml-change file=&quot;$osc_file.osc&quot; --read-xml file=&quot;$old_osm_file.osm&quot; --apply-change --write-xml file=&quot;$new_osm_file.osm&quot;</pre>
+<div class="section" id="notes">
+<h1>Notes</h1>
+<ul class="simple">
+<li><dl class="simple">
+<dt>previous class preview</dt>
+<dd><ul>
+<li><p>difference between CBC-MAC and CBC-Enc</p></li>
+<li><dl class="simple">
+<dt>combining MAC and Enc (slide 12 of this lecture)</dt>
+<dd><ul>
+<li><p>MAC-AND-Enc (SSH)</p></li>
+<li><p>MAC-then-Enc (SSL)</p></li>
+<li><p>Enc-then-MAC (IPsec)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>WPA2 DOSE NOT USAGES GCM, it usages Counter mode (CRT) for encryption,  Cipher Block Chaining Message Authentication Code (CBCMAC) is for integrity and CCM = CTR + CBC-MAC for confidentiality and integrity</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Why do we need public key cryptography?</dt>
+<dd><ul>
+<li><p>solves the key distribution problem of private key cryptography</p></li>
+<li><p>solves the scalability problem of private key cryptography</p></li>
+<li><p>usages a digital signature to verify</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>components of the public key cryptography</dt>
+<dd><ul>
+<li><p>plain-text</p></li>
+<li><p>encryption algo</p></li>
+<li><p>public and private key</p></li>
+<li><p>cipher-text</p></li>
+<li><p>decryption alog</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>generally the encryption and decryption algo are different and encryption works with public key and decryption works with private key</p></li>
+<li><dl class="simple">
+<dt>how it works:</dt>
+<dd><ul>
+<li><p>everyone has two key public and private</p></li>
+<li><p>sender usages the recipient's public key to encrypt the message and sent that encrypted message to recipient</p></li>
+<li><p>recipient decrypts the message with his/her privet key</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>extra: <a class="reference external" href="https://youtu.be/ZghMPWGXexs">The Internet: Encryption &amp; Public Keys</a>, <a class="reference external" href="https://youtu.be/GSIDS_lvRv4">Public Key Cryptography - Computerphile</a></p></li>
+<li><p>encryption with private key and decryption with public key is also possible but it is not secure as anyone with public key can decrypt the message. This feature can be used for message authentication. If user A encrypts a messages with his private key and If we can decrypt it with user A's public key then we can verify that it is from user A. This process is call signing.</p></li>
+<li><dl class="simple">
+<dt>use case for public key cryptography:</dt>
+<dd><ul>
+<li><p>encryption and decryption: encrypt with public key</p></li>
+<li><p>digital signature: encrypt with private key</p></li>
+<li><p>key exchange: exchange key for symmetric encryption between two party to solve the key distribution problem</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>requirements for public key cryptography:</dt>
+<dd><ul>
+<li><p>computationally easy to generate public and private key</p></li>
+<li><p>easy for sender encrypt message with public key</p></li>
+<li><p>easy for receiver to decrypt message with private key</p></li>
+<li><p>computationally infeasible to generate private key with known public key</p></li>
+<li><p>computationally infeasible to recover message with known public key and cipher-text</p></li>
+<li><p>either of the two key can be used for encryption and the other for decryption</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>popular public key cryptography algo:</dt>
+<dd><ul>
+<li><p>Diffie-Hellman</p></li>
+<li><p>RSA</p></li>
+<li><p>ECC</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>trapdoor function</dt>
+<dd><ul>
+<li><p>easy to compute in one direction</p></li>
+<li><p>difficult to compute in reverse</p></li>
+<li><p>Discrete Logarithms satisfies the criteria of a trapdoor function</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Discrete Logarithms</dt>
+<dd><ul>
+<li><p>not clear</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Diffie-Hellman</dt>
+<dd><ul>
+<li><p>published 1976, first public key algo</p></li>
+<li><p>generates g, prime number p and q a prime divisor of p-1</p></li>
+<li><p>randomly selects x from 1 to q-1</p></li>
+<li><p>compute y = g^x (mod p)</p></li>
+<li><p>not very clear</p></li>
+<li><p>extra: <a class="reference external" href="https://youtu.be/NmM9HA2MQGI">Secret Key Exchange (Diffie-Hellman) - Computerphile</a>, <a class="reference external" href="https://youtu.be/Yjrfm_oRO0w">Diffie Hellman -the Mathematics bit- Computerphile</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RSA</dt>
+<dd><ul>
+<li><p>dominant alog</p></li>
+<li><p>all use case are possible</p></li>
+<li><p>takes two prime number p and q and generates n which is the product of p and q.</p></li>
+<li><p>n is public and p ad q is obtained by prime factorisation</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Relatively Prime Numbers &amp; GCD</dt>
+<dd><ul>
+<li><p>if two prime don't have common divisor except for 1, we call them relatively prime numbers</p></li>
+<li><p>we can determine the greatest common divisor(GCD) of of two prime by comparing their prime factors and their lowest powers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Euclidean Algorithm</dt>
+<dd><ul>
+<li><p>the GCD of any two large prime number can be simplified in a short time using Euclidean Algorithm</p></li>
+<li><p>if a and b is divided by x then x also divides a-(k*b) for every k [proof on slide 33]</p></li>
+<li><dl class="simple">
+<dt>this process simplifies finding GCD. for example: GCD(1970,1066)</dt>
+<dd><ul>
+<li><p>1970 = 1 x 1066 + 904 so we can write GCD(1970,904)</p></li>
+<li><p>this can be smplified to write GCD(2,0) meaning if we canculate GCD(2,0) we will get the GCD(1970,1066).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Primality Testing (how do we know if a number is prime?)</dt>
+<dd><ul>
+<li><p>in crypto large primes are needed, so they are generated randomly and the we check if they are prime</p></li>
+<li><p>traditionally the trial division is used where the randomly generated number is divided by a range of number starting from 2 to p-1 and checking if the result is 0. if the result is 0 the number is not a prime number. but this is hard to do for large number.</p></li>
+<li><p>we can use GCD to solve the problem. If we generate a random number p and what to check it's primality, we again randomly generate a number r which is less then p and find it's GCD. If the GCD is greater then 1, the number p and r has a common factor thus the number p is not prime.</p></li>
+<li><p>if the GCD is 1 p and r are relatively prime which DOESN'T mean p is prime</p></li>
+<li><p>if we take r2 and do the same and got the GCD equal 1 p is still a relative prime of r and r2.</p></li>
+<li><p>if we repeat the process 100000 times with 100000 different r then there is a high probability that p is prime</p></li>
+<li><p>Jacobi function can also test primality of a number</p></li>
+<li><p>this are ways to find a prime in a statistical method</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>How RSA works</dt>
+<dd><ul>
+<li><p>generate two large (100 digit = 512 bits) prime number p and q</p></li>
+<li><dl class="simple">
+<dt>calculate the product of p and q which is equal n and nearly 200 digit</dt>
+<dd><ul>
+<li><p>if we can retrive p and q from n, then RSA will be broken which still has no happaned</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>select a large integer e that is a relative prime of p-1 and q-1</p></li>
+<li><p>then select d which satisfies this equation: e*d mod (p-1)*(q-1) = 1</p></li>
+<li><p>encryption, C = P <sup>e</sup> mod n</p></li>
+<li><p>decryption, P = C <sup>d</sup> mod n</p></li>
+<li><p>this means e is public key and d is the private key</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis">Osmosis OpenStreetMap Wiki</a></p></li>
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis/Examples">Osmosis/Examples OpenStreetMap Wiki</a></p></li>
-</ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/osmosis_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/fdludcf_practical_cryptography_lesson_05.rst">View document source</a>.
 Generated on: 2020-02-27 11:20 UTC.
 </p>
 

@@ -811,7 +811,7 @@ services:
   # for an image already build just put container_name bellow image
   db:
         image: postgres:10.1-alpine
-        container_name: more_db
+        container_name: pg_db
   # for an image we are building put container_name bellow build
   web:
         build:
@@ -852,6 +852,78 @@ done
 <h2>remove all image containing string</h2>
 <pre class="literal-block">sudo docker rmi -f $(sudo docker images | grep $string | awk '{print $3}')</pre>
 </div>
+<div class="section" id="remove-all-volume">
+<h2>remove all volume</h2>
+<pre class="literal-block">sudo docker volume rm $(sudo docker volume ls -q)</pre>
+</div>
+</div>
+<div class="section" id="persistent-data-volume-for-postgresql">
+<h1>persistent data volume for PostgreSQL</h1>
+<p>to add persistent data volume for PostgreSQL:</p>
+<pre class="literal-block">postgres:
+  container_name: postgres
+  restart: always
+  image: postgres:latest
+  volumes:
+    - ./database:/var/lib/postgresql/data
+  ports:
+    - &quot;5432:5432</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/41650891">https://stackoverflow.com/a/41650891</a></p>
+</div>
+<div class="section" id="shared-persistent-data-volume">
+<h1>shared persistent data volume</h1>
+<p>to add persistent data volume:</p>
+<pre class="literal-block">version: &quot;2.4&quot;
+
+services:
+  db:
+    image: db
+    volumes:
+      - data-volume:/var/lib/db
+  backup:
+    image: backup-service
+    volumes:
+      - data-volume:/var/lib/backup/data
+
+volumes:
+  data-volume:</pre>
+<p>source: <a class="reference external" href="https://docs.docker.com/compose/compose-file/compose-file-v2/#volume-configuration-reference">https://docs.docker.com/compose/compose-file/compose-file-v2/#volume-configuration-reference</a></p>
+</div>
+<div class="section" id="docker-compose-not-getting-the-host-environment-variables">
+<h1>docker-compose not getting the host environment variables</h1>
+<p>While running docker-compose with <cite>sudo</cite> docker-compose doesn't get the host environment variables. The <cite>-E</cite> flag of the <cite>sudo</cite> command solves the problem:</p>
+<pre class="literal-block">sudo -E docker-compose up</pre>
+<p>source: <a class="reference external" href="https://forums.docker.com/t/docker-compose-not-seeing-environment-variables-on-the-host/11837/8">https://forums.docker.com/t/docker-compose-not-seeing-environment-variables-on-the-host/11837/8</a></p>
+</div>
+<div class="section" id="supply-docker-build-args-inside-docker-compose">
+<h1>supply docker build args inside docker-compose</h1>
+<p>consider the following <span class="docutils literal">Dockerfile</span> contains:</p>
+<pre class="literal-block">FROM ubuntu:18.04
+
+ARG PACKAGE
+
+RUN apt update &amp;&amp; apt install $PACKAGE</pre>
+<p>We need to supply a value for the PACKAGE variable in the build stage and to do that in the <span class="docutils literal"><span class="pre">docker-compose.yml</span></span> we will do:</p>
+<pre class="literal-block">version: '3'
+
+services:
+  docker-installer:
+    image: docker-installer:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PACKAGE=docker-ce</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/41792420">https://stackoverflow.com/a/41792420</a></p>
+</div>
+<div class="section" id="docker-ignore">
+<h1>docker ignore</h1>
+<p>ignore file from being coping to docker image while building with <span class="docutils literal">.dockerignore</span>. Just put the file and directories to be ignored in the <span class="docutils literal">.dockerignore</span> file lie:</p>
+<pre class="literal-block"># comment
+*/temp*
+*/*/temp*
+temp?</pre>
+<p>source: <a class="reference external" href="https://docs.docker.com/engine/reference/builder/#dockerignore-file">https://docs.docker.com/engine/reference/builder/#dockerignore-file</a></p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
@@ -865,7 +937,7 @@ done
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/docker_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-19 17:13 UTC.
+Generated on: 2020-02-27 11:20 UTC.
 </p>
 
 </div>

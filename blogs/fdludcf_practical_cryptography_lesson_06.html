@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>osmosis Cheat Sheet</title>
+<title>fDLuDCf's Practical Cryptography: Lesson 06</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -588,62 +588,275 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="osmosis-cheat-sheet">
-<h1 class="title">osmosis Cheat Sheet</h1>
+<div class="document" id="fdludcf-s-practical-cryptography-lesson-06">
+<h1 class="title">fDLuDCf's Practical Cryptography: Lesson 06</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to osmosis.</p>
-<p>Created on: 2019-01-22</p>
-<div class="section" id="populate-a-postgresql-database-with-pbf">
-<h1>Populate a PostgreSQL database with pbf</h1>
-<p>To populate a PostgreSQL database with a pbf file, run this command:</p>
-<pre class="literal-block">osmosis --read-pbf $absulute_file_path_of.osm.pbf --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot;</pre>
-</div>
-<div class="section" id="create-a-osm-form-a-postgresql-database">
-<h1>Create a .osm form a PostgreSQL database</h1>
-<p>We can create a <span class="docutils literal">.osm</span> file from a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=&quot;no&quot; --write-xml file=&quot;$file_name.osm&quot;</pre>
-</div>
-<div class="section" id="merge-two-pbf">
-<h1>Merge two pbf</h1>
-<p>We can marge two pbf file using this command:</p>
-<pre class="literal-block">osmosis --read-pbf file=$input1.osm.pbf --read-pbf file=$input2.osm.pbf --merge --write-pbf omitmetadata=true file=$output.osm.pbf</pre>
-</div>
-<div class="section" id="load-new-osm-data-on-postgresql">
-<h1>Load new osm data on PostgreSQL</h1>
+<p>fDLuDCf's Practical Cryptography DLC: Public Key Cryptography Part 2</p>
+<p>Created on: 2020-02-23</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>this is not working anymore.</p>
+<p>This is my class-note for <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography">fDLuDCf's Practical Cryptography DLC</a>. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.</p>
 </div>
-<p>Loading a new osm data on PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml filename=&quot;$file.osm.gz&quot; --write-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; populateCurrentTables=yes validateSchemaVersion=no</pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this note has numeras spelling mistakes and not yet fixed.</p>
 </div>
-<div class="section" id="generate-diff-between-two-osm">
-<h1>Generate diff between two osm</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> or osm change format between two <span class="docutils literal">.osm</span> file using this command:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input1.osm&quot; --read-xml file=&quot;input2.osm&quot; --derive-change --write-xml-change file=&quot;output_diff_1_to_2.osc&quot;</pre>
+<div class="section" id="class-slides">
+<h1>Class Slides</h1>
+<p>The slides for Lesson 06 is available <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/DLE-3/L6(PublicKey).pdf">here</a>.</p>
 </div>
-<div class="section" id="generate-diff-between-osm-and-postgresql-db">
-<h1>Generate diff between osm and PostgreSQL db</h1>
-<p>We can generate a diff in <span class="docutils literal">.osc</span> between a <span class="docutils literal">.osm</span> file and a PostgreSQL database:</p>
-<pre class="literal-block">osmosis --read-xml file=&quot;input.osm&quot; --read-apidb host=&quot;$host&quot; database=&quot;$database_name&quot; user=&quot;$psql_username&quot; password=&quot;$psql_password&quot; validateSchemaVersion=no --derive-change --write-xml-change file=&quot;output_diff_input_to_db.osc&quot;</pre>
+<div class="section" id="class-video">
+<h1>Class Video</h1>
+<p>The video for all lessons are available in the <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/dle-course-3-practical-cryptography/">video page</a></p>
 </div>
-<div class="section" id="update-a-osm-with-diff">
-<h1>update a osm with diff</h1>
-<p>We can update a <span class="docutils literal">.osm</span> file with the diff generated in <span class="docutils literal">.osc</span>:</p>
-<pre class="literal-block">osmosis --read-xml-change file=&quot;$osc_file.osc&quot; --read-xml file=&quot;$old_osm_file.osm&quot; --apply-change --write-xml file=&quot;$new_osm_file.osm&quot;</pre>
+<div class="section" id="notes">
+<h1>Notes</h1>
+<ul class="simple">
+<li><dl class="simple">
+<dt>previous lacture reivew</dt>
+<dd><ul>
+<li><p>it is possible to do a man in the middle attack in diffie-hellman algo</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RSA encryption</dt>
+<dd><ul>
+<li><p>see previous lacture for how it works</p></li>
+<li><p>need to get 4 number p,q,e and d</p></li>
+<li><p>lets assume p=11, q=17, e=7 and d=23, so n=187</p></li>
+<li><p>the sender knows e=7 and n=187 and the plain-text to encrypt, P=88 which is less n</p></li>
+<li><dl class="simple">
+<dt>the sender will encrypt plain-text P using the equation</dt>
+<dd><ul>
+<li><p>C = P <sup>e</sup> mod n
+=&gt; 88 <sup>7</sup> mod 187
+=&gt; [(88 <sup>4</sup> mod 187) x (88 <sup>2</sup> mod 187) x (88 <sup>1</sup> mod 187)] mod 187</p></li>
+<li><p>C = 11 [more details on slide 15]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>the reciepient knows d=23 and n=187 and the cipher-text to decrypt, C=11</dt>
+<dd><ul>
+<li><p>P = C <sup>d</sup> mod n
+=&gt; 11 <sup>23</sup> mod 187
+=&gt; [(11 <sup>1</sup> mod 187) x (11 <sup>2</sup> mod 187) x (11 <sup>4</sup> mod 187) x (11 <sup>8</sup> mod 187) x (11 <sup>8</sup> mod 187)] mod 187</p></li>
+<li><p>P = 88 [more details on slide 16]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RSA signature</dt>
+<dd><ul>
+<li><p>signature works almost same as encryption</p></li>
+<li><p>need to get 4 number p,q,e and d</p></li>
+<li><p>get n from p and q</p></li>
+<li><dl class="simple">
+<dt>signing [more details on slide 22]</dt>
+<dd><ul>
+<li><p>now instead of encryption with the public key e we encryption with the private key d. so the equation becomes S = P <sup>d</sup> mod n, where S is the signature.</p></li>
+<li><p>now we sent both P and S indecating that P is the message and S is the signature.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>verify [more details on slide 23]</dt>
+<dd><ul>
+<li><p>recives P and S</p></li>
+<li><p>get the public key of sender e and n</p></li>
+<li><p>S <sup>e</sup> mod n</p></li>
+<li><p>if the result of above step is equal to P conferms the signatory</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Typical Digital Signature</dt>
+<dd><ul>
+<li><dl class="simple">
+<dt>sender</dt>
+<dd><ul>
+<li><p>has a document or data</p></li>
+<li><p>calculates the hash of document or data</p></li>
+<li><p>then hash is signed using RSA</p></li>
+<li><p>the signed has is attached to document or data which becomes signed document or data</p></li>
+<li><p>then that signed document or data is transmited to the reciver</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>reciver</dt>
+<dd><ul>
+<li><p>receives signed document or data</p></li>
+<li><p>seperaed the signed hash and document or data</p></li>
+<li><p>get's the public key of sender</p></li>
+<li><p>verifies the signed hash using the publick key of sender</p></li>
+<li><p>calculates the hash of the document or data</p></li>
+<li><p>if the calculated has and the verified hash matches the signature is valid</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Factoring a product of two large primes</dt>
+<dd><ul>
+<li><p>see slide 25</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Quantum Computing algo for prime factoring</dt>
+<dd><ul>
+<li><p>Shor algo</p></li>
+<li><p>Peter Shor</p></li>
+<li><p>1994</p></li>
+<li><p>this shows that prime factoring can be done in seconds on a quantum computer</p></li>
+<li><p>so if quantum computer can start workign efficeintelly RSA would become volnurable</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Demo Code</p></li>
+<li><dl class="simple">
+<dt>Elliptic Curve Cryptography (ECC)</dt>
+<dd><ul>
+<li><p>an elliptic curve is a set of solution to the equation y <sup>2</sup> = x <sup>3</sup> + ax <sup>2</sup> + bx + c</p></li>
+<li><p>the curve is not an ellipse but it is called elliptic because of historical reason</p></li>
+<li><dl class="simple">
+<dt>EC usage</dt>
+<dd><ul>
+<li><p>number theory</p></li>
+<li><p>modern physics: string theory</p></li>
+<li><p>cryptography</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>in ECC we defind 2 primitive operations called point adition and point multiplication</p></li>
+<li><p>in point addition we take two points P and Q in the curve, draw a straight line through them until it intersectes the curve a point -R. then we take the reflection of the point -R on x asix and we get R which is equal to P+Q. [see more at slide 36]</p></li>
+<li><p>in point doubbling we take a point P and draw a tanget on the point which intersects the curve a point -R. then we take the reflection of the point -R on x asix and we get R which is equal to 2P. [see more at slide 37]</p></li>
+<li><dl class="simple">
+<dt>scalar multiplication [see more at slide 38]</dt>
+<dd><ul>
+<li><p>to multipluy P, d times we could add P d times which is the intutive approch and requires d-1 point addition</p></li>
+<li><p>or we can double P, the double that previous result and so on. If d is even then number of times we need to double is squire root of d, if d is odd the the number is squire root of d-1 and 1 addition</p></li>
+<li><p>for eaample to compute 17P we would strat with 2P and double that and that two more times and finaly add P so 17P=2(2(2(2P)))+P. which is 4 point dboules and one point addition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ECC is used in crypto</dt>
+<dd><ul>
+<li><p>key exchange: EC Diffie-Hellman (ECDH)</p></li>
+<li><p>Digital Signature: EC Digital Signature Algo (ECDSA)</p></li>
+<li><p>this are standed</p></li>
+<li><p>encryption and decryption is possible but not very common</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>trapdoor function of ECC</dt>
+<dd><ul>
+<li><p>for Diffie-Hellman we used to compute y = g <sup>x</sup> (mod p) where x is a random number and private key and y is the public key.</p></li>
+<li><p>here we do B = kA where A=g=generator point, k=x=randome intiger thus the private key and B=y=public key</p></li>
+<li><p>they may see different but they both are same in complexity and with point addition, point doubling and scalar multiplication it is easy to generate public key but infeasable to do the reverse.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ECDH</dt>
+<dd><ul>
+<li><p>assuming two party A and B and a common generator P</p></li>
+<li><p>A has a private key n <sub>A</sub> and public key Q <sub>A</sub> = n <sub>A</sub> x P</p></li>
+<li><p>B has a private key n <sub>B</sub> and public key Q <sub>B</sub> = n <sub>B</sub> x P</p></li>
+<li><p>they exchange their public key Q <sub>A</sub> and Q <sub>B</sub></p></li>
+<li><dl class="simple">
+<dt>If they do a shared key computation</dt>
+<dd><ul>
+<li><p>for A K = n <sub>A</sub> x Q <sub>B</sub></p></li>
+<li><p>for B K = n <sub>B</sub> x Q <sub>A</sub></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>now the shared key is consistent because</dt>
+<dd><p>=&gt; K = n <sub>A</sub> x Q <sub>B</sub> = n <sub>A</sub> x n <sub>B</sub> x P = n <sub>B</sub> x Q <sub>A</sub></p>
+</dd>
+</dl>
+</li>
+<li><p>volnurable to man in the middle attack</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ECDH example with small number</dt>
+<dd><ul>
+<li><p>curve used y <sup>2</sup> = x <sup>3</sup> + 2x + 2</p></li>
+<li><p>generator point G(5,1) [see more at slide 43]</p></li>
+<li><p>for user A and B the agree on the curve used, generator point G, and n</p></li>
+<li><p>user A picks a private key x=9 and generates xG=9G=(7,6)=X where X is the public key</p></li>
+<li><p>user B picks a private key y=3 and generates yG=3G=(10,6)=Y where Y is the public key</p></li>
+<li><p>shared key K for A is 9 x Y = 9 x 3G = 27G = (13,7)</p></li>
+<li><p>shared key K for B is 3 x X = 3 x 9G = 27G = (13,7)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ECDSA</dt>
+<dd><ul>
+<li><p>skiped because of complexity [see more at slide 45]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ECC compared</dt>
+<dd><ul>
+<li><p>ECC is strong</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>TLS usages ECDSA with curve P-256 and X25519 being the most popular</p></li>
+</ul>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis">Osmosis OpenStreetMap Wiki</a></p></li>
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmosis/Examples">Osmosis/Examples OpenStreetMap Wiki</a></p></li>
-</ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/osmosis_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/fdludcf_practical_cryptography_lesson_06.rst">View document source</a>.
 Generated on: 2020-02-27 11:20 UTC.
 </p>
 

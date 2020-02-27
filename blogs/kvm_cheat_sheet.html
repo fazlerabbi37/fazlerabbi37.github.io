@@ -618,18 +618,40 @@ h1, h2, h3 {
 <p>Unfortunately, the draw back of this method is that, on next boot it disables the network manager. If we use this we need to run <cite>sudo /etc/init.d/networking restart</cite> everytime to bring the bridge interface up.</p>
 </div>
 <p>Now open <cite>/etc/network/interfaces</cite> file with your choice of editor and paste the following:</p>
-<pre class="literal-block">auto lo
+<pre class="literal-block">iface eth0 inet manual #  change eth0 to your ethernet adapter name
+
+auto lo
 iface lo inet loopback
 
 auto br0
 iface br0 inet dhcp
-                bridge_ports eth0 # change it to your ethernet adapter name
-                bridge_stp off
-                bridge_fd 0
-                bridge_maxwait 0</pre>
+    bridge_ports eth0 # change eth0 to your ethernet adapter name
+    bridge_stp off
+    bridge_fd 0
+    bridge_maxwait 0</pre>
+<p>Also, edit <span class="docutils literal">/etc/sysctl.conf</span> to uncomment:</p>
+<pre class="literal-block">net.ipv4.ip_forward=1</pre>
+<p>Got it from this source: <a class="reference external" href="https://askubuntu.com/a/1134422">https://askubuntu.com/a/1134422</a></p>
 <p>Now restart the network adapter:</p>
 <pre class="literal-block">sudo systemctl restart networking.service</pre>
 </div>
+</div>
+<div class="section" id="uninstall-kvm">
+<h1>uninstall kvm</h1>
+<pre class="literal-block">sudo apt-get remove --purge qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y</pre>
+<p>also check and remove this:</p>
+<pre class="literal-block">sudo rm -rf /etc/kvm
+sudo rm -rf /etc/udev/rules.d/45-kvm.rules
+sudo rm -rf /etc/init.d/kvm</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/385358">https://askubuntu.com/a/385358</a></p>
+<p>I normally do this:</p>
+<pre class="literal-block">sudo rm -rf /etc/apparmor.d/libvirt
+sudo rm -rf /etc/libvirt
+sudo rm -rf /usr/lib/libvirt
+sudo rm -rf /usr/lib/qemu
+sudo rm -rf /usr/lib/x86_64-linux-gnu/qemu/
+sudo rm -rf /usr/share/libvirt
+sudo rm -rf /var/lib/libvirt</pre>
 </div>
 <div class="section" id="make-guest-from-iso">
 <h1>Make guest from ISO</h1>
@@ -677,7 +699,7 @@ sudo virt-install --virt-type=kvm --name $name --ram 1024 --vcpus=1 --hvm --impo
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/kvm_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-02-19 17:13 UTC.
+Generated on: 2020-02-27 11:20 UTC.
 </p>
 
 </div>
