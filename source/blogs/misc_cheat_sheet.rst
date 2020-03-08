@@ -18,8 +18,8 @@ to create a jump to top of page link::
 source: https://stackoverflow.com/a/11751756
  
 
-Linux best place to store SSL certificate and key
--------------------------------------------------
+Linux: best place to store SSL certificate and key
+--------------------------------------------------
 store SSL certificate inside::
 
     /etc/ssl/certs
@@ -66,6 +66,15 @@ If we scan it, we see::
               |
         registration
            year!?
+
+
+QR Code: Nextcloud App Password
+-------------------------------
+If we scan it, we see::
+
+    nc://login/user:$USER-NAME&password:$PASSWORD&server:$PROTOCOL://URL:$PORT-IF-ANY
+
+
 
 VeraCrypt: mount volume from command line
 -----------------------------------------
