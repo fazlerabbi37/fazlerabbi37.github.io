@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Install KDE Connect in Ubuntu 18.04</title>
+<title>fDLuDCf's Practical Cryptography: Lesson 07</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -588,43 +588,282 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="install-kde-connect-in-ubuntu-18-04">
-<h1 class="title">Install KDE Connect in Ubuntu 18.04</h1>
+<div class="document" id="fdludcf-s-practical-cryptography-lesson-07">
+<h1 class="title">fDLuDCf's Practical Cryptography: Lesson 07</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>Installing KDE Connect in Ubuntu 18.04 LTS.</p>
-<p>Created on: 2018-08-29</p>
-<p>What is KDE Connect?
-<a class="reference external" href="https://community.kde.org/KDEConnect#What_is_KDE_Connect.3F">Answer from KDE community Wiki</a> :</p>
-<p>KDE Connect is a project to communicate across all your devices. For example, with KDE Connect you can receive your phone notifications on your desktop computer, control music playing on your desktop from your phone, or use your phone as a remote control for your desktop. To achieve this, KDE Connect:</p>
+<p>fDLuDCf's Practical Cryptography DLC: Public Key Distribution</p>
+<p>Created on: 2020-03-06</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is my class-note for <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography">fDLuDCf's Practical Cryptography DLC</a>. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this note has numeras spelling mistakes and not yet fixed.</p>
+</div>
+<div class="section" id="class-slides">
+<h1>Class Slides</h1>
+<p>The slides for Lesson 07 is available <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/DLE-3/L7(KeyDistribution).pdf">here</a>.</p>
+</div>
+<div class="section" id="class-video">
+<h1>Class Video</h1>
+<p>The video for all lessons are available in the <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/dle-course-3-practical-cryptography/">video page</a></p>
+</div>
+<div class="section" id="notes">
+<h1>Notes</h1>
 <ul class="simple">
-<li><p>Implements a secure communication protocol over the network, and allows any developer to create plugins on top of it.</p></li>
-<li><p>Has a component that you install on your desktop.</p></li>
-<li><p>Has a KDE Connect client app you run on your phone.</p></li>
+<li><dl class="simple">
+<dt>previous class review</dt>
+<dd><ul>
+<li><p>asymmetric key crypto</p></li>
+<li><p>comring to symmetric asymmetric is more secure</p></li>
+<li><p>but it is slower then symmetric</p></li>
+<li><p>DH review</p></li>
 </ul>
-<p>This YouTube <a class="reference external" href="https://www.youtube.com/watch?v=KkCFngNmsh0">video</a> from 2013 demonstrates some other cool features.</p>
-<p>I have been using KDE Connect for a while now. It is very useful for sending files from PC to Android and vice versa but I have found it most useful while copying text in PC and pasting it on the Phone.</p>
-<p>On Ubuntu 18.04 LTS we can install KDE Connect using the following command:</p>
-<pre class="literal-block">sudo apt install kdeconnect</pre>
-<p>We need to install the KDE Connect app on Android using <a class="reference external" href="https://f-droid.org/en/packages/org.kde.kdeconnect_tp">F-Droid</a> or <a class="reference external" href="https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp">Google Play</a>.</p>
-<p>Coming back to PC, we will search for KDE and we should see two app with same icon one named <span class="docutils literal">KDE Connect Indicator</span> and another <span class="docutils literal">KDE Connect Settings</span>. Click on <span class="docutils literal">KDE Connect Settings</span> and refresh the list. Now we should see the Android phone with KDE Connect installed on it. After paring it we are ready to go.</p>
-<div class="section" id="plugin-run-commands">
-<h1>Plugin: Run commands</h1>
-<p>The run commands plugin allows user to execute console commands remotely. Some useful ones that I use:</p>
-<pre class="literal-block">Lock screen     loginctl lock-session
-Reboot          systemctl reboot
-Shutdown        systemctl poweroff
-Suspend         systemctl suspend
-Unlock screen   loginctl unlock-session
-xkill           xkill</pre>
-<p>See more at: <a class="reference external" href="https://userbase.kde.org/KDE_Connect/Tutorials/Adding_commands">KDE Connect Tutorials: Adding commands</a> and <a class="reference external" href="https://userbase.kde.org/KDE_Connect/Tutorials/Useful_commands">KDE Connect Tutorials:Useful commands</a></p>
-<p><strong>Update: Mar 08, 2020</strong></p>
-<p>I was curious to know if there was a <span class="docutils literal">config</span> file where this commands are being stored. A quick tour of <span class="docutils literal"><span class="pre">~/.config/</span></span> directory and we see that the commands are saved as <cite>ByteArray</cite> inside the <span class="docutils literal"><span class="pre">~/.config/kdeconnect/$UNIQUE_DEVICE_ID/kdeconnect_runcommand/config</span></span> file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>hybrid encryption</dt>
+<dd><ul>
+<li><p>a mix of symmetric and asymmetric key</p></li>
+<li><p>practical use case</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>storing and handling public keys</dt>
+<dd><ul>
+<li><p>for user A and B the private key stays at the local machine</p></li>
+<li><p>the public key is stored in a key server</p></li>
+<li><p>A pulls B's public key and encrypt a session key with the public key and sends it to B. this key will be used for communcation in between them</p></li>
+<li><p>problem is B has no idea as to who's key is it. Anyone can intercept and send their session key to B as his public key is accessable and say that he is A. so no authentcity.</p></li>
+<li><p>the sloution is signine the session key. A will sign the session key with his private key and sent it to B.</p></li>
+<li><p>B then can verify the session key is signed with A's key by pulling A's public key and running sign verification againes it</p></li>
+<li><p>but this way we compromize confedentiality. for the first one we lose autenticity and for this one we lose confendentiality but we need both and both can be acived with double encryption</p></li>
+<li><p>first A encrypts (signs!?) the session key with A's private key and then encrypt it using B's public key. so only B can decrypt the outer layer of encryption with his private key only then he would be able to veryfy the session key's signature with A's public key</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>the distribution system</dt>
+<dd><ul>
+<li><p>the key server that holds the public key needs to secure so that we can ensure that A's public key has not been replaced by someone malicious</p></li>
+<li><p>we slove it using Certificate Authority or CA</p></li>
+<li><p>CA legetamise the public key by digitally signing the keys of the users with their private key thus anyone having the public key of the CA can verify if the user key is vaild or not</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CA</dt>
+<dd><ul>
+<li><p>A org that everyone trusts</p></li>
+<li><p>binds the user's public key</p></li>
+<li><p>A user or entity can register with a public key with the CA</p></li>
+<li><p>then the user provides proof of identity to the CA</p></li>
+<li><p>if the identity is verifed then the CA binds the user's public key by digitally signing it with their private key and provides a certificate</p></li>
+<li><p>the certificate contains A's public key and the CA's private key</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Why CA?</dt>
+<dd><ul>
+<li><p>certificate allows public key exchange without having to accees to public key</p></li>
+<li><p>certificate also contains info like: expire date, issuer's info and cryptography details</p></li>
+<li><p>the CA must have to sign very thing and everyone must trust the CA</p></li>
+<li><p>the certificate can be verified by all who knows the public key of the CA</p></li>
+<li><p>CA must ensure the identity of the certificate owner</p></li>
+<li><p>BIG QUESTION: who ensure the vlidity of CA???</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>structure of a certificate</dt>
+<dd><ul>
+<li><p>Version</p></li>
+<li><p>Serial Number</p></li>
+<li><p>Signature Algorithm</p></li>
+<li><p>Issuer: CA</p></li>
+<li><p>Subject: not clear</p></li>
+<li><p>Validity: expires on</p></li>
+<li><p>Subject Public Key Information</p></li>
+<li><p>Extensions</p></li>
+<li><p>Signature: signature for this data</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>issuer info:</dt>
+<dd><ul>
+<li><p>Country Name</p></li>
+<li><p>State and Province Name</p></li>
+<li><p>Locality Name</p></li>
+<li><p>Organization Name</p></li>
+<li><p>Organization Unit Name</p></li>
+<li><p>Common Name: domain for website and Full name for humans</p></li>
+<li><p>Email Address</p></li>
+<li><p>URL</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>certificate type:</dt>
+<dd><ul>
+<li><p>Digital Signature: sign your public key</p></li>
+<li><p>Key Encipherment: for website</p></li>
+<li><p>Data Encipherment: email</p></li>
+<li><p>Key Certificate Signature: certify some CA's public key</p></li>
+<li><p>CRL Signature</p></li>
+<li><p>Object Signing: software like object</p></li>
+<li><p>the first 3 are for general usages the leter ones are for CA like org</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Exchangeing key's with CA</dt>
+<dd><ul>
+<li><p>now we have a CA certified public key so if A want's B's public key it get's B's certificate</p></li>
+<li><p>then verifies it with CA's public key</p></li>
+<li><dl class="simple">
+<dt>so how we distribute CA signed public key</dt>
+<dd><ul>
+<li><p>what if certificate is expired</p></li>
+<li><p>how this is used in practical life</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>How to verify the authinticity of the CA's public key</dt>
+<dd><ul>
+<li><p>normally the self-certify it</p></li>
+<li><p>or use some other CA to certify the public key. the other CA is called the root certificate authority and provides a root certificate. if check our browser this root cerificates are the authority certificates</p></li>
+<li><p>if anyone changes the root certificate and replaces with their bogus own the site checks the signature of the certificates the as the mismatch it rejects the bogus certificate</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Certificate Hierarchy</dt>
+<dd><ul>
+<li><p>as one CA must sign the public key of another CA [see slide 25 for the picture]</p></li>
+<li><p>helps us to verify a user public key</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CA Hierarchy in practice</dt>
+<dd><ul>
+<li><p>the root CA is embaded/ hard code within the software so that the hierarchy can be verified</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Trust Hierarchy</dt>
+<dd><ul>
+<li><p>used by PGP</p></li>
+<li><p>A want to send something to B but don't know B. But knows C</p></li>
+<li><p>C knows D and D knows B thus A trusts that B can be trusted</p></li>
+<li><p>close to real life trust mode</p></li>
+<li><p>no CA</p></li>
+<li><p>web of trust</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Cross Certification</dt>
+<dd><ul>
+<li><p>user builds the trust hierarchy</p></li>
+<li><p>the CAs verify each other thus cross</p></li>
+<li><p>both CAs have two root certificate one self-signed with their own and another from the other CA</p></li>
+<li><p>[see slide 28 for picture]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>certificate revocation</dt>
+<dd><ul>
+<li><p>if someone has lost the private key or wants to cancle a cert</p></li>
+<li><p>generate by CA</p></li>
+<li><p>it is managed with certificate recovation list(CRL) a form of anti-certificate the cancles certificate and distrubutes</p></li>
+<li><p>relaying parties checks CRL before using a ceritfiate</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>using CRL</dt>
+<dd><ul>
+<li><p>if anyone want to revoke a cert, the contact CA and CA puts the serial number in the CRL</p></li>
+<li><p>has a fix validity period or expire data</p></li>
+<li><p>at expire every one contacts the CA and get new CRL</p></li>
+<li><p>CRL url is added in the certificate</p></li>
+<li><p>but how fast is fast enough to know if a cert has been revocked? not fast enough so OCSP</p></li>
+<li><p>[see slide 30 for more explanation]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Online Certificate Status Protocol (OCSP)</dt>
+<dd><ul>
+<li><p>OCSP are servars that tell us the validity of a cert</p></li>
+<li><p>status value have no application [status values: good, revocked, unkowwn]</p></li>
+<li><p>not revocked don't necsserally mean good</p></li>
+<li><p>unknown could be anyting form cert never issue to maybe issued but can't find a CRL to verify</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>OCSP problems</dt>
+<dd><ul>
+<li><p>may caches status so already expired key can have 'good' status</p></li>
+<li><p>CRL can only give revocked status not what the cert is</p></li>
+<li><p>some OCSP would give good status for a cert whos CRL is not found</p></li>
+<li><p>much debated</p></li>
+<li><p>other protocols are being build [see slide 34]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Automatic Certificate Management Environment (ACME)</dt>
+<dd><ul>
+<li><p>solves the identity problem by trying to validate if the applicent ligitematelly represents the domain</p></li>
+<li><p>automates the process of verification and cert issue</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Cert generation demo</p></li>
+</ul>
+</div>
+<div class="section" id="source">
+<h1>Source</h1>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/install_kde_connect_in_ubuntu_18.04.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/fdludcf_practical_cryptography_lesson_07.rst">View document source</a>.
 Generated on: 2020-03-08 04:11 UTC.
 </p>
 
