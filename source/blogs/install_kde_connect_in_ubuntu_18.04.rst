@@ -40,6 +40,6 @@ The run commands plugin allows user to execute console commands remotely. Some u
 
 See more at: `KDE Connect Tutorials: Adding commands <https://userbase.kde.org/KDE_Connect/Tutorials/Adding_commands>`_ and `KDE Connect Tutorials:Useful commands <https://userbase.kde.org/KDE_Connect/Tutorials/Useful_commands>`_
 
-** Update: Mar 08, 2020 **
+**Update: Mar 08, 2020**
 
 I was curious to know if there was a ``config`` file where this commands are being stored. A quick tour of ``~/.config/`` directory and we see that the commands are saved as `ByteArray` inside the ``~/.config/kdeconnect/$UNIQUE_DEVICE_ID/kdeconnect_runcommand/config`` file.
