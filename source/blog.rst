@@ -14,6 +14,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: New Blogs
 
+	`fDLuDCf's Practical Cryptography: Lesson 07 <blogs/fdludcf_practical_cryptography_lesson_07.html>`_
+
+
 	`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
 
 
@@ -24,9 +27,6 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 
 	`fDLuDCf's Practical Cryptography: Lesson 04 <blogs/fdludcf_practical_cryptography_lesson_04.html>`_
-
-
-	`fDLuDCf's Practical Cryptography: Lesson 03 <blogs/fdludcf_practical_cryptography_lesson_03.html>`_
 
 
 
@@ -42,10 +42,10 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
 
 
+	`KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
+
+
 	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
-
-
-	`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
 
 
 
@@ -210,6 +210,14 @@ Created on: 2020-02-23
 
 fDLuDCf's Practical Cryptography DLC: Public Key Cryptography Part 2 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`fDLuDCf's Practical Cryptography: Lesson 07 <blogs/fdludcf_practical_cryptography_lesson_07.html>`_
+....................................................................................................
+Created on: 2020-03-06
+
+fDLuDCf's Practical Cryptography DLC: Public Key Distribution 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `fdroidcl <blogs/fdroidcl.html>`_
