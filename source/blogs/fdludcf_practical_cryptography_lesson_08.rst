@@ -13,7 +13,7 @@ Created on: 2020-03-07
 
 Class Slides
 ------------
-The slides for Lesson 01 is available `here <https://dle.asiaconnect.bdren.net.bd/DLE-3/L8(Protocols).pdf`_.
+The slides for Lesson 01 is available `here <https://dle.asiaconnect.bdren.net.bd/DLE-3/L8(Protocols).pdf>`_.
 
 
 Class Video
@@ -86,7 +86,7 @@ Notes
     - RSA, for this reason is not forward secrecy proof but DH is.
     - As DH only exchanges each others public key and destroys the private key after the key exchange so it is impossible to get a private key of either the server or the browser
     - but DH can be attacked with MiTM. this problem is solved with RSA signed public key.
-TLS: data encryption:
+- TLS: data encryption
     - algorithm that can be used: DES, 3DES, AES, RC2, RC4, IDEA
     - it encrypts the following comms:
         - all browser-server and server-browser except which browser is talking to which server (I think DOH does it??)
@@ -98,11 +98,11 @@ TLS: data encryption:
         - contents of HTTP header
         - JS comms
         - etc
-TLS: data integrity
+- TLS: data integrity
     - archived with message authentication code(MAC)
     - includes hash, shared secret and sequence
     - MAC is transmitted with the data
-TLS: authentication
+- TLS: authentication
     - partial support with challenge-response system
     - during the cert exchange with the server [TLS: browser to server section] accepting the server cert don't provide authenticity but only the identity of the web server. 
     - as anyone can send the public key aka cert if the browser wants to authenticate if the server is the one holding the private key for this particular public key, the browser challenges the server.
