@@ -14,6 +14,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: New Blogs
 
+	`fDLuDCf's Practical Cryptography: Lesson 08 <blogs/fdludcf_practical_cryptography_lesson_08.html>`_
+
+
 	`fDLuDCf's Practical Cryptography: Lesson 07 <blogs/fdludcf_practical_cryptography_lesson_07.html>`_
 
 
@@ -26,26 +29,23 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 04 <blogs/fdludcf_practical_cryptography_lesson_04.html>`_
-
-
 
 
 .. sidebar:: Recently Updated Blogs
 
-	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
+	`Bandit Walkthrough <blogs/bandit_walkthrough.html>`_
 
 
-	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
+	`fDLuDCf's Practical Cryptography: Lesson 08 <blogs/fdludcf_practical_cryptography_lesson_08.html>`_
 
 
-	`OpenWrt Cheat Sheet <blogs/openwrt_cheat_sheet.html>`_
+	`HackGame Walkthrough <blogs/hackgame_walkthrough.html>`_
 
 
-	`KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
+	`Mysterious TP-Link SSH server <blogs/mysterious_tp_link_ssh_server.html>`_
 
 
-	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
+	`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
 
 
 
@@ -220,6 +220,14 @@ fDLuDCf's Practical Cryptography DLC: Public Key Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`fDLuDCf's Practical Cryptography: Lesson 08 <blogs/fdludcf_practical_cryptography_lesson_08.html>`_
+....................................................................................................
+Created on: 2020-03-07
+
+fDLuDCf's Practical Cryptography DLC: Cryptographic Protocols
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `fdroidcl <blogs/fdroidcl.html>`_
 .................................
 Created on: 2019-01-20
@@ -322,6 +330,14 @@ Created on: 2020-02-09
 
 A quick reference to all things miscellaneous and those things that have no home yet.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Mysterious TP-Link SSH server <blogs/mysterious_tp_link_ssh_server.html>`_
+...........................................................................
+Created on: 2019-09-04
+
+Why there is an SSH server running on a home router?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Nginx Cheat Sheet <blogs/nginx_cheat_sheet.html>`_
