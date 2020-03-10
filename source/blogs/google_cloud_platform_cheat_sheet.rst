@@ -6,6 +6,8 @@ A quick reference to Google Cloud Platform.
 
 Created on: 2019-12-05
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 .. warning:: under heavy construction and not well organized
 
 

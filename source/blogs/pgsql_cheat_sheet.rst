@@ -6,6 +6,8 @@ A quick reference to PostgreSQL.
 
 Created on: 2019-01-22
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 Create User
 -----------
 To create a user::

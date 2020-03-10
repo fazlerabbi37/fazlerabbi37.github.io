@@ -1,10 +1,12 @@
 OpenWrt Cheat Sheet
-=====================================
+===================
 `< Blog <../blog.html>`_
 
 A quick reference to OpenWrt
 
 Created on: 2019-12-08
+
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
 
 .. role:: kbd
 

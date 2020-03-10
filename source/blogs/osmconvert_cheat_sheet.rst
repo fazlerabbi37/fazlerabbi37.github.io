@@ -6,6 +6,8 @@ A quick reference to osmconvert.
 
 Created on: 2019-01-22
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 osm to pbf
 ----------
 Converting osm to pbf::

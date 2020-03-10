@@ -6,6 +6,8 @@ A quick reference to GNOME.
 
 Created on: 2019-03-19
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 .. warning:: under heavy construction and not well organized
 
 make sure you have gnome-tweak-tool installed. ``sudo apt install gnome-tweak-tool``

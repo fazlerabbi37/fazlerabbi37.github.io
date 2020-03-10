@@ -6,6 +6,8 @@ A quick reference to JavaScript.
 
 Created on: 2019-09-30
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 .. warning:: under heavy construction and not well organized
 
 get the last char of the string

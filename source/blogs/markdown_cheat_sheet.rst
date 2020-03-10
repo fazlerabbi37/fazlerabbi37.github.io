@@ -6,6 +6,8 @@ A quick reference to Markdown.
 
 Created on: 2018-07-19
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 Styles
 ------
 There are many styles support in Markdown. So of them are as follows:

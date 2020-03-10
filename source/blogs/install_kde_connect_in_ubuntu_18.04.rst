@@ -7,9 +7,10 @@ Installing KDE Connect in Ubuntu 18.04 LTS.
 Created on: 2018-08-29
 
 What is KDE Connect?
-`Answer from KDE community Wiki <https://community.kde.org/KDEConnect#What_is_KDE_Connect.3F>`_ :
+`Answer from KDE community Wiki <https://community.kde.org/KDEConnect#What_is_KDE_Connect.3F>`_ ::
 
-KDE Connect is a project to communicate across all your devices. For example, with KDE Connect you can receive your phone notifications on your desktop computer, control music playing on your desktop from your phone, or use your phone as a remote control for your desktop. To achieve this, KDE Connect:
+    KDE Connect is a project to communicate across all your devices. For example, with KDE Connect you can receive your phone notifications on your
+    desktop computer, control music playing on your desktop from your phone, or use your phone as a remote control for your desktop.
 
 * Implements a secure communication protocol over the network, and allows any developer to create plugins on top of it.
 * Has a component that you install on your desktop.

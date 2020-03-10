@@ -6,6 +6,8 @@ A quick reference to osmfilter.
 
 Created on: 2019-01-22
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 drop tags
 ---------
 Generate a osm without specified tags from a large osm file::

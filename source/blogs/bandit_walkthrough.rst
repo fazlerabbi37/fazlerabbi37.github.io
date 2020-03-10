@@ -6,6 +6,8 @@ Walkthrough of Bandit, a wargame by OverTheWire
 
 Created on: 2020-01-09
 
+Tag: `ctf <blogs/tag_ctf.html>`_
+
 .. role:: kbd
 
 .. warning:: I know in the server banner is says 'DONT POST SPOILERS! This includes writeups of your solution on your blog or website!'. I fully respect that thus this is my duty to warn the reader not to use this to cheat in the game. This is just a personal note in an attempt to getting started with CTF writeup. I choose Bandit because it is easy and CTF/Techinal writeups are tough enough. I have been using Linux for sometime now and I can assure you that copy-pasting commands without understanding to cross a level or fix a problem don't make you a expert, it makes you a unprepared imposter and good mouse user. So DO NOT USE this to play the game! Use it as a getting started guide to write CTF writeup.

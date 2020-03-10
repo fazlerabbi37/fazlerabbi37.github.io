@@ -6,6 +6,8 @@ A quick reference to osmosis.
 
 Created on: 2019-01-22
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 Populate a PostgreSQL database with pbf
 ---------------------------------------
 To populate a PostgreSQL database with a pbf file, run this command::

@@ -6,6 +6,8 @@ A quick reference to Cygwin.
 
 Created on: 2019-08-30
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 add apt-cyg
 -----------
 ::

@@ -6,6 +6,8 @@ A quick reference to bash
 
 Created on: 2019-02-03
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 .. warning:: under heavy construction and not well organized
 
 .. role:: kbd

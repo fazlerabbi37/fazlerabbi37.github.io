@@ -6,8 +6,9 @@ A quick reference to Batch and CMD.
 
 Created on: 2019-08-30
 
-.. warning:: under heavy construction and not well organized
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
 
+.. warning:: under heavy construction and not well organized
 
 check if file exists
 --------------------

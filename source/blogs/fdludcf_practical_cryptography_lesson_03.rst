@@ -6,6 +6,8 @@ fDLuDCf's Practical Cryptography DLC: Symmetric Key Cryptography
 
 Created on: 2020-02-05
 
+Tag: `cryptography <blogs/tag_cryptography.html>`_
+
 .. warning:: This is my class-note for `fDLuDCf's Practical Cryptography DLC <https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography>`_. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.
 
 .. warning:: this note has numeras spelling mistakes and not yet fixed.

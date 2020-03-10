@@ -6,6 +6,8 @@ A quick reference to Rails Console.
 
 Created on: 2019-01-22
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 Save rails console output to file
 ---------------------------------
 To save rails console output to a file, do the following [1]_::

@@ -6,6 +6,8 @@ A quick reference to KVM.
 
 Created on: 2019-01-22
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 install kvm in ubuntu
 ---------------------
 pre-installation check

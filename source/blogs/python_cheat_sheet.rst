@@ -6,6 +6,8 @@ A quick reference to Python
 
 Created on: 2019-09-29
 
+Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+
 .. warning:: under heavy construction and not well organized
 
 refresh output in the same line; echo update
