@@ -37,19 +37,19 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: Recently Updated Blogs
 
-	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
-
-
-	`Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
-
-
-	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
-
-
 	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 04 <blogs/fdludcf_practical_cryptography_lesson_04.html>`_
+	`Batch and CMD Cheat Sheet <blogs/batch_cmd_cheat_sheet.html>`_
+
+
+	`Rebooting consumer router using CLI <blogs/cli_router_reboot.html>`_
+
+
+	`Cygwin Cheat Sheet <blogs/cygwin_cheat_sheet.html>`_
+
+
+	`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
 
 
 
