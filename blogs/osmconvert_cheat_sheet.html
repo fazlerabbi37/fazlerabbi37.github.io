@@ -562,6 +562,7 @@ a { text-decoration: none; }
 </style>
 <style type="text/css">
 
+/* style for keyboard key rendering */
 .kbd {
     -moz-border-radius:3px;
     -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
@@ -581,8 +582,15 @@ a { text-decoration: none; }
     text-shadow:0 1px 0 #fff;
 }
 
+
+/* this one fixes the overflow problem for sidebar*/
 h1, h2, h3 { 
     clear: none;     
+}
+
+/* strike through is not supported in rST this enables it*/
+.strike {
+  text-decoration: line-through;
 }
 
 </style>
@@ -634,7 +642,7 @@ h1, h2, h3 {
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/osmconvert_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-03-08 04:11 UTC.
+Generated on: 2020-03-10 08:48 UTC.
 </p>
 
 </div>

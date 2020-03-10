@@ -562,6 +562,7 @@ a { text-decoration: none; }
 </style>
 <style type="text/css">
 
+/* style for keyboard key rendering */
 .kbd {
     -moz-border-radius:3px;
     -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
@@ -581,8 +582,15 @@ a { text-decoration: none; }
     text-shadow:0 1px 0 #fff;
 }
 
+
+/* this one fixes the overflow problem for sidebar*/
 h1, h2, h3 { 
     clear: none;     
+}
+
+/* strike through is not supported in rST this enables it*/
+.strike {
+  text-decoration: line-through;
 }
 
 </style>
@@ -612,7 +620,7 @@ h1, h2, h3 {
 <li><p>Open a terminal emulator</p></li>
 <li><p>Start reading the instructions in the webpage and follow them to get started.</p></li>
 </ul>
-<p>The game is deviled into levels. Current level has the password for the next level. So, if we go to the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit1.html">Bandit Level 0 → Level 1</a> page we will see the goal if Level 0. If we successfully achieve that goal we will be able to go to Level 1.</p>
+<p>The game is divided into levels. Current level has the password for the next level. So, if we go to the <a class="reference external" href="https://overthewire.org/wargames/bandit/bandit1.html">Bandit Level 0 → Level 1</a> page we will see the goal if Level 0. If we successfully achieve that goal we will be able to go to Level 1.</p>
 </div>
 <div class="section" id="level-0">
 <h1>Level 0</h1>
@@ -1979,7 +1987,7 @@ bandit33:c9c3199ddf4121b10cf581a98d51caee -->
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/bandit_walkthrough.rst">View document source</a>.
-Generated on: 2020-03-08 04:11 UTC.
+Generated on: 2020-03-10 08:48 UTC.
 </p>
 
 </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>fDLuDCf's Practical Cryptography: Lesson 03</title>
+<title>Mysterious TP-Link SSH server</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -596,326 +596,87 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="fdludcf-s-practical-cryptography-lesson-03">
-<h1 class="title">fDLuDCf's Practical Cryptography: Lesson 03</h1>
+<div class="document" id="mysterious-tp-link-ssh-server">
+<h1 class="title">Mysterious TP-Link SSH server</h1>
 
-<p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>fDLuDCf's Practical Cryptography DLC: Symmetric Key Cryptography</p>
-<p>Created on: 2020-02-05</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is my class-note for <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography">fDLuDCf's Practical Cryptography DLC</a>. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>this note has numeras spelling mistakes and not yet fixed.</p>
-</div>
-<div class="section" id="class-slides">
-<h1>Class Slides</h1>
-<p>The slides for Lesson 03 is available <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/DLE-3/L3(Crypto).pdf">here</a>.</p>
-</div>
-<div class="section" id="class-video">
-<h1>Class Video</h1>
-<p>The video for all lessons are available in the <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/dle-course-3-practical-cryptography/">video page</a></p>
-</div>
-<div class="section" id="notes">
-<h1>Notes</h1>
+<p><a class="reference external" href="../blog.html">Blog</a></p>
+<p>Why there is an SSH server running on a home router?</p>
+<p>Created on: 2019-09-04</p>
+<div class="section" id="discovery-query-idea">
+<h1>Discovery/Query/Idea</h1>
+<p><strong>Discovery:</strong> First found with a random port search with <a class="reference external" href="https://f-droid.org/packages/com.aaronjwood.portauthority/">Port Authority</a> port scanner.</p>
 <ul class="simple">
-<li><p>types of cryptography: [more at slide 2 and 3]</p></li>
-<li><p>symmetric key cryptography is the system where one key is used for both encryption and decryption</p></li>
-<li><dl class="simple">
-<dt>symmetric key cryptography strength:</dt>
-<dd><ul>
-<li><p>fast and effecient them asymmetric</p></li>
-<li><p>hard to break with brute force if a large enough key is used</p></li>
-<li><p>ideal for bulk encryption and decryption</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>symmetric key cryptography weakness:</dt>
-<dd><ul>
-<li><p>poor key distrubution as in how the decrytor gets the key in a secure way</p></li>
-<li><p>poor key management and scalablity as in each user pair needs a seperate key if all are same there is no secret</p></li>
-<li><p>can't provide authenticity and non-repudiation only confedentiality</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>black cipher:</dt>
-<dd><ul>
-<li><p>block size: it waroks with blocks of data</p></li>
-<li><p>key size: the larger the key, the larger the confusion and defustion</p></li>
-<li><p>number of rounds: it runs many internal operation before producing the output</p></li>
-<li><p>encryption modes: how messages larger then block size is encrypted</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Feistel Network:</dt>
-<dd><ul>
-<li><p>proposed by Feistel in 1973</p></li>
-<li><p>used by several blck cipher like: DES, IDEA, RC5 but not used in AES</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>how Feistel Network works:</dt>
-<dd><ul>
-<li><p>block size n is devided into 2 half: left and right</p></li>
-<li><p>for encryption if we take right, then encryption function is ran on the right half of the data</p></li>
-<li><p>then it is XOR-ed with the left half</p></li>
-<li><p>the result of the XOR function is now the new right half</p></li>
-<li><p>this goes on till number of round, d</p></li>
-<li><p>see more at slide 9</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Data Encryption Standerd (DES):</dt>
-<dd><ul>
-<li><p>adopted in 1977 by NBS/NIST as FIPS PUB 46</p></li>
-<li><p>encrypts 64 bit data with 56 bit key</p></li>
-<li><p>possible to brute force now</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>DES features:</dt>
-<dd><ul>
-<li><p>key size is 56 but becomes 64 with aditional 8 parity bits</p></li>
-<li><p>number of rounds 16</p></li>
-<li><p>same round number (16) of internal key is generated each with 8 bits</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>how DES works:</dt>
-<dd><ul>
-<li><p>after taking input does initial permutation</p></li>
-<li><p>does all the steps of Feistel Network</p></li>
-<li><p>after finishing the work does a inverse initial permutation</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Tripple DES/3DES:</dt>
-<dd><ul>
-<li><p>takes one plain-text and 3 seperate key</p></li>
-<li><p>assuming the keys are K1,K2 and K3</p></li>
-<li><p>plain-text is encrypted with DES using K1, then that output data is again encrypted with DES using K2, then that output data is again encrypted with DES using K3.</p></li>
-<li><p>The decryption usages key in reverse order K3 -&gt; K2 -&gt; K1</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>3DES with 2 Key:</dt>
-<dd><ul>
-<li><p>same as 3DES but K1 and K3 are same</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>3DES backward compatablity:</dt>
-<dd><ul>
-<li><p>if K1 and K2 are same we are doing encrypon in first round and then decryption of the same data in second round</p></li>
-<li><p>thus 3DES becomes DES</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>DES to AES</dt>
-<dd><ul>
-<li><p>DES was breakable in theory</p></li>
-<li><p>3DES is slow</p></li>
-<li><p>so NIST calls for chipher in 1997</p></li>
-<li><p>15 candidate accepted in June 1998</p></li>
-<li><p>5 candidate short listed in Aug 1999</p></li>
-<li><p>Rijandael was slected as AES in Oct 2000</p></li>
-<li><p>issued in Nov 2001 by NBS/NIST as FIPS PUB 197</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rijandael/AES:</dt>
-<dd><ul>
-<li><p>block size in duble then DES: 128 bit</p></li>
-<li><p>default key size in 128 bit but can support 192 bit and 256 bit (now recommanded)</p></li>
-<li><p>Faster and stronger the DES</p></li>
-<li><p>active life of 20-30</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>AES shortlist:</dt>
-<dd><ul>
-<li><p>MARS</p></li>
-<li><p>RC6</p></li>
-<li><p>Rijandael</p></li>
-<li><p>Serpent</p></li>
-<li><p>Twofish</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Cryptographic cycles:</dt>
-<dd><ul>
-<li><p>encryption which is less like encrypting a disk one time</p></li>
-<li><p>decryption which is more like accessing that encrypted a disk on every boot</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Why Rijandael was choosen for AES?</dt>
-<dd><ul>
-<li><p>as we can see decryption happens more so the standerd algo needs to be decryption effeicent</p></li>
-<li><p>Rijandael usages seperate encryption and decryption algo and has the fasted decryption among the shortlisted</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>How AES works:</dt>
-<dd><ul>
-<li><p>block size: 128 bit</p></li>
-<li><p>key size: 128/192/256 bit</p></li>
-<li><p>rounds: 10</p></li>
-<li><p>internal key: 10</p></li>
-<li><p>decryption algo uses the internal key in reverse order</p></li>
-<li><p>decryption algo is not same as encryption algo</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>How AES works more details:</dt>
-<dd><ul>
-<li><p>take data in 4x4 matrix</p></li>
-<li><p>take key in 4x4 matrix</p></li>
-<li><dl class="simple">
-<dt>the do the following 4 transformation for 9 round:</dt>
-<dd><ul>
-<li><p>sub bites subtutions the text with a S-Box lookup</p></li>
-<li><p>shift row shifts the row by number of row. row count starts from 0</p></li>
-<li><p>mix columns takes each columns and does a dot product with a matrix (where does it come from!?)</p></li>
-<li><p>on add round key we take each column and XOR it with the round keys respective column</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>on the final round the previous process is done with the exception of doing the mix columns</p></li>
-<li><dl class="simple">
-<dt>We use key scheduler to generate the internal key</dt>
-<dd><ul>
-<li><p>take the last column</p></li>
-<li><p>we take the first value of the column and put in on bottom to get a new column</p></li>
-<li><p>now substutite the values of new column with S-Box lookup</p></li>
-<li><p>now we XOR the first column of the key, the newly substutied column and the 4th column of Rcon martix (what is the Rcon martix and why the 4th column?)</p></li>
-<li><p>the result becomes the first column of next round</p></li>
-<li><p>for the second to forth column, the approch a bit different and easy. here we take a column of previous key and XOR it with the last derived column of currrent key. for example, to derive second column we take the second column of previous key and XOR it with the first column of current key and so on.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Padding:</dt>
-<dd><ul>
-<li><p>what happens when the data size in less then the block size? we use aribterry data to fill up rest of the space which is known as padding.</p></li>
-<li><p>PKCS5 is one of those padding scheam</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Public Key Cryptographic Standerd 5 (PKCS5):</dt>
-<dd><ul>
-<li><p>assuming the block size is 64 bit any message that is not a multipule of 8 is padded</p></li>
-<li><p>for 7 bit data, we need 1 bit padding: 0x1</p></li>
-<li><p>for 6 bit data, we need 2 bit padding: 0x2 0x2</p></li>
-<li><p>for 5 bit data, we need 3 bit padding: 0x3 0x3 0x3</p></li>
-<li><p>and so on</p></li>
-<li><dl class="simple">
-<dt>but what would we do for 8 bit data? does it need padding if so how many?</dt>
-<dd><ul>
-<li><p>8 bit data also need padding of 8 bit length 0x8 0x8 0x8 0x8 0x8 0x8 0x8 0x8 because if no padding is found and the last bit is 0x1 it would be removed during decryption as the decryption algo would think it to be a 1 bit padding.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>PKCS7 usages the same stretigy but can be allpied for any block size</p></li>
-<li><dl class="simple">
-<dt>Electronic Codebook (ECB)</dt>
-<dd><ul>
-<li><p>breaks the message into chunk</p></li>
-<li><p>apply a block alog like DES or AES on those checkes with the key</p></li>
-<li><p>outputs the result as cipher text [see slide 30 for illustration]</p></li>
-<li><dl class="simple">
-<dt>ECB is not recommanded for two reasons:</dt>
-<dd><ul>
-<li><p>it takes one byte and changes that to another byte of data thus some of the data is extractable</p></li>
-<li><p>if any byte is courupted that it is useless for us. further more if attacker changes the byte it will decrypt to a diffreect data make it volnurable to incertion attack</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Cipher Block Chaining (CBC)</dt>
-<dd><ul>
-<li><p>takes an initial vector equal to block size</p></li>
-<li><p>breaks the message into check</p></li>
-<li><p>XOR's the first block with initial vector</p></li>
-<li><p>apply a block alog like DES or AES on the XOR-ed data with the key</p></li>
-<li><p>the output is carried as ciphertext for that block and the same output is used as the initial vector for next block [see slide 34 for illustration]</p></li>
-<li><p>The last block can be used as Massage Auth Code (MAC) as it will condence the entire message to the last cipher block</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Using OpenSSL to enctypt and decrtpt file</dt>
-<dd><ul>
-<li><p>encryption: openssl enc aes-256-cbc -in orig_photo.jpg -out photo.enc</p></li>
-<li><p>decryption: openssl enc -d aes-256-cbc -in orig_photo.jpg -out photo.enc</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>brand: TP-Link</p></li>
+<li><p>Hardware Version: WR841N v11 00000000</p></li>
+<li><p>Firmware Version: 3.16.9 Build 151021 Rel.76995n</p></li>
 </ul>
 </div>
-<div class="section" id="source">
-<h1>Source</h1>
+<div class="section" id="primary-goal">
+<h1>Primary Goal</h1>
+<p>Can we get shell access with SSH!?</p>
+</div>
+<div class="section" id="research">
+<h1>Research</h1>
+<ul>
+<li><p><a class="reference external" href="https://nmap.org">Nmap</a> scan shows it usages Dropbear <span class="docutils literal">sshd</span>:</p>
+<pre class="literal-block"># Nmap 7.60 scan initiated Wed Sep  4 03:04:09 2019 as: nmap -sC -sV -oA wr841N_v11/wr841N_v11 192.168.0.1
+Nmap scan report for _gateway (192.168.0.1)
+Host is up (0.0062s latency).
+Not shown: 996 closed ports
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     Dropbear sshd 2012.55 (protocol 2.0)
+| ssh-hostkey:
+|   1024 d2:b1:fa:6c:de:58:d9:17:f7:e5:dd:ba:44:37:39:d4 (DSA)
+|_  1040 f8:cc:5b:03:94:db:0c:3f:04:56:d4:76:29:51:5b:0d (RSA)
+80/tcp    open  http    TP-LINK WR841N WAP http config
+|_http-title: TL-WR841N
+1900/tcp  open  upnp    ipOS upnpd (TP-LINK TL-WR841N WAP 11.0; UPnP 1.0)
+49152/tcp open  http    Huawei HG8245T modem http config
+|_http-title: Site doesn't have a title.
+MAC Address: 84:16:F9:FC:9B:CC (Tp-link Technologies)
+Service Info: OSs: Linux, ipOS 7.0; Devices: WAP, broadband router; CPE: cpe:/o:linux:linux_kernel, cpe:/h:tp-link:wr841n, cpe:/h:tp-link:tl-wr841n, cpe:/o:ubicom:ipos:7.0, cpe:/h:huawei:hg8245t
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Mar  3 13:57:03 2020 -- 1 IP address (1 host up) scanned in 154.57 seconds</pre>
+</li>
+<li><p>If we try to log in with the router's web interface login credentials it gives the following error:</p>
+<pre class="literal-block">bobcat&#64;what-the-ssh:~/fr37/temp$ ssh admin&#64;192.168.10.1
+admin&#64;192.168.10.1's password:
+PTY allocation request failed on channel 0
+shell request failed on channel 0
+bobcat&#64;what-the-ssh:~/fr37/temp$</pre>
+</li>
+<li><p>search with the error <a class="reference external" href="https://www.google.com/search?hl=en&amp;q=dropbear%20ssh%20pty%20allocation%20request%20failed%20tplink">dropbear ssh pty allocation request failed tplink</a> in Google; we get this <a class="reference external" href="https://community.tp-link.com/en/home/forum/topic/98265">forum post</a> leading use to the officail <a class="reference external" href="https://www.tp-link.com/en/support/faq/2462/">support faq</a> which say it is for the usage of their <a class="reference external" href="https://play.google.com/store/apps/developer?id=TP-LINK+Technologies+Co.,+Ltd.">officail android app's</a> like <a class="reference external" href="https://play.google.com/store/apps/details?id=com.tplink.tether">Tether</a> and more.</p></li>
+</ul>
+<p><strong>Update</strong>: Mar 03, 2020</p>
+<p>Same behaviour found with Archer C60</p>
+<blockquote>
+<ul class="simple">
+<li><p>brand: TP-Link</p></li>
+<li><p>Hardware Version: Archer C60 v2.0</p></li>
+<li><p>Firmware Version: 2.0.0 Build 20161206 rel.65407er</p></li>
+</ul>
+</blockquote>
+<p><strong>Update</strong>: Mar 08, 2020</p>
+<p>Surprise! Surprise! I found one router in the wild with Telnet port open. It asked for authentication which is nice, at least it is not open for all. And guess what happened when I tried the web interface login credentials. Ladies and gentleman we are dropped into the configure terminal of the router. Due to lack to time and not being very efficient with termux I neither got to collect the hardware and firmware version nor any screenshot. Will try to update soon!</p>
+</div>
+<div class="section" id="development">
+<h1>Development</h1>
+</div>
+<div class="section" id="result">
+<h1>Result</h1>
+<p>From primary recon it seems the shell access is blocked so <strong>NO</strong> direct access to shell is possible.</p>
+</div>
+<div class="section" id="miscellaneous">
+<h1>Miscellaneous</h1>
+<ul class="simple">
+<li><p>see how the ssh is denying the shell access ei. block shell access on ssh</p></li>
+</ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/fdludcf_practical_cryptography_lesson_03.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/mysterious_tp_link_ssh_server.rst">View document source</a>.
 Generated on: 2020-03-10 08:48 UTC.
 </p>
 

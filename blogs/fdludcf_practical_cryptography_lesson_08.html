@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>fDLuDCf's Practical Cryptography: Lesson 03</title>
+<title>fDLuDCf's Practical Cryptography: Lesson 08</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -596,12 +596,12 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="fdludcf-s-practical-cryptography-lesson-03">
-<h1 class="title">fDLuDCf's Practical Cryptography: Lesson 03</h1>
+<div class="document" id="fdludcf-s-practical-cryptography-lesson-08">
+<h1 class="title">fDLuDCf's Practical Cryptography: Lesson 08</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>fDLuDCf's Practical Cryptography DLC: Symmetric Key Cryptography</p>
-<p>Created on: 2020-02-05</p>
+<p>fDLuDCf's Practical Cryptography DLC: Cryptographic Protocols</p>
+<p>Created on: 2020-03-07</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This is my class-note for <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography">fDLuDCf's Practical Cryptography DLC</a>. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.</p>
@@ -612,7 +612,7 @@ h1, h2, h3 {
 </div>
 <div class="section" id="class-slides">
 <h1>Class Slides</h1>
-<p>The slides for Lesson 03 is available <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/DLE-3/L3(Crypto).pdf">here</a>.</p>
+<p>The slides for Lesson 01 is available <a class="reference external" href="https://dle.asiaconnect.bdren.net.bd/DLE-3/L8(Protocols).pdf">here</a>.</p>
 </div>
 <div class="section" id="class-video">
 <h1>Class Video</h1>
@@ -621,213 +621,89 @@ h1, h2, h3 {
 <div class="section" id="notes">
 <h1>Notes</h1>
 <ul class="simple">
-<li><p>types of cryptography: [more at slide 2 and 3]</p></li>
-<li><p>symmetric key cryptography is the system where one key is used for both encryption and decryption</p></li>
 <li><dl class="simple">
-<dt>symmetric key cryptography strength:</dt>
+<dt>Practical cryptographic protocols [see slide 2 for the list of service]</dt>
 <dd><ul>
-<li><p>fast and effecient them asymmetric</p></li>
-<li><p>hard to break with brute force if a large enough key is used</p></li>
-<li><p>ideal for bulk encryption and decryption</p></li>
+<li><p>IPSec: protect the comms between two networks, host to host</p></li>
+<li><p>DNSSEC: provide security for DNS system. Confidentiality is not archived, authenticity is.</p></li>
+<li><p>PCT: introduced by Microsoft. in 1990. parallel to SSL.</p></li>
+<li><p>SSL: introduced by Netscape now Mozilla at the same time as PCT. People agreed to use SSL and dropped PCT</p></li>
+<li><p>TLS: Internet Engineering Task Force (IEFT) took the SSL and standardised internationally. most used protocol. will be discussed more in details</p></li>
+<li><dl class="simple">
+<dt>SET: historical money transfer protocol</dt>
+<dd><ul>
+<li><p>now a day's cryptocurrency use cryptography more intensely where mostly hashing and public key crypto</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Cybercash: also a historical money transfer protocol</p></li>
+<li><p>PGP: email encryption. de facto industry protocol and people use voluntarily</p></li>
+<li><p>S/MIME: internationally standardised protocol for email</p></li>
+<li><p>SSH: for remote login. used as both authentication and encryption protocol. based on public key cryptography. server client mode. where they may both have public and private key. If the server has public-private key and client don't then authentication is provided by username and password and session key and encryption is done by public private key,</p></li>
+<li><p>We will only read about TLS and PGP</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>symmetric key cryptography weakness:</dt>
+<dt>Before we start TLS: What is SSL</dt>
 <dd><ul>
-<li><p>poor key distrubution as in how the decrytor gets the key in a secure way</p></li>
-<li><p>poor key management and scalablity as in each user pair needs a seperate key if all are same there is no secret</p></li>
-<li><p>can't provide authenticity and non-repudiation only confedentiality</p></li>
+<li><p>SSL 1.0 is by Netscape in 1994</p></li>
+<li><p>S-HTTP so web only</p></li>
+<li><p>competition with PCT by Microsoft and PCT lost the competition</p></li>
+<li><p>IETF standard it in and created TLS 1.0 in 1999</p></li>
+<li><p>Now most of the web server usages TLS 1.2</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>black cipher:</dt>
+<dt>TLS</dt>
 <dd><ul>
-<li><p>block size: it waroks with blocks of data</p></li>
-<li><p>key size: the larger the key, the larger the confusion and defustion</p></li>
-<li><p>number of rounds: it runs many internal operation before producing the output</p></li>
-<li><p>encryption modes: how messages larger then block size is encrypted</p></li>
+<li><p>authentication of the web server, encryption of web server and integrity of data</p></li>
+<li><p>authentication of browser is possible but optional</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Feistel Network:</dt>
+<dt>TLS internal</dt>
 <dd><ul>
-<li><p>proposed by Feistel in 1973</p></li>
-<li><p>used by several blck cipher like: DES, IDEA, RC5 but not used in AES</p></li>
+<li><p>not to confuse with TCP. TLS works in application layer and build on top of TCP layer</p></li>
+<li><p>HTTP, Telnet, FTP and LDAP is also part of application layer and TLS sits between this and TCP layer</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>how Feistel Network works:</dt>
+<dt>TLS protocol stack [see slide 7 for picture]</dt>
 <dd><ul>
-<li><p>block size n is devided into 2 half: left and right</p></li>
-<li><p>for encryption if we take right, then encryption function is ran on the right half of the data</p></li>
-<li><p>then it is XOR-ed with the left half</p></li>
-<li><p>the result of the XOR function is now the new right half</p></li>
-<li><p>this goes on till number of round, d</p></li>
-<li><p>see more at slide 9</p></li>
+<li><p>application protocols like HTTP, Telnet, SMTP, FTP talks to TLS</p></li>
+<li><p>TLS then communicates with TCP layer</p></li>
+<li><p>When HTTP goes via TLS we call it HTTPS (HTTP Secure), when it talks to TCP layer directly it is just HTTP so are other protocols</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Data Encryption Standerd (DES):</dt>
+<dt>TLS on action:</dt>
 <dd><ul>
-<li><p>adopted in 1977 by NBS/NIST as FIPS PUB 46</p></li>
-<li><p>encrypts 64 bit data with 56 bit key</p></li>
-<li><p>possible to brute force now</p></li>
+<li><dl class="simple">
+<dt>Establishing a session</dt>
+<dd><ul>
+<li><p>agrees on algorithm</p></li>
+<li><p>shares secret</p></li>
+<li><p>perform authentication</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>DES features:</dt>
+<dt>Transferring application data</dt>
 <dd><ul>
-<li><p>key size is 56 but becomes 64 with aditional 8 parity bits</p></li>
-<li><p>number of rounds 16</p></li>
-<li><p>same round number (16) of internal key is generated each with 8 bits</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>how DES works:</dt>
-<dd><ul>
-<li><p>after taking input does initial permutation</p></li>
-<li><p>does all the steps of Feistel Network</p></li>
-<li><p>after finishing the work does a inverse initial permutation</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Tripple DES/3DES:</dt>
-<dd><ul>
-<li><p>takes one plain-text and 3 seperate key</p></li>
-<li><p>assuming the keys are K1,K2 and K3</p></li>
-<li><p>plain-text is encrypted with DES using K1, then that output data is again encrypted with DES using K2, then that output data is again encrypted with DES using K3.</p></li>
-<li><p>The decryption usages key in reverse order K3 -&gt; K2 -&gt; K1</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>3DES with 2 Key:</dt>
-<dd><ul>
-<li><p>same as 3DES but K1 and K3 are same</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>3DES backward compatablity:</dt>
-<dd><ul>
-<li><p>if K1 and K2 are same we are doing encrypon in first round and then decryption of the same data in second round</p></li>
-<li><p>thus 3DES becomes DES</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>DES to AES</dt>
-<dd><ul>
-<li><p>DES was breakable in theory</p></li>
-<li><p>3DES is slow</p></li>
-<li><p>so NIST calls for chipher in 1997</p></li>
-<li><p>15 candidate accepted in June 1998</p></li>
-<li><p>5 candidate short listed in Aug 1999</p></li>
-<li><p>Rijandael was slected as AES in Oct 2000</p></li>
-<li><p>issued in Nov 2001 by NBS/NIST as FIPS PUB 197</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rijandael/AES:</dt>
-<dd><ul>
-<li><p>block size in duble then DES: 128 bit</p></li>
-<li><p>default key size in 128 bit but can support 192 bit and 256 bit (now recommanded)</p></li>
-<li><p>Faster and stronger the DES</p></li>
-<li><p>active life of 20-30</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>AES shortlist:</dt>
-<dd><ul>
-<li><p>MARS</p></li>
-<li><p>RC6</p></li>
-<li><p>Rijandael</p></li>
-<li><p>Serpent</p></li>
-<li><p>Twofish</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Cryptographic cycles:</dt>
-<dd><ul>
-<li><p>encryption which is less like encrypting a disk one time</p></li>
-<li><p>decryption which is more like accessing that encrypted a disk on every boot</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Why Rijandael was choosen for AES?</dt>
-<dd><ul>
-<li><p>as we can see decryption happens more so the standerd algo needs to be decryption effeicent</p></li>
-<li><p>Rijandael usages seperate encryption and decryption algo and has the fasted decryption among the shortlisted</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>How AES works:</dt>
-<dd><ul>
-<li><p>block size: 128 bit</p></li>
-<li><p>key size: 128/192/256 bit</p></li>
-<li><p>rounds: 10</p></li>
-<li><p>internal key: 10</p></li>
-<li><p>decryption algo uses the internal key in reverse order</p></li>
-<li><p>decryption algo is not same as encryption algo</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>How AES works more details:</dt>
-<dd><ul>
-<li><p>take data in 4x4 matrix</p></li>
-<li><p>take key in 4x4 matrix</p></li>
-<li><dl class="simple">
-<dt>the do the following 4 transformation for 9 round:</dt>
-<dd><ul>
-<li><p>sub bites subtutions the text with a S-Box lookup</p></li>
-<li><p>shift row shifts the row by number of row. row count starts from 0</p></li>
-<li><p>mix columns takes each columns and does a dot product with a matrix (where does it come from!?)</p></li>
-<li><p>on add round key we take each column and XOR it with the round keys respective column</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>on the final round the previous process is done with the exception of doing the mix columns</p></li>
-<li><dl class="simple">
-<dt>We use key scheduler to generate the internal key</dt>
-<dd><ul>
-<li><p>take the last column</p></li>
-<li><p>we take the first value of the column and put in on bottom to get a new column</p></li>
-<li><p>now substutite the values of new column with S-Box lookup</p></li>
-<li><p>now we XOR the first column of the key, the newly substutied column and the 4th column of Rcon martix (what is the Rcon martix and why the 4th column?)</p></li>
-<li><p>the result becomes the first column of next round</p></li>
-<li><p>for the second to forth column, the approch a bit different and easy. here we take a column of previous key and XOR it with the last derived column of currrent key. for example, to derive second column we take the second column of previous key and XOR it with the first column of current key and so on.</p></li>
+<li><p>data encryption</p></li>
+<li><p>data integrity</p></li>
 </ul>
 </dd>
 </dl>
@@ -837,76 +713,180 @@ h1, h2, h3 {
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Padding:</dt>
+<dt>TLS: task on server</dt>
 <dd><ul>
-<li><p>what happens when the data size in less then the block size? we use aribterry data to fill up rest of the space which is known as padding.</p></li>
-<li><p>PKCS5 is one of those padding scheam</p></li>
+<li><p>server generates a key pair and stores the private key in a secure storage ie. Hardware Security Modules(HSM)</p></li>
+<li><p>public key is published as digital certificates</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Public Key Cryptographic Standerd 5 (PKCS5):</dt>
+<dt>TLS: browser to server</dt>
 <dd><ul>
-<li><p>assuming the block size is 64 bit any message that is not a multipule of 8 is padded</p></li>
-<li><p>for 7 bit data, we need 1 bit padding: 0x1</p></li>
-<li><p>for 6 bit data, we need 2 bit padding: 0x2 0x2</p></li>
-<li><p>for 5 bit data, we need 3 bit padding: 0x3 0x3 0x3</p></li>
-<li><p>and so on</p></li>
+<li><p>supported browser looks for the URL and if it is <span class="docutils literal"><span class="pre">https://</span></span> then executes the next steps as TLS task</p></li>
+<li><p>browser sends TLS hello message where it proposes a crypto algorithm. like hey google I would like AES for encryption, RSA for signing or Diffie-Hellman key. browser does it use a tool named cipher suites</p></li>
+<li><p>the server is configure to respond to those cipher suites and responds to the strongest algorithm the browser supports</p></li>
+<li><p>when the algorithm is agreed upon the server exchanges the cert and browser verifies the authenticity of cert by verifying signature of cert with the embedded cert and accepts the cert</p></li>
+<li><p>usually the domain name is included as common name in the cert and the browser checks if the common name is same as the domain name it is trying to connect</p></li>
 <li><dl class="simple">
-<dt>but what would we do for 8 bit data? does it need padding if so how many?</dt>
+<dt>when the previous step succeeds the browser starts a key exchange. two type of key exchange is used</dt>
 <dd><ul>
-<li><p>8 bit data also need padding of 8 bit length 0x8 0x8 0x8 0x8 0x8 0x8 0x8 0x8 because if no padding is found and the last bit is 0x1 it would be removed during decryption as the decryption algo would think it to be a 1 bit padding.</p></li>
+<li><p>Diffie-Hellman: first gen TLS used it</p></li>
+<li><p>RSA: new gen TLS usages this as DH algorithm in venerable to MiTM</p></li>
+<li><p>recent recommendation is to use the both together</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>PKCS7 usages the same stretigy but can be allpied for any block size</p></li>
-<li><dl class="simple">
-<dt>Electronic Codebook (ECB)</dt>
-<dd><ul>
-<li><p>breaks the message into chunk</p></li>
-<li><p>apply a block alog like DES or AES on those checkes with the key</p></li>
-<li><p>outputs the result as cipher text [see slide 30 for illustration]</p></li>
-<li><dl class="simple">
-<dt>ECB is not recommanded for two reasons:</dt>
-<dd><ul>
-<li><p>it takes one byte and changes that to another byte of data thus some of the data is extractable</p></li>
-<li><p>if any byte is courupted that it is useless for us. further more if attacker changes the byte it will decrypt to a diffreect data make it volnurable to incertion attack</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>now that the browser and server has established a shared secret thus a secure tunnel it starts data exchange and all key are derived from the shared secret</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Cipher Block Chaining (CBC)</dt>
+<dt>TLS: basic key exchange</dt>
 <dd><ul>
-<li><p>takes an initial vector equal to block size</p></li>
-<li><p>breaks the message into check</p></li>
-<li><p>XOR's the first block with initial vector</p></li>
-<li><p>apply a block alog like DES or AES on the XOR-ed data with the key</p></li>
-<li><p>the output is carried as ciphertext for that block and the same output is used as the initial vector for next block [see slide 34 for illustration]</p></li>
-<li><p>The last block can be used as Massage Auth Code (MAC) as it will condence the entire message to the last cipher block</p></li>
+<li><p>the browser generates a random number R</p></li>
+<li><p>it encrypts the number R with the public key of server and the output is C</p></li>
+<li><p>C gets sent to server where the server decrypts C with it's private key and gets R</p></li>
+<li><p>now both browser and server has the R, a shared secret and now all key can be derived from it</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>Using OpenSSL to enctypt and decrtpt file</dt>
+<dt>TLS: forward secrecy</dt>
 <dd><ul>
-<li><p>encryption: openssl enc aes-256-cbc -in orig_photo.jpg -out photo.enc</p></li>
-<li><p>decryption: openssl enc -d aes-256-cbc -in orig_photo.jpg -out photo.enc</p></li>
+<li><p>forward secrecy is the concept that ensure that an encrypted piece of data will stay encrypted in the future</p></li>
+<li><p>the traditional TLS with key exchange don't have forward secrecy</p></li>
+<li><p>the C [from previous section] can be captured and try to decrypt it. once they do the will be able to compromise the server thus can get all the R of all client</p></li>
+<li><p>RSA, for this reason is not forward secrecy proof but DH is.</p></li>
+<li><p>As DH only exchanges each others public key and destroys the private key after the key exchange so it is impossible to get a private key of either the server or the browser</p></li>
+<li><p>but DH can be attacked with MiTM. this problem is solved with RSA signed public key.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
+<li><dl class="simple">
+<dt>TLS: data encryption</dt>
+<dd><ul>
+<li><p>algorithm that can be used: DES, 3DES, AES, RC2, RC4, IDEA</p></li>
+<li><dl class="simple">
+<dt>it encrypts the following comms:</dt>
+<dd><ul>
+<li><p>all browser-server and server-browser except which browser is talking to which server (I think DOH does it??)</p></li>
+<li><p>URL of requested document</p></li>
+<li><p>contents of requested document</p></li>
+<li><p>contents of submitted form</p></li>
+<li><p>cookies from browser to server</p></li>
+<li><p>cookies from server to browser</p></li>
+<li><p>contents of HTTP header</p></li>
+<li><p>JS comms</p></li>
+<li><p>etc</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TLS: data integrity</dt>
+<dd><ul>
+<li><p>archived with message authentication code(MAC)</p></li>
+<li><p>includes hash, shared secret and sequence</p></li>
+<li><p>MAC is transmitted with the data</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TLS: authentication</dt>
+<dd><ul>
+<li><p>partial support with challenge-response system</p></li>
+<li><p>during the cert exchange with the server [TLS: browser to server section] accepting the server cert don't provide authenticity but only the identity of the web server.</p></li>
+<li><p>as anyone can send the public key aka cert if the browser wants to authenticate if the server is the one holding the private key for this particular public key, the browser challenges the server.</p></li>
+<li><p>the challenge goes like this: the browser generates a random number, encrypts the number with the public key and sens it to the server asking to decrypt it with it's private key. If the server is the owner of the public key, it responds with the decrypted random number. the browser verifies the decrypted random number and authenticates.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TLS: Architecture</dt>
+<dd><ul>
+<li><p>handshake protocol: establishes the session</p></li>
+<li><p>change cipher protocol: changes cipher when needed</p></li>
+<li><p>alert protocol: sends error</p></li>
+<li><p>TLS record protocol: used in confidentiality and integrity</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TLS record protocol:</dt>
+<dd><ul>
+<li><p>application data is broken down in to chunks of data knows as Record Protocol Units and the security is applied to this chunks of data. The important distinction to remember is that TLS is not applied to the whole data but to the chunks of data</p></li>
+<li><p>each chunk is compressed and then the MAC of that compassed data is calculated</p></li>
+<li><p>then we put the hash and the data together and encrypt it with the session key we established</p></li>
+<li><p>finally the encrypted data is passed to the TCP layer, which then passes it to the IP layer</p></li>
+<li><p>the whole process goes from down to up on the receiving end</p></li>
+<li><p>the compression is done to save bandwidth and compute power thus saves time</p></li>
+<li><p>if the compression was done after the encryption we wouldn't gain better compression</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Demo with Let's Encrypt</p></li>
+<li><dl class="simple">
+<dt>Email security</dt>
+<dd><ul>
+<li><p>PGP</p></li>
+<li><p>S-MIME</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PGP: popularity</dt>
+<dd><ul>
+<li><p>available free on verity of platform</p></li>
+<li><p>no need for cert, anyone can use it</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PGP: process</dt>
+<dd><ul>
+<li><p>first take the message</p></li>
+<li><p>calculate the hash on the message and encrypt the hash of the message using the public key of the sender aka creates a digital cert</p></li>
+<li><p>then the time stamp is added as a parameter and it becomes the signature of the massage. this step provides integrity, authenticity, non-repudiation</p></li>
+<li><p>now we compress the message and the session key with it. then encrypt the compressed data with the session key with the recipients public key. this step provides the confidentiality</p></li>
+<li><p>finally we encode as <span class="docutils literal">base64</span> as email is a hex based system.</p></li>
+<li><p>when the recipient receives the message, he/she decrypt the header with his/her private key then gets the session key and the encrypted message</p></li>
+<li><p>using the session key the message is decrypted</p></li>
+<li><p>once decrypted user gets the signature and text. user now can verify the signature by calculating the hash of the message and matches it with the one that he received.</p></li>
+<li><p>the protocol is based on web of trust and no central authority is defined</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>S-MIME</dt>
+<dd><ul>
+<li><p>extension of MIME standard</p></li>
+<li><p>usages PKCS7 to create signed data [see slide 33 for the structure]</p></li>
+<li><p>can also encrypt data with analog data structure [see slide 34 for the structure]</p></li>
+<li><p>we first sign the data then encrypt the data</p></li>
+<li><p>the data is encoded into our email body</p></li>
+<li><p>you MUST need a standard public key cert for a CA</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>PGP demo with Mailvelope</p></li>
 </ul>
 </div>
 <div class="section" id="source">
@@ -915,7 +895,7 @@ h1, h2, h3 {
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/fdludcf_practical_cryptography_lesson_03.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/fdludcf_practical_cryptography_lesson_08.rst">View document source</a>.
 Generated on: 2020-03-10 08:48 UTC.
 </p>
 

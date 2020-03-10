@@ -562,6 +562,7 @@ a { text-decoration: none; }
 </style>
 <style type="text/css">
 
+/* style for keyboard key rendering */
 .kbd {
     -moz-border-radius:3px;
     -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
@@ -581,8 +582,15 @@ a { text-decoration: none; }
     text-shadow:0 1px 0 #fff;
 }
 
+
+/* this one fixes the overflow problem for sidebar*/
 h1, h2, h3 { 
     clear: none;     
+}
+
+/* strike through is not supported in rST this enables it*/
+.strike {
+  text-decoration: line-through;
 }
 
 </style>
@@ -605,18 +613,18 @@ h1, h2, h3 {
 <h1>Starting the game</h1>
 <p>To start the game, just visit <a class="reference external" href="https://hackgame.chaurocks.com">HackGame3</a>. We will see a big <strong>Start</strong> button with basic instructions bellow and a leaderboard on the right. Clicking on the <strong>Start</strong> button starts the game. Each level has a web page designated for it. The structure of the pages are same. Level heading, level hint, two input box for username and password and finally a <strong>Lasson larned</strong> section where it is said what should be done to remedy the problem. Remember that the game is time base, so time required to solve each level is recorded and the quicker the better.</p>
 </div>
-<div class="section" id="level-1">
-<h1>Level 1</h1>
+<div class="section" id="level-01">
+<h1>Level 01</h1>
 <p>The clue for this level is <strong>Do you notice something in the URL? Try to access level 2 directly!</strong>. If we see the URL, we would see:</p>
 <blockquote>
 <p><a class="reference external" href="https://hackgame.chaurocks.com/level1">https://hackgame.chaurocks.com/level1</a></p>
 </blockquote>
 <p>This is a screenshot of the URL bar of that level:</p>
-<img alt="Level 1 URL Screenshot" class="align-center" src="../static/media/hackgame_walkthrough_image_01.png" />
+<img alt="Level 01 URL Screenshot" class="align-center" src="../static/media/hackgame_walkthrough_image_01.png" />
 <p>As the clue suggested we can change end of the URL form <cite>level1</cite> to <cite>level2</cite> and go to the next level.</p>
 </div>
-<div class="section" id="level-2">
-<h1>Level 2</h1>
+<div class="section" id="level-02">
+<h1>Level 02</h1>
 <p>The clue for this level is <strong>Was level one too easy? Try again with something different!</strong>. Again, if we see the URL, we would see:</p>
 <blockquote>
 <p><a class="reference external" href="https://hackgame.chaurocks.com/level2?logged=false">https://hackgame.chaurocks.com/level2?logged=false</a></p>
@@ -624,12 +632,12 @@ h1, h2, h3 {
 <p>What would happen if we changed the <cite>logged</cite> to <strong>true</strong> from <strong>false</strong>?</p>
 <p>As I said the beginning levels are too easy! We are in level 3.</p>
 </div>
-<div class="section" id="level-3">
-<h1>Level 3</h1>
-<p>The clue for this level is <strong>Very good! Do you know some default username/password combinations?</strong>. I am sure everyone guessed it by now! Yes, it it <cite>admin</cite>, <cite>admin</cite>. Let's move on to <a class="reference internal" href="#level-4">Level 4</a></p>
+<div class="section" id="level-03">
+<h1>Level 03</h1>
+<p>The clue for this level is <strong>Very good! Do you know some default username/password combinations?</strong>. I am sure everyone guessed it by now! Yes, it it <cite>admin</cite>, <cite>admin</cite>. Let's move on to <a class="reference internal" href="#level-04">Level 04</a></p>
 </div>
-<div class="section" id="level-4">
-<h1>Level 4</h1>
+<div class="section" id="level-04">
+<h1>Level 04</h1>
 <p>The clue for this level is <strong>Do you know how to read source code?</strong>. That means we have to get the source of this page. IMO, the clean way to read code would be to view source. Press <span class="kbd">Ctrl</span> + <span class="kbd">u</span> to open current pages source code in new window.</p>
 <p>In the source we could see comments along with the actual source code. One comment says <cite>Start looking here</cite> as we see in the screenshot:</p>
 <img alt="Start looking here Comment" class="align-center" src="../static/media/hackgame_walkthrough_image_02.png" />
@@ -637,28 +645,172 @@ h1, h2, h3 {
 <img alt="Devlopment username and password" class="align-center" src="../static/media/hackgame_walkthrough_image_03.png" />
 <p>Use this in the actual page to go to the next level.</p>
 </div>
-<div class="section" id="level-5">
-<h1>Level 5</h1>
-<p>The clue for this level is <strong>Great job! Try it again!</strong>. So we will do the same as <a class="reference internal" href="#level-4">Level 4</a>. We will view the source code with <span class="kbd">Ctrl</span> + <span class="kbd">u</span> where we would see the same <cite>Start looking here</cite> comment and bellow that comment we should see the login form. If we go a bit bellow we would see a script were a JavaScript function named <strong>checkSubmit</strong>. The function first gets the <cite>username</cite> and <cite>password</cite> from the page and then first check if it is <cite>undefined</cite> then if not it would check our input with a hard-coded username and password and return <strong>true</strong> if it matches or else returns <cite>false</cite>.</p>
+<div class="section" id="level-05">
+<h1>Level 05</h1>
+<p>The clue for this level is <strong>Great job! Try it again!</strong>. So we will do the same as <a class="reference internal" href="#level-04">Level 04</a>. We will view the source code with <span class="kbd">Ctrl</span> + <span class="kbd">u</span> where we would see the same <cite>Start looking here</cite> comment and bellow that comment we should see the login form. If we go a bit bellow we would see a script were a JavaScript function named <strong>checkSubmit</strong>. The function first gets the <cite>username</cite> and <cite>password</cite> from the page and then first check if it is <cite>undefined</cite> then if not it would check our input with a hard-coded username and password and return <strong>true</strong> if it matches or else returns <cite>false</cite>.</p>
 <img alt="Hard-coded username and password" class="align-center" src="../static/media/hackgame_walkthrough_image_04.png" />
-<p>If we use this we would be able to go to the next level, <a class="reference internal" href="#level-6">Level 6</a>.</p>
+<p>If we use this we would be able to go to the next level, <a class="reference internal" href="#level-06">Level 06</a>.</p>
 <p>P.S: For me, the novice in JavaScript, I wondered how did after from submission the from knew it had to run the <cite>checkSubmit</cite> function? Well, just after the check finises we see 3 more lines of code that gets the <cite>password-form</cite> <a class="reference external" href="https://www.w3schools.com/jsref/met_document_getelementbyid.asp">element by ID</a> and if it is not <cite>undefined</cite> then calls itself.</p>
 <img alt="Calling the checkSubmit function." class="align-center" src="../static/media/hackgame_walkthrough_image_05.png" />
 </div>
-<div class="section" id="level-6">
-<h1>Level 6</h1>
-<!-- The clue for this level is ****. If we see the , we would see: -->
-<!--  -->
-<!-- .. image:: -->
-<!-- :align: center -->
-<!-- :alt: alternate text -->
-<!-- Level -->
-<!-- - - - - - - - -->
-<!-- The clue for this level is ****. If we see the , we would see: -->
-<!--  -->
-<!-- .. image:: -->
-<!-- :align: center -->
-<!-- :alt: alternate text -->
+<div class="section" id="level-06">
+<h1>Level 06</h1>
+<p>On this levels page we get the clue for this level which is <strong>So, you look like a JavaScript expert. How about now?</strong>. That means we have to dig through source code again like the last time. If we see the code with <span class="kbd">Ctrl</span> + <span class="kbd">u</span>, we would see this:</p>
+<img alt="Unicode/hex encoded function" class="align-center" src="../static/media/hackgame_walkthrough_image_06.png" style="width: 1050.0px; height: 375.0px;" />
+<p>As we can see we have two variables <span class="docutils literal">p1</span> and <span class="docutils literal">p2</span> with huge <a class="reference external" href="https://wikipedia.org/wiki/Unicode">Unicode</a> or hex value and at the last line it usages <a class="reference external" href="https://www.w3schools.com/jsref/jsref_eval.asp">eval</a> and <a class="reference external" href="https://www.w3schools.com/jsref/jsref_unescape.asp">unescape</a> function to add another Unicode or hex value with with <span class="docutils literal">p2</span> then adds that to <span class="docutils literal">p1</span> and finally runs <span class="docutils literal">eval</span> function on it.</p>
+<p>What can we do? Well it is JS and we do have a console handy. Let's paste it! If we paste it we see the following:</p>
+<img alt="Decrypted hex function" class="align-center" src="../static/media/hackgame_walkthrough_image_07.png" />
+<p>We that looks similar. It's a minified JS function:</p>
+<pre class="literal-block">function c(){var a=document.getElementById(&quot;username&quot;),b=document.getElementById(&quot;password&quot;);if(&quot;undefined&quot;!=typeof a&amp;&amp;&quot;undefined&quot;!=typeof b){if(&quot;info&quot;==a.value&amp;&amp;&quot;iloveyou&quot;==b.value)return!0;alert(&quot;Error: The Username/Password combination is incorrect.&quot;)}return!1}var d=document.getElementById(&quot;password-form&quot;);&quot;undefined&quot;!=typeof d&amp;&amp;(d.onsubmit=c);</pre>
+<p>And we have our credentials! March forward.</p>
+</div>
+<div class="section" id="level-07">
+<h1>Level 07</h1>
+<p>The clue for this level is <strong>Are you bored? Play with this paradox. Use the same username and password of level six.</strong>. And the username and password filed is pre-filled with the credentials of <a class="reference internal" href="#level-06">Level 06</a>. Let's click 'Log in'. Oh, well no luck! We get a console popup with <span class="docutils literal">Error: You cannot try to log in.</span> But it said it we can use the username and password of previous level. Well it also said it is a <strong>paradox</strong>. If we see the source code like before, we would see this:</p>
+<pre class="literal-block">function checkSubmit() {
+alert('Error: You cannot try to log in.');
+return false;
+}
+
+var loginform = document.getElementById('password-form');
+if ('undefined' != typeof loginform) {
+        loginform.onsubmit = checkSubmit;
+}</pre>
+<p>See screenshot:</p>
+<img alt="checkSubmit function returns false!" class="align-center" src="../static/media/hackgame_walkthrough_image_08.png" />
+<p>In this level the script has a function <span class="docutils literal">checkSubmit</span> which gives an <span class="docutils literal">alert</span> and returns <span class="docutils literal">false</span>. The function is being called bellow if the from is not empty. Let's see what happens if we change the return value to <span class="docutils literal">ture</span> and paste it in the console.</p>
+<p>This time if we press 'Log in' we are moved to <a class="reference internal" href="#level-08">Level 08</a>.</p>
+</div>
+<div class="section" id="level-08">
+<h1>Level 08</h1>
+<p>The clue for this level is <strong>You have very solid client-side knowledge! Let me test your logic ability.</strong>. If we see the source code, we would see this:</p>
+<img alt="Self invented hasing algorithm" class="align-center" src="../static/media/hackgame_walkthrough_image_09.png" />
+<p>We can see that we have a long function named <span class="docutils literal">pseudoHash</span> which is being called from the last line with an <strong>hex value</strong> and a string named <cite>DECRYPT</cite>. The hasing algorithm seems to be a self invented hashing algorithm. The function <span class="docutils literal">pseudoHash</span> takes two string one string of plain-text and a method name which either  can be 'ENCRYPT' or 'DECRYPT' and returns a string. Now the encrypt part is given and from it we have to figure out a way to decrypt part. This is a reverse engineering problem so let's take apart the encrypt part first.</p>
+<ul class="simple">
+<li><p>the encryption starts by defining a variable named <cite>output</cite></p></li>
+<li><p>then we start a for loop that starts from 0 and goes on step at a time until y, then length of string is not reached</p></li>
+<li><dl class="simple">
+<dt>on each step of the for loop do the following</dt>
+<dd><ul>
+<li><p>calculate the ASCII value of the character</p></li>
+<li><p>if the ASCII value is less then 128; add 128 with the value</p></li>
+<li><p>if the value is greater 127 then subtract 128 from the value</p></li>
+<li><p>subtract the value from 255</p></li>
+<li><p>now convert it into hex</p></li>
+<li><p>if the length of hex is less the 2; add a leading 0</p></li>
+<li><p>concat the hex code to the variable <cite>output</cite></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>return the value</p></li>
+</ul>
+<p>We know that we would get a hex value and the string <cite>DECRYPT</cite> but decrypt function is not implemented. Now to implement we need to do the exact opposite. Here is what we would do:</p>
+<ul class="simple">
+<li><p>define a variable output</p></li>
+<li><p>start a for loop that will start at 0, goes 2 step at a time until length of string is reached [two steps because we will get 2 bit hex as we see in 6th step inside the loop of encrypt function]</p></li>
+<li><dl class="simple">
+<dt>on each step of the for loop we will do the following</dt>
+<dd><ul>
+<li><p>take x to x+2 slice of string as hexcode</p></li>
+<li><p>convert it to int</p></li>
+<li><p>subtract the value from 255</p></li>
+<li><p>if the ASCII value is less then 128; add 128 with the value</p></li>
+<li><p>if the value is greater 127 then subtract 128 from the value</p></li>
+<li><p>convert the int (ASCII) value to char and add concat it to the <cite>output</cite> variable</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>return the value</p></li>
+</ul>
+<p>This is how the rough code will look like:</p>
+<pre class="literal-block">var output = &quot;&quot;
+for (var x = 0, y = string.length, charCode, hexCode; x &lt; y; x=x+2) {
+
+        hexCode = string.slice(x,x+2)
+        charCode = parseInt(hexCode, 16);
+        charCode = 255 - charCode;
+        if (128 &gt; charCode) {
+                        charCode += 128;
+        } else if (127 &lt; charCode) {
+                        charCode -= 128;
+        }
+
+        output = output + String.fromCharCode(charCode)
+}
+
+output</pre>
+<p>Remember the hex value that was called in the last line of the code? Define a variable named <cite>string</cite> with that value and paste the code in the console. We should get our password!</p>
+</div>
+<div class="section" id="level-09">
+<h1>Level 09</h1>
+<p>The clue for this level is <strong>Enough client-side! This is a common username and password list. Get the right combination.</strong>. We are presented with a list of username and password pair and a combination of the is correct. Let's try the first pair and see what happens.</p>
+<img alt="Error message showing 'user don't exist'!" class="align-center" src="../static/media/hackgame_walkthrough_image_10.png" style="width: 750.0px; height: 500.0px;" />
+<p>Huh? That error looks interesting! It say's <strong>The user does not exist.</strong> so before trying a correct user name and password pair let's find out out valid user first by trying the usernames only! And after a couple of try (it may vary as the user name and password list won't be same every time) we get another error.</p>
+<img alt="Wrong password means valid user." class="align-center" src="../static/media/hackgame_walkthrough_image_11.png" style="width: 750.0px; height: 500.0px;" />
+<p>This means our user exist and valid but the password is wrong so we try the other passwords until we have success. On successful combination` We count the password to that username number index and put the password to go to <a class="reference internal" href="#level-10">Level 10</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I know the manual process of trying each user and then each password for the valid password is boring and a simple JS or Python script can solve it very easily. I just did it this way so that is what I wrote here. Someday I may includ a script for it. This applicable for the next few tasks.</p>
+</div>
+</div>
+<div class="section" id="level-10">
+<h1>Level 10</h1>
+<p>The clue for this level is <strong>This is still using the common username and password list, so get the right combination.</strong>. Not again! If we see the first pair, we would see:</p>
+<img alt="Generic error message." class="align-center" src="../static/media/hackgame_walkthrough_image_12.png" style="width: 750.0px; height: 500.0px;" />
+<p>Well this time we see a very generic message <cite>The username/password combination is incorrect.</cite> but the title of this lesson says <strong>Error Status Leak</strong>.  <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP response code</a> may leak something. So let's check that. Open the browser console and switch to Network tab. Now if we try first username-password pair we see we have a <a class="reference external" href="https://en.wikipedia.org/wiki/HTTP_404">404 error</a> which means the resource is not found.</p>
+<img alt="404 in console." class="align-center" src="../static/media/hackgame_walkthrough_image_13.png" style="width: 750.0px; height: 500.0px;" />
+<p>A couple of try (it may vary as the user name and password list won't be same every time) we get another error.</p>
+<img alt="Generic error message." class="align-center" src="../static/media/hackgame_walkthrough_image_14.png" style="width: 750.0px; height: 500.0px;" />
+<p>This time we get <a class="reference external" href="https://en.wikipedia.org/wiki/HTTP_403">403 error</a>. The <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP response code</a>  Wikipedia page says that <cite>The request contained valid data and was understood by the server, but the server is refusing action.</cite> So we have correct username but wrong password and we will need to again try the passwords manually. And once again with correct username-password combinations we are allowed to go to <a class="reference internal" href="#level-11">Level 11</a></p>
+</div>
+<div class="section" id="level-11">
+<h1>Level 11</h1>
+<p>The clue for this level is <strong>Again, this is the common username and password list, so get the right combination.</strong>. We also have a clue in the title <strong>Timing Leak</strong> that may mean the <strong>delay for checking</strong> can also be a factor. If we check the delay in the Network tab of the console, we would see this:</p>
+<img alt="Delay time for first username" class="align-center" src="../static/media/hackgame_walkthrough_image_15.png" style="width: 750.0px; height: 500.0px;" />
+<p>If we try a few other username (it may vary as the user name and password list won't be same every time) we get almost same time until we hit one that is almost 4 times than the previous one.</p>
+<img alt="4x delay time from the previous requests" class="align-center" src="../static/media/hackgame_walkthrough_image_16.png" style="width: 750.0px; height: 500.0px;" />
+<p>It seems we have our username now let's try to get the correct password and go to <a class="reference internal" href="#level-12">Level 12</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>the solve of the following levels are done mostly with browser tools thus may vary. I am using Google Chrome but it can done in most modern browsers.</p>
+</div>
+</div>
+<div class="section" id="level-12">
+<h1>Level 12</h1>
+<p>The clue for this level is <strong>Some user just logged out on your computer. Can you figure how to log in without the password?</strong>. As we don't have a shared password manager like the one in Chrome it must be about <cite>cookie</cite> and the title seems to confirm it. To see the session on Chrome we have to go to console &gt; Application &gt; Storage &gt; Cookies and we should see the site address. If we click on the address, we see:</p>
+<img alt="Cookies for this site." class="align-center" src="../static/media/hackgame_walkthrough_image_17.png" style="width: 750.0px; height: 500.0px;" />
+<p>Among the cookie values <span class="docutils literal">token_logged</span> has a <span class="docutils literal">false</span> value. What happens if we toggle it to <span class="docutils literal">true</span>? Click on the value filed of <span class="docutils literal">token_logged</span> to make it <span class="docutils literal">true</span> and press 'Log in'. We are directed to <a class="reference internal" href="#level-13">Level 13</a>.</p>
+</div>
+<div class="section" id="level-13">
+<h1>Level 13</h1>
+<p>The clue for this level is <strong>Great! You logged in successfully with the modified cookie, but you can only access this page with InternalBrowser/2.1, can you bypass it?</strong>. The title also say it is about user agent bypassing.  If we select the request for <a class="reference internal" href="#level-13">Level 13</a> in the Network tab of the console, and scroll down a bit, we would see:</p>
+<img alt="user-agent for level 13 request" class="align-center" src="../static/media/hackgame_walkthrough_image_18.png" style="width: 750.0px; height: 500.0px;" />
+<p>Unfortunately, unlike Mozilla Firefox, Google Chrome has not easy way of modifying headers. Where in Mozilla Firefox we would do a click and edit for Google Chrome the suggestion is mostly to do it with some extension but we will not go that way. We will try to stick as much as possible to built-in tools. For this task specifically we will use the built-in Network conditions tools. Go to console, click the 3 dot menu, select more tools and for there click on Network conditions.</p>
+<img alt="Going to the Network conditions tools" class="align-center" src="../static/media/hackgame_walkthrough_image_19.png" style="width: 750.0px; height: 500.0px;" />
+<p>The 3rd item on the list would be <cite>User agent</cite>. Uncheck the 'Select automatically' option and choose Custom for the drop down if it is not select automatically. Now type the <cite>user-agent</cite> value to pass this level which is <cite>InternalBrowser/2.1</cite>.</p>
+<img alt="Custome value for User agent" class="align-center" src="../static/media/hackgame_walkthrough_image_20.png" style="width: 750.0px; height: 500.0px;" />
+<p>Now press 'Log in' and we would progress to <a class="reference internal" href="#level-14">Level 14</a>.</p>
+</div>
+<div class="section" id="level-14">
+<h1>Level 14</h1>
+<p>The clue for this level is <strong>This page can only be viewed in language defined as en-nz, do you know how it works?</strong>. The title also says that it is about bypassing language limitation. f we select the request for <a class="reference internal" href="#level-14">Level 14</a> in the Network tab of the console, and scroll down a bit, we would see:</p>
+<img alt="accept-language header for level 14 request" class="align-center" src="../static/media/hackgame_walkthrough_image_21.png" style="width: 750.0px; height: 500.0px;" />
+<p>The <cite>accept-language</cite> header is set to <cite>en-US,en</cite> but we need it to be <cite>en-nz</cite>. We will use the browser tools again to solve this problem. Go to Google Chrome's Setting &gt; Advanced &gt; Languages (or copy this link: chrome://settings/languages and paste it in a new window).</p>
+<img alt="Google Chrome Languages settings" class="align-center" src="../static/media/hackgame_walkthrough_image_22.png" style="width: 750.0px; height: 500.0px;" />
+<p>Now click on Language &gt; click Add languages. This should show a list of language. Now search for English and select English (New Zealand) because <cite>en-nz</cite> is the language code for English in New Zealand. Now press 'Log in' to go to <a class="reference internal" href="#level-15">Level 15</a></p>
+</div>
+<div class="section" id="level-15">
+<h1>Level 15</h1>
+<p>The clue for this level is <strong>This page is limited to internal IP address on a range between 10.0.6.1 - 10.0.6.255. Try to fool the server.</strong>. The server checks for a special header named <cite>X-Forwarded-For</cite> and we need to add this. I haven't found any built-in tool to do this so we need to use a Header Modifier extension. Just search for one and add it. I am using ModHeader. This tools are very easy to use. All you have to do click on the extension icon while staying on the page where you want your headers to be modified. Then put the header name and value. For us name would be <cite>X-Forwarded-For</cite> and value is any IP address from the range mentioned.</p>
+<p>Now press 'Sign in' to proceed.</p>
+<p>Here we see the congrats and a leaderboard where top 15 people are ranked.</p>
+<p>As of Mar 10, 2020, HackGame's has 15 levels and all of them are solved here. I will try to keep it up to date.</p>
+</div>
+<div class="section" id="fun-fact">
+<h1>Fun Fact</h1>
+<p>While writing this walkthrough I noticed that in each level there is a cookie named <span class="docutils literal">do_not_modify_this</span>. This is the cookie that tracks our progression and also blocks us from going to a level we haven't finished. So if you want to switch browser and don't want so start from the beginning just copy paste it in the new browser window and go to the URL.</p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
@@ -667,7 +819,7 @@ h1, h2, h3 {
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/hackgame_walkthrough.rst">View document source</a>.
-Generated on: 2020-03-08 04:11 UTC.
+Generated on: 2020-03-10 08:48 UTC.
 </p>
 
 </div>
