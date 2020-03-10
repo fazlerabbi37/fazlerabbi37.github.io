@@ -26,7 +26,7 @@ To start playing the Bandit wargame:
 - Open a terminal emulator
 - Start reading the instructions in the webpage and follow them to get started.
 
-The game is deviled into levels. Current level has the password for the next level. So, if we go to the `Bandit Level 0 → Level 1 <https://overthewire.org/wargames/bandit/bandit1.html>`_ page we will see the goal if Level 0. If we successfully achieve that goal we will be able to go to Level 1.
+The game is divided into levels. Current level has the password for the next level. So, if we go to the `Bandit Level 0 → Level 1 <https://overthewire.org/wargames/bandit/bandit1.html>`_ page we will see the goal if Level 0. If we successfully achieve that goal we will be able to go to Level 1.
 
 Level 0
 -------
