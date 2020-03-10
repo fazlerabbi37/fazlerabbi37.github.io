@@ -6,7 +6,7 @@ A quick reference to all things miscellaneous and those things that have no home
 
 Created on: 2020-02-09
 
-Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+Tag: `cheat_sheet <tag_cheat_sheet.html>`_
 
 HTML: jump to top of page link
 ------------------------------

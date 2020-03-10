@@ -6,7 +6,7 @@ Walkthrough of Bandit, a wargame by OverTheWire
 
 Created on: 2020-01-09
 
-Tag: `ctf <blogs/tag_ctf.html>`_
+Tag: `ctf <tag_ctf.html>`_
 
 .. role:: kbd
 

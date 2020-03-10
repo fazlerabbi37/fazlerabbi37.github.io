@@ -6,7 +6,7 @@ Why there is an SSH server running on a home router?
 
 Created on: 2019-09-04
 
-Tag: `useless_rnd <blogs/tag_useless_rnd.html>`_
+Tag: `useless_rnd <tag_useless_rnd.html>`_
 
 Discovery/Query/Idea
 --------------------

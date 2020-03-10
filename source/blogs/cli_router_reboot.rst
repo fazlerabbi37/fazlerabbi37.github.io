@@ -6,7 +6,7 @@ Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
 
 Created on: 2019-05-09
 
-Tag: `useless_rnd <blogs/tag_useless_rnd.html>`_
+Tag: `useless_rnd <tag_useless_rnd.html>`_
 
 Consumer router ie. TPLink, D-Link, Netgear, comes with their proprietary firmware and most of them doesn't support a CLI. I needed a way to reboot my router without using the web GUI. So here we will look at different ways to access those router and reboot them.
 

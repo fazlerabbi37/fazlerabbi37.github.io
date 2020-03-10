@@ -6,7 +6,7 @@ fDLuDCf's Practical Cryptography DLC: Public Key Cryptography Part 1
 
 Created on: 2020-02-21
 
-Tag: `cryptography <blogs/tag_cryptography.html>`_
+Tag: `cryptography <tag_cryptography.html>`_
 
 .. warning:: This is my class-note for `fDLuDCf's Practical Cryptography DLC <https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography>`_. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.
 

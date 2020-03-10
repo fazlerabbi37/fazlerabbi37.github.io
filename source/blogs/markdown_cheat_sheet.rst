@@ -6,7 +6,7 @@ A quick reference to Markdown.
 
 Created on: 2018-07-19
 
-Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+Tag: `cheat_sheet <tag_cheat_sheet.html>`_
 
 Styles
 ------

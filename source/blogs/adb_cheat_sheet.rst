@@ -6,7 +6,7 @@ A quick reference to `ADB <https://developer.android.com/studio/command-line/adb
 
 Created on: 2019-02-03
 
-Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+Tag: `cheat_sheet <tag_cheat_sheet.html>`_
 
 see devices
 -----------

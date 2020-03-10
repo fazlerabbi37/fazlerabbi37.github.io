@@ -6,7 +6,7 @@ A quick reference to Topic
 
 Created on: pu=strftime('%Y-%m-%d')
 
-Tag: `useless_rnd <blogs/tag_useless_rnd.html>`_
+Tag: `useless_rnd <tag_useless_rnd.html>`_
 
 Discovery/Query/Idea
 --------------------

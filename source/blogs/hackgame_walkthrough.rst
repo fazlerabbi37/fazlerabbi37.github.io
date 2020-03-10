@@ -6,7 +6,7 @@ Walkthrough of `HackGame3 <https://hackgame.chaurocks.com>`_, a browser-based we
 
 Created on: 2020-02-02
 
-Tag: `ctf <blogs/tag_ctf.html>`_
+Tag: `ctf <tag_ctf.html>`_
 
 .. role:: kbd
 .. role:: strike

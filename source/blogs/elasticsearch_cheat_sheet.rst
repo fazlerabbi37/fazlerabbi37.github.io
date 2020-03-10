@@ -6,7 +6,7 @@ A quick reference to Elasticsearch.
 
 Created on: 2019-01-22
 
-Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+Tag: `cheat_sheet <tag_cheat_sheet.html>`_
 
 Words wrapped with curly braces, like ``{host}`` are variable, replace them with appropriate value.
 

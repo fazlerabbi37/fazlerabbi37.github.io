@@ -6,7 +6,7 @@ A quick reference to Nginx
 
 Created on: 2019-12-03
 
-Tag: `cheat_sheet <blogs/tag_cheat_sheet.html>`_
+Tag: `cheat_sheet <tag_cheat_sheet.html>`_
 
 .. warning:: under heavy construction and not well organized
 
