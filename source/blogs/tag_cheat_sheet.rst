@@ -22,6 +22,7 @@ Quick reference on things, no or very little explanation, point and click and ha
 - `osmconvert Cheat Sheet <blogs/osmconvert_cheat_sheet.html>`_
 - `osmfilter Cheat Sheet <blogs/osmfilter_cheat_sheet.html>`_
 - `osmosis Cheat Sheet <blogs/osmosis_cheat_sheet.html>`_
+- `PostgreSQL Cheat Sheet <blogs/pgsql_cheat_sheet.html>`_
 - `Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
 - `Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
 - `ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
