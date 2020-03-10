@@ -1,4 +1,4 @@
-CTF
+ctf
 ===
 `< Blog <../blog.html>`_
 
