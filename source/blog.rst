@@ -6,11 +6,15 @@ Welcome to my blog site?!
 
 This page contains notes/tips/tricks/hacks aka accumulated information about various topics that piqued my interest. 
 
-.. sidebar:: Category
+.. sidebar:: Tags
 
-	`cheat sheet <blogs/category_cheat_sheet.html>`_
+	`cheat_sheet <blogs/tag_cheat_sheet.html>`_
 
-	`cryptography  <blogs/category_cryptography.html>`_
+	`cryptography  <blogs/tag_cryptography.html>`_
+
+	`ctf <blogs/tag_ctf.html>`_
+
+	`useless_rnd  <blogs/tag_useless_rnd.html>`_
 
 .. sidebar:: New Blogs
 
@@ -33,19 +37,19 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: Recently Updated Blogs
 
-	`Bandit Walkthrough <blogs/bandit_walkthrough.html>`_
+	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 08 <blogs/fdludcf_practical_cryptography_lesson_08.html>`_
+	`Rails Console Cheat Sheet <blogs/rails_console_cheat_sheet.html>`_
 
 
-	`HackGame Walkthrough <blogs/hackgame_walkthrough.html>`_
+	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
 
 
-	`Mysterious TP-Link SSH server <blogs/mysterious_tp_link_ssh_server.html>`_
+	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
+	`fDLuDCf's Practical Cryptography: Lesson 04 <blogs/fdludcf_practical_cryptography_lesson_04.html>`_
 
 
 
