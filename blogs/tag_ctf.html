@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Vim Cheat Sheet</title>
+<title>ctf</title>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -596,184 +596,19 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="vim-cheat-sheet">
-<h1 class="title">Vim Cheat Sheet</h1>
+<div class="document" id="ctf">
+<h1 class="title">ctf</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to Vim.</p>
-<p>Created on: 2019-09-08</p>
-<p>Tag: <a class="reference external" href="blogs/tag_cheat_sheet.html">cheat_sheet</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>under heavy construction and not well organized</p>
-</div>
-<div class="section" id="exit-from-vim">
-<h1>exit from vim</h1>
-<p>to exit from vim press <span class="kbd">Esc</span> then type <cite>:q!</cite></p>
-</div>
-<div class="section" id="subscript">
-<h1>subscript</h1>
-<blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">s</span></p>
-</blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
-</div>
-<div class="section" id="superscript">
-<h1>superscript</h1>
-<blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">S</span></p>
-</blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
-</div>
-<div class="section" id="indent-multiple-lines">
-<h1>indent multiple lines</h1>
-<p>to indent multiple lines select lines in VISUAL mode and do</p>
-<blockquote>
-<p><span class="kbd">&gt;</span></p>
-</blockquote>
-<p>do one level indentation of next five line</p>
-<blockquote>
-<p><span class="kbd">5 &gt;</span></p>
-</blockquote>
-<p><a class="reference external" href="https://stackoverflow.com/a/235841">https://stackoverflow.com/a/235841</a></p>
-</div>
-<div class="section" id="paste-mode">
-<h1>paste mode</h1>
-<p>to enable paste mode do</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:set paste</cite></p>
-</blockquote>
-</div>
-<div class="section" id="insert-current-date">
-<h1>insert current date</h1>
-<p>to insert current date</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:pu=strftime('%Y-%m-%d')</cite></p>
-</blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Insert_current_date_or_time">https://vim.fandom.com/wiki/Insert_current_date_or_time</a></p>
-</div>
-<div class="section" id="switching-case-of-characters">
-<h1>Switching case of characters</h1>
-<p>to switching case of characters</p>
-<blockquote>
-<p>Toggle case &quot;HellO&quot; to &quot;hELLo&quot; with <span class="kbd">g</span> + <span class="kbd">~</span> then a movement.</p>
-<p>Uppercase &quot;HellO&quot; to &quot;HELLO&quot; with <span class="kbd">g</span> + <span class="kbd">U</span> then a movement.</p>
-<p>Lowercase &quot;HellO&quot; to &quot;hello&quot; with <span class="kbd">g</span> + <span class="kbd">u</span> then a movement.</p>
-</blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Switching_case_of_characters">https://vim.fandom.com/wiki/Switching_case_of_characters</a>
-<a class="reference external" href="https://stackoverflow.com/a/2966034">https://stackoverflow.com/a/2966034</a></p>
-</div>
-<div class="section" id="find-and-replace">
-<h1>find and replace</h1>
-<p>to find and replace</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>%s/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>pecific lines</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>$START_LINE,$END_LINEs/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>add <cite>c</cite> after <cite>g</cite> to enter an interactive mode.</p>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/19995072">Find and replace strings in vim on multiple lines</a></p>
-</div>
-<div class="section" id="move-to-the-beginning-of-line">
-<h1>move to the beginning of line</h1>
-<p>to move to the beginning or start of line:</p>
-<blockquote>
-<p><span class="kbd">0</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/10243634">https://stackoverflow.com/a/10243634</a></p>
-</div>
-<div class="section" id="move-to-the-end-of-line">
-<h1>move to the end of line</h1>
-<p>to move to the end of line:</p>
-<blockquote>
-<p><span class="kbd">$</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/105734">https://stackoverflow.com/a/105734</a></p>
-</div>
-<div class="section" id="delete-all-line-till-end">
-<h1>delete all line till end</h1>
-<p>to delete all line till end:</p>
-<blockquote>
-<p><span class="kbd">d</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/8124616">https://stackoverflow.com/a/8124616</a></p>
-</div>
-<div class="section" id="open-in-readonly-mode">
-<h1>open in readonly mode</h1>
-<p>to open in readonly mode inside vim:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>view /path/to/file</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/18395765">https://stackoverflow.com/a/18395765</a></p>
-</div>
-<div class="section" id="display-line-numbers">
-<h1>display line numbers</h1>
-<p>to display line numbers:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set number</cite> or <cite>set nu</cite></p>
-</blockquote>
-<p>to disable:</p>
-<pre class="literal-block">:kbd:`Esc` + :kbd:`:` then type `set nonumber` or `set nonu`</pre>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Display_line_numbers">https://vim.fandom.com/wiki/Display_line_numbers</a></p>
-</div>
-<div class="section" id="see-file-type">
-<h1>see file type</h1>
-<p>to see file type:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set ft</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Filetype.vim">https://vim.fandom.com/wiki/Filetype.vim</a></p>
-</div>
-<div class="section" id="macros">
-<h1>macros</h1>
-<p>record a macros:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">q</span> + <span class="kbd">any key like d,m,n</span> for register.</p>
-</blockquote>
-<p>the do you task and press <span class="kbd">q</span>. It will save the macro to the register [one of those d,m,n that you pressed]. To use the macro:</p>
-<blockquote>
-<p>number_of_times_you_want_to_execute + <span class="kbd">&#64;</span> + <span class="kbd">register_key_d_m_or_n</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Macros">https://vim.fandom.com/wiki/Macros</a></p>
-</div>
-<div class="section" id="abbreviations">
-<h1>abbreviations</h1>
-<p>set an abbreviation:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">:</span> <cite>ab $ABBREVIATION $FULL_TEXT_FOR_THE_ABBREVIATION</cite></p>
-</blockquote>
-<p>for example:</p>
-<blockquote>
-<p><span class="kbd">:</span> <cite>ab rtfm read the fine manual</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Using_abbreviations">https://vim.fandom.com/wiki/Using_abbreviations</a></p>
-</div>
-<div class="section" id="fix-indentation">
-<h1>fix indentation</h1>
-<p>to fix indentation on a selected part of the file:</p>
-<blockquote>
-<p><span class="kbd">=</span></p>
-</blockquote>
-<p>to fix indentation on a whole file:</p>
-<blockquote>
-<p><span class="kbd">g</span> + <span class="kbd">g</span> + <span class="kbd">=</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Fix_indentation">https://vim.fandom.com/wiki/Fix_indentation</a></p>
-</div>
-<div class="section" id="source">
-<h1>Source</h1>
-<blockquote>
+<p>Capture The Flag aka CTF, write-ups, walk-throughs, tricks, hacks, sites</p>
 <ul class="simple">
-<li><p>` &lt;&gt;`_</p></li>
+<li><p><a class="reference external" href="blogs/bandit_walkthrough.html">Bandit Walkthrough</a></p></li>
+<li><p><a class="reference external" href="blogs/hackgame_walkthrough.html">HackGame Walkthrough</a></p></li>
 </ul>
-</blockquote>
-</div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/vim_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/tag_ctf.rst">View document source</a>.
 Generated on: 2020-03-10 12:43 UTC.
 </p>
 
