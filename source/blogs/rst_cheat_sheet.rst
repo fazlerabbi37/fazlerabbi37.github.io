@@ -159,5 +159,67 @@ The result would be x :sub:`y`.
 
 source: https://docutils.sourceforge.io/docs/ref/rst/roles.html#subscript
 
+Rendering
+---------
+This part is all about ``docutils`` packages various tools like ``rst2html``, ``rst2html5`` rendering tricks.
+
+add custom JavaScript (JS) with HTML
+````````````````````````````````````
+First we need to find out what template is being used by the renderer and it's path. For example, the template used by ``rst2html`` is located in ``/usr/share/docutils/writers/html4css1/template.txt`` for ``rst2html5`` the file is at ``/usr/share/docutils/writers/html5_polyglot/template.txt``. For others try the `--help` switch and look for the `--template` switch and read the description on the right to find the file path. Now we need to copy the file to a location we have write access to as we would modify and use it instead of the default one. We can do a lot of cusomization on this template file that but for now let's focuse on JS. Open the file with a text editor and add either a JavaScript code snipite::
+
+	%(head_prefix)s
+	%(head)s
+	<script>
+		alert("JS is added!!!")
+	</script>
+	%(stylesheet)s
+	%(body_prefix)s
+	%(body_pre_docinfo)s
+	%(docinfo)s
+	%(body)s
+	%(body_suffix)s
+ 
+Or add a external JS file path::
+
+	%(head_prefix)s
+	%(head)s
+	<script src="../RELATIVE/PATH/FROM/DOCUMENT/test.js"></script>
+	%(stylesheet)s
+	%(body_prefix)s
+	%(body_pre_docinfo)s
+	%(docinfo)s
+	%(body)s
+	%(body_suffix)s
+
+Now use the custom template with the `--template` like this::
+
+    rst2html5 --template=template.txt document.rst
+
+source: https://stackoverflow.com/a/3922784
+
+
+add custom CSS with HTML
+````````````````````````
+to add custom CSS with HTML we can use the `--stylesheet` switch, but the trick is that before using our custom CSS we have to apply the `docutils` provided CSS first. We can find those default CSS if we take a look at the `--stylesheet-dirs` switch's description. Once we find the we will just use the default CSS names (as the renderer already knows the path for those) and then our custom CSS full path and separate all the CSS by comma like this for `rst2html5`::
+
+    rst2html5 --stylesheet=minimal.css,plain.css,$PATH/TO/CSS/main.css document.rst
+
+    
+
+include generation date time at the end of document
+```````````````````````````````````````````````````
+to add generation date time at the end of document use `-d` and `-t` switches::
+
+    rst2html5 -d -t document.rst
+
+
+show link to source at the end of document
+``````````````````````````````````````````
+to show link to source at the end of document we can use the `-s` switch the is also another switch `--source-url` where we can specify the path to the documents, like this::
+
+    rst2html5 -s --source-url=/PATH/TO/$DOCUMENT document.rst
+
+
+
 Source
 ------
