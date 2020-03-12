@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
 <title>ReStructuredText Cheat Sheet</title>
+<script src="../static/script/test.js"></script>
 <style type="text/css">
 
 /* Minimal style sheet for the HTML output of Docutils.                    */
@@ -722,6 +723,53 @@ rendered as an HTML comment)</pre>
 <p>The result would be x <sub>y</sub>.</p>
 <p>source: <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/roles.html#subscript">https://docutils.sourceforge.io/docs/ref/rst/roles.html#subscript</a></p>
 </div>
+<div class="section" id="rendering">
+<h1>Rendering</h1>
+<p>This part is all about <span class="docutils literal">docutils</span> packages various tools like <span class="docutils literal">rst2html</span>, <span class="docutils literal">rst2html5</span> rendering tricks.</p>
+<div class="section" id="add-custom-javascript-js-with-html">
+<h2>add custom JavaScript (JS) with HTML</h2>
+<p>First we need to find out what template is being used by the renderer and it's path. For example, the template used by <span class="docutils literal">rst2html</span> is located in <span class="docutils literal">/usr/share/docutils/writers/html4css1/template.txt</span> for <span class="docutils literal">rst2html5</span> the file is at <span class="docutils literal">/usr/share/docutils/writers/html5_polyglot/template.txt</span>. For others try the <cite>--help</cite> switch and look for the <cite>--template</cite> switch and read the description on the right to find the file path. Now we need to copy the file to a location we have write access to as we would modify and use it instead of the default one. We can do a lot of cusomization on this template file that but for now let's focuse on JS. Open the file with a text editor and add either a JavaScript code snipite:</p>
+<pre class="literal-block">%(head_prefix)s
+%(head)s
+&lt;script&gt;
+        alert(&quot;JS is added!!!&quot;)
+&lt;/script&gt;
+%(stylesheet)s
+%(body_prefix)s
+%(body_pre_docinfo)s
+%(docinfo)s
+%(body)s
+%(body_suffix)s</pre>
+<p>Or add a external JS file path:</p>
+<pre class="literal-block">%(head_prefix)s
+%(head)s
+&lt;script src=&quot;../RELATIVE/PATH/FROM/DOCUMENT/test.js&quot;&gt;&lt;/script&gt;
+%(stylesheet)s
+%(body_prefix)s
+%(body_pre_docinfo)s
+%(docinfo)s
+%(body)s
+%(body_suffix)s</pre>
+<p>Now use the custom template with the <cite>--template</cite> like this:</p>
+<pre class="literal-block">rst2html5 --template=template.txt document.rst</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/3922784">https://stackoverflow.com/a/3922784</a></p>
+</div>
+<div class="section" id="add-custom-css-with-html">
+<h2>add custom CSS with HTML</h2>
+<p>to add custom CSS with HTML we can use the <cite>--stylesheet</cite> switch, but the trick is that before using our custom CSS we have to apply the <cite>docutils</cite> provided CSS first. We can find those default CSS if we take a look at the <cite>--stylesheet-dirs</cite> switch's description. Once we find the we will just use the default CSS names (as the renderer already knows the path for those) and then our custom CSS full path and separate all the CSS by comma like this for <cite>rst2html5</cite>:</p>
+<pre class="literal-block">rst2html5 --stylesheet=minimal.css,plain.css,$PATH/TO/CSS/main.css document.rst</pre>
+</div>
+<div class="section" id="include-generation-date-time-at-the-end-of-document">
+<h2>include generation date time at the end of document</h2>
+<p>to add generation date time at the end of document use <cite>-d</cite> and <cite>-t</cite> switches:</p>
+<pre class="literal-block">rst2html5 -d -t document.rst</pre>
+</div>
+<div class="section" id="show-link-to-source-at-the-end-of-document">
+<h2>show link to source at the end of document</h2>
+<p>to show link to source at the end of document we can use the <cite>-s</cite> switch the is also another switch <cite>--source-url</cite> where we can specify the path to the documents, like this:</p>
+<pre class="literal-block">rst2html5 -s --source-url=/PATH/TO/$DOCUMENT document.rst</pre>
+</div>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
@@ -729,7 +777,7 @@ rendered as an HTML comment)</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/rst_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-03-10 13:05 UTC.
+Generated on: 2020-03-12 16:32 UTC.
 </p>
 
 </div>
