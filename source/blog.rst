@@ -37,19 +37,19 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: Recently Updated Blogs
 
-	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
+	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
 
 
-	`Batch and CMD Cheat Sheet <blogs/batch_cmd_cheat_sheet.html>`_
+	`SourceForge file upload with Filezilla <blogs/sourceforge_file_upload_with_filezilla.html>`_
 
 
-	`Rebooting consumer router using CLI <blogs/cli_router_reboot.html>`_
+	`Google Calendar sync on Android without signing in <blogs/sync_gcalendar_without_android_signin.html>`_
 
 
-	`Cygwin Cheat Sheet <blogs/cygwin_cheat_sheet.html>`_
+	`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
 
 
-	`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
+	`Tiny Core Linux <blogs/tiny_core_linux.html>`_
 
 
 
