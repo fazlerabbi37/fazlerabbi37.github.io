@@ -4,7 +4,7 @@ Template R&D Topic
 
 A quick reference to Topic
 
-Created on: =strftime('%Y-%m-%d') then Crtl + m then p
+Created on: "=strftime('%Y-%m-%d') then Crtl + m then p
 
 Tag: `useless_rnd <tag_useless_rnd.html>`_
 

@@ -4,7 +4,7 @@ fDLuDCf's Practical Cryptography: Lesson 00
 
 fDLuDCf's Practical Cryptography DLC: 
 
-Created on: =strftime('%Y-%m-%d') then Crtl + m then p 
+Created on: "=strftime('%Y-%m-%d') then Crtl + m then p 
 
 .. warning:: This is my class-note for `fDLuDCf's Practical Cryptography DLC <https://dle.asiaconnect.bdren.net.bd/upcoming_event/practical-cryptography>`_. I typed out what I thought to be importent and note worthy from the lecture and the slides. This is by no means guilde or complete reference for the course.
 
