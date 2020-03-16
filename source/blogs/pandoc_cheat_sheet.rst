@@ -1,8 +1,8 @@
-Pandoc
-======
+Pandoc Cheat Sheet
+===================
 `< Blog <../blog.html>`_
 
-Using Pandoc to convert documents.
+A quick reference to Pandoc.
 
 Created on: 2019-01-21
 
