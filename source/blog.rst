@@ -14,6 +14,8 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 	`ctf <blogs/tag_ctf.html>`_
 
+	`living_in_the_shell <blogs/tag_living_in_the_shell.html>`_
+
 	`useless_rnd  <blogs/tag_useless_rnd.html>`_
 
 .. sidebar:: New Blogs
@@ -37,19 +39,19 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: Recently Updated Blogs
 
-	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
+	`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
 
 
-	`SourceForge file upload with Filezilla <blogs/sourceforge_file_upload_with_filezilla.html>`_
+	`Bonsai: An Elasticsearch playground <blogs/bonsai_an_elasticsearch_playground.html>`_
 
 
-	`Google Calendar sync on Android without signing in <blogs/sync_gcalendar_without_android_signin.html>`_
+	`Google App Script Cheat Sheet <blogs/google_app_script_cheat_sheet.html>`_
 
 
-	`TigerVNC starter guilde <blogs/tigervnc_getting_started_guide.html>`_
+	`Hacking an access control device to take attendance <blogs/hacking_an_access_control_device_to_take_attendance.html>`_
 
 
-	`Tiny Core Linux <blogs/tiny_core_linux.html>`_
+	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
 
@@ -96,20 +98,12 @@ A quick reference to Batch and CMD.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Workshop on Cloud Computing based on BracU Cloud with Tirzok Private Limited <blogs/bracu_cloud_openstack_tirzok.html>`_
-.........................................................................................................................
-Created on: 2019-11-19
+`Bonsai: An Elasticsearch playground <blogs/bonsai_an_elasticsearch_playground.html>`_
+......................................................................................
+Created on: 2019-03-15
 
-Workshop note of Cloud Computing based on BracU Cloud conducted by Tirzok Private Limited
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Rebooting consumer router using CLI <blogs/cli_router_reboot.html>`_
-.....................................................................
-Created on: 2019-05-09
-
-Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Experimenting with Elasticsearch using Bonsai.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Convert OVA image to QCOW <blogs/convert_ova_image_to_qcow.html>`_
@@ -158,14 +152,6 @@ Created on: 2019-01-22
 
 A quick reference to Elasticsearch.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-`Bonsai: Elasticsearch playground <blogs/elasticsearch_with_bonsai.html>`_
-..........................................................................
-Created on: 2019-03-15
-
-Experimenting with Elasticsearch using Bonsai.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `fDLuDCf's Practical Cryptography: Lesson 01 <blogs/fdludcf_practical_cryptography_lesson_01.html>`_
@@ -256,8 +242,8 @@ A quick reference to GNOME.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Google App Script Cheat Sheet <blogs/google_app_script.html>`_
-...............................................................
+`Google App Script Cheat Sheet <blogs/google_app_script_cheat_sheet.html>`_
+...........................................................................
 Created on: 2019-10-16
 
 A quick reference to Google App Script.
@@ -285,6 +271,14 @@ A quick reference to Google Cloud Platform.
 Created on: 2020-02-02
 
 Walkthrough of `HackGame3 <https://hackgame.chaurocks.com>`_, a browser-based web CTF.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Hacking an access control device to take attendance <blogs/hacking_an_access_control_device_to_take_attendance.html>`_
+.......................................................................................................................
+Created on: 2019-02-25
+
+How we hacked(modified!?) a Zkteco access control device to take automatic attendance.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -384,12 +378,12 @@ A quick reference to osmosis.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Pandoc <blogs/pandoc.html>`_
-.............................
+`Pandoc Cheat Sheet <blogs/pandoc_cheat_sheet.html>`_
+.....................................................
 Created on: 2019-01-21
 
-Using Pandoc to convert documents.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A quick reference to Pandoc.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Pencil Project <blogs/pencil_project.html>`_
@@ -438,6 +432,14 @@ Created on: 2019-11-19
 
 Reading wind barb to determine the speed and direction of wind.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Rebooting consumer router using CLI <blogs/rebooting_consumer_router_using_cli.html>`_
+.......................................................................................
+Created on: 2019-05-09
+
+Don't want to use the Web Interface to reboot router? Let's see the CLI ways.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
@@ -496,19 +498,19 @@ A quick reference to Vim.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Wikipedia Edit <blogs/wiki_edit_cheat_sheet.html>`_
-....................................................
+`Wikipedia Edit Cheat Sheet <blogs/wiki_edit_cheat_sheet.html>`_
+................................................................
 Created on: 2019-11-19
 
 A quick reference to editing Wikipedia.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-`Hacking an access control device to take attendance <blogs/zkteco_f18_access_control_to_attendance.html>`_
-...........................................................................................................
-Created on: 2019-02-25
+`Workshop on Openstack based cloud computing for BracU with Tirzok <blogs/workshop_on_openstack_based_cloud_computing_for_bracu_with_tirzok.html>`_
+...................................................................................................................................................
+Created on: 2019-11-19
 
-How we hacked(modified!?) a Zkteco access control device to take automatic attendance.
+Workshop note of Openstack based cloud computing for BracU with Tirzok Private Limited
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
