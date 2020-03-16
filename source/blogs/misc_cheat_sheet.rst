@@ -107,6 +107,12 @@ The `-l` flag **displays a list of mounted volumes**.
 
 source: `veracrypt -t --help` options.
 
+Facebook: See most recent post
+------------------------------
+The new Facebook UI (as of Mar 16, 2020 it is in early adopter phrase) don't have a option to see most recent post. I noticed a URL change in the old UI which works in the new UI.:
+
+    https://www.facebook.com/?sk=h_chr
+
 Source
 ------
 
