@@ -8,5 +8,5 @@ Useless, random things I wander about or pops on my head and do some active web 
 
 
 
-- `Rebooting consumer router using CLI <cli_router_reboot.html>`_
 - `Mysterious TP-Link SSH server <mysterious_tp_link_ssh_server.html>`_
+- `Rebooting consumer router using CLI <rebooting_consumer_router_using_cli.html>`_
