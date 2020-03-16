@@ -50,13 +50,27 @@ to enable paste mode do
 
    :kbd:`Esc` then type `:set paste`
 
-insert current date
--------------------
-to insert current date
+insert current date in next line
+--------------------------------
+to insert current date in next line:
 
      :kbd:`Esc` then type `:pu=strftime('%Y-%m-%d')`
 
 https://vim.fandom.com/wiki/Insert_current_date_or_time
+
+insert current date in cursor location
+--------------------------------------
+to insert current date in cursor location in normal mode:
+
+    :kbd:`Esc` then type `"=strftime('%Y-%m-%d')`. Now press :kbd:`Crtl` + :kbd:`m`. Then press :kbd:`p`
+
+
+to insert current date in cursor location in insert mode:
+
+   :kbd:`Crtl` + :kbd:`r` then type `=strftime('%Y-%m-%d')`. Now press :kbd:`Crtl` + :kbd:`m`.
+
+
+https://unix.stackexchange.com/a/8109/
 
 Switching case of characters
 ----------------------------
