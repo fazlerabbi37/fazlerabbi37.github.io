@@ -1,5 +1,5 @@
-Wikipedia Edit
-==============
+Wikipedia Edit Cheat Sheet
+==========================
 `< Blog <../blog.html>`_
 
 A quick reference to editing Wikipedia.
