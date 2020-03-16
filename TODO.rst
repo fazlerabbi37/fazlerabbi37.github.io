@@ -32,4 +32,17 @@ openwrt_cheat_sheet.rst
 - testing openwrt custom build image in kvm: 
 - docker image for playing around: https://openwrt.org/docs/guide-user/virtualization/docker_openwrt_image
 - docker image for building image: https://openwrt.org/docs/guide-user/virtualization/obtain.firmware.docker
+-
+
+practical_cryptography: l01
+---------------------------
+- stream and block cipher: all are advantage 
+
+practical_cryptography: l02
+---------------------------
+- MD5 collision: more at slide - more at slide 11
+
+practical_cryptography: l03
+---------------------------
 - 
+
