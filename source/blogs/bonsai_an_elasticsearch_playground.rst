@@ -1,5 +1,5 @@
-Bonsai: Elasticsearch playground
-================================
+Bonsai: An Elasticsearch playground
+===================================
 `< Blog <../blog.html>`_
 
 Experimenting with Elasticsearch using Bonsai.
