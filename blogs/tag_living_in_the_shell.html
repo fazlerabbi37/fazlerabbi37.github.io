@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Nginx Cheat Sheet</title>
+<title>living_in_the_shell</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -597,96 +597,23 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="nginx-cheat-sheet">
-<h1 class="title">Nginx Cheat Sheet</h1>
+<div class="document" id="living-in-the-shell">
+<h1 class="title">living_in_the_shell</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to Nginx</p>
-<p>Created on: 2019-12-03</p>
-<p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>under heavy construction and not well organized</p>
+<p>How would we survive in a world were GUI no longer exist? This is a getting started guide of our journey into the realm of Command-Line Interface (CLU) or Text-based User Interfaces (TUI).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most of the tools here are tools here are HUGE. Most of them are HUGE enough to have their own wiki. So I will not go for details but will be more focusing on getting started, quick tricks and useful cheats.</p>
 </div>
-<div class="section" id="access-and-error-log">
-<h1>access and error log</h1>
-<p>by default nginx access log can be found at:</p>
-<pre class="literal-block">/var/log/nginx/access.log</pre>
-<p>and the error log at:</p>
-<pre class="literal-block">/var/log/nginx/error.log</pre>
-</div>
-<div class="section" id="nginx-trim-the-html">
-<h1>nginx trim the .html</h1>
-<p><a class="reference external" href="https://stackoverflow.com/a/38238001/5350059">https://stackoverflow.com/a/38238001/5350059</a></p>
-<p><a class="reference external" href="https://serverfault.com/questions/514044/nginx-is-cutting-the-end-of-dynamic-pages-and-caching-them">https://serverfault.com/questions/514044/nginx-is-cutting-the-end-of-dynamic-pages-and-caching-them</a></p>
-</div>
-<div class="section" id="custom-404">
-<h1>custom 404</h1>
-<p><a class="reference external" href="https://www.digitalocean.com/community/questions/404-error-page-instead-of-default-nginx-welcome-page">https://www.digitalocean.com/community/questions/404-error-page-instead-of-default-nginx-welcome-page</a>
-<a class="reference external" href="https://serverfault.com/questions/354803/nginx-custom-404-error-page-for-virtual-host">https://serverfault.com/questions/354803/nginx-custom-404-error-page-for-virtual-host</a></p>
-</div>
-<div class="section" id="reverse-proxy">
-<h1>reverse proxy</h1>
-<p>reverse proxy config:</p>
-<pre class="literal-block">http {
-    server {
-        listen 80;
-        server_name foo.com;
-
-        location /service1/ {
-            proxy_pass http://$IP:PORT/;
-        }
-
-        location /service2/ {
-            proxy_pass http://$IP:PORT/;
-        }
-
-    }
-}</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/42452204/5350059">https://stackoverflow.com/a/42452204/5350059</a></p>
-</div>
-<div class="section" id="simple-reverse-proxy-with-ssl">
-<h1>simple reverse proxy with ssl</h1>
-<p>simple reverse proxy with ssl:</p>
-<pre class="literal-block">server {
- listen 80;
- return 301 https://$host$request_uri;
- }
-
- server {
-
-     listen 443;
-     server_name sub.domain.com;
-
-     ssl_certificate           /etc/nginx/cert.crt;
-     ssl_certificate_key       /etc/nginx/cert.key;
-
-     ssl on;
-
-
-     location / {
-       proxy_pass          http://localhost:8080;
-     }
- }</pre>
-<p>source: <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins">https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins</a></p>
-</div>
-<div class="section" id="replace-or-remove-subdirectory-in-reverse-proxy">
-<h1>replace or remove subdirectory in reverse proxy</h1>
-<p>to replace or remove subdirectory in reverse proxy:</p>
-<pre class="literal-block">location /site1/ {
-     proxy_pass http://localhost:8081/;
-     # ... more config ... #
- }</pre>
-<p>notice the tailing <cite>/</cite> both after the <cite>site</cite> and <cite>http://localhost:8081</cite></p>
-<p>source: <a class="reference external" href="https://serverfault.com/a/444753/">https://serverfault.com/a/444753/</a></p>
-</div>
-<div class="section" id="source">
-<h1>Source</h1>
-</div>
+<ul class="simple">
+<li><p><a class="reference external" href="bash_cheat_sheet.html">Bash Cheat Sheet</a></p></li>
+<li><p><a class="reference external" href="vim_cheat_sheet.html">Vim Cheat Sheet</a></p></li>
+</ul>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/nginx_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/tag_living_in_the_shell.rst">View document source</a>.
 Generated on: 2020-03-16 16:03 UTC.
 </p>
 

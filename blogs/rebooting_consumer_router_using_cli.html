@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Nginx Cheat Sheet</title>
+<title>Rebooting consumer router using CLI</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -597,96 +597,69 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="nginx-cheat-sheet">
-<h1 class="title">Nginx Cheat Sheet</h1>
+<div class="document" id="rebooting-consumer-router-using-cli">
+<h1 class="title">Rebooting consumer router using CLI</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to Nginx</p>
-<p>Created on: 2019-12-03</p>
-<p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>under heavy construction and not well organized</p>
+<p>Don't want to use the Web Interface to reboot router? Let's see the CLI ways.</p>
+<p>Created on: 2019-05-09</p>
+<p>Tag: <a class="reference external" href="tag_useless_rnd.html">useless_rnd</a></p>
+<p>Consumer router ie. TPLink, D-Link, Netgear, comes with their proprietary firmware and most of them doesn't support a CLI. I needed a way to reboot my router without using the web GUI. So here we will look at different ways to access those router and reboot them.</p>
+<div class="section" id="telnet">
+<h1>Telnet</h1>
+<p>The most common way to access a router is to use <span class="docutils literal">telnet</span> client if the router supports it. <a class="footnote-reference brackets" href="#id4" id="id1">1</a>:</p>
+<pre class="literal-block">telnet $ip_address</pre>
+<p>Type <span class="docutils literal">username</span> and <span class="docutils literal">password</span> to login. Type <span class="docutils literal">help</span> or <span class="docutils literal">help system</span> to see all available commands. We should find a <span class="docutils literal">reboot</span> command on that list of commands. We can use it to reboot the device.:</p>
+<pre class="literal-block">system reboot</pre>
+<p>To reboot using telnet without user interaction (non-interactive) mode we can use the following command:</p>
+<pre class="literal-block">(sleep 3;echo $username;sleep 3;echo $password;sleep 3;echo system reboot;sleep 3;) | telnet $ip</pre>
+<p>If we are using Windows, we need to go to <cite>Control Panel</cite> &gt; <cite>Turn Windows features on or off</cite> and then enable <cite>Telnet Client</cite>. Then open the CMD and use the following code:</p>
+<pre class="literal-block">Option explicit
+Dim oShell
+set oShell= Wscript.CreateObject(&quot;WScript.Shell&quot;)
+oShell.Run &quot;telnet&quot;
+WScript.Sleep 3000
+oShell.Sendkeys &quot;open 192.168.1.1~&quot;
+WScript.Sleep 3000
+oShell.Sendkeys &quot;admin~&quot;
+WScript.Sleep 3000
+oShell.Sendkeys &quot;mypassword~&quot;
+WScript.Sleep 3000
+oShell.Sendkeys &quot;system reboot~&quot;
+WScript.Sleep 3000
+oShell.Sendkeys &quot;~&quot;
+Wscript.Quit</pre>
+<p>We can save the code as <span class="docutils literal">.vbs</span> file and use as in executable file.</p>
+<p>If you don't have telnet enable by default, for example in Netgear search for <cite>Netgear Telnet Enabler</cite> or see <a class="reference external" href="http://antinode.info/nte/">NTE - A Portable Program to Enable Telnet Access on Netgear Routers</a>, <a class="reference external" href="https://github.com/insanid/NetgearTelnetEnable">NetgearTelnetEnable</a> and <a class="reference external" href="https://openwrt.org/toh/netgear/telnet.console">Unlocking the Netgear Telnet Console</a>.</p>
 </div>
-<div class="section" id="access-and-error-log">
-<h1>access and error log</h1>
-<p>by default nginx access log can be found at:</p>
-<pre class="literal-block">/var/log/nginx/access.log</pre>
-<p>and the error log at:</p>
-<pre class="literal-block">/var/log/nginx/error.log</pre>
+<div class="section" id="curl">
+<h1>cURL</h1>
+<p>We can use cURL command to reboot router.</p>
+<p>For TP-Link <a class="footnote-reference brackets" href="#id5" id="id2">2</a>:</p>
+<pre class="literal-block">curl -D -s --header &quot;Authorization:Basic ABCdef123456&quot; --header &quot;Referer: http://$ip:$port/userRpm/SysRebootRpm.htm&quot; -u &quot;$username:$password&quot; &quot;http://$ip:$port/userRpm/SysRebootRpm.htm?Reboot=Reboot&quot;</pre>
 </div>
-<div class="section" id="nginx-trim-the-html">
-<h1>nginx trim the .html</h1>
-<p><a class="reference external" href="https://stackoverflow.com/a/38238001/5350059">https://stackoverflow.com/a/38238001/5350059</a></p>
-<p><a class="reference external" href="https://serverfault.com/questions/514044/nginx-is-cutting-the-end-of-dynamic-pages-and-caching-them">https://serverfault.com/questions/514044/nginx-is-cutting-the-end-of-dynamic-pages-and-caching-them</a></p>
-</div>
-<div class="section" id="custom-404">
-<h1>custom 404</h1>
-<p><a class="reference external" href="https://www.digitalocean.com/community/questions/404-error-page-instead-of-default-nginx-welcome-page">https://www.digitalocean.com/community/questions/404-error-page-instead-of-default-nginx-welcome-page</a>
-<a class="reference external" href="https://serverfault.com/questions/354803/nginx-custom-404-error-page-for-virtual-host">https://serverfault.com/questions/354803/nginx-custom-404-error-page-for-virtual-host</a></p>
-</div>
-<div class="section" id="reverse-proxy">
-<h1>reverse proxy</h1>
-<p>reverse proxy config:</p>
-<pre class="literal-block">http {
-    server {
-        listen 80;
-        server_name foo.com;
-
-        location /service1/ {
-            proxy_pass http://$IP:PORT/;
-        }
-
-        location /service2/ {
-            proxy_pass http://$IP:PORT/;
-        }
-
-    }
-}</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/42452204/5350059">https://stackoverflow.com/a/42452204/5350059</a></p>
-</div>
-<div class="section" id="simple-reverse-proxy-with-ssl">
-<h1>simple reverse proxy with ssl</h1>
-<p>simple reverse proxy with ssl:</p>
-<pre class="literal-block">server {
- listen 80;
- return 301 https://$host$request_uri;
- }
-
- server {
-
-     listen 443;
-     server_name sub.domain.com;
-
-     ssl_certificate           /etc/nginx/cert.crt;
-     ssl_certificate_key       /etc/nginx/cert.key;
-
-     ssl on;
-
-
-     location / {
-       proxy_pass          http://localhost:8080;
-     }
- }</pre>
-<p>source: <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins">https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins</a></p>
-</div>
-<div class="section" id="replace-or-remove-subdirectory-in-reverse-proxy">
-<h1>replace or remove subdirectory in reverse proxy</h1>
-<p>to replace or remove subdirectory in reverse proxy:</p>
-<pre class="literal-block">location /site1/ {
-     proxy_pass http://localhost:8081/;
-     # ... more config ... #
- }</pre>
-<p>notice the tailing <cite>/</cite> both after the <cite>site</cite> and <cite>http://localhost:8081</cite></p>
-<p>source: <a class="reference external" href="https://serverfault.com/a/444753/">https://serverfault.com/a/444753/</a></p>
+<div class="section" id="netgear-debug">
+<h1>Netgear debug</h1>
+<p>While trying to figure this out I found that Netgear has a web debug page which can be access at this address: <span class="docutils literal"><span class="pre">http://$ip/debug.htm</span></span>. <a class="footnote-reference brackets" href="#id6" id="id3">3</a></p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://www.howtogeek.com/206620/how-to-automatically-reboot-your-router-the-geeky-way/">How to Automatically Reboot Your Router the Geeky Way</a></p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p><a class="reference external" href="https://tricksty.com/coding/reboot-tp-link-router-tl-wa7510n-using-curl">Reboot TP-Link Router TL-WA7510N using Curl</a></p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p><a class="reference external" href="https://community.netgear.com/t5/Nighthawk-WiFi-Routers/Can-I-enable-telnet-on-my-R8000/m-p/1637900/highlight/true#M104722">Can I enable telnet on my R8000?</a></p>
+</dd>
+</dl>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/nginx_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/rebooting_consumer_router_using_cli.rst">View document source</a>.
 Generated on: 2020-03-16 16:03 UTC.
 </p>
 

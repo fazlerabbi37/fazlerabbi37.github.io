@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Hacking an access control device to take attendance</title>
+<title>Workshop on Openstack based cloud computing for BracU with Tirzok</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -597,57 +597,115 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="hacking-an-access-control-device-to-take-attendance">
-<h1 class="title">Hacking an access control device to take attendance</h1>
+<div class="document" id="workshop-on-openstack-based-cloud-computing-for-bracu-with-tirzok">
+<h1 class="title">Workshop on Openstack based cloud computing for BracU with Tirzok</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>How we hacked(modified!?) a Zkteco access control device to take automatic attendance.</p>
-<p>Created on: 2019-02-25</p>
-<p>We had a good old attendance system for our team in my workplace where we used to sign in and sign out the time on a piece of paper. Then those entries were added to an Google Sheet if needed. This system was going well for a starting member of 15 but it became very painful as we grew in number. We decided to automate the system if possible. We could have chosen the most convenient way and brought a time attendance device but if we went that route, I wouldn't be writing this hack-blog, would I be?</p>
-<!-- ::image:: ../source/media/zkteco_f18_back.jpg -->
-<p>We have know for sometime that we have a Zkteco device installed in front of our door but we didn't know anything about it at all so we started digging. On the first glance all we could see the is the Zkteco company logo so we searched with the company name and came up with their official website. The website has an array of different devices ranging from Access Control, Time Attendance, Biometrics Access, Entrance Control etc and most of them looked similar. Closer inspection of the devices was necessary and we unmounted the device from the wall.</p>
-<p>On the back we found an reset button. Oh, did I say we didn't have access to the menu of the device as it already had an admin setup? No worries, we would reset it. After the reset, I enrolled myself as an admin user and now we could see the menu and more option popped out. We saw a database management option where all the access logs were saved. We save an option to backup data to USB storage and after a close look, we also find a USB port on the side of the device. We plugged an empty USB device and used that option to dump the data onto that USB drive. To add to our problem it was a <span class="docutils literal">.dat</span> file that couldn't be opened with any online tool we tried.</p>
-<p>On the back side of device we found more information about the device. It was a Zkteco <a class="reference external" href="https://www.zkteco.com/en/product_detail/F18.html">F18</a> Access Control device. We found manual but Zkteco would not allow us to download the manual if we don't open an account first. We downloaded the manual after opening an account with a <a class="reference external" href="https://temp-mail.org/">Disposable</a> email account.</p>
-<p>After reading the somewhat long manual of 92 page, we found out the our device can only be used for access control, meaning upon presenting a valid credential it would sent signal to a door lock to open. That wouldn't be super helpful if want to take attendance with it.</p>
-<p>On the manual we also find that the device can be accessed over a network. Now we got curious and connected the device to our intranet. We tried to ping the device but go no response. After fiddling with the network settings a bit we figured out the subnet mask was wrong and after fixing that we got ping. Yea! But now what???</p>
-<p>On the Download Center, from where we downloaded the manual we noticed something call ZKAccess. We decided to install in on a Windows host. After the installing ZKAccess when we opened it it asked for a password but we didn't set any as of yet. Digging through the ZKAccess management we found out that the user name and password both are <span class="docutils literal">admin</span>.</p>
-<p>With the help of the might man, ahem manual we were able to connect our device over network to the ZKAccess software. Basically on Ethernet communication mode the device opens up a TCP/IP port, port 4370 to the LAN where ZKAccess connects with correct communication password. With ZKAccess we could pull the data from device and see the access log for each ID aka user. But we were still miles away from have a automatic attendance system. The log would show all the entries for for a user, as in each time a user has provided a valid credential it would log that. This is nowhere useful for use.</p>
-<p>On the ZKAccess manual's index we saw a section about reporting, Access Control Reporting and kept reading. We found out that we can create custom report and export them on as <span class="docutils literal">xls</span>. So we created a custom report that takes the time, first name, last name and the id and ran a few test export. All go so far. So now we have a semi-automated (semi as someone still need to download data form device, run the custom report and export the xls) way of getting the access log from the device to an easily usable format. What now?</p>
-<p>We need to put this attendance data on a Google Sheet for it to shareable with our Team Leads and HR. We started to tweak around ways to get a final output from the xls. Hmm, what can we do to achieve it? We tied to come up with all sorts of equation for Excel and Google Sheet to process the data until we saw a suggestion on the Stak Overflow to use <a class="reference external" href="https://script.google.com">Google Apps Script</a>. Google Apps Script aka GScript is JS adapted for Google API which is a topic on itself. So now the question is, can Google Apps Script save our day?</p>
-<p>On the journey to find our answer, we landed on the <a class="reference external" href="https://developers.google.com/apps-script/reference/spreadsheet/">Developer Doc</a> page for Spreadsheet Service. And we progressed one step at a tie from there on. I would rather say they were teeny-tiny, baby steps.</p>
-<p>The data from the xls was copy-pasted to a Worksheet of a Google Sheet. The first 4 columns are used keeping consistency with exported data; time, first name, last name and the id. The target is to process the data and get a in-time and out-time for each id and the also finding the duration for each id.</p>
-<p>First step was to figure out a way to load the data of the 4 columns from the Worksheet to GScript. When we succeeded on that we noticed that the date time wasn't quite correct. We wasted a good amount of time trying to figure out this problem.</p>
-<p>The basic operation to achieve our goal is as follows:</p>
+<p>Workshop note of Openstack based cloud computing for BracU with Tirzok Private Limited</p>
+<p>Created on: 2019-11-19</p>
+<div class="section" id="core-tech-used">
+<h1>core tech used</h1>
 <ul class="simple">
-<li><p>get active Sheet's first Worksheet</p></li>
-<li><p>format the time column to time format of <span class="docutils literal">hh:mm:ss A/P&quot;M&quot;</span></p></li>
-<li><p>format the id column to integer number format</p></li>
-<li><p>format a long row to time format of <span class="docutils literal">hh:mm:ss A/P&quot;M&quot;</span> as this is where the final output will put</p></li>
-<li><p>get all the all id from the id column</p></li>
-<li><p>define a array where all the id that we need to take attendance is stored in a ascending order.</p></li>
-<li><p>get all id's and loop through all the id to check if it exist on our wanted id list if not clear the content for the id</p></li>
-<li><p>sort all the cells based on id column</p></li>
-<li><p>now we have a time sorted array of all the id we want to take attendance</p></li>
-<li><p>declare a dictionary with all the wanted id and a initial value of 0. this will hold the number of time in id has used the device.</p></li>
-<li><p>now loop through all the id and increase the value of dictionary to get the frequency</p></li>
-<li><p>now start at the top and you have the out time of the first id then look up the frequency of first id and jump that many row. you have the in time. the next row is next id's out time and so on</p></li>
-<li><p>make a function to return diff between tow time given as param.</p></li>
-<li><p>now take all 3 and put them on the long row that we defined before.</p></li>
+<li><p>apchce</p></li>
+<li><p>memchased</p></li>
+<li><p>GluserFS</p></li>
+<li><p>Ceph</p></li>
+<li><p>more stuff...</p></li>
+<li><p>os keystone</p></li>
+<li><p>os glance</p></li>
+<li><p>os horizon</p></li>
+<li><p>os neutron</p></li>
+<li><p>os nova</p></li>
+<li><p>os cinder</p></li>
+<li><p>KVM</p></li>
+<li><p>Linux Networking Namespace</p></li>
+<li><p>VXLAN</p></li>
 </ul>
-<p>That gets the job done! I know not the most efficient or elegant way of achieving our goal but it get's the job done. We have been using it for an year now and it working well till now.</p>
-<p>I would polish the code a bit and publish it in GitHub and link it here.</p>
-<p>A big thanks goes to Kazi Tusher for helping with the hardware specs, Bidhan Bhushan Roy for those crazy Execl equations, <a class="reference external" href="https://github.com/nr072">Nafiur Rahman</a> and <a class="reference external" href="https://github.com/RajibChanda">Rajib Kumar Chanda</a> for helping with the algo and tolerating my noob JS queries.</p>
-<div class="section" id="source">
-<h1>Source</h1>
+</div>
+<div class="section" id="provided-service">
+<h1>provided service</h1>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.zkteco.com/en/product_detail/F18.html">Zkteco F18</a></p></li>
+<li><p>multytenancy:</p></li>
+<li><p>self-service</p></li>
+<li><p>SDN</p></li>
+<li><p>role based access control</p></li>
+<li><p>virulization</p></li>
+<li><p>image: Curious OS for test and CentOS for production</p></li>
+<li><p>volume:</p></li>
+</ul>
+</div>
+<div class="section" id="storage-tech">
+<h1>storage tech</h1>
+<ul class="simple">
+<li><p>os on GluserFS</p></li>
+<li><p>user fs on Ceph</p></li>
+</ul>
+</div>
+<div class="section" id="gluserfs">
+<h1>GluserFS</h1>
+<ul class="simple">
+<li><p>network attched file stroge</p></li>
+<li><p>distrubited</p></li>
+<li><p>horizontally scaalbe</p></li>
+<li><p>consiten</p></li>
+<li><p>high performance</p></li>
+<li><p>communicates over ethernet</p></li>
+<li><dl class="simple">
+<dt>can be:</dt>
+<dd><ul>
+<li><p>dustributed</p></li>
+<li><p>replicated</p></li>
+<li><p>stripped</p></li>
+<li><p>combined</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="ceph">
+<h1>Ceph</h1>
+<ul class="simple">
+<li><p>distributed</p></li>
+<li><p>distrubited</p></li>
+<li><p>horizontally scaalbe</p></li>
+<li><p>consiten</p></li>
+<li><p>high performance</p></li>
+<li><p>communicates over ethernet</p></li>
+<li><dl class="simple">
+<dt>can serve as:</dt>
+<dd><ul>
+<li><p>block storage</p></li>
+<li><p>file storage</p></li>
+<li><p>object storage</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="Partitiontolerance">CAP Theory</a> : Captivity, Availability and Partition tolerance Theory</p>
+</div>
+</div>
+<div class="section" id="demo">
+<h1>demo</h1>
+<ul class="simple">
+<li><p><a class="reference external" href="http://10.10.101.14/dashboard/auth/login/?next=/dashboard/">http://10.10.101.14/dashboard/auth/login/?next=/dashboard/</a></p></li>
+<li><p><a class="reference external" href="http://10.10.101.68/index.php/login">http://10.10.101.68/index.php/login</a></p></li>
+</ul>
+</div>
+<div class="section" id="others">
+<h1>others</h1>
+<ul class="simple">
+<li><p>search openstack playground</p></li>
 </ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/zkteco_f18_access_control_to_attendance.rst">View document source</a>.
-Generated on: 2020-03-12 16:32 UTC.
+<p><a class="reference external" href="/source/blogs/workshop_on_openstack_based_cloud_computing_for_bracu_with_tirzok.rst">View document source</a>.
+Generated on: 2020-03-16 16:03 UTC.
 </p>
 
 </div>
