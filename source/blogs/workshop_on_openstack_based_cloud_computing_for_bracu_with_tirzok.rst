@@ -1,8 +1,8 @@
-Workshop on Cloud Computing based on BracU Cloud with Tirzok Private Limited
-============================================================================
+Workshop on Openstack based cloud computing for BracU with Tirzok
+=================================================================
 `< Blog <../blog.html>`_
 
-Workshop note of Cloud Computing based on BracU Cloud conducted by Tirzok Private Limited
+Workshop note of Openstack based cloud computing for BracU with Tirzok Private Limited
 
 Created on: 2019-11-19
 
