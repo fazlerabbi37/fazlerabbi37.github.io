@@ -4,7 +4,7 @@ A Topic Title Like Python Cheat Sheet
 
 A quick reference to Topic
 
-Created on: pu=strftime('%Y-%m-%d')
+Created on: =strftime('%Y-%m-%d') then Crtl + m then p
 
 Tag: `cheat_sheet <tag_cheat_sheet.html>`_
 
