@@ -279,6 +279,7 @@ clear screen
 deleting a substring
 --------------------
 ::
+
     str=abc.out
 
     #shell:
