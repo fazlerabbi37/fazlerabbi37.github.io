@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Vim Cheat Sheet</title>
+<title>Screen Cheat Sheet</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -597,196 +597,239 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="vim-cheat-sheet">
-<h1 class="title">Vim Cheat Sheet</h1>
+<div class="document" id="screen-cheat-sheet">
+<h1 class="title">Screen Cheat Sheet</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to Vim.</p>
-<p>Created on: 2019-09-08</p>
+<p>A quick reference to Screen aka GNU Screen</p>
+<p>Created on: 2020-03-17</p>
 <p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a>, <a class="reference external" href="tag_living_in_the_shell.html">living_in_the_shell</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>under heavy construction and not well organized</p>
+<div class="section" id="install-in-ubuntu">
+<h1>install in Ubuntu</h1>
+<p>to install in Ubuntu 18.04:</p>
+<pre class="literal-block">sudo apt install screen -y</pre>
 </div>
-<div class="section" id="exit-from-vim">
-<h1>exit from vim</h1>
-<p>to exit from vim press <span class="kbd">Esc</span> then type <cite>:q!</cite></p>
+<div class="section" id="start-a-session">
+<h1>start a session</h1>
+<p>to start a new session:</p>
+<pre class="literal-block">screen</pre>
+<p>We will be greeted with the welcome screen with information related to screen. We can turn it off by default by editing the <span class="docutils literal"><span class="pre">~/.screenrc</span></span> and adding the following:</p>
+<pre class="literal-block">startup_message off</pre>
 </div>
-<div class="section" id="subscript">
-<h1>subscript</h1>
-<blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">s</span></p>
-</blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
+<div class="section" id="start-a-named-session">
+<h1>start a named session</h1>
+<p>If we type <span class="docutils literal">screen</span> then <span class="docutils literal">screen</span> will autmaticalley designate a name for the session that follows this scheme:</p>
+<pre class="literal-block">   11547.pts-5.gun_screen
+     ^       ^    ^
+     |       |    |
+   PID of    |  hostname
+the session  |
+
+       psudo terminal
+          number</pre>
+<p>Session name is used while reattaching to a session, for example we will reattach to the session in the example with <span class="docutils literal">screen <span class="pre">-r</span> <span class="pre">pts-5.gun_screen</span></span>. Though in <span class="docutils literal">bash</span> tab completion for session name is supported but this long complex naming structure can be problematic when frequently detaching and reattaching. So we can assign name to a session like this with the <cite>-S</cite> flag:</p>
+<pre class="literal-block">screen -S screen_test</pre>
 </div>
-<div class="section" id="superscript">
-<h1>superscript</h1>
+<div class="section" id="create-a-new-window">
+<h1>create a new window</h1>
+<p>By default each session is created with one window numbered as <cite>0</cite>. To create a new window:</p>
 <blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">S</span></p>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">c</span></p>
 </blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
+<p>The <span class="kbd">Ctrl</span> + <span class="kbd">a</span> is called the escape command and used to invoke <span class="docutils literal">screen</span>. The <span class="kbd">c</span> is the command which screen gets after invocation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The escape command can be changed, which we will see later.</p>
 </div>
-<div class="section" id="indent-multiple-lines">
-<h1>indent multiple lines</h1>
-<p>to indent multiple lines select lines in VISUAL mode and do</p>
-<blockquote>
-<p><span class="kbd">&gt;</span></p>
-</blockquote>
-<p>do one level indentation of next five line</p>
-<blockquote>
-<p><span class="kbd">5 &gt;</span></p>
-</blockquote>
-<p><a class="reference external" href="https://stackoverflow.com/a/235841">https://stackoverflow.com/a/235841</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The commands after the escape command is case sensitive.</p>
 </div>
-<div class="section" id="paste-mode">
-<h1>paste mode</h1>
-<p>to enable paste mode do</p>
+</div>
+<div class="section" id="switch-between-window">
+<h1>switch between window</h1>
+<p>to switch between window, we can go to next window:</p>
 <blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:set paste</cite></p>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">n</span></p>
+</blockquote>
+<p>or go to previous window:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">p</span></p>
+</blockquote>
+<p>another quick way to switch between window is to use the window numbers like <cite>0</cite> or <cite>1</cite> but remember that this only works for window <cite>0</cite> to <cite>9</cite> like this:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">5</span></p>
+</blockquote>
+<p>to use two digit numbered window do the following:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">'</span></p>
+</blockquote>
+<p>There should be a prompt at the left bottom saying <span class="docutils literal">Switch to window:</span>. Now type the window number:</p>
+<blockquote>
+<p><span class="kbd">12</span></p>
+</blockquote>
+<p>This obviously works with single digit numbered window.</p>
+</div>
+<div class="section" id="list-all-the-window">
+<h1>list all the window</h1>
+<p>to list all the window:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">&quot;</span>. [<span class="kbd">&quot;</span> is <span class="kbd">Shift</span> + <span class="kbd">'</span>]</p>
+</blockquote>
+<p>This shows a list of windows with 3 column: Num, Name and Flags. We can use the <span class="kbd">↑</span> and <span class="kbd">↓</span> to select a window and press <span class="kbd">Enter</span> to switch to that window.</p>
+</div>
+<div class="section" id="show-all-windows">
+<h1>show all windows</h1>
+<p>to see all the windows of a session:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">w</span></p>
+</blockquote>
+<p>This will show the number and name of all the windows at the bottom of the screen like this:</p>
+<pre class="literal-block">0-$ bash  1*$ bash  2$ bash</pre>
+<p>The <span class="docutils literal">*</span> after the 1 means that we are currently on window 1.</p>
+</div>
+<div class="section" id="rename-a-window">
+<h1>rename a window</h1>
+<p>we have already seen that we can list and see window with window name but by default all of the are name are <span class="docutils literal">bash</span> as that is the programming running in them. To change the name of a window:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">A</span></p>
+</blockquote>
+<p>We will see a prompt at the left bottom saying <span class="docutils literal">Set window's title to: bash</span>. We need to press <span class="kbd">Backspace</span> until it reaches <strong>:</strong> now we can type the window title and press <span class="kbd">Enter</span> to rename it.</p>
+</div>
+<div class="section" id="kill-a-window">
+<h1>kill a window</h1>
+<p>to kill a window:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">K</span></p>
+</blockquote>
+<p>We should get a prompt at the usual left bottom corner saying <span class="docutils literal">Really kill this window [y/n]</span> type <cite>y</cite> and press <span class="kbd">Enter</span> to kill the window.</p>
+</div>
+<div class="section" id="detach-from-a-session">
+<h1>detach from a session</h1>
+<p>to detach from a session:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span> then press <span class="kbd">d</span></p>
+</blockquote>
+<p>In the terminal we should see something similar to <span class="docutils literal">[detached from 23537.screen_test]</span>.</p>
+</div>
+<div class="section" id="list-all-session">
+<h1>list all session</h1>
+<p>to list all session:</p>
+<pre class="literal-block">screen -ls</pre>
+<p>If we have multiple session we would see something like this:</p>
+<pre class="literal-block">There are screens on:
+        23537.screen_test       (03/18/2020 05:10:48 PM)        (Detached)
+        23547.screen_test       (03/18/2020 05:10:48 PM)        (Attached)
+        23557.screen_test1      (03/18/2020 05:10:48 PM)        (Detached)
+3 Sockets in /run/screen/S-$USER.</pre>
+<p>Yes, we can assign same name for two different session but that is not that useful.</p>
+</div>
+<div class="section" id="to-attach-to-a-detached-session">
+<h1>to attach to a detached session</h1>
+<p>From our previous output, we can see that we have 3 session and 2 with same name. To attach to a detached session we normal use the <cite>-r</cite> flag like this:</p>
+<pre class="literal-block">screen -r screen_test1</pre>
+<p>As we can see for unique name we can use the session name but for sessions with same name we have to specify the PID as well, like this:</p>
+<pre class="literal-block">screen -r 23537.screen_test</pre>
+<p>We can also use tab completion to get our window without typing.</p>
+</div>
+<div class="section" id="exit-form-session">
+<h1>exit form session</h1>
+<p>to exit from a session, first we need to attach to that session:</p>
+<pre class="literal-block">screen -r 23547.screen_test</pre>
+<p>Now we will <span class="kbd">Ctrl</span> + <span class="kbd">a</span> to invoke <span class="docutils literal">screen</span> then type <cite>:quit</cite> and press <span class="kbd">Enter</span>. Back in the terminal we should see:</p>
+<pre class="literal-block">[screen is terminating]</pre>
+</div>
+<div class="section" id="share-a-screen-session-with-other-user">
+<h1>share a screen session with other user</h1>
+<p>we can share session with other user. The user must have an valid account in the server. To share a screen session, fist we need to make sure that <span class="docutils literal">screen</span> has <cite>setuid root</cite> which will enable multiuser support. To <cite>setuid root</cite>:</p>
+<pre class="literal-block">chmod +s /usr/bin/screen</pre>
+<p>Now if we can use the <cite>-x</cite> flag followed by <cite>$USER/$SCREEN_SESSION_NAME</cite>, like following, we see:</p>
+<pre class="literal-block">screen -x screen_user/screen_test1
+
+There is a screen on:
+        23537.screen_test       (03/18/2020 05:10:48 PM)        (Private)
+There is no screen to be attached matching reg.</pre>
+<p>The <span class="docutils literal">screen_user</span> hasn't allowed multiuser so other can't see the session. if <span class="docutils literal">screen_user</span> wants to enable multiuser:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">:</span> and type <cite>multiuser on</cite>.</p>
+</blockquote>
+<p>Next we will allow our user:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">:</span> and type <cite>acladd $USER_NAME</cite></p>
+</blockquote>
+<p>Now if the other user ran the <span class="docutils literal">screen <span class="pre">-x</span> screen_user/screen_test1</span> he would be able to see the session and perform all the operations.</p>
+<p>To remove a user from the ACL: <span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">:</span> and type <cite>acldel $USER_NAME</cite> To turn off multiuser: <span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">:</span> and type <cite>multiuser off</cite>.</p>
+<p>source: <a class="reference external" href="https://serverfault.com/a/336613">https://serverfault.com/a/336613</a></p>
+</div>
+<div class="section" id="scrolling-in-screen">
+<h1>scrolling in screen</h1>
+<p>This is one of few odd things that a new user face while using <span class="docutils literal">screen</span>. While inside the <span class="docutils literal">screen</span> the default scroll don't work but we still can scroll through the history. Moreover, we can copy, paste and log that history. To start scrolling back:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">[</span></p>
+</blockquote>
+<p>This will activate the <cite>Copy mode</cite> [just like vim 😉]. Now we can use the <span class="kbd">↑</span>, <span class="kbd">↓</span>, or <span class="kbd">Page up</span>, <span class="kbd">Page down</span>, <span class="kbd">Home</span>, <span class="kbd">End</span> or vim's <span class="kbd">j</span> <span class="kbd">k</span> buttons to navigate through the history. We can also copy the history. To copy history, we have to move our courser to the position where we want to start copying and press <span class="kbd">Enter</span> then move the courser to the place where we want the copy to end and <span class="kbd">Enter</span> again. To paste the copied text do:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">[</span></p>
 </blockquote>
 </div>
-<div class="section" id="insert-current-date-in-next-line">
-<h1>insert current date in next line</h1>
-<p>to insert current date in next line:</p>
+<div class="section" id="log-output-to-a-file">
+<h1>log output to a file</h1>
+<p>to log output of a screen window we need to press:</p>
 <blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:pu=strftime('%Y-%m-%d')</cite></p>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">H</span></p>
 </blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Insert_current_date_or_time">https://vim.fandom.com/wiki/Insert_current_date_or_time</a></p>
+<p>This will save the output to a file name <span class="docutils literal"><span class="pre">screenlog.$NUM</span></span>. The <cite>NUM</cite> variable starts from <cite>0</cite>. If we do <span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">w</span> to see the windows title we will see something like this:</p>
+<pre class="literal-block">0*$(L) bash  1-$(L) bash  2$ bash</pre>
+<p>The <span class="docutils literal">*</span> means we are currently in that window and the <span class="docutils literal">(L)</span> means we are logging those windows.</p>
 </div>
-<div class="section" id="insert-current-date-in-cursor-location">
-<h1>insert current date in cursor location</h1>
-<p>to insert current date in cursor location in normal mode:</p>
+<div class="section" id="splitting-the-screen">
+<h1>Splitting the screen</h1>
+<p>We can split the screen in horizontal and vertical half. To split the screen in horizontal half:</p>
 <blockquote>
-<p><span class="kbd">Esc</span> then type <cite>&quot;=strftime('%Y-%m-%d')</cite>. Now press <span class="kbd">Crtl</span> + <span class="kbd">m</span>. Then press <span class="kbd">p</span></p>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">S</span></p>
 </blockquote>
-<p>to insert current date in cursor location in insert mode:</p>
+<p>to split the screen in vertical half:</p>
 <blockquote>
-<p><span class="kbd">Crtl</span> + <span class="kbd">r</span> then type <cite>=strftime('%Y-%m-%d')</cite>. Now press <span class="kbd">Crtl</span> + <span class="kbd">m</span>.</p>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">|</span></p>
 </blockquote>
-<p><a class="reference external" href="https://unix.stackexchange.com/a/8109/">https://unix.stackexchange.com/a/8109/</a></p>
+<p>By default the screen neither switch to the splitted half nor starts a new window. We need to do both manually. First, to switch between the half use:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">Tab</span></p>
+</blockquote>
+<p>Now we can either create a new window with <span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">c</span> or place a previously created window with <span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">$WINDOW_NUMBER</span>.</p>
 </div>
-<div class="section" id="switching-case-of-characters">
-<h1>Switching case of characters</h1>
-<p>to switching case of characters</p>
+<div class="section" id="exiting-from-splitted-screen">
+<h1>Exiting from splitted screen</h1>
+<p>to exit from splitted screen, go to the window you want to use and do:</p>
 <blockquote>
-<p>Toggle case &quot;HellO&quot; to &quot;hELLo&quot; with <span class="kbd">g</span> + <span class="kbd">~</span> then a movement.</p>
-<p>Uppercase &quot;HellO&quot; to &quot;HELLO&quot; with <span class="kbd">g</span> + <span class="kbd">U</span> then a movement.</p>
-<p>Lowercase &quot;HellO&quot; to &quot;hello&quot; with <span class="kbd">g</span> + <span class="kbd">u</span> then a movement.</p>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">a</span>. next press <span class="kbd">Q</span></p>
 </blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Switching_case_of_characters">https://vim.fandom.com/wiki/Switching_case_of_characters</a>
-<a class="reference external" href="https://stackoverflow.com/a/2966034">https://stackoverflow.com/a/2966034</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>till this most of the things are from <a class="reference external" href="https://news.softpedia.com/news/GNU-Screen-Tutorial-44274.shtml">Softpedia News: GNU Screen Tutorial: How to use the screen's most important features.</a> article because this was one of the article I got that was very easy for me to understand the besics and start using it.</p>
 </div>
-<div class="section" id="find-and-replace">
-<h1>find and replace</h1>
-<p>to find and replace</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>%s/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>pecific lines</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>$START_LINE,$END_LINEs/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>add <cite>c</cite> after <cite>g</cite> to enter an interactive mode.</p>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/19995072">Find and replace strings in vim on multiple lines</a></p>
 </div>
-<div class="section" id="move-to-the-beginning-of-line">
-<h1>move to the beginning of line</h1>
-<p>to move to the beginning or start of line:</p>
+<div class="section" id="accidental-freezing">
+<h1>Accidental freezing</h1>
+<p>Sometimes while invocing screen with <span class="kbd">Ctrl</span> + <span class="kbd">a</span> we misplace our finger and press <span class="kbd">Ctrl</span> + <span class="kbd">s</span>. This will freeze our screen session. To unfreeze:</p>
 <blockquote>
-<p><span class="kbd">0</span></p>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">Q</span></p>
 </blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/10243634">https://stackoverflow.com/a/10243634</a></p>
-</div>
-<div class="section" id="move-to-the-end-of-line">
-<h1>move to the end of line</h1>
-<p>to move to the end of line:</p>
-<blockquote>
-<p><span class="kbd">$</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/105734">https://stackoverflow.com/a/105734</a></p>
-</div>
-<div class="section" id="delete-all-line-till-end">
-<h1>delete all line till end</h1>
-<p>to delete all line till end:</p>
-<blockquote>
-<p><span class="kbd">d</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/8124616">https://stackoverflow.com/a/8124616</a></p>
-</div>
-<div class="section" id="open-in-readonly-mode">
-<h1>open in readonly mode</h1>
-<p>to open in readonly mode inside vim:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>view /path/to/file</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/18395765">https://stackoverflow.com/a/18395765</a></p>
-</div>
-<div class="section" id="display-line-numbers">
-<h1>display line numbers</h1>
-<p>to display line numbers:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set number</cite> or <cite>set nu</cite></p>
-</blockquote>
-<p>to disable:</p>
-<pre class="literal-block">:kbd:`Esc` + :kbd:`:` then type `set nonumber` or `set nonu`</pre>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Display_line_numbers">https://vim.fandom.com/wiki/Display_line_numbers</a></p>
-</div>
-<div class="section" id="see-file-type">
-<h1>see file type</h1>
-<p>to see file type:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set ft</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Filetype.vim">https://vim.fandom.com/wiki/Filetype.vim</a></p>
-</div>
-<div class="section" id="macros">
-<h1>macros</h1>
-<p>record a macros:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">q</span> + <span class="kbd">any key like d,m,n</span> for register.</p>
-</blockquote>
-<p>the do you task and press <span class="kbd">q</span>. It will save the macro to the register [one of those d,m,n that you pressed]. To use the macro:</p>
-<blockquote>
-<p>number_of_times_you_want_to_execute + <span class="kbd">&#64;</span> + <span class="kbd">register_key_d_m_or_n</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Macros">https://vim.fandom.com/wiki/Macros</a></p>
-</div>
-<div class="section" id="abbreviations">
-<h1>abbreviations</h1>
-<p>set an abbreviation:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">:</span> <cite>ab $ABBREVIATION $FULL_TEXT_FOR_THE_ABBREVIATION</cite></p>
-</blockquote>
-<p>for example:</p>
-<blockquote>
-<p><span class="kbd">:</span> <cite>ab rtfm read the fine manual</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Using_abbreviations">https://vim.fandom.com/wiki/Using_abbreviations</a></p>
-</div>
-<div class="section" id="fix-indentation">
-<h1>fix indentation</h1>
-<p>to fix indentation on a selected part of the file:</p>
-<blockquote>
-<p><span class="kbd">=</span></p>
-</blockquote>
-<p>to fix indentation on a whole file:</p>
-<blockquote>
-<p><span class="kbd">g</span> + <span class="kbd">g</span> + <span class="kbd">=</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Fix_indentation">https://vim.fandom.com/wiki/Fix_indentation</a></p>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/12108">https://unix.stackexchange.com/a/12108</a></p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<blockquote>
 <ul class="simple">
-<li><p>` &lt;&gt;`_</p></li>
+<li><p><a class="reference external" href="https://linux.die.net/man/1/screen">https://linux.die.net/man/1/screen</a></p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/screen/manual/html_node/index.html">https://www.gnu.org/software/screen/manual/html_node/index.html</a></p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/screen/">https://www.gnu.org/software/screen/</a></p></li>
+<li><p><a class="reference external" href="https://news.softpedia.com/news/GNU-Screen-Tutorial-44274.shtml">https://news.softpedia.com/news/GNU-Screen-Tutorial-44274.shtml</a></p></li>
 </ul>
-</blockquote>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/vim_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/screen_cheat_sheet.rst">View document source</a>.
 Generated on: 2020-03-23 03:41 UTC.
 </p>
 

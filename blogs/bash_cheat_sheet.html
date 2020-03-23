@@ -787,23 +787,26 @@ echo $string | cut -d';' -f2 # output is 2</pre>
 </div>
 <div class="section" id="id3">
 <h2>deleting a substring</h2>
-<dl>
-<dt>::</dt>
-<dd><p>str=abc.out</p>
-<p>#shell:
-echo ${str%.*}</p>
-<p>#grep:
-echo $str | grep -o '^[^.]*'</p>
-<p>#sed:
-echo $str | sed -E 's/(.*?)..*/1/'</p>
-<p>#awk:
-echo $str | awk -F. '{print $1}'</p>
-<p>#cut:
-echo $str | cut -d. -f1</p>
-<p>#All output:
-abc</p>
-</dd>
-</dl>
+<pre class="literal-block">str=abc.out
+
+#shell:
+echo ${str%.\*}
+
+
+#grep:
+echo $str | grep -o '^[^\.]*'
+
+#sed:
+echo $str | sed -E 's/(.*?)\..*/\1/'
+
+#awk:
+echo $str | awk -F. '{print $1}'
+
+#cut:
+echo $str | cut -d. -f1
+
+#All output:
+abc</pre>
 <p>(source: <a class="reference external" href="http://stackoverflow.com/a/13570430/">http://stackoverflow.com/a/13570430/</a>)</p>
 </div>
 <div class="section" id="split-a-sting-with-oifs">
@@ -2111,7 +2114,7 @@ done</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/bash_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-03-16 16:02 UTC.
+Generated on: 2020-03-23 03:41 UTC.
 </p>
 
 </div>
