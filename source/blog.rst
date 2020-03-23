@@ -20,6 +20,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: New Blogs
 
+	`Screen Cheat Sheet <blogs/screen_cheat_sheet.html>`_
+
+
 	`fDLuDCf's Practical Cryptography: Lesson 08 <blogs/fdludcf_practical_cryptography_lesson_08.html>`_
 
 
@@ -32,26 +35,23 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`fDLuDCf's Practical Cryptography: Lesson 05 <blogs/fdludcf_practical_cryptography_lesson_05.html>`_
 
 
-	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
-
-
 
 
 .. sidebar:: Recently Updated Blogs
 
+	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
+
+
 	`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
+
+
+	`Screen Cheat Sheet <blogs/screen_cheat_sheet.html>`_
 
 
 	`Bonsai: An Elasticsearch playground <blogs/bonsai_an_elasticsearch_playground.html>`_
 
 
 	`Google App Script Cheat Sheet <blogs/google_app_script_cheat_sheet.html>`_
-
-
-	`Hacking an access control device to take attendance <blogs/hacking_an_access_control_device_to_take_attendance.html>`_
-
-
-	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
 
@@ -448,6 +448,14 @@ Created on: 2019-11-19
 
 A quick reference to ReStructuredText
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Screen Cheat Sheet <blogs/screen_cheat_sheet.html>`_
+.....................................................
+Created on: 2020-03-17
+
+A quick reference to Screen aka GNU Screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Selenium <blogs/selenium.html>`_
