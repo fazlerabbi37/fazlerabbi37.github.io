@@ -252,6 +252,13 @@ Sometimes while invocing screen with :kbd:`Ctrl` + :kbd:`a` we misplace our fing
 
 source: https://unix.stackexchange.com/a/12108
 
+kill a screen session
+---------------------
+to kill a screen session::
+
+    screen -X -S $SESSION_YOU_WANT_TO_KILL quit
+
+source: https://stackoverflow.com/a/1509764
 
 
 Source
