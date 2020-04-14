@@ -32,3 +32,4 @@ Source
 - `How can I find *.desktop files? <https://askubuntu.com/questions/117341/how-can-i-find-desktop-files>`_
 - `Desktop files: putting your application in the desktop menu <https://developer.gnome.org/integration-guide/stable/desktop-files.html.en>`_
 - `Desktop Entry Specification <https://standards.freedesktop.org/desktop-entry-spec/latest/index.html>`_
+- `How do I add an application to the dash? <https://askubuntu.com/a/112812/502875>`_
