@@ -169,5 +169,26 @@ This would take a screenshot with 10 seconds delay.
 
 source: https://askubuntu.com/a/194470
 
+Ubuntu 18.04 touchpad right click not working
+---------------------------------------------
+Ubuntu 18.04 touchpad right click doesn't not working when the right touchpad button is clicked because the default behavior is changed to two-finger click (just tap anywhere with two fingers). To change this to right touchpad button::
+
+    gsettings set org.gnome.desktop.peripherals.touchpad click-method areas
+
+source: https://askubuntu.com/a/1029445 --> https://www.omgubuntu.co.uk/2018/04/things-to-do-after-installing-ubuntu-18-04 [step 5]
+
+see the changes done with Gnome Tweak Tool or Tweaks
+----------------------------------------------------
+to see the changes done with Gnome Tweak Tool or Tweaks::
+
+    dconf watch /
+
+Now changes done in Tweaks will be show in the terminal.
+
+source: https://askubuntu.com/a/971577
+
+
+
+
 Source
 ------
