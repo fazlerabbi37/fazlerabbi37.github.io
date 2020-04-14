@@ -123,6 +123,15 @@ We can see the information of an existing ``.img`` file using ``qemu-img``::
 
     qemu-img info $name
 
+Start KVM guest on host boot
+----------------------------
+To start KVM guest on host boot::
+
+    virsh autostart $DOMAIN_NAME
+
+source: https://serverfault.com/a/144477
+
+
 Source
 ------
 .. [1] `KVM/Installation - Pre-installation checklist <https://help.ubuntu.com/community/KVM/Installation#Pre-installation_checklist>`_
