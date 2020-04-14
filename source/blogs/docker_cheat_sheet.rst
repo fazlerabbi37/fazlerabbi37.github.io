@@ -534,6 +534,7 @@ source: https://stackoverflow.com/a/40454758
 
 Quickstart
 ----------
+
 Django
 ``````
 - `Dockerfile`::
@@ -668,13 +669,14 @@ NodeJS
 	version: '2'
 	services:
 	  web:
-	    build: .
+		build: .
 		command: npm run dev
 		volumes:
-          - .:/usr/app/
-          - /usr/app/node_modules # use container node_modules from host
-        ports:
-          - "3000:3000"
+		  - .:/usr/app/
+		  - /usr/app/node_modules
+		ports:
+		  - "3000:3000"
+
 
 source: https://rollout.io/blog/using-docker-compose-for-nodejs-development/
 
