@@ -2272,6 +2272,13 @@ Normal alias can't take command line arguments but if the alias is a function th
 
 source: https://stackoverflow.com/a/22684652
 
+xclip read from a file
+----------------------
+read from file to xclip::
+
+    xclip -sel clip < ~/path/to/file.txt
+
+source: https://unix.stackexchange.com/a/204555
 
 Source
 ------
