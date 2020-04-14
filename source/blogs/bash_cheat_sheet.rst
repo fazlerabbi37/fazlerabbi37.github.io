@@ -54,6 +54,14 @@ the delimiter is inside the `[]` and after `^` which is a `:`.
 
 source: https://unix.stackexchange.com/a/149764/
 
+delete string after delimiter
+-----------------------------
+::
+
+    echo 'hello:world:again' |sed 's/:.*//'
+
+source: https://stackoverflow.com/a/24555789
+
 append a string at end of a specific line
 -----------------------------------------
 to append a string at end of a specific line::
@@ -97,6 +105,14 @@ delete specific line in file (creates a .bak file of same name)
 ::
 
     sudo sed -i.bak -e '{line_number}d' /path/to/file.extension
+
+delete from line to end of file
+-------------------------------
+::
+
+    sed -i '1458,$d' filename.txt
+
+source: https://unix.stackexchange.com/a/294129
 
 delete the first 5 chars on any line with sed
 ---------------------------------------------
@@ -2102,11 +2118,159 @@ or with `find` command::
     done
 
 
+strange echo and redirection
+----------------------------
+I just noticed some thing strange with echo and redirection::
 
-    
+    echo "" >> file.txt newline
+
+This command I would assume would give me a file named ``file.txt`` with nothing in it but instead it gives::
+
+    user@:host~$ cat file.txt
+     newline
+    user@:host~$
+
+It's the text after file name with a space before it. If we do::
+
+    echo >> file.txt newline
+
+We see::
+
+    user@:host~$ cat file.txt
+    newline
+    user@:host~$
+
+Now as we see the space before the text is gone.
+
+tar extract to a directory
+--------------------------
+Use the `-C` flag::
+
+    tar -xf archive.tar -C /target/directory
+
+source: https://askubuntu.com/a/45354
+
+cut with new line
+-----------------
+::
+
+    cat file.cut | cut -d$'\n' -f1
+
+source: https://stackoverflow.com/a/21757210
+
+list all apt key
+----------------
+::
+
+    sudo apt-key list
+
+source: https://askubuntu.com/a/107189
+
+
+check if a remote port is open
+------------------------------
+::
+
+    nc -z <host> <port>
+
+add a 5 seconds wait with::
+
+    nc -z -v -w5 <host> <port>
+
+source: https://stackoverflow.com/a/9463554
+
+find file created or modified between a time range
+--------------------------------------------------
+::
+
+    find -newermt "2017-11-06 17:30:00" ! -newermt "2017-11-06 22:00:00" -ls
+
+source: https://stackoverflow.com/a/23508622
+
+find a file with name and delete
+--------------------------------
+::
+
+    find / -name $FILE_NAME -print0 | xargs -0 rm
+
+source: https://unix.stackexchange.com/a/167824
+
+for loop with delimiter
+-----------------------
+::
+
+	variable=abc,def,ghij
+	for i in ${variable//,/ }
+	do
+		# call your procedure/other scripts here below
+		echo "$i"
+	done
+
+source: https://stackoverflow.com/a/35894538
+
+for loop skip to next
+---------------------
+::
+
+	for i in something
+	do
+		[ condition ] && continue
+		cmd1
+		cmd2
+	done
+
+source: https://www.cyberciti.biz/faq/unix-linux-bsd-appleosx-continue-in-bash-loop/
+
+break from loop
+---------------
+::
+
+	done=0
+	while : ; do
+	  ...
+	  if [ "$done" -ne 0 ]; then
+		  break
+	  fi
+	done
+
+source: https://stackoverflow.com/a/18488730
 
 
 
+conditional match regex string
+------------------------------
+::
+
+    if [[ $gg == ????grid* ]] ; then echo $gg; fi
+
+source: https://stackoverflow.com/a/2348495
+
+delete first n character
+------------------------
+::
+
+    var="pid: 1234"
+    var=${var:5}
+
+source: https://stackoverflow.com/a/11470727
+
+check if directory is git repository without entering it
+--------------------------------------------------------
+to check if a directory is git repository without entering it::
+
+    git -C /path/to/repo rev-parse
+
+If it returns 0 then it is a git repo.
+
+source: https://stackoverflow.com/a/39518382
+
+pass command line arguments to a shell alias
+--------------------------------------------
+Normal alias can't take command line arguments but if the alias is a function that it can take the command line arguments and process it::
+
+    alias blah='function _blah(){ echo "First: $1"; echo "Second: $2"; };_blah'
+
+source: https://stackoverflow.com/a/22684652
 
 
 Source
