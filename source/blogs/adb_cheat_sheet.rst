@@ -190,6 +190,53 @@ limit the number of connected devices in hotspot
 
     adb shell settings --user 0 put system hotspot_max_station_num $num # num=0-6 where 0 is unlimited
 
+turn on WIFI
+------------
+::
+
+    adb shell su -c 'svc wifi enable'
+
+turn off WIFI
+-------------
+::
+
+    adb shell su -c 'svc wifi disable'
+
+
+source: https://stackoverflow.com/a/10038568
+
+.. note:: both of this requires root access
+
+specify device among multiple devices
+-------------------------------------
+to specify particular device among multiple devices::
+
+    adb -s device_id shell
+
+source: https://stackoverflow.com/a/14655015
+source: https://developer.android.com/studio/command-line/adb#directingcommands
+
+copy files to/from a device
+---------------------------
+to copy files to a device::
+
+    adb push local remote
+
+to copy files from a device::
+
+    adb push local remote
+
+source: https://developer.android.com/studio/command-line/adb#copyfiles
+
+launch fragments
+----------------
+to launch fragments::
+
+    adb shell am start -n com.android.settings/com.android.settings.SubSettings -e :android:show_fragment com.android.settings.users.UserSettings
+
+The `-e :android:show_fragment` part is important here.
+
+source: https://stackoverflow.com/a/21844594
 
 Source
 ------
