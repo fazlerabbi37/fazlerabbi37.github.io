@@ -83,6 +83,32 @@ to list all container::
 
     docker ps -a
 
+source: https://docs.docker.com/engine/reference/commandline/ps/
+
+run docker behind proxy
+-----------------------
+Running docker daemon behind proxy can lead to problem like failing to download image. To solve that we need to add the proxy to docker daemon systemd service. First, we need to create a systemd directory for docker service::
+
+    sudo mkdir /etc/systemd/system/docker.service.d
+
+Now we will create a file with a text editor and put the environment variables in that file::
+
+    sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+
+The content would look like this::
+
+    [Service]
+    Environment="HTTP_PROXY=http://proxy.example.com:80/"
+    Environment="HTTPS_PROXY=http://proxy.example.com:80/"
+
+Now save the file and exit. To see the change in effect we need to flush changes in systemd and restart docker daemon::
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart docker
+
+More details: `Control Docker with systemd: HTTP/HTTPS proxy <https://docs.docker.com/config/daemon/systemd/#httphttps-proxy>`_
+
+source: https://stackoverflow.com/a/28093517
 
 run a docker image as a container in background
 -----------------------------------------------
@@ -441,6 +467,216 @@ ignore file from being coping to docker image while building with ``.dockerignor
     temp?
 
 source: https://docs.docker.com/engine/reference/builder/#dockerignore-file
+
+docker compose build specific service image
+-------------------------------------------
+to build specific service image::
+
+    sudo docker-compose build $SERVICE_NAME
+
+source: https://stackoverflow.com/a/35256698
+
+docker compose start specific service
+-------------------------------------
+to start specific service::
+
+    sudo docker-compose up $SERVICE_NAME
+
+source: https://stackoverflow.com/a/30234588
+
+comment in a Dockerfile
+-----------------------
+to comment in a Dockerfile, use `#`::
+
+	# Everything on this line is a comment
+
+More doc `Dockerfile reference: Format <https://docs.docker.com/engine/reference/builder/#format>`_
+
+source: https://stackoverflow.com/a/36710513
+
+build time arguments
+--------------------
+For the following `Dockerfile`::
+
+	FROM ubuntu:18.04
+
+	ARG PACKAGE
+
+	RUN apt update && apt install $PACKAGE
+
+Pass the build time arguments in `docker build` like this::
+
+	sudo docker build --build-arg PACKAGE=docker-ce .
+
+The general format is::
+
+	sudo docker build --build-arg $KEY=$VALUE --build-arg $KEY1=$VALUE1 .
+
+More doc `docker build: Set build-time variables (--build-arg) <https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg>`_
+
+source: https://stackoverflow.com/a/42297949
+
+use a variable inside a Dockerfile CMD
+--------------------------------------
+to use a variable inside a Dockerfile CMD, run it with `sh`::
+
+	CMD ["sh", "-c", "django-admin startproject $PROJECTNAME"]
+
+	#OR
+
+	CMD django-admin startproject $PROJECTNAME
+
+source: https://stackoverflow.com/a/40454758
+
+
+
+
+
+Quickstart
+----------
+Django
+``````
+- `Dockerfile`::
+
+    FROM python:3
+    ENV PYTHONUNBUFFERED 1
+    RUN mkdir /code
+    WORKDIR /code
+    COPY requirements.txt /code/
+    RUN pip install -r requirements.txt
+    COPY . /code/
+
+- `docker-compose.yml` with postgresql::
+
+	version: '3'
+
+	services:
+	  db:
+		image: postgres
+	  web:
+		build: .
+		command: python manage.py runserver 0.0.0.0:8000
+		volumes:
+		  - .:/code
+		ports:
+		  - "8000:8000"
+		depends_on:
+		  - db
+
+- `docker-compose.yml` without postgresql::
+
+	version: '3'
+
+	services:
+	  web:
+		build: .
+		command: python manage.py runserver 0.0.0.0:8000
+		volumes:
+		  - .:/code
+		ports:
+		  - "8000:8000"
+
+source: https://docs.docker.com/compose/django/
+
+Rails
+`````
+- `Dockerfile`::
+
+	FROM ruby:2.5
+	RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+	RUN mkdir /myapp
+	WORKDIR /myapp
+	COPY Gemfile /myapp/Gemfile
+	COPY Gemfile.lock /myapp/Gemfile.lock
+	RUN bundle install
+	COPY . /myapp
+
+	# Add a script to be executed every time the container starts.
+	COPY entrypoint.sh /usr/bin/
+	RUN chmod +x /usr/bin/entrypoint.sh
+	ENTRYPOINT ["entrypoint.sh"]
+	EXPOSE 3000
+
+	# Start the main process.
+	CMD ["rails", "server", "-b", "0.0.0.0"]
+
+- The entrypoint script, `entrypoint.sh` is used to fix a Rails-specific issue that prevents the server from restarting when a certain `server.pid` file pre-exists. This script will be executed every time the container gets started. `entrypoint.sh`::
+
+	#!/bin/bash
+	set -e
+
+	# Remove a potentially pre-existing server.pid for Rails.
+	rm -f /myapp/tmp/pids/server.pid
+
+	# Then exec the container's main process (what's set as CMD in the Dockerfile).
+	exec "$@"
+
+- `docker-compose.yml` with postgresql::
+
+	version: '3'
+	services:
+	  db:
+		image: postgres
+		volumes:
+		  - ./tmp/db:/var/lib/postgresql/data
+	  web:
+		build: .
+		command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+		volumes:
+		  - .:/myapp
+		ports:
+		  - "3000:3000"
+		depends_on:
+		  - db
+
+source: https://docs.docker.com/compose/rails/
+
+NodeJS
+``````
+- `Dockerfile`::
+
+	FROM node:7.7.2-alpine
+	WORKDIR /usr/app
+	COPY package.json .
+	RUN npm install
+	COPY . .
+
+- `docker-compose.yml` with postgresql::
+
+	version: '2'
+	services:
+	  web:
+		build: .
+		command: npm run dev
+		volumes:
+		  - .:/usr/app/
+		  - /usr/app/node_modules
+		ports:
+		  - "3000:3000"
+		depends_on:
+		  - postgres
+		environment:
+		  DATABASE_URL: postgres://todoapp@postgres/todos
+	  postgres:
+		image: postgres:9.6.2-alpine
+		environment:
+		  POSTGRES_USER: todoapp
+		  POSTGRES_DB: todos
+
+- `docker-compose.yml` without postgresql::
+
+	version: '2'
+	services:
+	  web:
+	    build: .
+		command: npm run dev
+		volumes:
+          - .:/usr/app/
+          - /usr/app/node_modules # use container node_modules from host
+        ports:
+          - "3000:3000"
+
+source: https://rollout.io/blog/using-docker-compose-for-nodejs-development/
 
 
 Source
