@@ -188,6 +188,42 @@ to fix indentation on a whole file:
 
 source: https://vim.fandom.com/wiki/Fix_indentation
 
+edit multiple files
+-------------------
+to edit multiple files open files::
+
+    vim foo.txt bar.txt
+
+go to next file with:
+
+    :kbd:`:` then type `n` or `next`
+
+go to previous file with:
+
+    :kbd:`:` then type `N` or `prev` or `previous`
+
+write and go to next file with:
+
+    :kbd:`:` then type `wn` or `wnext`
+
+write and go to previous file with:
+
+    :kbd:`:` then type `wN` or `wprevious`
+
+to see files list:
+
+    :kbd:`:` then type `args`
+
+the file with `[]` is the currently active file.
+
+source: https://unix.stackexchange.com/a/27590
+
+
+
+
+
+
+
 Source
 ------
  - ` <>`_
