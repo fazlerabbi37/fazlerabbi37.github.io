@@ -17,8 +17,8 @@ refresh output in the same line; echo update
     for i in range(11):
         print (something, end='\r')
 
-donwload http file
-------------------
+download file from web
+----------------------
 
 ::
 
@@ -29,6 +29,20 @@ donwload http file
     file = open(fileName, 'wb')
 
 (source: http://stackoverflow.com/a/34863581/5350059)
+
+OR::
+
+	import requests
+	# open in binary mode
+	url = 'http://download.thinkbroadband.com/5MB.zip'
+	fileName = '5MB.zip'
+	with open(fileName, "wb") as file:
+		# get request
+		response = requests.get(url)
+		# write to file
+		file.write(response.content)
+
+source: https://stackoverflow.com/a/34964610
 
 get time of a program execution
 -------------------------------
@@ -565,7 +579,22 @@ to check if string is upper case::
 
 source: https://stackoverflow.com/a/3669033/5350059
 
-    
+where does pip install packages
+-------------------------------
+::
+
+    pip show $PACKAGE_NAME
+
+source: https://stackoverflow.com/a/45309460
+
+convert a date string to different format
+-----------------------------------------
+::
+
+    d = datetime.datetime.strptime("2013-1-25", '%Y-%m-%d')
+    print datetime.date.strftime(d, "%m/%d/%y")
+
+source: https://stackoverflow.com/a/21890604
 
 Source
 ------
