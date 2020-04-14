@@ -8,6 +8,14 @@ Created on: 2019-01-22
 
 Tag: `cheat_sheet <tag_cheat_sheet.html>`_
 
+check postgresql version
+------------------------
+To check postgresql version::
+
+    sudo -u postgres psql -c "SELECT version();"
+
+source: https://stackoverflow.com/a/13733856
+
 Create User
 -----------
 To create a user::
@@ -99,12 +107,6 @@ to backup a single table::
 
     pg_dump -h $host -p 5432 -U $psql_user -d $database -t $table_name > backup.sql
 
-see all users
--------------
-to see all users::
-
-    sudo -u postgres psql -c "\du"
-
 revoke user access from a database
 ----------------------------------
 to revoke user access from a database [3]_::
@@ -127,6 +129,65 @@ export a table to a csv file
 -----------------------------
 to export a table to a csv file::
     COPY current_relation_members TO '/var/lib/postgresql/csv/current_relation_members.CSV' DELIMITER ',' CSV HEADER;
+
+psql Meta-Commands
+------------------
+The following are the Meta-Commands for `psql` command. This can be used with either with `-c` flag of the `psql` command like::
+
+    sudo -u postgres psql -c "$META_COMMAND"
+
+Or within the interactive prompt that comes after `sudo -u postgres psql` command. There are many Meta-Commands and there are available in the `psql <https://www.postgresql.org/docs/current/app-psql.html>`_ document. Bellow are a few useful most useful for me:
+
+- connect to a database: `\\c $DATEBASE_NAME`
+- list all users: `\\du`
+- list all database: `\\l` or `\\list`
+- list all table: `\\dt`
+
+
+allow remote connections to PostgreSQL database server
+------------------------------------------------------
+To allow remote connections to PostgreSQL database server, first check `listen_addresses` in `postgresql.conf`::
+
+    grep listen /etc/postgresql/$PGSQL_VERSION/main/postgresql.conf
+
+The output would show something like this::
+
+    listen_addresses = 'localhost'      # what IP address(es) to listen on;
+
+Now let's edit the `postgresql.conf` file in our editor of choice::
+
+    sudo vim /etc/postgresql/$PGSQL_VERSION/main/postgresql.conf
+
+Search for `listen_addresses`, and set it to `'*'` for all addresses or comma separated IP address, save the file and exit. Now we need to change the `pg_hba.conf` file so let's open it with our editor::
+
+    sudo vim /etc/postgresql/$PGSQL_VERSION/main/pg_hba.conf
+
+More details here `PostgreSQL: Documentation: Connections and Authentication <https://www.postgresql.org/docs/current/runtime-config-connection.html>`_.
+
+
+Now add the following to the end of file::
+
+    host all all 0.0.0.0/0 md5
+
+Now save the file and exit. Now restart PostgreSQL::
+
+    /etc/init.d/postgresql restart
+
+OR::
+
+    sudo systemctl status postgresql@$PGSQL_VERSION-main.service
+
+source: https://bosnadev.com/2015/12/15/allow-remote-connections-postgresql-database-server/
+
+Now connect to the remote server::
+
+    psql -h hostname -U username -d database
+
+source: https://askubuntu.com/a/423181
+
+
+
+
 
 Source
 ------
