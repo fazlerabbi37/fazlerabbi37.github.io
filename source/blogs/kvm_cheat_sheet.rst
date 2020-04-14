@@ -123,13 +123,76 @@ We can see the information of an existing ``.img`` file using ``qemu-img``::
 
     qemu-img info $name
 
+clone guest
+-----------
+to clone guest::
+
+    virt-clone --original $DOMAIN_NAME --auto-clone
+
+also we can give the new guest a name with `--name` flag::
+
+    virt-clone --original $DOMAIN_NAME --name $NEW_DOMAIN_NAME --auto-clone
+
+source: https://linux.die.net/man/1/virt-clone
+
+vrish
+-----
+The virsh program is the main interface for managing virsh guest domains.
+
+More resource:
+
+- https://www.libvirt.org/manpages/virsh.html
+- https://linux.die.net/man/1/virsh
+
 Start KVM guest on host boot
-----------------------------
+````````````````````````````
 To start KVM guest on host boot::
 
     virsh autostart $DOMAIN_NAME
 
 source: https://serverfault.com/a/144477
+
+delete guest
+````````````
+to delete guest::
+
+    virsh undefine $DOMAIN_NAME
+
+We can also specify `--managed-save` to delete any managed save images and `--snapshots-metadata` to remove snapshots for the specified guest
+
+source: https://serverfault.com/a/402650
+
+shutdown guest
+``````````````
+to shutdown guest::
+
+    virsh shutdown $DOMAIN_NAME
+
+source: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-managing_guest_virtual_machines_with_virsh-shutting_down_rebooting_and_force_shutdown_of_a_guest_virtual_machine
+
+see ip of a guest
+`````````````````
+to see ip of a guest, first see the networks::
+
+    virsh net-list
+
+Now find out what is the name of the network of the guest. Now we can find all the guest with this command::
+
+    virsh net-dhcp-leases $NETWORK-NAME
+
+If we know the MAC of the guest, then::
+
+    virsh net-dhcp-leases $NETWORK-NAME --mac $MAC-ADDRESS
+
+source: https://unix.stackexchange.com/a/283059
+
+OR using this small great script::
+
+    HOSTNAME=[your vm name]
+    MAC=$(virsh domiflist $HOSTNAME | awk '{ print $5 }' | tail -2 | head -1)
+    arp -a | grep $MAC | awk '{ print $2 }' | sed 's/[()]//g'
+
+source: https://superuser.com/a/1383158
 
 
 Source
