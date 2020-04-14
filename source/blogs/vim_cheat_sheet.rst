@@ -218,11 +218,15 @@ the file with `[]` is the currently active file.
 
 source: https://unix.stackexchange.com/a/27590
 
+spelling suggestions
+--------------------
+On Normal mode (If not in Normal mode press :kbd:`Esc`), keep courser on a misspelled word and do the following to see spelling suggestions:
 
+    :kbd:`z` + :kbd:`=`
 
+Now we will see a list of all possible spelling suggestions with a number in front of them. Type the number you want to use and press enter. To get out of the suggester without using any suggestion, press :kbd:`Esc`.
 
-
-
+source: http://vimdoc.sourceforge.net/htmldoc/spell.html#z=
 
 Source
 ------
