@@ -67,6 +67,10 @@ Same behaviour found with Archer C60
 
 Surprise! Surprise! I found one router in the wild with Telnet port open. It asked for authentication which is nice, at least it is not open for all. And guess what happened when I tried the web interface login credentials. Ladies and gentleman we are dropped into the configure terminal of the router. Due to lack to time and not being very efficient with termux I neither got to collect the hardware and firmware version nor any screenshot. Will try to update soon!
 
+**Update**: Mar 27, 2020
+
+Just found this link: https://0x90.psaux.io/2020/03/01/Taking-Back-What-Is-Already-Yours-Router-Wars-Episode-I/. Maybe Root is a potential user name?
+
 Development
 -----------
 
