@@ -19,6 +19,19 @@ to create a jump to top of page link::
 source: https://stackoverflow.com/a/11751756
  
 
+CSS: Comments
+-------------
+to add comments in CSS::
+
+    /* This is a single-line comment */
+
+    /* This is
+    a multi-line
+    comment */
+
+source: https://www.w3schools.com/Css/css_comments.asp
+
+
 Linux: best place to store SSL certificate and key
 --------------------------------------------------
 store SSL certificate inside::
@@ -34,6 +47,53 @@ store SSL key inside::
 with `700` file permission.
 
 source: https://stackoverflow.com/a/4267602
+
+
+Linux: Download all mvk files in a HTML page
+--------------------------------------------
+Sometime we would need to download all the file of same type from an HTML page. We would do this with::
+
+    wget --no-directories -r -l 1 --accept='*.mkv*' $LINK
+
+source: https://serverfault.com/a/359926
+
+
+Linux: Hide a particular user from login screen
+-----------------------------------------------
+To hide a particular user from the login screen, first create a file with a text editor::
+
+    sudo vim /var/lib/AccountsService/users/$USER_NAME
+
+put the following::
+
+    [User]
+    SystemAccount=true
+
+If the file already exist the change the value of `SystemAccount` to `true`, then save and exit the file.
+
+source: https://askubuntu.com/a/575390
+
+Linux: Disable user list on login screen
+----------------------------------------
+To disable user list on login screen, first create a directory, `lightdm.conf.d` inside `/etc/lightdm/`::
+
+    sudo mkdir -p /etc/lightdm/lightdm.conf.d
+
+Now create a file with a text editor named `10-ubuntu.conf`::
+
+    sudo vim /etc/lightdm/lightdm.conf.d/10-ubuntu.conf
+
+Next put the following in that file::
+
+    [SeatDefaults]
+    user-session=ubuntu
+    greeter-show-manual-login=true
+    greeter-hide-users=true
+    allow-guest=false
+
+Change the `user-session` to reflect your user session, for example, in Xubuntu the value would be xubuntu. Then save and exit the file. The effect will be visible after a reboot.
+
+source: https://askubuntu.com/a/731455
 
 QR Code: Bangladesh Railway Online Ticket
 -----------------------------------------
@@ -112,6 +172,16 @@ Facebook: See most recent post
 The new Facebook UI (as of Mar 16, 2020 it is in early adopter phrase) don't have a option to see most recent post. I noticed a URL change in the old UI which works in the new UI.:
 
     https://www.facebook.com/?sk=h_chr
+
+
+Tomcat: Web Server Location in Linux
+------------------------------------
+The location of the Tomcat server in Linux::
+
+    /var/lib/tomcat7/webapps/
+
+source: https://stackoverflow.com/a/39671086
+
 
 Source
 ------
