@@ -528,9 +528,15 @@ to use a variable inside a Dockerfile CMD, run it with `sh`::
 
 source: https://stackoverflow.com/a/40454758
 
+docker compose can't find node_modules directory
+------------------------------------------------
+this happens because ``node_modules`` directory is created during build time inside the container and root directory is mounted during run time and ``node_modules`` is not present in the host directory. to solve this we just need to do a one way mount of the ``node_modules`` directory::
 
+	volumes:
+	  - ./worker/:/worker/
+	  - /worker/node_modules
 
-
+source: https://stackoverflow.com/a/32785014
 
 Quickstart
 ----------
