@@ -31,4 +31,5 @@ Quick reference on things, no or very little explanation, point and click and ha
 - `Rails Console Cheat Sheet <rails_console_cheat_sheet.html>`_
 - `ReStructuredText Cheat Sheet <rst_cheat_sheet.html>`_
 - `Screen Cheat Sheet <screen_cheat_sheet.html>`_
+- `Sphinx Cheat Sheet <sphinx_cheat_sheet.html>`_
 - `Vim Cheat Sheet <vim_cheat_sheet.html>`_
