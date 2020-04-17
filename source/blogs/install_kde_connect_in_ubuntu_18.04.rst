@@ -32,14 +32,16 @@ Plugin: Run commands
 --------------------
 The run commands plugin allows user to execute console commands remotely. Some useful ones that I use::
 
+    Name            Command
+    ----            -------
     Lock screen     loginctl lock-session
     Reboot          systemctl reboot
     Shutdown        systemctl poweroff
     Suspend         systemctl suspend
     Unlock screen   loginctl unlock-session
-    xkill           xkill
+    Kill App        xkill
 
-See more at: `KDE Connect Tutorials: Adding commands <https://userbase.kde.org/KDE_Connect/Tutorials/Adding_commands>`_ and `KDE Connect Tutorials:Useful commands <https://userbase.kde.org/KDE_Connect/Tutorials/Useful_commands>`_
+To use this, open KDE Connect Settings, select the device and scroll down in the Available plugins and find Run commands plugin. Next, click the while box on the right of the plugin to configure it. This will show a box of with two columns Name and Command. Double click in the empty field and start writing. When finished click OK to save. See more at: `KDE Connect Tutorials: Adding commands <https://userbase.kde.org/KDE_Connect/Tutorials/Adding_commands>`_ and `KDE Connect Tutorials:Useful commands <https://userbase.kde.org/KDE_Connect/Tutorials/Useful_commands>`_
 
 **Update: Mar 08, 2020**
 
