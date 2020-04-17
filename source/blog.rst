@@ -20,6 +20,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: New Blogs
 
+	`Sphinx Cheat Sheet <blogs/sphinx_cheat_sheet.html>`_
+
+
 	`Screen Cheat Sheet <blogs/screen_cheat_sheet.html>`_
 
 
@@ -32,26 +35,23 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 05 <blogs/fdludcf_practical_cryptography_lesson_05.html>`_
-
-
 
 
 .. sidebar:: Recently Updated Blogs
 
+	`Sphinx Cheat Sheet <blogs/sphinx_cheat_sheet.html>`_
+
+
 	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
+	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
 
 
 	`Screen Cheat Sheet <blogs/screen_cheat_sheet.html>`_
 
 
-	`Bonsai: An Elasticsearch playground <blogs/bonsai_an_elasticsearch_playground.html>`_
-
-
-	`Google App Script Cheat Sheet <blogs/google_app_script_cheat_sheet.html>`_
+	`KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
 
 
 
@@ -472,6 +472,14 @@ Created on: 2019-09-08
 
 Using FileZilla to upload to SourceForge project.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Sphinx Cheat Sheet <blogs/sphinx_cheat_sheet.html>`_
+.....................................................
+Created on: 2020-04-13
+
+A quick reference to `Sphinx <https://www.sphinx-doc.org/en/stable/index.html>`_
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Google Calendar sync on Android without signing in <blogs/sync_gcalendar_without_android_signin.html>`_
