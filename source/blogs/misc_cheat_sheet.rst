@@ -95,6 +95,29 @@ Change the `user-session` to reflect your user session, for example, in Xubuntu 
 
 source: https://askubuntu.com/a/731455
 
+Linux: Bash autocomplete files location
+---------------------------------------
+System-wide bash autocomplete files location::
+
+    /etc/bash_completion.d/
+
+source: https://askubuntu.com/a/68203
+
+Linux: Open apt manager from URL
+--------------------------------
+to open apt manager from URL::
+
+    apt:$PACKAGE_NAME
+
+In HTML::
+
+    <a href="apt:package">click</a> # single package
+    <a href="apt:package1,package2,package3">click</a> # multipule packages
+
+Needs to be Ubuntu 7.10 or later with `apturl` package installed and in a compatible browser.
+
+source: https://help.ubuntu.com/community/AptURL and https://wiki.ubuntu.com/AptUrl
+
 QR Code: Bangladesh Railway Online Ticket
 -----------------------------------------
 If we scan it, we see::
@@ -182,6 +205,11 @@ The location of the Tomcat server in Linux::
 
 source: https://stackoverflow.com/a/39671086
 
+OpenVPN: Restrict one cert per device
+-------------------------------------
+To restrict one cert per device in OpenVPN comment out or DO NOT USE the `--duplicate-cn` option.
+
+source: https://forums.openvpn.net/viewtopic.php?t=18164#p49452
 
 Source
 ------
