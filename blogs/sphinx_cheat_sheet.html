@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
-<title>Google Calendar sync on Android without signing in</title>
+<title>Sphinx Cheat Sheet</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -631,35 +631,33 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="google-calendar-sync-on-android-without-signing-in">
-<h1 class="title">Google Calendar sync on Android without signing in</h1>
+<div class="document" id="sphinx-cheat-sheet">
+<h1 class="title">Sphinx Cheat Sheet</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>Want to sync your Google Calendar sync on Android but don't want to add your Google account on Android?</p>
-<p>Created on: 2019-02-05</p>
-<p>I have been trying to stay away from <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Google_products">Google products</a> as much as possible by using their FOSS counterparts. Naturally, I don't like the idea of adding my Google account on Android. Though I have been trying to <a class="reference external" href="https://fazlerabbi37.github.io/take_back_my_data/">avoid Google products</a> it is still one of the best and convenient product line for most of the people. For example, both my university and current workplace usages G Suite.</p>
-<p>Google Calendar is still a very convenient and popular tool for scheduling. Most of my coworkers usages Google Calendar to schedule meeting and to sent invitation for a event. I miss out the most convening features; auto sync to Android calendar and last minute notifications about events as I don't have my G Suite accounts signed in my Android. Only if there was a way to sync them without signing in!</p>
-<p>Well, I was using this awesome tool called <a class="reference external" href="https://f-droid.org/en/packages/at.bitfire.icsdroid/">ICSx⁵</a> to sync a Public Google Calendar which takes a <span class="docutils literal">.ical</span> formatted URL and syncs it to Android calendar. I saw a <span class="docutils literal">Requires Authentication</span> toggle button just bellow the URL input fields. Then, the next question was can we sync a Private calendar using the authentication? I jumped to the Google Calendar's settings page to grab the <em>Public address in iCal format</em> only to find a warning on the bottom that say's &quot;Warning: The address won't work unless this calendar is public.&quot;</p>
-<p>I though let's dig a bit on the <a class="reference external" href="https://forums.bitfire.at/category/5/icsx">ICSx⁵ forum</a>. A very obvious search of <cite>google calendar sync</cite> took me to this short <a class="reference external" href="https://forums.bitfire.at/topic/872/google-calender-sync-correct-url">thread</a> of 5 replies. The summery of the thread is that once upon a time (before Nov 2015) Google supported CalDAV protocol that allowed users to sync calendar using ICSx⁵ but which is deprecated as they implemented a new CalDAV protocol that supports OAuth. ICSx⁵ can't sync with the new protocol. However, one user on the thread confirmed that old ways work if you replace your calendar id with you email address and as the new protocol requires OAuth you need an App Password.</p>
-<p>So I head over to <a class="reference external" href="https://myaccount.google.com/apppasswords">App Password page</a> and generated an app password. Opening the ICSx⁵ app, I tap on the red plus('+') button on the bottom right and put the URL the way it was suggested on the thread, toggle the <span class="docutils literal">Requires Authentication</span> button to reveal the user name and password input filed, put the username and the app password. Now we click on the right arrow ('<span class="raw-html">&rarr;</span>') button on the top right and wait for the app to validate the calendar resources and if everything goes all right the app takes us to the next page where we are asked to choose the Title and color for our app and when we are done with it tap the check mark('<span class="raw-html">&#10003;</span>') on the top right and we are done!</p>
-<p>The suggested format on the thread <a class="reference external" href="https://forums.bitfire.at/topic/872/google-calender-sync-correct-url/5">reply</a> was:</p>
-<pre class="literal-block">https://www.google.com/calendar/dav/{username}&#64;{domain.tld}/events</pre>
-<p>The only lacking that is mentioned in the thread is that the delegates aka people on events are not synced. Please keep in mind that this end point is deprecated and we are using it at our own risk as it says on the <a class="reference external" href="https://developers.google.com/calendar/caldav/v2/guide#new_endpoint">CalDAV API Developer's Guide page</a></p>
-<p><strong>UPDATE:</strong> Just a few days after writing this, I saw this <a class="reference external" href="https://help.nextcloud.com/t/goodbye-google-sync-calendar-with-google-agenda/2372/12">comment</a> in the Nextcloud community forum where I found that for normal Google Account or on G Suite if it's allowed, we can get the <span class="docutils literal">Secret address in iCal format</span>, we can bypass all the steps and just put that address on ICSx⁵ app and continue. The Secret address already contains a API key so there is no need for OAuth.</p>
+<p>A quick reference to <a class="reference external" href="https://www.sphinx-doc.org/en/stable/index.html">Sphinx</a></p>
+<p>Created on: 2020-04-13</p>
+<p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a></p>
+<div class="section" id="install">
+<h1>Install</h1>
+<p>to install Sphinx:</p>
+<pre class="literal-block">pip install Sphinx</pre>
+<p>source: <a class="reference external" href="https://www.sphinx-doc.org/en/stable/usage/installation.html#installation-from-pypi">https://www.sphinx-doc.org/en/stable/usage/installation.html#installation-from-pypi</a></p>
+</div>
+<div class="section" id="getting-started">
+<h1>Getting started</h1>
+<p>to get started we will use the <cite>sphinx-quickstart</cite> tool. To use it just run:</p>
+<pre class="literal-block">sphinx-quickstart</pre>
+<p>Now Sphinx will ask a series of question. Answer them to fit your preference and you are ready to write documentation.</p>
+<p>source: <a class="reference external" href="https://www.sphinx-doc.org/en/stable/usage/quickstart.html#setting-up-the-documentation-sources">https://www.sphinx-doc.org/en/stable/usage/quickstart.html#setting-up-the-documentation-sources</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://forums.bitfire.at/topic/872/google-calender-sync-correct-url/5">google calender sync: correct url</a></p></li>
-<li><p><a class="reference external" href="https://icsx5.bitfire.at/">ICSx⁵ website</a></p></li>
-<li><p><a class="reference external" href="https://f-droid.org/en/packages/at.bitfire.icsdroid/">ICSx⁵ app on F-Droid</a></p></li>
-<li><p><a class="reference external" href="https://developers.google.com/calendar/caldav/v2/guide#new_endpoint">CalDAV API Developer's Guide page</a></p></li>
-<li><p><a class="reference external" href="https://help.nextcloud.com/t/goodbye-google-sync-calendar-with-google-agenda/2372">[Goodbye Google] Sync calendar with google agenda</a></p></li>
-</ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/sync_gcalendar_without_android_signin.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/sphinx_cheat_sheet.rst">View document source</a>.
 Generated on: 2020-04-17 09:46 UTC.
 </p>
 
