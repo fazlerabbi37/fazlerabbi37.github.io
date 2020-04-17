@@ -596,5 +596,18 @@ convert a date string to different format
 
 source: https://stackoverflow.com/a/21890604
 
+read json file
+--------------
+::
+
+        import json
+
+        with open('strings.json') as f:
+                d = json.load(f)
+                print(d) 
+
+source: https://stackoverflow.com/a/20199213
+
+
 Source
 ------
