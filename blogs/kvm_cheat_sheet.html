@@ -776,6 +776,63 @@ arp -a | grep $MAC | awk '{ print $2 }' | sed 's/[()]//g'</pre>
 <p>source: <a class="reference external" href="https://superuser.com/a/1383158">https://superuser.com/a/1383158</a></p>
 </div>
 </div>
+<div class="section" id="virt-manager-full-screen-display-of-guest">
+<h1>Virt-Manager: full screen display of guest</h1>
+<p>to see the guest in full screen mode we need to change the display setting which can be done:</p>
+<ul>
+<li><p>From the virt-manager main window:</p>
+<blockquote>
+<p>Edit -&gt; Preferences -&gt; Console -&gt; Resize guest with window</p>
+</blockquote>
+</li>
+<li><p>Or from a guest VM console view:</p>
+<blockquote>
+<p>View -&gt; Scale Display -&gt; Auto resize VM with window</p>
+</blockquote>
+</li>
+</ul>
+<p>source: <a class="reference external" href="https://centosfaq.org/centos/virt-manager-and-full-screen-display/">https://centosfaq.org/centos/virt-manager-and-full-screen-display/</a></p>
+</div>
+<div class="section" id="systemctl-service-related-to-kvm">
+<h1>systemctl service related to KVM</h1>
+<p>the <cite>systemctl</cite> service related to KVM:</p>
+<pre class="literal-block">qemu-kvm.service
+libvirt-guests.service
+libvirtd.service
+libvirt-bin</pre>
+<p>To restart this services:</p>
+<pre class="literal-block">sudo systemctl restart qemu-kvm.service libvirt-guests.service libvirtd.service libvirt-bin</pre>
+<p>source: <a class="reference external" href="https://makandracards.com/operations/41538-stopping-restarting-libvirt-on-ubuntu-16-04-with-systemd">https://makandracards.com/operations/41538-stopping-restarting-libvirt-on-ubuntu-16-04-with-systemd</a></p>
+</div>
+<div class="section" id="virt-manager-can-t-connect-to-graphical-console">
+<h1>virt-manager can't connect to graphical console</h1>
+<p>to fix this error, try reloading <cite>apparmor</cite>:</p>
+<pre class="literal-block">sudo systemctl reload apparmor</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/888220">https://askubuntu.com/a/888220</a></p>
+</div>
+<div class="section" id="change-the-dhcp-network-of-kvm">
+<h1>change the DHCP network of KVM</h1>
+<p>to change the DHCP network of KVM:</p>
+<pre class="literal-block">virsh  net-list
+virsh  net-edit  $NETWORK_NAME</pre>
+<p>Now find the <cite>&lt;dhcp&gt;</cite> section and make changes. This can also be done by editing the <cite>/etc/libvirt/qemu/networks/$NETWORK_NAME.xml</cite> file.</p>
+<p>source: <a class="reference external" href="https://serverfault.com/a/627245">https://serverfault.com/a/627245</a></p>
+</div>
+<div class="section" id="migrating-with-virt-manager">
+<h1>migrating with virt-manager</h1>
+<p>to migrating with virt-manager:</p>
+<ul class="simple">
+<li><p>right click on a guest</p></li>
+<li><p>select migrate</p></li>
+<li><p>select the new host</p></li>
+<li><p>click migrate</p></li>
+</ul>
+<p>source: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-kvm_live_migration-migrating_with_virt_manager">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-kvm_live_migration-migrating_with_virt_manager</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>check the <cite>/etc/libvirt/</cite> directory</p>
+</div>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <dl class="footnote brackets">
@@ -794,7 +851,7 @@ arp -a | grep $MAC | awk '{ print $2 }' | sed 's/[()]//g'</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/kvm_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-04-17 09:45 UTC.
+Generated on: 2020-05-12 11:06 UTC.
 </p>
 
 </div>

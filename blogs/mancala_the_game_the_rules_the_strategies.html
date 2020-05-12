@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
-<title>Vim Cheat Sheet</title>
+<title>Mancala: The Game, The Rules, The Strategies</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -631,241 +631,67 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="vim-cheat-sheet">
-<h1 class="title">Vim Cheat Sheet</h1>
+<div class="document" id="mancala-the-game-the-rules-the-strategies">
+<h1 class="title">Mancala: The Game, The Rules, The Strategies</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to Vim.</p>
-<p>Created on: 2019-09-08</p>
-<p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a>, <a class="reference external" href="tag_living_in_the_shell.html">living_in_the_shell</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>under heavy construction and not well organized</p>
-</div>
-<div class="section" id="exit-from-vim">
-<h1>exit from vim</h1>
-<p>to exit from vim press <span class="kbd">Esc</span> then type <cite>:q!</cite></p>
-</div>
-<div class="section" id="subscript">
-<h1>subscript</h1>
-<blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">s</span></p>
-</blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
-</div>
-<div class="section" id="superscript">
-<h1>superscript</h1>
-<blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">S</span></p>
-</blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
-</div>
-<div class="section" id="indent-multiple-lines">
-<h1>indent multiple lines</h1>
-<p>to indent multiple lines select lines in VISUAL mode and do</p>
-<blockquote>
-<p><span class="kbd">&gt;</span></p>
-</blockquote>
-<p>do one level indentation of next five line</p>
-<blockquote>
-<p><span class="kbd">5 &gt;</span></p>
-</blockquote>
-<p><a class="reference external" href="https://stackoverflow.com/a/235841">https://stackoverflow.com/a/235841</a></p>
-</div>
-<div class="section" id="paste-mode">
-<h1>paste mode</h1>
-<p>to enable paste mode do</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:set paste</cite></p>
-</blockquote>
-</div>
-<div class="section" id="insert-current-date-in-next-line">
-<h1>insert current date in next line</h1>
-<p>to insert current date in next line:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:pu=strftime('%Y-%m-%d')</cite></p>
-</blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Insert_current_date_or_time">https://vim.fandom.com/wiki/Insert_current_date_or_time</a></p>
-</div>
-<div class="section" id="insert-current-date-in-cursor-location">
-<h1>insert current date in cursor location</h1>
-<p>to insert current date in cursor location in normal mode:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>&quot;=strftime('%Y-%m-%d')</cite>. Now press <span class="kbd">Crtl</span> + <span class="kbd">m</span>. Then press <span class="kbd">p</span></p>
-</blockquote>
-<p>to insert current date in cursor location in insert mode:</p>
-<blockquote>
-<p><span class="kbd">Crtl</span> + <span class="kbd">r</span> then type <cite>=strftime('%Y-%m-%d')</cite>. Now press <span class="kbd">Crtl</span> + <span class="kbd">m</span>.</p>
-</blockquote>
-<p><a class="reference external" href="https://unix.stackexchange.com/a/8109/">https://unix.stackexchange.com/a/8109/</a></p>
-</div>
-<div class="section" id="switching-case-of-characters">
-<h1>Switching case of characters</h1>
-<p>to switching case of characters</p>
-<blockquote>
-<p>Toggle case &quot;HellO&quot; to &quot;hELLo&quot; with <span class="kbd">g</span> + <span class="kbd">~</span> then a movement.</p>
-<p>Uppercase &quot;HellO&quot; to &quot;HELLO&quot; with <span class="kbd">g</span> + <span class="kbd">U</span> then a movement.</p>
-<p>Lowercase &quot;HellO&quot; to &quot;hello&quot; with <span class="kbd">g</span> + <span class="kbd">u</span> then a movement.</p>
-</blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Switching_case_of_characters">https://vim.fandom.com/wiki/Switching_case_of_characters</a>
-<a class="reference external" href="https://stackoverflow.com/a/2966034">https://stackoverflow.com/a/2966034</a></p>
-</div>
-<div class="section" id="find-and-replace">
-<h1>find and replace</h1>
-<p>to find and replace</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>%s/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>pecific lines</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>$START_LINE,$END_LINEs/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>add <cite>c</cite> after <cite>g</cite> to enter an interactive mode.</p>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/19995072">Find and replace strings in vim on multiple lines</a></p>
-</div>
-<div class="section" id="move-to-the-beginning-of-line">
-<h1>move to the beginning of line</h1>
-<p>to move to the beginning or start of line:</p>
-<blockquote>
-<p><span class="kbd">0</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/10243634">https://stackoverflow.com/a/10243634</a></p>
-</div>
-<div class="section" id="move-to-the-end-of-line">
-<h1>move to the end of line</h1>
-<p>to move to the end of line:</p>
-<blockquote>
-<p><span class="kbd">$</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/105734">https://stackoverflow.com/a/105734</a></p>
-</div>
-<div class="section" id="delete-all-line-till-end">
-<h1>delete all line till end</h1>
-<p>to delete all line till end:</p>
-<blockquote>
-<p><span class="kbd">d</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/8124616">https://stackoverflow.com/a/8124616</a></p>
-</div>
-<div class="section" id="open-in-readonly-mode">
-<h1>open in readonly mode</h1>
-<p>to open in readonly mode inside vim:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>view /path/to/file</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/18395765">https://stackoverflow.com/a/18395765</a></p>
-</div>
-<div class="section" id="display-line-numbers">
-<h1>display line numbers</h1>
-<p>to display line numbers:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set number</cite> or <cite>set nu</cite></p>
-</blockquote>
-<p>to disable:</p>
-<pre class="literal-block">:kbd:`Esc` + :kbd:`:` then type `set nonumber` or `set nonu`</pre>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Display_line_numbers">https://vim.fandom.com/wiki/Display_line_numbers</a></p>
-</div>
-<div class="section" id="see-file-type">
-<h1>see file type</h1>
-<p>to see file type:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set ft</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Filetype.vim">https://vim.fandom.com/wiki/Filetype.vim</a></p>
-</div>
-<div class="section" id="macros">
-<h1>macros</h1>
-<p>record a macros:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">q</span> + <span class="kbd">any key like d,m,n</span> for register.</p>
-</blockquote>
-<p>the do you task and press <span class="kbd">q</span>. It will save the macro to the register [one of those d,m,n that you pressed]. To use the macro:</p>
-<blockquote>
-<p>number_of_times_you_want_to_execute + <span class="kbd">&#64;</span> + <span class="kbd">register_key_d_m_or_n</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Macros">https://vim.fandom.com/wiki/Macros</a></p>
-</div>
-<div class="section" id="abbreviations">
-<h1>abbreviations</h1>
-<p>set an abbreviation:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">:</span> <cite>ab $ABBREVIATION $FULL_TEXT_FOR_THE_ABBREVIATION</cite></p>
-</blockquote>
-<p>for example:</p>
-<blockquote>
-<p><span class="kbd">:</span> <cite>ab rtfm read the fine manual</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Using_abbreviations">https://vim.fandom.com/wiki/Using_abbreviations</a></p>
-</div>
-<div class="section" id="fix-indentation">
-<h1>fix indentation</h1>
-<p>to fix indentation on a selected part of the file:</p>
-<blockquote>
-<p><span class="kbd">=</span></p>
-</blockquote>
-<p>to fix indentation on a whole file:</p>
-<blockquote>
-<p><span class="kbd">g</span> + <span class="kbd">g</span> + <span class="kbd">=</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Fix_indentation">https://vim.fandom.com/wiki/Fix_indentation</a></p>
-</div>
-<div class="section" id="edit-multiple-files">
-<h1>edit multiple files</h1>
-<p>to edit multiple files open files:</p>
-<pre class="literal-block">vim foo.txt bar.txt</pre>
-<p>go to next file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>n</cite> or <cite>next</cite></p>
-</blockquote>
-<p>go to previous file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>N</cite> or <cite>prev</cite> or <cite>previous</cite></p>
-</blockquote>
-<p>write and go to next file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>wn</cite> or <cite>wnext</cite></p>
-</blockquote>
-<p>write and go to previous file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>wN</cite> or <cite>wprevious</cite></p>
-</blockquote>
-<p>to see files list:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>args</cite></p>
-</blockquote>
-<p>the file with <cite>[]</cite> is the currently active file.</p>
-<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/27590">https://unix.stackexchange.com/a/27590</a></p>
-</div>
-<div class="section" id="spelling-suggestions">
-<h1>spelling suggestions</h1>
-<p>On Normal mode (If not in Normal mode press <span class="kbd">Esc</span>), keep courser on a misspelled word and do the following to see spelling suggestions:</p>
-<blockquote>
-<p><span class="kbd">z</span> + <span class="kbd">=</span></p>
-</blockquote>
-<p>Now we will see a list of all possible spelling suggestions with a number in front of them. Type the number you want to use and press enter. To get out of the suggester without using any suggestion, press <span class="kbd">Esc</span>.</p>
-<p>source: <a class="reference external" href="http://vimdoc.sourceforge.net/htmldoc/spell.html#z=">http://vimdoc.sourceforge.net/htmldoc/spell.html#z=</a></p>
-</div>
-<div class="section" id="vim-replace-newline-with-space">
-<h1>vim replace newline with space</h1>
-<p><a class="reference external" href="https://stackoverflow.com/a/71334">https://stackoverflow.com/a/71334</a>
-<a class="reference external" href="https://unix.stackexchange.com/a/247331">https://unix.stackexchange.com/a/247331</a></p>
-</div>
-<div class="section" id="vim-give-3-space-before-selected-line-visual">
-<h1>vim give 3 space before selected line visual</h1>
-<p><a class="reference external" href="https://vi.stackexchange.com/a/4490/13999">https://vi.stackexchange.com/a/4490/13999</a></p>
-</div>
-<div class="section" id="source">
-<h1>Source</h1>
-<blockquote>
+<p>Playing <a class="reference external" href="https://en.wikipedia.org/wiki/Mancala">Mancala</a>.</p>
+<p>Created on: 2020-02-25</p>
+<p>According to Wikipedia:</p>
+<pre class="literal-block">Mancala is one of the oldest known games to still be widely played today. Mancala is a generic name for a family of two-player turn-based strategy board games played with small stones, beans, or seeds and rows of holes or pits in the earth, a board or other playing surface. The objective is usually to capture all or some set of the opponent's pieces.</pre>
+<p>I first came to know about this game from TV serial named <a class="reference external" href="https://www.imdb.com/title/tt4474344/">Blindspot</a>. On season 3 episode 21 one of the actors play this game. A few web search later, I found out two interesting sites:</p>
 <ul class="simple">
-<li><p>` &lt;&gt;`_</p></li>
+<li><p><a class="reference external" href="https://www.instructables.com/id/How-to-play-Mancala-2/">How to Play Mancala : 5 Steps - Instructables</a></p></li>
+<li><p><a class="reference external" href="https://mancala.playdrift.com/">Play Mancala Online</a></p></li>
 </ul>
-</blockquote>
+<p>After learning the basic rules for the Instructables page, I started playing with the bots on the <a class="reference external" href="https://en.wikipedia.org/wiki/Mancala">Mancala</a> site. The game, the rules and the strategy is very very simple but playing it can be very tricky. I will try to explaing the game, the rules and the strategy in brief.</p>
+<div class="section" id="the-game">
+<h1>The Game</h1>
+<p>Mancala, as Wikipedia says is a two-payer, turn based board game. So we have:</p>
+<ul class="simple">
+<li><p>two player who takes turn in giving their move</p></li>
+<li><p>the board consist of 12 holes and 2 stores</p></li>
+<li><p>in each hole there are 4 stones/bids/beans so in total we have 48 stones</p></li>
+<li><dl class="simple">
+<dt>there are two 'modes' of game</dt>
+<dd><ul>
+<li><p>with capture, where you can capture opponents stones</p></li>
+<li><p>without capture, where you can't capture opponents stones</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="the-rules">
+<h1>The Rules</h1>
+<p>There are 3 simple rules for playing Mancala:</p>
+<ul class="simple">
+<li><p>We take all the stones from a hole and put one stone on each hole until we are out of stone, going counter clockwise</p></li>
+<li><p>If the last stone lands on our store, we get a free turn</p></li>
+<li><p>The player with the max stone at the end of game wins</p></li>
+<li><p>Special capture rule: in capture mode, in your turn if your stones land on one of your empty hole, all the stones opposite to that hole gets captured and goes to your store.</p></li>
+</ul>
+</div>
+<div class="section" id="the-strategies">
+<h1>The Strategies</h1>
+<p>There are numerous strategy for Mancala. I have played a few time with real players and seen quite a few different strategies. Depending of the 'modes' of the game the strategy may vary but the end goal is always putting as many as possible stones in our own store. Patterns that I have noticed helps accomplish that goal:</p>
+<ul class="simple">
+<li><p>In with capture mode, a high risk, high reward pattern is trying to store 8 stones in the right most hole because if the opponent is not careful then he would store many of his stones in his right most hole. If we have 8 stones in our right most hole and our left most whole is empty we can time it perfectly to capture a hefty sum of stones that will give us a huge lead</p></li>
+<li><p>In with capture mode, always plan carefully to make an empty hole where your opponents stone is getting stored.</p></li>
+<li><p>In without capture mode, try to move as much stone to store as early as possible.</p></li>
+<li><p>In both mode, try to keep a stone in the left most hole as moves are one hole jump it would give you a lot of option to tire out the opponent.</p></li>
+</ul>
+<p>The strategies are just repetitive successful patterns and obviously can be broken so just give the game a try and figure out from there.</p>
+<p>More: <a class="reference external" href="https://mancala.fandom.com/wiki/Mancala_World">Mancala World</a></p>
+<div class="section" id="source">
+<h2>Source</h2>
+</div>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/vim_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/mancala_the_game_the_rules_the_strategies.rst">View document source</a>.
 Generated on: 2020-05-12 11:06 UTC.
 </p>
 

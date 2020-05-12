@@ -675,6 +675,29 @@ h1, h2, h3 {
 <pre class="literal-block">adb restore $path_to_backup_file.ab</pre>
 <p>source: <a class="reference external" href="https://www.technipages.com/how-to-backup-your-entire-android-device">How to Backup Your Entire Android Device to PC</a></p>
 </div>
+<div class="section" id="backup-modify-and-restore-a-specific-app">
+<h1>backup, modify and restore a specific app</h1>
+<p>to backup and restore a specific app, first list all the packages with:</p>
+<pre class="literal-block">adb shell pm list packages</pre>
+<p>Now backup the specific package with:</p>
+<pre class="literal-block">adb backup -f com.whatsapp.ab -noapk com.whatsapp</pre>
+<p>The command above indicates that we want to backup <span class="docutils literal">com.whatsapp</span> package to <span class="docutils literal">com.whatsapp.ab</span> file as indicated with the <span class="docutils literal"><span class="pre">-f</span></span> flag. The <cite>.ab</cite> says it is an <cite>Adroid Backup</cite> file. The <span class="docutils literal"><span class="pre">-noapk</span></span> flag indicates that we don't want the <span class="docutils literal">.apk</span> file to be backed up. Now we should see a confirmation dialog prompt to start the backup. The backup will not start until we press <strong>Back up my data</strong>.</p>
+<p>We can convert the ADB backup file to a TAR archive. First we need to stripe the 24-bite header and the use <a class="reference external" href="https://linux.die.net/man/1/openssl">openssl</a> to decompress the raw zlib data:</p>
+<pre class="literal-block">dd if=com.whatsapp.ab ibs=24 skip=1 | openssl zlib -d &gt; com.whatsapp.tar</pre>
+<p>Or we can use <a class="reference external" href="https://linux.die.net/man/1/tail">tail</a> command instead of <a class="reference external" href="https://linux.die.net/man/1/dd">dd</a>:</p>
+<pre class="literal-block">tail -c +25 com.whatsapp.ab | openssl zlib -d &gt; com.whatsapp.tar</pre>
+<p>Now it is plain simple decompress with <a class="reference external" href="https://linux.die.net/man/1/tar">tar</a>:</p>
+<pre class="literal-block">tar xvf com.whatsapp.tar</pre>
+<p>To restore just do:</p>
+<pre class="literal-block">adb restore com.whatsapp.ab</pre>
+<p>But we have to take one more step to add 24-bite header to the <span class="docutils literal">.ab</span> file if we changed the contains. For this we will also need the original <span class="docutils literal">.ab</span> file.:</p>
+<pre class="literal-block">dd if=com.whatsapp.ab ibs=24 count=1 of=com.whatsapp-restore.ab ; openssl zlib -in com.whatsapp.tar &gt;&gt; com.whatsapp-restore.ab</pre>
+<p>We can also use the <a class="reference external" href="https://linux.die.net/man/1/head">head</a> command to do that as well:</p>
+<pre class="literal-block">head -c +24 com.whatsapp.ab &gt; com.whatsapp-restore.ab ; openssl zlib -in com.whatsapp.tar &gt;&gt; com.whatsapp-restore.ab</pre>
+<p>Now restore it like before:</p>
+<pre class="literal-block">adb restore com.whatsapp-restore.ab</pre>
+<p>source: <a class="reference external" href="https://stackpointer.io/mobile/android-adb-backup-extract-restore-repack/372/">https://stackpointer.io/mobile/android-adb-backup-extract-restore-repack/372/</a> and <a class="reference external" href="https://forum.xda-developers.com/showthread.php?t=2011811">https://forum.xda-developers.com/showthread.php?t=2011811</a></p>
+</div>
 <div class="section" id="get-current-activity">
 <h1>get current activity</h1>
 <p>TO see the current activity:</p>
@@ -739,7 +762,7 @@ adb shell input swipe 500 1000 300 300 #down</pre>
 <pre class="literal-block">adb connect $ip:$port</pre>
 <p>like:</p>
 <pre class="literal-block">adb connect 192.168.1.4:5555</pre>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/58334911/5350059">How can I connect to Android with ADB over TCP?</a></p>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/58334911/5350059">How can I connect to Android with ADB over TCP?</a> and <a class="reference external" href="https://developer.android.com/studio/command-line/adb#wireless">Android Debug Bridge (adb) | Android Developers: Connect to a device over Wi-Fi</a></p>
 </div>
 <div class="section" id="take-a-screenshot">
 <h1>take a screenshot</h1>
@@ -800,6 +823,13 @@ source: <a class="reference external" href="https://developer.android.com/studio
 <p>The <cite>-e :android:show_fragment</cite> part is important here.</p>
 <p>source: <a class="reference external" href="https://stackoverflow.com/a/21844594">https://stackoverflow.com/a/21844594</a></p>
 </div>
+<div class="section" id="get-events">
+<h1>get events</h1>
+<p>to get events:</p>
+<pre class="literal-block">adb shell su -- getevent -lt /dev/input/event1</pre>
+<p>source: <a class="reference external" href="https://source.android.com/devices/input/getevent.html">Getevent | Android Open Source Project</a></p>
+<p><a class="reference external" href="https://github.com/spion/adbfs-rootless">https://github.com/spion/adbfs-rootless</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
@@ -807,7 +837,7 @@ source: <a class="reference external" href="https://developer.android.com/studio
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/adb_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-04-17 09:45 UTC.
+Generated on: 2020-05-12 11:06 UTC.
 </p>
 
 </div>

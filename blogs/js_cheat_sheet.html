@@ -864,6 +864,15 @@ Rate.click();</pre>
 <pre class="literal-block">await new Promise(r =&gt; setTimeout(r, 2000));</pre>
 <p>source: <a class="reference external" href="https://stackoverflow.com/a/39914235/5350059">https://stackoverflow.com/a/39914235/5350059</a></p>
 </div>
+<div class="section" id="highlights-all-links-on-a-webpage">
+<h1>highlights all links on a webpage</h1>
+<p>to  highlights all links on a webpage:</p>
+<pre class="literal-block">for(i=0;i&lt;document.links.length;i++)
+document.links[i].style.backgroundColor='#ffff00';</pre>
+<p>make a bookmark with:</p>
+<pre class="literal-block">javascript:(function(){for(i=0;i&lt;document.links.length;i++)document.links[i].style.backgroundColor='#ffff00';})();</pre>
+<p>source: <a class="reference external" href="https://superuser.com/a/296578">https://superuser.com/a/296578</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 <blockquote>
@@ -876,7 +885,7 @@ Rate.click();</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/js_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-04-17 09:45 UTC.
+Generated on: 2020-05-12 11:06 UTC.
 </p>
 
 </div>

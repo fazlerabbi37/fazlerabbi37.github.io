@@ -788,6 +788,12 @@ git config commit.template relative-path-from-repository-root</pre>
 <pre class="literal-block">git fetch --unshallow</pre>
 <p><a class="reference external" href="https://stackoverflow.com/a/17937889/5350059">https://stackoverflow.com/a/17937889/5350059</a></p>
 </div>
+<div class="section" id="gpg-sign-old-commits">
+<h1>GPG sign old commits</h1>
+<p>to GPG sign old commits:</p>
+<pre class="literal-block">git rebase --exec 'git commit --amend --no-edit -n -S' -i $HASH</pre>
+<p>source: <a class="reference external" href="https://superuser.com/a/1123928">https://superuser.com/a/1123928</a></p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
@@ -795,7 +801,7 @@ git config commit.template relative-path-from-repository-root</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/git_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-04-17 09:45 UTC.
+Generated on: 2020-05-12 11:06 UTC.
 </p>
 
 </div>

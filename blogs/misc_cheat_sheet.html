@@ -656,8 +656,10 @@ a multi-line
 comment */</pre>
 <p>source: <a class="reference external" href="https://www.w3schools.com/Css/css_comments.asp">https://www.w3schools.com/Css/css_comments.asp</a></p>
 </div>
-<div class="section" id="linux-best-place-to-store-ssl-certificate-and-key">
-<h1>Linux: best place to store SSL certificate and key</h1>
+<div class="section" id="linux">
+<h1>Linux</h1>
+<div class="section" id="best-place-to-store-ssl-certificate-and-key">
+<h2>best place to store SSL certificate and key</h2>
 <p>store SSL certificate inside:</p>
 <pre class="literal-block">/etc/ssl/certs</pre>
 <p>with <cite>777</cite> file permission.</p>
@@ -666,14 +668,31 @@ comment */</pre>
 <p>with <cite>700</cite> file permission.</p>
 <p>source: <a class="reference external" href="https://stackoverflow.com/a/4267602">https://stackoverflow.com/a/4267602</a></p>
 </div>
-<div class="section" id="linux-download-all-mvk-files-in-a-html-page">
-<h1>Linux: Download all mvk files in a HTML page</h1>
+<div class="section" id="download-all-mvk-files-in-a-html-page">
+<h2>Download all mvk files in a HTML page</h2>
 <p>Sometime we would need to download all the file of same type from an HTML page. We would do this with:</p>
 <pre class="literal-block">wget --no-directories -r -l 1 --accept='*.mkv*' $LINK</pre>
 <p>source: <a class="reference external" href="https://serverfault.com/a/359926">https://serverfault.com/a/359926</a></p>
 </div>
-<div class="section" id="linux-hide-a-particular-user-from-login-screen">
-<h1>Linux: Hide a particular user from login screen</h1>
+<div class="section" id="resume-download-with-wget">
+<h2>Resume download with wget</h2>
+<p>To resume download with <a class="reference external" href="https://linux.die.net/man/1/wget">wget</a>:</p>
+<pre class="literal-block">wget -c $LINK</pre>
+<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/165881">https://unix.stackexchange.com/a/165881</a></p>
+</div>
+<div class="section" id="download-only-new-files-with-wget">
+<h2>Download only new files with wget</h2>
+<p>to download only new files with <a class="reference external" href="https://linux.die.net/man/1/wget">wget</a>:</p>
+<pre class="literal-block">wget -N $LINK</pre>
+<p>source: <a class="reference external" href="https://superuser.com/a/283484">https://superuser.com/a/283484</a></p>
+</div>
+<div class="section" id="download-all-new-files-from-a-html-page-with-resume">
+<h2>Download all new files from a HTML page with resume</h2>
+<p>If we combine all the above cheats we can download all new files of a type from a HTML page with resume:</p>
+<pre class="literal-block">wget --no-directories -r -l 1 -N -c --accept='*.ext*' $LINK</pre>
+</div>
+<div class="section" id="hide-a-particular-user-from-login-screen">
+<h2>Hide a particular user from login screen</h2>
 <p>To hide a particular user from the login screen, first create a file with a text editor:</p>
 <pre class="literal-block">sudo vim /var/lib/AccountsService/users/$USER_NAME</pre>
 <p>put the following:</p>
@@ -682,8 +701,8 @@ SystemAccount=true</pre>
 <p>If the file already exist the change the value of <cite>SystemAccount</cite> to <cite>true</cite>, then save and exit the file.</p>
 <p>source: <a class="reference external" href="https://askubuntu.com/a/575390">https://askubuntu.com/a/575390</a></p>
 </div>
-<div class="section" id="linux-disable-user-list-on-login-screen">
-<h1>Linux: Disable user list on login screen</h1>
+<div class="section" id="disable-user-list-on-login-screen">
+<h2>Disable user list on login screen</h2>
 <p>To disable user list on login screen, first create a directory, <cite>lightdm.conf.d</cite> inside <cite>/etc/lightdm/</cite>:</p>
 <pre class="literal-block">sudo mkdir -p /etc/lightdm/lightdm.conf.d</pre>
 <p>Now create a file with a text editor named <cite>10-ubuntu.conf</cite>:</p>
@@ -696,15 +715,22 @@ greeter-hide-users=true
 allow-guest=false</pre>
 <p>Change the <cite>user-session</cite> to reflect your user session, for example, in Xubuntu the value would be xubuntu. Then save and exit the file. The effect will be visible after a reboot.</p>
 <p>source: <a class="reference external" href="https://askubuntu.com/a/731455">https://askubuntu.com/a/731455</a></p>
+<p>Specifically for Ubuntu the following can done as well:</p>
+<pre class="literal-block">sudo -i
+
+xhost +SI:localuser:gdm
+su gdm -l -s /bin/bash
+gsettings set org.gnome.login-screen disable-user-list true</pre>
+<p>source: <a class="reference external" href="http://ubuntuhandbook.org/index.php/2018/04/hide-user-list-ubuntu-18-04-login-screen/">http://ubuntuhandbook.org/index.php/2018/04/hide-user-list-ubuntu-18-04-login-screen/</a></p>
 </div>
-<div class="section" id="linux-bash-autocomplete-files-location">
-<h1>Linux: Bash autocomplete files location</h1>
+<div class="section" id="bash-autocomplete-files-location">
+<h2>Bash autocomplete files location</h2>
 <p>System-wide bash autocomplete files location:</p>
 <pre class="literal-block">/etc/bash_completion.d/</pre>
 <p>source: <a class="reference external" href="https://askubuntu.com/a/68203">https://askubuntu.com/a/68203</a></p>
 </div>
-<div class="section" id="linux-open-apt-manager-from-url">
-<h1>Linux: Open apt manager from URL</h1>
+<div class="section" id="open-apt-manager-from-url">
+<h2>Open apt manager from URL</h2>
 <p>to open apt manager from URL:</p>
 <pre class="literal-block">apt:$PACKAGE_NAME</pre>
 <p>In HTML:</p>
@@ -713,8 +739,33 @@ allow-guest=false</pre>
 <p>Needs to be Ubuntu 7.10 or later with <cite>apturl</cite> package installed and in a compatible browser.</p>
 <p>source: <a class="reference external" href="https://help.ubuntu.com/community/AptURL">https://help.ubuntu.com/community/AptURL</a> and <a class="reference external" href="https://wiki.ubuntu.com/AptUrl">https://wiki.ubuntu.com/AptUrl</a></p>
 </div>
-<div class="section" id="qr-code-bangladesh-railway-online-ticket">
-<h1>QR Code: Bangladesh Railway Online Ticket</h1>
+<div class="section" id="do-nothing-when-lid-is-closed">
+<h2>Do nothing when lid is closed</h2>
+<p>to take no action when lid is closed, edit the <cite>/etc/systemd/logind.conf</cite> file to add:</p>
+<pre class="literal-block">HandleLidSwitch=ignore</pre>
+<p>and the edit <cite>/etc/UPower/UPower.conf</cite> file to add:</p>
+<pre class="literal-block">IgnoreLid=true</pre>
+<p>sometime WiFi is still disconnects after doing this step then we may also need to add the following in the <cite>/etc/systemd/logind.conf</cite>:</p>
+<pre class="literal-block">HandleLidSwitchDocked=ignore</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/830562">https://askubuntu.com/a/830562</a></p>
+</div>
+<div class="section" id="see-desktop-environment-in-use">
+<h2>see desktop environment in use</h2>
+<p>to see desktop environment in use:</p>
+<pre class="literal-block">echo $DESKTOP_SESSION</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/125072">https://askubuntu.com/a/125072</a></p>
+</div>
+<div class="section" id="remove-all-kde-desktop-element">
+<h2>remove all KDE desktop element</h2>
+<p>to remove all KDE desktop element:</p>
+<pre class="literal-block">sudo apt-get purge '^kde' '^kubuntu' '^plasma'</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/829127">https://askubuntu.com/a/829127</a></p>
+</div>
+</div>
+<div class="section" id="qr-code">
+<h1>QR Code</h1>
+<div class="section" id="bangladesh-railway-online-ticket">
+<h2>Bangladesh Railway Online Ticket</h2>
 <p>If we scan it, we see:</p>
 <pre class="literal-block">TRAIN: NELSAGORE_EXPRESS (765.)     // train name and number
 STATION: DHAKA to ABDULPUR          // source station to distination station
@@ -729,8 +780,8 @@ PNR_NO: 1704522104                  // not sure what is it
 ID: 1382533015                      // ID of user
 GATEWAY: EBL_BANK                   // bank with what the payment was made</pre>
 </div>
-<div class="section" id="qr-code-dhaka-university-masters-admit">
-<h1>QR Code: Dhaka University Masters Admit</h1>
+<div class="section" id="dhaka-university-masters-admit">
+<h2>Dhaka University Masters Admit</h2>
 <p>If we scan it, we see:</p>
 <pre class="literal-block">DU-ADMT&lt;&lt;&lt;1001822312&lt;&lt;REF&lt;&lt;19966095654&lt;&lt;Regular&lt;&lt;62867&lt;&lt;&lt;
                ^                ^          ^       ^
@@ -743,31 +794,52 @@ GATEWAY: EBL_BANK                   // bank with what the payment was made</pre>
     registration
        year!?</pre>
 </div>
-<div class="section" id="qr-code-nextcloud-app-password">
-<h1>QR Code: Nextcloud App Password</h1>
+<div class="section" id="nextcloud-app-password">
+<h2>Nextcloud App Password</h2>
 <p>If we scan it, we see:</p>
 <pre class="literal-block">nc://login/user:$USER-NAME&amp;password:$PASSWORD&amp;server:$PROTOCOL://URL:$PORT-IF-ANY</pre>
 </div>
-<div class="section" id="veracrypt-mount-volume-from-command-line">
-<h1>VeraCrypt: mount volume from command line</h1>
+</div>
+<div class="section" id="veracrypt">
+<h1>VeraCrypt</h1>
+<div class="section" id="mount-volume-from-command-line">
+<h2>mount volume from command line</h2>
 <p>to mount a VeraCrypt volume from command line:</p>
 <pre class="literal-block">veracrypt -t --mount /dev/sdb1 --non-interactive --stdin</pre>
 <p>This will be stuck on a blank line. Typing the volume password would mount the volume. The <cite>-t</cite> flag is for <strong>text user interface</strong>, the <cite>--mount</cite> flag <strong>mounts volume interactively</strong> which takes a device path as argument, <cite>--non-interactive</cite> flag <strong>disabals user interaction</strong> and finally the <cite>--stdin</cite> flag <strong>reads password from standard input</strong>.</p>
 <p>source: <a class="reference external" href="https://www.veracrypt.fr/en/Command%20Line%20Usage.html">https://www.veracrypt.fr/en/Command%20Line%20Usage.html</a>. Thought not all options are document there and needed to be look at the <cite>veracrypt -t --help</cite>.</p>
 </div>
-<div class="section" id="veracrypt-unmount-volume-from-command-line">
-<h1>VeraCrypt: unmount volume from command line</h1>
+<div class="section" id="unmount-volume-from-command-line">
+<h2>unmount volume from command line</h2>
 <p>to unmount a VeraCrypt volume from command line:</p>
 <pre class="literal-block">veracrypt -d</pre>
 <p>The <cite>-d</cite> flag <strong>dismounts volume</strong>.</p>
 <p>source: <a class="reference external" href="https://www.veracrypt.fr/en/Command%20Line%20Usage.html">https://www.veracrypt.fr/en/Command%20Line%20Usage.html</a></p>
 </div>
-<div class="section" id="veracrypt-list-volume-from-command-line">
-<h1>VeraCrypt: list volume from command line</h1>
+<div class="section" id="list-volume-from-command-line">
+<h2>list volume from command line</h2>
 <p>to list VeraCrypt volume(s) from command line:</p>
-<pre class="literal-block">veracrypt -l</pre>
+<pre class="literal-block">veracrypt -t -l</pre>
 <p>The <cite>-l</cite> flag <strong>displays a list of mounted volumes</strong>.</p>
 <p>source: <cite>veracrypt -t --help</cite> options.</p>
+</div>
+<div class="section" id="console-shows-gibrish-error">
+<h2>console shows gibrish error</h2>
+<p>every time a command is run with <cite>-t</cite> flag a gibrish error showed in the terminal. Bit of searching the web showed it happens because of X11 over ssh and can be fixed with:</p>
+<pre class="literal-block">export DISPLAY=:0.0</pre>
+<p>source: <a class="reference external" href="https://github.com/veracrypt/VeraCrypt/issues/531#issuecomment-548879342">https://github.com/veracrypt/VeraCrypt/issues/531#issuecomment-548879342</a></p>
+</div>
+<div class="section" id="read-only-after-mounting-on-windows">
+<h2>read only after mounting on Windows</h2>
+<p>VeraCrypt sometimes becomes read only after mounting on Windows because of Metadata kept in Windows cache.</p>
+<pre class="literal-block">sudo ntfsfix -b -d &quot;/dev/mapper/veracrypt$N&quot;</pre>
+<p>source: <a class="reference external" href="https://superuser.com/questions/1115813/cannot-mount-veracrypt-partition-on-linux-mint-metadata-kept-in-windows-cache#comment1976408_1125460">https://superuser.com/questions/1115813/cannot-mount-veracrypt-partition-on-linux-mint-metadata-kept-in-windows-cache#comment1976408_1125460</a>
+and <a class="reference external" href="https://www.reddit.com/r/VeraCrypt/comments/a0uzur/mounting_a_veracrypt_volume_as_writable">https://www.reddit.com/r/VeraCrypt/comments/a0uzur/mounting_a_veracrypt_volume_as_writable</a></p>
+</div>
+<div class="section" id="don-t-prompt-for-format-in-windows">
+<h2>don't prompt for format in windows</h2>
+<p>need to test this: <a class="reference external" href="https://superuser.com/a/324590">https://superuser.com/a/324590</a></p>
+</div>
 </div>
 <div class="section" id="facebook-see-most-recent-post">
 <h1>Facebook: See most recent post</h1>
@@ -787,6 +859,19 @@ GATEWAY: EBL_BANK                   // bank with what the payment was made</pre>
 <p>To restrict one cert per device in OpenVPN comment out or DO NOT USE the <cite>--duplicate-cn</cite> option.</p>
 <p>source: <a class="reference external" href="https://forums.openvpn.net/viewtopic.php?t=18164#p49452">https://forums.openvpn.net/viewtopic.php?t=18164#p49452</a></p>
 </div>
+<div class="section" id="keepass-password-generator-character-set">
+<h1>KeePass: Password generator character set</h1>
+<p>KeePass Password generator as the following character set available:</p>
+<pre class="literal-block">Upper-case: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Lower-case: abcdefghijklmnopqrstuvwxyz
+Digits: 0123456789
+Minus: -
+Underline: _
+Space:
+Special: !&quot;#$%'*+,./:;=?&#64;\^`|~
+Brackets: []{}()&lt;&gt;
+Latin-1 Supplement: ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüþÿ</pre>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
@@ -794,7 +879,7 @@ GATEWAY: EBL_BANK                   // bank with what the payment was made</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/misc_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-04-17 09:45 UTC.
+Generated on: 2020-05-12 11:06 UTC.
 </p>
 
 </div>

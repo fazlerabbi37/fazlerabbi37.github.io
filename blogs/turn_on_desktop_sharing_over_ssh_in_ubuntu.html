@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
-<title>Vim Cheat Sheet</title>
+<title>Turn on desktop sharing over SSH in Ubuntu</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -631,241 +631,171 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="vim-cheat-sheet">
-<h1 class="title">Vim Cheat Sheet</h1>
+<div class="document" id="turn-on-desktop-sharing-over-ssh-in-ubuntu">
+<h1 class="title">Turn on desktop sharing over SSH in Ubuntu</h1>
 
-<p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to Vim.</p>
-<p>Created on: 2019-09-08</p>
-<p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a>, <a class="reference external" href="tag_living_in_the_shell.html">living_in_the_shell</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>under heavy construction and not well organized</p>
+<p><a class="reference external" href="../blog.html">Blog</a></p>
+<p>Turing on desktop sharing in Ubuntu over SSH</p>
+<p>Created on: 2020-03-11</p>
+<p>Tag: <a class="reference external" href="tag_useless_rnd.html">useless_rnd</a></p>
+<div class="section" id="discovery-query-idea">
+<h1>Discovery/Query/Idea</h1>
+<p>Idea: How can we turn on desktop sharing in Ubuntu over SSH.</p>
 </div>
-<div class="section" id="exit-from-vim">
-<h1>exit from vim</h1>
-<p>to exit from vim press <span class="kbd">Esc</span> then type <cite>:q!</cite></p>
+<div class="section" id="primary-goal">
+<h1>Primary Goal</h1>
+<p>Do it from terminal first.</p>
 </div>
-<div class="section" id="subscript">
-<h1>subscript</h1>
-<blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">s</span></p>
-</blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
+<div class="section" id="trail-01">
+<h1>Trail 01</h1>
+<div class="section" id="research">
+<h2>Research</h2>
+<p>From <a class="reference external" href="https://help.ubuntu.com/stable/ubuntu-help/sharing-desktop.html">Official Ubuntu Documentation: Share your desktop</a> we get that it usages <a class="reference external" href="https://wiki.gnome.org/Projects/Vino">Vino</a>.  We should be able to manipulate setting from terminal with <a class="reference external" href="https://manpages.ubuntu.com/manpages/xenial/en/man1/gsettings.1.html">gsettings</a>.</p>
 </div>
-<div class="section" id="superscript">
-<h1>superscript</h1>
-<blockquote>
-<p><span class="kbd">ctrl</span> + <span class="kbd">k</span> [digit] <span class="kbd">S</span></p>
-</blockquote>
-<p>(source: <a class="reference external" href="https://vi.stackexchange.com/q/7368">https://vi.stackexchange.com/q/7368</a>)</p>
+<div class="section" id="development">
+<h2>Development</h2>
+<p>Let's try that and see desktop share (Vino) status:</p>
+<pre class="literal-block">sudo gsettings list-recursively org.gnome.Vino</pre>
+<p>If we check the disabled state:</p>
+<pre class="literal-block">org.gnome.Vino notify-on-connect true
+org.gnome.Vino alternative-port uint16 5900
+org.gnome.Vino disable-background false
+org.gnome.Vino use-alternative-port false
+org.gnome.Vino icon-visibility 'client'
+org.gnome.Vino use-upnp false
+org.gnome.Vino view-only true
+org.gnome.Vino prompt-enabled true
+org.gnome.Vino disable-xdamage false
+org.gnome.Vino authentication-methods ['none']
+org.gnome.Vino network-interface ''
+org.gnome.Vino require-encryption false
+org.gnome.Vino mailto ''
+org.gnome.Vino lock-screen-on-disconnect false
+org.gnome.Vino vnc-password '1234'</pre>
+<p>In enabled state:</p>
+<pre class="literal-block">org.gnome.Vino notify-on-connect true
+org.gnome.Vino alternative-port uint16 5900
+org.gnome.Vino disable-background false
+org.gnome.Vino use-alternative-port false
+org.gnome.Vino icon-visibility 'client'
+org.gnome.Vino use-upnp false
+org.gnome.Vino view-only false
+org.gnome.Vino prompt-enabled false
+org.gnome.Vino disable-xdamage false
+org.gnome.Vino authentication-methods ['vnc']
+org.gnome.Vino network-interface ''
+org.gnome.Vino require-encryption false
+org.gnome.Vino mailto ''
+org.gnome.Vino lock-screen-on-disconnect false
+org.gnome.Vino vnc-password '1234'</pre>
+<p>Let's find the difference with <a class="reference external" href="https://linux.die.net/man/1/diff">diff</a> between disabled enabled:</p>
+<pre class="literal-block">7,8c7,8
+&lt; org.gnome.Vino view-only true
+&lt; org.gnome.Vino prompt-enabled true
+---
+&gt; org.gnome.Vino view-only false
+&gt; org.gnome.Vino prompt-enabled false
+10c10
+&lt; org.gnome.Vino authentication-methods ['none']
+---
+&gt; org.gnome.Vino authentication-methods ['vnc']</pre>
+<p>So in theory to enable we need to do the following:</p>
+<pre class="literal-block">sudo gsettings set org.gnome.Vino notify-on-connect false
+sudo gsettings set org.gnome.Vino view-only false
+sudo gsettings set org.gnome.Vino prompt-enabled false
+sudo gsettings set org.gnome.Vino authentication-methods &quot;['vnc']&quot;
+sudo gsettings set org.gnome.Vino vnc-password '1234'</pre>
+<p>It doesn't change the settings, more over <a class="reference external" href="https://manpages.ubuntu.com/manpages/xenial/en/man1/gsettings.1.html">gsettings</a> over ssh don't work: <a class="reference external" href="https://stackoverflow.com/a/58222395">https://stackoverflow.com/a/58222395</a>. work around!?:</p>
+<pre class="literal-block">sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino notify-on-connect false'
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino view-only false'
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino prompt-enabled false'
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino authentication-methods &quot;['vnc']&quot;' //errors out
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino vnc-password '1234''</pre>
+<p>This errors out at 4th command. Let's pause for today!</p>
+<hr class="docutils" />
+<p><strong>Update:</strong> Apr 24, 2020</p>
 </div>
-<div class="section" id="indent-multiple-lines">
-<h1>indent multiple lines</h1>
-<p>to indent multiple lines select lines in VISUAL mode and do</p>
-<blockquote>
-<p><span class="kbd">&gt;</span></p>
-</blockquote>
-<p>do one level indentation of next five line</p>
-<blockquote>
-<p><span class="kbd">5 &gt;</span></p>
-</blockquote>
-<p><a class="reference external" href="https://stackoverflow.com/a/235841">https://stackoverflow.com/a/235841</a></p>
 </div>
-<div class="section" id="paste-mode">
-<h1>paste mode</h1>
-<p>to enable paste mode do</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:set paste</cite></p>
-</blockquote>
-</div>
-<div class="section" id="insert-current-date-in-next-line">
-<h1>insert current date in next line</h1>
-<p>to insert current date in next line:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>:pu=strftime('%Y-%m-%d')</cite></p>
-</blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Insert_current_date_or_time">https://vim.fandom.com/wiki/Insert_current_date_or_time</a></p>
-</div>
-<div class="section" id="insert-current-date-in-cursor-location">
-<h1>insert current date in cursor location</h1>
-<p>to insert current date in cursor location in normal mode:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then type <cite>&quot;=strftime('%Y-%m-%d')</cite>. Now press <span class="kbd">Crtl</span> + <span class="kbd">m</span>. Then press <span class="kbd">p</span></p>
-</blockquote>
-<p>to insert current date in cursor location in insert mode:</p>
-<blockquote>
-<p><span class="kbd">Crtl</span> + <span class="kbd">r</span> then type <cite>=strftime('%Y-%m-%d')</cite>. Now press <span class="kbd">Crtl</span> + <span class="kbd">m</span>.</p>
-</blockquote>
-<p><a class="reference external" href="https://unix.stackexchange.com/a/8109/">https://unix.stackexchange.com/a/8109/</a></p>
-</div>
-<div class="section" id="switching-case-of-characters">
-<h1>Switching case of characters</h1>
-<p>to switching case of characters</p>
-<blockquote>
-<p>Toggle case &quot;HellO&quot; to &quot;hELLo&quot; with <span class="kbd">g</span> + <span class="kbd">~</span> then a movement.</p>
-<p>Uppercase &quot;HellO&quot; to &quot;HELLO&quot; with <span class="kbd">g</span> + <span class="kbd">U</span> then a movement.</p>
-<p>Lowercase &quot;HellO&quot; to &quot;hello&quot; with <span class="kbd">g</span> + <span class="kbd">u</span> then a movement.</p>
-</blockquote>
-<p><a class="reference external" href="https://vim.fandom.com/wiki/Switching_case_of_characters">https://vim.fandom.com/wiki/Switching_case_of_characters</a>
-<a class="reference external" href="https://stackoverflow.com/a/2966034">https://stackoverflow.com/a/2966034</a></p>
-</div>
-<div class="section" id="find-and-replace">
-<h1>find and replace</h1>
-<p>to find and replace</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>%s/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>pecific lines</p>
-<blockquote>
-<p><span class="kbd">Esc</span> the <span class="kbd">:</span> the <cite>$START_LINE,$END_LINEs/$REPLACE_THIS/$WITH_THIS/g</cite></p>
-</blockquote>
-<p>add <cite>c</cite> after <cite>g</cite> to enter an interactive mode.</p>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/19995072">Find and replace strings in vim on multiple lines</a></p>
-</div>
-<div class="section" id="move-to-the-beginning-of-line">
-<h1>move to the beginning of line</h1>
-<p>to move to the beginning or start of line:</p>
-<blockquote>
-<p><span class="kbd">0</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/10243634">https://stackoverflow.com/a/10243634</a></p>
-</div>
-<div class="section" id="move-to-the-end-of-line">
-<h1>move to the end of line</h1>
-<p>to move to the end of line:</p>
-<blockquote>
-<p><span class="kbd">$</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/105734">https://stackoverflow.com/a/105734</a></p>
-</div>
-<div class="section" id="delete-all-line-till-end">
-<h1>delete all line till end</h1>
-<p>to delete all line till end:</p>
-<blockquote>
-<p><span class="kbd">d</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/8124616">https://stackoverflow.com/a/8124616</a></p>
-</div>
-<div class="section" id="open-in-readonly-mode">
-<h1>open in readonly mode</h1>
-<p>to open in readonly mode inside vim:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>view /path/to/file</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://stackoverflow.com/a/18395765">https://stackoverflow.com/a/18395765</a></p>
-</div>
-<div class="section" id="display-line-numbers">
-<h1>display line numbers</h1>
-<p>to display line numbers:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set number</cite> or <cite>set nu</cite></p>
-</blockquote>
-<p>to disable:</p>
-<pre class="literal-block">:kbd:`Esc` + :kbd:`:` then type `set nonumber` or `set nonu`</pre>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Display_line_numbers">https://vim.fandom.com/wiki/Display_line_numbers</a></p>
-</div>
-<div class="section" id="see-file-type">
-<h1>see file type</h1>
-<p>to see file type:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> + <span class="kbd">:</span> then type <cite>set ft</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Filetype.vim">https://vim.fandom.com/wiki/Filetype.vim</a></p>
-</div>
-<div class="section" id="macros">
-<h1>macros</h1>
-<p>record a macros:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">q</span> + <span class="kbd">any key like d,m,n</span> for register.</p>
-</blockquote>
-<p>the do you task and press <span class="kbd">q</span>. It will save the macro to the register [one of those d,m,n that you pressed]. To use the macro:</p>
-<blockquote>
-<p>number_of_times_you_want_to_execute + <span class="kbd">&#64;</span> + <span class="kbd">register_key_d_m_or_n</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Macros">https://vim.fandom.com/wiki/Macros</a></p>
-</div>
-<div class="section" id="abbreviations">
-<h1>abbreviations</h1>
-<p>set an abbreviation:</p>
-<blockquote>
-<p><span class="kbd">Esc</span> then <span class="kbd">:</span> <cite>ab $ABBREVIATION $FULL_TEXT_FOR_THE_ABBREVIATION</cite></p>
-</blockquote>
-<p>for example:</p>
-<blockquote>
-<p><span class="kbd">:</span> <cite>ab rtfm read the fine manual</cite></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Using_abbreviations">https://vim.fandom.com/wiki/Using_abbreviations</a></p>
-</div>
-<div class="section" id="fix-indentation">
-<h1>fix indentation</h1>
-<p>to fix indentation on a selected part of the file:</p>
-<blockquote>
-<p><span class="kbd">=</span></p>
-</blockquote>
-<p>to fix indentation on a whole file:</p>
-<blockquote>
-<p><span class="kbd">g</span> + <span class="kbd">g</span> + <span class="kbd">=</span> + <span class="kbd">G</span></p>
-</blockquote>
-<p>source: <a class="reference external" href="https://vim.fandom.com/wiki/Fix_indentation">https://vim.fandom.com/wiki/Fix_indentation</a></p>
-</div>
-<div class="section" id="edit-multiple-files">
-<h1>edit multiple files</h1>
-<p>to edit multiple files open files:</p>
-<pre class="literal-block">vim foo.txt bar.txt</pre>
-<p>go to next file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>n</cite> or <cite>next</cite></p>
-</blockquote>
-<p>go to previous file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>N</cite> or <cite>prev</cite> or <cite>previous</cite></p>
-</blockquote>
-<p>write and go to next file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>wn</cite> or <cite>wnext</cite></p>
-</blockquote>
-<p>write and go to previous file with:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>wN</cite> or <cite>wprevious</cite></p>
-</blockquote>
-<p>to see files list:</p>
-<blockquote>
-<p><span class="kbd">:</span> then type <cite>args</cite></p>
-</blockquote>
-<p>the file with <cite>[]</cite> is the currently active file.</p>
-<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/27590">https://unix.stackexchange.com/a/27590</a></p>
-</div>
-<div class="section" id="spelling-suggestions">
-<h1>spelling suggestions</h1>
-<p>On Normal mode (If not in Normal mode press <span class="kbd">Esc</span>), keep courser on a misspelled word and do the following to see spelling suggestions:</p>
-<blockquote>
-<p><span class="kbd">z</span> + <span class="kbd">=</span></p>
-</blockquote>
-<p>Now we will see a list of all possible spelling suggestions with a number in front of them. Type the number you want to use and press enter. To get out of the suggester without using any suggestion, press <span class="kbd">Esc</span>.</p>
-<p>source: <a class="reference external" href="http://vimdoc.sourceforge.net/htmldoc/spell.html#z=">http://vimdoc.sourceforge.net/htmldoc/spell.html#z=</a></p>
-</div>
-<div class="section" id="vim-replace-newline-with-space">
-<h1>vim replace newline with space</h1>
-<p><a class="reference external" href="https://stackoverflow.com/a/71334">https://stackoverflow.com/a/71334</a>
-<a class="reference external" href="https://unix.stackexchange.com/a/247331">https://unix.stackexchange.com/a/247331</a></p>
-</div>
-<div class="section" id="vim-give-3-space-before-selected-line-visual">
-<h1>vim give 3 space before selected line visual</h1>
-<p><a class="reference external" href="https://vi.stackexchange.com/a/4490/13999">https://vi.stackexchange.com/a/4490/13999</a></p>
-</div>
-<div class="section" id="source">
-<h1>Source</h1>
-<blockquote>
+<div class="section" id="trail-02">
+<h1>Trail 02</h1>
+<div class="section" id="id1">
+<h2>Development</h2>
+<p>We will pick up from where we left. To fix the error in the 4th command do:</p>
+<pre class="literal-block">sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino authentication-methods [\&quot;vnc\&quot;]'</pre>
+<p>Yes! We can change the setting from terminal over SSH. The commands above has changed the <cite>Screen Share</cite> setting to <strong>put a check mark</strong> on <cite>Allow connections to control the screen</cite> and toggled the radio button from <cite>New connections must ask for access</cite> to <cite>Require a password</cite> but the password field is empty. 🤦‍♂️  So this somewhat works but need more work. Maybe we confues the command with nesed <span class="docutils literal">'</span> and the begaining of the password with <span class="docutils literal">'</span> ended the command and took a empty password. Let's encode the password with and <span class="docutils literal">&quot;</span> and escape the <span class="docutils literal">&quot;</span> with <span class="docutils literal">\</span>:</p>
+<pre class="literal-block">sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino vnc-password \&quot;1234\&quot;'</pre>
+<p>This doesn't work as well nor <span class="docutils literal">&quot;</span> without <span class="docutils literal">\</span> and just the text <span class="docutils literal">1234</span>. While reading more on it I found this: <a class="reference external" href="https://askubuntu.com/a/12195">https://askubuntu.com/a/12195</a> where it say the <strong>password is base64 encoded</strong>. Let's test this with simple base64 encoded password, <span class="docutils literal">1234</span>. We can encode the password, <span class="docutils literal">1234</span> with the <a class="reference external" href="https://linux.die.net/man/1/base64">base64</a> tool like this:</p>
+<pre class="literal-block">echo -n 1234 | base64</pre>
+<p>The output is:</p>
+<pre class="literal-block">MTIzNA==</pre>
+<p>Now if we replace <span class="docutils literal">1234</span> with the base64 encoded string, we get:</p>
+<pre class="literal-block">udo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino vnc-password MTIzNA=='</pre>
+<p>This works!! Let's automate the base64 encoding and reduce one step:</p>
+<pre class="literal-block">sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino vnc-password $(echo -n 1234 | base64)'</pre>
+<p>Now if we change the password all we have to do is replace the <span class="docutils literal">1234</span> in this command. We are one step closer to finish this. Now all we need is to toggle the <span class="docutils literal">Screen Sharing</span> button on.</p>
+<p>After spending a long time in web search and reading forum post I get to the conclusion that that is not meant to be done via CLI and settled for a solution that came with the answer regarding password (<a class="reference external" href="https://askubuntu.com/a/12195">https://askubuntu.com/a/12195</a>) which is running the Vino server manually from the terminal:</p>
+<pre class="literal-block">/usr/lib/vino/vino-server</pre>
+<p>If we are using SSH, the <span class="docutils literal"><span class="pre">-X</span></span> flag of <a class="reference external" href="https://linux.die.net/man/1/ssh">openssh-client</a> must be used which <strong>Enables X11 forwarding</strong> or we will the following error:</p>
+<pre class="literal-block">Unable to init server: Could not connect: Connection refused
+Cannot open display:
+Run 'vino-server --help' to see a full list of available command line options</pre>
+<p>Now let's try to connet to our remote machine with <a class="reference external" href="https://remmina.org/">Remmina</a>. We will do the following:</p>
 <ul class="simple">
-<li><p>` &lt;&gt;`_</p></li>
+<li><p>open Remmina</p></li>
+<li><p>click the plus button at the top left</p></li>
+<li><p>give a identifiable name in the <cite>Name</cite> field</p></li>
+<li><p>select <cite>VNC - Virtual Network Computing</cite> from <cite>Protocol</cite> drop down list</p></li>
+<li><p>put remove machine IP address in the <cite>Server</cite> field</p></li>
+<li><p>optionally, put the password in clear text ie. <span class="docutils literal">1234</span> in <cite>User password</cite> field, if not it would we will be prompted for password every time we connect.</p></li>
+<li><p>now click on <cite>Save and Connect</cite></p></li>
 </ul>
-</blockquote>
+<p>It is surely taking a bit time to connect. We can see the log in our remote machine terminal where we start the Vino server. After a while we see it connect but what is this? We are seeing the client machine screen not the remote one! I am guessing this is problem with the X Server <span class="docutils literal">DISPLAY</span> variable. Let's export this and try to start the server again:</p>
+<pre class="literal-block">export DISPLAY=:0</pre>
+<p>Now we can see our remote machine's desktop screen.</p>
+<p>We still have one caveat that is when we connect to the remote machine it shows a notification:</p>
+<pre class="literal-block">Another user is controlling your desktop
+A user on the computer '$IP' is remotely controlling your desktop.</pre>
+<p>We can reset all changes done with <a class="reference external" href="https://manpages.ubuntu.com/manpages/xenial/en/man1/gsettings.1.html">gsettings</a> with:</p>
+<pre class="literal-block">sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings reset-recursively org.gnome.Vino'</pre>
+</div>
+</div>
+<div class="section" id="result">
+<h1>Result</h1>
+<p>As of Apr 24, 2020, We can access remote machine with one problem: notification on remote machine. Here is how we do it:</p>
+<pre class="literal-block">ssh -X user2&#64;remote-machine-ip
+
+sudo -v
+
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino notify-on-connect false'
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino view-only false'
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino prompt-enabled false'
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino authentication-methods [\&quot;vnc\&quot;]'
+sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings set org.gnome.Vino vnc-password $(echo -n 1234 | base64)'
+
+export DISPLAY=:0
+/usr/lib/vino/vino-server</pre>
+<p>Be sure to change the password form <span class="docutils literal">1234</span> to something to suit your need. When we are done, it would be recommended to reset the settings:</p>
+<pre class="literal-block">sudo su $USER -s /bin/bash -c 'XDG_RUNTIME_DIR=/run/user/$UID DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus gsettings reset-recursively org.gnome.Vino'</pre>
+</div>
+<div class="section" id="mislenious">
+<h1>Mislenious</h1>
+<div class="section" id="source">
+<h2>Source</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.gnome.org/GSettings/">GNOME Wiki!: Using GSettings:</a></p></li>
+<li><p><a class="reference external" href="https://askubuntu.com/questions/304017/how-to-set-up-remote-desktop-sharing-through-ssh">https://askubuntu.com/questions/304017/how-to-set-up-remote-desktop-sharing-through-ssh</a></p></li>
+<li><p><a class="reference external" href="https://www.howtogeek.com/429190/how-to-set-up-remote-desktop-on-ubuntu/">https://www.howtogeek.com/429190/how-to-set-up-remote-desktop-on-ubuntu/</a></p></li>
+<li><p><a class="reference external" href="https://askubuntu.com/questions/4474/enable-remote-vnc-from-the-commandline#22354">https://askubuntu.com/questions/4474/enable-remote-vnc-from-the-commandline#22354</a></p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.com/community/VNC/Servers">https://help.ubuntu.com/community/VNC/Servers</a></p></li>
+<li><p><a class="reference external" href="https://askubuntu.com/questions/4474/enable-remote-vnc-from-the-commandline">https://askubuntu.com/questions/4474/enable-remote-vnc-from-the-commandline</a></p></li>
+<li><p><a class="reference external" href="https://wiki.archlinux.org/index.php/Vino">https://wiki.archlinux.org/index.php/Vino</a></p></li>
+</ul>
+</div>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/vim_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/turn_on_desktop_sharing_over_ssh_in_ubuntu.rst">View document source</a>.
 Generated on: 2020-05-12 11:06 UTC.
 </p>
 
