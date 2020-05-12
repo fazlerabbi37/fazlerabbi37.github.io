@@ -228,6 +228,14 @@ Now we will see a list of all possible spelling suggestions with a number in fro
 
 source: http://vimdoc.sourceforge.net/htmldoc/spell.html#z=
 
+vim replace newline with space
+------------------------------
+https://stackoverflow.com/a/71334
+https://unix.stackexchange.com/a/247331
+
+vim give 3 space before selected line visual
+--------------------------------------------
+https://vi.stackexchange.com/a/4490/13999
 Source
 ------
  - ` <>`_
