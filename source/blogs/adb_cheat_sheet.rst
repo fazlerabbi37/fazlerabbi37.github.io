@@ -58,6 +58,49 @@ To restore data::
 
 source: `How to Backup Your Entire Android Device to PC <https://www.technipages.com/how-to-backup-your-entire-android-device>`_
 
+backup, modify and restore a specific app
+-----------------------------------------
+to backup and restore a specific app, first list all the packages with::
+
+    adb shell pm list packages
+
+Now backup the specific package with::
+
+    adb backup -f com.whatsapp.ab -noapk com.whatsapp
+
+The command above indicates that we want to backup ``com.whatsapp`` package to ``com.whatsapp.ab`` file as indicated with the ``-f`` flag. The `.ab` says it is an `Adroid Backup` file. The ``-noapk`` flag indicates that we don't want the ``.apk`` file to be backed up. Now we should see a confirmation dialog prompt to start the backup. The backup will not start until we press **Back up my data**.
+
+We can convert the ADB backup file to a TAR archive. First we need to stripe the 24-bite header and the use `openssl`_ to decompress the raw zlib data::
+
+    dd if=com.whatsapp.ab ibs=24 skip=1 | openssl zlib -d > com.whatsapp.tar
+
+Or we can use `tail`_ command instead of `dd`_::
+
+    tail -c +25 com.whatsapp.ab | openssl zlib -d > com.whatsapp.tar
+
+Now it is plain simple decompress with `tar`_::
+
+    tar xvf com.whatsapp.tar
+
+To restore just do::
+
+    adb restore com.whatsapp.ab
+
+But we have to take one more step to add 24-bite header to the ``.ab`` file if we changed the contains. For this we will also need the original ``.ab`` file.::
+
+    dd if=com.whatsapp.ab ibs=24 count=1 of=com.whatsapp-restore.ab ; openssl zlib -in com.whatsapp.tar >> com.whatsapp-restore.ab
+
+We can also use the `head`_ command to do that as well::
+
+    head -c +24 com.whatsapp.ab > com.whatsapp-restore.ab ; openssl zlib -in com.whatsapp.tar >> com.whatsapp-restore.ab
+
+Now restore it like before::
+
+    adb restore com.whatsapp-restore.ab
+
+source: https://stackpointer.io/mobile/android-adb-backup-extract-restore-repack/372/ and https://forum.xda-developers.com/showthread.php?t=2011811
+
+
 get current activity
 --------------------
 TO see the current activity::
@@ -153,7 +196,7 @@ like::
 
     adb connect 192.168.1.4:5555
 
-source: `How can I connect to Android with ADB over TCP? <https://stackoverflow.com/a/58334911/5350059>`_
+source: `How can I connect to Android with ADB over TCP? <https://stackoverflow.com/a/58334911/5350059>`_ and `Android Debug Bridge (adb) | Android Developers: Connect to a device over Wi-Fi <https://developer.android.com/studio/command-line/adb#wireless>`_
 
 take a screenshot
 -----------------
@@ -238,5 +281,21 @@ The `-e :android:show_fragment` part is important here.
 
 source: https://stackoverflow.com/a/21844594
 
+get events
+----------
+to get events::
+
+    adb shell su -- getevent -lt /dev/input/event1
+
+source: `Getevent | Android Open Source Project <https://source.android.com/devices/input/getevent.html>`_
+
+https://github.com/spion/adbfs-rootless
+
 Source
 ------
+
+.. _openssl: https://linux.die.net/man/1/openssl
+.. _tail: https://linux.die.net/man/1/tail
+.. _dd: https://linux.die.net/man/1/dd
+.. _tar: https://linux.die.net/man/1/tar
+.. _head: https://linux.die.net/man/1/head
