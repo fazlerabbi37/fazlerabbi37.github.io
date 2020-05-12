@@ -324,4 +324,4 @@ KeePass Password generator as the following character set available::
 
 Source
 ------
-
+.. _wget: https://linux.die.net/man/1/wget
