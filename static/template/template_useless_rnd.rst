@@ -14,14 +14,31 @@ Discovery/Query/Idea
 Primary Goal
 ------------
 
-Research
+Trial 01
 --------
+Research
+````````
+Development
+```````````
 
-Devlopment
-----------
+----
+
+**Update:** "=strftime('%Y-%m-%d') then Crtl + m then p
+
+Trial 02
+--------
+Research
+````````
+Development
+```````````
+
+
 
 Result
 ------
 
-Mislenious
+Miscellaneous
+-------------
+
+References
 ----------
