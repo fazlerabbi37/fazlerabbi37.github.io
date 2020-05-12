@@ -282,6 +282,19 @@ to sleep for millisecond::
 source: https://stackoverflow.com/a/39914235/5350059
 
 
+highlights all links on a webpage
+---------------------------------
+to  highlights all links on a webpage::
+
+    for(i=0;i<document.links.length;i++)
+    document.links[i].style.backgroundColor='#ffff00';
+
+make a bookmark with::
+
+    javascript:(function(){for(i=0;i<document.links.length;i++)document.links[i].style.backgroundColor='#ffff00';})();
+
+source: https://superuser.com/a/296578
+
 Source
 ------
  - ` <>`_
