@@ -2280,5 +2280,11 @@ read from file to xclip::
 
 source: https://unix.stackexchange.com/a/204555
 
+https://stackoverflow.com/a/59839
+
+find string in all files in directory
+-------------------------------------
+https://superuser.com/a/345103
+
 Source
 ------
