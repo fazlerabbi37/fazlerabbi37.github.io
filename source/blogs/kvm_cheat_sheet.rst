@@ -194,6 +194,69 @@ OR using this small great script::
 
 source: https://superuser.com/a/1383158
 
+Virt-Manager: full screen display of guest
+------------------------------------------
+to see the guest in full screen mode we need to change the display setting which can be done:
+
+- From the virt-manager main window:
+
+    Edit -> Preferences -> Console -> Resize guest with window
+
+- Or from a guest VM console view:
+
+    View -> Scale Display -> Auto resize VM with window
+
+source: https://centosfaq.org/centos/virt-manager-and-full-screen-display/
+
+
+systemctl service related to KVM
+--------------------------------
+the `systemctl` service related to KVM::
+
+    qemu-kvm.service
+    libvirt-guests.service
+    libvirtd.service
+    libvirt-bin
+
+To restart this services::
+
+    sudo systemctl restart qemu-kvm.service libvirt-guests.service libvirtd.service libvirt-bin
+
+source: https://makandracards.com/operations/41538-stopping-restarting-libvirt-on-ubuntu-16-04-with-systemd
+
+
+virt-manager can't connect to graphical console
+-----------------------------------------------
+to fix this error, try reloading `apparmor`::
+
+    sudo systemctl reload apparmor
+
+source: https://askubuntu.com/a/888220
+
+change the DHCP network of KVM
+------------------------------
+to change the DHCP network of KVM::
+
+    virsh  net-list
+    virsh  net-edit  $NETWORK_NAME
+
+Now find the `<dhcp>` section and make changes. This can also be done by editing the `/etc/libvirt/qemu/networks/$NETWORK_NAME.xml` file.
+
+source: https://serverfault.com/a/627245
+
+
+migrating with virt-manager
+---------------------------
+to migrating with virt-manager:
+
+- right click on a guest
+- select migrate
+- select the new host
+- click migrate
+
+source: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-kvm_live_migration-migrating_with_virt_manager
+
+.. note:: check the `/etc/libvirt/` directory
 
 Source
 ------
