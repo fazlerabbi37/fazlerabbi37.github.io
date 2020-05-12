@@ -26,32 +26,32 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`Screen Cheat Sheet <blogs/screen_cheat_sheet.html>`_
 
 
+	`Turn on desktop sharing over SSH in Ubuntu <blogs/turn_on_desktop_sharing_over_ssh_in_ubuntu.html>`_
+
+
 	`fDLuDCf's Practical Cryptography: Lesson 08 <blogs/fdludcf_practical_cryptography_lesson_08.html>`_
 
 
 	`fDLuDCf's Practical Cryptography: Lesson 07 <blogs/fdludcf_practical_cryptography_lesson_07.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 06 <blogs/fdludcf_practical_cryptography_lesson_06.html>`_
-
-
 
 
 .. sidebar:: Recently Updated Blogs
 
-	`Sphinx Cheat Sheet <blogs/sphinx_cheat_sheet.html>`_
+	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
+
+
+	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
+
+
+	`Turn on desktop sharing over SSH in Ubuntu <blogs/turn_on_desktop_sharing_over_ssh_in_ubuntu.html>`_
 
 
 	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
 
 
-	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
-
-
-	`Screen Cheat Sheet <blogs/screen_cheat_sheet.html>`_
-
-
-	`KVM Cheat Sheet <blogs/kvm_cheat_sheet.html>`_
+	`Mancala: The Game, The Rules, The Strategies <blogs/mancala_the_game_the_rules_the_strategies.html>`_
 
 
 
@@ -314,6 +314,14 @@ A quick reference to KVM.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+`Mancala: The Game, The Rules, The Strategies <blogs/mancala_the_game_the_rules_the_strategies.html>`_
+......................................................................................................
+Created on: 2020-02-25
+
+Playing `Mancala <https://en.wikipedia.org/wiki/Mancala>`_.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 `Markdown Cheat Sheet <blogs/markdown_cheat_sheet.html>`_
 .........................................................
 Created on: 2018-07-19
@@ -504,6 +512,14 @@ Created on: 2018-08-08
 
 Playing around with Tiny Core Linux, a small (11MB) Linux destro.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Turn on desktop sharing over SSH in Ubuntu <blogs/turn_on_desktop_sharing_over_ssh_in_ubuntu.html>`_
+.....................................................................................................
+Created on: 2020-03-11
+
+Turing on desktop sharing in Ubuntu over SSH 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
