@@ -82,4 +82,6 @@ From primary recon it seems the shell access is blocked so **NO** direct access 
 Miscellaneous
 -------------
 - see how the ssh is denying the shell access ei. block shell access on ssh
+- emulator: https://www.tp-link.com/us/support/emulator/, https://emulator.tp-link.com/TL-WR720N_V2/index.htm, https://emulator.tp-link.com/EAP120_1.0/pages/login.html (admin, admin)
+- GPL code: https://www.tp-link.com/us/support/gpl-code/
 
