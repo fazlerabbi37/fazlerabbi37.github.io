@@ -219,7 +219,13 @@ to show link to source at the end of document we can use the `-s` switch the is 
 
     rst2html5 -s --source-url=/PATH/TO/$DOCUMENT document.rst
 
+restrcuturettext Horizontal Rule (--- on markdown)
+--------------------------------------------------
+::
 
+    ----
+
+source: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#transitions
 
 Source
 ------
