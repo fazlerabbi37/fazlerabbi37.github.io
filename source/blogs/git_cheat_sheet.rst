@@ -211,6 +211,13 @@ If we want the full clone just do::
 
 https://stackoverflow.com/a/17937889/5350059
 
+GPG sign old commits
+--------------------
+to GPG sign old commits::
+
+    git rebase --exec 'git commit --amend --no-edit -n -S' -i $HASH
+
+source: https://superuser.com/a/1123928
 
 Source
 ------
