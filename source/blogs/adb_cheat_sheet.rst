@@ -291,6 +291,14 @@ source: `Getevent | Android Open Source Project <https://source.android.com/devi
 
 https://github.com/spion/adbfs-rootless
 
+kill an app
+-----------
+to kill an app::
+
+    adb shell am force-stop com.my.app.package
+
+source: https://stackoverflow.com/a/12274218
+
 Source
 ------
 
