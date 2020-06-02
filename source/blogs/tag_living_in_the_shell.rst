@@ -9,5 +9,6 @@ How would we survive in a world were GUI no longer exist? This is a getting star
 
 
 - `Bash Cheat Sheet <bash_cheat_sheet.html>`_
+- `Lynx Cheat Sheet <lynx_cheat_sheet.html>`_
 - `Screen Cheat Sheet <screen_cheat_sheet.html>`_
 - `Vim Cheat Sheet <vim_cheat_sheet.html>`_

@@ -19,6 +19,7 @@ Quick reference on things, no or very little explanation, point and click and ha
 - `Google Cloud Platform Cheat Sheet <google_cloud_platform_cheat_sheet.html>`_
 - `JavaScript Cheat Sheet <js_cheat_sheet.html>`_
 - `KVM Cheat Sheet <kvm_cheat_sheet.html>`_
+- `Lynx Cheat Sheet <lynx_cheat_sheet.html>`_
 - `Markdown Cheat Sheet <markdown_cheat_sheet.html>`_
 - `Miscellaneous Cheat Sheet <misc_cheat_sheet.html>`_
 - `Nginx Cheat Sheet <nginx_cheat_sheet.html>`_
