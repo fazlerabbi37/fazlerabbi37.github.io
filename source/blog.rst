@@ -20,6 +20,9 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 
 .. sidebar:: New Blogs
 
+	`Lynx Cheat Sheet <blogs/lynx_cheat_sheet.html>`_
+
+
 	`Sphinx Cheat Sheet <blogs/sphinx_cheat_sheet.html>`_
 
 
@@ -32,26 +35,23 @@ This page contains notes/tips/tricks/hacks aka accumulated information about var
 	`fDLuDCf's Practical Cryptography: Lesson 08 <blogs/fdludcf_practical_cryptography_lesson_08.html>`_
 
 
-	`fDLuDCf's Practical Cryptography: Lesson 07 <blogs/fdludcf_practical_cryptography_lesson_07.html>`_
-
-
 
 
 .. sidebar:: Recently Updated Blogs
 
-	`Python Cheat Sheet <blogs/python_cheat_sheet.html>`_
+	`Bash Cheat Sheet <blogs/bash_cheat_sheet.html>`_
 
 
-	`ReStructuredText Cheat Sheet <blogs/rst_cheat_sheet.html>`_
+	`Docker Cheat Sheet <blogs/docker_cheat_sheet.html>`_
 
 
-	`Turn on desktop sharing over SSH in Ubuntu <blogs/turn_on_desktop_sharing_over_ssh_in_ubuntu.html>`_
+	`Install KDE Connect in Ubuntu 18.04 <blogs/install_kde_connect_in_ubuntu_18.04.html>`_
 
 
-	`Vim Cheat Sheet <blogs/vim_cheat_sheet.html>`_
+	`Lynx Cheat Sheet <blogs/lynx_cheat_sheet.html>`_
 
 
-	`Mancala: The Game, The Rules, The Strategies <blogs/mancala_the_game_the_rules_the_strategies.html>`_
+	`Miscellaneous Cheat Sheet <blogs/misc_cheat_sheet.html>`_
 
 
 
@@ -312,6 +312,14 @@ Created on: 2019-01-22
 
 A quick reference to KVM.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+`Lynx Cheat Sheet <blogs/lynx_cheat_sheet.html>`_
+.................................................
+Created on: 2020-06-02
+
+A quick reference to `Lynx <https://invisible-island.net/lynx>`_, a text-based web browser.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 `Mancala: The Game, The Rules, The Strategies <blogs/mancala_the_game_the_rules_the_strategies.html>`_
