@@ -2284,7 +2284,47 @@ https://stackoverflow.com/a/59839
 
 find string in all files in directory
 -------------------------------------
-https://superuser.com/a/345103
+to find string in all files in directory::
+
+    grep -R "$STRING" *
+
+source: https://superuser.com/a/345103
+
+cat reverse
+-----------
+to do reverse cat::
+
+    tac $FILE_NAME
+
+source: https://stackoverflow.com/a/742485
+
+sort files by modified date
+---------------------------
+to sort files by modified date::
+
+    ls -t
+
+to do the sort in reverse::
+
+    ls -tr
+
+source: https://superuser.com/a/147030
+
+version backup file with timestamp
+----------------------------------
+to do version backup file with timestamp::
+
+    rsync -ab --backup-dir=versions --suffix="."$(date +"%Y%m%d%H%M") --delete /source/folder/ /destination/folder
+
+source: https://askubuntu.com/a/1108698
+
+rsync mirror directory
+----------------------
+to mirror directory with rsync::
+
+    rsync -avh source/ dest/ --delete
+
+source: https://askubuntu.com/a/665918
 
 Source
 ------
