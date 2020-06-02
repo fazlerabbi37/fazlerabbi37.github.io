@@ -228,14 +228,28 @@ Now we will see a list of all possible spelling suggestions with a number in fro
 
 source: http://vimdoc.sourceforge.net/htmldoc/spell.html#z=
 
-vim replace newline with space
-------------------------------
-https://stackoverflow.com/a/71334
-https://unix.stackexchange.com/a/247331
+.. replace newline with space
+.. --------------------------
+.. To replace newline with space generally we need to do, `%s/\/n/ /g` but ``\n`` does not represent new line in vim so we do:
 
-vim give 3 space before selected line visual
---------------------------------------------
-https://vi.stackexchange.com/a/4490/13999
+    :kbd:`Esc` the :kbd:`:` the `%s/\/r/ /g`
+
+.. https://stackoverflow.com/a/71334
+.. https://unix.stackexchange.com/a/247331
+
+give n number space before selected line visual
+-----------------------------------------------
+To give n number space in front of ie. before selected lines, enter blockwise visual mode by pressing:
+
+    :kbd:`Ctrl` + :kbd:`v`
+
+Now selected the desire number of lines and then enter a special insert mode by pressing:
+
+    :kbd:`Shift` + :kbd:`i`
+
+Now add spaces in the first line and save the document to see the effects on selected line. This is a neat way to do multiline editing by having multi cursor mode.
+
+source: https://vi.stackexchange.com/a/4490/13999
 
 
 Source
