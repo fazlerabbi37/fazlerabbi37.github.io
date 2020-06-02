@@ -687,6 +687,14 @@ NodeJS
 source: https://rollout.io/blog/using-docker-compose-for-nodejs-development/
 
 
+load a pgsql dump file to db
+----------------------------
+to load a pgsql dump file to db::
+
+    sudo docker exec postgres psql -U postgres my_db_name < dump.sql
+
+source: https://stackoverflow.com/a/50663127
+
 Source
 ------
 .. [1] `How to get bash or ssh into a running container in background mode? <https://askubuntu.com/a/507009/502875>`_
