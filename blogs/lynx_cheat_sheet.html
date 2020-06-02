@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
-<title>KVM Cheat Sheet</title>
+<title>Lynx Cheat Sheet</title>
 <script src="../static/script/test.js"></script>
 <style type="text/css">
 
@@ -631,226 +631,88 @@ h1, h2, h3 {
 </style>
 </head>
 <body>
-<div class="document" id="kvm-cheat-sheet">
-<h1 class="title">KVM Cheat Sheet</h1>
+<div class="document" id="lynx-cheat-sheet">
+<h1 class="title">Lynx Cheat Sheet</h1>
 
 <p><a class="reference external" href="../blog.html">&lt; Blog</a></p>
-<p>A quick reference to KVM.</p>
-<p>Created on: 2019-01-22</p>
-<p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a></p>
-<div class="section" id="install-kvm-in-ubuntu">
-<h1>install kvm in ubuntu</h1>
-<div class="section" id="pre-installation-check">
-<h2>pre-installation check</h2>
-<p>Check that our CPU supports hardware virtualization <a class="footnote-reference brackets" href="#id3" id="id1">1</a>:</p>
-<pre class="literal-block">egrep -c '(vmx|svm)' /proc/cpuinfo</pre>
-<p>if it is more 0 then your hardware doesn't support virtualization. If it is more then 0 then we are good to go. Alternatively we can use:</p>
-<pre class="literal-block">egrep -c ' lm ' /proc/cpuinfo</pre>
-<p>which will give similar result.</p>
+<p>A quick reference to <a class="reference external" href="https://invisible-island.net/lynx">Lynx</a>, a text-based web browser.</p>
+<p>Created on: 2020-06-02</p>
+<p>Tag: <a class="reference external" href="tag_cheat_sheet.html">cheat_sheet</a>, <a class="reference external" href="tag_living_in_the_shell.html">living_in_the_shell</a></p>
+<p>The bottom of the Lynx show all the useful keyboard keys to help navigation easier but here are few that I found most used and worth taking note.</p>
+<div class="section" id="install">
+<h1>Install</h1>
+<p>To install Lynx in Ubuntu:</p>
+<pre class="literal-block">sudo apt install lynx</pre>
 </div>
-<div class="section" id="installation">
-<h2>installation</h2>
-<p>to install KVM in Ubuntu <a class="footnote-reference brackets" href="#id4" id="id2">2</a>:</p>
-<pre class="literal-block">sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y</pre>
-</div>
-<div class="section" id="post-installation">
-<h2>post-installation</h2>
-<p>on post-installation we need to configure the network. Here I will only give the example of bridged networking in DHCP.[3]_. First make backup of your netowrk configuration:</p>
-<pre class="literal-block">sudo cp /etc/network/interfaces /etc/network/interfaces.bak</pre>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Unfortunately, the draw back of this method is that, on next boot it disables the network manager. If we use this we need to run <cite>sudo /etc/init.d/networking restart</cite> everytime to bring the bridge interface up.</p>
-</div>
-<p>Now open <cite>/etc/network/interfaces</cite> file with your choice of editor and paste the following:</p>
-<pre class="literal-block">iface eth0 inet manual #  change eth0 to your ethernet adapter name
+<div class="section" id="go-to-a-website">
+<h1>Go to a website</h1>
+<p>To go to a website:</p>
+<pre class="literal-block">lynx protocol://domain.tld
 
-auto lo
-iface lo inet loopback
+OR
 
-auto br0
-iface br0 inet dhcp
-    bridge_ports eth0 # change eth0 to your ethernet adapter name
-    bridge_stp off
-    bridge_fd 0
-    bridge_maxwait 0</pre>
-<p>Also, edit <span class="docutils literal">/etc/sysctl.conf</span> to uncomment:</p>
-<pre class="literal-block">net.ipv4.ip_forward=1</pre>
-<p>Got it from this source: <a class="reference external" href="https://askubuntu.com/a/1134422">https://askubuntu.com/a/1134422</a></p>
-<p>Now restart the network adapter:</p>
-<pre class="literal-block">sudo systemctl restart networking.service</pre>
+lynx domain.tld</pre>
+<p>From inside the browser, press: <span class="kbd">g</span> and then <span class="docutils literal"><span class="pre">protocol://domain.tld</span></span> OR <span class="docutils literal">domain.tld</span></p>
+<p>Or we can edit the existing URL by typing <span class="kbd">Shift</span> + <span class="kbd">g</span>.</p>
+<p>source: <a class="reference external" href="https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html#Remote">Lynx Users Guide: Starting Lynx with a Remote File</a></p>
 </div>
+<div class="section" id="exit-from-lynx">
+<h1>Exit from Lynx</h1>
+<p>To exit from Lynx, press: <span class="kbd">q</span>.</p>
+<p>This will invoke a yes/no prompt. Type <span class="docutils literal">y</span> to exit. To exit without prompt press <span class="kbd">Shift</span> + <span class="kbd">q</span>.</p>
+<p>source: <a class="reference external" href="https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html#Leaving">Lynx Users Guide: Leaving Lynx</a></p>
 </div>
-<div class="section" id="uninstall-kvm">
-<h1>uninstall kvm</h1>
-<pre class="literal-block">sudo apt-get remove --purge qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y</pre>
-<p>also check and remove this:</p>
-<pre class="literal-block">sudo rm -rf /etc/kvm
-sudo rm -rf /etc/udev/rules.d/45-kvm.rules
-sudo rm -rf /etc/init.d/kvm</pre>
-<p>source: <a class="reference external" href="https://askubuntu.com/a/385358">https://askubuntu.com/a/385358</a></p>
-<p>I normally do this:</p>
-<pre class="literal-block">sudo rm -rf /etc/apparmor.d/libvirt
-sudo rm -rf /etc/libvirt
-sudo rm -rf /usr/lib/libvirt
-sudo rm -rf /usr/lib/qemu
-sudo rm -rf /usr/lib/x86_64-linux-gnu/qemu/
-sudo rm -rf /usr/share/libvirt
-sudo rm -rf /var/lib/libvirt</pre>
+<div class="section" id="go-back">
+<h1>Go back</h1>
+<p>To go back, press: <span class="kbd">←</span>.</p>
+<p>source: <a class="reference external" href="https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html#IntraDocNav">Lynx Users Guide: Navigating hypertext documents with Lynx</a></p>
 </div>
-<div class="section" id="make-guest-from-iso">
-<h1>Make guest from ISO</h1>
-<p>To create a new guest instance from ISO, run the following:</p>
-<pre class="literal-block">sudo virt-install --virt-type=kvm --name $name --ram $ram_size_in_mb --vcpus=2 --hvm --network=bridge:$bridge_name --cdrom=$iso_location --disk $img_file_location,size=$disk_size_in_gb</pre>
+<div class="section" id="working-with-link">
+<h1>Working with link</h1>
+<p>We can use <span class="kbd">↑</span> and <span class="kbd">↓</span> to select a link and use <span class="kbd">→</span> or <span class="kbd">⏎</span></p>
+<p>source: <a class="reference external" href="https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html#IntraDocNav">Lynx Users Guide: Navigating hypertext documents with Lynx</a></p>
 </div>
-<div class="section" id="make-guest-from-a-img-file">
-<h1>Make guest from a <span class="docutils literal">.img</span> file</h1>
-<p>To make a guest from an existing <span class="docutils literal">.img</span> file, run the following:</p>
-<pre class="literal-block">sudo virt-install --virt-type=kvm --name $name --ram 512 --vcpus=1 --hvm --network=bridge:$bridge_name --import --disk $new_img_file_location</pre>
-<p>This makes possible to make one base image and then copy the image and spun a new guest. For example, let's consider we have a base image name <span class="docutils literal">ubuntu_1604_server.img</span> to make a new <span class="docutils literal">$name</span> guest, we do:</p>
-<pre class="literal-block">sudo cp ubuntu_1604_server.img $name.img
-sudo virt-install --virt-type=kvm --name $name --ram 1024 --vcpus=1 --hvm --import --disk $name.img</pre>
+<div class="section" id="save-rendered-file-to-disk">
+<h1>Save rendered file to disk</h1>
+<p>To save file to disk, press: <span class="kbd">p</span>.</p>
+<p>Now we are presented with options to save file, mail. print to screen or print to a connected printer. Using the arrow key select the 'Save to a local file'. Now we need to enter a file name with that the file will be saved.</p>
+<p>source: <a class="reference external" href="https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html#Disposing">Lynx Users Guide: Printing, Mailing, and Saving rendered files to disk</a></p>
 </div>
-<div class="section" id="make-a-widnows-guest-from-iso">
-<h1>Make a Widnows guest from ISO</h1>
-<p>To make a Windows guest from ISO, run this:</p>
-<pre class="literal-block">virt-install --name=windows10 --ram=4048 --vcpus=4 --os-type=windows --os-variant=win8.1 --network=bridge:br0 --cdrom=Windows_10.iso --disk windows10,size=40</pre>
+<div class="section" id="see-source">
+<h1>See source</h1>
+<p>To see source, press: <span class="kbd">\</span>.</p>
+<p>source: <a class="reference external" href="https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html#LocalSource">Lynx Users Guide: Viewing the HTML document source and editing documents</a></p>
 </div>
-<div class="section" id="make-an-img-file">
-<h1>Make an <span class="docutils literal">.img</span> file</h1>
-<p>We will use <span class="docutils literal"><span class="pre">qemu-img</span></span> to create a new <span class="docutils literal">.img</span> file of 2 GB:</p>
-<pre class="literal-block">qemu-img create -f qcow2 $name.img 2g</pre>
+<div class="section" id="download-source-file">
+<h1>Download source file</h1>
+<p>To download source file, press: <span class="kbd">d</span> or <span class="kbd">D</span>.</p>
+<p>source: <a class="reference external" href="https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html#RemoteSource">Lynx Users Guide: Downloading and Saving source files</a></p>
 </div>
-<div class="section" id="see-info-of-an-img-file">
-<h1>See info of an <span class="docutils literal">.img</span> file</h1>
-<p>We can see the information of an existing <span class="docutils literal">.img</span> file using <span class="docutils literal"><span class="pre">qemu-img</span></span>:</p>
-<pre class="literal-block">qemu-img info $name</pre>
+<div class="section" id="options">
+<h1>Options</h1>
+<p>There are lot of options available in Lynx. We can access the by pressing <span class="kbd">o</span>.</p>
 </div>
-<div class="section" id="clone-guest">
-<h1>clone guest</h1>
-<p>to clone guest:</p>
-<pre class="literal-block">virt-clone --original $DOMAIN_NAME --auto-clone</pre>
-<p>also we can give the new guest a name with <cite>--name</cite> flag:</p>
-<pre class="literal-block">virt-clone --original $DOMAIN_NAME --name $NEW_DOMAIN_NAME --auto-clone</pre>
-<p>source: <a class="reference external" href="https://linux.die.net/man/1/virt-clone">https://linux.die.net/man/1/virt-clone</a></p>
-</div>
-<div class="section" id="vrish">
-<h1>vrish</h1>
-<p>The virsh program is the main interface for managing virsh guest domains.</p>
-<p>More resource:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.libvirt.org/manpages/virsh.html">https://www.libvirt.org/manpages/virsh.html</a></p></li>
-<li><p><a class="reference external" href="https://linux.die.net/man/1/virsh">https://linux.die.net/man/1/virsh</a></p></li>
-</ul>
-<div class="section" id="start-kvm-guest-on-host-boot">
-<h2>Start KVM guest on host boot</h2>
-<p>To start KVM guest on host boot:</p>
-<pre class="literal-block">virsh autostart $DOMAIN_NAME</pre>
-<p>source: <a class="reference external" href="https://serverfault.com/a/144477">https://serverfault.com/a/144477</a></p>
-</div>
-<div class="section" id="delete-guest">
-<h2>delete guest</h2>
-<p>to delete guest:</p>
-<pre class="literal-block">virsh undefine $DOMAIN_NAME</pre>
-<p>We can also specify <cite>--managed-save</cite> to delete any managed save images and <cite>--snapshots-metadata</cite> to remove snapshots for the specified guest</p>
-<p>source: <a class="reference external" href="https://serverfault.com/a/402650">https://serverfault.com/a/402650</a></p>
-</div>
-<div class="section" id="shutdown-guest">
-<h2>shutdown guest</h2>
-<p>to shutdown guest:</p>
-<pre class="literal-block">virsh shutdown $DOMAIN_NAME</pre>
-<p>source: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-managing_guest_virtual_machines_with_virsh-shutting_down_rebooting_and_force_shutdown_of_a_guest_virtual_machine">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-managing_guest_virtual_machines_with_virsh-shutting_down_rebooting_and_force_shutdown_of_a_guest_virtual_machine</a></p>
-</div>
-<div class="section" id="see-ip-of-a-guest">
-<h2>see ip of a guest</h2>
-<p>to see ip of a guest, first see the networks:</p>
-<pre class="literal-block">virsh net-list</pre>
-<p>Now find out what is the name of the network of the guest. Now we can find all the guest with this command:</p>
-<pre class="literal-block">virsh net-dhcp-leases $NETWORK-NAME</pre>
-<p>If we know the MAC of the guest, then:</p>
-<pre class="literal-block">virsh net-dhcp-leases $NETWORK-NAME --mac $MAC-ADDRESS</pre>
-<p>source: <a class="reference external" href="https://unix.stackexchange.com/a/283059">https://unix.stackexchange.com/a/283059</a></p>
-<p>OR using this small great script:</p>
-<pre class="literal-block">HOSTNAME=[your vm name]
-MAC=$(virsh domiflist $HOSTNAME | awk '{ print $5 }' | tail -2 | head -1)
-arp -a | grep $MAC | awk '{ print $2 }' | sed 's/[()]//g'</pre>
-<p>source: <a class="reference external" href="https://superuser.com/a/1383158">https://superuser.com/a/1383158</a></p>
-</div>
-</div>
-<div class="section" id="virt-manager-full-screen-display-of-guest">
-<h1>Virt-Manager: full screen display of guest</h1>
-<p>to see the guest in full screen mode we need to change the display setting which can be done:</p>
-<ul>
-<li><p>From the virt-manager main window:</p>
+<div class="section" id="bookmarks">
+<h1>Bookmarks</h1>
+<p>To save a bookmark, press:</p>
 <blockquote>
-<p>Edit -&gt; Preferences -&gt; Console -&gt; Resize guest with window</p>
+<p><span class="kbd">a</span></p>
 </blockquote>
-</li>
-<li><p>Or from a guest VM console view:</p>
-<blockquote>
-<p>View -&gt; Scale Display -&gt; Auto resize VM with window</p>
-</blockquote>
-</li>
-</ul>
-<p>source: <a class="reference external" href="https://centosfaq.org/centos/virt-manager-and-full-screen-display/">https://centosfaq.org/centos/virt-manager-and-full-screen-display/</a></p>
-</div>
-<div class="section" id="systemctl-service-related-to-kvm">
-<h1>systemctl service related to KVM</h1>
-<p>the <cite>systemctl</cite> service related to KVM:</p>
-<pre class="literal-block">qemu-kvm.service
-libvirt-guests.service
-libvirtd.service
-libvirt-bin</pre>
-<p>To restart this services:</p>
-<pre class="literal-block">sudo systemctl restart qemu-kvm.service libvirt-guests.service libvirtd.service libvirt-bin</pre>
-<p>source: <a class="reference external" href="https://makandracards.com/operations/41538-stopping-restarting-libvirt-on-ubuntu-16-04-with-systemd">https://makandracards.com/operations/41538-stopping-restarting-libvirt-on-ubuntu-16-04-with-systemd</a></p>
-</div>
-<div class="section" id="virt-manager-can-t-connect-to-graphical-console">
-<h1>virt-manager can't connect to graphical console</h1>
-<p>to fix this error, try reloading <cite>apparmor</cite>:</p>
-<pre class="literal-block">sudo systemctl reload apparmor</pre>
-<p>source: <a class="reference external" href="https://askubuntu.com/a/888220">https://askubuntu.com/a/888220</a></p>
-</div>
-<div class="section" id="change-the-dhcp-network-of-kvm">
-<h1>change the DHCP network of KVM</h1>
-<p>to change the DHCP network of KVM:</p>
-<pre class="literal-block">virsh  net-list
-virsh  net-edit  $NETWORK_NAME</pre>
-<p>Now find the <cite>&lt;dhcp&gt;</cite> section and make changes. This can also be done by editing the <cite>/etc/libvirt/qemu/networks/$NETWORK_NAME.xml</cite> file.</p>
-<p>source: <a class="reference external" href="https://serverfault.com/a/627245">https://serverfault.com/a/627245</a></p>
-</div>
-<div class="section" id="migrating-with-virt-manager">
-<h1>migrating with virt-manager</h1>
-<p>to migrating with virt-manager:</p>
-<ul class="simple">
-<li><p>right click on a guest</p></li>
-<li><p>select migrate</p></li>
-<li><p>select the new host</p></li>
-<li><p>click migrate</p></li>
-</ul>
-<p>source: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-kvm_live_migration-migrating_with_virt_manager">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/virtualization/sect-virtualization-kvm_live_migration-migrating_with_virt_manager</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>check the <cite>/etc/libvirt/</cite> directory</p>
-</div>
+<p>Now press <span class="kbd">s</span> to bookmark the page, <span class="kbd">l</span> to bookmark selected link or <span class="kbd">c</span> to cancel.</p>
+<p>Press <span class="kbd">v</span> to see all bookmark file and <span class="kbd">v</span> to remove a bookmark. Press kbd:<cite>e</cite> to edit if you have external editor configured, which can be done with <a class="reference internal" href="#options">Options</a></p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Pre-installation_checklist">KVM/Installation - Pre-installation checklist</a></p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation#Installation_of_KVM">KVM/Installation - Installation of KVM</a></p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">3</span></dt>
-<dd><p><a class="reference external" href="https://help.ubuntu.com/community/KVM/Networking#Bridged_Networking">KVM/Networking - Bridged Networking</a></p>
-</dd>
-</dl>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lynx.invisible-island.net/lynx-resources.html">Resources</a></p></li>
+<li><p><a class="reference external" href="https://lynx.invisible-island.net/lynx_help/lynx_help_main.html">Lynx help files</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Text-based_web_browser">Wikipedia: Text-based web browser</a></p></li>
+</ul>
 </div>
 </div>
 <div class="footer">
 <hr class="footer" />
-<p><a class="reference external" href="/source/blogs/kvm_cheat_sheet.rst">View document source</a>.
+<p><a class="reference external" href="/source/blogs/lynx_cheat_sheet.rst">View document source</a>.
 Generated on: 2020-06-02 05:59 UTC.
 </p>
 

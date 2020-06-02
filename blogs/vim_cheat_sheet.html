@@ -844,15 +844,26 @@ h1, h2, h3 {
 </blockquote>
 <p>Now we will see a list of all possible spelling suggestions with a number in front of them. Type the number you want to use and press enter. To get out of the suggester without using any suggestion, press <span class="kbd">Esc</span>.</p>
 <p>source: <a class="reference external" href="http://vimdoc.sourceforge.net/htmldoc/spell.html#z=">http://vimdoc.sourceforge.net/htmldoc/spell.html#z=</a></p>
+<!-- replace newline with space -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- To replace newline with space generally we need to do, `%s/\/n/ /g` but ``\n`` does not represent new line in vim so we do:
+
+:kbd:`Esc` the :kbd:`:` the `%s/\/r/ /g` -->
+<!-- https://stackoverflow.com/a/71334 -->
+<!-- https://unix.stackexchange.com/a/247331 -->
 </div>
-<div class="section" id="vim-replace-newline-with-space">
-<h1>vim replace newline with space</h1>
-<p><a class="reference external" href="https://stackoverflow.com/a/71334">https://stackoverflow.com/a/71334</a>
-<a class="reference external" href="https://unix.stackexchange.com/a/247331">https://unix.stackexchange.com/a/247331</a></p>
-</div>
-<div class="section" id="vim-give-3-space-before-selected-line-visual">
-<h1>vim give 3 space before selected line visual</h1>
-<p><a class="reference external" href="https://vi.stackexchange.com/a/4490/13999">https://vi.stackexchange.com/a/4490/13999</a></p>
+<div class="section" id="give-n-number-space-before-selected-line-visual">
+<h1>give n number space before selected line visual</h1>
+<p>To give n number space in front of ie. before selected lines, enter blockwise visual mode by pressing:</p>
+<blockquote>
+<p><span class="kbd">Ctrl</span> + <span class="kbd">v</span></p>
+</blockquote>
+<p>Now selected the desire number of lines and then enter a special insert mode by pressing:</p>
+<blockquote>
+<p><span class="kbd">Shift</span> + <span class="kbd">i</span></p>
+</blockquote>
+<p>Now add spaces in the first line and save the document to see the effects on selected line. This is a neat way to do multiline editing by having multi cursor mode.</p>
+<p>source: <a class="reference external" href="https://vi.stackexchange.com/a/4490/13999">https://vi.stackexchange.com/a/4490/13999</a></p>
 </div>
 <div class="section" id="source">
 <h1>Source</h1>
@@ -866,7 +877,7 @@ h1, h2, h3 {
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/vim_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-05-12 11:08 UTC.
+Generated on: 2020-06-02 05:59 UTC.
 </p>
 
 </div>

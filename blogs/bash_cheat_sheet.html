@@ -2263,7 +2263,35 @@ var=${var:5}</pre>
 </div>
 <div class="section" id="find-string-in-all-files-in-directory">
 <h2>find string in all files in directory</h2>
-<p><a class="reference external" href="https://superuser.com/a/345103">https://superuser.com/a/345103</a></p>
+<p>to find string in all files in directory:</p>
+<pre class="literal-block">grep -R &quot;$STRING&quot; *</pre>
+<p>source: <a class="reference external" href="https://superuser.com/a/345103">https://superuser.com/a/345103</a></p>
+</div>
+<div class="section" id="cat-reverse">
+<h2>cat reverse</h2>
+<p>to do reverse cat:</p>
+<pre class="literal-block">tac $FILE_NAME</pre>
+<p>source: <a class="reference external" href="https://stackoverflow.com/a/742485">https://stackoverflow.com/a/742485</a></p>
+</div>
+<div class="section" id="sort-files-by-modified-date">
+<h2>sort files by modified date</h2>
+<p>to sort files by modified date:</p>
+<pre class="literal-block">ls -t</pre>
+<p>to do the sort in reverse:</p>
+<pre class="literal-block">ls -tr</pre>
+<p>source: <a class="reference external" href="https://superuser.com/a/147030">https://superuser.com/a/147030</a></p>
+</div>
+<div class="section" id="version-backup-file-with-timestamp">
+<h2>version backup file with timestamp</h2>
+<p>to do version backup file with timestamp:</p>
+<pre class="literal-block">rsync -ab --backup-dir=versions --suffix=&quot;.&quot;$(date +&quot;%Y%m%d%H%M&quot;) --delete /source/folder/ /destination/folder</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/1108698">https://askubuntu.com/a/1108698</a></p>
+</div>
+<div class="section" id="rsync-mirror-directory">
+<h2>rsync mirror directory</h2>
+<p>to mirror directory with rsync:</p>
+<pre class="literal-block">rsync -avh source/ dest/ --delete</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/665918">https://askubuntu.com/a/665918</a></p>
 </div>
 <div class="section" id="source">
 <h2>Source</h2>
@@ -2273,7 +2301,7 @@ var=${var:5}</pre>
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/bash_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-05-12 11:07 UTC.
+Generated on: 2020-06-02 05:58 UTC.
 </p>
 
 </div>

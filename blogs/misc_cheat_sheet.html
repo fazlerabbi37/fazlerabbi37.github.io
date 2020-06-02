@@ -747,6 +747,8 @@ gsettings set org.gnome.login-screen disable-user-list true</pre>
 <pre class="literal-block">IgnoreLid=true</pre>
 <p>sometime WiFi is still disconnects after doing this step then we may also need to add the following in the <cite>/etc/systemd/logind.conf</cite>:</p>
 <pre class="literal-block">HandleLidSwitchDocked=ignore</pre>
+<p>In Ubuntu 20.04 I am noticing a new option <cite>HandleLidSwitchExternalPower</cite> in the <cite>/etc/systemd/logind.conf</cite> file. We can use it as well:</p>
+<pre class="literal-block">HandleLidSwitchExternalPower=ignore</pre>
 <p>source: <a class="reference external" href="https://askubuntu.com/a/830562">https://askubuntu.com/a/830562</a></p>
 </div>
 <div class="section" id="see-desktop-environment-in-use">
@@ -761,6 +763,36 @@ gsettings set org.gnome.login-screen disable-user-list true</pre>
 <pre class="literal-block">sudo apt-get purge '^kde' '^kubuntu' '^plasma'</pre>
 <p>source: <a class="reference external" href="https://askubuntu.com/a/829127">https://askubuntu.com/a/829127</a></p>
 </div>
+</div>
+<div class="section" id="ubuntu-server-enable-root-user">
+<h1>ubuntu server enable root user</h1>
+<p>to enable root user in Ubuntu server, first set the password for root user:</p>
+<pre class="literal-block">sudo passwd root</pre>
+<p>then unlock the user:</p>
+<pre class="literal-block">sudo passwd -u root</pre>
+<p>we can disable root user by locking:</p>
+<pre class="literal-block">sudo passwd -l root</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/44419">https://askubuntu.com/a/44419</a></p>
+</div>
+<div class="section" id="mount-directory-over-ssh">
+<h1>mount directory over ssh</h1>
+<p>to mount directory over ssh, we can use <a class="reference external" href="https://linux.die.net/man/1/sshfs">sshfs</a>. First we will install it:</p>
+<pre class="literal-block">sudo apt-get install sshfs</pre>
+<p>Then enable the fuse kernel module:</p>
+<pre class="literal-block">sudo modprobe fuse</pre>
+<p>Now create a directory and mount remote directory to that directory:</p>
+<pre class="literal-block">mkdir $DIR
+
+sshfs $USER_NAME&#64;$SERVER_IP:/$PATH $DIR</pre>
+<p>To unmount simply do:</p>
+<pre class="literal-block">umount $DIR</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/412478">https://askubuntu.com/a/412478</a></p>
+</div>
+<div class="section" id="apt-upgrade-single-package">
+<h1>apt upgrade single package</h1>
+<p>to upgrade single package with <a class="reference external" href="https://linux.die.net/man/8/apt">apt</a>:</p>
+<pre class="literal-block">sudo apt install --only-upgrade $PACKAGE_NAME</pre>
+<p>source: <a class="reference external" href="https://askubuntu.com/a/44124">https://askubuntu.com/a/44124</a></p>
 </div>
 <div class="section" id="qr-code">
 <h1>QR Code</h1>
@@ -872,6 +904,11 @@ Special: !&quot;#$%'*+,./:;=?&#64;\^`|~
 Brackets: []{}()&lt;&gt;
 Latin-1 Supplement: ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüþÿ</pre>
 </div>
+<div class="section" id="first-message-of-telegram">
+<h1>First message of Telegram</h1>
+<p>channel: Channel created</p>
+<p>group: $CREATORS_DISPLAY_NAME created the group «GROUP_NAME»</p>
+</div>
 <div class="section" id="source">
 <h1>Source</h1>
 </div>
@@ -879,7 +916,7 @@ Latin-1 Supplement: ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾
 <div class="footer">
 <hr class="footer" />
 <p><a class="reference external" href="/source/blogs/misc_cheat_sheet.rst">View document source</a>.
-Generated on: 2020-05-12 11:08 UTC.
+Generated on: 2020-06-02 05:59 UTC.
 </p>
 
 </div>
