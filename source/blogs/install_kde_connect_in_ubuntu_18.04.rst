@@ -12,9 +12,9 @@ What is KDE Connect?
     KDE Connect is a project to communicate across all your devices. For example, with KDE Connect you can receive your phone notifications on your
     desktop computer, control music playing on your desktop from your phone, or use your phone as a remote control for your desktop.
 
-* Implements a secure communication protocol over the network, and allows any developer to create plugins on top of it.
-* Has a component that you install on your desktop.
-* Has a KDE Connect client app you run on your phone.
+    * Implements a secure communication protocol over the network, and allows any developer to create plugins on top of it.
+    * Has a component that you install on your desktop.
+    * Has a KDE Connect client app you run on your phone.
 
 This YouTube `video <https://www.youtube.com/watch?v=KkCFngNmsh0>`_ from 2013 demonstrates some other cool features.
 
