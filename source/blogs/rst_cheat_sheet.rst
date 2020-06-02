@@ -219,9 +219,9 @@ to show link to source at the end of document we can use the `-s` switch the is 
 
     rst2html5 -s --source-url=/PATH/TO/$DOCUMENT document.rst
 
-restrcuturettext Horizontal Rule (--- on markdown)
---------------------------------------------------
-::
+Horizontal Rule (--- on markdown)
+---------------------------------
+To add a horizontal divider or rule::
 
     ----
 
