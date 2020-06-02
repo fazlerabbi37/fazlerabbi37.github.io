@@ -167,6 +167,10 @@ sometime WiFi is still disconnects after doing this step then we may also need t
 
     HandleLidSwitchDocked=ignore
 
+In Ubuntu 20.04 I am noticing a new option `HandleLidSwitchExternalPower` in the `/etc/systemd/logind.conf` file. We can use it as well::
+
+    HandleLidSwitchExternalPower=ignore
+
 source: https://askubuntu.com/a/830562
 
 see desktop environment in use
@@ -184,6 +188,52 @@ to remove all KDE desktop element::
     sudo apt-get purge '^kde' '^kubuntu' '^plasma'
 
 source: https://askubuntu.com/a/829127
+
+ubuntu server enable root user
+------------------------------
+to enable root user in Ubuntu server, first set the password for root user::
+
+    sudo passwd root
+
+then unlock the user::
+
+    sudo passwd -u root
+
+we can disable root user by locking::
+
+    sudo passwd -l root
+
+source: https://askubuntu.com/a/44419
+
+mount directory over ssh
+------------------------
+to mount directory over ssh, we can use `sshfs`_. First we will install it::
+
+    sudo apt-get install sshfs
+
+Then enable the fuse kernel module::
+
+    sudo modprobe fuse
+
+Now create a directory and mount remote directory to that directory::
+
+    mkdir $DIR
+
+    sshfs $USER_NAME@$SERVER_IP:/$PATH $DIR
+
+To unmount simply do::
+
+    umount $DIR
+
+source: https://askubuntu.com/a/412478
+
+apt upgrade single package
+--------------------------
+to upgrade single package with `apt`_::
+
+    sudo apt install --only-upgrade $PACKAGE_NAME
+
+source: https://askubuntu.com/a/44124
 
 QR Code
 --------
@@ -321,7 +371,14 @@ KeePass Password generator as the following character set available::
     Latin-1 Supplement: ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüþÿ
 
 
+First message of Telegram
+-------------------------
+channel: Channel created
+
+group: $CREATORS_DISPLAY_NAME created the group «GROUP_NAME»
 
 Source
 ------
 .. _wget: https://linux.die.net/man/1/wget
+.. _sshfs: https://linux.die.net/man/1/sshfs
+.. _apt: https://linux.die.net/man/8/apt
