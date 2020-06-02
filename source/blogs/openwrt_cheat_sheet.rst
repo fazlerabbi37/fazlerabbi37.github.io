@@ -156,11 +156,15 @@ revert back to original firmware
 - https://openwrt.org/docs/guide-user/installation/generic.uninstall
 
 
-enable wifi by default
+enable WiFi by default
 ----------------------
 - https://forum.openwrt.org/t/solved-enable-wi-fi-and-connect-to-a-network-on-first-boot/47399/31
 
-
+further work
+------------
+- testing openwrt custom build image in kvm:
+- docker image for playing around: https://openwrt.org/docs/guide-user/virtualization/docker_openwrt_image
+- docker image for building image: https://openwrt.org/docs/guide-user/virtualization/obtain.firmware.docker
 
 
 Source
